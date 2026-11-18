@@ -1,8 +1,8 @@
 import { createHash } from "node:crypto";
 import { homedir } from "node:os";
 import path from "node:path";
-import type { AdapterContext, ComputerRef } from "@rakazo/adapter-kit";
-import { SandboxFileTooLargeError } from "@rakazo/adapter-kit";
+import type { AdapterContext, ComputerRef } from "@nurlai/adapter-kit";
+import { SandboxFileTooLargeError } from "@nurlai/adapter-kit";
 import { DesktopSandboxProvider } from "../../providers/computer/desktop/desktop-sandbox.js";
 import { WorkspacePathError } from "../screens/computer-support.js";
 import type { HostScreen } from "../screens/host-screen.js";

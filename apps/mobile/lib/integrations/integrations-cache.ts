@@ -1,6 +1,6 @@
 import { t } from "@lingui/core/macro";
-import type { Connection, ConnectionCatalogItem, Me } from "@rakazo/contracts";
-import { ConnectionCatalogItemSchema, ConnectionSchema } from "@rakazo/contracts";
+import type { Connection, ConnectionCatalogItem, Me } from "@nurlai/contracts";
+import { ConnectionCatalogItemSchema, ConnectionSchema } from "@nurlai/contracts";
 import { Directory, File, Paths } from "expo-file-system";
 import { currentApiBase, rpc, selectedSpaceId } from "../api/api";
 import {

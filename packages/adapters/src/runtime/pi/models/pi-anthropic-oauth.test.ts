@@ -1,5 +1,5 @@
 import type { AuthInteraction } from "@earendil-works/pi-ai";
-import { ResponseTooLargeError } from "@rakazo/core";
+import { ResponseTooLargeError } from "@nurlai/core";
 import { describe, expect, it, vi } from "vitest";
 import {
   createManualAnthropicOAuthLogin,

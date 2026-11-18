@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
-import { deferred, flush } from "@rakazo/core/test-async";
-import type * as UiWeb from "@rakazo/ui-web";
+import { deferred, flush } from "@nurlai/core/test-async";
+import type * as UiWeb from "@nurlai/ui-web";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 import { act } from "react";
@@ -18,7 +18,7 @@ vi.mock("@lingui/react/macro", () => ({
   Trans: ({ children }: { children: ReactNode }) => children,
 }));
 
-vi.mock("@rakazo/ui-web", async (importOriginal) => ({
+vi.mock("@nurlai/ui-web", async (importOriginal) => ({
   Field: ({ children }: { children?: ReactNode }) => <div>{children}</div>,
   FieldLabel: ({ children }: { children?: ReactNode }) => <span>{children}</span>,
   OptionSelect: (await importOriginal<typeof UiWeb>()).OptionSelect,

@@ -1,6 +1,6 @@
-import type { AdapterContext, ComputerRef, SandboxProvider } from "@rakazo/adapter-kit";
-import type { PrismaClient } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+import type { AdapterContext, ComputerRef, SandboxProvider } from "@nurlai/adapter-kit";
+import type { PrismaClient } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { sandboxKindCapabilities } from "./sandbox/sandbox-kind-capabilities.js";
 
 const MEASURE_TIMEOUT_MS = 5_000;

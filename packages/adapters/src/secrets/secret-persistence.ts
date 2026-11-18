@@ -1,8 +1,8 @@
 import { AsyncLocalStorage } from "node:async_hooks";
-import type { JobPublisher, SecretStore } from "@rakazo/adapter-kit";
-import type { PrismaClient } from "@rakazo/db";
-import { Prisma, runAsSystemInTransaction } from "@rakazo/db";
-import { bestEffort } from "@rakazo/logging";
+import type { JobPublisher, SecretStore } from "@nurlai/adapter-kit";
+import type { PrismaClient } from "@nurlai/db";
+import { Prisma, runAsSystemInTransaction } from "@nurlai/db";
+import { bestEffort } from "@nurlai/logging";
 import type { SecretCleanup, SecretCleanupDeps } from "./secret-cleanup.js";
 import {
   attemptSecretCleanup,

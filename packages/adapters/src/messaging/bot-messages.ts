@@ -1,4 +1,4 @@
-import type { BotMessageIntent, MessageBlock } from "@rakazo/contracts";
+import type { BotMessageIntent, MessageBlock } from "@nurlai/contracts";
 import {
   BOT_MESSAGE_MAX_LENGTH,
   BOT_MESSAGE_TOO_LONG,
@@ -10,8 +10,8 @@ import {
   nextBotMessageHop,
   resolveBotAddress,
   retry,
-} from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
+} from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
 import {
   appendEventInTransaction,
   createThreadMessageInTransaction,
@@ -20,8 +20,8 @@ import {
   storedMessageBlocks,
   THREAD_LOCK_TRANSACTION_OPTIONS,
   withTransactionRetry,
-} from "@rakazo/db";
-import { bestEffort, getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { bestEffort, getLogger } from "@nurlai/logging";
 import { runLeaseFor } from "../runs/assembly/run-messages.js";
 import type { ExecutorDeps } from "../runs/executor/executor-deps.js";
 import { wakeRun } from "../runs/wakeups/wake-run.js";

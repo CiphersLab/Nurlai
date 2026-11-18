@@ -1,5 +1,5 @@
 import { createRequire } from "node:module";
-import { expectLinearTime } from "@rakazo/contracts/test-timing";
+import { expectLinearTime } from "@nurlai/contracts/test-timing";
 import { describe, expect, it } from "vitest";
 import {
   closeUnterminatedFence,

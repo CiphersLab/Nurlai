@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import { MarkdownLinkPromptProvider } from "@rakazo/chat-ui/web";
+import { MarkdownLinkPromptProvider } from "@nurlai/chat-ui/web";
 import type { ReactNode } from "react";
 import { useMemo } from "react";
 import { useTrustedLinkSites } from "../../lib/integrations/trusted-link-sites";

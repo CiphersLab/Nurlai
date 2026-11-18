@@ -60,7 +60,7 @@ test("shows peer lines in transcript and opens view-only peer chat", async ({ pa
   await expect(chip).toHaveAccessibleName(
     /Messaged Researcher|Message from Researcher|messages with Researcher/,
   );
-  await expect(chip.locator(".rakazo-organic-avatar")).toBeVisible();
+  await expect(chip.locator(".nurlai-organic-avatar")).toBeVisible();
   await expect(chip).not.toContainText("{peer}");
   // User bubble still contains the phrase; peer body must not appear outside the chip.
   await expect(chip).not.toContainText("peer-exchange-alpha");
@@ -186,7 +186,7 @@ test("shows peer lines in transcript and opens view-only peer chat", async ({ pa
       message: null,
       checkedAt: null,
     };
-    Object.defineProperty(window, "rakazoDesktop", {
+    Object.defineProperty(window, "nurlaiDesktop", {
       value: {
         platform: "darwin",
         window: {

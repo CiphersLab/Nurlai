@@ -3,8 +3,8 @@ import type {
   SandboxKindCapabilities,
   SandboxProvider,
   UnreferencedMachineRecords,
-} from "@rakazo/adapter-kit";
-import type { ComputerProviderDescriptor, ComputerProviderField } from "@rakazo/contracts";
+} from "@nurlai/adapter-kit";
+import type { ComputerProviderDescriptor, ComputerProviderField } from "@nurlai/contracts";
 import type { KubernetesSandboxOptions } from "../providers/computer/kubernetes/kubernetes-sandbox.js";
 
 export interface SandboxProviderOptions {

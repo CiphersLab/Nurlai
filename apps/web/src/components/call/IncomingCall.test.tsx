@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
-import type { Bot } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
+import type { Bot } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
 import type { ReactNode } from "react";
 import { act, Suspense } from "react";
 import { createRoot } from "react-dom/client";
@@ -16,7 +16,7 @@ vi.mock("@lingui/react/macro", () => ({
       "message" in parts ? parts.message : String.raw(parts, ...values),
   }),
 }));
-vi.mock("@rakazo/ui-web", () => ({
+vi.mock("@nurlai/ui-web", () => ({
   BotAvatar: () => null,
   defaultBotAvatarValue: () => "",
   Button: ({ children, ...props }: { children: ReactNode }) => (

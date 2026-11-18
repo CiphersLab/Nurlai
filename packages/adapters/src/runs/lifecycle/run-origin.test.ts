@@ -1,4 +1,4 @@
-import type { PrismaClient } from "@rakazo/db";
+import type { PrismaClient } from "@nurlai/db";
 import { expect, it, vi } from "vitest";
 import { loadRunOrigin } from "./run-origin.js";
 

@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 
-import { GROUP_MEMBER_MAX } from "@rakazo/contracts";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import { GROUP_MEMBER_MAX } from "@nurlai/contracts";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { notifyManager } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 import { act, useState } from "react";
@@ -31,7 +31,7 @@ vi.mock("../api/api", () => ({
   captureApiRequestContext: async (spaceId: string | null = space.id) => ({
     apiBase: "http://api.test",
     sessionGeneration: 0,
-    headers: spaceId ? { "x-rakazo-space-id": spaceId } : {},
+    headers: spaceId ? { "x-nurlai-space-id": spaceId } : {},
   }),
 }));
 vi.mock("../search/search-inbox", () => ({ removeFromSearchInbox: vi.fn() }));

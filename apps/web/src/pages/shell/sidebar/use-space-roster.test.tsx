@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
-import type { AppBootstrap, Bot, Group } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
+import type { AppBootstrap, Bot, Group } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
 import type { ComponentType } from "react";
 import { act, lazy, StrictMode, Suspense, useLayoutEffect, useRef, useState } from "react";
 import type { Root } from "react-dom/client";

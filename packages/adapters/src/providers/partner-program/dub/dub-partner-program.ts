@@ -1,5 +1,5 @@
-import type { PartnerProgram } from "@rakazo/adapter-kit";
-import { deadlineSignal } from "@rakazo/core";
+import type { PartnerProgram } from "@nurlai/adapter-kit";
+import { deadlineSignal } from "@nurlai/core";
 import { z } from "zod";
 
 const API = "https://api.dub.co";

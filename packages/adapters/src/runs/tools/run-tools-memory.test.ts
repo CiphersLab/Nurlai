@@ -1,5 +1,5 @@
-import { MEMORY_REVISION_CONFLICT_ERROR, MemoryRevisionConflictError } from "@rakazo/adapter-kit";
-import { HistoryReadInputSchema, HistorySearchInputSchema } from "@rakazo/contracts";
+import { MEMORY_REVISION_CONFLICT_ERROR, MemoryRevisionConflictError } from "@nurlai/adapter-kit";
+import { HistoryReadInputSchema, HistorySearchInputSchema } from "@nurlai/contracts";
 import { describe, expect, it, vi } from "vitest";
 import { memoryTools, withoutBlankFields } from "./run-tools-memory.js";
 

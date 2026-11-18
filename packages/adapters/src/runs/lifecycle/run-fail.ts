@@ -5,7 +5,7 @@ import {
   SandboxProviderAccountError,
   SandboxRateLimitError,
   TransientModelError,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import {
   BACKGROUND_HELPER_TRIGGER,
   containsSecret,
@@ -14,10 +14,10 @@ import {
   normalizeRunError,
   redactSecrets,
   userRunError,
-} from "@rakazo/core";
-import { isDatabaseUnavailable, retryWhileDatabaseUnavailable } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
-import { sanitizedError } from "@rakazo/logging/monitoring";
+} from "@nurlai/core";
+import { isDatabaseUnavailable, retryWhileDatabaseUnavailable } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
+import { sanitizedError } from "@nurlai/logging/monitoring";
 import { returnBotMessageOutcome } from "../../messaging/bot-messages.js";
 import {
   backOffRoutineAfterAccountError,

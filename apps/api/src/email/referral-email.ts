@@ -1,9 +1,9 @@
-import type { TransactionalEmailProvider } from "@rakazo/adapter-kit";
-import { LIFECYCLE_EMAIL_GAP_MS } from "@rakazo/adapters";
-import { emailLocale, referralEmail } from "@rakazo/auth";
-import { ActorSchema } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
-import { claimProductEmail } from "@rakazo/db";
+import type { TransactionalEmailProvider } from "@nurlai/adapter-kit";
+import { LIFECYCLE_EMAIL_GAP_MS } from "@nurlai/adapters";
+import { emailLocale, referralEmail } from "@nurlai/auth";
+import { ActorSchema } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
+import { claimProductEmail } from "@nurlai/db";
 import { unsubscribeUrl } from "./marketing-email.js";
 
 const HOUR_MS = 60 * 60 * 1000;

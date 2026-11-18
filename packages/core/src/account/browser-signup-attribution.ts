@@ -1,10 +1,10 @@
-import type { SignupAttribution as Attribution } from "@rakazo/contracts";
+import type { SignupAttribution as Attribution } from "@nurlai/contracts";
 import {
   PARTNER_CLICK_COOKIE,
   PartnerClickId,
   SIGNUP_ATTRIBUTION_COOKIE,
   SignupAttribution,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import { getDomain } from "tldts";
 import { signupAttributionFromCookie } from "./signup-attribution.js";
 

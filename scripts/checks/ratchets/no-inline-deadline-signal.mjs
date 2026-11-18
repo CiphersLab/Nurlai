@@ -1,5 +1,5 @@
 export const message =
-  "Do not join a timeout to a signal inline. Use deadlineSignal(ms, parent) from @rakazo/core.";
+  "Do not join a timeout to a signal inline. Use deadlineSignal(ms, parent) from @nurlai/core.";
 
 export const include = [
   "{packages/{adapters,core,db,auth,memory,logging},apps/{api,worker},infra/sandboxes/supervisor,infra/updater}/src/**/*.{ts,tsx,mts,cts,js,mjs,cjs}",

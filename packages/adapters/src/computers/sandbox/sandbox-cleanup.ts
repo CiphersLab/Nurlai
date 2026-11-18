@@ -1,6 +1,6 @@
-import type { UnreferencedMachine, UnreferencedMachineRecords } from "@rakazo/adapter-kit";
-import { deadlineSignal, retry, withAbort } from "@rakazo/core";
-import { bestEffort, getLogger } from "@rakazo/logging";
+import type { UnreferencedMachine, UnreferencedMachineRecords } from "@nurlai/adapter-kit";
+import { deadlineSignal, retry, withAbort } from "@nurlai/core";
+import { bestEffort, getLogger } from "@nurlai/logging";
 
 const ATTEMPTS = 4;
 /**

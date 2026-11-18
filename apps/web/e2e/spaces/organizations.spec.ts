@@ -160,7 +160,7 @@ test("create, switch, rename and delete an organization", async ({ page }, testI
   // So does a link to a group chat there.
   const inWork = async <T>(procedure: string, json: unknown) => {
     const response = await page.request.post(`/rpc/${procedure}`, {
-      headers: { "x-rakazo-space-id": work.defaultSpaceId },
+      headers: { "x-nurlai-space-id": work.defaultSpaceId },
       data: { json },
     });
     expect(response.ok()).toBe(true);

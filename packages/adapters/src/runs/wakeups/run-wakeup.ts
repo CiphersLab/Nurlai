@@ -6,16 +6,16 @@ import type {
   JobTransaction,
   JobWorkerHost,
   RealtimeFanout,
-} from "@rakazo/adapter-kit";
-import { dispatchBackgroundJob } from "@rakazo/adapter-kit";
-import type { DatabaseOutage, Prisma, PrismaClient } from "@rakazo/db";
+} from "@nurlai/adapter-kit";
+import { dispatchBackgroundJob } from "@nurlai/adapter-kit";
+import type { DatabaseOutage, Prisma, PrismaClient } from "@nurlai/db";
 import {
   databaseOutage,
   endTakeoverWaits,
   isTooManyDatabaseConnections,
   runAsSystem,
-} from "@rakazo/db";
-import { getLogger, runCorrelatedJob } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger, runCorrelatedJob } from "@nurlai/logging";
 import type { Pool } from "pg";
 import { RunExecutionHost } from "../lifecycle/run-execution.js";
 import { findRunRecoveryBlockers } from "../lifecycle/run-recovery.js";

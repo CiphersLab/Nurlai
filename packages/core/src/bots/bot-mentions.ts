@@ -1,4 +1,4 @@
-import type { MessageBlock } from "@rakazo/contracts";
+import type { MessageBlock } from "@nurlai/contracts";
 import { isToolActivityBlock } from "../runs/tool-activity.js";
 
 export type ChildBotBlock = Extract<MessageBlock, { kind: "child_bot" }>;

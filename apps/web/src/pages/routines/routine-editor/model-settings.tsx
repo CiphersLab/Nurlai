@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { ModelCatalogEntry, ModelCredential } from "@rakazo/contracts";
-import { credentialForModel, modelThinkingLevels } from "@rakazo/core";
+import type { ModelCatalogEntry, ModelCredential } from "@nurlai/contracts";
+import { credentialForModel, modelThinkingLevels } from "@nurlai/core";
 import {
   Button,
   OptionSelect,
@@ -8,7 +8,7 @@ import {
   PopoverContent,
   PopoverTrigger,
   Switch,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { SlidersHorizontal } from "lucide-react";
 import { useEffect, useState } from "react";
 import {

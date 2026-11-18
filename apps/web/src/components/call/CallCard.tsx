@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
-import { useNow } from "@rakazo/chat-ui/hooks";
-import { BotAvatar, Button, cn, defaultBotAvatarValue } from "@rakazo/ui-web";
+import { useNow } from "@nurlai/chat-ui/hooks";
+import { BotAvatar, Button, cn, defaultBotAvatarValue } from "@nurlai/ui-web";
 import { Captions, ChevronDown, Mic, MicOff, PhoneOff, Settings } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 import type { CallState } from "../../lib/calls/call-session";

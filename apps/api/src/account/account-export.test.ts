@@ -1,14 +1,14 @@
-import type { AccountExportRecord } from "@rakazo/contracts";
+import type { AccountExportRecord } from "@nurlai/contracts";
 import {
   ACCOUNT_EXPORT_MAX_HOME_FILE_BYTES,
   AccountExportManifestSchema,
   AccountExportRecordSchema,
   accountExportPaths,
-} from "@rakazo/contracts";
-import { deferred, flush } from "@rakazo/core/test-async";
-import type { AccountExportSource } from "@rakazo/db";
-import { currentDbContext } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/contracts";
+import { deferred, flush } from "@nurlai/core/test-async";
+import type { AccountExportSource } from "@nurlai/db";
+import { currentDbContext } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { Unzip, UnzipInflate } from "fflate";
 import { Hono } from "hono";
 import { describe, expect, it, vi } from "vitest";

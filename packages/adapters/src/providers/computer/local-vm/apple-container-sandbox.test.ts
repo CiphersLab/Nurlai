@@ -1,7 +1,7 @@
 import { execFileSync } from "node:child_process";
 import { writeFileSync } from "node:fs";
 import { createServer } from "node:net";
-import type { AdapterContext, ComputerRef, ProcessEvent } from "@rakazo/adapter-kit";
+import type { AdapterContext, ComputerRef, ProcessEvent } from "@nurlai/adapter-kit";
 import { afterEach, describe, expect, it } from "vitest";
 import {
   assertSandboxReadLimit,

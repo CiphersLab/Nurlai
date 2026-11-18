@@ -1,9 +1,9 @@
-import type { MessageBlock, ReplyMode } from "@rakazo/contracts";
+import type { MessageBlock, ReplyMode } from "@nurlai/contracts";
 import {
   BACKGROUND_HELPER_TRIGGER,
   isBackgroundRunTrigger,
   isConversationalRun,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { messageUserMaxLength } from "../lifecycle/user-progress.js";
 import { NO_RESPONSE } from "./silent-reply.js";
 

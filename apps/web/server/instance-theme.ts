@@ -1,8 +1,8 @@
 import { readFileSync, realpathSync } from "node:fs";
 import type { IncomingMessage, ServerResponse } from "node:http";
 import path from "node:path";
-import type { ResolvedAppearance, WebColorTokens } from "@rakazo/ui-tokens";
-import { cssVariableName, webDarkTokens } from "@rakazo/ui-tokens";
+import type { ResolvedAppearance, WebColorTokens } from "@nurlai/ui-tokens";
+import { cssVariableName, webDarkTokens } from "@nurlai/ui-tokens";
 
 export const INSTANCE_THEME_PATH = "/instance-theme.css";
 const FONT_PATH = "/instance-theme/font/";
@@ -175,7 +175,7 @@ function loadTheme(file: string): InstanceTheme {
 }
 
 /**
- * Serves `RAKAZO_THEME`'s stylesheet and font files. The file is re-read per request so a
+ * Serves `NURLAI_THEME`'s stylesheet and font files. The file is re-read per request so a
  * self-hoster sees edits on reload; a bad file is logged and serves nothing.
  */
 export function instanceThemeMiddleware(themeFile: string, warn: (reason: string) => void) {

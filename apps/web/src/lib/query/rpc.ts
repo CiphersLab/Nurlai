@@ -1,10 +1,10 @@
 import { createORPCClient } from "@orpc/client";
 import { RPCLink } from "@orpc/client/fetch";
 import type { ContractRouterClient } from "@orpc/contract";
-import type { AppContract, ProductEvent } from "@rakazo/contracts";
-import { CLIENT_BUILD_HEADER, formatClientBuild } from "@rakazo/contracts";
-import { displayIdentityEvent, displayIdentityResult } from "@rakazo/core";
-import { clientCorrelationHeaders, responseCorrelation } from "@rakazo/logging/monitoring";
+import type { AppContract, ProductEvent } from "@nurlai/contracts";
+import { CLIENT_BUILD_HEADER, formatClientBuild } from "@nurlai/contracts";
+import { displayIdentityEvent, displayIdentityResult } from "@nurlai/core";
+import { clientCorrelationHeaders, responseCorrelation } from "@nurlai/logging/monitoring";
 import { authClient } from "../auth/auth";
 import { identityLabels } from "../bots/identity-display";
 import { i18n } from "../locale/i18n";
@@ -58,14 +58,14 @@ export function clearSpaceSelection(): void {
   }
 }
 
-/** Adds `x-rakazo-space-id` when a space is selected. */
+/** Adds `x-nurlai-space-id` when a space is selected. */
 export function withSpaceHeaders(
   init?: HeadersInit,
   spaceId: string | null = selectedSpaceId(),
 ): Headers {
   const headers = new Headers(init);
-  if (spaceId) headers.set("x-rakazo-space-id", spaceId);
-  else headers.delete("x-rakazo-space-id");
+  if (spaceId) headers.set("x-nurlai-space-id", spaceId);
+  else headers.delete("x-nurlai-space-id");
   return headers;
 }
 

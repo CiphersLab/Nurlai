@@ -9,7 +9,7 @@ import { createWriteStream } from "node:fs";
 import { mkdir, readdir, readFile, rename, rm, writeFile } from "node:fs/promises";
 import { connect } from "node:net";
 import path from "node:path";
-import type { DesktopLocalStackPhase, DesktopLocalStackState } from "@rakazo/contracts";
+import type { DesktopLocalStackPhase, DesktopLocalStackState } from "@nurlai/contracts";
 import { t } from "../i18n.js";
 import { readPrivateFile, writePrivateFile } from "../setup/setup-store.js";
 import type { RunDocker } from "./docker-cli.js";
@@ -61,7 +61,7 @@ const NATIVE_OWNER = "rakazo";
 const NATIVE_DATABASE = "rakazo";
 /** Written once a Docker move has copied everything, so a cut-short move reruns. */
 const DOCKER_IMPORTED = ".docker-imported";
-const COMPUTER_IMAGE = "ghcr.io/elie222/rakazo/computer";
+const COMPUTER_IMAGE = "ghcr.io/elie222/nurlai/computer";
 const POSTGRES_LISTENING = "listening on IPv4 address";
 const POSTGRES_READY = "database system is ready to accept connections";
 const HEALTH_POLL_INTERVAL_MS = 1_000;
@@ -328,14 +328,14 @@ const INHERITED_ENV = [
 ];
 /** `.env` lines only Compose reads; the database owner login never reaches the API or worker. */
 const COMPOSE_ONLY =
-  /^(?:POSTGRES_\w+|DATABASE_MIGRATION_URL|SANDBOX_SUPERVISOR_TOKEN|RAKAZO_(?:COMPUTER_)?IMAGE(?:_TAG)?|BUSYBOX_IMAGE|RAKAZO_WEB_BIND)$/;
+  /^(?:POSTGRES_\w+|DATABASE_MIGRATION_URL|SANDBOX_SUPERVISOR_TOKEN|NURLAI_(?:COMPUTER_)?IMAGE(?:_TAG)?|BUSYBOX_IMAGE|NURLAI_WEB_BIND)$/;
 /** What Compose hands the web service from `.env`. */
 const WEB_ENV = [
-  "RAKAZO_HOST",
-  "RAKAZO_ALLOWED_HOSTS",
-  "RAKAZO_CSP_SCRIPT_SRC",
-  "RAKAZO_CSP_CONNECT_SRC",
-  "RAKAZO_THEME",
+  "NURLAI_HOST",
+  "NURLAI_ALLOWED_HOSTS",
+  "NURLAI_CSP_SCRIPT_SRC",
+  "NURLAI_CSP_CONNECT_SRC",
+  "NURLAI_THEME",
   "CRISP_WEBSITE_ID",
   "LOG_LEVEL",
   "LOG_FORMAT",
@@ -581,7 +581,7 @@ export class NativeStackController extends StackLifecycle {
       }
     }
 
-    const databaseUrl = at("rakazo_app", appPassword);
+    const databaseUrl = at("nurlai_app", appPassword);
     const migrated = await this.deps.run(
       this.deps.nodeBinary,
       [path.join(server.dir, server.manifest.entrypoints.migrate)],
@@ -591,7 +591,7 @@ export class NativeStackController extends StackLifecycle {
           ...this.nodeEnv(),
           DATABASE_URL: databaseUrl,
           DATABASE_MIGRATION_URL: at(user, password),
-          RAKAZO_DB_PACKAGE_DIR: path.join(server.dir, "packages", "db"),
+          NURLAI_DB_PACKAGE_DIR: path.join(server.dir, "packages", "db"),
         },
         timeoutMs: MIGRATE_TIMEOUT_MS,
         signal,
@@ -607,12 +607,12 @@ export class NativeStackController extends StackLifecycle {
     if (chosenWeb !== webPort) this.currentWebUrl = `http://127.0.0.1:${chosenWeb}`;
     await writePrivateFile(this.dir(STACK_WEB_URL_FILE), this.currentWebUrl);
 
-    const computerImage = `${stackEnv.get("RAKAZO_COMPUTER_IMAGE") || COMPUTER_IMAGE}:${this.deps.imageTag}`;
+    const computerImage = `${stackEnv.get("NURLAI_COMPUTER_IMAGE") || COMPUTER_IMAGE}:${this.deps.imageTag}`;
     const appEnv = this.appEnv(stackEnv, {
       DATABASE_URL: databaseUrl,
       LOCAL_VM_CLI: runtime.cli,
       LOCAL_VM_COMPUTER_IMAGE: computerImage,
-      RAKAZO_DESKTOP_STACK_TOKEN: stackToken,
+      NURLAI_DESKTOP_STACK_TOKEN: stackToken,
     });
     const entry = (name: keyof ServerManifest["entrypoints"]) =>
       path.join(server.dir, server.manifest.entrypoints[name]);
@@ -647,8 +647,8 @@ export class NativeStackController extends StackLifecycle {
       SCREEN_PROXY_SECRET: stackEnv.get("SCREEN_PROXY_SECRET") ?? "",
       WEB_HOST: "127.0.0.1",
       WEB_PORT: String(chosenWeb),
-      RAKAZO_DESKTOP_STACK_TOKEN: stackToken,
-      RAKAZO_IMAGE_TAG: this.deps.imageTag,
+      NURLAI_DESKTOP_STACK_TOKEN: stackToken,
+      NURLAI_IMAGE_TAG: this.deps.imageTag,
     });
     for (const service of [api, worker, web]) service.start();
 
@@ -1012,7 +1012,7 @@ export class NativeStackController extends StackLifecycle {
     return {
       ...this.baseEnv(),
       ELECTRON_RUN_AS_NODE: "1",
-      RAKAZO_ENV_FILE: "none",
+      NURLAI_ENV_FILE: "none",
       NODE_ENV: "production",
     };
   }

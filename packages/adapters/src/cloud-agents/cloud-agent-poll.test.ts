@@ -1,4 +1,4 @@
-import type { CloudAgent } from "@rakazo/db";
+import type { CloudAgent } from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import { pollCloudAgent } from "./cloud-agent-poll.js";
 import type { CloudAgentDeps } from "./cloud-agent-service.js";

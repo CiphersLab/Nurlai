@@ -12,8 +12,8 @@ import type {
   ScreenRequest,
   ScreenSession,
   TerminalRequest,
-} from "@rakazo/adapter-kit";
-import type { DesktopEnvironment } from "@rakazo/core/node/desktop-runtime";
+} from "@nurlai/adapter-kit";
+import type { DesktopEnvironment } from "@nurlai/core/node/desktop-runtime";
 import {
   BROWSER_APPLICATIONS,
   BROWSER_STILL_RUNNING_EXIT,
@@ -29,7 +29,7 @@ import {
   screenPorts,
   shellQuote,
   stopAllDesktopBrowsersCommand,
-} from "@rakazo/core/node/desktop-runtime";
+} from "@nurlai/core/node/desktop-runtime";
 import {
   BrowserStillRunningError,
   BrowserStoppedReleaseError,
@@ -120,7 +120,7 @@ export class LinuxDesktop {
       managedDesktopCommand(key, context.screenLeaseId, env, randomUUID()),
       context,
     );
-    const match = output.match(/RAKAZO_DESKTOP=(\d+):([a-zA-Z0-9_-]+)/);
+    const match = output.match(/NURLAI_DESKTOP=(\d+):([a-zA-Z0-9_-]+)/);
     if (!match) throw new ComputerScreenUnavailableError();
     const index = Number(match[1]);
     const ports = screenPorts(index, env);
@@ -263,10 +263,10 @@ export class LinuxDesktop {
         layout.displayNumber - env.displayStart,
         [
           `DISPLAY=${layout.display}`,
-          `RAKAZO_CDP_PORT=${layout.debugPort}`,
+          `NURLAI_CDP_PORT=${layout.debugPort}`,
           // Uploads are confined to the bot's home, which is the workspace here.
           `HOME=${shellQuote(env.workspaceDir)}`,
-          "RAKAZO_BROWSER_ARGS_STDIN=1",
+          "NURLAI_BROWSER_ARGS_STDIN=1",
           "/usr/local/bin/rakazo-page-browser",
           request.command,
         ].join(" "),
@@ -323,7 +323,7 @@ export class LinuxDesktop {
       releaseDesktopCommand(key, context.screenLeaseId, env),
       context,
     );
-    if (result.stdout.includes("RAKAZO_DESKTOP_RELEASED=")) {
+    if (result.stdout.includes("NURLAI_DESKTOP_RELEASED=")) {
       if (result.code !== 0 && result.code !== 75) throw new BrowserStoppedReleaseError();
       return;
     }
@@ -447,9 +447,9 @@ function focusOrLaunchActionCommand(
           "  fi",
         ]
       : ["  wid=$id", "  break"]),
-    "done <<RAKAZO_WINDOWS",
+    "done <<NURLAI_WINDOWS",
     `$(DISPLAY=${layout.display} wmctrl -lxp 2>/dev/null || true)`,
-    "RAKAZO_WINDOWS",
+    "NURLAI_WINDOWS",
     'if [ -z "$wid" ] && [ "$saw_profile" -eq 0 ]; then wid=$fallback; fi',
     'if [ -n "$wid" ]; then',
     ...(action.uri !== undefined ? [`  ${launch}`] : []),
@@ -470,7 +470,7 @@ const FIND_MISSING_DESKTOP_TOOLS = [
 ];
 
 /**
- * Same as infra/sandboxes/computer/browser-policy.json. Rakazo keeps credentials itself, so
+ * Same as infra/sandboxes/computer/browser-policy.json. Nurlai keeps credentials itself, so
  * the browser's save-password, address, and card prompts only cover the page. Pop-ups open: a
  * page that opens a report once it has made it is past the click's user activation, and the
  * pop-up blocker would drop it without a sign the page tools can see. Only the hosted sandboxes

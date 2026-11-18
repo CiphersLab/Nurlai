@@ -1,14 +1,14 @@
 import { i18n } from "@lingui/core";
 import { useLingui } from "@lingui/react/macro";
-import { useTimeout } from "@rakazo/chat-ui/hooks";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
 import type {
   BotAvatarSet,
   ComputerReleaseReason,
   LoginFieldInput,
   MessageReaction,
   ThreadMessage,
-} from "@rakazo/contracts";
-import type { ChildBotBlock, FoldedTranscript } from "@rakazo/core";
+} from "@nurlai/contracts";
+import type { ChildBotBlock, FoldedTranscript } from "@nurlai/core";
 import {
   expandPeerReplies,
   groupVoiceChats,
@@ -22,9 +22,9 @@ import {
   timeSeparatorIds,
   unreadDividerMessageId,
   voiceChatHoldsMessage,
-} from "@rakazo/core";
-import type { GroupAvatarMember } from "@rakazo/ui-web";
-import { Button, cn, Spinner } from "@rakazo/ui-web";
+} from "@nurlai/core";
+import type { GroupAvatarMember } from "@nurlai/ui-web";
+import { Button, cn, Spinner } from "@nurlai/ui-web";
 import { ArrowDown } from "lucide-react";
 import type { CSSProperties, RefObject } from "react";
 import {

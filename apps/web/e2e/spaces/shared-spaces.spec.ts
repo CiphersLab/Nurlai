@@ -76,7 +76,7 @@ test("an owner invites someone by link and both see the space's members", async 
   await captureScreenshot(inviteePage, testInfo, "space-members-member");
 
   // Both people talk to one bot in the shared space; each sees who wrote what.
-  const inHome = { "x-rakazo-space-id": home.id };
+  const inHome = { "x-nurlai-space-id": home.id };
   const post = async <T>(path: string, json: unknown) =>
     ownerPage.request
       .post(`/rpc/${path}`, { headers: inHome, data: { json } })

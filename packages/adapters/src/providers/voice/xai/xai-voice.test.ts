@@ -1,5 +1,5 @@
-import type { AdapterContext } from "@rakazo/adapter-kit";
-import { VoiceAccountError } from "@rakazo/adapter-kit";
+import type { AdapterContext } from "@nurlai/adapter-kit";
+import { VoiceAccountError } from "@nurlai/adapter-kit";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { XaiVoiceProvider } from "./xai-voice.js";
 

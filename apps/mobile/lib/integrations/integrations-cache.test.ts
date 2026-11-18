@@ -1,4 +1,4 @@
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { IntegrationsCacheScope } from "./integrations-cache";
 import {

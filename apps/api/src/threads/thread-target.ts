@@ -4,14 +4,14 @@ import type {
   NotificationProvider,
   ProductAnalytics,
   SandboxProvider,
-} from "@rakazo/adapter-kit";
-import { notifyMemberMessage, wakeRun } from "@rakazo/adapters";
-import type { Actor, GroupMember, MessageBlock, ReplyPreview } from "@rakazo/contracts";
+} from "@nurlai/adapter-kit";
+import { notifyMemberMessage, wakeRun } from "@nurlai/adapters";
+import type { Actor, GroupMember, MessageBlock, ReplyPreview } from "@nurlai/contracts";
 import {
   GROUP_MEMBER_MIN,
   MessageBlock as MessageBlockSchema,
   resolveBotAvatarSet,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   ACTIVE_RUN_STATUSES,
   BACKGROUND_HELPER_TRIGGER,
@@ -25,9 +25,9 @@ import {
   QUEUE_HOLDING_RUN_STATUSES,
   resolveGroupTargetBotIds,
   runReadsThreadHistory,
-} from "@rakazo/core";
-import { deriveMessageQuote, messageReplyPreview } from "@rakazo/core/message-quote";
-import type { Prisma, PrismaClient, ThreadEvents } from "@rakazo/db";
+} from "@nurlai/core";
+import { deriveMessageQuote, messageReplyPreview } from "@nurlai/core/message-quote";
+import type { Prisma, PrismaClient, ThreadEvents } from "@nurlai/db";
 import {
   answerWaitingRunWithTextInTransaction,
   appendEventInTransaction,
@@ -46,8 +46,8 @@ import {
   THREAD_LOCK_TRANSACTION_OPTIONS,
   touchGroupUpdatedAt,
   withTransactionRetry,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import {
   buildSendPrompt,
   buildUserMessageBlocks,

@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
-import { deferred } from "@rakazo/core/test-async";
-import { tokensForAppearance } from "@rakazo/ui-tokens";
+import { deferred } from "@nurlai/core/test-async";
+import { tokensForAppearance } from "@nurlai/ui-tokens";
 import type { ReactNode } from "react";
 import { act } from "react";
 import type { Root } from "react-dom/client";

@@ -1,6 +1,6 @@
 import { Host, Switch } from "@expo/ui/jetpack-compose";
 import { alpha } from "@expo/ui/jetpack-compose/modifiers";
-import { tokensForAppearance } from "@rakazo/ui-tokens";
+import { tokensForAppearance } from "@nurlai/ui-tokens";
 import { Pressable, View } from "react-native";
 import { systemGreen, useResolvedAppearance } from "../../lib/native/native";
 import type { NativeSwitchProps } from "../../lib/native/native-controls";

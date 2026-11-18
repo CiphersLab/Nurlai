@@ -1,10 +1,10 @@
 // @vitest-environment jsdom
 
 import { i18n } from "@lingui/core";
-import type { AgentImportPlan, Bot } from "@rakazo/contracts";
-import type * as Core from "@rakazo/core";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import type { AgentImportPlan, Bot } from "@nurlai/contracts";
+import type * as Core from "@nurlai/core";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import type { ReactNode } from "react";
 import { act } from "react";
 import type { Root } from "react-dom/client";
@@ -29,7 +29,7 @@ vi.mock("../../../lib/query/rpc", () => ({
   },
 }));
 
-vi.mock("@rakazo/core", async (importOriginal) => ({
+vi.mock("@nurlai/core", async (importOriginal) => ({
   ...(await importOriginal<typeof Core>()),
   openAgentImportArchive: (bytes: Uint8Array) => {
     const content = bytes[0] === 1 ? "First" : "Second";

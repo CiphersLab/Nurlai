@@ -1,10 +1,10 @@
 // @vitest-environment jsdom
 
-import type { AccountSecurity } from "@rakazo/contracts";
-import { localTimezone } from "@rakazo/core";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
-import type * as UiWeb from "@rakazo/ui-web";
+import type { AccountSecurity } from "@nurlai/contracts";
+import { localTimezone } from "@nurlai/core";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
+import type * as UiWeb from "@nurlai/ui-web";
 import type { ReactNode } from "react";
 import { act, useEffect } from "react";
 import { MemoryRouter } from "react-router-dom";
@@ -19,7 +19,7 @@ vi.mock("@lingui/react/macro", () => ({
   Trans: ({ children }: { children: ReactNode }) => children,
 }));
 
-vi.mock("@rakazo/ui-web", async (importOriginal) => ({
+vi.mock("@nurlai/ui-web", async (importOriginal) => ({
   BotAvatar: () => null,
   Button: ({ children, ...props }: React.ComponentProps<"button">) => (
     <button type="button" {...props}>

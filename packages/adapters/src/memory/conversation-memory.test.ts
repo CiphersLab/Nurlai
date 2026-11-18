@@ -3,9 +3,9 @@ import type {
   BackgroundJob,
   SemanticMemoryProvider,
   SemanticMemoryResponse,
-} from "@rakazo/adapter-kit";
-import { memoryRetainTurnJob } from "@rakazo/adapter-kit";
-import type { PrismaClient } from "@rakazo/db";
+} from "@nurlai/adapter-kit";
+import { memoryRetainTurnJob } from "@nurlai/adapter-kit";
+import type { PrismaClient } from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import { createHindsightProvider } from "../providers/memory/hindsight/hindsight-memory-provider.js";
 import {

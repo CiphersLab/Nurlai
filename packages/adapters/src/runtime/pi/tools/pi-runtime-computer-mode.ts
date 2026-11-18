@@ -1,5 +1,5 @@
 import type { AgentTool } from "@earendil-works/pi-agent-core";
-import type { AgentRunModel, AgentRunRequest } from "@rakazo/adapter-kit";
+import type { AgentRunModel, AgentRunRequest } from "@nurlai/adapter-kit";
 import type {
   ComputerModeCheckpoint,
   ComputerModeSelection,

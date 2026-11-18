@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import type { Api, Context, Message, Model } from "@earendil-works/pi-ai";
-import type { AgentRunRequest } from "@rakazo/adapter-kit";
+import type { AgentRunRequest } from "@nurlai/adapter-kit";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   ContextCacheTracker,
@@ -809,14 +809,14 @@ describe("local prompt cache declared off", () => {
 
   it("trims stale page state once enough has built up when set to off", () => {
     const cached = lastPrompt(local);
-    vi.stubEnv("RAKAZO_LOCAL_PROMPT_CACHE", "off");
+    vi.stubEnv("NURLAI_LOCAL_PROMPT_CACHE", "off");
     const trimmed = lastPrompt(local);
     expect(JSON.stringify(trimmed)).toContain("Earlier page state trimmed");
     expect(estimateContextTokens(trimmed)).toBeLessThan(estimateContextTokens(cached) * 0.7);
   });
 
   it("does not shrink a prompt below the threshold", () => {
-    vi.stubEnv("RAKAZO_LOCAL_PROMPT_CACHE", "off");
+    vi.stubEnv("NURLAI_LOCAL_PROMPT_CACHE", "off");
     const sent = simulateRun(request({ contextStrategy: "current" }), pages.slice(0, 2), {
       model: local,
     });
@@ -824,12 +824,12 @@ describe("local prompt cache declared off", () => {
   });
 
   it("applies to the local provider only", () => {
-    vi.stubEnv("RAKAZO_LOCAL_PROMPT_CACHE", "off");
+    vi.stubEnv("NURLAI_LOCAL_PROMPT_CACHE", "off");
     expect(rewrites(simulateRun(request({ contextStrategy: "current" }), pages))).toEqual([]);
   });
 
   it("keeps unsigned thinking on the rebuilds it triggers", () => {
-    vi.stubEnv("RAKAZO_LOCAL_PROMPT_CACHE", "off");
+    vi.stubEnv("NURLAI_LOCAL_PROMPT_CACHE", "off");
     const sent = simulateRun(request({ contextStrategy: "current" }), pages, {
       model: local,
       unsigned: true,

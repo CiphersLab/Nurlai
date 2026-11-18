@@ -1,4 +1,4 @@
-import type { AdapterContext, CloudAgentProvider } from "@rakazo/adapter-kit";
+import type { AdapterContext, CloudAgentProvider } from "@nurlai/adapter-kit";
 import { describe, expect, it } from "vitest";
 import { CursorCloudAgentProvider } from "../providers/cloud-agent/cursor/cursor-cloud-agent.js";
 import { T3CodeCloudAgentProvider } from "../providers/cloud-agent/t3code/t3code-cloud-agent.js";

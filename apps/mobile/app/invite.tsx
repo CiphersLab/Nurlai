@@ -1,8 +1,8 @@
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import { DEFAULT_NEW_BOT_AVATAR_SET, INVITED_TRIAL_WEEKS } from "@rakazo/contracts";
-import { INVITE_AVATAR_COLORS } from "@rakazo/core";
-import { typeScale } from "@rakazo/ui-tokens";
+import { DEFAULT_NEW_BOT_AVATAR_SET, INVITED_TRIAL_WEEKS } from "@nurlai/contracts";
+import { INVITE_AVATAR_COLORS } from "@nurlai/core";
+import { typeScale } from "@nurlai/ui-tokens";
 import { useRouter } from "expo-router";
 import { useEffect } from "react";
 import { ScrollView, Share, StyleSheet, Text, View } from "react-native";

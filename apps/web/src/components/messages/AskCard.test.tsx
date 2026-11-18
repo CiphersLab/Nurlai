@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 
 import { i18n } from "@lingui/core";
-import type { LoginFieldInput } from "@rakazo/contracts";
-import { BLOCKED_ITEM_ANSWER, UNCHOSEN_ITEM_ANSWER } from "@rakazo/contracts";
+import type { LoginFieldInput } from "@nurlai/contracts";
+import { BLOCKED_ITEM_ANSWER, UNCHOSEN_ITEM_ANSWER } from "@nurlai/contracts";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 import { act } from "react";
@@ -17,7 +17,7 @@ vi.mock("@lingui/react/macro", () => ({
   }),
 }));
 const favicon = vi.hoisted(() => ({ icon: null as string | null, asked: [] as string[] }));
-vi.mock("@rakazo/chat-ui/web", () => ({
+vi.mock("@nurlai/chat-ui/web", () => ({
   ChatMarkdown: ({ children }: { children: ReactNode }) => <span>{children}</span>,
   useLinkFavicon: (href: string) => {
     if (href) favicon.asked.push(href);

@@ -1,4 +1,4 @@
-import { webDarkTokens } from "@rakazo/ui-tokens";
+import { webDarkTokens } from "@nurlai/ui-tokens";
 import type { Rolldown } from "vite";
 import { describe, expect, it } from "vitest";
 import { injectShell, shellFiles, webManifest } from "./pwa-plugin.js";
@@ -35,7 +35,7 @@ describe("PWA build", () => {
   });
 
   it("names the cache after the build id the client-update handshake uses", () => {
-    const code = "install(self,__RAKAZO_SW_PRECACHE__,__RAKAZO_SW_CACHE__)";
+    const code = "install(self,__NURLAI_SW_PRECACHE__,__NURLAI_SW_CACHE__)";
     expect(injectShell(code, ["/", "/assets/a.js"], "20261023113220")).toBe(
       'install(self,["/","/assets/a.js"],"rakazo-shell-20261023113220")',
     );

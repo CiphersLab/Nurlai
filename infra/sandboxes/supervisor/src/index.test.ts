@@ -4,8 +4,8 @@ import http from "node:http";
 import net from "node:net";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { resolveSupervisorToken } from "@rakazo/core/node/secrets-guard";
-import { deferred } from "@rakazo/core/test-async";
+import { resolveSupervisorToken } from "@nurlai/core/node/secrets-guard";
+import { deferred } from "@nurlai/core/test-async";
 import type Docker from "dockerode";
 import { describe, expect, it, vi } from "vitest";
 import { resolveDockerSocketPath } from "./context.js";
@@ -298,8 +298,8 @@ describe("sandbox supervisor HTTP boundary", () => {
       headers: {
         authorization: `Bearer ${token}`,
         "content-type": "application/json",
-        "x-rakazo-bot-id": "other-bot",
-        "x-rakazo-space-id": "workspace",
+        "x-nurlai-bot-id": "other-bot",
+        "x-nurlai-space-id": "workspace",
       },
       body: JSON.stringify({
         botId: "bot",
@@ -430,7 +430,7 @@ describe("sandbox supervisor input containment", () => {
           argv: [
             "env",
             "DISPLAY=:2",
-            ...(profile ? [`RAKAZO_BROWSER_PROFILE=${profile}`] : []),
+            ...(profile ? [`NURLAI_BROWSER_PROFILE=${profile}`] : []),
             "rakazo-browser",
             url,
           ],
@@ -478,7 +478,7 @@ describe("sandbox supervisor input containment", () => {
       argv: [
         "env",
         "DISPLAY=:2",
-        `RAKAZO_BROWSER_PROFILE=${profile}`,
+        `NURLAI_BROWSER_PROFILE=${profile}`,
         "rakazo-focus-or-launch",
         "rakazo-browser",
       ],
@@ -510,7 +510,7 @@ describe("sandbox supervisor input containment", () => {
         argv: [
           "env",
           "DISPLAY=:2",
-          `RAKAZO_BROWSER_PROFILE=${profile}`,
+          `NURLAI_BROWSER_PROFILE=${profile}`,
           "rakazo-browser",
           "https://example.com",
         ],
@@ -523,7 +523,7 @@ describe("sandbox supervisor input containment", () => {
         argv: [
           "env",
           "DISPLAY=:2",
-          `RAKAZO_BROWSER_PROFILE=${profile}`,
+          `NURLAI_BROWSER_PROFILE=${profile}`,
           "xdg-open",
           "https://example.com",
         ],
@@ -701,7 +701,7 @@ describe("sandbox supervisor input containment", () => {
     expect(terminalCommand("control", "terminal", "/work")).toContain("0.0.0.0:6080 8>&-");
     expect(interactiveScreenCommand(true, "lease-new")).not.toContain("sockets/view-1-");
     expect(interactiveScreenCommand(false, "lease-old")).toContain("= 'lease-old'");
-    expect(interactiveScreenCommand(false, "lease-old")).toContain("RAKAZO_CONTROL_RELEASED");
+    expect(interactiveScreenCommand(false, "lease-old")).toContain("NURLAI_CONTROL_RELEASED");
   });
 
   it("assigns distinct screen indexes per Team bot and starts extra displays", () => {

@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import type { BotSecretMetadata, VaultUse } from "@rakazo/contracts";
+import type { BotSecretMetadata, VaultUse } from "@nurlai/contracts";
 import type { ReactNode } from "react";
 import { act, createElement } from "react";
 import type { Root } from "react-dom/client";

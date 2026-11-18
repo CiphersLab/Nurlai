@@ -1,4 +1,4 @@
-import { flush } from "@rakazo/core/test-async";
+import { flush } from "@nurlai/core/test-async";
 import { Alert } from "react-native";
 import { beforeEach, expect, it, vi } from "vitest";
 import { hasUnsentSends } from "./thread-feedback";

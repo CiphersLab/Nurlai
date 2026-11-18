@@ -1,6 +1,6 @@
-import type { PageSummary } from "@rakazo/contracts";
-import { PAGE_LIST_MAX_LIMIT } from "@rakazo/contracts";
-import { uniquePages } from "@rakazo/core";
+import type { PageSummary } from "@nurlai/contracts";
+import { PAGE_LIST_MAX_LIMIT } from "@nurlai/contracts";
+import { uniquePages } from "@nurlai/core";
 import { useFocusEffect } from "expo-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { rpc } from "../api/api";

@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { notifyManager } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 import { act } from "react";
@@ -30,7 +30,7 @@ vi.mock("../api/api", () => ({
   captureApiRequestContext: async (spaceId: string | null = selected.spaceId) => ({
     apiBase: "http://api.test",
     sessionGeneration: 1,
-    headers: spaceId ? { "x-rakazo-space-id": spaceId } : {},
+    headers: spaceId ? { "x-nurlai-space-id": spaceId } : {},
   }),
 }));
 vi.mock("../api/session", () => ({ currentSessionGeneration: () => 1 }));
@@ -147,7 +147,7 @@ it("creates once on a double tap, through the save's send, and holds the form me
   rpc.mockClear().mockResolvedValue([]);
   await send("bots/list", undefined);
   expect(rpc).toHaveBeenCalledWith("bots/list", undefined, {
-    requestContext: expect.objectContaining({ headers: { "x-rakazo-space-id": "space-work" } }),
+    requestContext: expect.objectContaining({ headers: { "x-nurlai-space-id": "space-work" } }),
   });
   await act(async () => creating.resolve("created"));
   expect(router.back).not.toHaveBeenCalled();
@@ -173,7 +173,7 @@ it("keeps sending the new bot's onboarding to its Space after another is selecte
     "onboarding/start",
     { botId: "bot-1" },
     {
-      requestContext: expect.objectContaining({ headers: { "x-rakazo-space-id": "space-1" } }),
+      requestContext: expect.objectContaining({ headers: { "x-nurlai-space-id": "space-1" } }),
     },
   );
 });

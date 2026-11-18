@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
-import type { BotAvatarSet } from "@rakazo/contracts";
-import type { AvatarEyes, AvatarMotionMode, LogoAvatarActivity } from "@rakazo/core";
+import type { BotAvatarSet } from "@nurlai/contracts";
+import type { AvatarEyes, AvatarMotionMode, LogoAvatarActivity } from "@nurlai/core";
 import {
   AVATAR_LID_CLOSE,
   AVATAR_MOTION_UNITS,
@@ -25,7 +25,7 @@ import {
   SHIPPED_BOT_AVATAR_EYES,
   SHIPPED_BOT_AVATAR_VIEWBOX,
   usesLogoAvatar,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { memo, useSyncExternalStore } from "react";
 import { Image, Pressable, View } from "react-native";
 import Animated, {
@@ -130,12 +130,12 @@ export interface BotAvatarProps {
 /** Missing set metadata deliberately preserves every existing avatar. */
 export const BotAvatar = memo(function BotAvatar(props: BotAvatarProps) {
   if (usesLogoAvatar(props)) {
-    return <RakazoBotAvatar {...props} />;
+    return <NurlaiBotAvatar {...props} />;
   }
   return <LegacyBotAvatar {...props} />;
 });
 
-function RakazoBotAvatar({
+function NurlaiBotAvatar({
   color,
   identity,
   size = 54,

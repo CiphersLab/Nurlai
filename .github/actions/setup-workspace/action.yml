@@ -14,7 +14,7 @@ inputs:
     required: false
     default: "none"
   filter:
-    description: Optional pnpm --filter argument (for example @rakazo/desktop...).
+    description: Optional pnpm --filter argument (for example @nurlai/desktop...).
     required: false
     default: ""
 runs:
@@ -147,7 +147,7 @@ runs:
         set -euo pipefail
         export electron_config_cache="${RUNNER_TEMP}/electron-cache"
         mkdir -p "$electron_config_cache"
-        install_js="$(pnpm --filter @rakazo/desktop exec node -p "require('path').join(require('path').dirname(require.resolve('electron/package.json')), 'install.js')")"
+        install_js="$(pnpm --filter @nurlai/desktop exec node -p "require('path').join(require('path').dirname(require.resolve('electron/package.json')), 'install.js')")"
         if [[ -z "$install_js" ]]; then
           echo "electron/install.js not found after pnpm install" >&2
           exit 1

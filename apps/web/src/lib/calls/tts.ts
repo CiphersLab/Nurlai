@@ -1,12 +1,12 @@
 import { t } from "@lingui/core/macro";
-import type { SettingsScope } from "@rakazo/contracts";
+import type { SettingsScope } from "@nurlai/contracts";
 import {
   readVoiceAudio,
   readVoiceError,
   requestDeadline,
   VOICE_RESPONSE_TIMEOUT_MS,
   withAbort,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { rpc, selectedSpaceId, withSpaceHeaders } from "../query/rpc.js";
 import { errorText, voiceAccountErrorText } from "../query/user-error.js";
 

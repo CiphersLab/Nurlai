@@ -1,17 +1,17 @@
-package com.rakazo.pdfview
+package com.nurlai.pdfview
 
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
 
 /** A PDF drawn with the system PdfRenderer; Android's WebView cannot show one. */
-class RakazoPdfViewModule : Module() {
+class NurlaiPdfViewModule : Module() {
   override fun definition() = ModuleDefinition {
-    Name("RakazoPdfView")
+    Name("NurlaiPdfView")
 
-    View(RakazoPdfView::class) {
+    View(NurlaiPdfView::class) {
       Events("onLoadError")
-      Prop("uri") { view: RakazoPdfView, uri: String -> view.load(uri) }
-      OnViewDestroys { view: RakazoPdfView -> view.release() }
+      Prop("uri") { view: NurlaiPdfView, uri: String -> view.load(uri) }
+      OnViewDestroys { view: NurlaiPdfView -> view.release() }
     }
   }
 }

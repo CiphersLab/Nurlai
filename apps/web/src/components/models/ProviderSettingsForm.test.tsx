@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import type { ProviderSettingsField } from "@rakazo/contracts";
+import type { ProviderSettingsField } from "@nurlai/contracts";
 import type { ReactNode } from "react";
 import { act } from "react";
 import type { Root } from "react-dom/client";

@@ -1,10 +1,10 @@
-appId: com.rakazo.app
+appId: com.nurlai.app
 name: Models
 ---
 - runFlow:
     file: ../subflows/sign-in.yaml
     env:
-      RAKAZO_ACTIVE_EMAIL: ${RAKAZO_SCREENSHOT_EMAIL}
+      NURLAI_ACTIVE_EMAIL: ${NURLAI_SCREENSHOT_EMAIL}
 - openLink: "rakazo:///models"
 - extendedWaitUntil:
     visible: ".*Claude Fable 5.1.*"

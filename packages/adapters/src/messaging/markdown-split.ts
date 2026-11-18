@@ -1,4 +1,4 @@
-import { getLogger } from "@rakazo/logging";
+import { getLogger } from "@nurlai/logging";
 import type { Root } from "chat";
 import { parseMarkdown, stringifyMarkdown, toPlainText } from "chat";
 

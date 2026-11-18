@@ -13,10 +13,10 @@ import {
   vaultItemsNotUnderKeys,
   vaultItemsUnderOlderKeys,
   withSecretPersistence,
-} from "@rakazo/adapters";
-import { loadRootEnv } from "@rakazo/core/node/load-root-env";
-import { resolveContentEncryption, resolveEncryptionKey } from "@rakazo/core/node/secrets-guard";
-import type { ContentMigrationMode } from "@rakazo/db";
+} from "@nurlai/adapters";
+import { loadRootEnv } from "@nurlai/core/node/load-root-env";
+import { resolveContentEncryption, resolveEncryptionKey } from "@nurlai/core/node/secrets-guard";
+import type { ContentMigrationMode } from "@nurlai/db";
 import {
   contentEncryptionStatus,
   createDb,
@@ -25,8 +25,8 @@ import {
   rewrapSpaceKeys,
   rotateSpaceDataKeys,
   runAsSystem,
-} from "@rakazo/db";
-import { bestEffort } from "@rakazo/logging";
+} from "@nurlai/db";
+import { bestEffort } from "@nurlai/logging";
 import { moveMcpArgsIntoSecrets } from "../integrations/mcp-args-migration.js";
 import { createSecretMigrationRepository } from "./secret-migration.js";
 

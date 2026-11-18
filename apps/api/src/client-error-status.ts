@@ -1,4 +1,4 @@
-import type { ClientErrorKind } from "@rakazo/core";
+import type { ClientErrorKind } from "@nurlai/core";
 
 const STATUS = {
   BAD_REQUEST: 400,

@@ -1,5 +1,5 @@
 import type { Message, ToolCall } from "@earendil-works/pi-ai";
-import type { AgentRunModel } from "@rakazo/adapter-kit";
+import type { AgentRunModel } from "@nurlai/adapter-kit";
 import { withoutThinkingFrom } from "../../runtime/thinking-signatures.js";
 
 export interface ComputerModeSelection {

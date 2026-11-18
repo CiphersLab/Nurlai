@@ -1,4 +1,4 @@
-import { useTimeout } from "@rakazo/chat-ui/hooks";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
 import { useMemo, useState } from "react";
 
 /** Rerenders at each local midnight, for labels that read today's date as they render ("Yesterday"). */

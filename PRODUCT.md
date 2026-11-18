@@ -1,6 +1,6 @@
 # Product definition
 
-[VISION.md](VISION.md) defines Rakazo's purpose, principles, and boundaries.
+[VISION.md](VISION.md) defines Nurlai's purpose, principles, and boundaries.
 This document defines behavior by capability so feature work has one shared product reference across web, desktop, mobile, and messaging wherever applicable.
 It is a maintained definition, not an exhaustive feature inventory, roadmap, implementation plan, or release checklist.
 Update the relevant section when a product decision changes; Git history preserves replaced decisions.
@@ -53,7 +53,7 @@ A routine in the chat that is still waiting after five minutes is handed to the 
 ## Computers
 
 A Team Computer shares files, installed tools, and a canonical browser identity among bots inside the same trust boundary.
-Rakazo gives each concurrently active Team bot a separate live desktop and browser process when the provider supports it, and unsupported providers expose the limitation instead of silently coupling control.
+Nurlai gives each concurrently active Team bot a separate live desktop and browser process when the provider supports it, and unsupported providers expose the limitation instead of silently coupling control.
 Browser sign-ins are checkpointed into the shared identity and become available to desktops opened or restarted after that checkpoint.
 Concurrent Chromium processes do not write directly to one profile directory, and generation fencing prevents older desktops from overwriting newer shared state.
 A Private Computer isolates the entire working home, including files and browser identity, when working state must not be shared with other bots.
@@ -109,6 +109,6 @@ The deployment picks the default approval mode, so a self-hosted server works wi
 
 App accounts never administer the server.
 Signup order, email address, and workspace ownership do not grant deployment privileges or billing exemptions.
-The only admins are verified accounts the operator lists in `RAKAZO_ADMIN_EMAILS`; nothing in the app can add one, and they can only review plugin submissions, add stdio MCP servers, and give capped credits or free own-key months, never change the server or read other accounts.
+The only admins are verified accounts the operator lists in `NURLAI_ADMIN_EMAILS`; nothing in the app can add one, and they can only review plugin submissions, add stdio MCP servers, and give capped credits or free own-key months, never change the server or read other accounts.
 Operators configure the server through environment variables and manage updates, logs, and shared credentials through deployment tooling.
 Desktop host access is a separate local capability that requires native confirmation, is restricted to the app-managed local instance, and can be revoked locally.

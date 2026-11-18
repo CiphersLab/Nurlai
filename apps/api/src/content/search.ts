@@ -1,5 +1,5 @@
-import type { Actor, MessageBlock, SearchHit } from "@rakazo/contracts";
-import { GROUP_MEMBER_MIN } from "@rakazo/contracts";
+import type { Actor, MessageBlock, SearchHit } from "@nurlai/contracts";
+import { GROUP_MEMBER_MIN } from "@nurlai/contracts";
 import {
   displayName,
   escapeJsonSearchWildcards,
@@ -7,8 +7,8 @@ import {
   extractLinksFromText,
   matchesSearchQuery,
   snippetAroundMatch,
-} from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
+} from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
 import {
   contentEncryptionOf,
   INDEXED_MESSAGE,
@@ -16,7 +16,7 @@ import {
   Prisma,
   storedMessageBlocks,
   UNINDEXED_MESSAGE,
-} from "@rakazo/db";
+} from "@nurlai/db";
 
 const SEARCH_LIMIT = 25;
 /** Cap name matches so content hits (messages/files/links/routines) keep most of the budget. */

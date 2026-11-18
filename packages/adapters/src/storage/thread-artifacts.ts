@@ -5,8 +5,8 @@ import type {
   ArtifactStore,
   ComputerRef,
   SandboxProvider,
-} from "@rakazo/adapter-kit";
-import type { AttachmentImageMimeType, ComputerMode, MessageBlock } from "@rakazo/contracts";
+} from "@nurlai/adapter-kit";
+import type { AttachmentImageMimeType, ComputerMode, MessageBlock } from "@nurlai/contracts";
 import {
   ARTIFACT_DESCRIPTION_MAX_LENGTH,
   ARTIFACT_NAME_MAX_LENGTH,
@@ -16,20 +16,20 @@ import {
   HISTORY_ATTACHMENTS_PER_RESPONSE,
   MCP_APP_MIME_TYPE,
   stepScreenshotMimeType,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   attachmentComputerPath,
   inferAttachmentMimeType,
   messageBlockForArtifact,
   validateAttachmentMimeType,
-} from "@rakazo/core";
-import type { Artifact, Prisma, PrismaClient } from "@rakazo/db";
+} from "@nurlai/core";
+import type { Artifact, Prisma, PrismaClient } from "@nurlai/db";
 import {
   THREAD_LOCK_TRANSACTION_OPTIONS,
   withResolvedArtifactVersion,
   withTransactionRetry,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { resolveBotWorkspacePath } from "../computers/screens/computer-support.js";
 
 export type MaterializedThreadFile = {

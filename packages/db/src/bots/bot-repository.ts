@@ -5,7 +5,7 @@ import type {
   BotSection,
   MessageBlock,
   SpaceBot,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   canonicalPiProviderId,
   DEFAULT_NEW_BOT_AVATAR_SET,
@@ -13,8 +13,8 @@ import {
   InstructionVersionSchema,
   initialBotMemory,
   resolveBotAvatarSet,
-} from "@rakazo/contracts";
-import { displayName, phoneCallSettings, ringingCall } from "@rakazo/core";
+} from "@nurlai/contracts";
+import { displayName, phoneCallSettings, ringingCall } from "@nurlai/core";
 import type { ComputerMode } from "../computers/computers.js";
 import {
   ensureComputerRecord,

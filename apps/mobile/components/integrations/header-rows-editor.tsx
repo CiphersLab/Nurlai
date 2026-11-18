@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import type { ModelHeaderRow } from "@rakazo/contracts";
+import type { ModelHeaderRow } from "@nurlai/contracts";
 import { StyleSheet, View } from "react-native";
 import { useMobileTokens, useThemedStyles } from "../../lib/native/native";
 import { NativeSymbol } from "../native/native-symbol";

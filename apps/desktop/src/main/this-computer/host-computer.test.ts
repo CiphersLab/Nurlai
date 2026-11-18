@@ -2,7 +2,7 @@ import { mkdtemp, readFile, rm } from "node:fs/promises";
 import { createServer } from "node:net";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import * as hostComputerServer from "@rakazo/adapters/host-computer-server";
+import * as hostComputerServer from "@nurlai/adapters/host-computer-server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import * as setupStore from "../setup/setup-store.js";
 import { prepareHostComputer } from "./host-computer.js";

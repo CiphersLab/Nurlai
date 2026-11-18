@@ -3,13 +3,13 @@ import type {
   JobPublisher,
   ProductAnalytics,
   TransactionalEmailProvider,
-} from "@rakazo/adapter-kit";
-import { lifecycleEmailJob } from "@rakazo/adapter-kit";
-import type { LifecycleEmailKind } from "@rakazo/contracts";
-import { ActorSchema } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
-import { claimProductEmail, hasBillingAccess, isOwnerRole } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { lifecycleEmailJob } from "@nurlai/adapter-kit";
+import type { LifecycleEmailKind } from "@nurlai/contracts";
+import { ActorSchema } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
+import { claimProductEmail, hasBillingAccess, isOwnerRole } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 
 /** No person gets two of our mails closer together than this, whichever kinds they are. */
 export const LIFECYCLE_EMAIL_GAP_MS = 24 * 60 * 60 * 1000;

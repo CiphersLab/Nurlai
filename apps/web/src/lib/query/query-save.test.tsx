@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { deferred, flush } from "@rakazo/core/test-async";
+import { deferred, flush } from "@nurlai/core/test-async";
 import { QueryClient, QueryClientProvider, useQuery } from "@tanstack/react-query";
 import { act } from "react";
 import type { Root } from "react-dom/client";

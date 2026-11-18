@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { deferred, flush } from "@rakazo/core/test-async";
+import { deferred, flush } from "@nurlai/core/test-async";
 import { useQuery } from "@tanstack/react-query";
 import { act } from "react";
 import type { Root } from "react-dom/client";
@@ -23,7 +23,7 @@ vi.mock("../api/api", () => ({
     scope.pinned ?? {
       apiBase: "https://app.example.test",
       sessionGeneration: scope.generation,
-      headers: spaceId ? { "x-rakazo-space-id": spaceId } : {},
+      headers: spaceId ? { "x-nurlai-space-id": spaceId } : {},
     },
   rpc: scope.rpc,
 }));
@@ -240,7 +240,7 @@ const pinnedTo = (spaceId: string, sessionGeneration = 1) => ({
   requestContext: {
     apiBase: "https://app.example.test",
     sessionGeneration,
-    headers: { "x-rakazo-space-id": spaceId },
+    headers: { "x-nurlai-space-id": spaceId },
   },
 });
 

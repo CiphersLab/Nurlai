@@ -1,4 +1,4 @@
-import type { ModelMark } from "@rakazo/core";
+import type { ModelMark } from "@nurlai/core";
 import { CpuIcon } from "lucide-react";
 
 /** A model maker's mark in its brand color (or the text color), or a generic chip when it has none. */

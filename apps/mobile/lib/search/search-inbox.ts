@@ -1,4 +1,4 @@
-import type { SpaceBot, SpaceGroup } from "@rakazo/contracts";
+import type { SpaceBot, SpaceGroup } from "@nurlai/contracts";
 import { useSyncExternalStore } from "react";
 import { currentApiBase } from "../api/api";
 import type { MobileBot, MobileGroup } from "../api/mobile-types";

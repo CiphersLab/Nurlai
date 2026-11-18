@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
-import type { SpaceMembers } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
+import type { SpaceMembers } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { ComponentProps, ReactNode } from "react";
 import { act } from "react";
@@ -25,7 +25,7 @@ vi.mock("@lingui/react/macro", () => ({
   }),
   Trans: ({ children }: { children: ReactNode }) => children,
 }));
-vi.mock("@rakazo/ui-web", () => {
+vi.mock("@nurlai/ui-web", () => {
   const Plain = ({ children }: { children?: ReactNode }) => <>{children}</>;
   const PlainButton = ({
     variant: _variant,

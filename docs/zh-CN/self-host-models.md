@@ -13,7 +13,7 @@
 在“高级”中可添加请求头；其值会加密保存，保存后只显示名称。
 如果模型支持图片，在“高级”中启用“支持图片”，否则图片附件和基于截图的计算机工具不可用；
 已有连接默认不启用。集中管理的兼容端点还可设置
-`RAKAZO_OPENAI_COMPATIBLE_VISION_MODELS=gpt4o-vision,llava` 作为部署级回退。
+`NURLAI_OPENAI_COMPATIBLE_VISION_MODELS=gpt4o-vision,llava` 作为部署级回退。
 
 地址必须能从 **API 和 worker 所在环境**访问。容器里的 `127.0.0.1` 指向容器自身，不能用它表示宿主机。
 Docker Desktop 可使用 `host.docker.internal`；其他部署宜使用稳定的局域网私有 IP。
@@ -21,14 +21,14 @@ Linux 默认不提供相同的 `host.docker.internal` 行为。
 
 只连接自己掌控的端点：提示词、附件和工具结果会发往该地址。
 公开地址携带 API 密钥或自定义请求头时需要 HTTPS，并且解析结果必须全部是公网地址。
-`RAKAZO_OPENAI_COMPAT_ALLOW_PUBLIC=0` 可禁止普通公开兼容端点。
+`NURLAI_OPENAI_COMPAT_ALLOW_PUBLIC=0` 可禁止普通公开兼容端点。
 私有端点默认受限。部署运营方可在 API 和 worker 上同时设置 `MCP_ALLOW_PRIVATE_ENDPOINT=true`，
 并重建相应服务，允许用户连接私有模型端点。此权限对部署内所有用户生效，不只对管理员生效；
 仅在接受这项访问范围时启用，元数据和链路本地目标仍会被阻止。
 自定义主机名解析到私有 IP 时，还需在 API 和 worker 的部署环境中设置
-`RAKAZO_OPENAI_COMPAT_PRIVATE_HOSTS=models.example.test,other.example.test`，然后重建这些容器。
+`NURLAI_OPENAI_COMPAT_PRIVATE_HOSTS=models.example.test,other.example.test`，然后重建这些容器。
 条目必须是精确主机名（大小写不敏感，可带末尾点），不能使用 URL、后缀或通配符。
-这些主机忽略 `RAKAZO_OPENAI_COMPAT_ALLOW_PUBLIC`；DNS 的每个答案都必须是私有地址，
+这些主机忽略 `NURLAI_OPENAI_COMPAT_ALLOW_PUBLIC`；DNS 的每个答案都必须是私有地址，
 元数据和链路本地目标仍会被阻止。此设置适用于模型发现和实际请求。
 HTTPS 仍会校验证书；和私有 IP 端点一样，受信任主机名也允许携带 API 密钥时使用 HTTP，
 但除非网络可信，否则应使用 HTTPS，并且只允许自己控制的主机。
@@ -48,7 +48,7 @@ HTTPS 仍会校验证书；和私有 IP 端点一样，受信任主机名也允�
 
 需要截图计算机工具时，选择支持视觉的模型。
 Compose 也会将运行时支持的标准提供商密钥（例如 `OPENAI_API_KEY`、`GEMINI_API_KEY`）传给 API 和 worker，
-用于没有已存储凭据的模型。`RAKAZO_LIVE_MODEL_CATALOG=off` 可关闭在线模型目录探测。
+用于没有已存储凭据的模型。`NURLAI_LIVE_MODEL_CATALOG=off` 可关闭在线模型目录探测。
 其他标准密钥还包括 `MISTRAL_API_KEY`、`GROQ_API_KEY` 和 `XAI_API_KEY`。
 
 使用宿主机凭据的云模型需显式设置 `PI_DEFAULT_CREDENTIALS=host`。
@@ -64,35 +64,35 @@ Vertex 使用 `PI_DEFAULT_PROVIDER=google-vertex` 及宿主机的应用默认凭
 也可以为整个部署列出本地模型：
 
 ```env
-RAKAZO_LOCAL_MODELS=qwen3:4b,llama3.1:8b,qwen3-vl
-RAKAZO_LOCAL_MODELS_URL=http://127.0.0.1:11434/v1
+NURLAI_LOCAL_MODELS=qwen3:4b,llama3.1:8b,qwen3-vl
+NURLAI_LOCAL_MODELS_URL=http://127.0.0.1:11434/v1
 # 可选：服务器需要密钥时，作为 Bearer token 发送
-RAKAZO_LOCAL_MODELS_API_KEY=
-RAKAZO_LOCAL_CONTEXT_WINDOW=32768
-RAKAZO_LOCAL_MAX_TOKENS=4096
+NURLAI_LOCAL_MODELS_API_KEY=
+NURLAI_LOCAL_CONTEXT_WINDOW=32768
+NURLAI_LOCAL_MAX_TOKENS=4096
 # 此端点中支持图片的模型 ID
-RAKAZO_LOCAL_VISION_MODELS=qwen3-vl
+NURLAI_LOCAL_VISION_MODELS=qwen3-vl
 # 此端点中支持标准 reasoning_effort 的模型 ID
-RAKAZO_LOCAL_REASONING_MODELS=qwen3:4b
+NURLAI_LOCAL_REASONING_MODELS=qwen3:4b
 ```
 
 这个回环地址示例适用于在宿主机运行源码服务；容器部署应改为容器可达的地址。
-服务器需要密钥时设置 `RAKAZO_LOCAL_MODELS_API_KEY`，例如 LiteLLM、使用 `--api-key` 启动的 vLLM
-或公司网关；发送到 `RAKAZO_LOCAL_MODELS_URL` 的每个请求都会带上 `Authorization: Bearer`。
+服务器需要密钥时设置 `NURLAI_LOCAL_MODELS_API_KEY`，例如 LiteLLM、使用 `--api-key` 启动的 vLLM
+或公司网关；发送到 `NURLAI_LOCAL_MODELS_URL` 的每个请求都会带上 `Authorization: Bearer`。
 未设置时请求使用占位值 `local`。该密钥和其余部署密钥一样只保留在 API 和 worker 上，并会从运行输出中隐藏。
 除非网络可信，否则应使用 HTTPS。若要把本地模型设为部署默认模型，还需设置
-`PI_DEFAULT_PROVIDER=local`、`PI_DEFAULT_MODEL` 为 `RAKAZO_LOCAL_MODELS` 中的某个模型，并设置
+`PI_DEFAULT_PROVIDER=local`、`PI_DEFAULT_MODEL` 为 `NURLAI_LOCAL_MODELS` 中的某个模型，并设置
 `PI_DEFAULT_CREDENTIALS=host`。
-`RAKAZO_LOCAL_MAX_TOKENS` 是每次请求的输出上限，连接自身设置优先，且不会超过上下文窗口的四分之一。
-输出上限越大，留给提示词的空间越少，长聊天可能更早压缩。将 `RAKAZO_LOCAL_MODELS` 留空可禁用此提供商。
+`NURLAI_LOCAL_MAX_TOKENS` 是每次请求的输出上限，连接自身设置优先，且不会超过上下文窗口的四分之一。
+输出上限越大，留给提示词的空间越少，长聊天可能更早压缩。将 `NURLAI_LOCAL_MODELS` 留空可禁用此提供商。
 
 Ollama Cloud 可直接在“设置 → 模型”中填写其 API 密钥并查找模型，无需配置环境变量；
-即使 `RAKAZO_OPENAI_COMPAT_ALLOW_PUBLIC=0`，该入口仍可用。
+即使 `NURLAI_OPENAI_COMPAT_ALLOW_PUBLIC=0`，该入口仍可用。
 
 ## 思考能力与缓存
 
 服务器支持标准 `reasoning_effort` 时，可在连接的“高级”选项中启用思考能力，无需重启。
-已有连接默认不启用。部署本地列表中的模型可通过 `RAKAZO_LOCAL_REASONING_MODELS` 声明支持标准思考参数的模型 ID，无需重新连接。
+已有连接默认不启用。部署本地列表中的模型可通过 `NURLAI_LOCAL_REASONING_MODELS` 声明支持标准思考参数的模型 ID，无需重新连接。
 启用后默认使用中等思考强度；网页和桌面可在机器人的高级设置中调整，移动端遵循相同后端策略。
 服务器负责将 `minimal`、`low`、`medium`、`high` 或关闭时的 `none` 转为模型所需形式。
 这不会增加独立的思考 token 预算，原有输出限制仍然适用。
@@ -115,12 +115,12 @@ Ollama Cloud 可直接在“设置 → 模型”中填写其 API 密钥并查找
 未选择个人审批模型时，使用部署默认检查器。部署默认检查器的配置、超时和置信度设置见[审批配置（英文）](../self-host-models.md#approvals)。
 核心功能不要求启用托管检查服务。
 
-使用 OpenRouter Jev 时，设置 `RAKAZO_AUTO_REVIEW_PROVIDER=openrouter` 和
-`RAKAZO_AUTO_REVIEW_MODEL=typesafe/jev-1.14`；它使用 `OPENROUTER_API_KEY` 和 Decisions API。
-直接使用 TypeSafe 时设置 `RAKAZO_AUTO_REVIEW_PROVIDER=jev` 和 `TYPESAFE_API_KEY`。
-核心功能不依赖这两个托管服务。使用 TypeSafe 时，`RAKAZO_AUTO_REVIEW_MODEL` 默认是
-`jev-latest`，`RAKAZO_AUTO_REVIEW_MIN_CONFIDENCE`（0 到 1，默认 `0.5`）是低于此置信度时询问用户的阈值，
-`RAKAZO_AUTO_REVIEW_TIMEOUT_MS`（200 到 30000，默认 `10000`）限制每次检查。
+使用 OpenRouter Jev 时，设置 `NURLAI_AUTO_REVIEW_PROVIDER=openrouter` 和
+`NURLAI_AUTO_REVIEW_MODEL=typesafe/jev-1.14`；它使用 `OPENROUTER_API_KEY` 和 Decisions API。
+直接使用 TypeSafe 时设置 `NURLAI_AUTO_REVIEW_PROVIDER=jev` 和 `TYPESAFE_API_KEY`。
+核心功能不依赖这两个托管服务。使用 TypeSafe 时，`NURLAI_AUTO_REVIEW_MODEL` 默认是
+`jev-latest`，`NURLAI_AUTO_REVIEW_MIN_CONFIDENCE`（0 到 1，默认 `0.5`）是低于此置信度时询问用户的阈值，
+`NURLAI_AUTO_REVIEW_TIMEOUT_MS`（200 到 30000，默认 `10000`）限制每次检查。
 
 ## 图片与视频生成
 

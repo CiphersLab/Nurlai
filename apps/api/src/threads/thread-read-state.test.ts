@@ -1,5 +1,5 @@
-import type { Actor } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
+import type { Actor } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
 import { describe, expect, it } from "vitest";
 import { setThreadSnooze } from "./thread-read-state.js";
 import type { ThreadTarget } from "./thread-target.js";

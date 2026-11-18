@@ -1,5 +1,5 @@
-import { VoiceAccountError } from "@rakazo/adapter-kit";
-import type { PrismaClient } from "@rakazo/db";
+import { VoiceAccountError } from "@nurlai/adapter-kit";
+import type { PrismaClient } from "@nurlai/db";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type * as ModelSelection from "../models/model-selection.js";
 import { validateBotModelChange } from "../models/model-selection.js";

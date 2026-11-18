@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
-import { deferred } from "@rakazo/core/test-async";
-import type * as UiWeb from "@rakazo/ui-web";
+import { deferred } from "@nurlai/core/test-async";
+import type * as UiWeb from "@nurlai/ui-web";
 import { QueryClient, QueryClientProvider, useQuery } from "@tanstack/react-query";
 import type { ComponentProps, ReactNode } from "react";
 import { act } from "react";
@@ -18,7 +18,7 @@ vi.mock("@lingui/react/macro", () => {
     Trans: ({ children }: { children: ReactNode }) => children,
   };
 });
-vi.mock("@rakazo/ui-web", async (importOriginal) => ({
+vi.mock("@nurlai/ui-web", async (importOriginal) => ({
   Button: ({ size: _size, ...props }: ComponentProps<"button"> & { size?: string }) => (
     <button {...props} />
   ),

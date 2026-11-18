@@ -1,5 +1,5 @@
-import { RESPONSE_STREAMING_STORAGE_KEY } from "@rakazo/core";
-import { deferred } from "@rakazo/core/test-async";
+import { RESPONSE_STREAMING_STORAGE_KEY } from "@nurlai/core";
+import { deferred } from "@nurlai/core/test-async";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const store = new Map<string, string>();

@@ -1,9 +1,9 @@
-import type { AgentRunModel } from "@rakazo/adapter-kit";
-import { isModelCredentialRejected } from "@rakazo/adapter-kit";
-import { modelRoleConnectionId } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
-import { appliedModelRole } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+import type { AgentRunModel } from "@nurlai/adapter-kit";
+import { isModelCredentialRejected } from "@nurlai/adapter-kit";
+import { modelRoleConnectionId } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
+import { appliedModelRole } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { isTerminalModelSetupError } from "../runs/turn/run-model.js";
 import { restoreTurnCheckpoint } from "../runs/turn/turn-checkpoint.js";
 import { computerTarget } from "../runtime/pi/tools/pi-runtime-computer-mode.js";

@@ -1,4 +1,4 @@
-import type { AdapterContext, ManagedConnectorProvider, SecretStore } from "@rakazo/adapter-kit";
+import type { AdapterContext, ManagedConnectorProvider, SecretStore } from "@nurlai/adapter-kit";
 import {
   BOT_SECRET_VALUE_MAX_LENGTH,
   encodeLoginSecret,
@@ -6,10 +6,10 @@ import {
   MessageBlock as MessageBlockSchema,
   normalizeOneTimeCode,
   SecretAskPurpose,
-} from "@rakazo/contracts";
-import { BACKGROUND_HELPER_TRIGGER, isSecretAskBlock } from "@rakazo/core";
-import type { PrismaClient, RunSecretWriter } from "@rakazo/db";
-import { runCodeKind, runLoginKind, runSecretKind, withTransactionRetry } from "@rakazo/db";
+} from "@nurlai/contracts";
+import { BACKGROUND_HELPER_TRIGGER, isSecretAskBlock } from "@nurlai/core";
+import type { PrismaClient, RunSecretWriter } from "@nurlai/db";
+import { runCodeKind, runLoginKind, runSecretKind, withTransactionRetry } from "@nurlai/db";
 import type { ApprovalPausedToolResult } from "../approvals/approval-effect.js";
 import {
   internalTerminatingResult,

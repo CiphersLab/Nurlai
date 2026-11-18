@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { notifyManager } from "@tanstack/react-query";
 import type { CSSProperties, ReactNode, Ref } from "react";
 import { act, createElement, useEffect, useImperativeHandle } from "react";
@@ -115,7 +115,7 @@ vi.mock("../api/api", () => ({
   captureApiRequestContext: async (spaceId: string | null = "space-fixture") => ({
     apiBase: "https://app.example.test",
     sessionGeneration: 1,
-    headers: spaceId ? { "x-rakazo-space-id": spaceId } : {},
+    headers: spaceId ? { "x-nurlai-space-id": spaceId } : {},
   }),
   selectedSpaceId: () => "space-fixture",
   rpc: async (procedure: string, input?: unknown, options?: { signal?: AbortSignal }) => {

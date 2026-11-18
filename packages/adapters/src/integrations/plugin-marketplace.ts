@@ -1,5 +1,5 @@
-import type { PluginMarketplaceCatalog, PluginMarketplaceEntry } from "@rakazo/contracts";
-import { comparePlugins, matchesPluginQuery, pluginCategory } from "@rakazo/core";
+import type { PluginMarketplaceCatalog, PluginMarketplaceEntry } from "@nurlai/contracts";
+import { comparePlugins, matchesPluginQuery, pluginCategory } from "@nurlai/core";
 import { z } from "zod";
 import { fetchSafeWebText } from "../web/web-ssrf.js";
 import type { PluginCompleteness, PluginTextReader } from "./plugin-connectors.js";

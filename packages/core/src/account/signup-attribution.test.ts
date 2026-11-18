@@ -2,7 +2,7 @@ import {
   PARTNER_CLICK_COOKIE,
   SIGNUP_ATTRIBUTION_COOKIE,
   SIGNUP_SURFACE_HEADER,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import { describe, expect, it } from "vitest";
 import { rememberPartnerClick, rememberSignupAttribution } from "./browser-signup-attribution.js";
 import {

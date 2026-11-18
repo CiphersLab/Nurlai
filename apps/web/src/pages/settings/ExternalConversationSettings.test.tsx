@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 
-import type { Bot, ExternalConversation } from "@rakazo/contracts";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import type { Bot, ExternalConversation } from "@nurlai/contracts";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import type { ReactNode } from "react";
 import { act } from "react";
 import { afterEach, beforeEach, expect, it, vi } from "vitest";

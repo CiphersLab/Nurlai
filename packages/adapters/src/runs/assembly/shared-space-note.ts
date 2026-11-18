@@ -1,4 +1,4 @@
-import type { PrismaClient } from "@rakazo/db";
+import type { PrismaClient } from "@nurlai/db";
 import { personSpeakerName } from "../../runtime/context/history-speakers.js";
 import { formatSharedSpaceNote } from "./run-instructions.prompt.js";
 

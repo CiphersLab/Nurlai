@@ -1,27 +1,27 @@
-import type { JobPublisher } from "@rakazo/adapter-kit";
+import type { JobPublisher } from "@nurlai/adapter-kit";
 import {
   messagingReplyJob,
   teamChatAmbientJob,
   teamChatEngageJob,
   teamChatEngageJobKey,
-} from "@rakazo/adapter-kit";
-import type { AutomatedSenderPolicies } from "@rakazo/contracts";
-import { ATTACHMENT_MAX_COUNT, AutomatedSenderPoliciesSchema } from "@rakazo/contracts";
+} from "@nurlai/adapter-kit";
+import type { AutomatedSenderPolicies } from "@nurlai/contracts";
+import { ATTACHMENT_MAX_COUNT, AutomatedSenderPoliciesSchema } from "@nurlai/contracts";
 import {
   messageBlockForArtifact,
   promptTextForAttachments,
   teamChatAmbientPrompt,
   teamChatPrompt,
-} from "@rakazo/core";
-import type { Prisma, PrismaClient, ThreadEvents } from "@rakazo/db";
+} from "@nurlai/core";
+import type { Prisma, PrismaClient, ThreadEvents } from "@nurlai/db";
 import {
   runAsSystem,
   SendClaimLostError,
   SpaceDeletionInProgressError,
   storedMessageBlocks,
   teamChatRunClientNonce,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { wakeRun } from "../../runs/wakeups/wake-run.js";
 import {
   inboundDeliveryClientNonce,
@@ -162,14 +162,14 @@ export class TeamChat {
   constructor(private readonly deps: TeamChatDeps) {}
 
   /**
-   * Copies a message into the bot's Rakazo thread before anything answers it. With `files`, the
+   * Copies a message into the bot's Nurlai thread before anything answers it. With `files`, the
    * receiving process stored its attachments; without, uploads an earlier attempt finished are
    * reused, since attachment fetchers do not survive a restart.
    */
   async mirrorTranscript(message: TeamChatMessage, files?: TranscriptFiles): Promise<void> {
     if (message.threadMessageId) return;
     const conversation = message.externalConversation;
-    if (!conversation.thread) throw new Error("Team chat conversation has no Rakazo thread");
+    if (!conversation.thread) throw new Error("Team chat conversation has no Nurlai thread");
     const stored = files ?? {
       artifacts: await this.deps.prisma.artifact.findMany({
         where: {
@@ -222,7 +222,7 @@ export class TeamChat {
     if (!message || !from.includes(message.status)) return;
     const conversation = message.externalConversation;
     const thread = conversation.thread;
-    if (!thread) throw new Error("Team chat conversation has no Rakazo thread");
+    if (!thread) throw new Error("Team chat conversation has no Nurlai thread");
     // A routine the previous release woke without claiming the message already answers it. Rows
     // it left stay in the database, so this goes only with a migration that settles them.
     if (await this.routineWoken(message)) {

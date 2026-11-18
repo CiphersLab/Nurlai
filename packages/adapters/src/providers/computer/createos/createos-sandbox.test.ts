@@ -4,12 +4,12 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import type * as TimersPromises from "node:timers/promises";
 import { promisify } from "node:util";
-import type { ComputerRef, PortableFile, ProcessEvent } from "@rakazo/adapter-kit";
+import type { ComputerRef, PortableFile, ProcessEvent } from "@nurlai/adapter-kit";
 import {
   browserProfilePathForScreen,
   DEFAULT_DESKTOP_ENV,
-} from "@rakazo/core/node/desktop-runtime";
-import { deferred } from "@rakazo/core/test-async";
+} from "@nurlai/core/node/desktop-runtime";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { isSandboxGoneError } from "../../../computers/sandbox/sandbox-errors.js";
 import {

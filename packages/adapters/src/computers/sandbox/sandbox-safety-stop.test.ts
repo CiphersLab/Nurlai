@@ -1,5 +1,5 @@
-import type { AgentHomeStore, JobPublisher } from "@rakazo/adapter-kit";
-import type { PrismaClient, ThreadEvents } from "@rakazo/db";
+import type { AgentHomeStore, JobPublisher } from "@nurlai/adapter-kit";
+import type { PrismaClient, ThreadEvents } from "@nurlai/db";
 import { DesktopSandbox, SandboxNotFoundError } from "novita-sandbox";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {

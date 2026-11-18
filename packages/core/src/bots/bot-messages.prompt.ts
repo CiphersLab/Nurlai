@@ -1,5 +1,5 @@
-import type { BotMessageIntent } from "@rakazo/contracts";
-import { BOT_DESCRIPTION_MAX_LENGTH } from "@rakazo/contracts";
+import type { BotMessageIntent } from "@nurlai/contracts";
+import { BOT_DESCRIPTION_MAX_LENGTH } from "@nurlai/contracts";
 import { truncatePlainText } from "../messages/markdown-plain.js";
 import { escapePromptData } from "../primitives/prompt-data.js";
 import type { BotAddress } from "./bot-messages.js";

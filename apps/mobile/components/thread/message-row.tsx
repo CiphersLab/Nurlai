@@ -1,20 +1,20 @@
 import { useLingui } from "@lingui/react/macro";
-import { markdownCodeBlocks } from "@rakazo/chat-ui/native";
+import { markdownCodeBlocks } from "@nurlai/chat-ui/native";
 import type {
   BotAvatarSet,
   LoginFieldInput,
   MessageBlock,
   MessageReaction,
-} from "@rakazo/contracts";
-import { canReactToThreadMessage, MESSAGE_REACTIONS } from "@rakazo/contracts";
-import type { ChildBotBlock, PeerExchange } from "@rakazo/core";
+} from "@nurlai/contracts";
+import { canReactToThreadMessage, MESSAGE_REACTIONS } from "@nurlai/contracts";
+import type { ChildBotBlock, PeerExchange } from "@nurlai/core";
 import {
   canMarkMessageUnread,
   copyableMessageText,
   isPeerReceiptBlocks,
   liveMessageComposing,
   selectableMessageText,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import * as Clipboard from "expo-clipboard";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { GestureResponderEvent, LayoutChangeEvent } from "react-native";

@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import type { ReactNode } from "react";
 import { act } from "react";
 import type { Root } from "react-dom/client";
@@ -19,7 +19,7 @@ vi.mock("../../lib/api/api", () => ({
   captureApiRequestContext: async (spaceId: string | null = "space-1") => ({
     apiBase: "https://app.example.test",
     sessionGeneration: 1,
-    headers: spaceId ? { "x-rakazo-space-id": spaceId } : {},
+    headers: spaceId ? { "x-nurlai-space-id": spaceId } : {},
   }),
 }));
 vi.mock("../../lib/api/session", () => ({ currentSessionGeneration: () => 1 }));
@@ -96,7 +96,7 @@ it("switches each bot in the named Space once, names the ones that failed, then 
   await vi.waitFor(() => expect(container.textContent).toContain("Could not switch Bo"));
   expect(mocks.rpc).toHaveBeenCalledTimes(2);
   for (const [, , options] of mocks.rpc.mock.calls)
-    expect(options.requestContext.headers["x-rakazo-space-id"]).toBe("space-2");
+    expect(options.requestContext.headers["x-nurlai-space-id"]).toBe("space-2");
   expect(container.textContent).toContain("1 bot now uses the space default.");
   expect(onSwitched).toHaveBeenCalledTimes(1);
 });

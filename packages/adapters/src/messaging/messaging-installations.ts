@@ -4,11 +4,11 @@ import type {
   MessagingInstallationStore,
   MessagingInstallProvider,
   SecretStore,
-} from "@rakazo/adapter-kit";
-import { MessagingInstallRefusedError } from "@rakazo/adapter-kit";
-import type { Actor, MessagingInstallationSummary } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
-import { IsolationError, isUniqueViolation, runAsSystem } from "@rakazo/db";
+} from "@nurlai/adapter-kit";
+import { MessagingInstallRefusedError } from "@nurlai/adapter-kit";
+import type { Actor, MessagingInstallationSummary } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
+import { IsolationError, isUniqueViolation, runAsSystem } from "@nurlai/db";
 import { credentialDigest } from "../secrets/credential-digest.js";
 import type { SecretCleanup, SecretCleanupDeps } from "../secrets/secret-cleanup.js";
 import {

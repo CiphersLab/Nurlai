@@ -32,7 +32,7 @@ type NativeWorkActivities = {
 
 const native =
   Platform.OS === "ios"
-    ? requireOptionalNativeModule<NativeWorkActivities>("RakazoNotifications")
+    ? requireOptionalNativeModule<NativeWorkActivities>("NurlaiNotifications")
     : null;
 const activities = native?.startWorkActivity ? native : null;
 

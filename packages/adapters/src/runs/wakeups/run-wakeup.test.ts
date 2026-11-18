@@ -1,11 +1,11 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import type { BackgroundJobHandlers, JobPublisher } from "@rakazo/adapter-kit";
-import { runContinueJob } from "@rakazo/adapter-kit";
-import { deferred, flush } from "@rakazo/core/test-async";
-import type { PrismaClient } from "@rakazo/db";
-import { currentDbContext } from "@rakazo/db";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+import type { BackgroundJobHandlers, JobPublisher } from "@nurlai/adapter-kit";
+import { runContinueJob } from "@nurlai/adapter-kit";
+import { deferred, flush } from "@nurlai/core/test-async";
+import type { PrismaClient } from "@nurlai/db";
+import { currentDbContext } from "@nurlai/db";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { InMemoryRealtimeFanout } from "../../notifications/realtime.js";
 import { RunExecutionHost } from "../lifecycle/run-execution.js";

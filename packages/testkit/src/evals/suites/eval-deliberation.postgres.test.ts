@@ -1,7 +1,7 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { BOT_DELIBERATION_GUIDANCE } from "@rakazo/core";
+import { BOT_DELIBERATION_GUIDANCE } from "@nurlai/core";
 import { describe, expect, it, vi } from "vitest";
 import type { ModelEmulatorStep } from "../../model-emulator.js";
 import { startModelEmulator } from "../../model-emulator.js";
@@ -91,7 +91,7 @@ describe.skipIf(!databaseAvailable)("bot deliberation eval through the product",
       const dataDir = await mkdtemp(path.join(tmpdir(), "rakazo-deliberation-eval-"));
       let evidence: Evidence | undefined;
       try {
-        const { createApp } = await import("@rakazo/api/app");
+        const { createApp } = await import("@nurlai/api/app");
         const result = await runTrial(
           {
             ...scenario,

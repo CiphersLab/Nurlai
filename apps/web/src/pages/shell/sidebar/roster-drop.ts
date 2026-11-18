@@ -1,4 +1,4 @@
-import { GROUP_MEMBER_MAX } from "@rakazo/contracts";
+import { GROUP_MEMBER_MAX } from "@nurlai/contracts";
 
 type DraggedBot = { id: string; sectionId: string | null; pinned: boolean };
 

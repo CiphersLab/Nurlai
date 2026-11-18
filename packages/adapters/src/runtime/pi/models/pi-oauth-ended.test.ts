@@ -1,5 +1,5 @@
 import type { Credential, OAuthCredential } from "@earendil-works/pi-ai";
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { ModelSignInError, PiOAuthLogins } from "./pi-oauth.js";
 import type { PiOAuthEnded } from "./pi-oauth-ended.js";

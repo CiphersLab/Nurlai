@@ -1,4 +1,4 @@
-import { abortableDelay } from "@rakazo/core";
+import { abortableDelay } from "@nurlai/core";
 import type { createUpdaterApp } from "./index.js";
 import { truncateOutput } from "./updater-logic.js";
 

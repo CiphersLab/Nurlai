@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import type { AiDataUse, AiRecipient } from "@rakazo/contracts";
+import type { AiDataUse, AiRecipient } from "@nurlai/contracts";
 import { localBaseUrl } from "../runtime/pi/models/pi-local-provider.js";
 import { listPiCatalog } from "../runtime/pi/models/pi-models.js";
 import { voiceCatalogEntry } from "../voice/voice-factory.js";

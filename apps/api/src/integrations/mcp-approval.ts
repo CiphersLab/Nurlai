@@ -1,6 +1,6 @@
-import type { Actor, MessageBlock } from "@rakazo/contracts";
-import { QUEUE_HOLDING_RUN_STATUSES } from "@rakazo/core";
-import type { Prisma, PrismaClient, ThreadEvents } from "@rakazo/db";
+import type { Actor, MessageBlock } from "@nurlai/contracts";
+import { QUEUE_HOLDING_RUN_STATUSES } from "@nurlai/core";
+import type { Prisma, PrismaClient, ThreadEvents } from "@nurlai/db";
 import {
   appendEventInTransaction,
   availableInSpace,
@@ -9,7 +9,7 @@ import {
   IsolationError,
   storedMessageBlocks,
   withTransactionRetry,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { requireBotThread } from "../bots/bot-thread.js";
 import { mcpConnectedPrompt } from "../bots/hidden-turns.prompt.js";
 

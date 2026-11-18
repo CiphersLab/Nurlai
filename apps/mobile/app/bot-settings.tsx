@@ -1,12 +1,12 @@
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import type { Bot, BotAvatarSet, ComputerMode, ThinkingLevel } from "@rakazo/contracts";
+import type { Bot, BotAvatarSet, ComputerMode, ThinkingLevel } from "@nurlai/contracts";
 import {
   BOT_DESCRIPTION_MAX_LENGTH,
   BOT_INSTRUCTIONS_MAX_LENGTH,
   BOT_NAME_MAX_LENGTH,
   resolveBotAvatarSet,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   botLookState,
   credentialForModel,
@@ -16,8 +16,8 @@ import {
   modelThinkingLevels,
   parseModelOptionKey,
   resolveSelectableModelId,
-} from "@rakazo/core";
-import { typeScale } from "@rakazo/ui-tokens";
+} from "@nurlai/core";
+import { typeScale } from "@nurlai/ui-tokens";
 import { Stack, useFocusEffect, useLocalSearchParams, useRouter } from "expo-router";
 import type { Voice } from "expo-speech";
 import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";

@@ -8,11 +8,11 @@ import { brotliCompressSync, gzipSync } from "node:zlib";
 import { serve } from "@hono/node-server";
 import type { ElectronApplication, Page } from "@playwright/test";
 import { _electron as electron, expect } from "@playwright/test";
-import type { createApp } from "@rakazo/api/app";
-import { abortableDelay } from "@rakazo/core";
-import { loadRootEnv } from "@rakazo/core/node/load-root-env";
-import type { PrismaClient } from "@rakazo/db";
-import { createThreadMessage } from "@rakazo/db";
+import type { createApp } from "@nurlai/api/app";
+import { abortableDelay } from "@nurlai/core";
+import { loadRootEnv } from "@nurlai/core/node/load-root-env";
+import type { PrismaClient } from "@nurlai/db";
+import { createThreadMessage } from "@nurlai/db";
 import { startPostgres } from "../cli/postgres.js";
 import type { PerformanceReport } from "./performance-report.js";
 import {
@@ -73,7 +73,7 @@ try {
   if (!skipBuild) buildProductionArtifacts(benchmarkEnv);
   migrateDatabase(benchmarkEnv);
 
-  const { createApp } = await import("@rakazo/api/app");
+  const { createApp } = await import("@nurlai/api/app");
   handles = await createApp({ databaseUrl, prisma: undefined });
   server = serve({
     fetch: (request) => handles!.app.fetch(request),
@@ -164,22 +164,22 @@ function performanceEnvironment(databaseUrl: string): NodeJS.ProcessEnv {
       apiPort,
       dataDir: path.join(temporaryRoot, "data"),
     }),
-    RAKAZO_DISABLE_BUNDLED_RENDERER: remoteRenderer ? "1" : "0",
-    RAKAZO_DISABLE_WARM_WINDOW: disableWarmWindow ? "1" : "0",
-    RAKAZO_PERFORMANCE_ASSET_DELAY_MS: String(assetDelayMs),
+    NURLAI_DISABLE_BUNDLED_RENDERER: remoteRenderer ? "1" : "0",
+    NURLAI_DISABLE_WARM_WINDOW: disableWarmWindow ? "1" : "0",
+    NURLAI_PERFORMANCE_ASSET_DELAY_MS: String(assetDelayMs),
     CSC_IDENTITY_AUTO_DISCOVERY: "false",
   };
 }
 
 function buildProductionArtifacts(env: NodeJS.ProcessEnv) {
-  run("pnpm", ["--filter", "@rakazo/desktop", "pack:dir"], env);
+  run("pnpm", ["--filter", "@nurlai/desktop", "pack:dir"], env);
 }
 
 async function packagedExecutable() {
   const out = path.join(desktopRoot, "out");
-  const candidates = process.platform === "darwin" ? await findNamed(out, "Rakazo.app") : [];
+  const candidates = process.platform === "darwin" ? await findNamed(out, "Nurlai.app") : [];
   if (process.platform === "darwin" && candidates[0]) {
-    return path.join(candidates[0], "Contents/MacOS/Rakazo");
+    return path.join(candidates[0], "Contents/MacOS/Nurlai");
   }
   const desktopRequire = createRequire(path.join(desktopRoot, "package.json"));
   return desktopRequire("electron") as string;
@@ -306,8 +306,8 @@ async function launchDesktop(
     executablePath: benchmark.executablePath,
     env: {
       ...benchmark.env,
-      RAKAZO_PERFORMANCE_USER_DATA: profile,
-      RAKAZO_PERFORMANCE_CLEAR_CACHE: clearCache ? "1" : "0",
+      NURLAI_PERFORMANCE_USER_DATA: profile,
+      NURLAI_PERFORMANCE_CLEAR_CACHE: clearCache ? "1" : "0",
     },
   });
   const page = await app.firstWindow();
@@ -698,7 +698,7 @@ function environmentFingerprint(versions: { electron?: string; chrome?: string }
 
 async function measureBundles() {
   const web = await directorySize(path.join(webRoot, "dist"));
-  const applications = await findNamed(path.join(desktopRoot, "out"), "Rakazo.app");
+  const applications = await findNamed(path.join(desktopRoot, "out"), "Nurlai.app");
   const desktop = applications[0] ? await directorySize(applications[0]) : null;
   return { web, desktop };
 }
@@ -751,7 +751,7 @@ function summarizeReport(
 
 function renderMarkdown(report: PerformanceReport) {
   const summary = report.summary;
-  return `# Rakazo desktop performance — ${report.label}
+  return `# Nurlai desktop performance — ${report.label}
 
 - Commit: \`${report.environment.gitSha.slice(0, 12)}\`
 - Platform: ${report.environment.platform}/${report.environment.arch}

@@ -1,5 +1,5 @@
-import type { ConnectorTool } from "@rakazo/adapter-kit";
-import { FLEET_TOOL_NAMES } from "@rakazo/contracts";
+import type { ConnectorTool } from "@nurlai/adapter-kit";
+import { FLEET_TOOL_NAMES } from "@nurlai/contracts";
 import { BUILTIN_AGENT_TOOL_NAMES } from "../runs/tools/run-tool-selection.js";
 import { bridgeToolDefinitions } from "./builtin.tool-definition.js";
 import type { CatalogEntry } from "./lazy-tool-catalog.js";

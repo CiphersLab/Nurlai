@@ -1,4 +1,4 @@
-import { USER_DEVICE_PATH } from "@rakazo/contracts";
+import { USER_DEVICE_PATH } from "@nurlai/contracts";
 import { afterEach, expect, it, vi } from "vitest";
 import { listUserDevices, removeUserDevice } from "./user-devices";
 

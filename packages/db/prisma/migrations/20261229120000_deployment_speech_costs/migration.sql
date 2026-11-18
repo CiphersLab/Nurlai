@@ -43,4 +43,4 @@ CREATE POLICY speech_allowances_tenant ON speech_allowances FOR SELECT
 CREATE POLICY speech_costs_tenant ON speech_costs FOR SELECT
  USING ("userId" = NULLIF(current_setting('app.user_id', true), '') AND
  "spaceId" = NULLIF(current_setting('app.space_id', true), ''));
-GRANT SELECT, INSERT, UPDATE, DELETE ON speech_allowances, speech_costs TO rakazo_app;
+GRANT SELECT, INSERT, UPDATE, DELETE ON speech_allowances, speech_costs TO nurlai_app;

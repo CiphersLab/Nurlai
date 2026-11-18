@@ -1,11 +1,11 @@
-import type { createRepos } from "@rakazo/db";
+import type { createRepos } from "@nurlai/db";
 import { expect, it, vi } from "vitest";
 import type { RouterDeps } from "../router.js";
 import { createBotRemoval } from "./bot-removal.js";
 
 const { destroyBot } = vi.hoisted(() => ({ destroyBot: vi.fn() }));
-vi.mock("@rakazo/adapters", () => ({ destroyBot }));
-vi.mock("@rakazo/db", () => ({ requireSpaceOwner: vi.fn() }));
+vi.mock("@nurlai/adapters", () => ({ destroyBot }));
+vi.mock("@nurlai/db", () => ({ requireSpaceOwner: vi.fn() }));
 
 it("returns the transaction's removed group IDs without consulting a preview", async () => {
   const actor = {

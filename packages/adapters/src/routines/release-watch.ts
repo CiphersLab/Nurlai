@@ -29,7 +29,7 @@ export type EmulatedGithubRelease = {
 };
 
 /** Seeded rakazo releases so evals succeed without the public internet. */
-export const DEFAULT_RAKAZO_EMULATED_RELEASES: readonly EmulatedGithubRelease[] = [
+export const DEFAULT_NURLAI_EMULATED_RELEASES: readonly EmulatedGithubRelease[] = [
   {
     owner: "elie222",
     repo: "rakazo",

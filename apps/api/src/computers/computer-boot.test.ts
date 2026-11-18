@@ -1,11 +1,11 @@
 import { onError } from "@orpc/server";
 import { RPCHandler } from "@orpc/server/fetch";
-import { SandboxDamagedError } from "@rakazo/adapter-kit";
-import type * as Adapters from "@rakazo/adapters";
-import { ComputerBusyError, ComputerRecoveryRequiredError } from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
-import { Prisma } from "@rakazo/db";
+import { SandboxDamagedError } from "@nurlai/adapter-kit";
+import type * as Adapters from "@nurlai/adapters";
+import { ComputerBusyError, ComputerRecoveryRequiredError } from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
+import { Prisma } from "@nurlai/db";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { RouterDeps } from "../router.js";
 import { createRouter } from "../router.js";
@@ -18,7 +18,7 @@ const lifecycle = vi.hoisted(() => ({
   releaseComputerExecutionLease: vi.fn(),
 }));
 
-vi.mock("@rakazo/adapters", async (original) => {
+vi.mock("@nurlai/adapters", async (original) => {
   const adapters = await original<typeof Adapters>();
   lifecycle.realAcquire = adapters.acquireComputerExecutionLease;
   return {

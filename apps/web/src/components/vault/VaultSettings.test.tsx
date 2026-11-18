@@ -1,9 +1,9 @@
 // @vitest-environment jsdom
 
 import { i18n } from "@lingui/core";
-import type { BotSecretMetadata, SettingsScope } from "@rakazo/contracts";
-import { encodeCardSecret, encodeLoginSecret, noneSkipped } from "@rakazo/contracts";
-import { deferred, flush } from "@rakazo/core/test-async";
+import type { BotSecretMetadata, SettingsScope } from "@nurlai/contracts";
+import { encodeCardSecret, encodeLoginSecret, noneSkipped } from "@nurlai/contracts";
+import { deferred, flush } from "@nurlai/core/test-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 import { act } from "react";
@@ -31,7 +31,7 @@ const spaceSettings = vi.hoisted(() => ({ overrides: vi.fn() }));
 // The dialog itself is tested on its own; here it is a pair of buttons that settle it.
 vi.mock("../account/ConfirmIdentityDialog", async () => {
   const { useState } = await import("react");
-  const { runWithIdentityConfirmation } = await import("@rakazo/contracts");
+  const { runWithIdentityConfirmation } = await import("@nurlai/contracts");
   return {
     useIdentityConfirmation: () => {
       const [settle, setSettle] = useState<((confirmed: boolean) => void) | null>(null);

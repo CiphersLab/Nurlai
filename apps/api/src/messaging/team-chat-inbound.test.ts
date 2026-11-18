@@ -1,5 +1,5 @@
-import type { MessagingInboundMessage, TeamChatInboundMessage } from "@rakazo/adapter-kit";
-import { SpaceDeletionInProgressError } from "@rakazo/db";
+import type { MessagingInboundMessage, TeamChatInboundMessage } from "@nurlai/adapter-kit";
+import { SpaceDeletionInProgressError } from "@nurlai/db";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type * as Inbound from "./messaging-inbound.js";
 import type { MessagingInboundDeps } from "./messaging-inbound.js";

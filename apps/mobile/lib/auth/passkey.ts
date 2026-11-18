@@ -1,6 +1,6 @@
 import { t } from "@lingui/core/macro";
-import type { AuthCapabilities } from "@rakazo/contracts";
-import { hostMatchesPasskeyRpId, passkeyOfferDismissedKey, shouldOfferPasskey } from "@rakazo/core";
+import type { AuthCapabilities } from "@nurlai/contracts";
+import { hostMatchesPasskeyRpId, passkeyOfferDismissedKey, shouldOfferPasskey } from "@nurlai/core";
 import Constants from "expo-constants";
 import * as SecureStore from "expo-secure-store";
 import { Alert, Platform } from "react-native";

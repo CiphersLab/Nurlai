@@ -8,7 +8,7 @@ import path from "node:path";
 import { promisify } from "node:util";
 import type { ElectronApplication, Page } from "@playwright/test";
 import { _electron as electron, expect, test } from "@playwright/test";
-import type { RakazoDesktop } from "@rakazo/contracts";
+import type { NurlaiDesktop } from "@nurlai/contracts";
 import { shownWindow } from "./shown-window.js";
 
 const APP_MARKER = "Existing Nurlai instance ready";
@@ -17,7 +17,7 @@ const APP_MARKER = "Existing Nurlai instance ready";
  * mounts is rejected the same way after any wait, so those specs shorten it instead of sitting out
  * the production deadline.
  */
-const NOT_READY_MOUNT_ENV = { RAKAZO_APP_MOUNT_TIMEOUT_MS: "2000" };
+const NOT_READY_MOUNT_ENV = { NURLAI_APP_MOUNT_TIMEOUT_MS: "2000" };
 const execFileAsync = promisify(execFile);
 
 let server: Server;
@@ -94,15 +94,15 @@ test.afterEach(async () => {
 function launch(extraEnv: Record<string, string> = {}) {
   const env: Record<string, string | undefined> = {
     ...process.env,
-    RAKAZO_PERFORMANCE_USER_DATA: userData,
+    NURLAI_PERFORMANCE_USER_DATA: userData,
   };
-  // A stale RAKAZO_WEB_URL from the developer's shell would bypass setup entirely.
-  delete env.RAKAZO_WEB_URL;
+  // A stale NURLAI_WEB_URL from the developer's shell would bypass setup entirely.
+  delete env.NURLAI_WEB_URL;
   // A first launch opens Nurlai Cloud; these specs stay offline and start in setup instead.
-  if (!extraEnv.RAKAZO_WEB_URL && !existsSync(path.join(userData, "setup.json"))) {
-    env.RAKAZO_FORCE_SETUP = "1";
+  if (!extraEnv.NURLAI_WEB_URL && !existsSync(path.join(userData, "setup.json"))) {
+    env.NURLAI_FORCE_SETUP = "1";
   }
-  const executablePath = process.env.RAKAZO_E2E_EXECUTABLE;
+  const executablePath = process.env.NURLAI_E2E_EXECUTABLE;
   return electron.launch({
     ...(executablePath ? { executablePath: path.resolve(executablePath) } : {}),
     args: executablePath ? [] : ["."],
@@ -113,7 +113,7 @@ function launch(extraEnv: Record<string, string> = {}) {
 
 test("setup offers Nurlai Cloud first, with local and existing instances", async () => {
   app = await launch();
-  if (process.env.RAKAZO_E2E_EXECUTABLE) {
+  if (process.env.NURLAI_E2E_EXECUTABLE) {
     expect(await app.evaluate(({ app }) => app.isPackaged)).toBe(true);
   }
   const setup = await app.firstWindow();
@@ -637,7 +637,7 @@ test("an unreachable saved server falls back to setup with a recovery message", 
 });
 
 test("the native application menu can reopen setup without exposing setup IPC to the server", async () => {
-  app = await launch({ RAKAZO_WEB_URL: serverUrl });
+  app = await launch({ NURLAI_WEB_URL: serverUrl });
   const appWindow = await shownWindow(app);
   await expect(appWindow.getByText(APP_MARKER)).toBeVisible();
 
@@ -693,13 +693,13 @@ test("servers on the same host but different ports do not share login cookies", 
   }
 
   try {
-    app = await launch({ RAKAZO_WEB_URL: `http://127.0.0.1:${firstAddress.port}` });
+    app = await launch({ NURLAI_WEB_URL: `http://127.0.0.1:${firstAddress.port}` });
     const firstWindow = await shownWindow(app);
     await expect(firstWindow.getByText("Cookie stored")).toBeVisible();
     await expect.poll(() => firstWindow.evaluate(() => document.cookie)).toContain("fake-one");
     await app.close();
 
-    app = await launch({ RAKAZO_WEB_URL: `http://127.0.0.1:${secondAddress.port}` });
+    app = await launch({ NURLAI_WEB_URL: `http://127.0.0.1:${secondAddress.port}` });
     const secondWindow = await shownWindow(app);
     await expect(secondWindow.getByText("Cookies: none")).toBeVisible();
   } finally {
@@ -717,7 +717,7 @@ test("servers on the same host but different ports do not share login cookies", 
 });
 
 test("setup IPC is not reachable from the connected app window", async () => {
-  app = await launch({ RAKAZO_WEB_URL: serverUrl });
+  app = await launch({ NURLAI_WEB_URL: serverUrl });
   const appWindow = await shownWindow(app);
   await expect(appWindow.getByText(APP_MARKER)).toBeVisible();
 
@@ -740,7 +740,7 @@ test("the app window stays on its server when a link redirects to another site",
   const openSignIn = (page: Page) =>
     page.evaluate(
       (url) =>
-        (window as typeof window & { rakazoDesktop: RakazoDesktop }).rakazoDesktop.oauth.open!(
+        (window as typeof window & { nurlaiDesktop: NurlaiDesktop }).nurlaiDesktop.oauth.open!(
           url,
         ).then(
           () => "opened",
@@ -750,7 +750,7 @@ test("the app window stays on its server when a link redirects to another site",
     );
 
   try {
-    const launched = await launch({ RAKAZO_WEB_URL: serverUrl });
+    const launched = await launch({ NURLAI_WEB_URL: serverUrl });
     app = launched;
     const appWindow = await shownWindow(launched);
     await expect(appWindow.getByText(APP_MARKER)).toBeVisible();

@@ -1,12 +1,12 @@
 import { createHash, randomBytes } from "node:crypto";
-import type { SecretStore } from "@rakazo/adapter-kit";
-import { forgetPageShareSecrets } from "@rakazo/adapters";
-import type { Actor, PageDetail, PageSummary, PageVisibility, SharedPage } from "@rakazo/contracts";
-import { pageShareTokenFromSlug, pageShareUrl } from "@rakazo/contracts";
-import { ClientError, escapeSearchWildcards } from "@rakazo/core";
-import type { PageShareSecret, Prisma, PrismaClient } from "@rakazo/db";
-import { IsolationError, isRecordNotFound, runAsSystem } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+import type { SecretStore } from "@nurlai/adapter-kit";
+import { forgetPageShareSecrets } from "@nurlai/adapters";
+import type { Actor, PageDetail, PageSummary, PageVisibility, SharedPage } from "@nurlai/contracts";
+import { pageShareTokenFromSlug, pageShareUrl } from "@nurlai/contracts";
+import { ClientError, escapeSearchWildcards } from "@nurlai/core";
+import type { PageShareSecret, Prisma, PrismaClient } from "@nurlai/db";
+import { IsolationError, isRecordNotFound, runAsSystem } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 
 const PAGE_SHARE_SECRET_KIND = "page_share";
 const DEFAULT_LIST_LIMIT = 30;

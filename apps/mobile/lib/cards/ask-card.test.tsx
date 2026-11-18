@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 
-import type { LoginFieldInput } from "@rakazo/contracts";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import type { LoginFieldInput } from "@nurlai/contracts";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import type { CSSProperties, ReactNode } from "react";
 import { act } from "react";
 import { createRoot } from "react-dom/client";

@@ -1,7 +1,7 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { ModelCredential, ModelSettings } from "@rakazo/contracts";
-import { MAX_MODEL_CONTEXT_WINDOW, MAX_MODEL_MAX_TOKENS } from "@rakazo/contracts";
-import type { ModelSettingsFields as Fields } from "@rakazo/core";
+import type { ModelCredential, ModelSettings } from "@nurlai/contracts";
+import { MAX_MODEL_CONTEXT_WINDOW, MAX_MODEL_MAX_TOKENS } from "@nurlai/contracts";
+import type { ModelSettingsFields as Fields } from "@nurlai/core";
 import {
   credentialModelSettings,
   modelCapabilitiesConfigurable,
@@ -9,9 +9,9 @@ import {
   modelSettingsDefaults,
   modelSettingsFields,
   modelSettingsRequest,
-} from "@rakazo/core";
-import { writeSaved } from "@rakazo/core/query";
-import { Button, ModelSettingsFields } from "@rakazo/ui-web";
+} from "@nurlai/core";
+import { writeSaved } from "@nurlai/core/query";
+import { Button, ModelSettingsFields } from "@nurlai/ui-web";
 import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import type { ModelCatalogEntry } from "../../lib/models/model-auth";

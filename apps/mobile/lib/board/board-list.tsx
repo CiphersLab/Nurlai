@@ -1,7 +1,7 @@
 import { MenuView } from "@expo/ui/community/menu";
 import { useLingui } from "@lingui/react/macro";
-import type { Ticket, TicketStatus } from "@rakazo/contracts";
-import { TICKET_STATUSES } from "@rakazo/contracts";
+import type { Ticket, TicketStatus } from "@nurlai/contracts";
+import { TICKET_STATUSES } from "@nurlai/contracts";
 import { useState } from "react";
 import { RefreshControl, ScrollView, StyleSheet, Text } from "react-native";
 import {

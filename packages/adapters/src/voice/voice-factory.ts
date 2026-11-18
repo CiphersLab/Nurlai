@@ -1,5 +1,5 @@
-import type { VoiceProvider, VoiceUsage } from "@rakazo/adapter-kit";
-import type { VoiceCatalogEntry } from "@rakazo/contracts";
+import type { VoiceProvider, VoiceUsage } from "@nurlai/adapter-kit";
+import type { VoiceCatalogEntry } from "@nurlai/contracts";
 import type { VoiceConnectionFields, VoiceProviderOptions } from "./voice-provider-descriptor.js";
 import type { VoiceProviderId } from "./voice-providers.js";
 import { knownVoiceProvider, voiceProviders } from "./voice-providers.js";

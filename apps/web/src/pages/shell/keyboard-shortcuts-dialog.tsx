@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, Kbd, KbdGroup } from "@rakazo/ui-web";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, Kbd, KbdGroup } from "@nurlai/ui-web";
 import type { ShortcutHost } from "./shell-shortcuts";
 import { quoteShortcutKeys } from "./shell-shortcuts";
 

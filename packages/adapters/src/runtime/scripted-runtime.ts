@@ -3,7 +3,7 @@ import type {
   AgentRunRequest,
   AgentRuntime,
   AgentRuntimeEvent,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import {
   APPROVED_ACTION_NOT_RUN_ERROR,
   abortableDelay,
@@ -14,7 +14,7 @@ import {
   MODEL_REQUEST_LIMIT_ERROR,
   modelFallbackFailure,
   STEERING_CONTINUATION_PROMPT,
-} from "@rakazo/core";
+} from "@nurlai/core";
 
 import { BACKGROUND_HELPER_TASK_CUE } from "../tasks/background-helpers.prompt.js";
 
@@ -751,7 +751,7 @@ code-b
         toolCalls: [
           {
             name: "destination.write",
-            args: { collection: "notes", title: "Rakazo result", body: prompt },
+            args: { collection: "notes", title: "Nurlai result", body: prompt },
           },
         ],
         complete: true,

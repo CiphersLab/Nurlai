@@ -1,6 +1,6 @@
 import type { Page } from "@playwright/test";
 import { expect, test } from "@playwright/test";
-import { BLOCKED_ITEM_ANSWER } from "@rakazo/contracts";
+import { BLOCKED_ITEM_ANSWER } from "@nurlai/contracts";
 import {
   activeBotId,
   captureScreenshot,

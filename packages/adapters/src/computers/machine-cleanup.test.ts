@@ -2,10 +2,10 @@ import type {
   BackgroundJobHandlers,
   SandboxProvider,
   UnreferencedMachine,
-} from "@rakazo/adapter-kit";
-import { machineCleanupJobKey } from "@rakazo/adapter-kit";
-import type { PrismaClient } from "@rakazo/db";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { machineCleanupJobKey } from "@nurlai/adapter-kit";
+import type { PrismaClient } from "@nurlai/db";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { InMemoryJobQueue } from "../runs/wakeups/wakeup.js";
 import { machineCleanupRecords, retryMachineCleanup } from "./machine-cleanup.js";

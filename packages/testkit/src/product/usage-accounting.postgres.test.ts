@@ -2,9 +2,9 @@ import { randomUUID } from "node:crypto";
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { ComposioConnector, FakeComposioClient } from "@rakazo/adapters";
-import { deferred } from "@rakazo/core/test-async";
-import { recordUsage, runAsSystem } from "@rakazo/db";
+import { ComposioConnector, FakeComposioClient } from "@nurlai/adapters";
+import { deferred } from "@nurlai/core/test-async";
+import { recordUsage, runAsSystem } from "@nurlai/db";
 import { describe, expect, it } from "vitest";
 import { runAutoReviewJudge } from "../../../adapters/src/approvals/auto-review.js";
 import { compactHistory } from "../../../adapters/src/runtime/context/history-compaction.js";
@@ -85,7 +85,7 @@ describe.skipIf(!enabled)("persisted Pi usage accounting", () => {
     const dataDir = await mkdtemp(path.join(tmpdir(), "rakazo-usage-fixture-"));
     let stop: (() => Promise<void>) | undefined;
     try {
-      const { createApp } = await import("@rakazo/api/app");
+      const { createApp } = await import("@nurlai/api/app");
       const handles = await createApp({
         databaseUrl: process.env.DATABASE_URL!,
         realtimeDatabaseUrl: process.env.DATABASE_URL!,

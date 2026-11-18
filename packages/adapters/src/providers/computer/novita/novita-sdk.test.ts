@@ -1,4 +1,4 @@
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import type { DesktopSandbox, Novita } from "novita-sandbox";
 import { SandboxNotFoundError, TimeoutError } from "novita-sandbox";
 import { describe, expect, it, vi } from "vitest";

@@ -1,4 +1,4 @@
-import type { MessageBlock } from "@rakazo/contracts";
+import type { MessageBlock } from "@nurlai/contracts";
 import { describe, expect, it, vi } from "vitest";
 import { deferred } from "../primitives/async.test-support.js";
 import type { CallThread } from "./call-session.js";

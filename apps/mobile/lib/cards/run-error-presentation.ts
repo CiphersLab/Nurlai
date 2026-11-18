@@ -1,6 +1,6 @@
 import { t } from "@lingui/core/macro";
-import type { computerHoursOut } from "@rakazo/contracts";
-import type { normalizeRunError, RunErrorRecovery } from "@rakazo/core";
+import type { computerHoursOut } from "@nurlai/contracts";
+import type { normalizeRunError, RunErrorRecovery } from "@nurlai/core";
 
 /** The label of the one action that fixes the failure; transient failures have none. */
 export function runErrorActionLabel(error: { recovery?: RunErrorRecovery; kind?: string }) {

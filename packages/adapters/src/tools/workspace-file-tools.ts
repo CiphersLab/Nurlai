@@ -1,11 +1,11 @@
 import path from "node:path";
-import type { AdapterContext, ComputerRef, SandboxProvider } from "@rakazo/adapter-kit";
-import { isSandboxProviderOutage, SandboxFileTooLargeError } from "@rakazo/adapter-kit";
-import type { ComputerMode } from "@rakazo/contracts";
-import { ATTACHMENT_MAX_BYTES } from "@rakazo/contracts";
-import { redactSecrets } from "@rakazo/core";
-import { PLOT_TOOL_GUIDE, searchChartCatalog } from "@rakazo/core/plot-catalog";
-import { getLogger } from "@rakazo/logging";
+import type { AdapterContext, ComputerRef, SandboxProvider } from "@nurlai/adapter-kit";
+import { isSandboxProviderOutage, SandboxFileTooLargeError } from "@nurlai/adapter-kit";
+import type { ComputerMode } from "@nurlai/contracts";
+import { ATTACHMENT_MAX_BYTES } from "@nurlai/contracts";
+import { redactSecrets } from "@nurlai/core";
+import { PLOT_TOOL_GUIDE, searchChartCatalog } from "@nurlai/core/plot-catalog";
+import { getLogger } from "@nurlai/logging";
 import { JSDOM } from "jsdom";
 import {
   displayBotWorkspacePath,

@@ -1,5 +1,5 @@
 import { t } from "@lingui/core/macro";
-import { isModelRequiredSendError } from "@rakazo/core";
+import { isModelRequiredSendError } from "@nurlai/core";
 import { Alert, AppState } from "react-native";
 import type { RpcArgs } from "../../api/api";
 import {
@@ -119,8 +119,8 @@ configureUnsentSends({
     const context = await captureApiRequestContext();
     if (generation !== currentSessionGeneration()) throw new Error("Session changed");
     const headers = { ...context.headers };
-    if (spaceId) headers["x-rakazo-space-id"] = spaceId;
-    else delete headers["x-rakazo-space-id"];
+    if (spaceId) headers["x-nurlai-space-id"] = spaceId;
+    else delete headers["x-nurlai-space-id"];
     return rpc(
       proc,
       ...([body, { ...options, requestContext: { ...context, headers } }] as RpcArgs<typeof proc>),

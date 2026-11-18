@@ -1,4 +1,4 @@
-import { flush } from "@rakazo/core/test-async";
+import { flush } from "@nurlai/core/test-async";
 import { describe, expect, it, vi } from "vitest";
 import { followOrganizationChanges, publishOrganizationChange } from "./organization-changes.js";
 

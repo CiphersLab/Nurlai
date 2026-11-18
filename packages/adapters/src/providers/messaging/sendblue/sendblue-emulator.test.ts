@@ -1,4 +1,4 @@
-import type { AdapterContext, MessagingInboundEvent } from "@rakazo/adapter-kit";
+import type { AdapterContext, MessagingInboundEvent } from "@nurlai/adapter-kit";
 import { describe, expect, it } from "vitest";
 import { ChatSdkMessagingSurface } from "../../../messaging/chat-sdk-surface.js";
 import { createEmulatedSendbluePlatform, SendBlueEmulator } from "./sendblue-emulator.js";

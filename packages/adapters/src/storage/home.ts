@@ -19,8 +19,8 @@ import {
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { pipeline } from "node:stream/promises";
-import type { AdapterContext, AgentHomeStore, PortableFile } from "@rakazo/adapter-kit";
-import { SandboxFileTooLargeError } from "@rakazo/adapter-kit";
+import type { AdapterContext, AgentHomeStore, PortableFile } from "@nurlai/adapter-kit";
+import { SandboxFileTooLargeError } from "@nurlai/adapter-kit";
 import { fileHandlePath } from "./file-handle-path.js";
 import {
   isTaggedCacheDirectory,

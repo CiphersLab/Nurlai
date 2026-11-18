@@ -7,8 +7,8 @@ import {
   ServerError,
   TooManyRequestsError,
 } from "@modelcontextprotocol/sdk/server/auth/errors.js";
-import { deferred, flush } from "@rakazo/core/test-async";
-import { createLogger, createTestSink, getLogger, installLogger } from "@rakazo/logging";
+import { deferred, flush } from "@nurlai/core/test-async";
+import { createLogger, createTestSink, getLogger, installLogger } from "@nurlai/logging";
 import { afterAll, afterEach, describe, expect, it, vi } from "vitest";
 import { ConnectorRegistry } from "../integrations/connector-registry.js";
 import { InstalledConnectorProvider } from "../integrations/installed-connectors.js";

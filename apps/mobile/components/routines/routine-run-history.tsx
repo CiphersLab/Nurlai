@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
-import type { RoutineRun } from "@rakazo/contracts";
-import { formatRoutineRunAt } from "@rakazo/core";
+import type { RoutineRun } from "@nurlai/contracts";
+import { formatRoutineRunAt } from "@nurlai/core";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { ActivityIndicator } from "react-native";

@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
-import type { ConnectionCatalogItem, PluginMarketplaceEntry } from "@rakazo/contracts";
-import type { PluginCategory } from "@rakazo/core";
+import type { ConnectionCatalogItem, PluginMarketplaceEntry } from "@nurlai/contracts";
+import type { PluginCategory } from "@nurlai/core";
 import {
   buildFeaturedConnectorTiles,
   CONNECTION_CATALOG_PAGE_SIZE,
@@ -12,7 +12,7 @@ import {
   matchesWordPrefixes,
   OTHER_PLUGINS,
   PLUGIN_CATEGORIES,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { useMemo, useState } from "react";
 import type { PluginConnections } from "./use-plugin-connections";
 

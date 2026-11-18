@@ -4,8 +4,8 @@ import type {
   AutomatedSenderPolicies,
   AutomatedSenderPolicyMode,
   RpcInput,
-} from "@rakazo/contracts";
-import type { ListenMode } from "@rakazo/core";
+} from "@nurlai/contracts";
+import type { ListenMode } from "@nurlai/core";
 import {
   AUTOMATED_SENDER_MODES,
   ambientValue,
@@ -14,7 +14,7 @@ import {
   senderPolicy,
   withRollupHours,
   withSenderMode,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { useQuery } from "@tanstack/react-query";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useContext, useRef, useState } from "react";

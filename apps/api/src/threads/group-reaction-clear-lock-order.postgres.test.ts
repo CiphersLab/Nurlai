@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
-import type { Actor } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
-import type { PrismaClient } from "@rakazo/db";
+import type { Actor } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
+import type { PrismaClient } from "@nurlai/db";
 import {
   asSystem,
   clearThread,
@@ -13,7 +13,7 @@ import {
   provisionMessagingIdentity,
   runAsSystem,
   runAsTenant,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { reactToThreadMessage } from "./thread-reactions.js";
 import type { ThreadTarget } from "./thread-target.js";

@@ -1,7 +1,7 @@
 import { randomBytes } from "node:crypto";
-import type { InboundEmail } from "@rakazo/adapters";
-import type { PrismaClient } from "@rakazo/db";
-import { asSystem, bootstrapUserSpace, createDb, runAsSystem } from "@rakazo/db";
+import type { InboundEmail } from "@nurlai/adapters";
+import type { PrismaClient } from "@nurlai/db";
+import { asSystem, bootstrapUserSpace, createDb, runAsSystem } from "@nurlai/db";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import {
   assertEmailTrigger,

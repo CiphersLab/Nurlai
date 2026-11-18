@@ -1,13 +1,13 @@
 import { randomBytes, randomUUID } from "node:crypto";
-import type { AgentRuntime, JobPublisher, NotificationProvider } from "@rakazo/adapter-kit";
-import { historyCompactJob, runJobKey } from "@rakazo/adapter-kit";
+import type { AgentRuntime, JobPublisher, NotificationProvider } from "@nurlai/adapter-kit";
+import { historyCompactJob, runJobKey } from "@nurlai/adapter-kit";
 import {
   CapturingNotificationProvider,
   handoffToGroupBot,
   MessagingTeamChatEmulator,
   messageBot,
-} from "@rakazo/adapters";
-import type { MessageBlock, ModelConnectInput, ReplyMode, RunStatus } from "@rakazo/contracts";
+} from "@nurlai/adapters";
+import type { MessageBlock, ModelConnectInput, ReplyMode, RunStatus } from "@nurlai/contracts";
 import {
   ACTIVE_RUN_STATUSES,
   attachmentComputerPath,
@@ -15,9 +15,9 @@ import {
   HELPER_RESULT_TRIGGER,
   isTerminal,
   splitToolHistory,
-} from "@rakazo/core";
-import type { createDb } from "@rakazo/db";
-import { createThreadEvents, readJsonColumn, storedMessageBlocks } from "@rakazo/db";
+} from "@nurlai/core";
+import type { createDb } from "@nurlai/db";
+import { createThreadEvents, readJsonColumn, storedMessageBlocks } from "@nurlai/db";
 import { z } from "zod";
 import type { HostedApp } from "../apps/mcp-host.js";
 import { hostOverMcp } from "../apps/mcp-host.js";

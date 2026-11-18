@@ -1,6 +1,6 @@
-import { BACKGROUND_HELPER_TRIGGER, HELPER_RESULT_TRIGGER } from "@rakazo/core";
-import type { PrismaClient, Run } from "@rakazo/db";
-import { storedMessageBlocks } from "@rakazo/db";
+import { BACKGROUND_HELPER_TRIGGER, HELPER_RESULT_TRIGGER } from "@nurlai/core";
+import type { PrismaClient, Run } from "@nurlai/db";
+import { storedMessageBlocks } from "@nurlai/db";
 
 type RunOrigin = Pick<
   Run,

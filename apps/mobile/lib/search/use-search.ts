@@ -1,5 +1,5 @@
-import { useTimeout } from "@rakazo/chat-ui/hooks";
-import type { SearchHit } from "@rakazo/contracts";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
+import type { SearchHit } from "@nurlai/contracts";
 import { useEffect, useRef, useState } from "react";
 import { errorText } from "../api/user-error";
 import { querySpaceSearch } from "./search";

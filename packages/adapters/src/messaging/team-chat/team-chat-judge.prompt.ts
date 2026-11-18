@@ -1,4 +1,4 @@
-import { sanitizeMessagingLabel } from "@rakazo/core";
+import { sanitizeMessagingLabel } from "@nurlai/core";
 import { formatCurrentTimeInstruction } from "../../runs/assembly/current-time.prompt.js";
 import type { TeamChatEngagementMessage } from "./team-chat-judge.js";
 

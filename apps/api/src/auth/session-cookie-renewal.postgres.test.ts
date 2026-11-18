@@ -1,7 +1,7 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { asSystem } from "@rakazo/db";
+import { asSystem } from "@nurlai/db";
 import { expect, it } from "vitest";
 import { createApp } from "../app.js";
 

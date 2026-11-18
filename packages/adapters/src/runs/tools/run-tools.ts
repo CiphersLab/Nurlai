@@ -1,5 +1,5 @@
-import type { AgentToolExecutionObserver } from "@rakazo/adapter-kit";
-import { BACKGROUND_HELPER_TRIGGER, toolResultTaintsRun } from "@rakazo/core";
+import type { AgentToolExecutionObserver } from "@nurlai/adapter-kit";
+import { BACKGROUND_HELPER_TRIGGER, toolResultTaintsRun } from "@nurlai/core";
 import { isTerminatingReplyResult } from "../../approvals/approval-effect.js";
 import { argumentGiven } from "../../bots/update-bot-patch.js";
 import { IMAGE_RETURNING_COMPUTER_TOOLS } from "../../models/model-vision.js";

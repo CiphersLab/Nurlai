@@ -1,5 +1,5 @@
 import { EventEmitter } from "node:events";
-import type { UserDeviceSocket } from "@rakazo/adapters";
+import type { UserDeviceSocket } from "@nurlai/adapters";
 import {
   hashUserDeviceToken,
   USER_DEVICE_DISCONNECT_PATH,
@@ -7,9 +7,9 @@ import {
   UserDeviceHub,
   UserDevices,
   userDeviceForwardSecret,
-} from "@rakazo/adapters";
-import type { PrismaClient } from "@rakazo/db";
-import { installSecurityEventStore } from "@rakazo/db";
+} from "@nurlai/adapters";
+import type { PrismaClient } from "@nurlai/db";
+import { installSecurityEventStore } from "@nurlai/db";
 import { Hono } from "hono";
 import { afterEach, describe, expect, it } from "vitest";
 import { endUserDeviceSession, mountUserDeviceRoutes } from "./user-devices.js";

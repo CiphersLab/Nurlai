@@ -1,8 +1,8 @@
 import { randomBytes } from "node:crypto";
 import { rm } from "node:fs/promises";
 import path from "node:path";
-import { startHostComputerServer } from "@rakazo/adapters/host-computer-server";
-import type { HostScreen } from "@rakazo/adapters/host-screen";
+import { startHostComputerServer } from "@nurlai/adapters/host-computer-server";
+import type { HostScreen } from "@nurlai/adapters/host-screen";
 import { readPrivateFile, writePrivateFile } from "../setup/setup-store.js";
 
 /** App-private credentials and consent, never sent to a renderer or a connected remote server. */

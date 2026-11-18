@@ -1,7 +1,7 @@
 import { RateLimitError } from "@boxd-sh/sdk";
-import type { AdapterContext, ComputerRef, ProcessEvent } from "@rakazo/adapter-kit";
-import { SandboxRateLimitError, WorkspaceTooLargeError } from "@rakazo/adapter-kit";
-import { screenDisplayArgv, shellQuote } from "@rakazo/core/node/desktop-runtime";
+import type { AdapterContext, ComputerRef, ProcessEvent } from "@nurlai/adapter-kit";
+import { SandboxRateLimitError, WorkspaceTooLargeError } from "@nurlai/adapter-kit";
+import { screenDisplayArgv, shellQuote } from "@nurlai/core/node/desktop-runtime";
 import { describe, expect, it, onTestFinished, vi } from "vitest";
 import { isSandboxGoneError } from "../../../computers/sandbox/sandbox-errors.js";
 import {

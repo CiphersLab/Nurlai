@@ -14,11 +14,11 @@ import type {
   TerminalRequest,
   UnreferencedMachine,
   UnreferencedMachineRecords,
-} from "@rakazo/adapter-kit";
-import { SandboxFileTooLargeError } from "@rakazo/adapter-kit";
-import { anySignal } from "@rakazo/core";
-import { COMPUTER_CACHE_ENV } from "@rakazo/core/node/desktop-runtime";
-import { boundedSandboxCommandTimeoutMs } from "@rakazo/core/node/sandbox-command";
+} from "@nurlai/adapter-kit";
+import { SandboxFileTooLargeError } from "@nurlai/adapter-kit";
+import { anySignal } from "@nurlai/core";
+import { COMPUTER_CACHE_ENV } from "@nurlai/core/node/desktop-runtime";
+import { boundedSandboxCommandTimeoutMs } from "@nurlai/core/node/sandbox-command";
 import type * as Railway from "railway";
 import type { ConnectOptions, Sandbox, SandboxStatus } from "railway";
 import WebSocket from "ws";
@@ -605,7 +605,7 @@ export class RailwaySandboxProvider implements SandboxProvider {
 
 /**
  * Railway destroys an idle sandbox, so it must outlast the checkpointing idle sleep. When no
- * finite timeout can, Railway never idles it out and Rakazo's own idle sleep stops it.
+ * finite timeout can, Railway never idles it out and Nurlai's own idle sleep stops it.
  */
 function railwayIdleTimeoutMinutes() {
   if (!computerIdleSleepEnabled()) return 0;

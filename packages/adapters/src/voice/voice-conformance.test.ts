@@ -1,6 +1,6 @@
 import { writeFile } from "node:fs/promises";
-import type { VoiceProvider } from "@rakazo/adapter-kit";
-import { VoiceCatalogEntrySchema } from "@rakazo/contracts";
+import type { VoiceProvider } from "@nurlai/adapter-kit";
+import { VoiceCatalogEntrySchema } from "@nurlai/contracts";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { CartesiaVoiceProvider } from "../providers/voice/cartesia/cartesia-voice.js";
 import { ElevenLabsVoiceProvider } from "../providers/voice/elevenlabs/elevenlabs-voice.js";

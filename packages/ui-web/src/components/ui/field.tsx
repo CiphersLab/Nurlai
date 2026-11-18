@@ -1,8 +1,8 @@
-import { Label } from "@rakazo/ui-web/components/ui/label";
-import { Separator } from "@rakazo/ui-web/components/ui/separator";
-import { Switch } from "@rakazo/ui-web/components/ui/switch";
+import { Label } from "@nurlai/ui-web/components/ui/label";
+import { Separator } from "@nurlai/ui-web/components/ui/separator";
+import { Switch } from "@nurlai/ui-web/components/ui/switch";
 
-import { cn } from "@rakazo/ui-web/lib/utils";
+import { cn } from "@nurlai/ui-web/lib/utils";
 import type { VariantProps } from "class-variance-authority";
 import { cva } from "class-variance-authority";
 import { useId, useMemo } from "react";

@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import type { ThreadItem } from "@rakazo/core";
+import type { ThreadItem } from "@nurlai/core";
 import {
   answerableAskMessageIds,
   dismissableAskMessageIds,
@@ -10,7 +10,7 @@ import {
   timeSeparatorIds,
   unreadDividerMessageId,
   voiceChatHoldsMessage,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { useCallback, useLayoutEffect, useMemo, useRef } from "react";
 import type { ListRenderItemInfo } from "react-native";
 import { StyleSheet, View } from "react-native";

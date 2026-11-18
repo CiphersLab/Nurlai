@@ -1,4 +1,4 @@
-import type { ModelCatalogEntry, ModelCredential } from "@rakazo/contracts";
+import type { ModelCatalogEntry, ModelCredential } from "@nurlai/contracts";
 import { describe, expect, it } from "vitest";
 import { botModelPick, botModelState } from "./bot-model.js";
 

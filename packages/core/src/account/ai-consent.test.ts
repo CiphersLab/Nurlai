@@ -1,5 +1,5 @@
-import type { AiConsentStatus } from "@rakazo/contracts";
-import { AI_DISCLOSURE_VERSION } from "@rakazo/contracts";
+import type { AiConsentStatus } from "@nurlai/contracts";
+import { AI_DISCLOSURE_VERSION } from "@nurlai/contracts";
 import { describe, expect, it, vi } from "vitest";
 import { deferred } from "../primitives/async.test-support.js";
 import {

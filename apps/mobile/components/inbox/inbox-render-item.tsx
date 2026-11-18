@@ -2,7 +2,7 @@ import type { MenuAction } from "@expo/ui/community/menu";
 import { MenuView } from "@expo/ui/community/menu";
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import type { SpaceBot, SpaceGroup } from "@rakazo/contracts";
+import type { SpaceBot, SpaceGroup } from "@nurlai/contracts";
 import { useRouter } from "expo-router";
 import type { ReactNode } from "react";
 import { useCallback } from "react";

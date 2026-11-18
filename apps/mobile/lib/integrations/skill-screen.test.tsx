@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { deferred, flush } from "@rakazo/core/test-async";
+import { deferred, flush } from "@nurlai/core/test-async";
 import type { ReactNode } from "react";
 import { act } from "react";
 import type { Root } from "react-dom/client";
@@ -33,7 +33,7 @@ vi.mock("../api/api", () => ({
   captureApiRequestContext: async (spaceId: string | null = "space-1") => ({
     apiBase: "https://app.example.test",
     sessionGeneration: 1,
-    headers: spaceId ? { "x-rakazo-space-id": spaceId } : {},
+    headers: spaceId ? { "x-nurlai-space-id": spaceId } : {},
   }),
 }));
 vi.mock("../api/session", () => ({ currentSessionGeneration: () => 1 }));
@@ -185,7 +185,7 @@ const pinned = {
   requestContext: {
     apiBase: "https://app.example.test",
     sessionGeneration: 1,
-    headers: { "x-rakazo-space-id": "space-1" },
+    headers: { "x-nurlai-space-id": "space-1" },
   },
 };
 it("opens a saved skill, saves an edit from the header, and deletes after a native confirm", async () => {

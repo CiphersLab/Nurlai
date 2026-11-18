@@ -1,5 +1,5 @@
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred, flush } from "@rakazo/core/test-async";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred, flush } from "@nurlai/core/test-async";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 vi.mock("../query/rpc", () => ({ onRpcResponse: () => () => {} }));
@@ -80,7 +80,7 @@ function setup(overrides: Partial<ClientUpdateDeps> = {}) {
     fire: (type: string) => listeners.get(type)?.(),
     idleTick: () => tick(),
     reply: (status: number, build?: string) =>
-      onResponse(new Response(null, { status, headers: build ? { "x-rakazo-build": build } : {} })),
+      onResponse(new Response(null, { status, headers: build ? { "x-nurlai-build": build } : {} })),
   };
 }
 afterEach(() => vi.restoreAllMocks());

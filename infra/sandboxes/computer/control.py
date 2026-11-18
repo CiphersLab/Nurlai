@@ -1,5 +1,5 @@
 #!/usr/bin/python3 -I
-"""Token-auth desktop control for the Rakazo supervisor."""
+"""Token-auth desktop control for the Nurlai supervisor."""
 
 import base64
 import ctypes
@@ -12,14 +12,14 @@ import threading
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
-TOKEN = os.environ.get("RAKAZO_COMPUTER_CONTROL_TOKEN", "")
+TOKEN = os.environ.get("NURLAI_COMPUTER_CONTROL_TOKEN", "")
 # Commands this server starts are found only in the image's folders, never in the user's
 # ~/.local/bin, and never get the control token.
 CHILD_PATH = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 
 def child_env(display):
-    env = {key: value for key, value in os.environ.items() if key != "RAKAZO_COMPUTER_CONTROL_TOKEN"}
+    env = {key: value for key, value in os.environ.items() if key != "NURLAI_COMPUTER_CONTROL_TOKEN"}
     return {**env, "PATH": CHILD_PATH, "DISPLAY": display}
 MAX_BODY_BYTES = 256 * 1024
 MAX_ARGV = 32
@@ -199,7 +199,7 @@ def _allowed_wheel(argv):
 
 def control_command_index(argv):
     """Locate the executable after the optional supervisor-owned browser profile."""
-    return 3 if len(argv) > 2 and argv[2].startswith("RAKAZO_BROWSER_PROFILE=") else 2
+    return 3 if len(argv) > 2 and argv[2].startswith("NURLAI_BROWSER_PROFILE=") else 2
 
 
 def allowed_control_argv(argv, display):
@@ -215,7 +215,7 @@ def allowed_control_argv(argv, display):
         return False
     command = argv[index]
     if index == 3:
-        profile = argv[2].removeprefix("RAKAZO_BROWSER_PROFILE=")
+        profile = argv[2].removeprefix("NURLAI_BROWSER_PROFILE=")
         if not re.fullmatch(r"/home/rakazo/\.browser-profiles/chromium-bot-[a-f0-9]{32}", profile):
             return False
         if command not in ("xdg-open", "rakazo-browser", FOCUS_OR_LAUNCH):

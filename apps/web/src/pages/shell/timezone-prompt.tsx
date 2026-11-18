@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { Me } from "@rakazo/contracts";
-import { deviceTimezoneStep, localTimezone, timeZonePlace } from "@rakazo/core";
+import type { Me } from "@nurlai/contracts";
+import { deviceTimezoneStep, localTimezone, timeZonePlace } from "@nurlai/core";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -9,7 +9,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { useEffect, useEffectEvent, useRef, useState } from "react";
 import { keepTimezone, keptTimezones } from "../../lib/locale/kept-timezone";
 import { useSave, useSpaceQueries } from "../../lib/query/query";

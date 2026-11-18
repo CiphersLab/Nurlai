@@ -1,5 +1,5 @@
-import type { AgentRunRequest } from "@rakazo/adapter-kit";
-import { PiAgentRuntime } from "@rakazo/adapters";
+import type { AgentRunRequest } from "@nurlai/adapter-kit";
+import { PiAgentRuntime } from "@nurlai/adapters";
 import { describe, expect, it } from "vitest";
 import { estimateTextTokens } from "../../../adapters/src/runtime/context/context-selection.js";
 import { startModelEmulator } from "../model-emulator.js";

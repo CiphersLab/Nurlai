@@ -6,7 +6,7 @@ import type {
   ModelHeaderRow,
   SettingsScope,
   ThinkingLevel,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   ModelHeaderRowsSchema,
   modelHeadersInput,
@@ -14,7 +14,7 @@ import {
   OPENAI_COMPATIBLE_PROVIDER_ID,
   openAiCompatibleConnectReady,
   savedCompatibleEndpointMatches,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import { clampCatalogThinkingLevel, pickCatalogModelId } from "./model-providers.js";
 
 type CatalogModel = Pick<

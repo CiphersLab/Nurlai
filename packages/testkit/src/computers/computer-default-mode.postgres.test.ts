@@ -1,8 +1,8 @@
 import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import type { Bot } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
+import type { Bot } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { sessionCookieHeader } from "../index.js";
 import { asSystem } from "../system-db.js";
@@ -22,7 +22,7 @@ describe.skipIf(!hasDb)("COMPUTER_DEFAULT_MODE for new bots", () => {
   const dataDir = mkdtempSync(path.join(tmpdir(), "rakazo-computer-default-"));
 
   beforeAll(async () => {
-    const { createApp } = await import("@rakazo/api/app");
+    const { createApp } = await import("@nurlai/api/app");
     const handles = await createApp({
       databaseUrl: process.env.DATABASE_URL!,
       dataDir,

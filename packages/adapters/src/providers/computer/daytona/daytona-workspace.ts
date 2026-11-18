@@ -1,4 +1,4 @@
-import type { AdapterContext, PortableFile } from "@rakazo/adapter-kit";
+import type { AdapterContext, PortableFile } from "@nurlai/adapter-kit";
 import { PortableFileBatcher } from "../../../computers/computer-workspace.js";
 import {
   normalizeWorkspacePath,

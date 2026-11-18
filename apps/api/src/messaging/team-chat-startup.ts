@@ -1,4 +1,4 @@
-import type { MessagingInboundMessage } from "@rakazo/adapter-kit";
+import type { MessagingInboundMessage } from "@nurlai/adapter-kit";
 
 export function prefersTeamChatSurface(
   event: Pick<MessagingInboundMessage, "provider" | "workspaceId" | "isDirect">,

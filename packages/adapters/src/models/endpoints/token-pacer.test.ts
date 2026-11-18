@@ -90,18 +90,18 @@ describe("TokenPacer", () => {
 describe("pacerTokensPerMinute", () => {
   it("is off unless the limit is set", () => {
     expect(pacerTokensPerMinute("local", {})).toBeUndefined();
-    expect(pacerTokensPerMinute("local", { RAKAZO_LOCAL_TOKENS_PER_MINUTE: " " })).toBeUndefined();
+    expect(pacerTokensPerMinute("local", { NURLAI_LOCAL_TOKENS_PER_MINUTE: " " })).toBeUndefined();
   });
   it("paces only the local provider", () => {
-    const env = { RAKAZO_LOCAL_TOKENS_PER_MINUTE: "5000" };
+    const env = { NURLAI_LOCAL_TOKENS_PER_MINUTE: "5000" };
     expect(pacerTokensPerMinute("local", env)).toBe(5000);
     expect(pacerTokensPerMinute("openai", env)).toBeUndefined();
   });
   it("rejects a limit that is not a positive integer", () => {
     for (const value of ["0", "-1", "1.5", "lots"]) {
       expect(() =>
-        pacerTokensPerMinute("local", { RAKAZO_LOCAL_TOKENS_PER_MINUTE: value }),
-      ).toThrow("RAKAZO_LOCAL_TOKENS_PER_MINUTE must be a positive integer");
+        pacerTokensPerMinute("local", { NURLAI_LOCAL_TOKENS_PER_MINUTE: value }),
+      ).toThrow("NURLAI_LOCAL_TOKENS_PER_MINUTE must be a positive integer");
     }
   });
 });

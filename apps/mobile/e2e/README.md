@@ -16,7 +16,7 @@ expects a running Nurlai stack and deliberately stays out of ordinary pull-reque
    simulator. For example:
 
    ```sh
-   EXPO_PUBLIC_API_URL=http://10.0.2.2:3100 pnpm --filter @rakazo/mobile android
+   EXPO_PUBLIC_API_URL=http://10.0.2.2:3100 pnpm --filter @nurlai/mobile android
    ```
 
 ## Run
@@ -24,10 +24,10 @@ expects a running Nurlai stack and deliberately stays out of ordinary pull-reque
 Pass all fixture values at invocation time so credentials never land in source control:
 
 ```sh
-pnpm --filter @rakazo/mobile test:e2e -- \
-  -e RAKAZO_E2E_EMAIL=mobile-smoke@example.test \
-  -e RAKAZO_E2E_PASSWORD='replace-with-the-disposable-password' \
-  -e RAKAZO_E2E_MESSAGE=mobile-smoke-message
+pnpm --filter @nurlai/mobile test:e2e -- \
+  -e NURLAI_E2E_EMAIL=mobile-smoke@example.test \
+  -e NURLAI_E2E_PASSWORD='replace-with-the-disposable-password' \
+  -e NURLAI_E2E_MESSAGE=mobile-smoke-message
 ```
 
 `clearState` resets the app's local session and endpoint data; it does not delete server-side bots.

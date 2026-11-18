@@ -1,11 +1,11 @@
 import { createRouterClient } from "@orpc/server";
-import type { McpOAuthSummary } from "@rakazo/adapters";
-import { McpOAuthClientRequiredError, McpOAuthRefusedError } from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
-import { MCP_OAUTH_CLIENT_REQUIRED } from "@rakazo/contracts";
-import { flush } from "@rakazo/core/test-async";
-import type { PrismaClient } from "@rakazo/db";
-import { createLogger, createTestSink, getLogger, installLogger } from "@rakazo/logging";
+import type { McpOAuthSummary } from "@nurlai/adapters";
+import { McpOAuthClientRequiredError, McpOAuthRefusedError } from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
+import { MCP_OAUTH_CLIENT_REQUIRED } from "@nurlai/contracts";
+import { flush } from "@nurlai/core/test-async";
+import type { PrismaClient } from "@nurlai/db";
+import { createLogger, createTestSink, getLogger, installLogger } from "@nurlai/logging";
 import { describe, expect, it, onTestFinished, vi } from "vitest";
 import type { RouterDeps } from "../router.js";
 import { appHandler, createRouter, handle } from "../router-test-support.js";

@@ -1,5 +1,5 @@
 {
-  "name": "@rakazo/memory",
+  "name": "@nurlai/memory",
   "version": "0.1.0",
   "license": "Apache-2.0",
   "type": "module",
@@ -15,11 +15,11 @@
     "test": "vitest run --root ../.. packages/memory/src"
   },
   "dependencies": {
-    "@rakazo/adapter-kit": "workspace:*",
-    "@rakazo/db": "workspace:*"
+    "@nurlai/adapter-kit": "workspace:*",
+    "@nurlai/db": "workspace:*"
   },
   "devDependencies": {
-    "@rakazo/core": "workspace:*",
+    "@nurlai/core": "workspace:*",
     "typescript": "7.0.2",
     "vitest": "5.1.0"
   }

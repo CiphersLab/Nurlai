@@ -4,11 +4,11 @@ import {
   historyCompactJob,
   messagingReplyJob,
   teamChatAmbientJob,
-} from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
-import type { PrismaClient } from "@rakazo/db";
-import { DatabaseOutage, databaseCapacityBackoffMs } from "@rakazo/db";
-import { createLogger, createTestSink, installLogger, wrapJobPayload } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
+import type { PrismaClient } from "@nurlai/db";
+import { DatabaseOutage, databaseCapacityBackoffMs } from "@nurlai/db";
+import { createLogger, createTestSink, installLogger, wrapJobPayload } from "@nurlai/logging";
 import type * as GraphileWorker from "graphile-worker";
 import type { Runner } from "graphile-worker";
 import { makeWorkerUtils } from "graphile-worker";

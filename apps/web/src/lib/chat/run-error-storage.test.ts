@@ -1,4 +1,4 @@
-import type { ThreadSnapshot } from "@rakazo/contracts";
+import type { ThreadSnapshot } from "@nurlai/contracts";
 import { describe, expect, it, vi } from "vitest";
 import { threadRunError } from "../query/thread-events";
 import {

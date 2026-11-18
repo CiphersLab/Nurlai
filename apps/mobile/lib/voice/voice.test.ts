@@ -1,6 +1,6 @@
-import { MAX_VOICE_AUDIO_BYTES, VOICE_RESPONSE_TIMEOUT_MS } from "@rakazo/core";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred, flush } from "@rakazo/core/test-async";
+import { MAX_VOICE_AUDIO_BYTES, VOICE_RESPONSE_TIMEOUT_MS } from "@nurlai/core";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred, flush } from "@nurlai/core/test-async";
 import { createAudioPlayer, setAudioModeAsync, setIsAudioActiveAsync } from "expo-audio";
 import * as SecureStore from "expo-secure-store";
 import * as Speech from "expo-speech";
@@ -105,7 +105,7 @@ describe("mobile speech", () => {
       apiBase: "https://support.example",
       headers: {
         authorization: "Bearer support-token",
-        "x-rakazo-space-id": "space-support",
+        "x-nurlai-space-id": "space-support",
       },
     });
     vi.mocked(rpc).mockImplementation(async (proc) => {
@@ -193,7 +193,7 @@ describe("mobile speech", () => {
       apiBase: "https://support.example",
       headers: {
         authorization: "Bearer support-token",
-        "x-rakazo-space-id": "space-support",
+        "x-nurlai-space-id": "space-support",
       },
     };
     expect(rpc).toHaveBeenCalledWith(
@@ -304,7 +304,7 @@ describe("hosted voice playback controls", () => {
     );
     vi.mocked(captureApiRequestContext).mockResolvedValue({
       apiBase: "https://support.example",
-      headers: { authorization: "Bearer support-token", "x-rakazo-space-id": "space-support" },
+      headers: { authorization: "Bearer support-token", "x-nurlai-space-id": "space-support" },
     });
     vi.mocked(rpc).mockImplementation(async (proc) => {
       if (proc === "aiConsent/status") return { version: "2026-09-14", recipients: [] } as never;

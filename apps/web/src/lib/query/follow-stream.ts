@@ -1,4 +1,4 @@
-import { isRetryableError, reconnectDelayMs, retryDelayMs } from "@rakazo/core";
+import { isRetryableError, reconnectDelayMs, retryDelayMs } from "@nurlai/core";
 
 /**
  * Follows a server stream until stopped: reconnects after it drops, backs off while it cannot

@@ -1,5 +1,5 @@
-import { runContinueJob } from "@rakazo/adapter-kit";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+import { runContinueJob } from "@nurlai/adapter-kit";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { afterEach, expect, it, vi } from "vitest";
 import type { TaughtSkillsDeps } from "./taught-skills.js";
 import { createTaughtSkillsService } from "./taught-skills.js";

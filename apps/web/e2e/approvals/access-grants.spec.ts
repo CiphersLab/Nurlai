@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import type { AccessGrant } from "@rakazo/contracts";
+import type { AccessGrant } from "@nurlai/contracts";
 import { captureScreenshot, completeOnboarding, makeAdmin, signup } from "../helpers/helpers";
 
 test("an admin grants free access to an email", async ({ page }, testInfo) => {

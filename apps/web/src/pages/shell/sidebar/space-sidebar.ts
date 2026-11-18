@@ -1,4 +1,4 @@
-import { chatSnoozed, chatWoke, groupBotsForSidebar } from "@rakazo/core";
+import { chatSnoozed, chatWoke, groupBotsForSidebar } from "@nurlai/core";
 
 type SidebarChat = {
   id: string;

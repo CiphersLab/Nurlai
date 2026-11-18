@@ -1,4 +1,4 @@
-import type { AgentRunRequest } from "@rakazo/adapter-kit";
+import type { AgentRunRequest } from "@nurlai/adapter-kit";
 import {
   expandSkillReferencesInPrompt,
   formatSkillRunPrompt,
@@ -6,9 +6,9 @@ import {
   promptInvokesSkill,
   redactSecrets,
   renderBotDirectory,
-} from "@rakazo/core";
-import { mayBeChannelMessage } from "@rakazo/db";
-import { bestEffort } from "@rakazo/logging";
+} from "@nurlai/core";
+import { mayBeChannelMessage } from "@nurlai/db";
+import { bestEffort } from "@nurlai/logging";
 import { loadBotGroupDirectory } from "../../bots/group-handoff.js";
 import { parsePlaybook } from "../../bots/teaching-session.js";
 import { lateRoutineRunInstruction } from "../../routines/routine-lateness.prompt.js";

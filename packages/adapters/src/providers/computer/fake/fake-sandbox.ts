@@ -12,9 +12,9 @@ import type {
   ScreenRequest,
   ScreenSession,
   TerminalRequest,
-} from "@rakazo/adapter-kit";
-import { SandboxFileTooLargeError } from "@rakazo/adapter-kit";
-import { canReleaseScreenLease, canTakeScreenLease } from "@rakazo/core/node/screen-lease";
+} from "@nurlai/adapter-kit";
+import { SandboxFileTooLargeError } from "@nurlai/adapter-kit";
+import { canReleaseScreenLease, canTakeScreenLease } from "@nurlai/core/node/screen-lease";
 import { sandboxCommandEnvironment } from "../../../computers/sandbox/sandbox-command-environment.js";
 import {
   ComputerScreenUnavailableError,

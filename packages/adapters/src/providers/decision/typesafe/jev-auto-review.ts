@@ -1,4 +1,4 @@
-import type { DecisionProviderOptions } from "@rakazo/adapter-kit";
+import type { DecisionProviderOptions } from "@nurlai/adapter-kit";
 import { DEFAULT_JEV_MODEL } from "../../../approvals/auto-review.js";
 import { DecisionAutoReviewProvider } from "../../../approvals/decision-auto-review.js";
 import { HttpDecisionProvider } from "../../../approvals/http-decisions.js";

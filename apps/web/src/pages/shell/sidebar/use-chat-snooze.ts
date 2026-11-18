@@ -1,7 +1,7 @@
 import { useLingui } from "@lingui/react/macro";
-import type { Bot, Group, Space } from "@rakazo/contracts";
-import { createSnoozeQueue } from "@rakazo/core";
-import { toast } from "@rakazo/ui-web";
+import type { Bot, Group, Space } from "@nurlai/contracts";
+import { createSnoozeQueue } from "@nurlai/core";
+import { toast } from "@nurlai/ui-web";
 import type { Dispatch, SetStateAction } from "react";
 import { useCallback, useState } from "react";
 import type { createSpaceRpc } from "../../../lib/query/rpc";

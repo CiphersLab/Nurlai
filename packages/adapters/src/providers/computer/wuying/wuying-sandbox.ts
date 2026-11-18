@@ -19,15 +19,15 @@ import type {
   ScreenSession,
   WorkspaceDirectoryRequest,
   WorkspaceExportLimits,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import {
   SandboxFileTooLargeError,
   SandboxUnavailableError,
   SandboxUnresponsiveError,
   WorkspaceTooLargeError,
-} from "@rakazo/adapter-kit";
-import { abortableDelay, isRetryableError } from "@rakazo/core";
-import { boundedSandboxCommandTimeoutMs } from "@rakazo/core/node/sandbox-command";
+} from "@nurlai/adapter-kit";
+import { abortableDelay, isRetryableError } from "@nurlai/core";
+import { boundedSandboxCommandTimeoutMs } from "@nurlai/core/node/sandbox-command";
 import { sandboxNotFoundError } from "../../../computers/sandbox/sandbox-errors.js";
 import {
   boundedComputerActions,

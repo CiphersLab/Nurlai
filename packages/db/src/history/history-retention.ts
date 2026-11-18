@@ -1,5 +1,5 @@
-import { ACTIVE_RUN_STATUSES } from "@rakazo/core";
-import { bestEffort } from "@rakazo/logging";
+import { ACTIVE_RUN_STATUSES } from "@nurlai/core";
+import { bestEffort } from "@nurlai/logging";
 import { createRetentionPruner } from "../account/security-events.js";
 import type { PrismaClient } from "../database/client.js";
 import { parsePositiveInteger } from "../database/client.js";

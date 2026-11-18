@@ -1,5 +1,5 @@
-import type { ChatAlert } from "@rakazo/contracts";
-import { flush } from "@rakazo/core/test-async";
+import type { ChatAlert } from "@nurlai/contracts";
+import { flush } from "@nurlai/core/test-async";
 import { describe, expect, it } from "vitest";
 import { createChatAlerts } from "./chat-alerts.js";
 

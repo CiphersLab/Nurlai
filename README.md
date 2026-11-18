@@ -5,7 +5,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/elie222/rakazo?labelColor=black&style=for-the-badge&color=2563EB)](https://github.com/elie222/rakazo/stargazers)
 [![Discord](https://img.shields.io/badge/Discord-Join%20the%20community-5865F2?labelColor=black&style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/RWwKa2Sn7h)
 [![Download on the App Store](https://img.shields.io/badge/App%20Store-Download%20for%20iPhone-black?labelColor=black&style=for-the-badge&logo=apple&logoColor=white)](https://apps.apple.com/app/rakazo/id6801531099)
-[![Get Android on Google Play](https://img.shields.io/badge/Google%20Play-Get%20the%20app-black?labelColor=black&style=for-the-badge&logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=com.rakazo.app)
+[![Get Android on Google Play](https://img.shields.io/badge/Google%20Play-Get%20the%20app-black?labelColor=black&style=for-the-badge&logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=com.nurlai.app)
 
 ![Nurlai — AI teammates you actually own](./docs/readme-hero.png)
 
@@ -14,13 +14,13 @@ Nurlai is an open source, self-hosted alternative to Grok Bot.
 Persistent AI teammates with their own memory, routines, apps, and computer. Run it on your own
 machine, with your own model.
 
-Use it on the [web](https://app.rakazo.com), [desktop](https://rakazo.com/download/), [iPhone](https://apps.apple.com/app/rakazo/id6801531099), and
-[Android](https://play.google.com/store/apps/details?id=com.rakazo.app).
+Use it on the [web](https://app.nurlai.cipherslab.com), [desktop](https://nurlai.cipherslab.com/download/), [iPhone](https://apps.apple.com/app/rakazo/id6801531099), and
+[Android](https://play.google.com/store/apps/details?id=com.nurlai.app).
 
 It is also an alternative to Meta Muse, OpenAI Dots, Instinct, OpenClaw, Hermes Agent, and Claude
 Duet.
 
-Learn more at [rakazo.com](https://rakazo.com).
+Learn more at [nurlai.cipherslab.com](https://nurlai.cipherslab.com).
 
 ## Features
 
@@ -120,8 +120,8 @@ New installs default to `latest` (stable releases, `linux/amd64` + `linux/arm64`
 release must exist; setup does not fall back to main builds. Details and tags:
 [self-hosting guide](./docs/self-host.md#published-images-no-checkout).
 
-On restricted networks, override the installer download base (`RAKAZO_DOWNLOAD_BASE`), skip
-existing Compose files (`--local` / `RAKAZO_DOWNLOAD_SKIP_EXISTING`), or mirror the bootstrap
+On restricted networks, override the installer download base (`NURLAI_DOWNLOAD_BASE`), skip
+existing Compose files (`--local` / `NURLAI_DOWNLOAD_SKIP_EXISTING`), or mirror the bootstrap
 script URL — see
 [Restricted networks / mirror downloads](./docs/self-host.md#restricted-networks--mirror-downloads).
 
@@ -134,7 +134,7 @@ the desktop app, the mobile app, or a browser.
 
 ```bash
 bash install-images.sh --prepare-only
-# edit .env: SANDBOX_PROVIDER=boat (or e2b / daytona / createos) with its API key, RAKAZO_HOST=your.domain
+# edit .env: SANDBOX_PROVIDER=boat (or e2b / daytona / createos) with its API key, NURLAI_HOST=your.domain
 bash install-images.sh
 ```
 
@@ -157,7 +157,7 @@ cp .env.example .env
 
 Set `POSTGRES_PASSWORD` and `POSTGRES_APP_PASSWORD` to two values from `openssl rand -hex 16`,
 then put them in `DATABASE_MIGRATION_URL` and `DATABASE_URL`. The app connects as its own
-`rakazo_app` login, which row-level security applies to; migrations run as the owner
+`nurlai_app` login, which row-level security applies to; migrations run as the owner
 ([database roles](docs/self-host-configuration.md#database-roles)). Set `BETTER_AUTH_SECRET`, `ENCRYPTION_KEY`, and `SCREEN_PROXY_SECRET` to
 independent long random values. Docker sandboxes also need a dedicated
 `SANDBOX_SUPERVISOR_TOKEN`. You can also set `OPENROUTER_API_KEY`, or connect a supported
@@ -188,7 +188,7 @@ pnpm dev
 ```
 
 `pnpm dev` uses the Postgres in `DATABASE_URL` when it accepts a connection. Otherwise it starts a
-local `rakazo-dev-postgres` container with Docker, and every checkout reuses that one. It applies
+local `nurlai-dev-postgres` container with Docker, and every checkout reuses that one. It applies
 migrations and generates the Prisma client before starting. A branch that adds migrations main
 doesn't have gets its own database on the same server, copied from the shared one when possible,
 so unmerged schema changes stay out of it. When the default ports are taken, for example by
@@ -196,12 +196,12 @@ another git worktree, it moves to the next free block and prints the URL. Set `W
 `API_PORT` to choose ports yourself.
 
 To try a checkout from your phone or another computer, install [Tailscale](https://tailscale.com)
-on each device and set `RAKAZO_DEV_TAILNET=1` in `.env`. `pnpm dev` then serves the web app over
+on each device and set `NURLAI_DEV_TAILNET=1` in `.env`. `pnpm dev` then serves the web app over
 HTTPS at `https://<machine>.<tailnet>.ts.net:<web port>`, reachable only from devices on your
 tailnet, and stops serving it when you quit. Sign in at that URL on every device, including the
 one running it. The first run may ask you to turn on HTTPS certificates for your tailnet.
 
-To keep keys in a secrets manager instead of `.env`, set `RAKAZO_DEV_RUN_WITH` to the command
+To keep keys in a secrets manager instead of `.env`, set `NURLAI_DEV_RUN_WITH` to the command
 that runs another with your secrets added, for example `op run --env-file=dev.env --` or
 `infisical run --env=dev --projectId=<project> --`. `pnpm dev` then starts inside it, and the
 values it adds win over `.env`.
@@ -259,7 +259,7 @@ The Electron and Expo apps are clients of the same Nurlai API used by the web ap
 With the development stack running, launch Electron with:
 
 ```bash
-pnpm --filter @rakazo/desktop dev
+pnpm --filter @nurlai/desktop dev
 ```
 
 On first run the desktop app asks whether to run Nurlai on this computer or connect to an existing
@@ -292,12 +292,12 @@ chmod +x Nurlai-*.AppImage
 ```
 
 The Docker path of **This computer** looks for the `docker` CLI and does not detect Podman. To try another
-Docker-compatible CLI that supports the `compose` commands, set `RAKAZO_DOCKER_BINARY` to its path
+Docker-compatible CLI that supports the `compose` commands, set `NURLAI_DOCKER_BINARY` to its path
 before starting the app.
 
 Use **Change Nurlai Server…** in the application menu to reconnect. Closing that window without
-saving returns to the previous instance. For development automation, set `RAKAZO_WEB_URL` to point
-the shell somewhere else without changing the saved instance, or `RAKAZO_FORCE_SETUP=1` to run
+saving returns to the previous instance. For development automation, set `NURLAI_WEB_URL` to point
+the shell somewhere else without changing the saved instance, or `NURLAI_FORCE_SETUP=1` to run
 setup again.
 
 Mobile build and release instructions live in [docs/mobile-release.md](./docs/mobile-release.md).
@@ -366,13 +366,13 @@ Chinese guides cover [self-hosting](./docs/zh-CN/self-host.md), [models](./docs/
 
 ## How Nurlai compares
 
-- [Grok Bot](https://rakazo.com/grok-bot-alternative/)
-- [Muse](https://rakazo.com/muse-alternative/)
-- [Dots](https://rakazo.com/dots-alternative/)
-- [Instinct](https://rakazo.com/instinct-alternative/)
-- [OpenClaw](https://rakazo.com/openclaw-alternative/)
-- [Hermes Agent](https://rakazo.com/hermes-alternative/)
-- [All comparisons](https://rakazo.com/alternatives/)
+- [Grok Bot](https://nurlai.cipherslab.com/grok-bot-alternative/)
+- [Muse](https://nurlai.cipherslab.com/muse-alternative/)
+- [Dots](https://nurlai.cipherslab.com/dots-alternative/)
+- [Instinct](https://nurlai.cipherslab.com/instinct-alternative/)
+- [OpenClaw](https://nurlai.cipherslab.com/openclaw-alternative/)
+- [Hermes Agent](https://nurlai.cipherslab.com/hermes-alternative/)
+- [All comparisons](https://nurlai.cipherslab.com/alternatives/)
 
 ## Thanks
 

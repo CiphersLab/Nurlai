@@ -8,14 +8,14 @@ import {
   MessagingDelivery,
   ScriptedAgentRuntime,
   SendBlueEmulator,
-} from "@rakazo/adapters";
-import type { PrismaClient } from "@rakazo/db";
+} from "@nurlai/adapters";
+import type { PrismaClient } from "@nurlai/db";
 import {
   createThreadEvents,
   createThreadMessage,
   formatMessagingLinkCode,
   issueMessagingLinkCode,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { asSystem } from "../system-db.js";
 
@@ -103,7 +103,7 @@ describeMessaging("messaging surface journeys", () => {
   };
 
   beforeAll(async () => {
-    const { createApp } = await import("@rakazo/api/app");
+    const { createApp } = await import("@nurlai/api/app");
     const handles = await createApp({
       databaseUrl: process.env.DATABASE_URL!,
       dataDir,

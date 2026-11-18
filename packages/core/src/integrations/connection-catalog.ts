@@ -1,4 +1,4 @@
-import type { Connection, ConnectionCatalogItem } from "@rakazo/contracts";
+import type { Connection, ConnectionCatalogItem } from "@nurlai/contracts";
 import { abortableDelay } from "../primitives/async.js";
 
 type CatalogRef = Pick<ConnectionCatalogItem, "connectorId" | "slug">;

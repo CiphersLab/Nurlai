@@ -25,8 +25,8 @@ export const OFFICIAL_SERVER_IMAGE = `ghcr.io/${PUBLISHED_IMAGE_REPO}/app`;
  */
 export const LOCAL_IMAGE_TAG = "local";
 export const DEFAULT_IMAGE_TAG = LOCAL_IMAGE_TAG;
-export const IMAGE_TAG_ENV = "RAKAZO_IMAGE_TAG";
-export const PREVIOUS_IMAGE_TAG_ENV = "RAKAZO_IMAGE_TAG_PREVIOUS";
+export const IMAGE_TAG_ENV = "NURLAI_IMAGE_TAG";
+export const PREVIOUS_IMAGE_TAG_ENV = "NURLAI_IMAGE_TAG_PREVIOUS";
 
 /**
  * The `name:` pinned in `infra/compose/docker-compose.prod.yml`. Used when Compose has not
@@ -34,12 +34,12 @@ export const PREVIOUS_IMAGE_TAG_ENV = "RAKAZO_IMAGE_TAG_PREVIOUS";
  */
 export const DEFAULT_COMPOSE_PROJECT_NAME = "rakazo-prod";
 export const COMPOSE_PROJECT_NAME_ENV = "COMPOSE_PROJECT_NAME";
-export const COMPOSE_PROJECT_NAME_OVERRIDE_ENV = "RAKAZO_COMPOSE_PROJECT_NAME";
+export const COMPOSE_PROJECT_NAME_OVERRIDE_ENV = "NURLAI_COMPOSE_PROJECT_NAME";
 
 /**
  * The services a recreate replaces. `updater` is deliberately absent: it is the process running
  * the update, and recreating it would kill the run half way through. `postgres` and `caddy` are
- * absent because neither uses the Rakazo image.
+ * absent because neither uses the Nurlai image.
  */
 export const RECREATED_SERVICES = ["api", "worker", "web"] as const;
 

@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { deferred, flush } from "@rakazo/core/test-async";
+import { deferred, flush } from "@nurlai/core/test-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { ComponentProps, ReactNode } from "react";
 import { act } from "react";
@@ -28,10 +28,10 @@ vi.mock("@lingui/react/macro", () => {
   const t = (parts: TemplateStringsArray) => parts.join("");
   return { useLingui: () => ({ t }), Trans: ({ children }: { children: ReactNode }) => children };
 });
-vi.mock("@rakazo/chat-ui/web", () => ({
+vi.mock("@nurlai/chat-ui/web", () => ({
   ChatMarkdown: ({ children }: { children?: ReactNode }) => <div>{children}</div>,
 }));
-vi.mock("@rakazo/ui-web", () => {
+vi.mock("@nurlai/ui-web", () => {
   const Container = ({ children }: { children?: ReactNode }) => <div>{children}</div>;
   return {
     AlertDialog: ({ children }: { children?: ReactNode }) => (

@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import { isRetryableError, reportUiLocale } from "@rakazo/core";
+import { isRetryableError, reportUiLocale } from "@nurlai/core";
 import { useRouter } from "expo-router";
 import type { RefObject } from "react";
 import { useCallback, useRef, useState } from "react";

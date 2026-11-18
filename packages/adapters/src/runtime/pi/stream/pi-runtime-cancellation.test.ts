@@ -1,9 +1,9 @@
-import type { AgentRunRequest } from "@rakazo/adapter-kit";
+import type { AgentRunRequest } from "@nurlai/adapter-kit";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { builtinAgentTools } from "../../../tools/builtin.tool-definition.js";
 
 const fake = await vi.hoisted(async () => {
-  const { deferred } = await import("@rakazo/core/test-async");
+  const { deferred } = await import("@nurlai/core/test-async");
   type Tool = {
     name: string;
     execute(id: string, args: Record<string, unknown>): Promise<unknown>;

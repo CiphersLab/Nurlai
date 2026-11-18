@@ -1,7 +1,7 @@
-import type { SecretStore } from "@rakazo/adapter-kit";
-import { VoiceAccountError } from "@rakazo/adapter-kit";
-import type { PrismaClient } from "@rakazo/db";
-import { findModelCredential } from "@rakazo/db";
+import type { SecretStore } from "@nurlai/adapter-kit";
+import { VoiceAccountError } from "@nurlai/adapter-kit";
+import type { PrismaClient } from "@nurlai/db";
+import { findModelCredential } from "@nurlai/db";
 import {
   resolveStoredModelAuth,
   withModelCredentialLock,

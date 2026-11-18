@@ -1,5 +1,5 @@
 export const message =
-  "Do not hand-write an attempt loop or a backoff formula. Use retry(operation, { attempts, delayMs, retryable, signal }) from @rakazo/core; pass delayMs to reproduce a specific schedule. If the loop waits for a condition instead of retrying a failure, use pollUntil.";
+  "Do not hand-write an attempt loop or a backoff formula. Use retry(operation, { attempts, delayMs, retryable, signal }) from @nurlai/core; pass delayMs to reproduce a specific schedule. If the loop waits for a condition instead of retrying a failure, use pollUntil.";
 
 export const include = [
   "{packages/{adapters,core,db,auth,memory,logging},apps/{api,worker},infra/sandboxes/supervisor,infra/updater}/src/**/*.{ts,tsx,mts,cts,js,mjs,cjs}",

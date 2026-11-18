@@ -1,8 +1,8 @@
 import type { OAuthClientProvider } from "@modelcontextprotocol/sdk/client/auth.js";
-import type { AdapterContext, BackgroundJobHandlers } from "@rakazo/adapter-kit";
-import { BOT_SECRET_VALUE_MAX_LENGTH, encodeLoginSecret } from "@rakazo/contracts";
-import type { Prisma, PrismaClient } from "@rakazo/db";
-import { currentDbContext, runAsTenant, withTransactionRetry } from "@rakazo/db";
+import type { AdapterContext, BackgroundJobHandlers } from "@nurlai/adapter-kit";
+import { BOT_SECRET_VALUE_MAX_LENGTH, encodeLoginSecret } from "@nurlai/contracts";
+import type { Prisma, PrismaClient } from "@nurlai/db";
+import { currentDbContext, runAsTenant, withTransactionRetry } from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import { McpConnector } from "../mcp/mcp-connector.js";
 import { McpOAuthBroker } from "../mcp/mcp-oauth.js";

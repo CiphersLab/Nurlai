@@ -5,7 +5,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import type { ElectronApplication } from "@playwright/test";
 import { _electron as electron, expect, test } from "@playwright/test";
-import type { RakazoDesktop } from "@rakazo/contracts";
+import type { NurlaiDesktop } from "@nurlai/contracts";
 import { shownWindow } from "./shown-window.js";
 
 const fixture = `<!doctype html>
@@ -62,8 +62,8 @@ test("launches with a narrow preload bridge and an isolated renderer", async () 
     cwd: path.resolve(import.meta.dirname, ".."),
     env: {
       ...process.env,
-      RAKAZO_PERFORMANCE_USER_DATA: userData,
-      RAKAZO_WEB_URL: `http://127.0.0.1:${address.port}`,
+      NURLAI_PERFORMANCE_USER_DATA: userData,
+      NURLAI_WEB_URL: `http://127.0.0.1:${address.port}`,
     },
   });
 
@@ -72,7 +72,7 @@ test("launches with a narrow preload bridge and an isolated renderer", async () 
   await expect(page).toHaveTitle("Nurlai desktop smoke");
 
   const renderer = await page.evaluate(async () => {
-    const desktop = (window as typeof window & { rakazoDesktop?: RakazoDesktop }).rakazoDesktop;
+    const desktop = (window as typeof window & { nurlaiDesktop?: NurlaiDesktop }).nurlaiDesktop;
 
     return {
       computerKeys: desktop?.computer ? Object.keys(desktop.computer).sort() : [],

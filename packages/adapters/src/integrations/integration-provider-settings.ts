@@ -3,10 +3,10 @@ import type {
   ConnectorCall,
   ManagedConnectorProvider,
   SecretStore,
-} from "@rakazo/adapter-kit";
-import type { IntegrationProviderConfig as SubmittedConfig } from "@rakazo/contracts";
-import { ClientError } from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
+} from "@nurlai/adapter-kit";
+import type { IntegrationProviderConfig as SubmittedConfig } from "@nurlai/contracts";
+import { ClientError } from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
 import * as z from "zod";
 import { ComposioConnector } from "../providers/integration/composio/composio-connector.js";
 import { PipedreamConnector } from "../providers/integration/pipedream/pipedream-connector.js";

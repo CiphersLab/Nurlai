@@ -1,7 +1,7 @@
 import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
-import type { Bot, ComputerReleaseReason, ComputerStatus, TaughtSkill } from "@rakazo/contracts";
-import { BotAvatar, Button } from "@rakazo/ui-web";
+import type { Bot, ComputerReleaseReason, ComputerStatus, TaughtSkill } from "@nurlai/contracts";
+import { BotAvatar, Button } from "@nurlai/ui-web";
 import { X } from "lucide-react";
 import type { ReactNode } from "react";
 import { TeachCaptureOverlay } from "../../../components/teach/TeachCaptureOverlay";

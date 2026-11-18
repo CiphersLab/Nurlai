@@ -10,13 +10,13 @@ import type {
   StreamedPortableFile,
   WorkspaceDirectoryRequest,
   WorkspaceExportLimits,
-} from "@rakazo/adapter-kit";
-import { WorkspaceTooLargeError } from "@rakazo/adapter-kit";
-import type { ComputerMode } from "@rakazo/contracts";
-import { browserProfilePathForScreen } from "@rakazo/core/node/desktop-runtime";
-import { parseScreenLeaseId } from "@rakazo/core/node/screen-lease";
-import type { PrismaClient } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { WorkspaceTooLargeError } from "@nurlai/adapter-kit";
+import type { ComputerMode } from "@nurlai/contracts";
+import { browserProfilePathForScreen } from "@nurlai/core/node/desktop-runtime";
+import { parseScreenLeaseId } from "@nurlai/core/node/screen-lease";
+import type { PrismaClient } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { createStagingDirectory, LocalAgentHomeStore } from "../storage/home.js";
 import {
   shouldSkipPortableWorkspaceFile,

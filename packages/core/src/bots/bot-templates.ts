@@ -1,4 +1,4 @@
-import type { BotTemplate, ConnectionCatalogItem } from "@rakazo/contracts";
+import type { BotTemplate, ConnectionCatalogItem } from "@nurlai/contracts";
 import { matchConnectedAppCatalog } from "../integrations/app-connect.js";
 
 /**

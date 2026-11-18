@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
-import type { BotAvatarSet } from "@rakazo/contracts";
-import { DEFAULT_BOT_AVATAR_COLOR } from "@rakazo/ui-web";
+import type { BotAvatarSet } from "@nurlai/contracts";
+import { DEFAULT_BOT_AVATAR_COLOR } from "@nurlai/ui-web";
 import type { ReactNode } from "react";
 import { act, useState } from "react";
 import type { Root } from "react-dom/client";
@@ -77,17 +77,17 @@ describe("selectable bot icon sets", () => {
     await render("#10B981");
     await click("Customize bot avatar");
     expect(button("Original").getAttribute("aria-selected")).toBe("true");
-    expect(document.querySelector(".rakazo-organic-avatar")).not.toBeNull();
+    expect(document.querySelector(".nurlai-organic-avatar")).not.toBeNull();
     expect(changed).not.toHaveBeenCalled();
     await click("Nurlai");
     expect(changed).toHaveBeenLastCalledWith("#10B981", "rakazo");
-    expect(document.querySelector(".rakazo-logo-avatar")).not.toBeNull();
+    expect(document.querySelector(".nurlai-logo-avatar")).not.toBeNull();
     await render("#10B981", "rakazo", "reload");
     await click("Customize bot avatar");
     expect(button("Nurlai").getAttribute("aria-selected")).toBe("true");
     await click("Original");
     expect(changed).toHaveBeenLastCalledWith("#10B981", "organic");
-    expect(document.querySelector(".rakazo-organic-avatar")).not.toBeNull();
+    expect(document.querySelector(".nurlai-organic-avatar")).not.toBeNull();
     expect(button("wedge")).toBeDefined();
   });
 

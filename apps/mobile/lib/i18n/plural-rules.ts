@@ -1,4 +1,4 @@
-import { polishPluralCategory } from "@rakazo/core";
+import { polishPluralCategory } from "@nurlai/core";
 
 /** The plural category of a whole number, for the languages mobile ships. */
 export function pluralCategory(locale: string, count: number): Intl.LDMLPluralRule {

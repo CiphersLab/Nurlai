@@ -1,5 +1,5 @@
-import type { LabFeature } from "@rakazo/contracts";
-import { LAB_FEATURES } from "@rakazo/contracts";
+import type { LabFeature } from "@nurlai/contracts";
+import { LAB_FEATURES } from "@nurlai/contracts";
 
 const BOARD_ENV = "TICKET_BOARD_ENABLED";
 

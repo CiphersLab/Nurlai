@@ -1,4 +1,4 @@
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const sentry = vi.hoisted(() => ({
@@ -172,7 +172,7 @@ describe("browser monitoring", () => {
   it("stays off in a desktop build that does not report errors", async () => {
     vi.resetModules();
     const fresh = await import("./monitoring");
-    vi.stubGlobal("window", { rakazoDesktop: { monitoring: { enabled: async () => false } } });
+    vi.stubGlobal("window", { nurlaiDesktop: { monitoring: { enabled: async () => false } } });
     try {
       expect(
         await fresh.startMonitoring(respond({ dsn: "https://key@errors.example.com/8" })),

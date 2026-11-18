@@ -3,13 +3,13 @@ import type {
   AgentImportFile,
   AgentImportMemoryDestination,
   AgentImportPlan,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   BOT_INSTRUCTIONS_MAX_LENGTH,
   GROK_BOT_EXPORT_MAX_LENGTH,
   GROK_BOT_EXPORT_PATH,
-} from "@rakazo/contracts";
-import type { AgentImportReader, GrokBot } from "@rakazo/core";
+} from "@nurlai/contracts";
+import type { AgentImportReader, GrokBot } from "@nurlai/core";
 import {
   AGENT_IMPORT_ARCHIVE_LIMITS,
   AGENT_IMPORT_NOT_FOUND,
@@ -25,7 +25,7 @@ import {
   newClientId,
   openAgentImportArchive,
   parseGrokBotExport,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { useEffect, useRef, useState } from "react";
 import { readAgentDocument } from "../../../lib/bots/agent-document";
 import { agentImportErrorText, grokBotErrorText } from "../../../lib/bots/agent-import-errors";

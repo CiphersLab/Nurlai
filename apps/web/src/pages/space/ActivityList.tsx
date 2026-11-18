@@ -1,7 +1,7 @@
 import { t } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { Bot, Group, RunActivityRow, RunStatus } from "@rakazo/contracts";
-import { activitySections } from "@rakazo/core";
+import type { Bot, Group, RunActivityRow, RunStatus } from "@nurlai/contracts";
+import { activitySections } from "@nurlai/core";
 import {
   BotAvatar,
   Button,
@@ -14,7 +14,7 @@ import {
   OptionSelect,
   SectionHeading,
   Spinner,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { useQuery } from "@tanstack/react-query";
 import { ChevronDown } from "lucide-react";
 import type { ReactNode } from "react";

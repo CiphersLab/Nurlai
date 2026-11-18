@@ -1,5 +1,5 @@
-import type { Actor, ExternalConversation, ExternalConversationPolicy } from "@rakazo/contracts";
-import { AutomatedSenderPoliciesSchema } from "@rakazo/contracts";
+import type { Actor, ExternalConversation, ExternalConversationPolicy } from "@nurlai/contracts";
+import { AutomatedSenderPoliciesSchema } from "@nurlai/contracts";
 import type { PrismaClient } from "../database/client.js";
 import { Prisma } from "../database/client.js";
 import { IsolationError } from "../database/scope.js";

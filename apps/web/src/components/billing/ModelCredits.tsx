@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
 import { ORPCError } from "@orpc/client";
-import type { BillingStatus, ByokInterval, ByokTier, HeldCreditAmount } from "@rakazo/contracts";
+import type { BillingStatus, ByokInterval, ByokTier, HeldCreditAmount } from "@nurlai/contracts";
 import {
   ByokIntervalSchema,
   ByokTierSchema,
@@ -14,7 +14,7 @@ import {
   isCancelledTrial,
   MODEL_CREDIT_AMOUNTS,
   ModelCreditAmountSchema,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -42,8 +42,8 @@ import {
   SelectValue,
   ToggleGroup,
   ToggleGroupItem,
-} from "@rakazo/ui-web";
-import { cn } from "@rakazo/ui-web/lib/utils";
+} from "@nurlai/ui-web";
+import { cn } from "@nurlai/ui-web/lib/utils";
 import { Check } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useSignOut } from "../../lib/auth/sign-out";

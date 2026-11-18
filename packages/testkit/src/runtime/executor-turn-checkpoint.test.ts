@@ -1,6 +1,6 @@
-import type { AgentRunModel } from "@rakazo/adapter-kit";
-import { APPROVED_ACTION_NOT_RUN_ERROR, isConversationalRun } from "@rakazo/core";
-import { deferred } from "@rakazo/core/test-async";
+import type { AgentRunModel } from "@nurlai/adapter-kit";
+import { APPROVED_ACTION_NOT_RUN_ERROR, isConversationalRun } from "@nurlai/core";
+import { deferred } from "@nurlai/core/test-async";
 import { describe, expect, it, vi } from "vitest";
 import type * as ComputerLifecycle from "../../../adapters/src/computers/computer-lifecycle.js";
 import { createRunExecutor } from "../../../adapters/src/runs/executor/executor.js";

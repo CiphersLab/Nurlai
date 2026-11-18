@@ -4,7 +4,7 @@ import {
   getSupportedThinkingLevels,
   normalizeContext,
 } from "@earendil-works/pi-ai";
-import type { AgentRunRequest } from "@rakazo/adapter-kit";
+import type { AgentRunRequest } from "@nurlai/adapter-kit";
 import { describe, expect, it, vi } from "vitest";
 import { buildModelConnectPlaintext, modelCredentialDto } from "../../models/model-connect.js";
 import { defaultCatalogModelId, isCatalogModelChoice } from "../../models/model-selection.js";

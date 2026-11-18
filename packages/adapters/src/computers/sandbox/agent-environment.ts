@@ -1,4 +1,4 @@
-import { redactSecrets } from "@rakazo/core";
+import { redactSecrets } from "@nurlai/core";
 
 export function redactShellStreams(
   snapshot: { stdout: string; stderr: string },

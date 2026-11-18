@@ -1,9 +1,9 @@
 import { useLingui } from "@lingui/react/macro";
-import type { VaultKind, VaultPolicy } from "@rakazo/contracts";
-import { VaultPolicy as Policies } from "@rakazo/contracts";
-import { vaultAccessControls, vaultBotChoices } from "@rakazo/core";
-import { vaultPolicyLabels } from "@rakazo/i18n/vault";
-import { ToggleGroup, ToggleGroupItem } from "@rakazo/ui-web";
+import type { VaultKind, VaultPolicy } from "@nurlai/contracts";
+import { VaultPolicy as Policies } from "@nurlai/contracts";
+import { vaultAccessControls, vaultBotChoices } from "@nurlai/core";
+import { vaultPolicyLabels } from "@nurlai/i18n/vault";
+import { ToggleGroup, ToggleGroupItem } from "@nurlai/ui-web";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { useSpaceQueries } from "../../lib/query/query";

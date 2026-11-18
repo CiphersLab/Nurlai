@@ -1,7 +1,7 @@
 import { t } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import type { SpaceBot, SpaceGroup } from "@rakazo/contracts";
-import { accountDisplay, chatSnoozed } from "@rakazo/core";
+import type { SpaceBot, SpaceGroup } from "@nurlai/contracts";
+import { accountDisplay, chatSnoozed } from "@nurlai/core";
 import type { Href } from "expo-router";
 import {
   Redirect,

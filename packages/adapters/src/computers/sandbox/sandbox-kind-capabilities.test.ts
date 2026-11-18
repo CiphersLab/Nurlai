@@ -1,4 +1,4 @@
-import type { SandboxKindCapabilities } from "@rakazo/adapter-kit";
+import type { SandboxKindCapabilities } from "@nurlai/adapter-kit";
 import { describe, expect, it } from "vitest";
 import type { KnownSandboxKind } from "./sandbox-kind-capabilities.js";
 import {

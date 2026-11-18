@@ -1,5 +1,5 @@
-import type { AgentUsage, ModelUsageLookup } from "@rakazo/adapter-kit";
-import type { PrismaClient } from "@rakazo/db";
+import type { AgentUsage, ModelUsageLookup } from "@nurlai/adapter-kit";
+import type { PrismaClient } from "@nurlai/db";
 import {
   expireModelCredits,
   hasFinalModelCost,
@@ -11,8 +11,8 @@ import {
   recordModelCreditReceipt,
   recordUsage,
   runAsSystem,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { z } from "zod";
 import type { ModelCreditOffering } from "../../model-credits/offerings.js";
 import { offeringUsage } from "../../model-credits/offerings.js";

@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { ProviderSettingsField } from "@rakazo/contracts";
-import type { SettingsFieldProblem } from "@rakazo/core";
+import type { ProviderSettingsField } from "@nurlai/contracts";
+import type { SettingsFieldProblem } from "@nurlai/core";
 import {
   initialSettingsValues,
   keepsSavedSecrets,
@@ -8,7 +8,7 @@ import {
   settingsFormReady,
   settingsSubmission,
   visibleSettingsFields,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import {
   Button,
   Collapsible,
@@ -22,7 +22,7 @@ import {
   Switch,
   ToggleGroup,
   ToggleGroupItem,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { ChevronDownIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { useId, useState } from "react";

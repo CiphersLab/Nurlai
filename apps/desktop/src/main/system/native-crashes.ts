@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { readdir, stat } from "node:fs/promises";
 import path from "node:path";
-import type { ClientOperation } from "@rakazo/logging/monitoring";
+import type { ClientOperation } from "@nurlai/logging/monitoring";
 import { app, crashReporter, webContents } from "electron";
 import { readPrivateFile, writePrivateFile } from "../setup/setup-store.js";
 import { createRendererMemoryHistory } from "../windows/renderer-memory.js";

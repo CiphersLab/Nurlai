@@ -3,8 +3,8 @@ import type {
   ModelOAuthBegin,
   SettingsScope,
   ThinkingLevel,
-} from "@rakazo/contracts";
-import { cancelModelOAuthAttempt, finishModelOAuthAttempt } from "@rakazo/core";
+} from "@nurlai/contracts";
+import { cancelModelOAuthAttempt, finishModelOAuthAttempt } from "@nurlai/core";
 import { useEffect, useRef, useState } from "react";
 import {
   analyticsSurface,

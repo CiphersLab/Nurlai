@@ -3,8 +3,8 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import type { PeerCertificate } from "node:tls";
 import { rootCertificates } from "node:tls";
-import type { AdapterContext, ComputerRef, ProcessEvent } from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
+import type { AdapterContext, ComputerRef, ProcessEvent } from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
 import { describe, expect, it, vi } from "vitest";
 import {
   MachineRecords,
@@ -40,7 +40,7 @@ describe("IncusSandboxProvider", () => {
     const fake = new FakeIncus();
     const provider = providerFor(fake, {
       project: "computers",
-      computerImage: "registry.example.test/rakazo/computer:v1",
+      computerImage: "registry.example.test/nurlai/computer:v1",
       cpuLimit: "1",
       memoryLimit: "1536MiB",
       processLimit: "512",
@@ -63,7 +63,7 @@ describe("IncusSandboxProvider", () => {
         type: "image",
         protocol: "oci",
         server: "https://registry.example.test",
-        alias: "rakazo/computer:v1",
+        alias: "nurlai/computer:v1",
       },
       config: {
         "user.rakazo-bot-id": "bot-a",
@@ -113,7 +113,7 @@ describe("IncusSandboxProvider", () => {
     const fake = new FakeIncus();
     await providerFor(fake).provision({ botId: "bot-a", homePath: "/unused" }, context);
     expect(fake.requests.find((entry) => entry.method === "POST")?.body).toMatchObject({
-      source: { server: "https://ghcr.io", alias: "elie222/rakazo/computer:edge" },
+      source: { server: "https://ghcr.io", alias: "elie222/nurlai/computer:edge" },
       config: { "limits.cpu": "2", "limits.memory": "2GiB", "limits.processes": "2048" },
     });
   });
@@ -722,8 +722,8 @@ describe("IncusSandboxProvider", () => {
     ["fd42::8", "http://[fd42::8]:6100/embed.html", ":::6100"],
   ])("serves screens from the instance address %s", async (address, url, bind) => {
     const fake = new FakeIncus((command) =>
-      command.some((arg) => arg.includes("RAKAZO_DESKTOP="))
-        ? { stdout: "RAKAZO_DESKTOP=0:token\n" }
+      command.some((arg) => arg.includes("NURLAI_DESKTOP="))
+        ? { stdout: "NURLAI_DESKTOP=0:token\n" }
         : {},
     );
     fake.instances.set("box", running("bot-a", address));
@@ -745,7 +745,7 @@ describe("IncusSandboxProvider", () => {
   });
 
   it("attaches the controlled terminal without replacing the bot run screen fence", async () => {
-    const fake = new FakeIncus(() => ({ stdout: "RAKAZO_DESKTOP=0:view-token\n" }));
+    const fake = new FakeIncus(() => ({ stdout: "NURLAI_DESKTOP=0:view-token\n" }));
     fake.instances.set("box", running());
     await providerFor(fake).connectTerminal(
       computer,
@@ -800,7 +800,7 @@ describe("IncusSandboxProvider", () => {
 
 describe("ociImageSource", () => {
   it.each([
-    ["ghcr.io/elie222/rakazo/computer:edge", "https://ghcr.io", "elie222/rakazo/computer:edge"],
+    ["ghcr.io/elie222/nurlai/computer:edge", "https://ghcr.io", "elie222/nurlai/computer:edge"],
     [
       "registry.example.test:5000/computer@sha256:abc",
       "https://registry.example.test:5000",

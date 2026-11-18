@@ -1,5 +1,5 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { Bot, Group } from "@rakazo/contracts";
+import type { Bot, Group } from "@nurlai/contracts";
 import {
   BotAvatar,
   Button,
@@ -8,7 +8,7 @@ import {
   ContextMenuItem,
   ContextMenuTrigger,
   GroupAvatar,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { ArchiveRestore, Trash2 } from "lucide-react";
 import type { ReactNode } from "react";
 import type { createSpaceRpc } from "../../../lib/query/rpc";

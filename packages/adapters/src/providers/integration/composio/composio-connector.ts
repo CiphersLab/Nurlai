@@ -11,11 +11,11 @@ import type {
   ConnectorEvent,
   ConnectorTool,
   ManagedConnectorProvider,
-} from "@rakazo/adapter-kit";
-import { ConnectorAuthUnavailableError } from "@rakazo/adapter-kit";
-import { humanizeToolName } from "@rakazo/core";
-import { isVitestRuntime } from "@rakazo/core/node/test-runtime";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { ConnectorAuthUnavailableError } from "@nurlai/adapter-kit";
+import { humanizeToolName } from "@nurlai/core";
+import { isVitestRuntime } from "@nurlai/core/node/test-runtime";
+import { getLogger } from "@nurlai/logging";
 import { collectPages, filterCatalog } from "../../../integrations/connector-catalog.js";
 import { COMPOSIO_MULTI_EXECUTE_TOOL, composioToolBatch } from "./composio-batch.js";
 import type { ToolkitDirectoryEntry } from "./composio-catalog-cache.js";

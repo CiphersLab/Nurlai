@@ -1,9 +1,9 @@
 import { RPCHandler } from "@orpc/server/fetch";
-import { SecretStoreUnavailableError } from "@rakazo/adapter-kit";
-import { listPiCatalog } from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
-import { MAX_MODEL_SETTINGS_PER_CONNECTION, REPLY_QUOTE_MAX_LENGTH } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
+import { SecretStoreUnavailableError } from "@nurlai/adapter-kit";
+import { listPiCatalog } from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
+import { MAX_MODEL_SETTINGS_PER_CONNECTION, REPLY_QUOTE_MAX_LENGTH } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import type { RouterDeps } from "../router.js";
 import type { RouterHandler } from "../router-test-support.js";

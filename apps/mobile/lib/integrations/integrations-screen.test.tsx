@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
-import { MCP_OAUTH_CLIENT_REQUIRED } from "@rakazo/contracts";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred, flush } from "@rakazo/core/test-async";
+import { MCP_OAUTH_CLIENT_REQUIRED } from "@nurlai/contracts";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred, flush } from "@nurlai/core/test-async";
 import type { ReactNode } from "react";
 import { act, createElement, useEffect } from "react";
 import type { Root } from "react-dom/client";
@@ -43,7 +43,7 @@ vi.mock("../api/api", () => ({
   captureApiRequestContext: async (spaceId: string | null = "space-fixture") => ({
     apiBase: "https://app.example.test",
     sessionGeneration: 1,
-    headers: spaceId ? { "x-rakazo-space-id": spaceId } : {},
+    headers: spaceId ? { "x-nurlai-space-id": spaceId } : {},
   }),
   rpc: (proc: string, ...args: unknown[]) =>
     proc === "marketplace/catalog" ? state.marketplace() : state.rpc(proc, ...args),

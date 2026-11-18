@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { ClientError, displayName } from "@rakazo/core";
+import { ClientError, displayName } from "@nurlai/core";
 import type { PageShareSecret } from "../artifacts/page-shares.js";
 import { deletePageShareSecrets } from "../artifacts/page-shares.js";
 import { GUEST_ROLE, isOwnerRole, ownedOrganizationId } from "../billing/billing.js";

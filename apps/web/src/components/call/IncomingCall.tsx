@@ -1,8 +1,8 @@
 import { useLingui } from "@lingui/react/macro";
-import { useTimeout } from "@rakazo/chat-ui/hooks";
-import type { Bot } from "@rakazo/contracts";
-import { nextIncomingCall, respondToIncomingCall } from "@rakazo/core";
-import { BotAvatar, Button, defaultBotAvatarValue } from "@rakazo/ui-web";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
+import type { Bot } from "@nurlai/contracts";
+import { nextIncomingCall, respondToIncomingCall } from "@nurlai/core";
+import { BotAvatar, Button, defaultBotAvatarValue } from "@nurlai/ui-web";
 import { Phone, PhoneOff } from "lucide-react";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import {

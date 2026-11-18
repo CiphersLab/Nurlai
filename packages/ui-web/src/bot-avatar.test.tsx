@@ -1,4 +1,4 @@
-import { WAITING_ON_USER_RUN_STATUSES, WORKING_RUN_STATUSES } from "@rakazo/core";
+import { WAITING_ON_USER_RUN_STATUSES, WORKING_RUN_STATUSES } from "@nurlai/core";
 import { renderToString } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import {

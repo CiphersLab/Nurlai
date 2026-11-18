@@ -1,13 +1,13 @@
-import type { SkillRecord, SkillSource } from "@rakazo/core";
+import type { SkillRecord, SkillSource } from "@nurlai/core";
 import {
   buildSkillMd,
   findSkillByName,
   isSkillReadOnly,
   mergeBuiltinSkills,
   parseSkillMd,
-} from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
-import { availableInSpace } from "@rakazo/db";
+} from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
+import { availableInSpace } from "@nurlai/db";
 import { BUILTIN_AGENT_SKILLS } from "./builtin-skills.prompt.js";
 
 export const SKILL_TOOL_NAMES = new Set([

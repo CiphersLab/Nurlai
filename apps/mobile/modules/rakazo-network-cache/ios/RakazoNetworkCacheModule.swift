@@ -1,8 +1,8 @@
 import ExpoModulesCore
 
-public class RakazoNetworkCacheModule: Module {
+public class NurlaiNetworkCacheModule: Module {
   public func definition() -> ModuleDefinition {
-    Name("RakazoNetworkCache")
+    Name("NurlaiNetworkCache")
 
     OnCreate {
       // Cookie deletions can be lost if the app is killed before they reach disk, so repeat

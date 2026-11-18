@@ -3,21 +3,21 @@ import type {
   ModelCredential,
   ModelHeaderRow,
   ThinkingLevel,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   modelHeadersInput,
   modelRoutingForm,
   OPENAI_COMPATIBLE_PROVIDER_ID,
   openAiCompatibleProbeSuccessMessage,
-} from "@rakazo/contracts";
-import type { ConnectionFormFields } from "@rakazo/core";
+} from "@nurlai/contracts";
+import type { ConnectionFormFields } from "@nurlai/core";
 import {
   createModelProbe,
   initialModelProbeState,
   modelConnectionFormSecrets,
   sanitizeModelConnectionError,
   savedCompatibleModelIds,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { useMemo, useRef, useState } from "react";
 import type { ModelCatalogEntry } from "../../lib/models/model-auth";
 import type { ModelPreflightFailure } from "../../lib/models/model-connection-preflight";

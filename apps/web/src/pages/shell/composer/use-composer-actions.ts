@@ -7,14 +7,14 @@ import type {
   MessageReaction,
   ThreadMessage,
   ThreadSnapshot,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   attachmentMaxBytes,
   attachmentMaxCount,
   attachmentSizeLabel,
   isAttachmentImageMimeType,
-} from "@rakazo/contracts";
-import type { ComposerMention } from "@rakazo/core";
+} from "@nurlai/contracts";
+import type { ComposerMention } from "@nurlai/core";
 import {
   applyThreadSendReceipt,
   attachmentsForThread,
@@ -22,7 +22,7 @@ import {
   isImageInputConfirmation,
   newClientId,
   resolveComposerSendPlan,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import type { RefObject } from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { readSeenRunErrorIds, rememberSeenRunErrorId } from "../../../lib/chat/run-error-storage";

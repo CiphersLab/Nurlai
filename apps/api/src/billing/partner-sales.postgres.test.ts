@@ -1,7 +1,7 @@
-import type { BillingPlanPayment, PartnerProgram } from "@rakazo/adapter-kit";
-import { BillingCustomerNotFoundError } from "@rakazo/adapter-kit";
-import type { PrismaClient } from "@rakazo/db";
-import { asSystem, createDb } from "@rakazo/db";
+import type { BillingPlanPayment, PartnerProgram } from "@nurlai/adapter-kit";
+import { BillingCustomerNotFoundError } from "@nurlai/adapter-kit";
+import type { PrismaClient } from "@nurlai/db";
+import { asSystem, createDb } from "@nurlai/db";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { createPartnerSales } from "./partner-sales.js";
 

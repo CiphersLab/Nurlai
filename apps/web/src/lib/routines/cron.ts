@@ -1,6 +1,6 @@
 import { t } from "@lingui/core/macro";
-import type { CronFreq, CronLabels, CronUnit } from "@rakazo/core";
-import { ENGLISH_CRON_LABELS, localizedClock, polishInterval, russianInterval } from "@rakazo/core";
+import type { CronFreq, CronLabels, CronUnit } from "@nurlai/core";
+import { ENGLISH_CRON_LABELS, localizedClock, polishInterval, russianInterval } from "@nurlai/core";
 
 /** A schedule frequency as the schedule menus name it. */
 export function cronFreqLabel(freq: CronFreq): string {

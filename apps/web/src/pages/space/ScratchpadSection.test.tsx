@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
-import type { ScratchpadItem } from "@rakazo/contracts";
-import { deferred, flush } from "@rakazo/core/test-async";
+import type { ScratchpadItem } from "@nurlai/contracts";
+import { deferred, flush } from "@nurlai/core/test-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 import { act } from "react";

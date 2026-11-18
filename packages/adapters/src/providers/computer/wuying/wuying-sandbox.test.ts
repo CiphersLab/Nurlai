@@ -1,6 +1,6 @@
 import type * as TimersPromises from "node:timers/promises";
-import type { ComputerRef, ProcessEvent } from "@rakazo/adapter-kit";
-import { WorkspaceTooLargeError } from "@rakazo/adapter-kit";
+import type { ComputerRef, ProcessEvent } from "@nurlai/adapter-kit";
+import { WorkspaceTooLargeError } from "@nurlai/adapter-kit";
 import { describe, expect, it, vi } from "vitest";
 import { isSandboxGoneError } from "../../../computers/sandbox/sandbox-errors.js";
 import {

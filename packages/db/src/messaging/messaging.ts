@@ -1,5 +1,5 @@
 import { createHash, randomBytes, randomInt } from "node:crypto";
-import { displayName } from "@rakazo/core";
+import { displayName } from "@nurlai/core";
 import { bootstrapUserSpace } from "../account/bootstrap-user.js";
 import { createRepos } from "../bots/bot-repository.js";
 import type { PrismaClient } from "../database/client.js";

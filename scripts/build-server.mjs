@@ -25,7 +25,7 @@ export function serverBuildOptions(entry, outfile) {
     target: "node24",
     sourcemap: true,
     define: {
-      __RAKAZO_PROMPT_SOURCE_VERSION__: JSON.stringify(
+      __NURLAI_PROMPT_SOURCE_VERSION__: JSON.stringify(
         promptSourceVersion(fileURLToPath(new URL("../", import.meta.url))),
       ),
     },
@@ -41,7 +41,7 @@ export function serverBuildOptions(entry, outfile) {
             if (args.path.startsWith("node:") || builtins.has(args.path)) {
               return { path: args.path, external: true };
             }
-            if (args.path.startsWith("@rakazo/")) return undefined;
+            if (args.path.startsWith("@nurlai/")) return undefined;
             const resolved = await builder.resolve(args.path, {
               kind: args.kind,
               resolveDir: args.resolveDir,

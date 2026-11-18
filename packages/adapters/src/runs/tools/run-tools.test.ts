@@ -1,4 +1,4 @@
-import { BACKGROUND_HELPER_TRIGGER } from "@rakazo/core";
+import { BACKGROUND_HELPER_TRIGGER } from "@nurlai/core";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
   createApprovedEffectReplayQueue,

@@ -1,5 +1,5 @@
-import type { AdapterContext, SecretStore } from "@rakazo/adapter-kit";
-import { isCiphertext } from "@rakazo/db";
+import type { AdapterContext, SecretStore } from "@nurlai/adapter-kit";
+import { isCiphertext } from "@nurlai/db";
 import { INFISICAL_REF_PREFIX } from "../providers/secret-store/infisical/infisical-secret-store.js";
 import { deleteSecretBestEffort } from "./secret-store-factory.js";
 

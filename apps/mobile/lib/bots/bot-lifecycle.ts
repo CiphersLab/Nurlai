@@ -1,5 +1,5 @@
 import { ph, t } from "@lingui/core/macro";
-import { botRemovalWarning } from "@rakazo/i18n/bot-removal";
+import { botRemovalWarning } from "@nurlai/i18n/bot-removal";
 import { Alert } from "react-native";
 import type { ApiRequestContext } from "../api/api";
 import { captureApiRequestContext, rpc } from "../api/api";

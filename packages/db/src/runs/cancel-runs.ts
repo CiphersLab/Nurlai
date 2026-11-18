@@ -1,4 +1,4 @@
-import { ACTIVE_RUN_STATUSES, BACKGROUND_HELPER_TRIGGER } from "@rakazo/core";
+import { ACTIVE_RUN_STATUSES, BACKGROUND_HELPER_TRIGGER } from "@nurlai/core";
 import type { Prisma } from "../database/client.js";
 import { clearEndedRunState } from "./run-secrets.js";
 

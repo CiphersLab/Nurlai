@@ -79,12 +79,12 @@ jobs:
       - uses: ./.github/actions/setup-workspace
         with:
           electron: "true"
-          filter: "@rakazo/desktop..."
+          filter: "@nurlai/desktop..."
       - run: pnpm db:generate
         env:
           DATABASE_URL: postgres://rakazo:rakazo@127.0.0.1:5433/rakazo
           electron_config_cache: ${{ runner.temp }}/electron-cache
-      - run: pnpm --filter @rakazo/desktop build
+      - run: pnpm --filter @nurlai/desktop build
         env:
           electron_config_cache: ${{ runner.temp }}/electron-cache
       - run: pnpm exec vitest run packages/adapters/src/computers/host/host-computer.test.ts packages/adapters/src/storage/file-handle-path.test.ts packages/adapters/src/providers/computer/desktop/desktop-sandbox-command.test.ts packages/adapters/src/providers/computer/desktop/desktop-sandbox-paths.test.ts packages/adapters/src/providers/computer/desktop/desktop-workspace-cleanup.test.ts packages/adapters/src/computers/screens/computer-support.test.ts apps/desktop/src/main/this-computer/host-computer.test.ts
@@ -92,7 +92,7 @@ jobs:
         if: runner.os == 'Windows'
         run: pnpm exec vitest run apps/desktop/src/main/this-computer/host-screen.windows.test.ts
       - name: Native computer in headless Electron
-        run: pnpm --filter @rakazo/desktop exec electron ../../node_modules/vitest/vitest.mjs run --root ../.. packages/adapters/src/computers/host/host-computer.test.ts apps/desktop/src/main/this-computer/host-computer.test.ts
+        run: pnpm --filter @nurlai/desktop exec electron ../../node_modules/vitest/vitest.mjs run --root ../.. packages/adapters/src/computers/host/host-computer.test.ts apps/desktop/src/main/this-computer/host-computer.test.ts
         env:
           ELECTRON_RUN_AS_NODE: "1"
           electron_config_cache: ${{ runner.temp }}/electron-cache
@@ -230,7 +230,7 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Verify mobile project
         if: steps.ota.outputs.publish == 'true'
-        run: pnpm --filter @rakazo/mobile check
+        run: pnpm --filter @nurlai/mobile check
       - name: Publish production update
         if: steps.ota.outputs.publish == 'true'
         working-directory: apps/mobile
@@ -293,7 +293,7 @@ jobs:
       queue: max
     environment:
       name: production
-      url: https://app.rakazo.com
+      url: https://app.nurlai.cipherslab.com
     permissions:
       contents: read
       id-token: write

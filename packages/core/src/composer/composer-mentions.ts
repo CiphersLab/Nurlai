@@ -1,4 +1,4 @@
-import type { BotAvatarSet, Connection, ConnectionCatalogItem } from "@rakazo/contracts";
+import type { BotAvatarSet, Connection, ConnectionCatalogItem } from "@nurlai/contracts";
 import { displayName } from "../bots/display-name.js";
 import type { CronLabels } from "../routines/schedule.js";
 import { ENGLISH_CRON_LABELS, formatCron } from "../routines/schedule.js";

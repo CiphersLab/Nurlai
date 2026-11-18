@@ -1,5 +1,5 @@
-import { MODEL_REQUIRED_SEND_ERROR } from "@rakazo/core";
-import { deferred, flush } from "@rakazo/core/test-async";
+import { MODEL_REQUIRED_SEND_ERROR } from "@nurlai/core";
+import { deferred, flush } from "@nurlai/core/test-async";
 import { router } from "expo-router";
 import { Alert } from "react-native";
 import { beforeEach, describe, expect, it, vi } from "vitest";

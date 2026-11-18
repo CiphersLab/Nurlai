@@ -2,7 +2,7 @@ import type {
   BackgroundJob,
   BackgroundJobHandlers,
   ManagedConnectorProvider,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import {
   CONNECTION_CLEANUP_MAX_ATTEMPTS,
   connectionCleanupJob,
@@ -13,11 +13,11 @@ import {
   messagingSendJobKey,
   RetryJobLaterError,
   routineWakeupJob,
-} from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
-import type { PrismaClient } from "@rakazo/db";
-import { asSystem, createDb, createPool, currentDbContext, runAsTenant } from "@rakazo/db";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
+import type { PrismaClient } from "@nurlai/db";
+import { asSystem, createDb, createPool, currentDbContext, runAsTenant } from "@nurlai/db";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { Pool } from "pg";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { dropLeftoverAuthorization } from "../../integrations/connection-cleanup.js";

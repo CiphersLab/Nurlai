@@ -1,4 +1,4 @@
-import type { ConnectorTool } from "@rakazo/adapter-kit";
+import type { ConnectorTool } from "@nurlai/adapter-kit";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { isToolPauseResult } from "../../approvals/approval-effect.js";
 import { secretPausedToolResult } from "../../secrets/run-secret.js";

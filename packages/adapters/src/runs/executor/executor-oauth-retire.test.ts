@@ -1,4 +1,4 @@
-import type { PrismaClient } from "@rakazo/db";
+import type { PrismaClient } from "@nurlai/db";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { serializeModelSecret } from "../../models/model-secret.js";
 import { modelCredentialAuthKindsForSpace } from "../../models/model-selection.js";

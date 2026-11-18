@@ -5,11 +5,11 @@ import type {
   BrowserDownload,
   BrowserProvider,
   ComputerRef,
-} from "@rakazo/adapter-kit";
-import { MAX_BROWSER_UPLOAD_FILES } from "@rakazo/adapter-kit";
-import type { PurchaseCardField } from "@rakazo/contracts";
-import { PURCHASE_CARD_FIELDS } from "@rakazo/contracts";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { MAX_BROWSER_UPLOAD_FILES } from "@nurlai/adapter-kit";
+import type { PurchaseCardField } from "@nurlai/contracts";
+import { PURCHASE_CARD_FIELDS } from "@nurlai/contracts";
+import { getLogger } from "@nurlai/logging";
 import { redactConnectorPayload } from "../integrations/connector-safety.js";
 import type { PurchaseApproval } from "../payments/purchase-gate.js";
 import { MAX_ACTIONS_PER_CALL } from "../runs/turn/tool-loop.js";

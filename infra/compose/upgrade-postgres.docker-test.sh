@@ -47,22 +47,22 @@ cleanup() {
 }
 trap cleanup EXIT
 
-upgrade() { RAKAZO_DEPLOY_DIR="${scratch}" bash "${scratch}/infra/compose/upgrade-postgres.sh"; }
+upgrade() { NURLAI_DEPLOY_DIR="${scratch}" bash "${scratch}/infra/compose/upgrade-postgres.sh"; }
 sql() { "$@" exec -T postgres psql -X -At -v ON_ERROR_STOP=1 -U rakazo -d rakazo; }
 # Over the container's network address: loopback connections skip the password.
 as_app() {
   # shellcheck disable=SC2016 # expanded inside the container
   "${new[@]}" exec -T -e PGPASSWORD=app-test-password postgres sh -c \
-    'psql -X -At -v ON_ERROR_STOP=1 -h "$(hostname)" -U rakazo_app -d rakazo -c "$1"' sh "$1"
+    'psql -X -At -v ON_ERROR_STOP=1 -h "$(hostname)" -U nurlai_app -d rakazo -c "$1"' sh "$1"
 }
 
 "${old[@]}" up -d --wait --quiet-pull postgres
 # The shape the row-level security migration and provisionRuntimeRole leave behind.
 sql "${old[@]}" >/dev/null <<'SQL'
-CREATE ROLE rakazo_app LOGIN PASSWORD 'app-test-password' NOSUPERUSER NOBYPASSRLS;
-GRANT CONNECT ON DATABASE rakazo TO rakazo_app;
+CREATE ROLE nurlai_app LOGIN PASSWORD 'app-test-password' NOSUPERUSER NOBYPASSRLS;
+GRANT CONNECT ON DATABASE rakazo TO nurlai_app;
 REVOKE CREATE ON SCHEMA public FROM PUBLIC;
-ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO rakazo_app;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO nurlai_app;
 CREATE TABLE threads (id serial PRIMARY KEY, "spaceId" text NOT NULL, title text);
 INSERT INTO threads ("spaceId", title)
   SELECT CASE WHEN i % 2 = 0 THEN 'space-a' ELSE 'space-b' END, 'thread ' || i
@@ -72,8 +72,8 @@ CREATE POLICY threads_tenant ON threads
   USING ("spaceId" = NULLIF(current_setting('app.space_id', true), ''));
 CREATE POLICY threads_system ON threads
   USING (current_setting('app.rls_bypass', true) = 'on');
-GRANT USAGE ON SCHEMA public TO rakazo_app;
-GRANT USAGE, SELECT ON SEQUENCE threads_id_seq TO rakazo_app;
+GRANT USAGE ON SCHEMA public TO nurlai_app;
+GRANT USAGE, SELECT ON SEQUENCE threads_id_seq TO nurlai_app;
 SQL
 "${old[@]}" stop postgres >/dev/null
 

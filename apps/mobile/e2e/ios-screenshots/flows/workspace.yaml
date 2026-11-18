@@ -1,10 +1,10 @@
-appId: com.rakazo.app
+appId: com.nurlai.app
 name: Workspace
 ---
 - runFlow:
     file: ../subflows/sign-in.yaml
     env:
-      RAKAZO_ACTIVE_EMAIL: ${RAKAZO_SCREENSHOT_EMAIL}
+      NURLAI_ACTIVE_EMAIL: ${NURLAI_SCREENSHOT_EMAIL}
 - openLink: "rakazo:///board"
 - extendedWaitUntil:
     visible: ".*Draft the launch announcement.*"
@@ -59,14 +59,14 @@ name: Workspace
 - waitForAnimationToEnd:
     timeout: 3000
 - takeScreenshot: 08-archived-bots
-- openLink: "rakazo:///space?spaceId=${RAKAZO_SCREENSHOT_TEAM_SPACE_ID}"
+- openLink: "rakazo:///space?spaceId=${NURLAI_SCREENSHOT_TEAM_SPACE_ID}"
 - extendedWaitUntil:
     visible: ".*Customize.*"
     timeout: 15000
 - waitForAnimationToEnd:
     timeout: 3000
 - takeScreenshot: 09-space-settings
-- openLink: "rakazo:///space-members?spaceId=${RAKAZO_SCREENSHOT_TEAM_SPACE_ID}"
+- openLink: "rakazo:///space-members?spaceId=${NURLAI_SCREENSHOT_TEAM_SPACE_ID}"
 - extendedWaitUntil:
     visible: "Owner"
     timeout: 15000

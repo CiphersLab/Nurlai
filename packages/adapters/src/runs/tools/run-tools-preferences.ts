@@ -1,4 +1,4 @@
-import { TimeZoneSchema } from "@rakazo/contracts";
+import { TimeZoneSchema } from "@nurlai/contracts";
 import { z } from "zod";
 import { changeUserTimezone } from "../../tools/schedule-tools.js";
 import type { RunContext } from "../assembly/run-context.js";

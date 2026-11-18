@@ -66,9 +66,9 @@ async function runLoop(
   answer: (request: number) => Answer,
   { listing = (_call: number) => [REPORT], learning = false, finalized = true } = {},
 ) {
-  vi.stubEnv("RAKAZO_LOCAL_MODELS", "example-model");
-  vi.stubEnv("RAKAZO_LOCAL_VISION_MODELS", "example-model");
-  vi.stubEnv("RAKAZO_LOCAL_CONTEXT_WINDOW", "120000");
+  vi.stubEnv("NURLAI_LOCAL_MODELS", "example-model");
+  vi.stubEnv("NURLAI_LOCAL_VISION_MODELS", "example-model");
+  vi.stubEnv("NURLAI_LOCAL_CONTEXT_WINDOW", "120000");
   const requests: Array<{ messages: Array<Record<string, unknown>> }> = [];
   const server = createServer((request, response) => {
     void (async () => {
@@ -106,7 +106,7 @@ async function runLoop(
   await once(server, "listening");
   const address = server.address();
   if (!address || typeof address === "string") throw new Error("Fixture endpoint unavailable");
-  vi.stubEnv("RAKAZO_LOCAL_MODELS_URL", `http://127.0.0.1:${address.port}/v1`);
+  vi.stubEnv("NURLAI_LOCAL_MODELS_URL", `http://127.0.0.1:${address.port}/v1`);
   vi.resetModules();
   const { PiAgentRuntime } = await import("../../runtime/pi/pi-runtime.js");
   const { createRunExecutor } = await import("./executor.js");

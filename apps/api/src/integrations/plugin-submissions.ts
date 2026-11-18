@@ -1,21 +1,21 @@
 import { createHash, randomBytes } from "node:crypto";
 import { ORPCError } from "@orpc/server";
-import type { TransactionalEmail } from "@rakazo/adapter-kit";
-import { parsePluginSource, previewPluginInstall } from "@rakazo/adapters";
+import type { TransactionalEmail } from "@nurlai/adapter-kit";
+import { parsePluginSource, previewPluginInstall } from "@nurlai/adapters";
 import {
   emailLocale,
   integrationClaimConfirmEmail,
   pluginSubmissionAdminEmail,
   pluginSubmissionReceivedEmail,
   pluginSubmissionReviewedEmail,
-} from "@rakazo/auth";
+} from "@nurlai/auth";
 import type {
   IntegrationClaim,
   PluginMarketplaceEntry,
   PluginSubmission,
   PluginSubmissionReview,
   PluginSubmissionStatus,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   INTEGRATION_CLAIM_CONFIRM_PATH,
   INTEGRATION_CLAIMS_PATH,
@@ -23,9 +23,9 @@ import {
   integrationPageUrl,
   PLUGIN_SUBMISSIONS_PATH,
   PluginSubmissionInputSchema,
-} from "@rakazo/contracts";
-import { ClientError, pluginCategory } from "@rakazo/core";
-import type { PluginSubmission as PluginSubmissionRow, PrismaClient } from "@rakazo/db";
+} from "@nurlai/contracts";
+import { ClientError, pluginCategory } from "@nurlai/core";
+import type { PluginSubmission as PluginSubmissionRow, PrismaClient } from "@nurlai/db";
 import type { Context } from "hono";
 import { Hono } from "hono";
 import { readBoundedBody } from "../http/http-body.js";
@@ -34,7 +34,7 @@ import type { RouterDeps } from "../router.js";
 import { assertMcpRemoteEndpoint } from "./mcp-servers.js";
 import { rethrowUnlessPluginSourceFailed } from "./plugin-installs.js";
 
-const PLUGIN_REGISTRY = "Rakazo";
+const PLUGIN_REGISTRY = "Nurlai";
 const MAX_BODY_BYTES = 32 * 1024;
 const HOUR_MS = 60 * 60_000;
 const SUBMISSIONS_PER_IP_PER_HOUR = 10;

@@ -1,7 +1,7 @@
-import type { VoiceUsage } from "@rakazo/adapter-kit";
-import type { Actor } from "@rakazo/contracts";
-import { admitSpeech, settleSpeech } from "@rakazo/db";
-import { bestEffort, getLogger } from "@rakazo/logging";
+import type { VoiceUsage } from "@nurlai/adapter-kit";
+import type { Actor } from "@nurlai/contracts";
+import { admitSpeech, settleSpeech } from "@nurlai/db";
+import { bestEffort, getLogger } from "@nurlai/logging";
 import type { VoiceDeps } from "../calls/voice.js";
 import { requireDeploymentVoiceConsent } from "./deployment-consent.js";
 

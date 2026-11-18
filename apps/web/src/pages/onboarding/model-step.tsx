@@ -10,7 +10,7 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { Check, Copy } from "lucide-react";
 import { FoundModelPicker } from "../../components/models/FoundModelPicker";
 import {

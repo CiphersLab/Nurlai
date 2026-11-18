@@ -1,7 +1,7 @@
 import { Plural, Trans, useLingui } from "@lingui/react/macro";
-import type { BillingStatus } from "@rakazo/contracts";
-import { DEFAULT_NEW_BOT_AVATAR_SET, INVITED_TRIAL_WEEKS } from "@rakazo/contracts";
-import { INVITE_AVATAR_COLORS } from "@rakazo/core";
+import type { BillingStatus } from "@nurlai/contracts";
+import { DEFAULT_NEW_BOT_AVATAR_SET, INVITED_TRIAL_WEEKS } from "@nurlai/contracts";
+import { INVITE_AVATAR_COLORS } from "@nurlai/core";
 import {
   BotAvatar,
   Button,
@@ -10,7 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
   Input,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { CalendarPlus, Check, Copy, Gift } from "lucide-react";
 import { useCopyText } from "../../lib/copy-text";
 

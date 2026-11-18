@@ -12,7 +12,7 @@ after(() => rmSync(fixture, { recursive: true }));
 
 const sources = {
   "apps/web/src/pages/Settings.tsx":
-    'import { NativeSelect } from "@rakazo/ui-web";\n<NativeSelect value={value} />\n',
+    'import { NativeSelect } from "@nurlai/ui-web";\n<NativeSelect value={value} />\n',
   "packages/ui-web/src/components/ui/picker.tsx": "return <select\n  value={value}>\n<select>\n",
   "apps/web/src/pages/space/Board.tsx": "<OptionSelect value={value} options={options} />\n",
   "apps/web/src/pages/space/Board.test.tsx": "const stub = () => <select />;\n",
@@ -36,6 +36,6 @@ test("counts native selects in the web app and its UI kit, but not tests or othe
 
 test("a new native select fails with a message naming OptionSelect", () => {
   const failure = report(rule, violations({}, found));
-  assert.match(failure, /OptionSelect from @rakazo\/ui-web/);
+  assert.match(failure, /OptionSelect from @nurlai\/ui-web/);
   assert.match(failure, /apps\/web\/src\/pages\/Settings\.tsx:2/);
 });

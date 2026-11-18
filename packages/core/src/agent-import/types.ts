@@ -5,7 +5,7 @@ import type {
   AgentImportNeed,
   AgentImportPlan,
   AgentImportSkill,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import { parse as parseYaml } from "yaml";
 import { parseSkillMd } from "../skills/agent-skill.js";
 
@@ -195,7 +195,7 @@ function skillAssessment(
 
 /**
  * OpenClaw `metadata.openclaw.requires`/`os`; Hermes `platforms`, `prerequisites`,
- * `required_environment_variables`, `metadata.hermes.requires_toolsets`. Rakazo runs skills
+ * `required_environment_variables`, `metadata.hermes.requires_toolsets`. Nurlai runs skills
  * on Linux, so a platform list without it is another platform.
  */
 function skillRequirements(front: Record<string, unknown>): {

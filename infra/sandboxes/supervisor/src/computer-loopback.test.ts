@@ -2,8 +2,8 @@ import type * as NodeFsPromises from "node:fs/promises";
 import http from "node:http";
 import path from "node:path";
 import { Readable } from "node:stream";
-import { resolveSupervisorToken } from "@rakazo/core/node/secrets-guard";
-import { deferred } from "@rakazo/core/test-async";
+import { resolveSupervisorToken } from "@nurlai/core/node/secrets-guard";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   COMPUTER_IMAGE,
@@ -90,8 +90,8 @@ describe("computer loopback provision lifecycle", () => {
       method: "POST",
       headers: {
         authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
-        "x-rakazo-bot-id": "bot",
-        "x-rakazo-space-id": "space",
+        "x-nurlai-bot-id": "bot",
+        "x-nurlai-space-id": "space",
       },
     });
     expect(response.status).toBe(status);
@@ -115,8 +115,8 @@ describe("computer loopback provision lifecycle", () => {
       method: "POST",
       headers: {
         authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
-        "x-rakazo-bot-id": "bot",
-        "x-rakazo-space-id": "space",
+        "x-nurlai-bot-id": "bot",
+        "x-nurlai-space-id": "space",
       },
     });
     expect(response.status).toBe(403);
@@ -152,8 +152,8 @@ describe("computer loopback provision lifecycle", () => {
         method: "POST",
         headers: {
           authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
-          "x-rakazo-bot-id": "bot",
-          "x-rakazo-space-id": "space",
+          "x-nurlai-bot-id": "bot",
+          "x-nurlai-space-id": "space",
         },
       });
     const first = stop();
@@ -187,8 +187,8 @@ describe("computer loopback provision lifecycle", () => {
       method: "POST",
       headers: {
         authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
-        "x-rakazo-bot-id": "bot",
-        "x-rakazo-space-id": "space",
+        "x-nurlai-bot-id": "bot",
+        "x-nurlai-space-id": "space",
       },
     });
     expect(response.status).toBe(500);
@@ -212,9 +212,9 @@ describe("computer loopback provision lifecycle", () => {
       method: "POST",
       headers: {
         authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
-        "x-rakazo-bot-id": "bot",
-        "x-rakazo-space-id": "space",
-        "x-rakazo-discard-unsaved": "1",
+        "x-nurlai-bot-id": "bot",
+        "x-nurlai-space-id": "space",
+        "x-nurlai-discard-unsaved": "1",
       },
     });
     expect(response.status).toBe(200);
@@ -243,9 +243,9 @@ describe("computer loopback provision lifecycle", () => {
         method: "POST",
         headers: {
           authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
-          "x-rakazo-bot-id": "bot",
-          "x-rakazo-space-id": "space",
-          "x-rakazo-discard-unsaved": "1",
+          "x-nurlai-bot-id": "bot",
+          "x-nurlai-space-id": "space",
+          "x-nurlai-discard-unsaved": "1",
         },
       });
       expect(response.status).toBe(200);
@@ -279,9 +279,9 @@ describe("computer loopback provision lifecycle", () => {
       method: "POST",
       headers: {
         authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
-        "x-rakazo-bot-id": "bot",
-        "x-rakazo-space-id": "space",
-        "x-rakazo-discard-unsaved": "1",
+        "x-nurlai-bot-id": "bot",
+        "x-nurlai-space-id": "space",
+        "x-nurlai-discard-unsaved": "1",
       },
     });
     expect(response.status).toBe(200);
@@ -308,8 +308,8 @@ describe("computer loopback provision lifecycle", () => {
       method: "POST",
       headers: {
         authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
-        "x-rakazo-bot-id": "bot",
-        "x-rakazo-space-id": "space",
+        "x-nurlai-bot-id": "bot",
+        "x-nurlai-space-id": "space",
       },
     });
     expect(response.status).toBe(200);
@@ -378,8 +378,8 @@ describe("computer loopback provision lifecycle", () => {
       headers: {
         authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
         "content-type": "application/json",
-        "x-rakazo-bot-id": "bot",
-        "x-rakazo-space-id": "space",
+        "x-nurlai-bot-id": "bot",
+        "x-nurlai-space-id": "space",
       },
       body: JSON.stringify({ botId: "bot", spaceId: "space", homePath }),
     });
@@ -403,7 +403,7 @@ describe("computer loopback provision lifecycle", () => {
       );
       expect(options.HostConfig.Binds).toEqual([`${homePath}:/home/rakazo`]);
       expect(options.Env).toContainEqual(
-        expect.stringMatching(/^RAKAZO_COMPUTER_CONTROL_TOKEN=.+/),
+        expect.stringMatching(/^NURLAI_COMPUTER_CONTROL_TOKEN=.+/),
       );
     }
   });
@@ -431,8 +431,8 @@ describe("provisioning network rollback", () => {
       headers: {
         authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
         "content-type": "application/json",
-        "x-rakazo-bot-id": "bot",
-        "x-rakazo-space-id": "space",
+        "x-nurlai-bot-id": "bot",
+        "x-nurlai-space-id": "space",
       },
       body: JSON.stringify({ botId: "bot", spaceId: "space", homePath }),
     });
@@ -666,8 +666,8 @@ describe("restricted egress rekeying", () => {
       headers: {
         authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
         "content-type": "application/json",
-        "x-rakazo-bot-id": "bot",
-        "x-rakazo-space-id": "space",
+        "x-nurlai-bot-id": "bot",
+        "x-nurlai-space-id": "space",
       },
       body: JSON.stringify({ botId: "bot", spaceId: "space", homePath }),
     });
@@ -882,8 +882,8 @@ describe("space computer limit enforcement", () => {
       headers: {
         authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
         "content-type": "application/json",
-        "x-rakazo-bot-id": botId,
-        "x-rakazo-space-id": spaceId,
+        "x-nurlai-bot-id": botId,
+        "x-nurlai-space-id": spaceId,
       },
       body: JSON.stringify({ botId, spaceId, homePath }),
     });
@@ -1212,9 +1212,9 @@ describe("screen release status", () => {
   const headers = {
     authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
     "content-type": "application/json",
-    "x-rakazo-bot-id": "bot",
-    "x-rakazo-space-id": "space",
-    "x-rakazo-screen-id": "writer",
+    "x-nurlai-bot-id": "bot",
+    "x-nurlai-space-id": "space",
+    "x-nurlai-screen-id": "writer",
   };
 
   function managedContainer(exec?: ReturnType<typeof vi.fn>) {
@@ -1267,7 +1267,7 @@ describe("screen release status", () => {
     mocks.docker.getContainer.mockReturnValue(container);
     const response = await supervisorApp.request("/computers/identity-screen/screen", {
       method: "DELETE",
-      headers: { ...headers, "x-rakazo-preserve-screen": "1" },
+      headers: { ...headers, "x-nurlai-preserve-screen": "1" },
     });
     expect(response.status).toBe(403);
     await expect(response.json()).resolves.toEqual({ error: "invalid computer identity" });
@@ -1283,7 +1283,7 @@ describe("screen release status", () => {
       const open = (lease: string) =>
         supervisorApp.request("/computers/persistent/screen-mode", {
           method: "POST",
-          headers: { ...headers, "x-rakazo-screen-lease-id": lease },
+          headers: { ...headers, "x-nurlai-screen-lease-id": lease },
           body: JSON.stringify({ interactive: false, revokeControl: false }),
         });
       const first = await open(leaseId);
@@ -1293,7 +1293,7 @@ describe("screen release status", () => {
 
       const released = await supervisorApp.request("/computers/persistent/screen", {
         method: "DELETE",
-        headers: { ...headers, "x-rakazo-screen-lease-id": leaseId },
+        headers: { ...headers, "x-nurlai-screen-lease-id": leaseId },
       });
       expect(released.status).toBe(200);
       const releaseCommand = container.exec.mock.calls
@@ -1408,8 +1408,8 @@ describe("screen release status", () => {
       method: "DELETE",
       headers: {
         ...headers,
-        "x-rakazo-screen-lease-id": "run-1:1",
-        "x-rakazo-cancel-run-work": "1",
+        "x-nurlai-screen-lease-id": "run-1:1",
+        "x-nurlai-cancel-run-work": "1",
       },
     });
     expect(released.status).toBe(500);
@@ -1445,8 +1445,8 @@ describe("screen release status", () => {
       method: "DELETE",
       headers: {
         ...headers,
-        "x-rakazo-screen-lease-id": "run-1:1",
-        "x-rakazo-preserve-screen": "1",
+        "x-nurlai-screen-lease-id": "run-1:1",
+        "x-nurlai-preserve-screen": "1",
       },
     });
     expect(released.status).toBe(200);
@@ -1478,7 +1478,7 @@ describe("screen release status", () => {
     failStart = true;
     const released = await supervisorApp.request("/computers/exec-start-404/screen", {
       method: "DELETE",
-      headers: { ...headers, "x-rakazo-screen-lease-id": "run-1:1" },
+      headers: { ...headers, "x-nurlai-screen-lease-id": "run-1:1" },
     });
     expect(released.status).toBe(500);
     await expect(released.json()).resolves.toEqual({ error: "no such exec" });
@@ -1489,9 +1489,9 @@ describe("computer deletion", () => {
   const headers = {
     authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
     "content-type": "application/json",
-    "x-rakazo-bot-id": "bot",
-    "x-rakazo-space-id": "space",
-    "x-rakazo-screen-id": "writer",
+    "x-nurlai-bot-id": "bot",
+    "x-nurlai-space-id": "space",
+    "x-nurlai-screen-id": "writer",
   };
   const dockerError = (statusCode: number) =>
     Object.assign(new Error(`docker ${statusCode}`), { statusCode });
@@ -1621,9 +1621,9 @@ describe("screen registry across run boundaries", () => {
         headers: {
           authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
           "content-type": "application/json",
-          "x-rakazo-bot-id": "bot",
-          "x-rakazo-space-id": "space",
-          "x-rakazo-screen-id": "writer",
+          "x-nurlai-bot-id": "bot",
+          "x-nurlai-space-id": "space",
+          "x-nurlai-screen-id": "writer",
         },
         body: JSON.stringify({ interactive: false, revokeControl: false }),
       });
@@ -1703,9 +1703,9 @@ describe("screen registry across run boundaries", () => {
           headers: {
             authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
             "content-type": "application/json",
-            "x-rakazo-bot-id": "bot",
-            "x-rakazo-space-id": "space",
-            "x-rakazo-screen-id": "writer",
+            "x-nurlai-bot-id": "bot",
+            "x-nurlai-space-id": "space",
+            "x-nurlai-screen-id": "writer",
           },
           body: JSON.stringify({ interactive: false, revokeControl: false }),
         });
@@ -1778,8 +1778,8 @@ describe("screen registry across run boundaries", () => {
     const headers = {
       authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
       "content-type": "application/json",
-      "x-rakazo-bot-id": "bot",
-      "x-rakazo-space-id": "space",
+      "x-nurlai-bot-id": "bot",
+      "x-nurlai-space-id": "space",
     };
     const view = () =>
       supervisorApp.request("/computers/existing-screen/screen-mode", {
@@ -1865,14 +1865,14 @@ describe("screen registry across run boundaries", () => {
       const headers = {
         authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
         "content-type": "application/json",
-        "x-rakazo-bot-id": "bot",
-        "x-rakazo-space-id": "space",
-        "x-rakazo-screen-id": "writer",
+        "x-nurlai-bot-id": "bot",
+        "x-nurlai-space-id": "space",
+        "x-nurlai-screen-id": "writer",
       };
       const view = (leaseId = "run-2:2") =>
         supervisorApp.request("/computers/restarted/screen-mode", {
           method: "POST",
-          headers: { ...headers, "x-rakazo-screen-lease-id": leaseId },
+          headers: { ...headers, "x-nurlai-screen-lease-id": leaseId },
           body: JSON.stringify({ interactive: false, revokeControl: false }),
         });
       const resets = () =>
@@ -1889,7 +1889,7 @@ describe("screen registry across run boundaries", () => {
           ? view()
           : supervisorApp.request("/computers/restarted/screen", {
               method: "DELETE",
-              headers: { ...headers, "x-rakazo-screen-lease-id": "run-1:1" },
+              headers: { ...headers, "x-nurlai-screen-lease-id": "run-1:1" },
             });
       await queuedInspection.promise;
       startedAt = "boot-2";
@@ -1942,9 +1942,9 @@ describe("screen registry across run boundaries", () => {
     const headers = {
       authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
       "content-type": "application/json",
-      "x-rakazo-bot-id": "bot",
-      "x-rakazo-space-id": "space",
-      "x-rakazo-screen-id": "writer",
+      "x-nurlai-bot-id": "bot",
+      "x-nurlai-space-id": "space",
+      "x-nurlai-screen-id": "writer",
     };
     const view = () =>
       supervisorApp.request("/computers/registry/screen-mode", {
@@ -1960,7 +1960,7 @@ describe("screen registry across run boundaries", () => {
     expect(resets()).toBe(1);
     const released = await supervisorApp.request("/computers/registry/screen", {
       method: "DELETE",
-      headers: { ...headers, "x-rakazo-screen-lease-id": "run-1:1" },
+      headers: { ...headers, "x-nurlai-screen-lease-id": "run-1:1" },
     });
     expect(released.status).toBe(200);
     expect((await view()).status).toBe(200);
@@ -1996,10 +1996,10 @@ describe("screen registry across run boundaries", () => {
     const headersFor = (screenId: string, leaseId: string) => ({
       authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
       "content-type": "application/json",
-      "x-rakazo-bot-id": "bot",
-      "x-rakazo-space-id": "space",
-      "x-rakazo-screen-id": screenId,
-      "x-rakazo-screen-lease-id": leaseId,
+      "x-nurlai-bot-id": "bot",
+      "x-nurlai-space-id": "space",
+      "x-nurlai-screen-id": screenId,
+      "x-nurlai-screen-lease-id": leaseId,
     });
     const view = (screenId: string, leaseId: string) =>
       supervisorApp.request("/computers/registry/screen-mode", {
@@ -2020,7 +2020,7 @@ describe("screen registry across run boundaries", () => {
       method: "DELETE",
       headers: {
         ...headersFor("writer", "run-1:1"),
-        "x-rakazo-preserve-screen": "1",
+        "x-nurlai-preserve-screen": "1",
       },
     });
     expect(released.status).toBe(200);
@@ -2038,7 +2038,7 @@ describe("screen registry across run boundaries", () => {
       method: "DELETE",
       headers: {
         ...headersFor("writer", "run-1:1"),
-        "x-rakazo-preserve-screen": "1",
+        "x-nurlai-preserve-screen": "1",
       },
     });
     expect(staleRelease.status).toBe(200);
@@ -2048,8 +2048,8 @@ describe("screen registry across run boundaries", () => {
       method: "DELETE",
       headers: {
         ...headersFor("writer", "run-2:2"),
-        "x-rakazo-preserve-screen": "1",
-        "x-rakazo-cancel-run-work": "1",
+        "x-nurlai-preserve-screen": "1",
+        "x-nurlai-cancel-run-work": "1",
       },
     });
     expect(cancelled.status).toBe(200);
@@ -2093,10 +2093,10 @@ describe("screen registry across run boundaries", () => {
     const headersFor = (screenId: string, leaseId: string) => ({
       authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
       "content-type": "application/json",
-      "x-rakazo-bot-id": "bot",
-      "x-rakazo-space-id": "space",
-      "x-rakazo-screen-id": screenId,
-      "x-rakazo-screen-lease-id": leaseId,
+      "x-nurlai-bot-id": "bot",
+      "x-nurlai-space-id": "space",
+      "x-nurlai-screen-id": screenId,
+      "x-nurlai-screen-lease-id": leaseId,
     });
     const view = (screenId: string, leaseId: string) =>
       supervisorApp.request("/computers/registry/screen-mode", {
@@ -2113,7 +2113,7 @@ describe("screen registry across run boundaries", () => {
       method: "DELETE",
       headers: {
         ...headersFor("writer", "run-1:1"),
-        "x-rakazo-preserve-screen": "1",
+        "x-nurlai-preserve-screen": "1",
       },
     });
     expect(release.status).toBe(200);
@@ -2135,8 +2135,8 @@ describe("computer network reclaim", () => {
   const homePath = () => path.join(process.env.DATA_DIR!, "homes", "bot");
   const headers = {
     authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
-    "x-rakazo-bot-id": "bot",
-    "x-rakazo-space-id": "space",
+    "x-nurlai-bot-id": "bot",
+    "x-nurlai-space-id": "space",
   };
 
   function botNetwork(attached: string[] = []) {
@@ -2316,7 +2316,7 @@ describe("computer network reclaim", () => {
       const network = botNetwork();
       network.remove.mockRejectedValue(error);
       mocks.docker.getNetwork.mockReturnValue(network);
-      const { getLogger } = await import("@rakazo/logging");
+      const { getLogger } = await import("@nurlai/logging");
       const logError = vi.spyOn(getLogger(), "error").mockImplementation(() => undefined);
 
       expect((await stop()).status).toBe(200);
@@ -2444,7 +2444,7 @@ describe("computer network reclaim", () => {
 
       await reclaim();
       expect(mocks.docker.listNetworks).toHaveBeenCalledWith({
-        filters: { label: [`rakazo.computerOwner=${ownerLabel()}`] },
+        filters: { label: [`nurlai.cipherslab.computerOwner=${ownerLabel()}`] },
       });
       expect(mocks.docker.listContainers).toHaveBeenCalledWith({
         all: true,
@@ -2560,7 +2560,7 @@ describe("computer network reclaim", () => {
           expect.objectContaining({
             Name: botNet,
             Labels: {
-              "rakazo.computerOwner": computerNetworkOwnerFor(process.env.DATA_DIR!, undefined),
+              "nurlai.cipherslab.computerOwner": computerNetworkOwnerFor(process.env.DATA_DIR!, undefined),
               "rakazo.botId": "bot",
             },
             ...(egress === "restricted"
@@ -2660,7 +2660,7 @@ describe("computer network reclaim", () => {
         {
           Name: botNet,
           Labels: {
-            "rakazo.computerOwner": computerNetworkOwnerFor(process.env.DATA_DIR!, undefined),
+            "nurlai.cipherslab.computerOwner": computerNetworkOwnerFor(process.env.DATA_DIR!, undefined),
             "rakazo.botId": "bot",
           },
         },

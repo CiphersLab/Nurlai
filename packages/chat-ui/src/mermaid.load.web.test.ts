@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const mermaid = {

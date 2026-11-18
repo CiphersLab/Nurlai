@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
-import { isEmptyBotMemory } from "@rakazo/contracts";
-import { writeSaved } from "@rakazo/core/query";
+import { isEmptyBotMemory } from "@nurlai/contracts";
+import { writeSaved } from "@nurlai/core/query";
 import { useFocusEffect, useRouter } from "expo-router";
 import { useCallback, useMemo, useState } from "react";
 import { Pressable, Text, View } from "react-native";

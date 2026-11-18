@@ -143,7 +143,7 @@ describe("shared Linux desktop lifecycle", () => {
     expect(f.ensure("a").status).toBe(0);
     const work = desktopWorkCommand("a", "run:1", 0, 'printf touched >"$dir/touched"');
     expect(f.release("a").status).toBe(0);
-    expect(f.ensure("b").stdout).toContain("RAKAZO_DESKTOP=0:view-b");
+    expect(f.ensure("b").stdout).toContain("NURLAI_DESKTOP=0:view-b");
     expect(f.run(work).status).toBe(75);
     expect(readdirSync(f.root)).not.toContain("touched");
   });
@@ -154,7 +154,7 @@ describe("shared Linux desktop lifecycle", () => {
     const work = desktopWorkCommand("a", "run:1", 0, 'printf touched >"$dir/touched"');
     expect(f.release("a").status).toBe(0);
     expect(f.ensure("b").status).toBe(0);
-    expect(f.ensure("a").stdout).toContain("RAKAZO_DESKTOP=1:view-a");
+    expect(f.ensure("a").stdout).toContain("NURLAI_DESKTOP=1:view-a");
     expect(f.run(work).status).toBe(75);
     expect(readdirSync(f.root)).not.toContain("touched");
   });
@@ -209,11 +209,11 @@ describe("shared Linux desktop lifecycle", () => {
         ]);
         const releaseExited = once(release, "exit");
         waitForReady(releasing);
-        expect(f.ensure("b").stdout).toContain("RAKAZO_DESKTOP=1:view-b");
+        expect(f.ensure("b").stdout).toContain("NURLAI_DESKTOP=1:view-b");
         helper.stdin.end("done\n");
         expect((await helperExited)[0]).toBe(0);
         expect((await releaseExited)[0]).toBe(0);
-        expect(f.ensure("c").stdout).toContain("RAKAZO_DESKTOP=0:view-c");
+        expect(f.ensure("c").stdout).toContain("NURLAI_DESKTOP=0:view-c");
       } finally {
         helper.kill("SIGKILL");
         release?.kill("SIGKILL");
@@ -323,18 +323,18 @@ describe("shared Linux desktop lifecycle", () => {
     "allocates live slots past 1000 bots, keeps assignments across callers, and rejects stale leases",
     () => {
       const f = fixture();
-      expect(f.ensure("a").stdout).toContain("RAKAZO_DESKTOP=0:view-a");
-      expect(f.ensure("b").stdout).toContain("RAKAZO_DESKTOP=1:view-b");
-      expect(f.ensure("a", "new:2").stdout).toContain("RAKAZO_DESKTOP=0:view-a");
+      expect(f.ensure("a").stdout).toContain("NURLAI_DESKTOP=0:view-a");
+      expect(f.ensure("b").stdout).toContain("NURLAI_DESKTOP=1:view-b");
+      expect(f.ensure("a", "new:2").stdout).toContain("NURLAI_DESKTOP=0:view-a");
       expect(f.ensure("a", "run:1").status).toBe(75);
       expect(f.release("a", "run:3").status).toBe(75);
       expect(f.release("a", "new:1").status).toBe(75);
       for (let i = 2; i < 1000; i++)
         writeFileSync(path.join(f.root, `seed-${i}.slot`), `${i}\nseed:1\nunused\n`);
-      expect(f.ensure("bot-1000").stdout).toContain("RAKAZO_DESKTOP=1000:view-bot-1000");
+      expect(f.ensure("bot-1000").stdout).toContain("NURLAI_DESKTOP=1000:view-bot-1000");
       expect(f.release("a", "new:2").status).toBe(0);
-      expect(f.ensure("c").stdout).toContain("RAKAZO_DESKTOP=0:view-c");
-      expect(f.ensure("b").stdout).toContain("RAKAZO_DESKTOP=1:view-b");
+      expect(f.ensure("c").stdout).toContain("NURLAI_DESKTOP=0:view-c");
+      expect(f.ensure("b").stdout).toContain("NURLAI_DESKTOP=1:view-b");
     },
   );
 
@@ -367,7 +367,7 @@ describe("shared Linux desktop lifecycle", () => {
         { encoding: "utf8", timeout: 5000 },
       );
       expect(result.status).not.toBe(0);
-      expect(result.stdout).toContain("RAKAZO_DESKTOP_RELEASED=");
+      expect(result.stdout).toContain("NURLAI_DESKTOP_RELEASED=");
       expect(readdirSync(f.root).some((name) => name.endsWith(".slot"))).toBe(true);
     },
   );
@@ -395,7 +395,7 @@ describe("shared Linux desktop lifecycle", () => {
         { encoding: "utf8", timeout: 5000 },
       );
       expect(result.status).not.toBe(0);
-      expect(result.stdout).toContain("RAKAZO_DESKTOP_RELEASED=");
+      expect(result.stdout).toContain("NURLAI_DESKTOP_RELEASED=");
       expect(readdirSync(f.root).some((name) => name.endsWith(".slot"))).toBe(true);
     },
   );
@@ -405,14 +405,14 @@ describe("shared Linux desktop lifecycle", () => {
     () => {
       const f = fixture();
       expect(f.ensure("a", "run:1", true).status).toBe(1);
-      expect(f.ensure("b").stdout).toContain("RAKAZO_DESKTOP=1:view-b");
-      expect(f.ensure("a").stdout).toContain("RAKAZO_DESKTOP=0:view-a");
+      expect(f.ensure("b").stdout).toContain("NURLAI_DESKTOP=1:view-b");
+      expect(f.ensure("a").stdout).toContain("NURLAI_DESKTOP=0:view-a");
       const failedRelease = f.release("a", "run:1", true);
       expect(failedRelease.status).toBe(1);
-      expect(failedRelease.stdout).not.toContain("RAKAZO_DESKTOP_RELEASED=");
-      expect(f.ensure("c").stdout).toContain("RAKAZO_DESKTOP=2:view-c");
+      expect(failedRelease.stdout).not.toContain("NURLAI_DESKTOP_RELEASED=");
+      expect(f.ensure("c").stdout).toContain("NURLAI_DESKTOP=2:view-c");
       expect(f.release("a").status).toBe(0);
-      expect(f.ensure("d").stdout).toContain("RAKAZO_DESKTOP=0:view-d");
+      expect(f.ensure("d").stdout).toContain("NURLAI_DESKTOP=0:view-d");
     },
   );
 
@@ -433,12 +433,12 @@ describe("shared Linux desktop lifecycle", () => {
     "keeps a completed run's display for that bot's next run and rejects its stale fence",
     () => {
       const f = fixture();
-      expect(f.ensure("a", "run:1").stdout).toContain("RAKAZO_DESKTOP=0:view-a");
+      expect(f.ensure("a", "run:1").stdout).toContain("NURLAI_DESKTOP=0:view-a");
       expect(f.run(desktopControlCommand("a", "run:1", env, false)).status).toBe(0);
       const slot = readdirSync(f.root).find((name) => name.endsWith(".slot"))!;
       expect(readFileSync(path.join(f.root, slot), "utf8")).toBe("0\nrun:1\nview-a\n");
-      expect(f.ensure("b").stdout).toContain("RAKAZO_DESKTOP=1:view-b");
-      expect(f.ensure("a", "next:2").stdout).toContain("RAKAZO_DESKTOP=0:view-a");
+      expect(f.ensure("b").stdout).toContain("NURLAI_DESKTOP=1:view-b");
+      expect(f.ensure("a", "next:2").stdout).toContain("NURLAI_DESKTOP=0:view-a");
       expect(f.run(desktopControlCommand("a", "run:1", env, false)).status).toBe(75);
       expect(f.release("a", "run:1").status).toBe(75);
     },
@@ -490,7 +490,7 @@ describe("shared Linux desktop lifecycle", () => {
         writeFileSync(
           path.join(root, "image-menu"),
           [
-            "[begin] (Rakazo)",
+            "[begin] (Nurlai)",
             "  [exec] (Browser) {rakazo-browser}",
             "  [exec] (Docs) {rakazo-browser https://example.test}",
             "  [exec] (Files) {pcmanfm}",
@@ -526,7 +526,7 @@ describe("shared Linux desktop lifecycle", () => {
       expect(readFileSync(path.join(root, "flux-20/.fluxbox/menu"), "utf8")).toBe(
         imageMenu === "readable"
           ? [
-              "[begin] (Rakazo)",
+              "[begin] (Nurlai)",
               `  [exec] (Browser) {${launcher}}`,
               `  [exec] (Docs) {${launcher} https://example.test}`,
               "  [exec] (Files) {pcmanfm}",
@@ -703,9 +703,9 @@ describe("shared Linux desktop lifecycle", () => {
         path.join(f.root, "browser-profile-20"),
         "/home/user/work/.browser-profiles/live",
       );
-      expect(f.ensure("a").stdout).toContain("RAKAZO_DESKTOP=1:view-a");
-      expect(f.ensure("b").stdout).toContain("RAKAZO_DESKTOP=2:view-b");
-      expect(f.ensure("a").stdout).toContain("RAKAZO_DESKTOP=1:view-a");
+      expect(f.ensure("a").stdout).toContain("NURLAI_DESKTOP=1:view-a");
+      expect(f.ensure("b").stdout).toContain("NURLAI_DESKTOP=2:view-b");
+      expect(f.ensure("a").stdout).toContain("NURLAI_DESKTOP=1:view-a");
     },
   );
 

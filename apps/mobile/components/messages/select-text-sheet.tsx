@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import { typeScale } from "@rakazo/ui-tokens";
+import { typeScale } from "@nurlai/ui-tokens";
 import { Modal, Platform, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { mobileTokens } from "../../lib/appearance/appearance";

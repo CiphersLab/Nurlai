@@ -14,8 +14,8 @@ import type {
   RealtimeFanout,
   SandboxProvider,
   TransactionalEmailProvider,
-} from "@rakazo/adapter-kit";
-import { EmailRecipientRejectedError } from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
+import { EmailRecipientRejectedError } from "@nurlai/adapter-kit";
 import type {
   ComposioProvider,
   ConnectorRegistry,
@@ -25,7 +25,7 @@ import type {
   RemoteConnectorDependencies,
   RunRuntimeEnv,
   UserDeviceGateway,
-} from "@rakazo/adapters";
+} from "@nurlai/adapters";
 import {
   BillingEmulator,
   ChatSdkMessagingSurface,
@@ -84,8 +84,8 @@ import {
   withHostComputerScreen,
   withSecretPersistence,
   withSecretWriteAhead,
-} from "@rakazo/adapters";
-import type { DirectoryAccountChange } from "@rakazo/auth";
+} from "@nurlai/adapters";
+import type { DirectoryAccountChange } from "@nurlai/auth";
 import {
   buildTrustedOrigins,
   CLIENT_IP_HEADER,
@@ -93,15 +93,15 @@ import {
   createDirectory,
   isBlockedAuthPath,
   publicSignInProviders,
-} from "@rakazo/auth";
-import type { Actor, AuthCapabilities, ModelCredential } from "@rakazo/contracts";
+} from "@nurlai/auth";
+import type { Actor, AuthCapabilities, ModelCredential } from "@nurlai/contracts";
 import {
   isLocalhostOrLoopbackIp,
   PLUGIN_SUBMISSIONS_PATH,
   SERVER_BUILD_HEADER,
-} from "@rakazo/contracts";
-import { encryptionKeyWarning } from "@rakazo/core/node/secrets-guard";
-import type { Pool, PrismaClient } from "@rakazo/db";
+} from "@nurlai/contracts";
+import { encryptionKeyWarning } from "@nurlai/core/node/secrets-guard";
+import type { Pool, PrismaClient } from "@nurlai/db";
 import {
   configureProviderTransactionPool,
   createBoardEvents,
@@ -122,8 +122,8 @@ import {
   runAsSystem,
   timeZoneWarning,
   verifyContentKeys,
-} from "@rakazo/db";
-import type { Logger } from "@rakazo/logging";
+} from "@nurlai/db";
+import type { Logger } from "@nurlai/logging";
 import {
   bestEffort,
   createServiceLogger,
@@ -131,9 +131,9 @@ import {
   getLogger,
   installLogger,
   SERVICE_NAMES,
-} from "@rakazo/logging";
-import { requestLogging } from "@rakazo/logging/hono";
-import { MarkdownMemoryStore } from "@rakazo/memory";
+} from "@nurlai/logging";
+import { requestLogging } from "@nurlai/logging/hono";
+import { MarkdownMemoryStore } from "@nurlai/memory";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import {
@@ -1064,7 +1064,7 @@ async function buildApp(overrides: CreateAppOverrides): Promise<AppHandles> {
       requireMembership(
         prisma,
         session.user,
-        request.headers.get("x-rakazo-space-id"),
+        request.headers.get("x-nurlai-space-id"),
         session.session,
       ),
     );

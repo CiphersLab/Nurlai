@@ -1,5 +1,5 @@
-import type { JobPublisher } from "@rakazo/adapter-kit";
-import type { PrismaClient, ThreadEvents } from "@rakazo/db";
+import type { JobPublisher } from "@nurlai/adapter-kit";
+import type { PrismaClient, ThreadEvents } from "@nurlai/db";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   ROUTINE_CHAT_TRIGGER_NOTE,

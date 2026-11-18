@@ -1,4 +1,4 @@
-import type { PageDetail } from "@rakazo/contracts";
+import type { PageDetail } from "@nurlai/contracts";
 import { MutationObserver, QueryClient, QueryObserver } from "@tanstack/react-query";
 import { describe, expect, it, vi } from "vitest";
 import { spaceQueries } from "../query/query";

@@ -1,8 +1,8 @@
 /** Portable plugin parsing plus a bounded, public-GitHub acquisition adapter.
  * No repository code is executed and no files are written to the host. */
 import { createHash } from "node:crypto";
-import { McpServerConfigInput, trimEndChars, trimStartChars } from "@rakazo/contracts";
-import { buildSkillMd, deadlineSignal, findSkillByName, parseSkillMd } from "@rakazo/core";
+import { McpServerConfigInput, trimEndChars, trimStartChars } from "@nurlai/contracts";
+import { buildSkillMd, deadlineSignal, findSkillByName, parseSkillMd } from "@nurlai/core";
 import { z } from "zod";
 import { BUILTIN_AGENT_SKILLS } from "../tools/builtin-skills.prompt.js";
 import { fetchSafeWebText } from "../web/web-ssrf.js";

@@ -1,6 +1,6 @@
 import { getHeapStatistics } from "node:v8";
-import { deferred } from "@rakazo/core/test-async";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+import { deferred } from "@nurlai/core/test-async";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import type * as GraphileWorker from "graphile-worker";
 import type { Runner } from "graphile-worker";
 import type { Pool } from "pg";

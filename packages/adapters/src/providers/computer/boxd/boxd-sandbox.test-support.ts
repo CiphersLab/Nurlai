@@ -9,7 +9,7 @@ import type {
   Snapshot,
 } from "@boxd-sh/sdk";
 import { ConflictError, FilesystemError, NotFoundError } from "@boxd-sh/sdk";
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { parse } from "shell-quote";
 import {
   desktopCommandResponder,

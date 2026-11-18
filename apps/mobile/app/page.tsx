@@ -1,8 +1,8 @@
 import { useLingui } from "@lingui/react/macro";
-import { useNativeLinkConfirm } from "@rakazo/chat-ui/native";
-import type { PageDetail } from "@rakazo/contracts";
-import { pageCopyRequest, pageCopyResult, pageLinkRequest, pageReplyText } from "@rakazo/core";
-import { webTokensForAppearance } from "@rakazo/ui-tokens";
+import { useNativeLinkConfirm } from "@nurlai/chat-ui/native";
+import type { PageDetail } from "@nurlai/contracts";
+import { pageCopyRequest, pageCopyResult, pageLinkRequest, pageReplyText } from "@nurlai/core";
+import { webTokensForAppearance } from "@nurlai/ui-tokens";
 import * as Clipboard from "expo-clipboard";
 import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import { useCallback, useEffect, useRef, useState } from "react";

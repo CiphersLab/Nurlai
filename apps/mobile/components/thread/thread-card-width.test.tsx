@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
-import type { MessageBlock } from "@rakazo/contracts";
-import { separateAskAnswers } from "@rakazo/core";
+import type { MessageBlock } from "@nurlai/contracts";
+import { separateAskAnswers } from "@nurlai/core";
 import type { ComponentProps, ReactNode, Ref } from "react";
 import { act, createContext } from "react";
 import type { Root } from "react-dom/client";
@@ -93,7 +93,7 @@ vi.mock("../../lib/native/native", () => ({
   useResolvedAppearance: () => "light",
 }));
 
-vi.mock("@rakazo/chat-ui/native", () => ({
+vi.mock("@nurlai/chat-ui/native", () => ({
   MarkdownLongPressContext: createContext(undefined),
   ChatMarkdown: ({ children }: { children: string }) => <p>{children}</p>,
   withBlockMentions: <T,>(blocks: T) => blocks,

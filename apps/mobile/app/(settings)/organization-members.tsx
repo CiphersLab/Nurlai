@@ -1,8 +1,8 @@
 import { MenuView } from "@expo/ui/community/menu";
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import type { OrganizationInvitation, OrganizationMember } from "@rakazo/contracts";
-import { accountDisplay } from "@rakazo/core";
+import type { OrganizationInvitation, OrganizationMember } from "@nurlai/contracts";
+import { accountDisplay } from "@nurlai/core";
 import { useIsFocused, useLocalSearchParams } from "expo-router";
 import { useState } from "react";
 import { ActivityIndicator, Alert, Platform, ScrollView, Share, StyleSheet } from "react-native";

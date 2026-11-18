@@ -1,7 +1,7 @@
 import type { AssistantMessage, Model, TranscriptContext } from "@earendil-works/pi-ai";
 import { getCurrentTools } from "@earendil-works/pi-ai";
 import { AssistantMessageEventStream } from "@earendil-works/pi-ai/utils/event-stream";
-import type { AgentRunRequest } from "@rakazo/adapter-kit";
+import type { AgentRunRequest } from "@nurlai/adapter-kit";
 import { beforeEach, expect, it, vi } from "vitest";
 import { approvalPausedToolResult } from "../../../approvals/approval-effect.js";
 import { builtinAgentTools } from "../../../tools/builtin.tool-definition.js";

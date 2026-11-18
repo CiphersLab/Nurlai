@@ -1,4 +1,4 @@
-import { formatCron } from "@rakazo/core";
+import { formatCron } from "@nurlai/core";
 import { afterEach, describe, expect, it } from "vitest";
 import { resetI18nForTests } from "../i18n/i18n";
 import { cronLabels } from "./cron";

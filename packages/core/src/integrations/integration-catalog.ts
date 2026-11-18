@@ -1,5 +1,5 @@
-import type { IntegrationCatalogResult } from "@rakazo/contracts";
-import { McpRemoteEndpointSchema } from "@rakazo/contracts";
+import type { IntegrationCatalogResult } from "@nurlai/contracts";
+import { McpRemoteEndpointSchema } from "@nurlai/contracts";
 
 export type SignInMcpServer = { name: string; endpoint: string };
 

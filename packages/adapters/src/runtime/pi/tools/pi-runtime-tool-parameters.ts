@@ -1,6 +1,6 @@
-import type { ConnectorTool } from "@rakazo/adapter-kit";
-import { BOT_INSTRUCTIONS_MAX_LENGTH, ThinkingLevelSchema } from "@rakazo/contracts";
-import { getLogger } from "@rakazo/logging";
+import type { ConnectorTool } from "@nurlai/adapter-kit";
+import { BOT_INSTRUCTIONS_MAX_LENGTH, ThinkingLevelSchema } from "@nurlai/contracts";
+import { getLogger } from "@nurlai/logging";
 import { Type } from "typebox";
 import { MAX_APPROVAL_DETAIL_LENGTH } from "../../../approvals/approval-ask.js";
 import { argumentGiven } from "../../../bots/update-bot-patch.js";

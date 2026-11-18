@@ -1,4 +1,4 @@
-import type { AdapterContext, ComputerRef, PageBrowserCommand } from "@rakazo/adapter-kit";
+import type { AdapterContext, ComputerRef, PageBrowserCommand } from "@nurlai/adapter-kit";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   createBrowserProvider,

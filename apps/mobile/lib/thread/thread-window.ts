@@ -1,11 +1,11 @@
-import type { ThreadScrollState } from "@rakazo/core";
+import type { ThreadScrollState } from "@nurlai/core";
 import {
   foldPeerReplies,
   jumpTargetId,
   leaveThreadWindow,
   openThreadWindow,
   peerExchangeLines,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import type { Dispatch, RefObject, SetStateAction } from "react";
 import { rpc } from "../api/api";
 import type { MobileSnapshot } from "../api/mobile-types";

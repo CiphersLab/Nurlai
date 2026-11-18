@@ -1,4 +1,4 @@
-import type { SpaceChangeKind } from "@rakazo/contracts";
+import type { SpaceChangeKind } from "@nurlai/contracts";
 import { queryClient } from "./query";
 import type { RpcClient } from "./rpc";
 

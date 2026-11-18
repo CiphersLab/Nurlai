@@ -1,14 +1,14 @@
 import { randomUUID } from "node:crypto";
-import type { MessagingInboundMessage } from "@rakazo/adapter-kit";
-import { MessagingDelivery } from "@rakazo/adapters";
-import type { PrismaClient } from "@rakazo/db";
+import type { MessagingInboundMessage } from "@nurlai/adapter-kit";
+import { MessagingDelivery } from "@nurlai/adapters";
+import type { PrismaClient } from "@nurlai/db";
 import {
   asSystem,
   createDb,
   createThreadEvents,
   provisionMessagingIdentity,
   runAsSystem,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { STOPPED_BY_MESSAGE_NOTE } from "../threads/thread-stop.js";
 import { createMessagingInboundHandler } from "./messaging-inbound.js";

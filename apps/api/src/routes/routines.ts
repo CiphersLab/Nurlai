@@ -1,5 +1,5 @@
 import { ORPCError } from "@orpc/server";
-import { routineJobKey, routineWakeupJob } from "@rakazo/adapter-kit";
+import { routineJobKey, routineWakeupJob } from "@nurlai/adapter-kit";
 import {
   finishRoutineHandover,
   parseRoutineWatch,
@@ -7,16 +7,16 @@ import {
   stableStringify,
   validateRoutineWatch,
   wakeRun,
-} from "@rakazo/adapters";
-import type { Actor, RoutineWatch } from "@rakazo/contracts";
-import { canonicalPiProviderId, ROUTINE_TRIGGER_REQUIRED } from "@rakazo/contracts";
+} from "@nurlai/adapters";
+import type { Actor, RoutineWatch } from "@nurlai/contracts";
+import { canonicalPiProviderId, ROUTINE_TRIGGER_REQUIRED } from "@nurlai/contracts";
 import {
   ClientError,
   expandSkillReferencesInPrompt,
   hasMixedOneShotSchedule,
   isOneShotRoutineCrons,
-} from "@rakazo/core";
-import { IsolationError, isRecordNotFound, Prisma } from "@rakazo/db";
+} from "@nurlai/core";
+import { IsolationError, isRecordNotFound, Prisma } from "@nurlai/db";
 import { assertRoutineModel } from "../bots/model-pins.js";
 import { assertEmailTrigger } from "../email/bot-email-address.js";
 import { listRoutineRuns } from "../routines/routine-runs.js";

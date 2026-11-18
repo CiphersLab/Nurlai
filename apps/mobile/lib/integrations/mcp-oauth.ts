@@ -1,6 +1,6 @@
 import { t } from "@lingui/core/macro";
-import type { RpcOutput } from "@rakazo/contracts";
-import { MOBILE_MCP_OAUTH_CALLBACK_URL } from "@rakazo/contracts";
+import type { RpcOutput } from "@nurlai/contracts";
+import { MOBILE_MCP_OAUTH_CALLBACK_URL } from "@nurlai/contracts";
 import type { SaveSend } from "../query/query";
 
 export type McpSignIn = "connected" | "cancelled" | RpcOutput<"mcp/oauth/begin">["status"];

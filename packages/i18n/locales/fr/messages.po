@@ -1375,8 +1375,8 @@ msgid "Allow once"
 msgstr "Autoriser une fois"
 
 #: apps/web/src/lib/calls/dictation.ts
-msgid "Allow Rakazo to use Speech Recognition and the microphone in System Settings."
-msgstr "Autorisez Rakazo à utiliser la reconnaissance vocale et le micro dans les Réglages Système."
+msgid "Allow Nurlai to use Speech Recognition and the microphone in System Settings."
+msgstr "Autorisez Nurlai à utiliser la reconnaissance vocale et le micro dans les Réglages Système."
 
 #: apps/mobile/lib/calls/call-session.ts
 #: apps/mobile/lib/composer/composer-dictation.ts
@@ -2464,8 +2464,8 @@ msgstr "Choisir un dossier"
 
 #: apps/web/src/components/billing/ModelCredits.tsx
 #: apps/web/src/components/billing/SubscriptionGate.tsx
-msgid "Choose how to use Rakazo"
-msgstr "Choisissez comment utiliser Rakazo"
+msgid "Choose how to use Nurlai"
+msgstr "Choisissez comment utiliser Nurlai"
 
 #. js-lingui-explicit-id
 #: packages/i18n/src/vault.ts
@@ -2922,8 +2922,8 @@ msgstr "Connectez votre IA"
 
 #. js-lingui-explicit-id
 #: packages/i18n/src/run-error.ts
-msgid "Connect your own API key in Models or choose Rakazo credits in Billing."
-msgstr "Connectez votre propre clé API dans Modèles ou choisissez les crédits Rakazo dans Facturation."
+msgid "Connect your own API key in Models or choose Nurlai credits in Billing."
+msgstr "Connectez votre propre clé API dans Modèles ou choisissez les crédits Nurlai dans Facturation."
 
 #: apps/mobile/app/(settings)/bot-template.tsx
 #: apps/mobile/app/(settings)/computers.tsx
@@ -5088,8 +5088,8 @@ msgid "Ends {day}"
 msgstr "Se termine le {day}"
 
 #: apps/web/src/pages/shell/composer/github-star-prompt.tsx
-msgid "Enjoying Rakazo?"
-msgstr "Vous aimez Rakazo ?"
+msgid "Enjoying Nurlai?"
+msgstr "Vous aimez Nurlai ?"
 
 #: apps/mobile/lib/api/user-error.ts
 #: apps/web/src/lib/query/user-error.ts
@@ -5861,8 +5861,8 @@ msgstr "Comment vérifier"
 
 #: apps/mobile/app/(settings)/signup-survey.tsx
 #: apps/web/src/components/account/SignupSurvey.tsx
-msgid "How will you use Rakazo?"
-msgstr "Comment allez-vous utiliser Rakazo ?"
+msgid "How will you use Nurlai?"
+msgstr "Comment allez-vous utiliser Nurlai ?"
 
 #: apps/mobile/components/models/compatible-endpoint-form.tsx
 msgid "http://127.0.0.1:8000/v1"
@@ -7487,8 +7487,8 @@ msgid "Not in {organizationName}. They'll only see this Space."
 msgstr "Hors de {organizationName}. Cette personne ne verra que cet espace."
 
 #: apps/web/src/pages/shell/bots/import-status.ts
-msgid "Not in Rakazo's catalog"
-msgstr "Absent du catalogue de Rakazo"
+msgid "Not in Nurlai's catalog"
+msgstr "Absent du catalogue de Nurlai"
 
 #: apps/mobile/app/(settings)/integrations.tsx
 #: apps/web/src/pages/plugins/plugin-browse.tsx
@@ -7537,12 +7537,12 @@ msgstr "Non envoyé. Touchez pour réessayer"
 
 #: apps/web/src/pages/shell/bots/agent-import-plan.tsx
 #: apps/web/src/pages/shell/bots/import-status.ts
-msgid "Not supported in Rakazo"
-msgstr "Non pris en charge par Rakazo"
+msgid "Not supported in Nurlai"
+msgstr "Non pris en charge par Nurlai"
 
 #: apps/web/src/pages/shell/bots/agent-import-plan.tsx
-msgid "Not used by Rakazo"
-msgstr "Non utilisé par Rakazo"
+msgid "Not used by Nurlai"
+msgstr "Non utilisé par Nurlai"
 
 #: apps/mobile/app/(settings)/integrations.tsx
 #: apps/web/src/components/integrations/McpServerHealthLine.tsx
@@ -7768,8 +7768,8 @@ msgstr "Ouvrir la navigation"
 #: apps/web/src/pages/auth/Invite.tsx
 #: apps/web/src/pages/auth/JoinOrganization.tsx
 #: apps/web/src/pages/SharedPage.tsx
-msgid "Open Rakazo"
-msgstr "Ouvrir Rakazo"
+msgid "Open Nurlai"
+msgstr "Ouvrir Nurlai"
 
 #: apps/mobile/lib/composer/composer-dictation.ts
 #: apps/mobile/lib/thread/thread-voice.ts
@@ -8028,8 +8028,8 @@ msgstr "Collez une clé de remplacement"
 
 #: apps/mobile/components/models/compatible-endpoint-form.tsx
 #: apps/web/src/pages/model-settings/compatible-model-fields.tsx
-msgid "Paste the OpenAI-compatible address from your server. Rakazo adds /v1 if needed."
-msgstr "Collez l'adresse compatible OpenAI de votre serveur. Rakazo ajoute /v1 si nécessaire."
+msgid "Paste the OpenAI-compatible address from your server. Nurlai adds /v1 if needed."
+msgstr "Collez l'adresse compatible OpenAI de votre serveur. Nurlai ajoute /v1 si nécessaire."
 
 #: apps/web/src/pages/shell/bots/agent-import.tsx
 msgid "Paste the reply"
@@ -8351,19 +8351,19 @@ msgstr "Citer la sélection"
 #: apps/mobile/app/bot-settings.tsx
 #: apps/web/src/pages/settings/AccountSettingsOverlay.tsx
 #: apps/web/src/pages/shell/bots/avatar-studio-popover.tsx
-msgid "Rakazo"
-msgstr "Rakazo"
+msgid "Nurlai"
+msgstr "Nurlai"
 
 #: apps/mobile/app/(settings)/billing.tsx
 #: apps/mobile/components/models/model-role-settings.tsx
 #: apps/web/src/pages/model-settings/ModelRoleSettings.tsx
 #: apps/web/src/pages/onboarding/use-onboarding-model.ts
-msgid "Rakazo credits"
-msgstr "Crédits Rakazo"
+msgid "Nurlai credits"
+msgstr "Crédits Nurlai"
 
 #: apps/web/src/components/models/ProviderSettingsForm.tsx
-msgid "rakazo-shared and IDs starting with bot- are reserved for Rakazo."
-msgstr "rakazo-shared et les ID commençant par bot- sont réservés à Rakazo."
+msgid "rakazo-shared and IDs starting with bot- are reserved for Nurlai."
+msgstr "rakazo-shared et les ID commençant par bot- sont réservés à Nurlai."
 
 #: apps/mobile/components/thread/message-row.tsx
 #: apps/web/src/pages/shell/chat/message-hover-actions.tsx
@@ -8409,8 +8409,8 @@ msgid "Recall from banks"
 msgstr "Rappel depuis les banques"
 
 #: apps/web/src/components/models/ProviderSettingsForm.tsx
-msgid "Recall from this peer; save to Rakazo’s own peers."
-msgstr "Consulter ce pair ; enregistrer dans les pairs de Rakazo."
+msgid "Recall from this peer; save to Nurlai’s own peers."
+msgstr "Consulter ce pair ; enregistrer dans les pairs de Nurlai."
 
 #: apps/web/src/components/models/ProviderSettingsForm.tsx
 msgid "Recall only"
@@ -9017,8 +9017,8 @@ msgstr "Retour à la boîte de réception"
 
 #: apps/web/src/pages/integrations/McpOAuthCallback.tsx
 #: apps/web/src/pages/integrations/SlackInstallCallback.tsx
-msgid "Return to Rakazo"
-msgstr "Retour à Rakazo"
+msgid "Return to Nurlai"
+msgstr "Retour à Nurlai"
 
 #: apps/web/src/lib/models/model-connection-preflight.ts
 msgid "Review provider settings and test again."
@@ -9796,13 +9796,13 @@ msgid "Sign in at <0>{0}</0>, then paste the code here."
 msgstr "Connectez-vous sur <0>{0}</0>, puis collez le code ici."
 
 #: apps/mobile/app/sign-in.tsx
-msgid "Sign in to continue to Rakazo"
-msgstr "Connectez-vous pour continuer vers Rakazo"
+msgid "Sign in to continue to Nurlai"
+msgstr "Connectez-vous pour continuer vers Nurlai"
 
 #: apps/mobile/app/sign-in.tsx
 #: apps/web/src/pages/auth/Auth.tsx
-msgid "Sign in to Rakazo"
-msgstr "Connectez-vous à Rakazo"
+msgid "Sign in to Nurlai"
+msgstr "Connectez-vous à Nurlai"
 
 #: apps/mobile/lib/api/user-error.ts
 #: apps/web/src/lib/query/user-error.ts
@@ -9833,8 +9833,8 @@ msgid "Sign up"
 msgstr "S'inscrire"
 
 #: apps/mobile/app/sign-in.tsx
-msgid "Sign up for Rakazo"
-msgstr "S'inscrire à Rakazo"
+msgid "Sign up for Nurlai"
+msgstr "S'inscrire à Nurlai"
 
 #: apps/web/src/pages/plugins/PluginsOverlay.tsx
 msgid "Sign-in cancelled. Retry in Manage MCP servers."
@@ -10153,8 +10153,8 @@ msgid "Start recording"
 msgstr "Démarrer l'enregistrement"
 
 #: apps/mobile/app/paywall.tsx
-msgid "Start using Rakazo"
-msgstr "Commencer à utiliser Rakazo"
+msgid "Start using Nurlai"
+msgstr "Commencer à utiliser Nurlai"
 
 #: apps/mobile/app/(settings)/billing.tsx
 #: apps/web/src/components/billing/ModelCredits.tsx
@@ -10479,8 +10479,8 @@ msgid "That isn't a Grok Bot export. Paste the Bot's whole reply."
 msgstr "Ce n’est pas un export Grok Bot. Collez la réponse complète du Bot."
 
 #: apps/mobile/lib/api/endpoint.ts
-msgid "That URL did not look like a Rakazo server"
-msgstr "Cette URL ne ressemble pas à un serveur Rakazo"
+msgid "That URL did not look like a Nurlai server"
+msgstr "Cette URL ne ressemble pas à un serveur Nurlai"
 
 #: apps/mobile/lib/api/endpoint.ts
 msgid "That URL is missing a host"
@@ -10773,8 +10773,8 @@ msgid "This device"
 msgstr "Cet appareil"
 
 #: apps/web/src/lib/bots/agent-import-errors.ts
-msgid "This export is newer than Rakazo can read. Update Rakazo and try again."
-msgstr "Cet export est plus récent que ce que Rakazo peut lire. Mettez Rakazo à jour et réessayez."
+msgid "This export is newer than Nurlai can read. Update Nurlai and try again."
+msgstr "Cet export est plus récent que ce que Nurlai peut lire. Mettez Nurlai à jour et réessayez."
 
 #: apps/web/src/lib/bots/agent-import-errors.ts
 msgid "This export is too large to import."
@@ -10949,8 +10949,8 @@ msgstr "Cet espace a son propre coffre. Ses bots y enregistrent et y utilisent l
 
 #: apps/mobile/app/(settings)/model-connection.tsx
 #: apps/web/src/pages/model-settings/connection-controls.tsx
-msgid "This subscription sign-in is not available in Rakazo yet. Use a deployment credential or choose another provider."
-msgstr "Cette connexion par abonnement n'est pas encore disponible dans Rakazo. Utilisez un identifiant de déploiement ou choisissez un autre fournisseur."
+msgid "This subscription sign-in is not available in Nurlai yet. Use a deployment credential or choose another provider."
+msgstr "Cette connexion par abonnement n'est pas encore disponible dans Nurlai. Utilisez un identifiant de déploiement ou choisissez un autre fournisseur."
 
 #: apps/mobile/app/(settings)/bot-template.tsx
 #: apps/web/src/components/bot-templates/bot-templates-dialog.tsx
@@ -11504,8 +11504,8 @@ msgstr "Utilisez la saisie protégée pour les mots de passe."
 
 #: apps/mobile/app/(settings)/billing.tsx
 #: apps/web/src/components/billing/ModelCredits.tsx
-msgid "Use Rakazo credits"
-msgstr "Utiliser les crédits Rakazo"
+msgid "Use Nurlai credits"
+msgstr "Utiliser les crédits Nurlai"
 
 #: apps/mobile/components/settings/space-bots-model.tsx
 msgid "Use space default"
@@ -11741,8 +11741,8 @@ msgstr "Bon retour"
 
 #: apps/mobile/app/(settings)/_layout.tsx
 #: apps/web/src/components/account/SignupSurvey.tsx
-msgid "Welcome to Rakazo"
-msgstr "Bienvenue sur Rakazo"
+msgid "Welcome to Nurlai"
+msgstr "Bienvenue sur Nurlai"
 
 #: apps/web/src/pages/shell/create-delete-dialogs.tsx
 msgid "What about its memories?"
@@ -11754,8 +11754,8 @@ msgstr "Que peut utiliser cet espace ?"
 
 #: apps/mobile/app/(settings)/signup-survey.tsx
 #: apps/web/src/components/account/SignupSurvey.tsx
-msgid "What do you most want Rakazo to help with?"
-msgstr "Pour quoi souhaitez-vous surtout que Rakazo vous aide ?"
+msgid "What do you most want Nurlai to help with?"
+msgstr "Pour quoi souhaitez-vous surtout que Nurlai vous aide ?"
 
 #: apps/web/src/pages/shell/chat/message-cards.tsx
 msgid "What do you want me on first?"

@@ -1,4 +1,4 @@
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   bootComputerOnce,
@@ -234,39 +234,39 @@ describe("screen frame reports", () => {
   });
 
   it("accepts only known states and bounds the detail", () => {
-    expect(screenFrameMessage({ rakazoScreen: "connected" })).toEqual({
-      rakazoScreen: "connected",
+    expect(screenFrameMessage({ nurlaiScreen: "connected" })).toEqual({
+      nurlaiScreen: "connected",
     });
-    expect(screenFrameMessage({ rakazoScreen: "failed", detail: "  Failed to connect  " })).toEqual(
-      { rakazoScreen: "failed", detail: "Failed to connect" },
+    expect(screenFrameMessage({ nurlaiScreen: "failed", detail: "  Failed to connect  " })).toEqual(
+      { nurlaiScreen: "failed", detail: "Failed to connect" },
     );
     expect(
-      screenFrameMessage({ rakazoScreen: "failed", detail: "x".repeat(300) })?.detail,
+      screenFrameMessage({ nurlaiScreen: "failed", detail: "x".repeat(300) })?.detail,
     ).toHaveLength(200);
-    expect(screenFrameMessage({ rakazoScreen: "failed", detail: 5 })).toEqual({
-      rakazoScreen: "failed",
+    expect(screenFrameMessage({ nurlaiScreen: "failed", detail: 5 })).toEqual({
+      nurlaiScreen: "failed",
     });
-    expect(screenFrameMessage({ rakazoScreen: "exploded" })).toBeNull();
+    expect(screenFrameMessage({ nurlaiScreen: "exploded" })).toBeNull();
     expect(screenFrameMessage("connected")).toBeNull();
     expect(screenFrameMessage(null)).toBeNull();
   });
 
   it("counts only reports past loading as a started page", () => {
-    expect(screenFrameStarted({ rakazoScreen: "loading" })).toBe(false);
-    expect(screenFrameStarted({ rakazoScreen: "connecting" })).toBe(true);
-    expect(screenFrameStarted({ rakazoScreen: "connected" })).toBe(true);
-    expect(screenFrameStarted({ rakazoScreen: "failed" })).toBe(true);
+    expect(screenFrameStarted({ nurlaiScreen: "loading" })).toBe(false);
+    expect(screenFrameStarted({ nurlaiScreen: "connecting" })).toBe(true);
+    expect(screenFrameStarted({ nurlaiScreen: "connected" })).toBe(true);
+    expect(screenFrameStarted({ nurlaiScreen: "failed" })).toBe(true);
   });
 
   it("turns failures into the error to show and keeps progress silent", () => {
-    expect(screenFrameError({ rakazoScreen: "loading" }, "fallback")).toBeNull();
-    expect(screenFrameError({ rakazoScreen: "connecting" }, "fallback")).toBeNull();
-    expect(screenFrameError({ rakazoScreen: "connected" }, "fallback")).toBeNull();
-    expect(screenFrameError({ rakazoScreen: "failed", detail: "Refused" }, "fallback")).toBe(
+    expect(screenFrameError({ nurlaiScreen: "loading" }, "fallback")).toBeNull();
+    expect(screenFrameError({ nurlaiScreen: "connecting" }, "fallback")).toBeNull();
+    expect(screenFrameError({ nurlaiScreen: "connected" }, "fallback")).toBeNull();
+    expect(screenFrameError({ nurlaiScreen: "failed", detail: "Refused" }, "fallback")).toBe(
       "fallback",
     );
-    expect(screenFrameError({ rakazoScreen: "failed" }, "fallback")).toBe("fallback");
-    expect(screenFrameError({ rakazoScreen: "disconnected" }, "fallback")).toBe(
+    expect(screenFrameError({ nurlaiScreen: "failed" }, "fallback")).toBe("fallback");
+    expect(screenFrameError({ nurlaiScreen: "disconnected" }, "fallback")).toBe(
       "The screen connection closed.",
     );
   });

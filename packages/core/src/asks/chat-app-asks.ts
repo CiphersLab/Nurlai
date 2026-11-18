@@ -1,4 +1,4 @@
-import type { MessageBlock } from "@rakazo/contracts";
+import type { MessageBlock } from "@nurlai/contracts";
 import { TAKEOVER_COMPUTER_PENDING_STATE } from "../threads/thread-message-updates.js";
 import { isQuestionAskBlock } from "./ask-replies.js";
 

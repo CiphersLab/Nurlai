@@ -1,5 +1,5 @@
-import { useNow } from "@rakazo/chat-ui/hooks";
-import { cn } from "@rakazo/ui-web";
+import { useNow } from "@nurlai/chat-ui/hooks";
+import { cn } from "@nurlai/ui-web";
 import { useState } from "react";
 import "./beautiful-ui.css";
 

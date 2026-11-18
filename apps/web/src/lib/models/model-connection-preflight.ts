@@ -1,5 +1,5 @@
 import { plural, t } from "@lingui/core/macro";
-import { sanitizeModelConnectionError } from "@rakazo/core";
+import { sanitizeModelConnectionError } from "@nurlai/core";
 
 type ModelPreflightOutcome =
   | "timeout"

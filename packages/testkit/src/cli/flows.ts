@@ -6,7 +6,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { parseArgs } from "node:util";
 import { serve } from "@hono/node-server";
-import { loadRootEnv } from "@rakazo/core/node/load-root-env";
+import { loadRootEnv } from "@nurlai/core/node/load-root-env";
 import { computerTestSandbox } from "../computers/computer-test-config.js";
 import { FLOWS } from "../flows/index.js";
 import { validateFlowLimits } from "../flows/limits.js";
@@ -75,7 +75,7 @@ async function main() {
       SANDBOX_PROVIDER: sandbox.provider,
       ...(sandbox.provider === "docker"
         ? {
-            RAKAZO_COMPUTER_IMAGE: process.env.RAKAZO_COMPUTER_IMAGE || "rakazo/computer:local",
+            NURLAI_COMPUTER_IMAGE: process.env.NURLAI_COMPUTER_IMAGE || "nurlai/computer:local",
             SANDBOX_CONTROL_VIA_LOOPBACK: "true",
             SANDBOX_SCREEN_NETWORK: "published",
             SANDBOX_SCREEN_HOST: "127.0.0.1",
@@ -114,19 +114,19 @@ async function main() {
         .digest("hex");
       const stamp = path.resolve("packages/db/src/generated/prisma/.flows-schema-hash");
       if (existsSync(stamp) && readFileSync(stamp, "utf8") === schema) return;
-      execFileSync("pnpm", ["--filter", "@rakazo/db", "generate"], {
+      execFileSync("pnpm", ["--filter", "@nurlai/db", "generate"], {
         stdio: "pipe",
         timeout: 300_000,
       });
       writeFileSync(stamp, schema);
     });
-    execFileSync("pnpm", ["--filter", "@rakazo/db", "exec", "prisma", "migrate", "deploy"], {
+    execFileSync("pnpm", ["--filter", "@nurlai/db", "exec", "prisma", "migrate", "deploy"], {
       stdio: "pipe",
       timeout: 600_000,
     });
     if (sandbox.provider === "docker") {
       // An isolated supervisor, never a dev one another checkout may be running.
-      const { supervisorApp } = await import("@rakazo/sandbox-supervisor");
+      const { supervisorApp } = await import("@nurlai/sandbox-supervisor");
       const server = serve({ fetch: supervisorApp.fetch, hostname: "127.0.0.1", port: 0 });
       await new Promise<void>((resolve, reject) => {
         if (server.listening) return resolve();
@@ -137,7 +137,7 @@ async function main() {
       process.env.SANDBOX_SUPERVISOR_URL = `http://127.0.0.1:${(server.address() as AddressInfo).port}`;
     }
     // Import after generation; the app's barrel exports load Prisma.
-    const { createApp } = await import("@rakazo/api/app");
+    const { createApp } = await import("@nurlai/api/app");
     const { runFlow } = await import("../flows/runner.js");
     const handles = await createApp({
       databaseUrl: process.env.DATABASE_URL!,

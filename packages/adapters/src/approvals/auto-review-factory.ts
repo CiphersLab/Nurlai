@@ -3,7 +3,7 @@ import type {
   AutoReviewRequest,
   AutoReviewResult,
   DecisionProviderOptions,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import { JevAutoReviewProvider } from "../providers/decision/typesafe/jev-auto-review.js";
 import type { LlmAutoReviewOptions } from "./auto-review.js";
 import {
@@ -30,7 +30,7 @@ export type CreateAutoReviewProviderOptions = {
 };
 
 /**
- * Construct the Auto Review adapter selected by `RAKAZO_AUTO_REVIEW_PROVIDER`.
+ * Construct the Auto Review adapter selected by `NURLAI_AUTO_REVIEW_PROVIDER`.
  * `jev` needs TYPESAFE_API_KEY; `llm` wraps the existing JSON judge; `scripted` is offline.
  */
 export function createAutoReviewProvider(
@@ -48,7 +48,7 @@ export function createAutoReviewProvider(
         onUsage: options.onUsage,
         fetch: options.fetch,
         timeoutMs: options.timeoutMs ?? autoReviewTimeoutMs(env),
-        model: options.model ?? env.RAKAZO_AUTO_REVIEW_MODEL?.trim() ?? DEFAULT_JEV_MODEL,
+        model: options.model ?? env.NURLAI_AUTO_REVIEW_MODEL?.trim() ?? DEFAULT_JEV_MODEL,
         minConfidence: options.minConfidence ?? autoReviewMinConfidence(env),
       });
     }

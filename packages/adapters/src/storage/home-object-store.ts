@@ -7,9 +7,9 @@ import type {
   AgentHomeStore,
   ObjectStorage,
   PortableFile,
-} from "@rakazo/adapter-kit";
-import { retry } from "@rakazo/core";
-import type { ContentKeyRing, ContentLocation, DataKey, PrismaClient } from "@rakazo/db";
+} from "@nurlai/adapter-kit";
+import { retry } from "@nurlai/core";
+import type { ContentKeyRing, ContentLocation, DataKey, PrismaClient } from "@nurlai/db";
 import {
   ContentDecryptionError,
   ciphertextKeyId,
@@ -19,8 +19,8 @@ import {
   openArtifact,
   runAsSystem,
   sealArtifact,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { sandboxKindCapabilities } from "../computers/sandbox/sandbox-kind-capabilities.js";
 import { createObjectStorage } from "./create-object-storage.js";
 import { LocalAgentHomeStore, newRevision } from "./home.js";

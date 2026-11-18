@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { captureScreenshot, chooseOption, completeOnboarding, signup } from "../helpers/helpers";
 
 test.afterEach(async ({ page }) => {

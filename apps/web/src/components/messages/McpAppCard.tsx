@@ -1,10 +1,10 @@
 import { useLingui } from "@lingui/react/macro";
-import { useTimeout } from "@rakazo/chat-ui/hooks";
-import { useExternalLinkOpener } from "@rakazo/chat-ui/web";
-import type { MessageBlock } from "@rakazo/contracts";
-import { MCP_APP_VIEWER_PATH } from "@rakazo/contracts/content-security-policy";
-import { createMcpAppHost, mcpAppCsp, mcpAppDocument } from "@rakazo/core";
-import { cn } from "@rakazo/ui-web";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
+import { useExternalLinkOpener } from "@nurlai/chat-ui/web";
+import type { MessageBlock } from "@nurlai/contracts";
+import { MCP_APP_VIEWER_PATH } from "@nurlai/contracts/content-security-policy";
+import { createMcpAppHost, mcpAppCsp, mcpAppDocument } from "@nurlai/core";
+import { cn } from "@nurlai/ui-web";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { composerDraftKey, offerComposerText } from "../../lib/composer/composer-draft";

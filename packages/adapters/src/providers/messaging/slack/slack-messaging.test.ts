@@ -1,7 +1,7 @@
 import { createHmac } from "node:crypto";
 import type * as SlackAdapterModule from "@chat-adapter/slack";
-import type { AdapterContext, MessagingInboundMessage } from "@rakazo/adapter-kit";
-import { expectLinearTime } from "@rakazo/contracts/test-timing";
+import type { AdapterContext, MessagingInboundMessage } from "@nurlai/adapter-kit";
+import { expectLinearTime } from "@nurlai/contracts/test-timing";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { ChatSdkMessagingSurface } from "../../../messaging/chat-sdk-surface.js";
 import { messagingPlatformsFromEnv } from "../../../messaging/messaging-platforms.js";

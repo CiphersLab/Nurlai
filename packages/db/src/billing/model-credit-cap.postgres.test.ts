@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { MODEL_CREDIT_CAP_REACHED_ERROR } from "@rakazo/core";
+import { MODEL_CREDIT_CAP_REACHED_ERROR } from "@nurlai/core";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import type { PrismaClient } from "../database/client.js";
 import { createDb } from "../database/client.js";

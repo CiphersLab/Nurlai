@@ -1,6 +1,6 @@
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import type { RoutineEmailSenders } from "@rakazo/contracts";
+import type { RoutineEmailSenders } from "@nurlai/contracts";
 import type { BotEmail } from "../bots/bot-email";
 import { useBotEmailRows } from "../bots/bot-email";
 import { SettingsGroup, SettingsRow } from "../settings/settings-group";

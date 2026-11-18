@@ -1,7 +1,7 @@
 import { UnauthorizedError } from "@modelcontextprotocol/sdk/client/auth.js";
 import { StreamableHTTPError } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
 import { McpError } from "@modelcontextprotocol/sdk/types.js";
-import { ConnectionSetupError } from "@rakazo/contracts";
+import { ConnectionSetupError } from "@nurlai/contracts";
 import { McpResponseTooLargeError } from "../mcp/mcp-response-limit.js";
 import {
   ConnectorRedirectError,

@@ -1,7 +1,7 @@
-# Self-hosting Rakazo
+# Self-hosting Nurlai
 
 Run the API, worker, web app, database and bot computers on a machine you control.
-Other self-hosted AI agents are compared on the [self-hosted AI agent](https://rakazo.com/self-hosted-ai-agent/#other-agents) page.
+Other self-hosted AI agents are compared on the [self-hosted AI agent](https://nurlai.cipherslab.com/self-hosted-ai-agent/#other-agents) page.
 
 The signed-in product is a long-running API, a Graphile Worker, Postgres, and a computer provider (Docker supervisor, E2B, Daytona, CreateOS, or Boat). It is not a static site. The marketing site in `apps/www` can be hosted separately.
 
@@ -32,11 +32,11 @@ the installer secret list, non-reuse rules, and recovery, see
 [Self-host secrets checklist](./self-host-secrets.md). To customize the public URL, image tag, or
 optional providers before startup, run `bash install-images.sh --prepare-only`, edit `.env`, then
 run `bash install-images.sh`. Flags may be combined in either order: `--prepare-only`, `--local`.
-When `RAKAZO_IMAGE_TAG` is a release such as `v0.8.0`, the installer downloads the Compose files
+When `NURLAI_IMAGE_TAG` is a release such as `v0.8.0`, the installer downloads the Compose files
 from that release instead of `main`.
 
 `SANDBOX_PROVIDER` defaults to `docker`. The images Compose file runs a sandbox supervisor
-(from the app image, on the internal network only) and pulls `ghcr.io/elie222/rakazo/computer`.
+(from the app image, on the internal network only) and pulls `ghcr.io/elie222/nurlai/computer`.
 Signup and local Docker computers work without an E2B account. Optional remote providers: set
 `SANDBOX_PROVIDER` to `e2b`, `novita`, `daytona`, `createos`, or `boat` and add the matching API key. The published-images
 Compose stack requires `SANDBOX_SUPERVISOR_TOKEN` for every provider; leave it empty and `compose up` fails closed.
@@ -55,11 +55,11 @@ that HTTPS URL.
 Images Compose binds web to loopback (`127.0.0.1:5173`). Terminate TLS on the host and proxy
 there. Vite preview same-origin-proxies `/api` and `/rpc`, so do not expose `:3100`. Set
 `BETTER_AUTH_URL`, `WEB_ORIGIN`, and `API_URL` to that same HTTPS origin, and set
-`RAKAZO_HOST` to its hostname (for example, `app.example.com`). Cookies and CORS follow those
+`NURLAI_HOST` to its hostname (for example, `app.example.com`). Cookies and CORS follow those
 origins.
 
 To also reach the web app by other hostnames (a LAN IP or a tailnet name, for example), list
-them comma-separated in `RAKAZO_ALLOWED_HOSTS`. Vite preview rejects any other `Host` header, and
+them comma-separated in `NURLAI_ALLOWED_HOSTS`. Vite preview rejects any other `Host` header, and
 the computer screen then stays blank.
 
 ```Caddyfile
@@ -88,7 +88,7 @@ If the installer, Compose downloads, or image pulls are blocked, use the
 
 On Windows, if an older clone with `core.autocrlf=true` leaves the computer pane hung on boot (`bash\r` in sandbox logs): from a clean worktree, set `git config core.autocrlf false`, run `git add --renormalize . && git checkout -- .`, then rebuild with `pnpm sandbox:build`.
 
-Compose runs Postgres, the sandbox supervisor (Docker socket), API, worker, and a Vite preview of the web app. Bot computers are sibling containers (`rakazo/computer:local`) on separate per-bot networks; only the supervisor and screen proxy join each one. The API process does not get an unrestricted Docker socket; the supervisor owns the lifecycle.
+Compose runs Postgres, the sandbox supervisor (Docker socket), API, worker, and a Vite preview of the web app. Bot computers are sibling containers (`nurlai/computer:local`) on separate per-bot networks; only the supervisor and screen proxy join each one. The API process does not get an unrestricted Docker socket; the supervisor owns the lifecycle.
 
 Postgres stays on the Compose network only (not published on the host), matching the images
 compose. Credentials come from `.env` (`POSTGRES_PASSWORD` is required). Prefer a URI-safe value
@@ -105,7 +105,7 @@ Do not publish Postgres on a public interface.
 
 ## Local (source checkout)
 
-Same as the README quick start: `.env` from `.env.example`, `pnpm sandbox:build`, `pnpm dev`, then the URL it prints ([http://127.0.0.1:5173](http://127.0.0.1:5173) by default, or `http://localhost:5173` — both loopback hosts are trusted). Electron: `pnpm --filter @rakazo/desktop dev` while that stack is up, choosing **Existing instance** with that address. The desktop app's **This computer** option manages a separate local stack, using port 45173 by default so it can run alongside `pnpm dev`. If that port is occupied, the app selects and remembers another loopback port. All desktop traffic uses the web origin.
+Same as the README quick start: `.env` from `.env.example`, `pnpm sandbox:build`, `pnpm dev`, then the URL it prints ([http://127.0.0.1:5173](http://127.0.0.1:5173) by default, or `http://localhost:5173` — both loopback hosts are trusted). Electron: `pnpm --filter @nurlai/desktop dev` while that stack is up, choosing **Existing instance** with that address. The desktop app's **This computer** option manages a separate local stack, using port 45173 by default so it can run alongside `pnpm dev`. If that port is occupied, the app selects and remembers another loopback port. All desktop traffic uses the web origin.
 
 On Apple silicon Macs with macOS 26 or later, builds that include a server bundle can run this stack without Docker. Fresh setups use this path, downloading the server and computer runtime as needed. Existing Docker setups are offered a move while Docker is running; **Keep Docker** preserves the Docker path. Moving copies the bots and data and stops the old Docker stack without removing it. The Docker-free server stops when the desktop app quits.
 
@@ -162,4 +162,4 @@ paths or message content; servers, bots and runs appear only as short hashes.
 
 When a user asks their bot to report a bug or send feedback, the report is saved on your server
 in the `feedback_reports` table, with the chat, bot and run it came from. Nothing is sent to the
-Rakazo project.
+Nurlai project.

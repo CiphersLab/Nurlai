@@ -10,7 +10,7 @@ import { stopLiveNotifications } from "../notifications/live-notifications";
 import { clearFailedSends } from "../thread/send/thread-feedback";
 import { clearNetworkCache } from "./network-cache";
 
-const SESSION_KEY = "rakazo.session_token";
+const SESSION_KEY = "nurlai.session_token";
 const INTEGRATIONS_SCOPE_KEY = "rakazo.integrations-scope";
 
 export type VerifiedIntegrationsScope = {

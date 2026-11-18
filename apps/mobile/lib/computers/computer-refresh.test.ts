@@ -1,5 +1,5 @@
-import type { ComputerStatus } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
+import type { ComputerStatus } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { createComputerRefresh, SCREEN_URL_RENEW_MS } from "./computer-refresh";
 

@@ -1,14 +1,14 @@
-import type { SemanticMemoryProvider } from "@rakazo/adapter-kit";
-import { hasLab, resolveLabs } from "@rakazo/contracts";
-import { BACKGROUND_HELPER_TRIGGER, isMessagingChannelRun, messagingChannelId } from "@rakazo/core";
+import type { SemanticMemoryProvider } from "@nurlai/adapter-kit";
+import { hasLab, resolveLabs } from "@nurlai/contracts";
+import { BACKGROUND_HELPER_TRIGGER, isMessagingChannelRun, messagingChannelId } from "@nurlai/core";
 import {
   effectiveMemoryScope,
   loadRunHistoryMessages,
   loadRunTurnCheckpoint,
   readMessageBlocks,
   teamChatRunFromOwner,
-} from "@rakazo/db";
-import { bestEffort } from "@rakazo/logging";
+} from "@nurlai/db";
+import { bestEffort } from "@nurlai/logging";
 import { cloudAgentForActor } from "../../cloud-agents/cloud-agent-service.js";
 import { screenLeaseIdForRun } from "../../computers/computer-lifecycle.js";
 import {

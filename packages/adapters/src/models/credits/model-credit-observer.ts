@@ -1,12 +1,12 @@
-import type { ModelCallObserver } from "@rakazo/adapter-kit";
-import { HOSTED_MODEL_CREDITS_REQUIRED_ERROR } from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
+import type { ModelCallObserver } from "@nurlai/adapter-kit";
+import { HOSTED_MODEL_CREDITS_REQUIRED_ERROR } from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
 import {
   creditAccount,
   organizationForMember,
   recordModelCreditReceipt,
   reserveModelCredits,
-} from "@rakazo/db";
+} from "@nurlai/db";
 
 import { modelCreditOfferings, offeringUsage } from "../../model-credits/offerings.js";
 import { maximumModelCallCost } from "../../runtime/pi/usage/pi-usage.js";

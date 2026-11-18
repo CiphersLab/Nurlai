@@ -8,7 +8,7 @@ import type {
 } from "@earendil-works/pi-ai";
 import { builtinModels } from "@earendil-works/pi-ai/providers/all";
 import { AssistantMessageEventStream } from "@earendil-works/pi-ai/utils/event-stream";
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { createOpenAiCompatibleFetch } from "../models/pi-openai-compatible-provider.js";
 import { MODEL_STREAM_IDLE_TIMEOUT_MS, MODEL_STREAM_TIMEOUT_MS } from "../pi-runtime-limits.js";

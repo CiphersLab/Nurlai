@@ -1,13 +1,13 @@
-import type { AgentRunRequest, SecretStore } from "@rakazo/adapter-kit";
+import type { AgentRunRequest, SecretStore } from "@nurlai/adapter-kit";
 import type {
   ModelRole,
   ModelRoleChoice,
   ModelRoleSettings,
   SettingsScope,
-} from "@rakazo/contracts";
-import { backupChoiceKey, modelRoleConnectionId, usableModelId } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
-import { appliedModelRole } from "@rakazo/db";
+} from "@nurlai/contracts";
+import { backupChoiceKey, modelRoleConnectionId, usableModelId } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
+import { appliedModelRole } from "@nurlai/db";
 import { resolveAutoReviewChecker } from "../approvals/auto-review.js";
 import { approvedModelCreditOffering, modelCreditOfferings } from "../model-credits/offerings.js";
 import type { ModelChoice, ModelCredential } from "./model-selection.js";

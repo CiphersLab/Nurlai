@@ -1,4 +1,4 @@
-package com.rakazo.notifications
+package com.nurlai.notifications
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -47,7 +47,7 @@ import kotlin.random.Random
 private class ApiException(val status: Int) : IOException()
 private const val MAX_RPC_RESPONSE_BYTES = 16 * 1024 * 1024
 
-class RakazoNotificationService : Service() {
+class NurlaiNotificationService : Service() {
   private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
   private lateinit var manager: NotificationManager
   private var pollJob: Job? = null
@@ -66,12 +66,12 @@ class RakazoNotificationService : Service() {
       manager.cancelAll()
       state.edit().putBoolean(THREAD_NOTIFICATION_IDS, true).apply()
     }
-    createRakazoChannels(this)
+    createNurlaiChannels(this)
   }
 
   override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
     // Channel names follow the current locale; recreating an existing channel updates its copy.
-    createRakazoChannels(this)
+    createNurlaiChannels(this)
     val generation = synchronized(sessionLock) {
       if (intent?.getBooleanExtra(EXTRA_RESET_TOKEN, false) == true) tokenCache.reset()
       intent?.getStringExtra(EXTRA_MUTED_BOT_ID)?.let { botId ->
@@ -392,14 +392,14 @@ class RakazoNotificationService : Service() {
   }
 
   companion object {
-    private const val TAG = "RakazoNotifications"
+    private const val TAG = "NurlaiNotifications"
     private const val LIVE_NOTIFICATION_ID = 1101
-    private const val ACTION_THREAD_CHANGED = "com.rakazo.notifications.THREAD_CHANGED"
+    private const val ACTION_THREAD_CHANGED = "com.nurlai.notifications.THREAD_CHANGED"
     private const val PROMOTED_ONGOING_EXTRA = "android.requestPromotedOngoing"
     private const val RECENT_LIMIT = 20 // The API's page size (kept-in-step check).
-    private const val EXTRA_RESET_TOKEN = "com.rakazo.notifications.RESET_TOKEN"
-    private const val EXTRA_MUTED_BOT_ID = "com.rakazo.notifications.MUTED_BOT_ID"
-    private const val STATE_PREFERENCES = "com.rakazo.notification_state"
+    private const val EXTRA_RESET_TOKEN = "com.nurlai.notifications.RESET_TOKEN"
+    private const val EXTRA_MUTED_BOT_ID = "com.nurlai.notifications.MUTED_BOT_ID"
+    private const val STATE_PREFERENCES = "com.nurlai.notification_state"
     private const val SEEN_RUNS = "seen_runs"
     private const val SEEN_RUNS_SEEDED = "seen_runs_seeded"
     private const val SEEN_RUNS_SPACE_ID = "seen_runs_space_id"
@@ -412,7 +412,7 @@ class RakazoNotificationService : Service() {
     private var openThreadId: String? = null
 
     fun start(context: Context, resetToken: Boolean = true, action: String? = null, mutedBotId: String? = null) {
-      val intent = Intent(context, RakazoNotificationService::class.java)
+      val intent = Intent(context, NurlaiNotificationService::class.java)
         .putExtra(EXTRA_RESET_TOKEN, resetToken)
       if (action != null) intent.action = action
       if (mutedBotId != null) intent.putExtra(EXTRA_MUTED_BOT_ID, mutedBotId)
@@ -421,7 +421,7 @@ class RakazoNotificationService : Service() {
     }
 
     fun stop(context: Context) {
-      context.stopService(Intent(context, RakazoNotificationService::class.java))
+      context.stopService(Intent(context, NurlaiNotificationService::class.java))
     }
 
     fun isOpenThread(botId: String, threadId: String): Boolean = synchronized(sessionLock) {
@@ -1016,7 +1016,7 @@ internal fun rpc(
     connection.setRequestProperty("Origin", "rakazo://")
     connection.setRequestProperty("Authorization", "Bearer $token")
     if (spaceId.isNotBlank()) {
-      connection.setRequestProperty("x-rakazo-space-id", spaceId)
+      connection.setRequestProperty("x-nurlai-space-id", spaceId)
     }
     connection.outputStream.use {
       it.write(JSONObject().put("json", input).toString().toByteArray(Charsets.UTF_8))
@@ -1071,7 +1071,7 @@ internal fun localizedContext(base: Context, tag: String): Context {
   return base.createConfigurationContext(configuration)
 }
 
-internal fun createRakazoChannels(base: Context) {
+internal fun createNurlaiChannels(base: Context) {
   if (Build.VERSION.SDK_INT < 26) return
   val context = localizedContext(base, NotificationStorage(base).locale)
   listOf(

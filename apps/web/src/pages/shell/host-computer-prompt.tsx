@@ -1,5 +1,5 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { Me } from "@rakazo/contracts";
+import type { Me } from "@nurlai/contracts";
 import {
   Button,
   Dialog,
@@ -7,7 +7,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { useEffect, useState } from "react";
 import { sandboxCheckFailureMessage } from "../../lib/computers/computer-sandbox";
 import { desktopBridge } from "../../lib/platform/desktop";

@@ -1,6 +1,6 @@
-import type { AgentRunRequest } from "@rakazo/adapter-kit";
-import type { MessageBlock } from "@rakazo/contracts";
-import { disabledBuiltinToolSet, modelRoleConnectionId } from "@rakazo/contracts";
+import type { AgentRunRequest } from "@nurlai/adapter-kit";
+import type { MessageBlock } from "@nurlai/contracts";
+import { disabledBuiltinToolSet, modelRoleConnectionId } from "@nurlai/contracts";
 import {
   BACKGROUND_HELPER_TRIGGER,
   chatAppConnectNote,
@@ -10,9 +10,9 @@ import {
   messagingChannelPrivacyBlock,
   messagingDmSurfaceNote,
   nonOwnerChatPrivacyBlock,
-} from "@rakazo/core";
-import { availableInSpace, parseComputerMode } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/core";
+import { availableInSpace, parseComputerMode } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { createApprovedEffectReplayQueue } from "../../approvals/approval-effect.js";
 import { loadGroupContext } from "../../bots/group-handoff.js";
 import { USER_CLOUD_AGENT_KEY_PREFIX } from "../../cloud-agents/cloud-agent-factory.js";

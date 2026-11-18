@@ -29,7 +29,7 @@ const BUNDLES = {
   "web-startup": {
     label: "web startup (the JavaScript and CSS the app page loads before first paint, gzipped)",
     dist: "apps/web/dist",
-    build: "pnpm --filter @rakazo/web build",
+    build: "pnpm --filter @nurlai/web build",
     files: webStartupFiles,
     size: (bytes) => gzipSync(bytes).length,
     fix: "Load the new code lazily with a dynamic import(), so it leaves the startup set",
@@ -37,7 +37,7 @@ const BUNDLES = {
   "desktop-main": {
     label: "desktop main process (the bundle and preload scripts Electron loads at launch)",
     dist: "apps/desktop/dist",
-    build: "pnpm --filter @rakazo/desktop build",
+    build: "pnpm --filter @nurlai/desktop build",
     files: () => ["main.js", "preload.cjs", "setup-preload.cjs"],
     size: (bytes) => bytes.length,
     fix: 'This bundle is one file, so a dynamic import() of bundled code does not shrink it. List a heavy, rarely used dependency under "external" in apps/desktop/scripts/build.mjs and load it with a dynamic import() where it is used, as electron-updater is',

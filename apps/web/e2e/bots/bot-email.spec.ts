@@ -49,7 +49,7 @@ test("a bot email claim stays in its shell's Space when another tab switches Spa
   const other = await rpc<{ id: string }>(page, "spaces/create", { name: "Email Other" });
   const createBot = async (spaceId: string, name: string) => {
     const response = await page.request.post("/rpc/bots/create", {
-      headers: { "x-rakazo-space-id": spaceId },
+      headers: { "x-nurlai-space-id": spaceId },
       data: {
         json: { name, description: "", notifyOnFinish: true, computerMode: "team" },
       },
@@ -81,7 +81,7 @@ test("a bot email claim stays in its shell's Space when another tab switches Spa
   await expect(header.getByText(address)).toBeVisible();
   await captureScreenshot(page, testInfo, "bot-email-space-claim");
   const response = await page.request.post("/rpc/bots/emailAddress", {
-    headers: { "x-rakazo-space-id": home.id },
+    headers: { "x-nurlai-space-id": home.id },
     data: { json: { botId: scout.id } },
   });
   expect(response.ok()).toBe(true);

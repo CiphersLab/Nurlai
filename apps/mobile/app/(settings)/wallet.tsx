@@ -1,6 +1,6 @@
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import { writeSaved } from "@rakazo/core/query";
+import { writeSaved } from "@nurlai/core/query";
 import { useFocusEffect } from "expo-router";
 import { useCallback, useEffect, useState } from "react";
 import { Alert, Linking, ScrollView, StyleSheet } from "react-native";

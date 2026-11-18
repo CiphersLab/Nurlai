@@ -7,7 +7,7 @@ import {
   useNativeState,
 } from "@expo/ui/jetpack-compose";
 import { useLingui } from "@lingui/react/macro";
-import { tokensForAppearance } from "@rakazo/ui-tokens";
+import { tokensForAppearance } from "@nurlai/ui-tokens";
 import { useResolvedAppearance } from "../../lib/native/native";
 import type { NameDialogProps } from "./name-dialog";
 

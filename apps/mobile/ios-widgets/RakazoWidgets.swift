@@ -4,7 +4,7 @@ import SwiftUI
 import WidgetKit
 
 @main
-struct RakazoWidgets: WidgetBundle {
+struct NurlaiWidgets: WidgetBundle {
   var body: some Widget {
     VoiceMessageLiveActivity()
     WorkLiveActivity()

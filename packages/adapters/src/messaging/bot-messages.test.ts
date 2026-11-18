@@ -1,5 +1,5 @@
-import type { PrismaClient } from "@rakazo/db";
-import { RunHistoryWriteError } from "@rakazo/db";
+import type { PrismaClient } from "@nurlai/db";
+import { RunHistoryWriteError } from "@nurlai/db";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { ExecutorDeps } from "../runs/executor/executor-deps.js";
 import {

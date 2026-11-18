@@ -20,11 +20,11 @@ import type {
   TerminalRequest,
   UnreferencedMachine,
   UnreferencedMachineRecords,
-} from "@rakazo/adapter-kit";
-import { SandboxFileTooLargeError } from "@rakazo/adapter-kit";
-import { abortableDelay } from "@rakazo/core";
-import { boundedSandboxCommandTimeoutMs } from "@rakazo/core/node/sandbox-command";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { SandboxFileTooLargeError } from "@nurlai/adapter-kit";
+import { abortableDelay } from "@nurlai/core";
+import { boundedSandboxCommandTimeoutMs } from "@nurlai/core/node/sandbox-command";
+import { getLogger } from "@nurlai/logging";
 import {
   installPageBrowserCommand,
   privatePageInput,

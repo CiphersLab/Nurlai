@@ -3,17 +3,17 @@ import type {
   BackgroundJob,
   ManagedConnectorProvider,
   SecretStore,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import {
   CONNECTION_CLEANUP_MAX_ATTEMPTS,
   connectionCleanupJobKey,
   RetryJobLaterError,
-} from "@rakazo/adapter-kit";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
-import type { PrismaClient } from "@rakazo/db";
-import { currentDbContext, runProviderTransaction } from "@rakazo/db";
-import { createLogger, createTestSink, installLogger, wrapJobPayload } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
+import type { PrismaClient } from "@nurlai/db";
+import { currentDbContext, runProviderTransaction } from "@nurlai/db";
+import { createLogger, createTestSink, installLogger, wrapJobPayload } from "@nurlai/logging";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { createBackgroundJobHandlers } from "../runs/wakeups/background-job-handlers.js";
 import {

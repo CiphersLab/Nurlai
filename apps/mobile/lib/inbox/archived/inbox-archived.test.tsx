@@ -2,8 +2,8 @@
 
 vi.mock("../../api/session", () => ({ currentSessionGeneration: () => 0 }));
 
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { notifyManager } from "@tanstack/react-query";
 import type { CSSProperties, ReactNode } from "react";
 import { act, useEffect, useMemo } from "react";
@@ -102,7 +102,7 @@ vi.mock("../../api/api", () => ({
   captureApiRequestContext: async (spaceId: string | null = "space-a") => ({
     apiBase: "https://example.test",
     sessionGeneration: 0,
-    headers: spaceId ? { "x-rakazo-space-id": spaceId } : {},
+    headers: spaceId ? { "x-nurlai-space-id": spaceId } : {},
   }),
 }));
 vi.mock("../../native/native", () => ({

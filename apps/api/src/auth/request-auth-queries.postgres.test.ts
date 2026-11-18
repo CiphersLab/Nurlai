@@ -2,7 +2,7 @@ import { AsyncLocalStorage } from "node:async_hooks";
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { asSystem, createDb } from "@rakazo/db";
+import { asSystem, createDb } from "@nurlai/db";
 import { expect, it } from "vitest";
 import { sessionCookieHeader } from "../../../../packages/testkit/src/index.js";
 import { createApp } from "../app.js";

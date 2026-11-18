@@ -1,9 +1,9 @@
 import ExpoModulesCore
 import UIKit
 
-public class RakazoListScrollModule: Module {
+public class NurlaiListScrollModule: Module {
   public func definition() -> ModuleDefinition {
-    Name("RakazoListScroll")
+    Name("NurlaiListScroll")
 
     // Scrolls the native list inside the view with this tag so its row sits mid-screen, even a
     // row the list has not laid out yet. A SwiftUI list has no scroll-to-row JavaScript API,

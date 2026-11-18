@@ -9,21 +9,21 @@ import type {
 } from "@earendil-works/pi-ai";
 import { getSupportedThinkingLevels } from "@earendil-works/pi-ai";
 import { AssistantMessageEventStream } from "@earendil-works/pi-ai/utils/event-stream";
-import type { AgentRunRequest, ConnectorTool } from "@rakazo/adapter-kit";
+import type { AgentRunRequest, ConnectorTool } from "@nurlai/adapter-kit";
 import {
   isModelCredentialRejected,
   isRetryableProviderUnavailable,
   isTransientModelError,
-} from "@rakazo/adapter-kit";
-import type { ModelBackupOutcome } from "@rakazo/core";
+} from "@nurlai/adapter-kit";
+import type { ModelBackupOutcome } from "@nurlai/core";
 import {
   abortableDelay,
   MODEL_CONTEXT_TOO_SMALL_ERROR,
   MODEL_OUTPUT_CUT_ERROR,
   MODEL_OUTPUT_LIMIT_ERROR,
   MODEL_REQUEST_LIMIT_ERROR,
-} from "@rakazo/core";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/core";
+import { getLogger } from "@nurlai/logging";
 import { groqRequestContextWindow } from "../../models/endpoints/groq-request-budget.js";
 import { affordableOpenRouterOutput } from "../../models/endpoints/openrouter-output-budget.js";
 import type { PacerSlot } from "../../models/endpoints/token-pacer.js";
@@ -549,7 +549,7 @@ export function fallbackAwareModelStream(
         sentTarget.model.contextWindow,
         operatorMaxTokens(sentTarget.model),
       );
-      // Wait only as long as RAKAZO_LOCAL_TOKENS_PER_MINUTE needs (token-pacer.ts).
+      // Wait only as long as NURLAI_LOCAL_TOKENS_PER_MINUTE needs (token-pacer.ts).
       let paceSlot: PacerSlot | undefined;
       const paceLimit = pacerTokensPerMinute(target.config.provider);
       if (paceLimit !== undefined) {

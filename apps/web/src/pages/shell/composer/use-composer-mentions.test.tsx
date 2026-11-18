@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
-import type { Bot, Routine } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
+import type { Bot, Routine } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { act, createElement } from "react";
 import { createRoot } from "react-dom/client";

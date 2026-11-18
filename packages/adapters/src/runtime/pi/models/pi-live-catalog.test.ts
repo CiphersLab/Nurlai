@@ -1,6 +1,6 @@
-import { DEFAULT_MODEL_CONTEXT_WINDOW } from "@rakazo/contracts";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import { DEFAULT_MODEL_CONTEXT_WINDOW } from "@nurlai/contracts";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { resolveRuntimeModel } from "../pi-runtime-models.js";
 import { CodexCatalogCache } from "./pi-codex-catalog.js";
@@ -45,10 +45,10 @@ describe("live catalog merge and execution", () => {
 
   it("defaults probing on and honors the deployment off switch", () => {
     expect(liveModelCatalogEnabled({})).toBe(true);
-    expect(liveModelCatalogEnabled({ RAKAZO_LIVE_MODEL_CATALOG: " off " })).toBe(false);
+    expect(liveModelCatalogEnabled({ NURLAI_LIVE_MODEL_CATALOG: " off " })).toBe(false);
   });
   it("skips credential reads and both provider transports when probing is off", async () => {
-    vi.stubEnv("RAKAZO_LIVE_MODEL_CATALOG", "off");
+    vi.stubEnv("NURLAI_LIVE_MODEL_CATALOG", "off");
     const probe = vi.fn();
     const cache = new ProviderCatalogCache({ probe });
     expect(await cache.read(credential)).toBeUndefined();

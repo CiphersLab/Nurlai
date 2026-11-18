@@ -4,12 +4,12 @@ import type {
   MemoryCommitRequest,
   MemoryReadRequest,
   MemorySnapshot,
-} from "@rakazo/adapter-kit";
-import { MemoryRevisionConflictError } from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
+import { MemoryRevisionConflictError } from "@nurlai/adapter-kit";
 import {
   legacyScopedToolEffectIdempotencyKey,
   toolEffectIdempotencyKey,
-} from "@rakazo/core/node/approval-effect-key";
+} from "@nurlai/core/node/approval-effect-key";
 import { describe, expect, it, vi } from "vitest";
 import type * as AutoReviewModule from "../../approvals/auto-review.js";
 import type * as ComputerLifecycleModule from "../../computers/computer-lifecycle.js";

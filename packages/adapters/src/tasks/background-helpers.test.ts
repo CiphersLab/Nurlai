@@ -1,12 +1,12 @@
-import { runContinueJob } from "@rakazo/adapter-kit";
-import { settleRunSubagents } from "@rakazo/core";
-import type * as Db from "@rakazo/db";
-import { appendEventInTransaction, createThreadMessageInTransaction } from "@rakazo/db";
+import { runContinueJob } from "@nurlai/adapter-kit";
+import { settleRunSubagents } from "@nurlai/core";
+import type * as Db from "@nurlai/db";
+import { appendEventInTransaction, createThreadMessageInTransaction } from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import type { RunContext } from "../runs/assembly/run-context.js";
 import { returnHelperOutcome, startBackgroundHelper } from "./background-helpers.js";
 
-vi.mock("@rakazo/db", async (original) => ({
+vi.mock("@nurlai/db", async (original) => ({
   ...(await original<typeof Db>()),
   assertRunCanWriteHistory: vi.fn(async () => undefined),
   createThreadMessageInTransaction: vi.fn(async () => ({ id: "card" })),

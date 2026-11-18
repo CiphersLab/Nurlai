@@ -1,4 +1,4 @@
-import { flush } from "@rakazo/core/test-async";
+import { flush } from "@nurlai/core/test-async";
 import { describe, expect, it } from "vitest";
 import { followSpaceChanges, publishSpaceChange } from "./space-changes.js";
 

@@ -1,5 +1,5 @@
-import { deferred } from "@rakazo/core/test-async";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+import { deferred } from "@nurlai/core/test-async";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import type { PrismaClient } from "../database/client.js";
 import { createDb } from "../database/client.js";

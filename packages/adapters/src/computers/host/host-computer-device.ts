@@ -1,4 +1,4 @@
-import type { PrismaClient } from "@rakazo/db";
+import type { PrismaClient } from "@nurlai/db";
 import type { HostComputerEnvironment, HostComputerRequest } from "./host-computer-protocol.js";
 import { HostComputerSandbox } from "./host-computer-sandbox.js";
 import { UserDeviceOfflineError } from "./user-device-gateway.js";

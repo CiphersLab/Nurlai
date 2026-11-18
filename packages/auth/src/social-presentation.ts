@@ -1,4 +1,4 @@
-import type { SignInProvider } from "@rakazo/contracts";
+import type { SignInProvider } from "@nurlai/contracts";
 
 /** Provider-owned brand assets; clients only render neutral vector data. */
 export function socialPresentation(id: string): SignInProvider["presentation"] {

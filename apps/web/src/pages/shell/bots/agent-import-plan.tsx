@@ -6,15 +6,15 @@ import type {
   AgentImportStatus,
   AgentImportWarning,
   ComputerMode,
-} from "@rakazo/contracts";
-import { BOT_DESCRIPTION_MAX_LENGTH, BOT_NAME_MAX_LENGTH } from "@rakazo/contracts";
-import { looksLikeCredential } from "@rakazo/core";
-import { Button, Checkbox, Input, Label, OptionSelect } from "@rakazo/ui-web";
+} from "@nurlai/contracts";
+import { BOT_DESCRIPTION_MAX_LENGTH, BOT_NAME_MAX_LENGTH } from "@nurlai/contracts";
+import { looksLikeCredential } from "@nurlai/core";
+import { Button, Checkbox, Input, Label, OptionSelect } from "@nurlai/ui-web";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@rakazo/ui-web/components/ui/collapsible";
+} from "@nurlai/ui-web/components/ui/collapsible";
 import { ChevronDown } from "lucide-react";
 import type { ReactNode } from "react";
 import { ComputerModePicker } from "./bot-settings-sections";

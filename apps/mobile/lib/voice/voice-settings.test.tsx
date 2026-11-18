@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import type { ReactNode } from "react";
 import { act, useEffect } from "react";
 import type { Root } from "react-dom/client";
@@ -26,7 +26,7 @@ vi.mock("../api/api", () => ({
   selectedSpaceId: () => "space-fixture",
   captureApiRequestContext: async (spaceId?: string) => ({
     apiBase: "https://app.example.test",
-    headers: spaceId ? { "x-rakazo-space-id": spaceId } : {},
+    headers: spaceId ? { "x-nurlai-space-id": spaceId } : {},
   }),
 }));
 vi.mock("../api/session", () => ({ currentSessionGeneration: () => 1 }));
@@ -412,7 +412,7 @@ it("edits a Space's override in that Space, leaving this device's voice and soun
   const spaceContext = {
     requestContext: {
       apiBase: "https://app.example.test",
-      headers: { "x-rakazo-space-id": "space-other" },
+      headers: { "x-nurlai-space-id": "space-other" },
     },
   };
   // Reads also carry an abort signal.

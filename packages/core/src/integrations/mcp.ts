@@ -1,4 +1,4 @@
-import { trimEndChars } from "@rakazo/contracts";
+import { trimEndChars } from "@nurlai/contracts";
 import { newClientId } from "../primitives/client-id.js";
 export function deriveMcpSlug(name: string): string {
   const slug = name

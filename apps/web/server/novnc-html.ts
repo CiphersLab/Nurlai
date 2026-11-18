@@ -105,13 +105,13 @@ export function injectNovncStorageShim(
   // VideoDecoder.flush() never returns, so the page never starts. Screens never use H.264.
   try { delete window.VideoDecoder; } catch {}
   // The app cannot look into this sandboxed frame, so tell it how the screen is doing.
-  const report = (rakazoScreen, detail) => {
+  const report = (nurlaiScreen, detail) => {
     try {
-      window.parent.postMessage(detail ? { rakazoScreen, detail } : { rakazoScreen }, "*");
+      window.parent.postMessage(detail ? { nurlaiScreen, detail } : { nurlaiScreen }, "*");
     } catch {}
     // The mobile app's WebView hears only the state word: no URL and none of the page's text.
     try {
-      window.ReactNativeWebView?.postMessage(JSON.stringify({ rakazoScreen }));
+      window.ReactNativeWebView?.postMessage(JSON.stringify({ nurlaiScreen }));
     } catch {}
   };
   // A reconnected screen takes the keyboard back when the app asks; nothing else is accepted.
@@ -122,7 +122,7 @@ export function injectNovncStorageShim(
       !data ||
       typeof data !== "object" ||
       Object.keys(data).length !== 1 ||
-      data.rakazoScreenFocus !== true
+      data.nurlaiScreenFocus !== true
     )
       return;
     const canvas = canvasOf();

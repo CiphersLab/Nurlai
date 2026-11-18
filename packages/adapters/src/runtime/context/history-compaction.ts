@@ -1,9 +1,9 @@
-import type { AgentRunRequest, AgentRuntime, JobPublisher } from "@rakazo/adapter-kit";
-import { historyCompactJob } from "@rakazo/adapter-kit";
-import { blocksToAgentHistoryText, botMessageContext } from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
-import { recordUsage, runAsTenant, storedMessageBlocks } from "@rakazo/db";
-import { getLogger, unwrapJobPayload } from "@rakazo/logging";
+import type { AgentRunRequest, AgentRuntime, JobPublisher } from "@nurlai/adapter-kit";
+import { historyCompactJob } from "@nurlai/adapter-kit";
+import { blocksToAgentHistoryText, botMessageContext } from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
+import { recordUsage, runAsTenant, storedMessageBlocks } from "@nurlai/db";
+import { getLogger, unwrapJobPayload } from "@nurlai/logging";
 import type {
   ConfiguredMemoryProvider,
   MemoryProviderResolver,

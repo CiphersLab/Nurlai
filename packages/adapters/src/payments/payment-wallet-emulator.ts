@@ -13,8 +13,8 @@ import type {
   PurchaseCredentialKind,
   PurchaseRequest,
   PurchaseSnapshot,
-} from "@rakazo/adapter-kit";
-import { PaymentWalletDisconnected, PaymentWalletRequestRejected } from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
+import { PaymentWalletDisconnected, PaymentWalletRequestRejected } from "@nurlai/adapter-kit";
 import {
   readStripeChargeChallenge,
   stripeChargeAuthorization,

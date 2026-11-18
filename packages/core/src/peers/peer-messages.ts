@@ -1,4 +1,4 @@
-import type { MessageBlock } from "@rakazo/contracts";
+import type { MessageBlock } from "@nurlai/contracts";
 import { foldPeerReplies } from "../messages/message-visibility.js";
 import { isPeerReplyBlock, unreturnedPeerReplies } from "./peer-exchanges.js";
 

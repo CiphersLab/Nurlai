@@ -1,4 +1,4 @@
-import { useTimeout } from "@rakazo/chat-ui/hooks";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
 import type { RefObject } from "react";
 import { useRef, useState } from "react";
 import type { TextInputInstance } from "react-native";

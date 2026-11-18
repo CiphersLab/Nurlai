@@ -1,4 +1,4 @@
-import { trimEndChars } from "@rakazo/contracts";
+import { trimEndChars } from "@nurlai/contracts";
 import { parse } from "tldts";
 
 /**

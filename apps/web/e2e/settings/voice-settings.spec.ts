@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { AI_DISCLOSURE_VERSION, AI_PRIVACY_URL } from "@rakazo/contracts";
+import { AI_DISCLOSURE_VERSION, AI_PRIVACY_URL } from "@nurlai/contracts";
 import {
   captureScreenshot,
   chooseOption,

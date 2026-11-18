@@ -1,12 +1,12 @@
-import { clearInactiveUserComputerControl, expireComputerControl } from "@rakazo/adapters";
-import type { TestSink } from "@rakazo/logging";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+import { clearInactiveUserComputerControl, expireComputerControl } from "@nurlai/adapters";
+import type { TestSink } from "@nurlai/logging";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { RouterDeps } from "../router.js";
 import { expireStaleComputerControl } from "./computer-control.js";
 
-vi.mock("@rakazo/adapters", async (original) => ({
-  ...(await original<typeof import("@rakazo/adapters")>()),
+vi.mock("@nurlai/adapters", async (original) => ({
+  ...(await original<typeof import("@nurlai/adapters")>()),
   expireComputerControl: vi.fn(),
   clearInactiveUserComputerControl: vi.fn(),
 }));

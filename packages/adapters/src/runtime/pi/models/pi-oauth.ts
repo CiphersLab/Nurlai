@@ -10,12 +10,12 @@ import type {
   ModelCredentialFailedState,
   ModelCredentialRetireReason,
   SecretStore,
-} from "@rakazo/adapter-kit";
-import type { ModelOAuthBegin, SettingsScope } from "@rakazo/contracts";
-import { canonicalPiProviderId } from "@rakazo/contracts";
-import type { Prisma, PrismaClient } from "@rakazo/db";
-import { runAsSystem, runAsTenant } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import type { ModelOAuthBegin, SettingsScope } from "@nurlai/contracts";
+import { canonicalPiProviderId } from "@nurlai/contracts";
+import type { Prisma, PrismaClient } from "@nurlai/db";
+import { runAsSystem, runAsTenant } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import type { ModelProviderDefinition } from "../../../models/model-provider-registry.js";
 import { modelProviders } from "../../../models/model-provider-registry.js";
 import type { StoredModelSecret } from "../../../models/model-secret.js";
@@ -33,7 +33,7 @@ export const COPILOT_OAUTH_PROVIDER = "github-copilot";
 export const XAI_OAUTH_PROVIDER = "xai";
 export const ANTHROPIC_OAUTH_PROVIDER = "anthropic";
 
-/** Providers Rakazo offers a subscription sign-in for, by id. */
+/** Providers Nurlai offers a subscription sign-in for, by id. */
 export const SUBSCRIPTION_SIGN_IN_PROVIDERS = Object.fromEntries(
   Object.entries(modelProviders as Record<string, ModelProviderDefinition>).flatMap(
     ([id, { signIn }]) => (signIn ? [[id, signIn]] : []),

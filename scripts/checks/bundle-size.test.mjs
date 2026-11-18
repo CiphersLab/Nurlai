@@ -95,8 +95,8 @@ test("missing build output says to run the build", (t) => {
   assert.deepEqual(checkBundleSizes(empty, BUDGETS), {
     passed: [],
     failures: [
-      "Cannot measure web-startup: apps/web/dist/index.html is missing. Run the build first: pnpm --filter @rakazo/web build",
-      "Cannot measure desktop-main: apps/desktop/dist/main.js is missing. Run the build first: pnpm --filter @rakazo/desktop build",
+      "Cannot measure web-startup: apps/web/dist/index.html is missing. Run the build first: pnpm --filter @nurlai/web build",
+      "Cannot measure desktop-main: apps/desktop/dist/main.js is missing. Run the build first: pnpm --filter @nurlai/desktop build",
     ],
   });
 

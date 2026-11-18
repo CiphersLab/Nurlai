@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import type { MessageBlock, ThreadMessage } from "@rakazo/contracts";
+import type { MessageBlock, ThreadMessage } from "@nurlai/contracts";
 import type { ReactNode } from "react";
 import { act, useCallback, useMemo, useRef } from "react";
 import type { Root } from "react-dom/client";

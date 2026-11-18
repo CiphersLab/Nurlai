@@ -1,4 +1,4 @@
-import type { SandboxProvider } from "@rakazo/adapter-kit";
+import type { SandboxProvider } from "@nurlai/adapter-kit";
 import { NoneSandboxProvider } from "../../providers/computer/none/none-sandbox.js";
 import type { SandboxProviderOptions } from "../computer-provider-descriptor.js";
 import { envBindings } from "../computer-provider-descriptor.js";

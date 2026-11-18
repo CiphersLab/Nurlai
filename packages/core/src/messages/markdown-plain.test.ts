@@ -1,4 +1,4 @@
-import { expectLinearTime } from "@rakazo/contracts/test-timing";
+import { expectLinearTime } from "@nurlai/contracts/test-timing";
 import fc from "fast-check";
 import { describe, expect, it, vi } from "vitest";
 import {

@@ -3,8 +3,8 @@ import type {
   OrganizationInvitation,
   OrganizationMember,
   OrganizationMembers,
-} from "@rakazo/contracts";
-import { accountDisplay } from "@rakazo/core";
+} from "@nurlai/contracts";
+import { accountDisplay } from "@nurlai/core";
 import {
   Badge,
   Button,
@@ -17,7 +17,7 @@ import {
   Input,
   toast,
   writeClipboard,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { useQuery } from "@tanstack/react-query";
 import { MoreHorizontal } from "lucide-react";
 import { useState } from "react";

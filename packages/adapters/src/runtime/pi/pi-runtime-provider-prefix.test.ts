@@ -1,10 +1,10 @@
 import { once } from "node:events";
 import { createServer } from "node:http";
-import type { ConnectorTool } from "@rakazo/adapter-kit";
+import type { ConnectorTool } from "@nurlai/adapter-kit";
 import sharp from "sharp";
 import { describe, expect, it, vi } from "vitest";
 import {
-  RAKAZO_PLATFORM_INSTRUCTION,
+  NURLAI_PLATFORM_INSTRUCTION,
   userTurnInstructions,
 } from "../../runs/assembly/run-instructions.prompt.js";
 import { PiAgentRuntime } from "./pi-runtime.js";
@@ -340,7 +340,7 @@ describe("Pi outgoing provider prefixes", () => {
         expect(request.messages[0]?.role).toBe("system");
         expect(
           String(request.messages[0]?.content).startsWith(
-            `${RAKAZO_PLATFORM_INSTRUCTION}\n\nStable guidance.\nStable constraints.`,
+            `${NURLAI_PLATFORM_INSTRUCTION}\n\nStable guidance.\nStable constraints.`,
           ),
         ).toBe(true);
       }

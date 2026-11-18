@@ -5,12 +5,12 @@ import type {
   BackgroundJob,
   JobPublisher,
   SandboxProvider,
-} from "@rakazo/adapter-kit";
-import { memoryRetainTurnJob, SandboxUnresponsiveError } from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
-import type { PrismaClient, ThreadEvents } from "@rakazo/db";
-import { currentDbContext } from "@rakazo/db";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { memoryRetainTurnJob, SandboxUnresponsiveError } from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
+import type { PrismaClient, ThreadEvents } from "@nurlai/db";
+import { currentDbContext } from "@nurlai/db";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { describe, expect, it, vi } from "vitest";
 import type * as ComputerControl from "../../computers/screens/computer-control.js";
 import { expireComputerControl } from "../../computers/screens/computer-control.js";

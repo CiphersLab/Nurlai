@@ -4,10 +4,10 @@ import {
   EncryptedSecretStore,
   previewPluginInstall,
   withSecretPersistence,
-} from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
-import { createDb, runAsSystem, runAsTenant } from "@rakazo/db";
+} from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
+import { createDb, runAsSystem, runAsTenant } from "@nurlai/db";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { createAgentSkillsService } from "../bots/agent-skills.js";
 import type { RouterDeps } from "../router.js";

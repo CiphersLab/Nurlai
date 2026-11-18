@@ -1,5 +1,5 @@
 import { builtinModels } from "@earendil-works/pi-ai/providers/all";
-import { ConnectionSetupError } from "@rakazo/contracts";
+import { ConnectionSetupError } from "@nurlai/contracts";
 import { describe, expect, it } from "vitest";
 import { CLAUDE_CODE_PROVIDER_ID } from "../providers/cli-model/claude-code/provider-id.js";
 import {
@@ -18,7 +18,7 @@ type KeyCheckedProvider = {
   [K in ProviderId]: (typeof modelProviders)[K] extends { keyCheck: object } ? K : never;
 }[ProviderId];
 
-/** Providers the model registry does not list, because Rakazo runs them itself. */
+/** Providers the model registry does not list, because Nurlai runs them itself. */
 const outsideCatalog: readonly string[] = [CLAUDE_CODE_PROVIDER_ID];
 
 /** How each provider answers a key it rejects, offline. */
@@ -38,7 +38,7 @@ function catalogIds(provider: string) {
   return catalog.filter((entry) => entry.provider === provider).map((entry) => entry.id);
 }
 
-/** Hosts the bundled model registry sends this provider's requests to, read apart from Rakazo's own entry. */
+/** Hosts the bundled model registry sends this provider's requests to, read apart from Nurlai's own entry. */
 function catalogHosts(provider: string) {
   const models = builtinModels()
     .getProviders()
@@ -50,7 +50,7 @@ function catalogHosts(provider: string) {
 }
 
 describe.each(entries)("%s model provider", (id, definition) => {
-  it("is a provider the model registry lists, or one Rakazo runs itself", () => {
+  it("is a provider the model registry lists, or one Nurlai runs itself", () => {
     expect(catalogIds(id).length > 0 || outsideCatalog.includes(id)).toBe(true);
   });
 

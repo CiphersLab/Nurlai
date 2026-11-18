@@ -1,5 +1,5 @@
-import { AppLocaleSchema } from "@rakazo/contracts";
-import { matchUiLocale } from "@rakazo/core";
+import { AppLocaleSchema } from "@nurlai/contracts";
+import { matchUiLocale } from "@nurlai/core";
 import { readableLocalStorage } from "../preferences/stored-preference";
 
 export const UI_LOCALES = AppLocaleSchema.options;

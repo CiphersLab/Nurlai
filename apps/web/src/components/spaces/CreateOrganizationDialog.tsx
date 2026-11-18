@@ -10,7 +10,7 @@ import {
   FieldError,
   FieldLabel,
   Input,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { useId, useState } from "react";
 import { useQueryUserId, useSave } from "../../lib/query/query";
 import { errorText } from "../../lib/query/user-error";

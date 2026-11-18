@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
-import type { ConnectionCatalogItem, PluginMarketplaceEntry } from "@rakazo/contracts";
-import { OTHER_PLUGINS, pluginSite } from "@rakazo/core";
+import type { ConnectionCatalogItem, PluginMarketplaceEntry } from "@nurlai/contracts";
+import { OTHER_PLUGINS, pluginSite } from "@nurlai/core";
 import type { ReactNode } from "react";
 import { ActivityIndicator, Pressable, Text, View } from "react-native";
 import type { PluginParams } from "../../lib/integrations/plugin-marketplace";

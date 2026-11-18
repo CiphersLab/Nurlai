@@ -2,9 +2,9 @@ import { existsSync, realpathSync } from "node:fs";
 import { homedir } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { uploadSizeFromEnv } from "@rakazo/core";
-import { loadRootEnv } from "@rakazo/core/node/load-root-env";
-import { resolveSupervisorToken } from "@rakazo/core/node/secrets-guard";
+import { uploadSizeFromEnv } from "@nurlai/core";
+import { loadRootEnv } from "@nurlai/core/node/load-root-env";
+import { resolveSupervisorToken } from "@nurlai/core/node/secrets-guard";
 import Docker from "dockerode";
 import { computerImageEnsurer } from "./computer-image.js";
 import {
@@ -26,7 +26,7 @@ export const docker = dockerSocketPath
   ? new Docker({ socketPath: dockerSocketPath })
   : new Docker();
 const computerContext =
-  process.env.RAKAZO_COMPUTER_CONTEXT ??
+  process.env.NURLAI_COMPUTER_CONTEXT ??
   path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../computer");
 export const ensureComputerImage = computerImageEnsurer(docker, COMPUTER_IMAGE, computerContext);
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../../..");

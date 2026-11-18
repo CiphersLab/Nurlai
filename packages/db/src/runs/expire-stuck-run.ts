@@ -1,7 +1,7 @@
-import type { RealtimeFanout } from "@rakazo/adapter-kit";
-import type { MessageBlock } from "@rakazo/contracts";
-import type { ExpirableWaitStatus } from "@rakazo/core";
-import { ACTIVE_RUN_STATUSES, stuckWorkExpiredNonce, stuckWorkStatusMessage } from "@rakazo/core";
+import type { RealtimeFanout } from "@nurlai/adapter-kit";
+import type { MessageBlock } from "@nurlai/contracts";
+import type { ExpirableWaitStatus } from "@nurlai/core";
+import { ACTIVE_RUN_STATUSES, stuckWorkExpiredNonce, stuckWorkStatusMessage } from "@nurlai/core";
 import { expireComputerExecutionLeases } from "../computers/computers.js";
 import type { Prisma, PrismaClient } from "../database/client.js";
 import { withTransactionRetry } from "../database/transaction-retry.js";

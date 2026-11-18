@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
-import { useTimeout } from "@rakazo/chat-ui/hooks";
-import { Button, Input } from "@rakazo/ui-web";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
+import { Button, Input } from "@nurlai/ui-web";
 import { ChevronDown, ChevronUp, X } from "lucide-react";
 import type { RefObject } from "react";
 import { useEffect, useLayoutEffect, useState } from "react";

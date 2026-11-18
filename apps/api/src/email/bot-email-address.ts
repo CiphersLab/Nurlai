@@ -1,10 +1,10 @@
 import { ORPCError } from "@orpc/server";
-import { EMAIL_NOT_RECEIVED, emailTriggerError } from "@rakazo/adapters";
-import type { BotEmailAddress, BotEmailAddresses } from "@rakazo/contracts";
-import { BOT_EMAIL_NAME_TAKEN } from "@rakazo/contracts";
-import { ClientError } from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
-import { claimBotEmailName } from "@rakazo/db";
+import { EMAIL_NOT_RECEIVED, emailTriggerError } from "@nurlai/adapters";
+import type { BotEmailAddress, BotEmailAddresses } from "@nurlai/contracts";
+import { BOT_EMAIL_NAME_TAKEN } from "@nurlai/contracts";
+import { ClientError } from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
+import { claimBotEmailName } from "@nurlai/db";
 
 /** The bot's address, once claimed; null when this server receives no email. */
 export async function botEmailAddress(

@@ -1,4 +1,4 @@
-import type { ModelSettings } from "@rakazo/contracts";
+import type { ModelSettings } from "@nurlai/contracts";
 import type { StoredModelSecret } from "./model-secret.js";
 import { catalogKnowsModel, compatibleModelSeesImages } from "./model-vision.js";
 

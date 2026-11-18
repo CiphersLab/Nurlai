@@ -1,7 +1,7 @@
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import type { SignInMcpServer } from "@rakazo/core";
-import { signInMcpServers } from "@rakazo/core";
+import type { SignInMcpServer } from "@nurlai/core";
+import { signInMcpServers } from "@nurlai/core";
 import { useQuery } from "@tanstack/react-query";
 import { useRef, useState } from "react";
 import { Text, View } from "react-native";

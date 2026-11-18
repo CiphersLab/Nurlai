@@ -1,4 +1,4 @@
-import type { AccountExportManifest, AccountExportRecord } from "@rakazo/contracts";
+import type { AccountExportManifest, AccountExportRecord } from "@nurlai/contracts";
 import type { Prisma, PrismaClient } from "../database/client.js";
 import { runAsTenant } from "../database/row-security.js";
 

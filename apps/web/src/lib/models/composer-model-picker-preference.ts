@@ -1,6 +1,6 @@
 import { createStoredPreference } from "../preferences/stored-preference";
 
-export const COMPOSER_MODEL_PICKER_STORAGE_KEY = "rakazo.composerModelPicker";
+export const COMPOSER_MODEL_PICKER_STORAGE_KEY = "nurlai.cipherslab.composerModelPicker";
 
 /** Only a saved "on" shows the model in the message box; anything else keeps it off. */
 export function normalizeComposerModelPicker(raw: string | null | undefined): boolean {

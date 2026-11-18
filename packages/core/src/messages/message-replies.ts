@@ -1,5 +1,5 @@
-import type { MessageAuthor, MessageBlock, ReplyPreview } from "@rakazo/contracts";
-import { MessageAuthorSchema, ReplyPreviewSchema } from "@rakazo/contracts";
+import type { MessageAuthor, MessageBlock, ReplyPreview } from "@nurlai/contracts";
+import { MessageAuthorSchema, ReplyPreviewSchema } from "@nurlai/contracts";
 import { isQuestionAskBlock } from "../asks/ask-kind.js";
 import { displayName } from "../bots/display-name.js";
 import { plainTextFromMarkdown } from "./markdown-plain.js";

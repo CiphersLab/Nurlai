@@ -1,5 +1,5 @@
 import { getEnvApiKey } from "@earendil-works/pi-ai/compat";
-import type { ModelUsageLookup } from "@rakazo/adapter-kit";
+import type { ModelUsageLookup } from "@nurlai/adapter-kit";
 import { modelCreditOfferings } from "../model-credits/offerings.js";
 import { LOCAL_PROVIDER_ID, localModelIds } from "../runtime/pi/models/pi-local-provider-id.js";
 

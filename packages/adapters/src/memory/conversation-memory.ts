@@ -3,10 +3,10 @@ import type {
   JobPublisher,
   SemanticMemoryConversationTurn,
   SemanticMemoryProvider,
-} from "@rakazo/adapter-kit";
-import { memoryRetainTurnJob } from "@rakazo/adapter-kit";
-import type { MessageBlock } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
+} from "@nurlai/adapter-kit";
+import { memoryRetainTurnJob } from "@nurlai/adapter-kit";
+import type { MessageBlock } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
 import {
   effectiveMemoryScope,
   isPartialReplyClientNonce,
@@ -14,8 +14,8 @@ import {
   loadMessageAuthors,
   partialReplyClientNonce,
   storedMessageBlocks,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { messageBlocksText } from "../runs/assembly/run-replies.prompt.js";
 import {
   isUserProgressClientNonce,

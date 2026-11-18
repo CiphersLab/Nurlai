@@ -1,9 +1,9 @@
 import { I18nProvider } from "@lingui/react";
-import type { MessageBlock, ThreadMessage } from "@rakazo/contracts";
-import { BOT_COLOR_LIST } from "@rakazo/contracts";
-import { instructionUpdateDiff } from "@rakazo/core";
-import type { GroupAvatarMember } from "@rakazo/ui-web";
-import { Button } from "@rakazo/ui-web";
+import type { MessageBlock, ThreadMessage } from "@nurlai/contracts";
+import { BOT_COLOR_LIST } from "@nurlai/contracts";
+import { instructionUpdateDiff } from "@nurlai/core";
+import type { GroupAvatarMember } from "@nurlai/ui-web";
+import { Button } from "@nurlai/ui-web";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";

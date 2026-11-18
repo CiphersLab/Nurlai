@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 // Packs the API, worker, web server and migrations into one archive that runs on plain Node, or
-// on Electron's binary with ELECTRON_RUN_AS_NODE=1, for hosts that run Rakazo without containers.
+// on Electron's binary with ELECTRON_RUN_AS_NODE=1, for hosts that run Nurlai without containers.
 // Usage: build-server-bundle.mjs <out-dir> [download-base-url]
-// Needs `pnpm db:generate` and `pnpm --filter @rakazo/web build` first. Writes
+// Needs `pnpm db:generate` and `pnpm --filter @nurlai/web build` first. Writes
 // rakazo-server-<platform>-<arch>-<version>.tar.xz and server-bundle.json { url, sha256, size,
 // version } to <out-dir>; the url is the base joined with the archive's name.
 //
@@ -11,13 +11,13 @@
 // app, the database package's schema and migrations, and production dependencies for this
 // platform only. manifest.json names each entrypoint relative to that folder. Run each with that
 // folder as the working directory, the same environment as the Compose service of the same name:
-//   migrate  DATABASE_URL, DATABASE_MIGRATION_URL, RAKAZO_DB_PACKAGE_DIR=packages/db
+//   migrate  DATABASE_URL, DATABASE_MIGRATION_URL, NURLAI_DB_PACKAGE_DIR=packages/db
 //   api      DATABASE_URL, API_HOST, API_PORT, BETTER_AUTH_SECRET, BETTER_AUTH_URL, WEB_ORIGIN,
 //            SCREEN_PROXY_SECRET, DATA_DIR, SANDBOX_PROVIDER (and that provider's settings,
-//            such as LOCAL_VM_CLI), RAKAZO_DESKTOP_STACK_TOKEN
+//            such as LOCAL_VM_CLI), NURLAI_DESKTOP_STACK_TOKEN
 //   worker   DATABASE_URL, DATA_DIR, SANDBOX_PROVIDER (and that provider's settings)
 //   web      API_PROXY_TARGET, SCREEN_PROXY_SECRET, WEB_HOST (127.0.0.1), WEB_PORT (5173),
-//            RAKAZO_HOST, RAKAZO_DESKTOP_STACK_TOKEN, RAKAZO_IMAGE_TAG
+//            NURLAI_HOST, NURLAI_DESKTOP_STACK_TOKEN, NURLAI_IMAGE_TAG
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import fs from "node:fs";

@@ -1,25 +1,25 @@
-import type { JobPublisher } from "@rakazo/adapter-kit";
+import type { JobPublisher } from "@nurlai/adapter-kit";
 import {
   routineJobKey,
   routineRetryJob,
   routineWakeupJob,
   runContinueJob,
   TransientModelError,
-} from "@rakazo/adapter-kit";
-import { ROUTINE_WATCH_DEFAULT_MINUTES } from "@rakazo/contracts";
+} from "@nurlai/adapter-kit";
+import { ROUTINE_WATCH_DEFAULT_MINUTES } from "@nurlai/contracts";
 import {
   displayName,
   expandSkillReferencesInPrompt,
   isOneShotRoutineCrons,
   nextRoutineRunDateAcross,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import {
   accountDeactivated,
   isUniqueViolation,
   SpaceDeletionInProgressError,
   spaceTakesWork,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { routineRunModelPin } from "../../models/model-selection.js";
 import { protectedComputerLifecycleRefusal } from "../../providers/computer/desktop/desktop-command-guard.js";
 import { findPendingRoutineTick, routineTimerNonce } from "../../routines/routine-coalescing.js";

@@ -2,10 +2,10 @@ import { randomBytes } from "node:crypto";
 import { mkdir, mkdtemp, readdir, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import type { AdapterContext, SandboxProvider } from "@rakazo/adapter-kit";
-import { SandboxDamagedError } from "@rakazo/adapter-kit";
-import type * as Db from "@rakazo/db";
-import type { PrismaClient, ThreadEvents } from "@rakazo/db";
+import type { AdapterContext, SandboxProvider } from "@nurlai/adapter-kit";
+import { SandboxDamagedError } from "@nurlai/adapter-kit";
+import type * as Db from "@nurlai/db";
+import type { PrismaClient, ThreadEvents } from "@nurlai/db";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { DesktopSandboxProvider } from "../providers/computer/desktop/desktop-sandbox.js";
 import { FakeSandboxProvider } from "../providers/computer/fake/fake-sandbox.js";
@@ -22,7 +22,7 @@ import {
 } from "./computer-lifecycle.js";
 
 // The plan's size is read from billing, which these Prisma doubles do not model.
-vi.mock("@rakazo/db", async (importOriginal) => ({
+vi.mock("@nurlai/db", async (importOriginal) => ({
   ...(await importOriginal<typeof Db>()),
   planComputerSize: vi.fn(async () => "standard"),
 }));

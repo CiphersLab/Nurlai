@@ -1,5 +1,5 @@
 export const message =
-  "Do not sleep with a raw timer. Use abortableDelay(ms, signal) from @rakazo/core so cancelling a run interrupts the wait; to wait for a condition use pollUntil, and to wait between attempts use retry.";
+  "Do not sleep with a raw timer. Use abortableDelay(ms, signal) from @nurlai/core so cancelling a run interrupts the wait; to wait for a condition use pollUntil, and to wait between attempts use retry.";
 
 export const include = [
   "{packages/{adapters,core,db,auth,memory,logging},apps/{api,worker},infra/sandboxes/supervisor,infra/updater}/src/**/*.{ts,tsx,mts,cts,js,mjs,cjs}",

@@ -1,4 +1,4 @@
-import { flush } from "@rakazo/core/test-async";
+import { flush } from "@nurlai/core/test-async";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 const updates = vi.hoisted(() => ({
@@ -29,7 +29,7 @@ vi.mock("expo-updates", () => updates);
 vi.mock("react-native", () => rn);
 vi.mock("./api", () => ({ configureClientBuild: vi.fn() }));
 
-import { IOS_APP_STORE_URL } from "@rakazo/contracts";
+import { IOS_APP_STORE_URL } from "@nurlai/contracts";
 import {
   clientBuildHeaders,
   FOREGROUND_UPDATE_CHECK_MS,
@@ -52,7 +52,7 @@ function pressUpdate() {
 describe("mobile client build", () => {
   it("names the running bundle by when its update was created", () => {
     expect(mobileClientBuild()).toBe("20261022093015");
-    expect(clientBuildHeaders()).toEqual({ "x-rakazo-client-build": "mobile/20261022093015" });
+    expect(clientBuildHeaders()).toEqual({ "x-nurlai-client-build": "mobile/20261022093015" });
   });
 
   it("names no build where expo-updates is off", () => {

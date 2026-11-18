@@ -1,5 +1,5 @@
-import { SecretStoreUnavailableError } from "@rakazo/adapter-kit";
-import { hasValidBearerToken } from "@rakazo/core/node/secrets-guard";
+import { SecretStoreUnavailableError } from "@nurlai/adapter-kit";
+import { hasValidBearerToken } from "@nurlai/core/node/secrets-guard";
 import type { Hono } from "hono";
 import { readBoundedBody } from "../http/http-body.js";
 import { formatWebhookPrompt } from "../messaging/inbound-delivery.prompt.js";

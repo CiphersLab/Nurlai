@@ -3,7 +3,7 @@ import { Agent as HttpsAgent } from "node:https";
 import type { Socket } from "node:net";
 import type { Duplex, Readable } from "node:stream";
 import type * as S3Sdk from "@aws-sdk/client-s3";
-import type { ObjectStorage } from "@rakazo/adapter-kit";
+import type { ObjectStorage } from "@nurlai/adapter-kit";
 import type { ObjectStorageConnection } from "../../../storage/object-storage-common.js";
 import {
   objectStorageConnectionFromEnv,

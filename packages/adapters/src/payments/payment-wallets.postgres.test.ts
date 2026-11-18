@@ -4,8 +4,8 @@ import type {
   PaymentWalletCredential,
   PaymentWalletProvider,
   SecretStore,
-} from "@rakazo/adapter-kit";
-import { asSystem, createDb, runAsSystem, runAsTenant } from "@rakazo/db";
+} from "@nurlai/adapter-kit";
+import { asSystem, createDb, runAsSystem, runAsTenant } from "@nurlai/db";
 import { Pool } from "pg";
 import { afterAll, describe, expect, it, vi } from "vitest";
 import { createBackgroundJobHandlers } from "../runs/wakeups/background-job-handlers.js";

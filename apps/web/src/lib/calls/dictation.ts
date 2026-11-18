@@ -7,7 +7,7 @@ import {
   speechLocaleTag,
   VOICE_RESPONSE_TIMEOUT_MS,
   withAbort,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { getActiveUiLocale } from "../locale/i18n.js";
 import { desktopBridge } from "../platform/desktop.js";
 import { selectedSpaceId, withSpaceHeaders } from "../query/rpc.js";
@@ -60,8 +60,8 @@ export function webSpeechAvailable(): boolean {
  */
 function electronSpeechHost(): boolean {
   if (typeof window !== "undefined") {
-    const host = window as Window & { rakazoDesktop?: unknown };
-    if (host.rakazoDesktop) return true;
+    const host = window as Window & { nurlaiDesktop?: unknown };
+    if (host.nurlaiDesktop) return true;
   }
   if (typeof navigator === "undefined") return false;
   const agent = navigator.userAgent;

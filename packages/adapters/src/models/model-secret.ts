@@ -4,7 +4,7 @@ import type {
   ModelContextLimits,
   ModelSettings,
   ThinkingLevel,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   MAX_MODEL_CONTEXT_WINDOW,
   MAX_MODEL_MAX_TOKENS,
@@ -13,7 +13,7 @@ import {
   ModelSettingsSchema,
   parseModelHeaders,
   ThinkingLevelSchema,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 
 const CORRUPT_MODEL_SECRET_MESSAGE =
   "Stored model credential is corrupt. Connect the provider again.";

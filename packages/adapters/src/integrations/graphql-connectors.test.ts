@@ -1,5 +1,5 @@
-import { ConnectionSetupError } from "@rakazo/contracts";
-import { getLogger } from "@rakazo/logging";
+import { ConnectionSetupError } from "@nurlai/contracts";
+import { getLogger } from "@nurlai/logging";
 import { describe, expect, it, vi } from "vitest";
 import {
   executeGraphqlOperation,

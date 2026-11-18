@@ -10,8 +10,8 @@ import type {
   V1PodSpec,
   V1Status,
 } from "@kubernetes/client-node";
-import type { AdapterContext, ComputerRef } from "@rakazo/adapter-kit";
-import { COMPUTER_CACHE_ENV } from "@rakazo/core/node/desktop-runtime";
+import type { AdapterContext, ComputerRef } from "@nurlai/adapter-kit";
+import { COMPUTER_CACHE_ENV } from "@nurlai/core/node/desktop-runtime";
 import type { RawExecEvent } from "../../../computers/sandbox/exec-computer.js";
 import {
   RawExecChannel,
@@ -27,7 +27,7 @@ import { sandboxNotFoundError } from "../../../computers/sandbox/sandbox-errors.
 const DEFAULT_NAMESPACE = "rakazo-sandboxes";
 // The Compose stack's default image. Pin a digest with KUBERNETES_SANDBOX_COMPUTER_IMAGE in
 // production so every pod runs the image the API was tested against.
-const DEFAULT_COMPUTER_IMAGE = "ghcr.io/elie222/rakazo/computer:edge";
+const DEFAULT_COMPUTER_IMAGE = "ghcr.io/elie222/nurlai/computer:edge";
 const DEFAULT_READY_TIMEOUT_MS = 120_000;
 const REQUEST_TIMEOUT_MS = 10_000;
 const CONTAINER_NAME = "computer";
@@ -45,7 +45,7 @@ export interface KubernetesSandboxOptions {
   podLabels?: Record<string, string>;
   readyTimeoutMs?: number;
   /**
-   * Claim in the sandbox namespace that holds the Rakazo data directory. When
+   * Claim in the sandbox namespace that holds the Nurlai data directory. When
    * set, each Computer mounts only its own `homes/<bot id>` directory at the
    * workspace, so the home persists in place and is never copied in or out.
    * The claim's volume is ReadWriteOnce, so the pod must also be placed with

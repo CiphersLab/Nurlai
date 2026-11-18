@@ -1,7 +1,7 @@
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import type { ComputerRef, ProcessEvent, SandboxProvider } from "@rakazo/adapter-kit";
+import type { ComputerRef, ProcessEvent, SandboxProvider } from "@nurlai/adapter-kit";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import {
   fakeBoatProvider as fakeBoat,
@@ -151,7 +151,7 @@ describe.each(running)("$kind sandbox conformance", (fixture) => {
   it.runIf(fixture.unsetEnv)(
     "lets explicit unsets win over inherited and request variables",
     async () => {
-      vi.stubEnv("RAKAZO_COMMAND_UNSET_TEST", "fake-host-value");
+      vi.stubEnv("NURLAI_COMMAND_UNSET_TEST", "fake-host-value");
       try {
         const provider = fixture.provider();
         const computer = await provider.provision(
@@ -162,9 +162,9 @@ describe.each(running)("$kind sandbox conformance", (fixture) => {
         for await (const event of provider.execute(
           computer,
           {
-            argv: ["printenv", "RAKAZO_COMMAND_UNSET_TEST"],
-            env: { RAKAZO_COMMAND_UNSET_TEST: "fake-request-value" },
-            unsetEnv: ["RAKAZO_COMMAND_UNSET_TEST"],
+            argv: ["printenv", "NURLAI_COMMAND_UNSET_TEST"],
+            env: { NURLAI_COMMAND_UNSET_TEST: "fake-request-value" },
+            unsetEnv: ["NURLAI_COMMAND_UNSET_TEST"],
           },
           ctx,
         ))
@@ -200,9 +200,9 @@ describe("desktop sandbox", () => {
         argv: [
           process.execPath,
           "-e",
-          "process.stdout.write(process.env.RAKAZO_DESKTOP_ENV_SENTINEL ?? '')",
+          "process.stdout.write(process.env.NURLAI_DESKTOP_ENV_SENTINEL ?? '')",
         ],
-        env: { RAKAZO_DESKTOP_ENV_SENTINEL: sentinel },
+        env: { NURLAI_DESKTOP_ENV_SENTINEL: sentinel },
       },
       ctx,
     )) {

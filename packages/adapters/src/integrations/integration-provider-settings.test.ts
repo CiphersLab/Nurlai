@@ -1,6 +1,6 @@
-import type { AdapterContext, ManagedConnectorProvider } from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
-import type { PrismaClient } from "@rakazo/db";
+import type { AdapterContext, ManagedConnectorProvider } from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
+import type { PrismaClient } from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import { InfisicalSecretStore } from "../providers/secret-store/infisical/infisical-secret-store.js";
 import { infisicalFake } from "../secrets/secret-store-fake.js";

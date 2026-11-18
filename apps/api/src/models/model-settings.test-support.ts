@@ -1,8 +1,8 @@
 import { onError } from "@orpc/server";
 import { RPCHandler } from "@orpc/server/fetch";
-import { listPiCatalog, serializeModelSecret } from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
+import { listPiCatalog, serializeModelSecret } from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
 import { vi } from "vitest";
 import type { RouterDeps } from "../router.js";
 import { createRouter } from "../router.js";

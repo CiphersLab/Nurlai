@@ -1,4 +1,4 @@
-import { reduceLiveMessageBlocks, withLiveStreamingProgress } from "@rakazo/core";
+import { reduceLiveMessageBlocks, withLiveStreamingProgress } from "@nurlai/core";
 import { describe, expect, it } from "vitest";
 import type { MobileSnapshot } from "../api/mobile-types";
 import { reconcileVisibleThreadSnapshot } from "./thread-snapshot";

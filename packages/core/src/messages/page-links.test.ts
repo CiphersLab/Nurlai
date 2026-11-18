@@ -1,5 +1,5 @@
-import type { MessageBlock } from "@rakazo/contracts";
-import { expectLinearTime } from "@rakazo/contracts/test-timing";
+import type { MessageBlock } from "@nurlai/contracts";
+import { expectLinearTime } from "@nurlai/contracts/test-timing";
 import { describe, expect, it } from "vitest";
 import {
   newestPageCards,

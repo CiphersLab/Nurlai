@@ -1,6 +1,6 @@
 import type { Locator, Page, Route, TestInfo } from "@playwright/test";
 import { expect, test } from "@playwright/test";
-import { signupRequiresEmailVerification } from "@rakazo/core";
+import { signupRequiresEmailVerification } from "@nurlai/core";
 
 export function isRealSandboxProvider(provider = process.env.SANDBOX_PROVIDER) {
   return (

@@ -1,5 +1,5 @@
-import type { SemanticMemoryProvider } from "@rakazo/adapter-kit";
-import type { MemoryProviderDescriptor, ProviderSettingsField } from "@rakazo/contracts";
+import type { SemanticMemoryProvider } from "@nurlai/adapter-kit";
+import type { MemoryProviderDescriptor, ProviderSettingsField } from "@nurlai/contracts";
 
 /** One memory provider: everything the factory, Settings and tests read about it. */
 export interface MemoryProviderDefinition {

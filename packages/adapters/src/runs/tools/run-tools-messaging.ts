@@ -1,12 +1,12 @@
 import { posix } from "node:path";
-import { ATTACHMENT_MAX_COUNT } from "@rakazo/contracts";
+import { ATTACHMENT_MAX_COUNT } from "@nurlai/contracts";
 import {
   BOT_MESSAGE_MAX_LENGTH,
   BOT_MESSAGE_TOO_LONG,
   isBackgroundRunTrigger,
   redactSecrets,
   resolveBotAddress,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import {
   connectAgent,
   messageConnectedAgent,

@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { SpaceMember, SpaceMembers } from "@rakazo/contracts";
-import { accountDisplay, spaceInvitee } from "@rakazo/core";
+import type { SpaceMember, SpaceMembers } from "@nurlai/contracts";
+import { accountDisplay, spaceInvitee } from "@nurlai/core";
 import {
   Badge,
   Button,
@@ -15,7 +15,7 @@ import {
   InputGroupButton,
   InputGroupInput,
   toast,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { Copy, Link, Mail, MoreHorizontal, UserPlus } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useSave } from "../../lib/query/query";

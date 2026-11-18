@@ -1,12 +1,12 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { BOT_COLOR_LIST, signInProviders } from "@rakazo/contracts";
+import { BOT_COLOR_LIST, signInProviders } from "@nurlai/contracts";
 import {
   credentialIssue,
   MAX_PASSWORD_LENGTH,
   MIN_PASSWORD_LENGTH,
   signupRequiresEmailVerification,
   suggestEmailCorrection,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import {
   Button,
   Input,
@@ -15,7 +15,7 @@ import {
   InputOTPSlot,
   Label,
   LogoAvatar,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { ChevronLeft } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";

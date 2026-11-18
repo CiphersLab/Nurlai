@@ -1,6 +1,6 @@
 import { passkeyClient } from "@better-auth/passkey/client";
-import { SIGNUP_SURFACE_HEADER } from "@rakazo/contracts";
-import { rememberSignupAttribution } from "@rakazo/core/signup-attribution";
+import { SIGNUP_SURFACE_HEADER } from "@nurlai/contracts";
+import { rememberSignupAttribution } from "@nurlai/core/signup-attribution";
 import type { OrganizationClientOptions } from "better-auth/client/plugins";
 import { emailOTPClient, organizationClient } from "better-auth/client/plugins";
 import type { ReactAuthClient } from "better-auth/react";

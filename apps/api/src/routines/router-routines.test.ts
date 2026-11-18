@@ -1,6 +1,6 @@
 import { createRouterClient } from "@orpc/server";
-import type { Actor } from "@rakazo/contracts";
-import { Prisma } from "@rakazo/db";
+import type { Actor } from "@nurlai/contracts";
+import { Prisma } from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import type { RouterDeps } from "../router.js";
 import { appHandler, createRouter, handle } from "../router-test-support.js";

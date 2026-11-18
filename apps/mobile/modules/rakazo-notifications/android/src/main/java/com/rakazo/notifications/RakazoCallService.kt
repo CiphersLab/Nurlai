@@ -1,4 +1,4 @@
-package com.rakazo.notifications
+package com.nurlai.notifications
 
 import android.Manifest
 import android.app.Notification
@@ -19,7 +19,7 @@ import android.os.PowerManager
  * UI uses this instead of holding the display on, so the screen can sleep while
  * the microphone, recognition, and reply feed continue.
  */
-class RakazoCallService : Service() {
+class NurlaiCallService : Service() {
   private var wakeLock: PowerManager.WakeLock? = null
 
   override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -122,7 +122,7 @@ class RakazoCallService : Service() {
   companion object {
     private const val CHANNEL_ID = "rakazo_call"
     private const val NOTIFICATION_ID = 1102
-    private const val EXTRA_TITLE = "com.rakazo.notifications.CALL_TITLE"
+    private const val EXTRA_TITLE = "com.nurlai.notifications.CALL_TITLE"
     private const val WAKE_LOCK_TAG = "rakazo:call"
 
     /** Answers the start request that is still waiting for [onStartCommand]. */
@@ -134,7 +134,7 @@ class RakazoCallService : Service() {
         return
       }
       pendingStart = onResult
-      val intent = Intent(context, RakazoCallService::class.java)
+      val intent = Intent(context, NurlaiCallService::class.java)
         .putExtra(EXTRA_TITLE, title)
       val queued = runCatching {
         if (Build.VERSION.SDK_INT >= 26) context.startForegroundService(intent)
@@ -149,7 +149,7 @@ class RakazoCallService : Service() {
 
     fun stop(context: Context) {
       pendingStart = null
-      context.stopService(Intent(context, RakazoCallService::class.java))
+      context.stopService(Intent(context, NurlaiCallService::class.java))
     }
   }
 }

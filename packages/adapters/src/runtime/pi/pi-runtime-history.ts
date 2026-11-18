@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import type { AssistantMessage, Context, Message, ToolCall } from "@earendil-works/pi-ai";
-import type { AgentRunRequest, AgentSteeringMessage } from "@rakazo/adapter-kit";
-import { TOOL_STEP_CALLS_KEPT, toolStepOutcomeText } from "@rakazo/core";
+import type { AgentRunRequest, AgentSteeringMessage } from "@nurlai/adapter-kit";
+import { TOOL_STEP_CALLS_KEPT, toolStepOutcomeText } from "@nurlai/core";
 import {
   bounded,
   IMAGE_NOT_KEPT,

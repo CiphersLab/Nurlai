@@ -1,4 +1,4 @@
-import type { ConnectorCatalogItem } from "@rakazo/adapter-kit";
+import type { ConnectorCatalogItem } from "@nurlai/adapter-kit";
 
 export function filterCatalog<T extends Pick<ConnectorCatalogItem, "name" | "slug">>(
   items: T[],

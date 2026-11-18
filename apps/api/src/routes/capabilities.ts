@@ -10,12 +10,12 @@ import {
   prepareGraphqlInstall,
   previewPluginInstall,
   verifyMcpInstall,
-} from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
-import { ConnectionSetupError } from "@rakazo/contracts";
-import { ClientError, comparePlugins, containsSecret, matchesPluginQuery } from "@rakazo/core";
-import type { Prisma } from "@rakazo/db";
-import { AVAILABILITY_SELECT, availableInSpace, itemSecretIn, spaceAvailability } from "@rakazo/db";
+} from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
+import { ConnectionSetupError } from "@nurlai/contracts";
+import { ClientError, comparePlugins, containsSecret, matchesPluginQuery } from "@nurlai/core";
+import type { Prisma } from "@nurlai/db";
+import { AVAILABILITY_SELECT, availableInSpace, itemSecretIn, spaceAvailability } from "@nurlai/db";
 import { requireAdmin } from "../auth/admins.js";
 import { searchIntegrationCatalog } from "../integrations/integration-catalog.js";
 import { assertMcpRemoteEndpoint, mayUsePrivateEndpoint } from "../integrations/mcp-servers.js";

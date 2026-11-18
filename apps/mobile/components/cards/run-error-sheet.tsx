@@ -1,7 +1,7 @@
 import { useLingui } from "@lingui/react/macro";
-import { useTimeout } from "@rakazo/chat-ui/hooks";
-import { normalizeRunError } from "@rakazo/core";
-import { translateRunError } from "@rakazo/i18n/run-error";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
+import { normalizeRunError } from "@nurlai/core";
+import { translateRunError } from "@nurlai/i18n/run-error";
 import * as Clipboard from "expo-clipboard";
 import { useEffect, useMemo, useReducer, useState } from "react";
 import { Platform, ScrollView, Text, useWindowDimensions, View } from "react-native";

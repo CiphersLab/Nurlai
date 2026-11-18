@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 
-import type { Routine } from "@rakazo/contracts";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred, flush } from "@rakazo/core/test-async";
+import type { Routine } from "@nurlai/contracts";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred, flush } from "@nurlai/core/test-async";
 import { notifyManager } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 import { act, createElement, useEffect, useLayoutEffect } from "react";
@@ -304,7 +304,7 @@ beforeEach(() => {
   session.generation += 1;
   requestContext.mockImplementation(async () => ({
     apiBase: "https://api.example",
-    headers: { "x-rakazo-space-id": "space-a" },
+    headers: { "x-nurlai-space-id": "space-a" },
     sessionGeneration: session.generation,
   }));
 });
@@ -912,7 +912,7 @@ describe("routines screen", () => {
       {
         requestContext: {
           apiBase: "https://api.example",
-          headers: { "x-rakazo-space-id": "space-a" },
+          headers: { "x-nurlai-space-id": "space-a" },
           sessionGeneration: session.generation,
         },
       },
@@ -1086,7 +1086,7 @@ describe("routines screen", () => {
       {
         requestContext: {
           apiBase: "https://api.example",
-          headers: { "x-rakazo-space-id": "space-a" },
+          headers: { "x-nurlai-space-id": "space-a" },
           sessionGeneration: session.generation,
         },
       },

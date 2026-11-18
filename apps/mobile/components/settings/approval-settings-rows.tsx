@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import type { ApprovalMode } from "@rakazo/contracts";
+import type { ApprovalMode } from "@nurlai/contracts";
 import type { ReactNode } from "react";
 import { View } from "react-native";
 import { native } from "../../lib/native/native";

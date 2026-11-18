@@ -41,7 +41,7 @@
 	}
 }
 
-{$RAKAZO_HOST:app.example.com} {
+{$NURLAI_HOST:app.example.com} {
 	import access_log
 	encode zstd gzip
 

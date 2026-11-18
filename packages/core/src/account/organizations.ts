@@ -1,4 +1,4 @@
-import type { OrganizationList, SpaceMembers } from "@rakazo/contracts";
+import type { OrganizationList, SpaceMembers } from "@nurlai/contracts";
 
 type Organization = OrganizationList["organizations"][number];
 

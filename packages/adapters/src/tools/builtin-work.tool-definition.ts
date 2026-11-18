@@ -1,11 +1,11 @@
-import type { ConnectorTool } from "@rakazo/adapter-kit";
+import type { ConnectorTool } from "@nurlai/adapter-kit";
 import {
   TICKET_COMMENT_MAX_LENGTH,
   TICKET_DESCRIPTION_MAX_LENGTH,
   TICKET_PRIORITIES,
   TICKET_STATUSES,
   TICKET_TITLE_MAX_LENGTH,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   SCRATCHPAD_NOTES_MAX_LENGTH,
   SCRATCHPAD_TITLE_MAX_LENGTH,

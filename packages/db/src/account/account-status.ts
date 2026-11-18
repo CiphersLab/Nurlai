@@ -1,5 +1,5 @@
-import { ACTIVE_RUN_STATUSES } from "@rakazo/core";
-import { getLogger } from "@rakazo/logging";
+import { ACTIVE_RUN_STATUSES } from "@nurlai/core";
+import { getLogger } from "@nurlai/logging";
 import { expireComputerExecutionLeases } from "../computers/computers.js";
 import type { Prisma, PrismaClient } from "../database/client.js";
 import { withTransactionRetry } from "../database/transaction-retry.js";

@@ -1,5 +1,5 @@
-import type { Routine, RpcInput } from "@rakazo/contracts";
-import { fetchFresh, writeSaved } from "@rakazo/core/query";
+import type { Routine, RpcInput } from "@nurlai/contracts";
+import { fetchFresh, writeSaved } from "@nurlai/core/query";
 import type { QueryFunction } from "@tanstack/react-query";
 import { hashKey, useQuery } from "@tanstack/react-query";
 import { useFocusEffect, useIsFocused } from "expo-router";

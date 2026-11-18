@@ -1,4 +1,4 @@
-import type { ProviderSettingsField } from "@rakazo/contracts";
+import type { ProviderSettingsField } from "@nurlai/contracts";
 import type { MemoryProviderDefinition } from "../../../memory/memory-provider-descriptor.js";
 import {
   connectionModeFields,
@@ -59,14 +59,14 @@ export const honchoMemory: MemoryProviderDefinition = {
         label: "User peer",
         kind: "text",
         required: false,
-        description: "Recall from this peer; save to Rakazo’s own peers.",
+        description: "Recall from this peer; save to Nurlai’s own peers.",
         maxLength: 512,
         checks: [
           RESOURCE_ID,
           {
-            // Rakazo writes to these peers, so they cannot be read as the user's own peer.
+            // Nurlai writes to these peers, so they cannot be read as the user's own peer.
             pattern: UNRESERVED_HONCHO_PEER_PATTERN,
-            message: "rakazo-shared and IDs starting with bot- are reserved for Rakazo.",
+            message: "rakazo-shared and IDs starting with bot- are reserved for Nurlai.",
           },
         ],
         advanced: true,

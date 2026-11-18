@@ -77,7 +77,7 @@ struct RunRoutineIntent: AppIntent {
   var routine: RoutineEntity
 
   func perform() async throws -> some IntentResult & ProvidesDialog {
-    let session = try RakazoSession.load()
+    let session = try NurlaiSession.load()
     try await session.requireConsent(["routineId": routine.routineId], spaceId: routine.spaceId)
     let _: Started = try await session.rpc(
       "routines/testRun", ["routineId": routine.routineId, "clientNonce": UUID().uuidString],
@@ -119,7 +119,7 @@ struct StartVoiceChatIntent: AppIntent {
     UserDefaults.standard.set(
       ["botId": botId, "at": String(Date().timeIntervalSince1970)],
       forKey: "rakazo.pending_voice_chat")
-    NotificationCenter.default.post(name: Notification.Name("RakazoPendingVoiceChat"), object: nil)
+    NotificationCenter.default.post(name: Notification.Name("NurlaiPendingVoiceChat"), object: nil)
     await openChat(botId: botId, spaceId: target.spaceId)
     return .result()
   }
@@ -138,10 +138,10 @@ private struct SavedLastBot: Decodable {
 /// wrong; returns nil only when no bot was saved or the saved one is not this account's, which
 /// ask for a chat first.
 private func target(
-  _ bot: BotEntity?, with snapshot: RakazoSession? = nil
+  _ bot: BotEntity?, with snapshot: NurlaiSession? = nil
 ) async throws -> (botId: String, spaceId: String?)? {
   if let bot { return (bot.botId, bot.spaceId) }
-  let session = try snapshot ?? RakazoSession.load()
+  let session = try snapshot ?? NurlaiSession.load()
   guard
     let data = secureStoreItem("rakazo.last_bot_id")?.data(using: .utf8),
     let last = try? JSONDecoder().decode(SavedLastBot.self, from: data),
@@ -150,7 +150,7 @@ private func target(
   else { return nil }
   let userId = try await session.currentUserId()
   guard userId == last.userId else { return nil }
-  let current = try RakazoSession.load()
+  let current = try NurlaiSession.load()
   guard current.token == session.token, current.apiBase == session.apiBase else { return nil }
   return (last.botId, last.spaceId)
 }
@@ -164,7 +164,7 @@ private func openChat(botId: String, spaceId: String?) async {
 }
 
 private struct Delivery {
-  let session: RakazoSession
+  let session: NurlaiSession
   let botId: String
   let spaceId: String?
   let runId: String
@@ -173,14 +173,14 @@ private struct Delivery {
 /// Sends with the app's own session and the same procedures as the composer, so the bot runs it
 /// as a message the user sent. Without a chosen bot it goes to the one whose chat was opened last.
 private func send(_ message: String, file: IntentFile?, to bot: BotEntity?) async throws -> Delivery {
-  let session = try RakazoSession.load()
+  let session = try NurlaiSession.load()
   guard let target = try await target(bot, with: session) else { throw MessageBotError.noBot }
   return try await send(message, file: file, to: target, with: session, timeout: 60)
 }
 
 private func send(
   _ message: String, file: IntentFile?, to target: (botId: String, spaceId: String?),
-  with session: RakazoSession, timeout: TimeInterval
+  with session: NurlaiSession, timeout: TimeInterval
 ) async throws -> Delivery {
   let botId = target.botId
   let spaceId = target.spaceId ?? session.selectedSpaceId
@@ -212,7 +212,7 @@ private func send(
 /// The bot and session are read now, while unlocked. Its island waits on the send, so a lost
 /// connection gives up sooner than a typed message would.
 func lastBotSender() async throws -> (String) async throws -> Void {
-  let session = try RakazoSession.load()
+  let session = try NurlaiSession.load()
   guard let target = try await target(nil, with: session) else { throw MessageBotError.noBot }
   return { message in
     _ = try await send(message, file: nil, to: target, with: session, timeout: 15)
@@ -248,7 +248,7 @@ private func reply(to sent: Delivery) async throws -> String? {
 }
 
 /// Puts the actions in Shortcuts, Spotlight and the Action button without the user building one.
-struct RakazoShortcuts: AppShortcutsProvider {
+struct NurlaiShortcuts: AppShortcutsProvider {
   static var appShortcuts: [AppShortcut] {
     AppShortcut(
       intent: MessageBotIntent(),
@@ -299,9 +299,9 @@ struct BotEntity: AppEntity {
 /// Looks entities up Space by Space, since each id starts with its Space.
 private func findEntities<Entity: AppEntity>(
   _ identifiers: [String],
-  in list: (String, RakazoSession) async throws -> [Entity]
+  in list: (String, NurlaiSession) async throws -> [Entity]
 ) async throws -> [Entity] where Entity.ID == String {
-  let session = try RakazoSession.load()
+  let session = try NurlaiSession.load()
   var found: [Entity] = []
   for spaceId in Set(identifiers.compactMap { $0.split(separator: "/").first.map(String.init) }) {
     found += try await list(spaceId, session).filter { identifiers.contains($0.id) }
@@ -315,11 +315,11 @@ struct BotQuery: EntityQuery {
   }
 
   func suggestedEntities() async throws -> [BotEntity] {
-    let session = try RakazoSession.load()
+    let session = try NurlaiSession.load()
     return try await bots(in: session.selectedSpaceId, session: session)
   }
 
-  private func bots(in spaceId: String?, session: RakazoSession) async throws -> [BotEntity] {
+  private func bots(in spaceId: String?, session: NurlaiSession) async throws -> [BotEntity] {
     let navigation: SpaceNavigation = try await session.rpc("spaces/list", [:], spaceId: spaceId)
     return navigation.current.bots.map {
       BotEntity(botId: $0.id, spaceId: navigation.current.id, name: $0.name)
@@ -345,11 +345,11 @@ struct RoutineQuery: EntityQuery {
   }
 
   func suggestedEntities() async throws -> [RoutineEntity] {
-    let session = try RakazoSession.load()
+    let session = try NurlaiSession.load()
     return try await routines(in: session.selectedSpaceId, session: session)
   }
 
-  private func routines(in spaceId: String?, session: RakazoSession) async throws -> [RoutineEntity] {
+  private func routines(in spaceId: String?, session: NurlaiSession) async throws -> [RoutineEntity] {
     let navigation: SpaceNavigation = try await session.rpc("spaces/list", [:], spaceId: spaceId)
     let botIds = navigation.current.bots.prefix(100).map(\.id)
     guard !botIds.isEmpty else { return [] }
@@ -372,7 +372,7 @@ private final class RejectRedirects: NSObject, URLSessionTaskDelegate {
   }
 }
 
-private struct RakazoSession {
+private struct NurlaiSession {
   private static let transport = URLSession(
     configuration: .ephemeral, delegate: RejectRedirects(), delegateQueue: nil)
 
@@ -382,16 +382,16 @@ private struct RakazoSession {
   let headers: [String: String]
 
   // The keys lib/api/session.ts, lib/api/server-config.ts and lib/api/api.ts keep in expo-secure-store.
-  static func load() throws -> RakazoSession {
-    guard let token = secureStoreItem("rakazo.session_token"), !token.isEmpty else {
+  static func load() throws -> NurlaiSession {
+    guard let token = secureStoreItem("nurlai.session_token"), !token.isEmpty else {
       throw MessageBotError.signedOut
     }
-    let fallback = Bundle.main.object(forInfoDictionaryKey: "RakazoDefaultApiBase") as? String
+    let fallback = Bundle.main.object(forInfoDictionaryKey: "NurlaiDefaultApiBase") as? String
     guard let apiBase = secureStoreItem("rakazo.api_base") ?? fallback else {
       throw MessageBotError.signedOut
     }
     let space = secureStoreItem("rakazo.space_id")
-    return RakazoSession(
+    return NurlaiSession(
       apiBase: apiBase.hasSuffix("/") ? String(apiBase.dropLast()) : apiBase,
       token: token,
       selectedSpaceId: space?.isEmpty == false ? space : nil,
@@ -504,7 +504,7 @@ private struct RakazoSession {
     request.setValue("application/json", forHTTPHeaderField: "content-type")
     request.setValue("rakazo://", forHTTPHeaderField: "origin")
     request.setValue("Bearer \(token)", forHTTPHeaderField: "authorization")
-    if let spaceId { request.setValue(spaceId, forHTTPHeaderField: "x-rakazo-space-id") }
+    if let spaceId { request.setValue(spaceId, forHTTPHeaderField: "x-nurlai-space-id") }
     request.httpBody = try JSONSerialization.data(withJSONObject: ["json": input])
     return request
   }

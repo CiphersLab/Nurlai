@@ -12,7 +12,7 @@ function subscribe(channel) {
   };
 }
 
-contextBridge.exposeInMainWorld("rakazoDesktop", {
+contextBridge.exposeInMainWorld("nurlaiDesktop", {
   platform: process.platform,
   nativeWindowFrame: process.platform === "win32",
   clipboard: {

@@ -1,10 +1,10 @@
 import { t } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { ChatMarkdown } from "@rakazo/chat-ui/web";
-import type { Artifact, Bot } from "@rakazo/contracts";
-import { artifactPreviewKind } from "@rakazo/contracts";
-import { artifactTypeLabel } from "@rakazo/core";
-import { writeSaved } from "@rakazo/core/query";
+import { ChatMarkdown } from "@nurlai/chat-ui/web";
+import type { Artifact, Bot } from "@nurlai/contracts";
+import { artifactPreviewKind } from "@nurlai/contracts";
+import { artifactTypeLabel } from "@nurlai/core";
+import { writeSaved } from "@nurlai/core/query";
 import {
   BotAvatar,
   Button,
@@ -25,7 +25,7 @@ import {
   Spinner,
   ToggleGroup,
   ToggleGroupItem,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { skipToken, useInfiniteQuery, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   ChevronLeft,

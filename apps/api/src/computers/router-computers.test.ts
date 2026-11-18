@@ -3,17 +3,17 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { onError } from "@orpc/server";
 import { RPCHandler } from "@orpc/server/fetch";
-import { SandboxFileTooLargeError } from "@rakazo/adapter-kit";
-import * as adapters from "@rakazo/adapters";
+import { SandboxFileTooLargeError } from "@nurlai/adapter-kit";
+import * as adapters from "@nurlai/adapters";
 import {
   COMPUTER_SCREEN_UNAVAILABLE,
   ComputerBusyError,
   ComputerScreenUnavailableError,
   LocalAgentHomeStore,
-} from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
-import { openScreenCapability } from "@rakazo/core/node/screen-capability";
-import type { PrismaClient } from "@rakazo/db";
+} from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
+import { openScreenCapability } from "@nurlai/core/node/screen-capability";
+import type { PrismaClient } from "@nurlai/db";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { RouterDeps } from "../router.js";
 import { appHandler, createRouter, handle } from "../router-test-support.js";

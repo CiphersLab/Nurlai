@@ -292,8 +292,8 @@ describe("NativeStackController", () => {
     expect(migrate?.env.DATABASE_MIGRATION_URL).toBe(
       `postgres://rakazo:${"cd".repeat(16)}@127.0.0.1:40000/rakazo`,
     );
-    expect(migrate?.env.DATABASE_URL).toMatch(/^postgres:\/\/rakazo_app:/);
-    expect(migrate?.env.RAKAZO_ENV_FILE).toBe("none");
+    expect(migrate?.env.DATABASE_URL).toMatch(/^postgres:\/\/nurlai_app:/);
+    expect(migrate?.env.NURLAI_ENV_FILE).toBe("none");
 
     const [api] = byName("apps/api/dist/index.js");
     expect(api?.env).toMatchObject({
@@ -302,7 +302,7 @@ describe("NativeStackController", () => {
       API_PORT: "40001",
       SANDBOX_PROVIDER: "local-vm",
       LOCAL_VM_CLI: CLI,
-      LOCAL_VM_COMPUTER_IMAGE: "ghcr.io/elie222/rakazo/computer:v1.0.0",
+      LOCAL_VM_COMPUTER_IMAGE: "ghcr.io/elie222/nurlai/computer:v1.0.0",
       OPENROUTER_API_KEY: "sk-or-test",
       WEB_ORIGIN: "http://127.0.0.1:5173",
       SANDBOX_HOST_URL: "http://127.0.0.1:47000",
@@ -323,7 +323,7 @@ describe("NativeStackController", () => {
       "pull",
       "--progress",
       "plain",
-      "ghcr.io/elie222/rakazo/computer:v1.0.0",
+      "ghcr.io/elie222/nurlai/computer:v1.0.0",
     ]);
 
     // Running services keep the menu's off-switch available after a server switch.
@@ -498,7 +498,7 @@ describe("NativeStackController", () => {
     await mkdir(stackDir, { recursive: true });
     await writeFile(
       path.join(stackDir, ".env"),
-      `${TEMPLATE.replace("POSTGRES_USER=rakazo", "POSTGRES_USER=rakazo_app")}DATABASE_MIGRATION_URL=postgres://owner:secret@db/rakazo\n`,
+      `${TEMPLATE.replace("POSTGRES_USER=rakazo", "POSTGRES_USER=nurlai_app")}DATABASE_MIGRATION_URL=postgres://owner:secret@db/rakazo\n`,
     );
     const targets: string[] = [];
     const { deps, runs, byName } = harness({

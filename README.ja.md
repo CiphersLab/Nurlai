@@ -1,24 +1,24 @@
-# Rakazo
+# Nurlai
 
 [English](./README.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md)
 
 [![GitHub stars](https://img.shields.io/github/stars/elie222/rakazo?labelColor=black&style=for-the-badge&color=2563EB)](https://github.com/elie222/rakazo/stargazers)
 [![Discord コミュニティに参加](https://img.shields.io/badge/Discord-Join%20the%20community-5865F2?labelColor=black&style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/RWwKa2Sn7h)
 [![App Store で iPhone 版をダウンロード](https://img.shields.io/badge/App%20Store-Download%20for%20iPhone-black?labelColor=black&style=for-the-badge&logo=apple&logoColor=white)](https://apps.apple.com/app/rakazo/id6801531099)
-[![Google Play で Android 版をダウンロード](https://img.shields.io/badge/Google%20Play-Get%20the%20app-black?labelColor=black&style=for-the-badge&logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=com.rakazo.app)
+[![Google Play で Android 版をダウンロード](https://img.shields.io/badge/Google%20Play-Get%20the%20app-black?labelColor=black&style=for-the-badge&logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=com.nurlai.app)
 
-![Rakazo：本当に自分のものにできる AI チームメイト](./docs/readme-hero.png)
+![Nurlai：本当に自分のものにできる AI チームメイト](./docs/readme-hero.png)
 
-Rakazo は、Grok Bot のオープンソースかつセルフホスト可能な代替ツールです。
+Nurlai は、Grok Bot のオープンソースかつセルフホスト可能な代替ツールです。
 
 メモリ、ルーティン、アプリ、コンピューターを持つ常駐型の AI チームメイト。自分のマシンで、自分のモデルを使って動かせます。
 
-[Web](https://app.rakazo.com)、[デスクトップ](https://rakazo.com/download/)、[iPhone](https://apps.apple.com/app/rakazo/id6801531099)、
-[Android](https://play.google.com/store/apps/details?id=com.rakazo.app) で利用できます。
+[Web](https://app.nurlai.cipherslab.com)、[デスクトップ](https://nurlai.cipherslab.com/download/)、[iPhone](https://apps.apple.com/app/rakazo/id6801531099)、
+[Android](https://play.google.com/store/apps/details?id=com.nurlai.app) で利用できます。
 
 Meta Muse、OpenAI Dots、Instinct、OpenClaw、Hermes Agent、Claude Duet の代替ツールでもあります。
 
-詳しくは [rakazo.com](https://rakazo.com) をご覧ください。
+詳しくは [nurlai.cipherslab.com](https://nurlai.cipherslab.com) をご覧ください。
 
 このドキュメントは[英語版 README](./README.md) の日本語訳です。リンク先のドキュメントは現在英語のみです。
 
@@ -109,7 +109,7 @@ curl -fsSLO https://raw.githubusercontent.com/elie222/rakazo/main/infra/compose/
 bash install-images.sh
 ```
 
-インストーラーは Compose ファイルをダウンロードし、ランダムなシークレットを含む `.env` を作成して Rakazo を起動します。
+インストーラーは Compose ファイルをダウンロードし、ランダムなシークレットを含む `.env` を作成して Nurlai を起動します。
 再実行時は既存の `.env` をそのまま残します。
 
 [http://127.0.0.1:5173](http://127.0.0.1:5173) を開き、アカウントを作成してモデルを接続します。
@@ -119,8 +119,8 @@ bash install-images.sh
 デフォルトのイメージタグは `edge`（main ブランチのビルド、`linux/amd64` と `linux/arm64`）です。詳細とタグは
 [セルフホストガイド](./docs/self-host.md#published-images-no-checkout)を参照してください。
 
-制限のあるネットワークでは、インストーラーのダウンロード元（`RAKAZO_DOWNLOAD_BASE`）を上書きする、
-既存の Compose ファイルをスキップする（`--local` / `RAKAZO_DOWNLOAD_SKIP_EXISTING`）、またはブートストラップ
+制限のあるネットワークでは、インストーラーのダウンロード元（`NURLAI_DOWNLOAD_BASE`）を上書きする、
+既存の Compose ファイルをスキップする（`--local` / `NURLAI_DOWNLOAD_SKIP_EXISTING`）、またはブートストラップ
 スクリプトの URL をミラーする方法があります。詳しくは
 [制限のあるネットワーク / ミラーからのダウンロード](./docs/self-host.md#restricted-networks--mirror-downloads)を参照してください。
 
@@ -133,7 +133,7 @@ bash install-images.sh
 
 ```bash
 bash install-images.sh --prepare-only
-# edit .env: SANDBOX_PROVIDER=boat (or e2b / daytona / createos) with its API key, RAKAZO_HOST=your.domain
+# edit .env: SANDBOX_PROVIDER=boat (or e2b / daytona / createos) with its API key, NURLAI_HOST=your.domain
 bash install-images.sh
 ```
 
@@ -156,7 +156,7 @@ cp .env.example .env
 
 `POSTGRES_PASSWORD` と `POSTGRES_APP_PASSWORD` に `openssl rand -hex 16` で生成した 2 つの値を設定し、
 それらを `DATABASE_MIGRATION_URL` と `DATABASE_URL` に記入します。アプリは専用の
-`rakazo_app` ログインで接続し、行レベルセキュリティが適用されます。マイグレーションはオーナーとして実行されます
+`nurlai_app` ログインで接続し、行レベルセキュリティが適用されます。マイグレーションはオーナーとして実行されます
 （[データベースロール](docs/self-host-configuration.md#database-roles)）。`BETTER_AUTH_SECRET`、`ENCRYPTION_KEY`、`SCREEN_PROXY_SECRET` には
 それぞれ独立した長いランダム値を設定します。Docker サンドボックスには専用の
 `SANDBOX_SUPERVISOR_TOKEN` も必要です。`OPENROUTER_API_KEY` を設定するか、オンボーディング中に
@@ -230,15 +230,15 @@ Railway のサンドボックス利用は従量課金です。
 
 ## デスクトップとモバイル
 
-Electron アプリと Expo アプリは、Web アプリと同じ Rakazo API を使うクライアントです。
+Electron アプリと Expo アプリは、Web アプリと同じ Nurlai API を使うクライアントです。
 
 開発用スタックを起動した状態で、次のコマンドで Electron を起動します。
 
 ```bash
-pnpm --filter @rakazo/desktop dev
+pnpm --filter @nurlai/desktop dev
 ```
 
-初回起動時、デスクトップアプリは Rakazo をこのコンピューターで動かすか、既存のサーバーに接続するかを
+初回起動時、デスクトップアプリは Nurlai をこのコンピューターで動かすか、既存のサーバーに接続するかを
 尋ねます。**This computer**（このコンピューター）は、macOS 26 以降の Apple シリコン搭載 Mac で、
 ビルドにサーバーバンドルが含まれていれば Docker なしで動作します。新規セットアップではこの方式を使い、
 必要なサーバーとコンピューターランタイムをアプリがダウンロードします。既存の Docker スタックがある場合は、
@@ -251,7 +251,7 @@ OrbStack、Docker Engine のいずれかが必要です。未インストール�
 
 `pnpm dev` を実行している開発者は、代わりに **Existing instance**（既存のインスタンス）を選び `http://127.0.0.1:5173` を指定してください。公開サーバーは
 HTTPS を使う必要があります。HTTP はループバックとプライベート LAN のアドレスでのみ受け付けます（リンクローカルは除く）。
-アプリは保存前に Rakazo のヘルスチェックエンドポイントを確認し、以降の起動ではそのインスタンスに直接接続します。
+アプリは保存前に Nurlai のヘルスチェックエンドポイントを確認し、以降の起動ではそのインスタンスに直接接続します。
 Docker スタックはアプリを終了しても動き続けますが、Docker を使わないサーバーはアプリとともに停止します。
 アプリケーションメニューの **Quit and Stop Bots**（終了してボットを停止）は管理対象のスタックを停止してアプリを終了します。別のサーバーに切り替えた場合もスタックは停止します。
 
@@ -262,16 +262,16 @@ Ubuntu 24.04 では `libfuse2t64`、それ以前の Ubuntu や Debian では `li
 AppImage を実行してください。
 
 ```bash
-chmod +x Rakazo-*.AppImage
-./Rakazo-*.AppImage --appimage-extract-and-run
+chmod +x Nurlai-*.AppImage
+./Nurlai-*.AppImage --appimage-extract-and-run
 ```
 
 **This computer** の Docker 方式は `docker` CLI を探し、Podman は検出しません。`compose` コマンドに対応した別の
-Docker 互換 CLI を試すには、アプリを起動する前に `RAKAZO_DOCKER_BINARY` にそのパスを設定してください。
+Docker 互換 CLI を試すには、アプリを起動する前に `NURLAI_DOCKER_BINARY` にそのパスを設定してください。
 
-接続先を変えるには、アプリケーションメニューの **Change Rakazo Server…**（Rakazo サーバーを変更）を使います。保存せずに
-そのウィンドウを閉じると、以前のインスタンスに戻ります。開発の自動化では、`RAKAZO_WEB_URL` を設定すると
-保存済みのインスタンスを変えずにシェルの接続先を変更でき、`RAKAZO_FORCE_SETUP=1` を設定するとセットアップを
+接続先を変えるには、アプリケーションメニューの **Change Nurlai Server…**（Nurlai サーバーを変更）を使います。保存せずに
+そのウィンドウを閉じると、以前のインスタンスに戻ります。開発の自動化では、`NURLAI_WEB_URL` を設定すると
+保存済みのインスタンスを変えずにシェルの接続先を変更でき、`NURLAI_FORCE_SETUP=1` を設定するとセットアップを
 再実行できます。
 
 モバイルのビルドとリリースの手順は [docs/mobile-release.md](./docs/mobile-release.md) にあります。
@@ -318,15 +318,15 @@ pnpm test:e2e
 - [パフォーマンステスト](./docs/performance.md)
 - [ボットを管理するボット](./docs/fleet-management.md)
 
-## Rakazo と他製品の比較
+## Nurlai と他製品の比較
 
-- [Grok Bot](https://rakazo.com/grok-bot-alternative/)
-- [Muse](https://rakazo.com/muse-alternative/)
-- [Dots](https://rakazo.com/dots-alternative/)
-- [Instinct](https://rakazo.com/instinct-alternative/)
-- [OpenClaw](https://rakazo.com/openclaw-alternative/)
-- [Hermes Agent](https://rakazo.com/hermes-alternative/)
-- [すべての比較](https://rakazo.com/alternatives/)
+- [Grok Bot](https://nurlai.cipherslab.com/grok-bot-alternative/)
+- [Muse](https://nurlai.cipherslab.com/muse-alternative/)
+- [Dots](https://nurlai.cipherslab.com/dots-alternative/)
+- [Instinct](https://nurlai.cipherslab.com/instinct-alternative/)
+- [OpenClaw](https://nurlai.cipherslab.com/openclaw-alternative/)
+- [Hermes Agent](https://nurlai.cipherslab.com/hermes-alternative/)
+- [すべての比較](https://nurlai.cipherslab.com/alternatives/)
 
 ## 謝辞
 
@@ -355,6 +355,6 @@ pnpm test:e2e
 コントリビューションを歓迎します。プルリクエストを作成する前に [CONTRIBUTING.md](./CONTRIBUTING.md) をお読みください。
 セキュリティ上の脆弱性は、公開の Issue を作成せず、[SECURITY.md](./SECURITY.md) の手順に従って報告してください。
 
-Rakazo は [Apache License 2.0](./LICENSE) のもとでライセンスされています。
+Nurlai は [Apache License 2.0](./LICENSE) のもとでライセンスされています。
 
-質問やアイデアは [Rakazo Discord コミュニティ](https://discord.gg/RWwKa2Sn7h)でお気軽にどうぞ。
+質問やアイデアは [Nurlai Discord コミュニティ](https://discord.gg/RWwKa2Sn7h)でお気軽にどうぞ。

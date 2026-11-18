@@ -1,5 +1,5 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { UsageBreakdownBot, UsageDateRange } from "@rakazo/contracts";
+import type { UsageBreakdownBot, UsageDateRange } from "@nurlai/contracts";
 import {
   Field,
   FieldLabel,
@@ -10,7 +10,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import {
   Table,
   TableBody,
@@ -18,7 +18,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@rakazo/ui-web/components/ui/table";
+} from "@nurlai/ui-web/components/ui/table";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import type { RefObject } from "react";
 import { useEffect, useState } from "react";

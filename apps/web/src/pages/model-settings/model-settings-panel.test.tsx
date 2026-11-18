@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import type { ModelCredential } from "@rakazo/contracts";
+import type { ModelCredential } from "@nurlai/contracts";
 import { QueryClient, useQuery } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 import { act } from "react";
@@ -12,7 +12,7 @@ vi.mock("@lingui/react/macro", () => ({
   useLingui: () => ({ t: (strings: TemplateStringsArray) => strings.join("") }),
   Trans: ({ children }: { children: ReactNode }) => children,
 }));
-vi.mock("@rakazo/ui-web", () => ({
+vi.mock("@nurlai/ui-web", () => ({
   Button: ({ children, onClick }: { children: ReactNode; onClick?: () => void }) => (
     <button type="button" onClick={onClick}>
       {children}

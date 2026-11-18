@@ -8,18 +8,18 @@ import type {
   PurchaseCredentialKind,
   PurchaseSnapshot,
   PurchaseStatus,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import {
   PaymentWalletDisconnected,
   PaymentWalletRequestRejected,
   purchasePollJob,
-} from "@rakazo/adapter-kit";
-import type { PurchaseCardField } from "@rakazo/contracts";
-import { PurchaseIdInput, PurchaseRequestInput } from "@rakazo/contracts";
-import { deadlineSignal, withAbort } from "@rakazo/core";
-import type { Purchase } from "@rakazo/db";
-import { recordPayment, releasePayment } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import type { PurchaseCardField } from "@nurlai/contracts";
+import { PurchaseIdInput, PurchaseRequestInput } from "@nurlai/contracts";
+import { deadlineSignal, withAbort } from "@nurlai/core";
+import type { Purchase } from "@nurlai/db";
+import { recordPayment, releasePayment } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { releaseUnpaidPurchase, spendingRefusalError } from "../billing/spending-gate.js";
 import { cardRedactionForms } from "../secrets/bot-secrets.js";
 import {

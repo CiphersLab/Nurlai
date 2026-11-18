@@ -1,5 +1,5 @@
-import type { AdapterContext, ComputerRef } from "@rakazo/adapter-kit";
-import { BROWSER_STILL_RUNNING_EXIT } from "@rakazo/core/node/desktop-runtime";
+import type { AdapterContext, ComputerRef } from "@nurlai/adapter-kit";
+import { BROWSER_STILL_RUNNING_EXIT } from "@nurlai/core/node/desktop-runtime";
 import { describe, expect, it } from "vitest";
 import { BrowserStillRunningError, BrowserStoppedReleaseError } from "./computer-screens.js";
 import { LinuxDesktop } from "./linux-desktop.js";
@@ -39,12 +39,12 @@ function host(result: Result | ((command: string) => Result), commands: string[]
   };
 }
 
-const releasesBrowser = (command: string) => command.includes("RAKAZO_DESKTOP_RELEASED");
+const releasesBrowser = (command: string) => command.includes("NURLAI_DESKTOP_RELEASED");
 
 describe("LinuxDesktop.releaseScreen", () => {
   it("reports the browser stopped when slot cleanup fails after the release marker", async () => {
     const desktop = new LinuxDesktop(
-      host({ code: 1, stdout: "RAKAZO_DESKTOP_RELEASED=0\n", stderr: "slot lock failed" }),
+      host({ code: 1, stdout: "NURLAI_DESKTOP_RELEASED=0\n", stderr: "slot lock failed" }),
     );
 
     await expect(desktop.releaseScreen(computer, context)).rejects.toBeInstanceOf(

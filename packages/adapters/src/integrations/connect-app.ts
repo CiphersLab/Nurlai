@@ -1,12 +1,12 @@
-import type { AdapterContext, ManagedConnectorProvider } from "@rakazo/adapter-kit";
-import { appConnectCard, matchAppCatalog, matchesAppConnection } from "@rakazo/core";
-import type { PrismaClient, ThreadEvents } from "@rakazo/db";
+import type { AdapterContext, ManagedConnectorProvider } from "@nurlai/adapter-kit";
+import { appConnectCard, matchAppCatalog, matchesAppConnection } from "@nurlai/core";
+import type { PrismaClient, ThreadEvents } from "@nurlai/db";
 import {
   appendEventInTransaction,
   createThreadMessageInTransaction,
   storedMessageBlocks,
   THREAD_LOCK_TRANSACTION_OPTIONS,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { DEFAULT_CONNECTOR_ID } from "./connector-registry.js";
 
 const RECENT_MESSAGES = 50;

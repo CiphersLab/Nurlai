@@ -1,4 +1,4 @@
-import type { BrowserProvider } from "@rakazo/adapter-kit";
+import type { BrowserProvider } from "@nurlai/adapter-kit";
 import { describe, expect, it, vi } from "vitest";
 import type { RunContext } from "../runs/assembly/run-context.js";
 import type { ToolRequest } from "../runs/tools/run-tool-request.js";

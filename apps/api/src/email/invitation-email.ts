@@ -1,6 +1,6 @@
 import { createHmac } from "node:crypto";
-import type { TransactionalEmail } from "@rakazo/adapter-kit";
-import { emailLocale } from "@rakazo/auth";
+import type { TransactionalEmail } from "@nurlai/adapter-kit";
+import { emailLocale } from "@nurlai/auth";
 import type { RouterDeps } from "../router.js";
 
 /** Names an invited address in the security log, so its daily limit outlives any deletion. */

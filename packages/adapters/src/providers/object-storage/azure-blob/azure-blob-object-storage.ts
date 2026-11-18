@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import type * as AzureSdk from "@azure/storage-blob";
-import type { ObjectStorage } from "@rakazo/adapter-kit";
+import type { ObjectStorage } from "@nurlai/adapter-kit";
 import {
   objectStorageConnectionFromEnv,
   PART_BYTES,

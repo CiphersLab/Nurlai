@@ -1,4 +1,4 @@
-import type { CreateBotInput } from "@rakazo/contracts";
+import type { CreateBotInput } from "@nurlai/contracts";
 import type { Href } from "expo-router";
 import { captureApiRequestContext, selectedSpaceId, spaceSelectionSeq } from "../api/api";
 import { askToAddModel } from "../models/model-settings";

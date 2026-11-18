@@ -5,9 +5,9 @@ import type {
   Me,
   Space,
   SpaceMemoryConfig,
-} from "@rakazo/contracts";
-import { parseLabs } from "@rakazo/contracts";
-import { writeSaved } from "@rakazo/core/query";
+} from "@nurlai/contracts";
+import { parseLabs } from "@nurlai/contracts";
+import { writeSaved } from "@nurlai/core/query";
 import type { RefObject } from "react";
 import { lazyOverlay } from "../../components/ErrorBoundary";
 import { setLabs } from "../../lib/bootstrap";

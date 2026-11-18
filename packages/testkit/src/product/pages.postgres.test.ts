@@ -2,12 +2,12 @@ import { createHash, randomBytes } from "node:crypto";
 import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { EncryptedSecretStore } from "@rakazo/adapters";
-import type { createApp } from "@rakazo/api/app";
-import type { PageDetail, PageSummary, ThreadSnapshot } from "@rakazo/contracts";
-import { SHARED_PAGE_PATH_PREFIX } from "@rakazo/contracts";
-import { deletePageShareSecrets } from "@rakazo/db";
-import { pageViewerCode } from "@rakazo/page-kit/compile";
+import { EncryptedSecretStore } from "@nurlai/adapters";
+import type { createApp } from "@nurlai/api/app";
+import type { PageDetail, PageSummary, ThreadSnapshot } from "@nurlai/contracts";
+import { SHARED_PAGE_PATH_PREFIX } from "@nurlai/contracts";
+import { deletePageShareSecrets } from "@nurlai/db";
+import { pageViewerCode } from "@nurlai/page-kit/compile";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import type { BotIntroHarness } from "../discard-bot-intro.js";
 import { discardBotIntroFromCreate } from "../discard-bot-intro.js";
@@ -34,7 +34,7 @@ describePages("pages", () => {
   const stamp = Date.now();
 
   beforeAll(async () => {
-    const { createApp } = await import("@rakazo/api/app");
+    const { createApp } = await import("@nurlai/api/app");
     const handles = await createApp({
       databaseUrl: process.env.DATABASE_URL!,
       dataDir: mkdtempSync(path.join(tmpdir(), "rakazo-pages-")),
@@ -1122,7 +1122,7 @@ async function raw(app: App, cookie: string, proc: string, body: unknown, spaceI
       "content-type": "application/json",
       cookie,
       origin: "http://127.0.0.1:5173",
-      ...(spaceId ? { "x-rakazo-space-id": spaceId } : {}),
+      ...(spaceId ? { "x-nurlai-space-id": spaceId } : {}),
     },
     body: JSON.stringify({ json: body }),
   });

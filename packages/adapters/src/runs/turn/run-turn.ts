@@ -1,7 +1,7 @@
-import type { AgentRuntimeEvent } from "@rakazo/adapter-kit";
-import { isBackgroundRunTrigger, redactSecrets, redactSecretsAfter } from "@rakazo/core";
-import { RunHistoryWriteError, recordUsage } from "@rakazo/db";
-import { bestEffort } from "@rakazo/logging";
+import type { AgentRuntimeEvent } from "@nurlai/adapter-kit";
+import { isBackgroundRunTrigger, redactSecrets, redactSecretsAfter } from "@nurlai/core";
+import { RunHistoryWriteError, recordUsage } from "@nurlai/db";
+import { bestEffort } from "@nurlai/logging";
 import { isStrategicInitiativeRun } from "../../routines/strategic-initiative.js";
 import { withRuntimeCleanup } from "../../runtime/runtime-stream.js";
 import { snapshotReply } from "../assembly/reply-snapshot.js";

@@ -1,7 +1,7 @@
 import type { MenuAction } from "@expo/ui/community/menu";
 import { t } from "@lingui/core/macro";
-import type { OrganizationList } from "@rakazo/contracts";
-import { organizationLandingSpaceId, organizationOfSpace } from "@rakazo/core";
+import type { OrganizationList } from "@nurlai/contracts";
+import { organizationLandingSpaceId, organizationOfSpace } from "@nurlai/core";
 import { useQuery } from "@tanstack/react-query";
 import { router } from "expo-router";
 import { selectedSpaceId } from "../api/api";

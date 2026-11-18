@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import { useTimeout } from "@rakazo/chat-ui/hooks";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
 import * as Clipboard from "expo-clipboard";
 import { useState } from "react";
 import { Pressable, StyleSheet } from "react-native";

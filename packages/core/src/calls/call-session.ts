@@ -1,4 +1,4 @@
-import type { MessageBlock } from "@rakazo/contracts";
+import type { MessageBlock } from "@nurlai/contracts";
 import { isApprovalAskBlock, isSecretAskBlock } from "../runs/action-approval.js";
 import { isRunWorking } from "../runs/run-state.js";
 import { spokenDecision } from "./speech-text.js";

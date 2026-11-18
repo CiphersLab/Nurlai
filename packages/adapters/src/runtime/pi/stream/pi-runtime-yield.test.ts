@@ -1,7 +1,7 @@
 import type { AssistantMessage, Context, Model, ToolCall } from "@earendil-works/pi-ai";
 import { AssistantMessageEventStream } from "@earendil-works/pi-ai/utils/event-stream";
-import type { AgentRunRequest, AgentRuntimeEvent } from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
+import type { AgentRunRequest, AgentRuntimeEvent } from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { builtinAgentTools } from "../../../tools/builtin.tool-definition.js";
 

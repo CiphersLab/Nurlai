@@ -3,13 +3,13 @@ import type {
   ModelRoleChoice,
   ModelRoleSettings,
   SettingsScope,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   backupChoiceKey,
   canonicalPiProviderId,
   modelRoleChoiceKey,
   ThinkingLevelSchema,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import type { PrismaClient } from "../database/client.js";
 import { Prisma } from "../database/client.js";
 import { withTransactionRetry } from "../database/transaction-retry.js";

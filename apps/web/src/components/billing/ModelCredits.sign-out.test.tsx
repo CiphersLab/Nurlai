@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { flush } from "@rakazo/core/test-async";
+import { flush } from "@nurlai/core/test-async";
 import type { ComponentProps, ReactNode } from "react";
 import { act } from "react";
 import { createRoot } from "react-dom/client";
@@ -24,7 +24,7 @@ vi.mock("@lingui/react/macro", () => {
     Trans: ({ children }: { children?: ReactNode }) => children,
   };
 });
-vi.mock("@rakazo/ui-web", () => {
+vi.mock("@nurlai/ui-web", () => {
   const Button = ({
     variant: _variant,
     size: _size,

@@ -9,19 +9,19 @@ import type {
   JobPublisher,
   JobTransaction,
   SandboxProvider,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import {
   machineCleanupJobKey,
   SandboxAllowanceUsedError,
   SandboxDamagedError,
   SandboxSizeUnavailableError,
   SandboxUnresponsiveError,
-} from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
-import type * as Db from "@rakazo/db";
-import type { PrismaClient, ThreadEvents } from "@rakazo/db";
-import { clearThread, planComputerSize } from "@rakazo/db";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
+import type * as Db from "@nurlai/db";
+import type { PrismaClient, ThreadEvents } from "@nurlai/db";
+import { clearThread, planComputerSize } from "@nurlai/db";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { describe, expect, it, vi } from "vitest";
 import { FakeSandboxProvider } from "../providers/computer/fake/fake-sandbox.js";
 import { LocalAgentHomeStore } from "../storage/home.js";
@@ -41,7 +41,7 @@ import { checkpointComputerWorkspace } from "./computer-workspace.js";
 import { SandboxUnsafeStopError, sandboxNotFoundError } from "./sandbox/sandbox-errors.js";
 
 // The plan's size is read from billing, which these Prisma doubles do not model.
-vi.mock("@rakazo/db", async (importOriginal) => ({
+vi.mock("@nurlai/db", async (importOriginal) => ({
   ...(await importOriginal<typeof Db>()),
   planComputerSize: vi.fn(async () => "standard"),
 }));

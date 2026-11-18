@@ -1,6 +1,6 @@
 import { t } from "@lingui/core/macro";
-import type { BotAvatarSet, ProductEvent, ThreadMessage, ThreadSnapshot } from "@rakazo/contracts";
-import type { CallExchange } from "@rakazo/core";
+import type { BotAvatarSet, ProductEvent, ThreadMessage, ThreadSnapshot } from "@nurlai/contracts";
+import type { CallExchange } from "@nurlai/core";
 import {
   CALL_FAREWELL_TIMEOUT_MS,
   callClientNonce,
@@ -21,7 +21,7 @@ import {
   runThreadSubscription,
   speechFromBlocks,
   spokenMemory,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { getGlobalBroadcastChannel } from "better-auth/client";
 import { useSyncExternalStore } from "react";
 import {

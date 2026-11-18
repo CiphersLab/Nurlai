@@ -1,4 +1,4 @@
-import { escapePromptData } from "@rakazo/core";
+import { escapePromptData } from "@nurlai/core";
 
 /** Fence inbound delivery JSON as untrusted data so agents do not treat it as instructions. */
 export function formatUntrustedDeliveryPayload(label: string, payload: unknown): string {

@@ -1,7 +1,7 @@
-import { destroyBot } from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
-import type { createRepos } from "@rakazo/db";
-import { requireSpaceOwner } from "@rakazo/db";
+import { destroyBot } from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
+import type { createRepos } from "@nurlai/db";
+import { requireSpaceOwner } from "@nurlai/db";
 import type { RouterDeps } from "../router.js";
 
 /** A bot this actor may remove: theirs or the owner's, in this space, archived included. */

@@ -3,15 +3,15 @@ import { randomBytes } from "node:crypto";
 import { existsSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import type { HostScreen } from "@rakazo/adapters/host-screen";
-import { startUserDeviceClient } from "@rakazo/adapters/user-device-client";
+import type { HostScreen } from "@nurlai/adapters/host-screen";
+import { startUserDeviceClient } from "@nurlai/adapters/user-device-client";
 import type {
   DesktopLocalStackState,
   DesktopReachability,
   DesktopSetup,
-  RakazoDesktopDevice,
-} from "@rakazo/contracts";
-import { bestEffort } from "@rakazo/logging";
+  NurlaiDesktopDevice,
+} from "@nurlai/contracts";
+import { bestEffort } from "@nurlai/logging";
 import type { BrowserWindow, Session } from "electron";
 import {
   app,
@@ -38,7 +38,7 @@ import { installServerHeaders } from "./setup/server-request-headers.js";
 import {
   DEFAULT_LOCAL_WEB_URL,
   desktopStackImageTag,
-  isRakazoHealth,
+  isNurlaiHealth,
   managedLocalOpenUrl,
   maySendDesktopStackToken,
   normalizeServerUrl,
@@ -130,11 +130,11 @@ import { isMcpOAuthServerId, mcpOAuthPartition } from "./windows/window-open.js"
 
 process.setSourceMapsEnabled(true);
 installDesktopEarlyErrorReporting();
-const PERFORMANCE_USER_DATA = process.env.RAKAZO_PERFORMANCE_USER_DATA;
+const PERFORMANCE_USER_DATA = process.env.NURLAI_PERFORMANCE_USER_DATA;
 /** Test hook: where the app-managed stack answers. Mode `new` still requires loopback. */
-const LOCAL_WEB_URL = process.env.RAKAZO_LOCAL_WEB_URL?.trim() || DEFAULT_LOCAL_WEB_URL;
+const LOCAL_WEB_URL = process.env.NURLAI_LOCAL_WEB_URL?.trim() || DEFAULT_LOCAL_WEB_URL;
 const DESKTOP_STACK_PROBE_PATH = "/.well-known/rakazo-desktop-stack";
-const DESKTOP_STACK_TOKEN_HEADER = "x-rakazo-desktop-stack-token";
+const DESKTOP_STACK_TOKEN_HEADER = "x-nurlai-desktop-stack-token";
 let monitoringSession: Session | undefined;
 let monitoringTargetUrl: string | undefined;
 let stopMonitoringSession: (() => void) | undefined;
@@ -144,7 +144,7 @@ const updaterEnvironment = {
   // A `--dir` build has no update feed to read.
   packaged: app.isPackaged && existsSync(path.join(process.resourcesPath, "app-update.yml")),
   version: app.getVersion(),
-  disabled: process.env.RAKAZO_DISABLE_AUTO_UPDATE === "1",
+  disabled: process.env.NURLAI_DISABLE_AUTO_UPDATE === "1",
 };
 let requestingComputerAccess = false;
 let hostScreen: HostScreen | undefined;
@@ -224,7 +224,7 @@ async function probeServer(
       };
     }
     const health = await readProbeJson(response);
-    if (!isRakazoHealth(health)) {
+    if (!isNurlaiHealth(health)) {
       return {
         ok: false,
         status: response.status,
@@ -695,12 +695,12 @@ app.whenReady().then(async () => {
     appPath: app.getAppPath(),
   });
   const localWebUrl =
-    process.env.RAKAZO_LOCAL_WEB_URL?.trim() ||
+    process.env.NURLAI_LOCAL_WEB_URL?.trim() ||
     (await readStackWebUrl(userStackDir, LOCAL_WEB_URL));
   const imageTag = resolveImageTag({
     version: app.getVersion(),
     packaged: app.isPackaged,
-    override: process.env.RAKAZO_IMAGE_TAG,
+    override: process.env.NURLAI_IMAGE_TAG,
   });
   const probe = (url: string, signal: AbortSignal, token: string) =>
     probeManagedStack(url, token, signal);
@@ -723,7 +723,7 @@ app.whenReady().then(async () => {
     ? await readServerBundle({
         resourcesPath: process.resourcesPath,
         packaged: app.isPackaged,
-        override: process.env.RAKAZO_SERVER_BUNDLE,
+        override: process.env.NURLAI_SERVER_BUNDLE,
       })
     : null;
   // Read again when the choice is settled later: Docker or either stack may have changed since.
@@ -798,11 +798,11 @@ app.whenReady().then(async () => {
   );
   if (desktop.currentSetup?.mode === "new") await settleLocalStack();
   const target = resolveStartupTarget({
-    envUrl: process.env.RAKAZO_WEB_URL,
+    envUrl: process.env.NURLAI_WEB_URL,
     saved: desktop.currentSetup,
-    forceSetup: process.env.RAKAZO_FORCE_SETUP === "1",
+    forceSetup: process.env.NURLAI_FORCE_SETUP === "1",
   });
-  if (process.env.RAKAZO_PERFORMANCE_CLEAR_CACHE === "1") {
+  if (process.env.NURLAI_PERFORMANCE_CLEAR_CACHE === "1") {
     const cacheSessions = new Set<Session>([session.defaultSession]);
     if (target.kind === "app") {
       cacheSessions.add((await resolveSessionForTarget(target.url)).value);
@@ -930,7 +930,7 @@ app.whenReady().then(async () => {
   /** The remote server the app window shows; null for the local stack, or once the window moved on. */
   const remoteDeviceOrigin = (event: IpcCaller) =>
     sentFrom("app", event) ? remoteServerOrigin() : null;
-  const deviceState = async (origin: string | null): Promise<RakazoDesktopDevice | null> => {
+  const deviceState = async (origin: string | null): Promise<NurlaiDesktopDevice | null> => {
     const state = origin === null ? null : desktop.userDevices?.state(origin);
     return state ? { ...state, name: await deviceName() } : null;
   };

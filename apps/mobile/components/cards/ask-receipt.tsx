@@ -1,8 +1,8 @@
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import type { AskReceipt } from "@rakazo/contracts";
-import { receiptItems } from "@rakazo/core";
-import { fontWeight, typeScale } from "@rakazo/ui-tokens";
+import type { AskReceipt } from "@nurlai/contracts";
+import { receiptItems } from "@nurlai/core";
+import { fontWeight, typeScale } from "@nurlai/ui-tokens";
 import { StyleSheet, Text, View } from "react-native";
 import { useMobileTokens } from "../../lib/native/native";
 

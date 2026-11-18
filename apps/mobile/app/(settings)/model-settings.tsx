@@ -1,8 +1,8 @@
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import type { ModelSettings } from "@rakazo/contracts";
-import { MAX_MODEL_CONTEXT_WINDOW, MAX_MODEL_MAX_TOKENS } from "@rakazo/contracts";
-import type { ModelSettingsFields } from "@rakazo/core";
+import type { ModelSettings } from "@nurlai/contracts";
+import { MAX_MODEL_CONTEXT_WINDOW, MAX_MODEL_MAX_TOKENS } from "@nurlai/contracts";
+import type { ModelSettingsFields } from "@nurlai/core";
 import {
   catalogEntryFor,
   connectionServesModel,
@@ -12,7 +12,7 @@ import {
   modelSettingsDefaults,
   modelSettingsFields,
   modelSettingsRequest,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import type { DataTag, QueryFunction, QueryKey } from "@tanstack/react-query";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useMemo, useState } from "react";

@@ -8,12 +8,12 @@ import type {
   SecretCleanupKind,
   SecretPutOptions,
   SecretStore,
-} from "@rakazo/adapter-kit";
-import { SecretNotFoundError } from "@rakazo/adapter-kit";
-import { deadlineSignal } from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
-import { Prisma, runAsSystem } from "@rakazo/db";
-import { bestEffort, getLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { SecretNotFoundError } from "@nurlai/adapter-kit";
+import { deadlineSignal } from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
+import { Prisma, runAsSystem } from "@nurlai/db";
+import { bestEffort, getLogger } from "@nurlai/logging";
 import { credentialDigest } from "./credential-digest.js";
 import holderColumns from "./secret-holder-columns.json" with { type: "json" };
 

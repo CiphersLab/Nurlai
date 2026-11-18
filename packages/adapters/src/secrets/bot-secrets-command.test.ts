@@ -1,11 +1,11 @@
 import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import type { ProcessEvent } from "@rakazo/adapter-kit";
-import type { BotSecretDestination } from "@rakazo/contracts";
-import { createStreamingRedactor, redactSecrets } from "@rakazo/core";
-import { deferred, flush } from "@rakazo/core/test-async";
-import { installAuditEventStore } from "@rakazo/db";
+import type { ProcessEvent } from "@nurlai/adapter-kit";
+import type { BotSecretDestination } from "@nurlai/contracts";
+import { createStreamingRedactor, redactSecrets } from "@nurlai/core";
+import { deferred, flush } from "@nurlai/core/test-async";
+import { installAuditEventStore } from "@nurlai/db";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { redactAgentCommandResult } from "../computers/sandbox/agent-environment.js";
 import { DesktopSandboxProvider } from "../providers/computer/desktop/desktop-sandbox.js";

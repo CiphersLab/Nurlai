@@ -1,4 +1,4 @@
-package com.rakazo.filedrop
+package com.nurlai.filedrop
 
 import android.app.Activity
 import android.net.Uri
@@ -13,7 +13,7 @@ import java.io.File
 import java.util.UUID
 import java.util.concurrent.Executors
 
-class RakazoFileDropModule : Module() {
+class NurlaiFileDropModule : Module() {
   private val mainHandler = Handler(Looper.getMainLooper())
   private var attached: Activity? = null
   private data class Limits(val enabled: Boolean, val maxBytes: Long, val maxFiles: Int)
@@ -24,7 +24,7 @@ class RakazoFileDropModule : Module() {
   private val dragListener = View.OnDragListener { _, event -> onDrag(event) }
 
   override fun definition() = ModuleDefinition {
-    Name("RakazoFileDrop")
+    Name("NurlaiFileDrop")
 
     Events("onFilesDropped", "onDropStarted")
 

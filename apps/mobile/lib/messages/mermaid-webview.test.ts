@@ -1,6 +1,6 @@
-import { chatMermaidConfig } from "@rakazo/chat-ui/mermaid";
-import { flush } from "@rakazo/core/test-async";
-import { darkTokens } from "@rakazo/ui-tokens";
+import { chatMermaidConfig } from "@nurlai/chat-ui/mermaid";
+import { flush } from "@nurlai/core/test-async";
+import { darkTokens } from "@nurlai/ui-tokens";
 import { describe, expect, it, vi } from "vitest";
 import {
   diagramBootScript,

@@ -8,10 +8,10 @@ import type {
   VoiceSynthesizeRequest,
   VoiceTranscribeRequest,
   VoiceVerifyResult,
-} from "@rakazo/adapter-kit";
-import { VoiceAccountError } from "@rakazo/adapter-kit";
-import { deadlineSignal, ResponseTooLargeError } from "@rakazo/core";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { VoiceAccountError } from "@nurlai/adapter-kit";
+import { deadlineSignal, ResponseTooLargeError } from "@nurlai/core";
+import { getLogger } from "@nurlai/logging";
 import {
   isSpeechModelId,
   readVoiceAudio,
@@ -61,7 +61,7 @@ export class FishAudioVoiceProvider implements VoiceProvider {
     });
   }
 
-  /** Return user-owned then bounded public Fish Audio voices as Rakazo choices. */
+  /** Return user-owned then bounded public Fish Audio voices as Nurlai choices. */
   async listVoices(
     apiKey: string,
     context: AdapterContext,

@@ -1,4 +1,4 @@
-import type { PrismaClient } from "@rakazo/db";
+import type { PrismaClient } from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import { mergeConnectedPlugins } from "../providers/integration/composio/composio-connector.js";
 import { persistLivePluginConnections, selectRunConnections } from "./connection-context.js";

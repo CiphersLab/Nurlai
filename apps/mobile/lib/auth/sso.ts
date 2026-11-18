@@ -1,5 +1,5 @@
 import { t } from "@lingui/core/macro";
-import { SIGNUP_SURFACE_HEADER } from "@rakazo/contracts";
+import { SIGNUP_SURFACE_HEADER } from "@nurlai/contracts";
 import { Platform } from "react-native";
 import { authHeaders, currentApiBase, fetchMobileJson } from "../api/api";
 import { clearSpace } from "../api/api-server";

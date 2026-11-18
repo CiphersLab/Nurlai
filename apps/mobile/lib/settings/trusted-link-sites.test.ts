@@ -1,4 +1,4 @@
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { beforeEach, expect, it, vi } from "vitest";
 import { queryClient } from "../query/query";
 import {

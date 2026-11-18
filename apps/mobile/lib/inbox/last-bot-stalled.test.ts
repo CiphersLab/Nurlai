@@ -1,4 +1,4 @@
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import * as SecureStore from "expo-secure-store";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type * as Session from "../api/session";
@@ -88,7 +88,7 @@ describe("stalled last-bot storage", () => {
       const signedOut = vi.fn();
       void session.clearSessionToken().then(signedOut);
       await vi.advanceTimersByTimeAsync(1_000);
-      expect(saved.has("rakazo.session_token")).toBe(false);
+      expect(saved.has("nurlai.session_token")).toBe(false);
       expect(signedOut).toHaveBeenCalledExactlyOnceWith(true);
 
       const signedIn = vi.fn();

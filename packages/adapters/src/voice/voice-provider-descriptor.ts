@@ -1,5 +1,5 @@
-import type { VoiceProvider, VoiceUsage } from "@rakazo/adapter-kit";
-import type { VoiceCatalogEntry } from "@rakazo/contracts";
+import type { VoiceProvider, VoiceUsage } from "@nurlai/adapter-kit";
+import type { VoiceCatalogEntry } from "@nurlai/contracts";
 
 export interface VoiceProviderOptions {
   /** The caller's decision that this connection may reach a private address. */

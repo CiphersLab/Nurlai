@@ -12,10 +12,10 @@ import {
   FakeComposioClient,
   PipedreamConnector,
   ThirdPartyConnectorEmulator,
-} from "@rakazo/adapters";
-import { callRequestClientNonce } from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
-import { createThreadMessage } from "@rakazo/db";
+} from "@nurlai/adapters";
+import { callRequestClientNonce } from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
+import { createThreadMessage } from "@nurlai/db";
 import { disposableDatabaseEnv } from "../cli/postgres.js";
 import { runProcess } from "../cli/process.js";
 import { sessionCookieHeader } from "../index.js";
@@ -61,7 +61,7 @@ async function main() {
   await mkdir(REPORT_DIR, { recursive: true });
   await mkdir(DATA_DIR, { recursive: true });
 
-  execFileSync("pnpm", ["--filter", "@rakazo/db", "exec", "prisma", "migrate", "deploy"], {
+  execFileSync("pnpm", ["--filter", "@nurlai/db", "exec", "prisma", "migrate", "deploy"], {
     cwd: path.join(ROOT, "packages", "db"),
     env: process.env,
     stdio: "inherit",
@@ -77,7 +77,7 @@ async function main() {
     },
     { fetch: thirdParties.fetch, resolveHostname: thirdParties.resolveHostname },
   );
-  const { createApp } = await import("@rakazo/api/app");
+  const { createApp } = await import("@nurlai/api/app");
   const handles = await createApp({
     databaseUrl: process.env.DATABASE_URL!,
     dataDir: DATA_DIR,
@@ -149,7 +149,7 @@ async function main() {
  * that clears app data during that teardown has its fresh launch killed with the old task.
  */
 async function settleApp() {
-  execFileSync("adb", ["shell", "am", "force-stop", "com.rakazo.app"], { stdio: "inherit" });
+  execFileSync("adb", ["shell", "am", "force-stop", "com.nurlai.app"], { stdio: "inherit" });
   await new Promise((resolve) => setTimeout(resolve, 10_000));
 }
 
@@ -174,23 +174,23 @@ async function runFlow(flow: string, fixture: Awaited<ReturnType<typeof seedFixt
       "--output",
       path.join(REPORT_DIR, `${flow}.html`),
       "-e",
-      `RAKAZO_MOBILE_API_URL=http://10.0.2.2:${API_PORT}`,
+      `NURLAI_MOBILE_API_URL=http://10.0.2.2:${API_PORT}`,
       "-e",
-      `RAKAZO_SCREENSHOT_EMAIL=${EMAIL}`,
+      `NURLAI_SCREENSHOT_EMAIL=${EMAIL}`,
       "-e",
-      `RAKAZO_SCREENSHOT_PASSWORD=${PASSWORD}`,
+      `NURLAI_SCREENSHOT_PASSWORD=${PASSWORD}`,
       "-e",
-      `RAKAZO_SCREENSHOT_BOT_ID=${fixture.botId}`,
+      `NURLAI_SCREENSHOT_BOT_ID=${fixture.botId}`,
       "-e",
-      `RAKAZO_SCREENSHOT_GROUP_ID=${fixture.groupId}`,
+      `NURLAI_SCREENSHOT_GROUP_ID=${fixture.groupId}`,
       "-e",
-      `RAKAZO_SCREENSHOT_ROUTINE_ID=${fixture.routineId}`,
+      `NURLAI_SCREENSHOT_ROUTINE_ID=${fixture.routineId}`,
       "-e",
-      "RAKAZO_NOTIFICATION_VIDEO=notification-demo",
+      "NURLAI_NOTIFICATION_VIDEO=notification-demo",
       "-e",
-      `RAKAZO_EXPAND_NOTIFICATIONS_URL=${EXPAND_NOTIFICATIONS_URL}`,
+      `NURLAI_EXPAND_NOTIFICATIONS_URL=${EXPAND_NOTIFICATIONS_URL}`,
       "-e",
-      `RAKAZO_DEVICE_CONTROL_URL=${DEVICE_CONTROL_URL}`,
+      `NURLAI_DEVICE_CONTROL_URL=${DEVICE_CONTROL_URL}`,
       path.join(FLOW_DIR, `${flow}.yaml`),
     ],
     process.env,
@@ -214,7 +214,7 @@ function startDeviceControlServer(
         "shell",
         "am start -a android.intent.action.SEND -t text/plain",
         "--es android.intent.extra.TEXT 'Shared from another app'",
-        "-n com.rakazo.app/.MainActivity",
+        "-n com.nurlai.app/.MainActivity",
       ]),
     "/ring": () => ringFromResearcher(prisma, fixture),
     "/connect-voice": () =>
@@ -286,7 +286,7 @@ async function pushPickerFiles() {
     "base64",
   );
   await writeFile(path.join(dir, PICKER_FILES.image), png);
-  await writeFile(path.join(dir, PICKER_FILES.pdf), onePagePdf("Rakazo fixture PDF"));
+  await writeFile(path.join(dir, PICKER_FILES.pdf), onePagePdf("Nurlai fixture PDF"));
   const targets = [
     [PICKER_FILES.image, "/sdcard/Pictures"],
     [PICKER_FILES.pdf, "/sdcard/Download"],

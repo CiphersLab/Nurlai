@@ -1,5 +1,5 @@
-import type { AgentRunRequest } from "@rakazo/adapter-kit";
-import { createLogger, createTestSink, getLogger, installLogger } from "@rakazo/logging";
+import type { AgentRunRequest } from "@nurlai/adapter-kit";
+import { createLogger, createTestSink, getLogger, installLogger } from "@nurlai/logging";
 import { describe, expect, it, vi } from "vitest";
 import * as modelRoles from "../../models/model-roles.js";
 import { mainRole, withModelRoles } from "../../models/model-roles.test-support.js";

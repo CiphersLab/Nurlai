@@ -1,5 +1,5 @@
-import { ATTACHMENT_IMAGE_MAX_EDGE, ATTACHMENT_IMAGE_QUALITY } from "@rakazo/contracts";
-import { inferAttachmentMimeType, isStaticPng, PNG_ANIMATION_HEADER_BYTES } from "@rakazo/core";
+import { ATTACHMENT_IMAGE_MAX_EDGE, ATTACHMENT_IMAGE_QUALITY } from "@nurlai/contracts";
+import { inferAttachmentMimeType, isStaticPng, PNG_ANIMATION_HEADER_BYTES } from "@nurlai/core";
 
 // Recompress byte-heavy images even when their dimensions already fit.
 const IMAGE_RECOMPRESS_BYTES = 5 * 1024 * 1024;

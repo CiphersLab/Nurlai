@@ -6,8 +6,8 @@ import type {
   AutoReviewRequest,
   AutoReviewResult,
   DecisionProvider,
-} from "@rakazo/adapter-kit";
-import { DecisionProviderError } from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
+import { DecisionProviderError } from "@nurlai/adapter-kit";
 import {
   autoReviewMinConfidence,
   autoReviewTimeoutMs,

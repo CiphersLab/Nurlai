@@ -1,5 +1,5 @@
-import { SandboxUnavailableError, SandboxUnresponsiveError } from "@rakazo/adapter-kit";
-import type { RunStatus } from "@rakazo/contracts";
+import { SandboxUnavailableError, SandboxUnresponsiveError } from "@nurlai/adapter-kit";
+import type { RunStatus } from "@nurlai/contracts";
 import {
   assertTransition,
   BACKGROUND_HELPER_TRIGGER,
@@ -9,11 +9,11 @@ import {
   redactSecrets,
   truncatePlainText,
   userRunError,
-} from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
-import { databaseOutage, retryWhileDatabaseUnavailable, spaceTakesWork } from "@rakazo/db";
-import { bestEffort, getLogger } from "@rakazo/logging";
-import { sanitizedError } from "@rakazo/logging/monitoring";
+} from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
+import { databaseOutage, retryWhileDatabaseUnavailable, spaceTakesWork } from "@nurlai/db";
+import { bestEffort, getLogger } from "@nurlai/logging";
+import { sanitizedError } from "@nurlai/logging/monitoring";
 import { sleepDeferReason } from "../../computers/computer-idle.js";
 import type { ComputerExecutionLease } from "../../computers/computer-lifecycle.js";
 import {
@@ -483,7 +483,7 @@ export async function retryRunSetup(
   const setupMessage = redactSecrets(userRunError(setupError), runSecrets);
   const reportedSetupError = sanitizedError(setupError, (text) => redactSecrets(text, runSecrets));
   // An outage at the computer provider or the key manager, or a paused turn's tool going
-  // offline, is retried like any setup failure, but is not a Rakazo bug to report.
+  // offline, is retried like any setup failure, but is not a Nurlai bug to report.
   const providerOutage =
     setupError instanceof SandboxUnavailableError ||
     setupError instanceof SandboxUnresponsiveError ||

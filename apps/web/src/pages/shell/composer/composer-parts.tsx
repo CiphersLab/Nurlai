@@ -1,8 +1,8 @@
 import { useLingui } from "@lingui/react/macro";
-import type { AgentSkillCatalogEntry } from "@rakazo/contracts";
-import type { ComposerMention, SLASH_ACTIONS, SlashActionId } from "@rakazo/core";
-import { mentionChipKey, truncateSlashDescription } from "@rakazo/core";
-import { Button } from "@rakazo/ui-web";
+import type { AgentSkillCatalogEntry } from "@nurlai/contracts";
+import type { ComposerMention, SLASH_ACTIONS, SlashActionId } from "@nurlai/core";
+import { mentionChipKey, truncateSlashDescription } from "@nurlai/core";
+import { Button } from "@nurlai/ui-web";
 import { ArrowUp, Box, Paperclip, Settings, Square, X } from "lucide-react";
 import type { CSSProperties, ReactNode, RefObject } from "react";
 import type { PendingAttachment } from "../chat/chat-shared";

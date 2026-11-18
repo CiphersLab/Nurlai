@@ -1,8 +1,8 @@
-import type { AgentRunRequest } from "@rakazo/adapter-kit";
-import { modelRoleConnectionId } from "@rakazo/contracts";
-import { BACKGROUND_HELPER_TRIGGER, redactSecrets } from "@rakazo/core";
-import { isDatabaseUnavailable, recordUsage } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+import type { AgentRunRequest } from "@nurlai/adapter-kit";
+import { modelRoleConnectionId } from "@nurlai/contracts";
+import { BACKGROUND_HELPER_TRIGGER, redactSecrets } from "@nurlai/core";
+import { isDatabaseUnavailable, recordUsage } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { isStrategicInitiativeRun } from "../../routines/strategic-initiative.js";
 import { personSpeaker } from "../../runtime/context/history-speakers.js";
 import { backgroundHelpersAllowed } from "../../tasks/background-helpers.js";

@@ -9,7 +9,7 @@ import type {
   SandboxProvider,
   SecretStore,
   TransactionalEmailProvider,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import type {
   CloudAgentConnection,
   CodexLiveCatalog,
@@ -32,10 +32,10 @@ import type {
   UserCloudAgents,
   verifyModelServesAgents,
   WorkActivities,
-} from "@rakazo/adapters";
-import type { Auth } from "@rakazo/auth";
-import type { LabFeature, ModelCredential, NavLink } from "@rakazo/contracts";
-import type { BoardEvents, PrismaClient, ThreadEvents } from "@rakazo/db";
+} from "@nurlai/adapters";
+import type { Auth } from "@nurlai/auth";
+import type { LabFeature, ModelCredential, NavLink } from "@nurlai/contracts";
+import type { BoardEvents, PrismaClient, ThreadEvents } from "@nurlai/db";
 import type { BillingService } from "./billing/billing.js";
 import type { VoiceDeps } from "./calls/voice.js";
 import { accountRoutes } from "./routes/account.js";

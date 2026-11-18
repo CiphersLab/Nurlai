@@ -2,8 +2,8 @@ import { randomUUID } from "node:crypto";
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import type { AdapterContext, JobPublisher } from "@rakazo/adapter-kit";
-import type { PrismaClient, ThreadEvents } from "@rakazo/db";
+import type { AdapterContext, JobPublisher } from "@nurlai/adapter-kit";
+import type { PrismaClient, ThreadEvents } from "@nurlai/db";
 import {
   asSystem,
   createDb,
@@ -12,7 +12,7 @@ import {
   recordComputerRunStart,
   runAsSystem,
   runAsTenant,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { FakeSandboxProvider } from "../providers/computer/fake/fake-sandbox.js";
 import { LocalAgentHomeStore } from "../storage/home.js";

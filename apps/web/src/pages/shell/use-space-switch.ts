@@ -1,4 +1,4 @@
-import { abortableDelay } from "@rakazo/core";
+import { abortableDelay } from "@nurlai/core";
 import { useCallback, useEffect, useRef } from "react";
 import { discardPrimedBootstrap, primeSpaceBootstrap } from "../../lib/bootstrap";
 import { initialBootstrapTarget } from "../../lib/bootstrap-target";

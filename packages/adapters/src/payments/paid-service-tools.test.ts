@@ -1,15 +1,15 @@
-import type { AdapterContext, PaidServiceProvider } from "@rakazo/adapter-kit";
+import type { AdapterContext, PaidServiceProvider } from "@nurlai/adapter-kit";
 import {
   organizationForMember,
   recordModelCreditReceipt,
   recordUsage,
   reserveModelCredits,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { serviceCallFromTool, serviceSearchFromTool } from "./paid-service-tools.js";
 import { FakePaidServiceProvider } from "./paid-services-factory.js";
 
-vi.mock("@rakazo/db", () => ({
+vi.mock("@nurlai/db", () => ({
   organizationForMember: vi.fn(),
   reserveModelCredits: vi.fn(),
   recordModelCreditReceipt: vi.fn(),

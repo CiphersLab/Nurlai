@@ -2,9 +2,9 @@ import { spawn } from "node:child_process";
 import { randomUUID } from "node:crypto";
 import type { Readable } from "node:stream";
 import { setTimeout as sleep } from "node:timers/promises";
-import type { AdapterContext, ComputerRef } from "@rakazo/adapter-kit";
-import { COMPUTER_CACHE_ENV } from "@rakazo/core/node/desktop-runtime";
-import { getLogger } from "@rakazo/logging";
+import type { AdapterContext, ComputerRef } from "@nurlai/adapter-kit";
+import { COMPUTER_CACHE_ENV } from "@nurlai/core/node/desktop-runtime";
+import { getLogger } from "@nurlai/logging";
 import type { RawExecEvent } from "../../../computers/sandbox/exec-computer.js";
 import {
   RawExecChannel,
@@ -17,7 +17,7 @@ import {
 } from "../../../computers/sandbox/image-computer-sandbox.js";
 import { sandboxNotFoundError } from "../../../computers/sandbox/sandbox-errors.js";
 
-const DEFAULT_COMPUTER_IMAGE = "ghcr.io/elie222/rakazo/computer:edge";
+const DEFAULT_COMPUTER_IMAGE = "ghcr.io/elie222/nurlai/computer:edge";
 const DEFAULT_CPUS = "2";
 const DEFAULT_MEMORY = "2g";
 const DEFAULT_READY_TIMEOUT_MS = 120_000;

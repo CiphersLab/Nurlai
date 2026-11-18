@@ -3,8 +3,8 @@ import { execFileSync, spawn } from "node:child_process";
 import { createHash, randomUUID } from "node:crypto";
 import path from "node:path";
 import type { CDPSession } from "@playwright/test";
-import { abortableDelay } from "@rakazo/core";
-import { createPool } from "@rakazo/db";
+import { abortableDelay } from "@nurlai/core";
+import { createPool } from "@nurlai/db";
 import { disposableDatabaseEnv, startPostgres } from "../cli/postgres.js";
 
 export const repositoryRoot = path.resolve(import.meta.dirname, "../../../..");
@@ -30,7 +30,7 @@ export function benchmarkEnvironment(options: {
     SANDBOX_PROVIDER: "fake",
     AGENT_RUNTIME: "scripted",
     CLOUD_AGENT_PROVIDER: "emulator",
-    RAKAZO_LIVE_MODEL_CATALOG: "off",
+    NURLAI_LIVE_MODEL_CATALOG: "off",
     ANALYTICS_PROVIDER: "none",
     LOG_LEVEL: "off",
     COMPOSIO_API_KEY: "",
@@ -52,8 +52,8 @@ export function benchmarkEnvironment(options: {
     API_URL: apiOrigin,
     API_PROXY_TARGET: apiOrigin,
     WEB_PORT: String(options.webPort),
-    RAKAZO_HOST: "127.0.0.1",
-    RAKAZO_WEB_URL: webOrigin,
+    NURLAI_HOST: "127.0.0.1",
+    NURLAI_WEB_URL: webOrigin,
     DATA_DIR: options.dataDir,
     SIGNUPS_ENABLED: "true",
     SIGNUP_ALLOWLIST: "",
@@ -92,8 +92,8 @@ async function adminQuery(url: string, sql: string) {
 }
 
 export function migrateDatabase(env: NodeJS.ProcessEnv) {
-  run("pnpm", ["--filter", "@rakazo/db", "generate"], env);
-  run("pnpm", ["--filter", "@rakazo/db", "exec", "prisma", "migrate", "deploy"], env);
+  run("pnpm", ["--filter", "@nurlai/db", "generate"], env);
+  run("pnpm", ["--filter", "@nurlai/db", "exec", "prisma", "migrate", "deploy"], env);
 }
 
 export function run(command: string, args: string[], env: NodeJS.ProcessEnv) {
@@ -110,7 +110,7 @@ export function startPreview(env: NodeJS.ProcessEnv, port: number) {
     "pnpm",
     [
       "--filter",
-      "@rakazo/web",
+      "@nurlai/web",
       "exec",
       "vite",
       "preview",

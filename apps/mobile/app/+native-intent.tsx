@@ -1,4 +1,4 @@
-import { MOBILE_MCP_OAUTH_CALLBACK_URL } from "@rakazo/contracts";
+import { MOBILE_MCP_OAUTH_CALLBACK_URL } from "@nurlai/contracts";
 import { receiveIncomingShare } from "../lib/composer/incoming-share";
 import { closeSettingsSheet, isSettingsLink, linkScreen } from "../lib/settings/settings-sheet";
 

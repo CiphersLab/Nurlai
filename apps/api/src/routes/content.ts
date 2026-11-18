@@ -1,15 +1,15 @@
-import type { UsageOperationKind } from "@rakazo/adapter-kit";
-import { planLimitsReader, readMemberPlanLimits, resolveBotWorkspacePath } from "@rakazo/adapters";
-import type { ExportManifest } from "@rakazo/contracts";
-import { attachmentMaxBytes, resolveBotAvatarSet } from "@rakazo/contracts";
+import type { UsageOperationKind } from "@nurlai/adapter-kit";
+import { planLimitsReader, readMemberPlanLimits, resolveBotWorkspacePath } from "@nurlai/adapters";
+import type { ExportManifest } from "@nurlai/contracts";
+import { attachmentMaxBytes, resolveBotAvatarSet } from "@nurlai/contracts";
 import {
   AttachmentValidationError,
   ClientError,
   validTimezoneOrUtc,
   wallClock,
   zonedDateTime,
-} from "@rakazo/core";
-import { IsolationError, LISTED_ARTIFACT, Prisma, parseComputerMode } from "@rakazo/db";
+} from "@nurlai/core";
+import { IsolationError, LISTED_ARTIFACT, Prisma, parseComputerMode } from "@nurlai/db";
 import { requireIdentityConfirmation } from "../auth/identity-confirmation.js";
 import {
   createOwnedArtifact,

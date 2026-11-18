@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { mobileMcpOAuthReturnUrl } from "@rakazo/contracts";
-import { Button } from "@rakazo/ui-web";
+import { mobileMcpOAuthReturnUrl } from "@nurlai/contracts";
+import { Button } from "@nurlai/ui-web";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { MCP_OAUTH_CHANNEL } from "../../lib/integrations/mcp-connect";

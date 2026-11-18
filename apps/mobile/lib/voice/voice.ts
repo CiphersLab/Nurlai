@@ -1,5 +1,5 @@
 import { t } from "@lingui/core/macro";
-import type { SettingsScope } from "@rakazo/contracts";
+import type { SettingsScope } from "@nurlai/contracts";
 import {
   ensureAiDataConsent,
   readVoiceAudio,
@@ -8,7 +8,7 @@ import {
   toUtterances,
   VOICE_RESPONSE_TIMEOUT_MS,
   withAbort,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { createAudioPlayer, setAudioModeAsync, setIsAudioActiveAsync } from "expo-audio";
 import { File, Paths } from "expo-file-system";
 import type * as ExpoSpeech from "expo-speech";

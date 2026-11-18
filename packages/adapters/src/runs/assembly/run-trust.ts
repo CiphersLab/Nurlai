@@ -1,5 +1,5 @@
-import type { MessageBlock } from "@rakazo/contracts";
-import type { ActionApprovalRule } from "@rakazo/core";
+import type { MessageBlock } from "@nurlai/contracts";
+import type { ActionApprovalRule } from "@nurlai/core";
 import {
   BACKGROUND_HELPER_TRIGGER,
   connectorKindFromToolName,
@@ -7,14 +7,14 @@ import {
   inboundRoutinePrompts,
   SITE_SENDING_TOOLS,
   siteAlwaysAllowed,
-} from "@rakazo/core";
-import { sitesInText, urlSite } from "@rakazo/core/egress";
+} from "@nurlai/core";
+import { sitesInText, urlSite } from "@nurlai/core/egress";
 import {
   findAutoReviewPreference,
   listApprovalRules,
   storedBatchActions,
   storedMessageBlocks,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import {
   boundDirectApprovalDetails,
   catalogApprovalDetails,
@@ -119,7 +119,7 @@ export function createRunTrustLoaders(
     }));
     return autoReviewPreferencePromise;
   };
-  // The owner's own words for this run: the message they sent (in Rakazo or their own chat app),
+  // The owner's own words for this run: the message they sent (in Nurlai or their own chat app),
   // or the instructions of the routine that started it. Never a bot, channel or webhook message,
   // or a tool result. These name the sites a run is given, and are all Auto Review sees of a new
   // site's run and of a memory save after outside content.

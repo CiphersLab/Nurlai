@@ -1,6 +1,6 @@
 // Operator control: model-credit-cap.js set <email> <total-usd> | clear|status <email>
-import { contentKeyProviderFromEnv, unwrapEnvFromKeyManager } from "@rakazo/adapters";
-import { createDb, modelCreditCapStatus, runAsSystem, setModelCreditCap } from "@rakazo/db";
+import { contentKeyProviderFromEnv, unwrapEnvFromKeyManager } from "@nurlai/adapters";
+import { createDb, modelCreditCapStatus, runAsSystem, setModelCreditCap } from "@nurlai/db";
 import { loadEnv } from "../env.js";
 
 const [action, address, dollars, ...extra] = process.argv.slice(2);

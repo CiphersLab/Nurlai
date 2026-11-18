@@ -1,4 +1,4 @@
-import type { ConnectorTool } from "@rakazo/adapter-kit";
+import type { ConnectorTool } from "@nurlai/adapter-kit";
 import { describe, expect, it } from "vitest";
 import {
   agentToolDefinitions,

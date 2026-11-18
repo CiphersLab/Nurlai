@@ -177,7 +177,7 @@ set -e
 [[ "$offline_out" == *"Using local docker-compose.images.yml"* ]] || fail "--offline did not keep local compose file"
 [[ "$offline_out" == *"Using local .env.images.example"* ]] || fail "--offline did not keep local env example"
 [[ "$offline_out" == *"Skipping image pull"* ]] || fail "--offline did not skip image pull"
-[[ "$offline_out" == *"Rakazo is starting"* ]] || fail "--offline did not start"
+[[ "$offline_out" == *"Nurlai is starting"* ]] || fail "--offline did not start"
 [[ ! -s "$tmp/offline/curl.log" ]] || fail "--offline should not curl when files are local: $(cat "$tmp/offline/curl.log")"
 has_compose_pull "$tmp/offline" && fail "--offline should not run compose pull"
 has_up_pull_never "$tmp/offline" || fail "--offline should pass --pull never to compose up: $(cat "$tmp/offline/docker.log")"
@@ -231,8 +231,8 @@ unset STUB_COMPOSE_UP_HELP STUB_COMPOSE_SHORT
 [[ "$old_code" -eq 0 ]] || fail "old Compose --offline exited $old_code: $old_out"
 [[ "$old_out" == *"cannot enforce pull-never on this Compose version; startup fails if an image is missing locally"* ]] \
   || fail "old Compose --offline missing soft warning: $old_out"
-[[ "$old_out" != *"Rakazo setup failed:"* ]] || fail "old Compose --offline should not hard-fail: $old_out"
-[[ "$old_out" == *"Rakazo is starting"* ]] || fail "old Compose --offline should continue: $old_out"
+[[ "$old_out" != *"Nurlai setup failed:"* ]] || fail "old Compose --offline should not hard-fail: $old_out"
+[[ "$old_out" == *"Nurlai is starting"* ]] || fail "old Compose --offline should continue: $old_out"
 has_compose_pull "$tmp/old" && fail "old Compose --offline should not run compose pull"
 if grep -F -e ' --pull never' "$tmp/old/docker.log" >/dev/null; then
   fail "old Compose up should not receive --pull never: $(cat "$tmp/old/docker.log")"
@@ -272,13 +272,13 @@ grep -qF -e '-f docker-compose.override.yml up' "$tmp/unpassed/docker.log" ||
   fail "compose up did not layer the override: $(cat "$tmp/unpassed/docker.log")"
 
 # The Compose files come from the pinned release, whichever way the tag was pinned.
-unset RAKAZO_IMAGE_TAG
+unset NURLAI_IMAGE_TAG
 download_ref() {
   local name="$1" image_tag="${2:-}"
   shift 2
   setup_work "$tmp/$name"
   (
-    [[ -z "$image_tag" ]] || export RAKAZO_IMAGE_TAG="$image_tag"
+    [[ -z "$image_tag" ]] || export NURLAI_IMAGE_TAG="$image_tag"
     run_install "$tmp/$name" "$@" >/dev/null 2>&1
   ) || fail "$name install failed"
   grep -F 'docker-compose.images.yml' "$tmp/$name/curl.log" | grep -oE 'rakazo/[^/]+/infra/compose' | sort -u
@@ -293,33 +293,33 @@ ref="$(download_ref shell-custom v0.8.0-custom)"
 [[ "$ref" == "rakazo/main/infra/compose" ]] || fail "a tag that is not a release should use main, got: $ref"
 
 setup_work "$tmp/env-pin"
-printf 'RAKAZO_IMAGE_TAG=edge\nexport RAKAZO_IMAGE_TAG="v0.7.0" # pinned\r\n' >> "$tmp/env-pin/cwd/.env"
+printf 'NURLAI_IMAGE_TAG=edge\nexport NURLAI_IMAGE_TAG="v0.7.0" # pinned\r\n' >> "$tmp/env-pin/cwd/.env"
 run_install "$tmp/env-pin" >/dev/null 2>&1 || fail "env-pin install failed"
 grep -qF 'rakazo/v0.7.0/infra/compose/docker-compose.images.yml' "$tmp/env-pin/curl.log" ||
   fail ".env pin should use its tag: $(cat "$tmp/env-pin/curl.log")"
 
 setup_work "$tmp/shell-wins"
-printf 'RAKAZO_IMAGE_TAG=v0.7.0\n' >> "$tmp/shell-wins/cwd/.env"
-(export RAKAZO_IMAGE_TAG=v0.8.0; run_install "$tmp/shell-wins" >/dev/null 2>&1) || fail "shell-wins install failed"
+printf 'NURLAI_IMAGE_TAG=v0.7.0\n' >> "$tmp/shell-wins/cwd/.env"
+(export NURLAI_IMAGE_TAG=v0.8.0; run_install "$tmp/shell-wins" >/dev/null 2>&1) || fail "shell-wins install failed"
 grep -qF 'rakazo/v0.8.0/infra/compose/docker-compose.images.yml' "$tmp/shell-wins/curl.log" ||
   fail "the shell should win over .env, as in Compose: $(cat "$tmp/shell-wins/curl.log")"
 
 setup_work "$tmp/env-spaces"
-printf "RAKAZO_IMAGE_TAG=v0.6.0\\nexport RAKAZO_IMAGE_TAG = 'v0.7.0'\\n" >> "$tmp/env-spaces/cwd/.env"
+printf "NURLAI_IMAGE_TAG=v0.6.0\\nexport NURLAI_IMAGE_TAG = 'v0.7.0'\\n" >> "$tmp/env-spaces/cwd/.env"
 run_install "$tmp/env-spaces" >/dev/null 2>&1 || fail "env-spaces install failed"
 grep -qF 'rakazo/v0.7.0/infra/compose/docker-compose.images.yml' "$tmp/env-spaces/curl.log" ||
   fail ".env pin with spaces should use its tag: $(cat "$tmp/env-spaces/curl.log")"
 
 setup_work "$tmp/shell-empty"
-printf 'RAKAZO_IMAGE_TAG=v0.7.0\n' >> "$tmp/shell-empty/cwd/.env"
-(export RAKAZO_IMAGE_TAG=; run_install "$tmp/shell-empty" >/dev/null 2>&1) || fail "shell-empty install failed"
+printf 'NURLAI_IMAGE_TAG=v0.7.0\n' >> "$tmp/shell-empty/cwd/.env"
+(export NURLAI_IMAGE_TAG=; run_install "$tmp/shell-empty" >/dev/null 2>&1) || fail "shell-empty install failed"
 grep -qF 'rakazo/main/infra/compose/docker-compose.images.yml' "$tmp/shell-empty/curl.log" ||
   fail "an empty shell value should win over .env, as in Compose: $(cat "$tmp/shell-empty/curl.log")"
 
 setup_work "$tmp/mirror"
-printf 'RAKAZO_IMAGE_TAG=v0.7.0\n' >> "$tmp/mirror/cwd/.env"
-(export RAKAZO_DOWNLOAD_BASE=https://mirror.example/compose; run_install "$tmp/mirror" >/dev/null 2>&1) || fail "mirror install failed"
+printf 'NURLAI_IMAGE_TAG=v0.7.0\n' >> "$tmp/mirror/cwd/.env"
+(export NURLAI_DOWNLOAD_BASE=https://mirror.example/compose; run_install "$tmp/mirror" >/dev/null 2>&1) || fail "mirror install failed"
 grep -qF 'https://mirror.example/compose/docker-compose.images.yml' "$tmp/mirror/curl.log" ||
-  fail "RAKAZO_DOWNLOAD_BASE should win: $(cat "$tmp/mirror/curl.log")"
+  fail "NURLAI_DOWNLOAD_BASE should win: $(cat "$tmp/mirror/curl.log")"
 
 echo "ok"

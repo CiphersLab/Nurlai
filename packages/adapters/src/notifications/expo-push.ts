@@ -6,10 +6,10 @@ import type {
   JobPublisher,
   NotificationMessage,
   NotificationProvider,
-} from "@rakazo/adapter-kit";
-import { pushReceiptJob } from "@rakazo/adapter-kit";
-import { ResponseTooLargeError } from "@rakazo/core";
-import { bestEffort, getLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { pushReceiptJob } from "@nurlai/adapter-kit";
+import { ResponseTooLargeError } from "@nurlai/core";
+import { bestEffort, getLogger } from "@nurlai/logging";
 import type { IncomingCallPush, VoipPushProvider } from "../calls/apns-voip.js";
 import { combineSignals } from "../integrations/connector-safety.js";
 import { credentialDigest } from "../secrets/credential-digest.js";

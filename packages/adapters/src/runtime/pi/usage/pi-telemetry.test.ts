@@ -9,7 +9,7 @@ import {
   SimpleSpanProcessor,
   TracerProvider,
 } from "@opentelemetry/sdk-trace";
-import { runWithLogContext } from "@rakazo/logging";
+import { runWithLogContext } from "@nurlai/logging";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { MISSING_TOOL_FINAL_RESPONSE_ERROR, PiAgentRuntime } from "../pi-runtime.js";
 import {

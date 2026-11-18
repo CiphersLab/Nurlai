@@ -1,5 +1,5 @@
 import { randomBytes } from "node:crypto";
-import type { MessageBlock } from "@rakazo/contracts";
+import type { MessageBlock } from "@nurlai/contracts";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import type { Prisma, PrismaClient } from "../database/client.js";
 import { createDb } from "../database/client.js";

@@ -1,6 +1,6 @@
 import { implement, ORPCError } from "@orpc/server";
-import { SecretStoreUnavailableError } from "@rakazo/adapter-kit";
-import type { CatalogReads } from "@rakazo/adapters";
+import { SecretStoreUnavailableError } from "@nurlai/adapter-kit";
+import type { CatalogReads } from "@nurlai/adapters";
 import {
   applyCodexLiveCatalog,
   applyProviderLiveCatalog,
@@ -35,7 +35,7 @@ import {
   validateConnectedModelChoice,
   validateCreditOfferingChoice,
   withLiveModelSettings,
-} from "@rakazo/adapters";
+} from "@nurlai/adapters";
 import type {
   Actor,
   ModelCatalogEntry,
@@ -43,16 +43,16 @@ import type {
   ModelRoleChoice,
   ModelRoleSettings,
   ModelRoleView,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   appContract,
   canonicalPiProviderId,
   hasLab,
   modelSupportsRole,
   OPENAI_COMPATIBLE_PROVIDER_ID,
-} from "@rakazo/contracts";
-import { createGroupRepos, createRepos, recordSecurityEvent, runAsTenant } from "@rakazo/db";
-import { bestEffort } from "@rakazo/logging";
+} from "@nurlai/contracts";
+import { createGroupRepos, createRepos, recordSecurityEvent, runAsTenant } from "@nurlai/db";
+import { bestEffort } from "@nurlai/logging";
 import { procedureSecurityEvent } from "../auth/security-audit.js";
 import { createAgentImportServices } from "../bots/agent-import-services.js";
 import { createAgentSkillsService } from "../bots/agent-skills.js";
@@ -284,7 +284,7 @@ export function createRouterContext(deps: RouterDeps) {
           ? {
               ...entry,
               managed: true,
-              billing: runsOnHostedCredits(auth, entry) ? "Uses Rakazo credits" : entry.billing,
+              billing: runsOnHostedCredits(auth, entry) ? "Uses Nurlai credits" : entry.billing,
             }
           : entry,
       );

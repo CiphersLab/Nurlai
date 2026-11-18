@@ -3,7 +3,7 @@ import type {
   ApnsVoipConfig,
   MessagingEnvironmentValues,
   SandboxProviderOptions,
-} from "@rakazo/adapters";
+} from "@nurlai/adapters";
 import {
   apnsVoipConfig,
   deploymentLabsFromEnv,
@@ -14,25 +14,25 @@ import {
   resolveSandboxProvider,
   sandboxProviderOptionsFromEnv,
   secretStoreOptionsFromEnv,
-} from "@rakazo/adapters";
-import type { OidcConfig, SocialAuthConfig } from "@rakazo/auth";
-import { socialAuthFromFields } from "@rakazo/auth";
-import type { LabFeature, MinimumClientBuilds, NavLink } from "@rakazo/contracts";
-import { isPrivateNetworkHost, parseMinimumClientBuilds, parseNavLinks } from "@rakazo/contracts";
-import { parseCrispWebsiteId } from "@rakazo/contracts/content-security-policy";
-import { attachmentCountFromEnv, phoneCallSettings, uploadSizeFromEnv } from "@rakazo/core";
+} from "@nurlai/adapters";
+import type { OidcConfig, SocialAuthConfig } from "@nurlai/auth";
+import { socialAuthFromFields } from "@nurlai/auth";
+import type { LabFeature, MinimumClientBuilds, NavLink } from "@nurlai/contracts";
+import { isPrivateNetworkHost, parseMinimumClientBuilds, parseNavLinks } from "@nurlai/contracts";
+import { parseCrispWebsiteId } from "@nurlai/contracts/content-security-policy";
+import { attachmentCountFromEnv, phoneCallSettings, uploadSizeFromEnv } from "@nurlai/core";
 import {
   resolveAuthSecret,
   resolveContentEncryption,
   resolveEncryptionKey,
   resolveScreenProxySecret,
   resolveSupervisorToken,
-} from "@rakazo/core/node/secrets-guard";
-import { getLogger, monitoringPseudonymSecret } from "@rakazo/logging";
+} from "@nurlai/core/node/secrets-guard";
+import { getLogger, monitoringPseudonymSecret } from "@nurlai/logging";
 import type { DeploymentVoice } from "./voice/deployment-config.js";
 import { deploymentVoiceFromEnv } from "./voice/deployment-config.js";
 
-export { resolveCloudAgentProvider, resolveSandboxProvider } from "@rakazo/adapters";
+export { resolveCloudAgentProvider, resolveSandboxProvider } from "@nurlai/adapters";
 
 /** Where a local development stack serves the web client. */
 const DEFAULT_WEB_ORIGIN = "http://127.0.0.1:5173";
@@ -54,7 +54,7 @@ export interface AppEnv extends MessagingEnvironmentValues {
   authSecret: string;
   authUrl: string;
   webOrigin: string;
-  /** Extra browser origins trusted for sign-in and CORS, from `RAKAZO_EXTRA_AUTH_ORIGINS`. */
+  /** Extra browser origins trusted for sign-in and CORS, from `NURLAI_EXTRA_AUTH_ORIGINS`. */
   extraAuthOrigins: string[];
   /** `<TEAM_ID>.<bundle id>` of iOS apps that may use this domain's passkeys. */
   passkeyAppleAppIds: string[];
@@ -79,10 +79,10 @@ export interface AppEnv extends MessagingEnvironmentValues {
   userDevicesEnabled: boolean;
   /** COMPUTER_SETTINGS_ENABLED=true lets Settings choose where computers run. Default off. */
   computerSettingsEnabled: boolean;
-  /** Operator menu links that frame a same-origin page (RAKAZO_NAV_LINKS). */
+  /** Operator menu links that frame a same-origin page (NURLAI_NAV_LINKS). */
   navLinks?: NavLink[];
   /** Verified accounts that review plugin submissions, add stdio MCP servers, and grant access
-   * (RAKAZO_ADMIN_EMAILS), lowercased. */
+   * (NURLAI_ADMIN_EMAILS), lowercased. */
   adminEmails: string[];
   phoneCallsEnabled: boolean;
   phoneCallRingSeconds: number;
@@ -156,7 +156,7 @@ export interface AppEnv extends MessagingEnvironmentValues {
   mcpAllowPrivateEndpoint: boolean;
   port: number;
   gitSha: string | undefined;
-  /** Oldest client build per kind the API still serves (RAKAZO_MIN_CLIENT_BUILD). */
+  /** Oldest client build per kind the API still serves (NURLAI_MIN_CLIENT_BUILD). */
   minimumClientBuilds?: MinimumClientBuilds;
   /** Browser error reporting, served to the web app at runtime. The DSN is public by design. */
   browserMonitoring:
@@ -248,11 +248,11 @@ export function loadEnv(source: NodeJS.ProcessEnv = process.env): AppEnv {
     nodeEnv: source.NODE_ENV ?? "",
     databaseUrl: required(source, "DATABASE_URL"),
     realtimeDatabaseUrl: source.REALTIME_DATABASE_URL ?? required(source, "DATABASE_URL"),
-    desktopStackToken: optional(source.RAKAZO_DESKTOP_STACK_TOKEN),
+    desktopStackToken: optional(source.NURLAI_DESKTOP_STACK_TOKEN),
     authSecret,
     authUrl: resolveWebOrigin(source.BETTER_AUTH_URL, webOrigin, "BETTER_AUTH_URL"),
     webOrigin,
-    extraAuthOrigins: parseExtraAuthOrigins(source.RAKAZO_EXTRA_AUTH_ORIGINS),
+    extraAuthOrigins: parseExtraAuthOrigins(source.NURLAI_EXTRA_AUTH_ORIGINS),
     passkeyAppleAppIds: list(source.PASSKEY_APPLE_APP_IDS),
     passkeyAndroidCertFingerprints: androidCertFingerprints(source.PASSKEY_ANDROID_CERT_SHA256),
     privacyPolicyUrl: optional(source.PRIVACY_POLICY_URL),
@@ -273,8 +273,8 @@ export function loadEnv(source: NodeJS.ProcessEnv = process.env): AppEnv {
     deploymentLabs: deploymentLabsFromEnv(source),
     userDevicesEnabled: source.USER_DEVICES_ENABLED !== "false",
     computerSettingsEnabled: source.COMPUTER_SETTINGS_ENABLED === "true",
-    navLinks: parseNavLinks(source.RAKAZO_NAV_LINKS),
-    adminEmails: list(source.RAKAZO_ADMIN_EMAILS).map((email) => email.toLowerCase()),
+    navLinks: parseNavLinks(source.NURLAI_NAV_LINKS),
+    adminEmails: list(source.NURLAI_ADMIN_EMAILS).map((email) => email.toLowerCase()),
     ...phoneCallSettings(source),
     maxUploadSizeBytes: uploadSizeFromEnv(source),
     maxAttachmentsPerMessage: attachmentCountFromEnv(source),
@@ -330,7 +330,7 @@ export function loadEnv(source: NodeJS.ProcessEnv = process.env): AppEnv {
     slackClientId: optional(source.SLACK_CLIENT_ID),
     slackClientSecret: optional(source.SLACK_CLIENT_SECRET),
     messagingOpenSignup: source.MESSAGING_OPEN_SIGNUP === "true",
-    teamChatBotId: optional(source.TEAM_CHAT_BOT_ID) ?? optional(source.SLACK_RAKAZO_BOT_ID),
+    teamChatBotId: optional(source.TEAM_CHAT_BOT_ID) ?? optional(source.SLACK_NURLAI_BOT_ID),
     teamChatJudgeProvider: optional(source.TEAM_CHAT_JUDGE_PROVIDER),
     teamChatJudgeModel: optional(source.TEAM_CHAT_JUDGE_MODEL),
     defaultProvider: deploymentModel.provider,
@@ -344,8 +344,8 @@ export function loadEnv(source: NodeJS.ProcessEnv = process.env): AppEnv {
     mcpStdio: mcpStdioOptionsFromEnv(source),
     mcpAllowPrivateEndpoint: source.MCP_ALLOW_PRIVATE_ENDPOINT === "true",
     port: Number(source.API_PORT ?? 3100),
-    gitSha: optional(source.GIT_SHA) ?? optional(source.RAKAZO_GIT_SHA),
-    minimumClientBuilds: parseMinimumClientBuilds(source.RAKAZO_MIN_CLIENT_BUILD),
+    gitSha: optional(source.GIT_SHA) ?? optional(source.NURLAI_GIT_SHA),
+    minimumClientBuilds: parseMinimumClientBuilds(source.NURLAI_MIN_CLIENT_BUILD),
     browserMonitoring: browserMonitoringFromEnv(source),
     crispWebsiteId: parseCrispWebsiteId(source.CRISP_WEBSITE_ID),
     demoAccount: demoAccountFromEnv(source),
@@ -387,7 +387,7 @@ export function parseExtraAuthOrigins(value: string | undefined): string[] {
       origins.add(url.origin);
     } catch {
       // The entry is not logged: it may carry credentials.
-      getLogger().warn("ignoring invalid RAKAZO_EXTRA_AUTH_ORIGINS entry");
+      getLogger().warn("ignoring invalid NURLAI_EXTRA_AUTH_ORIGINS entry");
     }
   }
   return [...origins];

@@ -1,8 +1,8 @@
 import { randomUUID } from "node:crypto";
-import type { Actor, ThreadSnapshot } from "@rakazo/contracts";
-import { reduceThreadSnapshot } from "@rakazo/core";
-import { deferred } from "@rakazo/core/test-async";
-import type { Prisma, PrismaClient } from "@rakazo/db";
+import type { Actor, ThreadSnapshot } from "@nurlai/contracts";
+import { reduceThreadSnapshot } from "@nurlai/core";
+import { deferred } from "@nurlai/core/test-async";
+import type { Prisma, PrismaClient } from "@nurlai/db";
 import {
   appendEventInTransaction,
   asSystem,
@@ -12,7 +12,7 @@ import {
   provisionMessagingIdentity,
   runAsSystem,
   runAsTenant,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { threadSnapshot } from "./thread-snapshot.js";
 import type { ThreadTarget } from "./thread-target.js";

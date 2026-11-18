@@ -1,21 +1,21 @@
-import type { ProductAnalytics } from "@rakazo/adapter-kit";
-import type { PiOAuthEnded, PiOAuthMeasure, PiOAuthPending } from "@rakazo/adapters";
-import { listPiCatalog } from "@rakazo/adapters";
+import type { ProductAnalytics } from "@nurlai/adapter-kit";
+import type { PiOAuthEnded, PiOAuthMeasure, PiOAuthPending } from "@nurlai/adapters";
+import { listPiCatalog } from "@nurlai/adapters";
 import type {
   Actor,
   AnalyticsErrorKind,
   AnalyticsModelConnectMethod,
   AnalyticsModelSignInFlow,
   AnalyticsModelSignInStep,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   AnalyticsSurface,
   canonicalPiProviderId,
   MODEL_KEY_REJECTED_ERROR,
   OPENAI_COMPATIBLE_PROVIDER_ID,
-} from "@rakazo/contracts";
-import { normalizeRunError } from "@rakazo/core";
-import { bestEffort } from "@rakazo/logging";
+} from "@nurlai/contracts";
+import { normalizeRunError } from "@nurlai/core";
+import { bestEffort } from "@nurlai/logging";
 import type { RouterDeps } from "../router.js";
 import { modelSetup } from "../routes/shared.js";
 

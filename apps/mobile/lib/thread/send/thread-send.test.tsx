@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
-import type { MessageBlock } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
+import type { MessageBlock } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
 import { act, createElement } from "react";
 import { createRoot } from "react-dom/client";
 import { expect, it, vi } from "vitest";

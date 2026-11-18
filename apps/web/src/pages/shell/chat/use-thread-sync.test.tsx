@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 
-import type { ProductEvent, ThreadSnapshot } from "@rakazo/contracts";
-import { runThreadSubscription } from "@rakazo/core";
-import { deferred } from "@rakazo/core/test-async";
+import type { ProductEvent, ThreadSnapshot } from "@nurlai/contracts";
+import { runThreadSubscription } from "@nurlai/core";
+import { deferred } from "@nurlai/core/test-async";
 import { act, createElement } from "react";
 import { createRoot } from "react-dom/client";
 import { afterEach, expect, it, vi } from "vitest";
@@ -10,8 +10,8 @@ import { queryClient } from "../../../lib/query/query";
 import { useComputerControls, useComputerState } from "../computers/use-computer";
 import { useThreadSync } from "./use-thread-sync";
 
-vi.mock("@rakazo/core", async (original) => ({
-  ...(await original<typeof import("@rakazo/core")>()),
+vi.mock("@nurlai/core", async (original) => ({
+  ...(await original<typeof import("@nurlai/core")>()),
   runThreadSubscription: vi.fn(async () => {}),
 }));
 vi.mock("../../../lib/query/query", () => ({
@@ -21,7 +21,7 @@ vi.mock("../../../lib/query/query", () => ({
     invalidateQueries: vi.fn(async () => {}),
   },
 }));
-vi.mock("@rakazo/core/query", () => ({ fetchFresh: vi.fn(async () => []) }));
+vi.mock("@nurlai/core/query", () => ({ fetchFresh: vi.fn(async () => []) }));
 
 const ref = <T,>(current: T) => ({ current });
 const flush = () => act(async () => {});

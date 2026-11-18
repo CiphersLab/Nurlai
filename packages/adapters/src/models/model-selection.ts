@@ -1,14 +1,14 @@
-import type { SecretStore } from "@rakazo/adapter-kit";
-import { SecretStoreUnavailableError } from "@rakazo/adapter-kit";
-import type { Actor, ModelSettings } from "@rakazo/contracts";
+import type { SecretStore } from "@nurlai/adapter-kit";
+import { SecretStoreUnavailableError } from "@nurlai/adapter-kit";
+import type { Actor, ModelSettings } from "@nurlai/contracts";
 import {
   ConnectionSetupError,
   canonicalPiProviderId,
   selectCompatibleModelCredential,
   usableModelId,
-} from "@rakazo/contracts";
-import { MODEL_UNPRICED_FOR_CREDITS_ERROR } from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
+} from "@nurlai/contracts";
+import { MODEL_UNPRICED_FOR_CREDITS_ERROR } from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
 import {
   chooseModelCredential,
   findModelCredential,
@@ -16,7 +16,7 @@ import {
   GUEST_ROLE,
   modelCredentialProviderFilter,
   organizationForMember,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { approvedModelCreditOffering, modelCreditOfferings } from "../model-credits/offerings.js";
 import { availableModelCreditOfferings } from "../model-credits/routing.js";
 import type { ModelCredentialAuthKind } from "../runtime/pi/models/pi-catalog-availability.js";
@@ -182,7 +182,7 @@ export type SpaceCatalogAuth = {
   modelSettingsBySecretId?: Partial<Record<string, Record<string, ModelSettings>>>;
 };
 
-/** Whether this space would run the model on Rakazo credits rather than a member's own connection. */
+/** Whether this space would run the model on Nurlai credits rather than a member's own connection. */
 export function runsOnHostedCredits(
   auth: SpaceCatalogAuth,
   entry: { provider: string; id: string },

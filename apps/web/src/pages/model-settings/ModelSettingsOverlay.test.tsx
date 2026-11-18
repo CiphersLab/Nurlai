@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 
 import { i18n } from "@lingui/core";
-import { deferred, flush } from "@rakazo/core/test-async";
-import type * as UiWeb from "@rakazo/ui-web";
+import { deferred, flush } from "@nurlai/core/test-async";
+import type * as UiWeb from "@nurlai/ui-web";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { ComponentProps, ReactNode } from "react";
 import { act } from "react";
@@ -66,7 +66,7 @@ vi.mock("@lingui/react/macro", () => {
       (value === 1 ? one : other).replace("#", String(value)),
   };
 });
-vi.mock("@rakazo/ui-web", async (importOriginal) => {
+vi.mock("@nurlai/ui-web", async (importOriginal) => {
   const actual = await importOriginal<UiWebModule>();
   const Pass = ({ children }: { children?: ReactNode }) => <div>{children}</div>;
   return {

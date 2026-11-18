@@ -1,7 +1,7 @@
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import { accountDisplay } from "@rakazo/core";
-import { typeScale } from "@rakazo/ui-tokens";
+import { accountDisplay } from "@nurlai/core";
+import { typeScale } from "@nurlai/ui-tokens";
 import { useQuery } from "@tanstack/react-query";
 import { AudioModule } from "expo-audio";
 import { useKeepAwake } from "expo-keep-awake";

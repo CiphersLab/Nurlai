@@ -1,9 +1,9 @@
 import { spawnSync } from "node:child_process";
 import { createServer } from "node:net";
 import path from "node:path";
-import type { RunsListOutput, ThreadSnapshot } from "@rakazo/contracts";
-import { isTerminal } from "@rakazo/core";
-import { computerNetworkNameFor } from "@rakazo/sandbox-supervisor/computer-spec";
+import type { RunsListOutput, ThreadSnapshot } from "@nurlai/contracts";
+import { isTerminal } from "@nurlai/core";
+import { computerNetworkNameFor } from "@nurlai/sandbox-supervisor/computer-spec";
 
 const composeFile = path.resolve("infra/compose/docker-compose.topology.yml");
 const keep = process.argv.includes("--keep");
@@ -18,7 +18,7 @@ async function main() {
     ...process.env,
     TOPOLOGY_API_PORT: String(port),
     TOPOLOGY_APP_IMAGE: process.env.TOPOLOGY_APP_IMAGE ?? "rakazo/app:topology",
-    TOPOLOGY_COMPUTER_IMAGE: process.env.TOPOLOGY_COMPUTER_IMAGE ?? "rakazo/computer:topology",
+    TOPOLOGY_COMPUTER_IMAGE: process.env.TOPOLOGY_COMPUTER_IMAGE ?? "nurlai/computer:topology",
   };
   const compose = (args: string[], capture = false) =>
     command(

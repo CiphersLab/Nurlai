@@ -65,7 +65,7 @@ jobs:
           playwright: "true"
       - name: Install Chromium
         timeout-minutes: 5
-        run: pnpm --filter @rakazo/web exec playwright install chromium
+        run: pnpm --filter @nurlai/web exec playwright install chromium
       # The same image a pull request preview runs: Postgres, the app and emulated services,
       # with the public demo account and fake data only.
       - name: Build the preview stack

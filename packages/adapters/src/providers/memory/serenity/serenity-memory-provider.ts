@@ -8,7 +8,7 @@ import type {
   SemanticMemoryResponse,
   SemanticMemoryResult,
   SemanticMemorySaveRequest,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import { egressRefused } from "../../../network/network-address.js";
 import type { SerenityConnectionConfig, SerenityNetworkDependencies } from "./serenity-client.js";
 import {
@@ -262,7 +262,7 @@ export class SerenityMemoryProvider implements SemanticMemoryProvider {
     request: SemanticMemoryRecallRequest,
     context: AdapterContext,
   ): Promise<SemanticMemoryResponse<SemanticMemoryResult[]>> {
-    // History compaction stays in Rakazo; Serenity is the durable brain only.
+    // History compaction stays in Nurlai; Serenity is the durable brain only.
     const entities = recallEntities(
       request.scope,
       request.botId,

@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { SettingsScope } from "@rakazo/contracts";
-import { Button } from "@rakazo/ui-web";
+import type { SettingsScope } from "@nurlai/contracts";
+import { Button } from "@nurlai/ui-web";
 import { useQuery } from "@tanstack/react-query";
 import { ChevronRight } from "lucide-react";
 import { formatRelativeTime } from "../../lib/locale/relative-time";

@@ -1,4 +1,4 @@
-import { sliceWellFormed } from "@rakazo/core";
+import { sliceWellFormed } from "@nurlai/core";
 
 export const DEFAULT_WEB_SEARCH_MAX_RESULTS = 5;
 export const MAX_WEB_SEARCH_RESULTS = 10;

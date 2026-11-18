@@ -1,6 +1,6 @@
-import type { ConnectorTool } from "@rakazo/adapter-kit";
-import { BOT_MEMORY_MAX_BYTES } from "@rakazo/contracts";
-import { byteLength } from "@rakazo/core";
+import type { ConnectorTool } from "@nurlai/adapter-kit";
+import { BOT_MEMORY_MAX_BYTES } from "@nurlai/contracts";
+import { byteLength } from "@nurlai/core";
 
 const SEMANTIC_MEMORY_TOOL_NAMES = new Set([
   "recall_memory",

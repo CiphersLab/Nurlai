@@ -3,14 +3,14 @@ import {
   BOT_EMAIL_NAME_TAKEN,
   BotEmailNameSchema,
   BotEmailRecipientSchema,
-} from "@rakazo/contracts";
-import { attachmentComputerPath, matchesSearchQuery, redactSecrets } from "@rakazo/core";
+} from "@nurlai/contracts";
+import { attachmentComputerPath, matchesSearchQuery, redactSecrets } from "@nurlai/core";
 import {
   claimBotEmailName,
   contentEncryptionOf,
   reserveBotEmailSend,
   storedEmailAttachments,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { z } from "zod";
 import { redactConnectorPayload } from "../../integrations/connector-safety.js";
 import type { RunContext } from "../assembly/run-context.js";

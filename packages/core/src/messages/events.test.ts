@@ -1,4 +1,4 @@
-import type { MessageBlock } from "@rakazo/contracts";
+import type { MessageBlock } from "@nurlai/contracts";
 import { describe, expect, it } from "vitest";
 import { modelFallbackFailure, normalizeRunError } from "../runs/run-error.js";
 import {

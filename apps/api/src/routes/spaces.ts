@@ -1,7 +1,7 @@
 import { ORPCError } from "@orpc/server";
-import { spaceInvitationEmail } from "@rakazo/auth";
-import type { Actor, SpaceNavigation } from "@rakazo/contracts";
-import type { createGroupRepos, createRepos, PrismaClient } from "@rakazo/db";
+import { spaceInvitationEmail } from "@nurlai/auth";
+import type { Actor, SpaceNavigation } from "@nurlai/contracts";
+import type { createGroupRepos, createRepos, PrismaClient } from "@nurlai/db";
 import {
   acceptSpaceInvite,
   addSpaceMember,
@@ -26,7 +26,7 @@ import {
   SpaceNotFoundError,
   setSpaceSettingOverride,
   spaceSettingOverrides,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { otherSpaceOfBot, otherSpaceOfGroup } from "../bots/bot-space.js";
 import { invitationRecipientKey, sendInvitationEmail } from "../email/invitation-email.js";
 import type { RouterDeps } from "../router.js";

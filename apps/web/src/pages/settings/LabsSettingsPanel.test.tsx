@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import type { ReactNode } from "react";
 import { act } from "react";
 import { afterEach, expect, it, vi } from "vitest";
@@ -9,7 +9,7 @@ import { createQueryRoot as createRoot } from "../../lib/query/query-root.test-s
 vi.mock("@lingui/react/macro", () => ({
   useLingui: () => ({ t: (parts: TemplateStringsArray) => parts.join("") }),
 }));
-vi.mock("@rakazo/ui-web", () => ({
+vi.mock("@nurlai/ui-web", () => ({
   Label: ({ children, htmlFor }: { children?: ReactNode; htmlFor?: string }) => (
     <label htmlFor={htmlFor}>{children}</label>
   ),

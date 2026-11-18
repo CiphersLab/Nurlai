@@ -1,10 +1,10 @@
-import type { ComposerMentionBinding } from "@rakazo/core";
-import { createKeyedListeners, validateComposerMentionBindings } from "@rakazo/core";
+import type { ComposerMentionBinding } from "@nurlai/core";
+import { createKeyedListeners, validateComposerMentionBindings } from "@nurlai/core";
 
-export const COMPOSER_DRAFT_STORAGE_PREFIX = "rakazo.composerDraft.";
-const COMPOSER_BINDINGS_STORAGE_PREFIX = "rakazo.composerBindings.";
-const COMPOSER_NONCE_STORAGE_PREFIX = "rakazo.composerNonce.";
-const LEGACY_COMPOSER_SEND_STORAGE_PREFIX = "rakazo.composerSend.";
+export const COMPOSER_DRAFT_STORAGE_PREFIX = "nurlai.cipherslab.composerDraft.";
+const COMPOSER_BINDINGS_STORAGE_PREFIX = "nurlai.cipherslab.composerBindings.";
+const COMPOSER_NONCE_STORAGE_PREFIX = "nurlai.cipherslab.composerNonce.";
+const LEGACY_COMPOSER_SEND_STORAGE_PREFIX = "nurlai.cipherslab.composerSend.";
 
 // Older releases saved full send payloads. Remove them on upgrade, including chats
 // that are never opened again; only retry nonces are stored by this release.

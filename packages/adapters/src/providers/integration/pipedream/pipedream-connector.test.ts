@@ -1,6 +1,6 @@
-import type { AdapterContext } from "@rakazo/adapter-kit";
-import { ResponseTooLargeError } from "@rakazo/core";
-import { deferred } from "@rakazo/core/test-async";
+import type { AdapterContext } from "@nurlai/adapter-kit";
+import { ResponseTooLargeError } from "@nurlai/core";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { ThirdPartyConnectorEmulator } from "../../../integrations/third-party-connector-emulator.js";
 import {

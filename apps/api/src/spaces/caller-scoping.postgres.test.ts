@@ -1,15 +1,15 @@
 import { randomUUID } from "node:crypto";
 import { RPCHandler } from "@orpc/server/fetch";
-import type { SecretStore } from "@rakazo/adapter-kit";
-import type { Actor, MessageBlock } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
+import type { SecretStore } from "@nurlai/adapter-kit";
+import type { Actor, MessageBlock } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
 import {
   asSystem,
   createDb,
   createOrganizationForUser,
   runAsSystem,
   runAsTenant,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { Hono } from "hono";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { queueMcpConnectedRun } from "../integrations/mcp-approval.js";

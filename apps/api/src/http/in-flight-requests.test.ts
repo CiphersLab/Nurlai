@@ -1,4 +1,4 @@
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { Hono } from "hono";
 import { describe, expect, it } from "vitest";
 import { trackInFlightRequests } from "./in-flight-requests.js";

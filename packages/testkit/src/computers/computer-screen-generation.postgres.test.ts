@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
-import type { PrismaClient } from "@rakazo/db";
-import { asSystem, createDb, provisionMessagingIdentity, runAsSystem } from "@rakazo/db";
+import type { PrismaClient } from "@nurlai/db";
+import { asSystem, createDb, provisionMessagingIdentity, runAsSystem } from "@nurlai/db";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
 const databaseUrl = process.env.DATABASE_URL;

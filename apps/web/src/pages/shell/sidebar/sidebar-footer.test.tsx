@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
-import type { DesktopUpdateState } from "@rakazo/contracts";
-import { Toaster } from "@rakazo/ui-web";
+import type { DesktopUpdateState } from "@nurlai/contracts";
+import { Toaster } from "@nurlai/ui-web";
 import type { ReactNode } from "react";
 import { act } from "react";
 import { createRoot } from "react-dom/client";
@@ -25,7 +25,7 @@ beforeEach(() => {
 afterEach(async () => {
   await act(async () => root.unmount());
   host.remove();
-  delete window.rakazoDesktop;
+  delete window.nurlaiDesktop;
   vi.restoreAllMocks();
 });
 async function render(
@@ -76,7 +76,7 @@ function bridge(phase: DesktopUpdateState["phase"]) {
     checkedAt: null,
   };
   const install = vi.fn(async () => state);
-  window.rakazoDesktop = {
+  window.nurlaiDesktop = {
     platform: "darwin",
     window: {
       close: async () => {},
@@ -165,7 +165,7 @@ it("offers Google Play on Android", async () => {
   const mobile = [...document.querySelectorAll("a")].find(
     (link) => link.textContent === "Get the mobile app",
   )!;
-  expect(mobile.href).toBe("https://play.google.com/store/apps/details?id=com.rakazo.app");
+  expect(mobile.href).toBe("https://play.google.com/store/apps/details?id=com.nurlai.app");
 });
 
 it("falls back when app artwork fails and accepts replacement artwork", async () => {
@@ -190,7 +190,7 @@ it.each(["throw", "state"] as const)(
     if (failure === "throw") install.mockRejectedValueOnce(new Error("offline"));
     else
       install.mockResolvedValueOnce({
-        ...(await window.rakazoDesktop!.update.state()),
+        ...(await window.nurlaiDesktop!.update.state()),
         phase: "error",
         message: "Update could not be installed",
       });

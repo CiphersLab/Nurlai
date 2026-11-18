@@ -1,17 +1,17 @@
 import { randomUUID } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-import type { MessagingSurface } from "@rakazo/adapter-kit";
-import { messagingReplyJobKey, messagingSendJobKey, RetryJobLaterError } from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
-import type { PrismaClient } from "@rakazo/db";
+import type { MessagingSurface } from "@nurlai/adapter-kit";
+import { messagingReplyJobKey, messagingSendJobKey, RetryJobLaterError } from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
+import type { PrismaClient } from "@nurlai/db";
 import {
   asSystem,
   createDb,
   createPool,
   provisionMessagingIdentity,
   runAsSystem,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import type { Pool } from "pg";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { GraphileJobPublisher } from "../runs/wakeups/wakeup.js";

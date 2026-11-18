@@ -1,7 +1,7 @@
 import { createHash, createHmac, generateKeyPairSync, randomBytes, sign } from "node:crypto";
-import type { TransactionalEmail } from "@rakazo/adapter-kit";
-import type * as Db from "@rakazo/db";
-import { bootstrapUserSpace, recordSecurityEvent, SpaceDeletionInProgressError } from "@rakazo/db";
+import type { TransactionalEmail } from "@nurlai/adapter-kit";
+import type * as Db from "@nurlai/db";
+import { bootstrapUserSpace, recordSecurityEvent, SpaceDeletionInProgressError } from "@nurlai/db";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { AuthEnv } from "./index.js";
 import { CLIENT_IP_HEADER, createAuth } from "./index.js";
@@ -29,7 +29,7 @@ vi.mock("better-auth/adapters/prisma", async () => {
     },
   };
 });
-vi.mock("@rakazo/db", async (original) => ({
+vi.mock("@nurlai/db", async (original) => ({
   ...(await original<typeof Db>()),
   bootstrapUserSpace: vi.fn(async () => ({ spaceId: "space-1" })),
   leaveInvitedSpaces: vi.fn(async () => ({ ownedOrganizationIds: [] })),
@@ -293,7 +293,7 @@ it("stores validated signup attribution once, hides it from auth responses, and 
         "content-type": "application/json",
         origin: "http://web.example.test",
         cookie: `rakazo_signup_attribution=${encodeURIComponent(JSON.stringify(attribution))}`,
-        "x-rakazo-signup-surface": "android",
+        "x-nurlai-signup-surface": "android",
       },
       body: JSON.stringify({
         email: "new@example.test",
@@ -831,7 +831,7 @@ describe("identity confirmation", () => {
     expect((await f.request("/request-identity-code", {}, token)).status).toBe(200);
     expect(f.messages.at(-1)).toMatchObject({
       to: "approved@example.test",
-      subject: "Your Rakazo confirmation code",
+      subject: "Your Nurlai confirmation code",
     });
     const code = f.lastCode();
     expect(JSON.stringify(f.data.verification)).not.toContain(code);
@@ -853,7 +853,7 @@ describe("identity confirmation", () => {
     const user = f.data.user!.find((row) => row.email === "approved@example.test")!;
     user.locale = "es";
     expect((await f.request("/request-identity-code", {}, token)).status).toBe(200);
-    expect(f.messages.at(-1)).toMatchObject({ subject: "Tu código de confirmación de Rakazo" });
+    expect(f.messages.at(-1)).toMatchObject({ subject: "Tu código de confirmación de Nurlai" });
   });
 
   it("binds an emailed code to the session that requested it", async () => {
@@ -900,7 +900,7 @@ describe("verification email without blocking", () => {
     expect(await f.sessionFor(token)).toMatchObject({ user: { emailVerified: false } });
     expect(bootstrapUserSpace).toHaveBeenCalledTimes(1);
     expect(f.messages).toHaveLength(1);
-    expect(f.messages[0]).toMatchObject({ subject: "Verify your Rakazo email" });
+    expect(f.messages[0]).toMatchObject({ subject: "Verify your Nurlai email" });
     expect((await f.signin()).status).toBe(200);
     expect(f.messages).toHaveLength(1);
     await f.verify();
@@ -924,7 +924,7 @@ describe("email code sign-in", () => {
     expect(f.messages).toHaveLength(1);
     expect(f.messages[0]).toMatchObject({
       to: "approved@example.test",
-      subject: "Your Rakazo sign-in code",
+      subject: "Your Nurlai sign-in code",
     });
     const code = f.lastCode();
     expect(JSON.stringify(f.data.verification)).not.toContain(code);
@@ -1035,7 +1035,7 @@ describe("email code sign-in", () => {
     expect((await f.signin()).status).toBe(200);
   });
 
-  it("closes the OTP routes Rakazo does not use", async () => {
+  it("closes the OTP routes Nurlai does not use", async () => {
     const f = fixture();
     for (const type of ["email-verification", "forget-password", "change-email"]) {
       expect((await f.sendCode("approved@example.test", type)).status, type).toBe(404);

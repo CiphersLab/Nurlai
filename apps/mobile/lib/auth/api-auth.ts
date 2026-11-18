@@ -1,13 +1,13 @@
 import { t } from "@lingui/core/macro";
-import type { AccountSecurity, AuthCapabilities } from "@rakazo/contracts";
+import type { AccountSecurity, AuthCapabilities } from "@nurlai/contracts";
 import {
   accountSecuritySchema,
   authCapabilitiesSchema,
   legacyAccountSecurity,
   legacyAuthCapabilitiesSchema,
   SIGNUP_SURFACE_HEADER,
-} from "@rakazo/contracts";
-import { displayName, signupRequiresEmailVerification } from "@rakazo/core";
+} from "@nurlai/contracts";
+import { displayName, signupRequiresEmailVerification } from "@nurlai/core";
 import { Platform } from "react-native";
 import type { PendingSignOut } from "../api/api";
 import {

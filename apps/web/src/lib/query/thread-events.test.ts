@@ -3,8 +3,8 @@ import type {
   ProductEvent,
   ThreadMessage,
   ThreadSnapshot,
-} from "@rakazo/contracts";
-import { reconcileRefreshedThread, reduceThreadSnapshot } from "@rakazo/core";
+} from "@nurlai/contracts";
+import { reconcileRefreshedThread, reduceThreadSnapshot } from "@nurlai/core";
 import { describe, expect, it } from "vitest";
 import {
   clearActiveThreadRuns,

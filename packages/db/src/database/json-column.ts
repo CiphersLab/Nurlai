@@ -1,4 +1,4 @@
-import { getLogger } from "@rakazo/logging";
+import { getLogger } from "@nurlai/logging";
 import { z } from "zod";
 
 /** Which stored value a mismatch is about. Never the value itself: columns hold private content. */

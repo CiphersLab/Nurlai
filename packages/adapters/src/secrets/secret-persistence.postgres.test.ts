@@ -3,11 +3,11 @@ import type {
   JobPublisher,
   SecretPutOptions,
   SecretStore,
-} from "@rakazo/adapter-kit";
-import { dispatchBackgroundJob } from "@rakazo/adapter-kit";
-import type { PrismaClient } from "@rakazo/db";
-import { asSystem, createDb, runAsSystem, runAsTenant } from "@rakazo/db";
-import { unwrapJobPayload } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { dispatchBackgroundJob } from "@nurlai/adapter-kit";
+import type { PrismaClient } from "@nurlai/db";
+import { asSystem, createDb, runAsSystem, runAsTenant } from "@nurlai/db";
+import { unwrapJobPayload } from "@nurlai/logging";
 import { Pool } from "pg";
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { createBackgroundJobHandlers } from "../runs/wakeups/background-job-handlers.js";

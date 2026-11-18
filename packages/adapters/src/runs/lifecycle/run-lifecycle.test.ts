@@ -2,10 +2,10 @@ import {
   runContinueJob,
   SandboxUnavailableError,
   SandboxUnresponsiveError,
-} from "@rakazo/adapter-kit";
-import { databaseOutage } from "@rakazo/db";
-import type { TestSink } from "@rakazo/logging";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { databaseOutage } from "@nurlai/db";
+import type { TestSink } from "@nurlai/logging";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ComputerBusyError } from "../../computers/computer-lifecycle.js";
 import { VaultKeyUnavailableError } from "../../secrets/bot-secrets.js";

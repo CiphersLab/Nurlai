@@ -1,5 +1,5 @@
-import type { Actor } from "@rakazo/contracts";
-import { canonicalPiProviderId } from "@rakazo/contracts";
+import type { Actor } from "@nurlai/contracts";
+import { canonicalPiProviderId } from "@nurlai/contracts";
 import { listAvailablePiCatalog } from "../runtime/pi/models/pi-catalog-availability.js";
 import type { PiCatalogEntry } from "../runtime/pi/models/pi-models.js";
 import { listPiCatalog, offeredCatalog } from "../runtime/pi/models/pi-models.js";

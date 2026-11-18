@@ -1,7 +1,7 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
-import type { MessagingInstallProvider } from "@rakazo/adapter-kit";
-import { MessagingInstallRefusedError } from "@rakazo/adapter-kit";
-import { readBoundedJsonResponse } from "@rakazo/core";
+import type { MessagingInstallProvider } from "@nurlai/adapter-kit";
+import { MessagingInstallRefusedError } from "@nurlai/adapter-kit";
+import { readBoundedJsonResponse } from "@nurlai/core";
 import {
   ChatSdkMessagingSurface,
   MESSAGING_WEBHOOK_MAX_BODY_BYTES,

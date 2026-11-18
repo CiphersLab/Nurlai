@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Restricted egress for Rakazo bot computers (SANDBOX_COMPUTER_EGRESS=restricted).
+# Restricted egress for Nurlai bot computers (SANDBOX_COMPUTER_EGRESS=restricted).
 #
 # Computers keep full public-internet egress (browsing, DNS, apt, git over SSH)
 # but can no longer reach the destinations below. Docker before 28, and DNS
@@ -34,10 +34,10 @@
 
 set -Eeuo pipefail
 
-IPTABLES="${RAKAZO_IPTABLES:-iptables}"
-IP6TABLES="${RAKAZO_IP6TABLES:-ip6tables}"
-SYSTEMCTL="${RAKAZO_SYSTEMCTL:-systemctl}"
-IF_INET6="${RAKAZO_IF_INET6:-/proc/net/if_inet6}"
+IPTABLES="${NURLAI_IPTABLES:-iptables}"
+IP6TABLES="${NURLAI_IP6TABLES:-ip6tables}"
+SYSTEMCTL="${NURLAI_SYSTEMCTL:-systemctl}"
+IF_INET6="${NURLAI_IF_INET6:-/proc/net/if_inet6}"
 BRIDGE_PREFIX="rakazo-c"
 INSTALLED_PATH=/usr/local/sbin/rakazo-computer-egress
 UNIT_PATH=/etc/systemd/system/rakazo-computer-egress.service
@@ -309,12 +309,12 @@ print_family() {
 
 require_root() {
   if ((EUID == 0)); then return 0; fi
-  if [[ "${RAKAZO_EGRESS_SUDOED:-}" == "1" ]]; then
+  if [[ "${NURLAI_EGRESS_SUDOED:-}" == "1" ]]; then
     echo "root privileges required" >&2
     exit 1
   fi
-  export RAKAZO_EGRESS_SUDOED=1
-  exec sudo --preserve-env=RAKAZO_EGRESS_SUDOED bash "$0" "$@"
+  export NURLAI_EGRESS_SUDOED=1
+  exec sudo --preserve-env=NURLAI_EGRESS_SUDOED bash "$0" "$@"
 }
 
 install_persistence() {
@@ -331,7 +331,7 @@ install_persistence() {
   fi
   cat >"$UNIT_PATH" <<EOF
 [Unit]
-Description=Restrict Rakazo bot-computer egress (rakazo-c* bridges)
+Description=Restrict Nurlai bot-computer egress (rakazo-c* bridges)
 After=docker.service
 Wants=docker.service
 

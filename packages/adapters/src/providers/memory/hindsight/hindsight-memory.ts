@@ -1,4 +1,4 @@
-import type { ProviderSettingsField } from "@rakazo/contracts";
+import type { ProviderSettingsField } from "@nurlai/contracts";
 import type { MemoryProviderDefinition } from "../../../memory/memory-provider-descriptor.js";
 import {
   connectionModeFields,

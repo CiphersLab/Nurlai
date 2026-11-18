@@ -1,7 +1,7 @@
 import { mkdtempSync, readdirSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import type { ModelConnectInput } from "@rakazo/contracts";
+import type { ModelConnectInput } from "@nurlai/contracts";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { EvalCase, Evidence } from "./cases.js";
 import {

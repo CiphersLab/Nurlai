@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import { fontWeight, typeScale } from "@rakazo/ui-tokens";
+import { fontWeight, typeScale } from "@nurlai/ui-tokens";
 import { StyleSheet, Text, View } from "react-native";
 import { useMobileTokens } from "../../lib/native/native";
 

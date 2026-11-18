@@ -1,4 +1,4 @@
-import type { ObjectStorage } from "@rakazo/adapter-kit";
+import type { ObjectStorage } from "@nurlai/adapter-kit";
 import {
   AzureBlobObjectStorage,
   azureBlobConfigFromEnv,

@@ -1,5 +1,5 @@
-import type { ConnectorTool } from "@rakazo/adapter-kit";
-import { HISTORY_QUERIES_MAX_BYTES, HISTORY_SEARCH_KINDS } from "@rakazo/contracts";
+import type { ConnectorTool } from "@nurlai/adapter-kit";
+import { HISTORY_QUERIES_MAX_BYTES, HISTORY_SEARCH_KINDS } from "@nurlai/contracts";
 
 /** History, email and memory tools. */
 export const memoryTools: ConnectorTool[] = [

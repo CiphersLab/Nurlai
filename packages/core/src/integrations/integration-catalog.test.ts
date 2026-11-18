@@ -1,4 +1,4 @@
-import type { IntegrationCatalogResult, IntegrationCatalogSurface } from "@rakazo/contracts";
+import type { IntegrationCatalogResult, IntegrationCatalogSurface } from "@nurlai/contracts";
 import { describe, expect, it } from "vitest";
 import { signInMcpServers } from "./integration-catalog.js";
 

@@ -1,7 +1,7 @@
 import { useLingui } from "@lingui/react/macro";
-import { useTimeout } from "@rakazo/chat-ui/hooks";
-import type { ComputerStatus } from "@rakazo/contracts";
-import { createScreenReconnects, screenProbeUrl, waitForScreenPage } from "@rakazo/core";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
+import type { ComputerStatus } from "@nurlai/contracts";
+import { createScreenReconnects, screenProbeUrl, waitForScreenPage } from "@nurlai/core";
 import type { RefObject } from "react";
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import type { ComputerScreenResult } from "../../../lib/computers/computer-screen";
@@ -217,15 +217,15 @@ export function useComputerState({
       if (event.source !== screenFrame.contentWindow) return;
       const message = screenFrameMessage(event.data);
       if (!message) return;
-      if (message.rakazoScreen !== "loading" && message.rakazoScreen !== "connecting") {
+      if (message.nurlaiScreen !== "loading" && message.nurlaiScreen !== "connecting") {
         setHeldScreen(null);
       }
       if (screenFrameStarted(message)) screenFrameReported.current = true;
-      if (message.rakazoScreen === "connected") screenConnected = true;
-      else if (message.rakazoScreen === "failed" || message.rakazoScreen === "disconnected")
+      if (message.nurlaiScreen === "connected") screenConnected = true;
+      else if (message.nurlaiScreen === "failed" || message.nurlaiScreen === "disconnected")
         screenConnected = false;
       const singleUse = Boolean(screen.singleUseSignIn);
-      if (singleUse && message.rakazoScreen === "connected") {
+      if (singleUse && message.nurlaiScreen === "connected") {
         // The screen page can rejoin by itself, and a fresh read would end that session again.
         clearTimeout(reconnect);
         // A reconnected screen releases a retry it kept queued; a read already out holds
@@ -234,13 +234,13 @@ export function useComputerState({
         liveSingleUseUrl.current = screenUrl;
       }
       if (
-        message.rakazoScreen === "connected" &&
+        message.nurlaiScreen === "connected" &&
         screenRefocus.current.connected(document.activeElement, screenFrame, document.body)
       ) {
         screenFrame.focus();
-        screenFrame.contentWindow?.postMessage({ rakazoScreenFocus: true }, "*");
+        screenFrame.contentWindow?.postMessage({ nurlaiScreenFocus: true }, "*");
       }
-      const ended = message.rakazoScreen === "failed" || message.rakazoScreen === "disconnected";
+      const ended = message.nurlaiScreen === "failed" || message.nurlaiScreen === "disconnected";
       if (singleUse && ended) {
         // The sign-in works once, so a dropped session, such as one another viewer took over,
         // comes back only through a fresh read; remounting would replay the spent sign-in.
@@ -248,7 +248,7 @@ export function useComputerState({
         liveSingleUseUrl.current = null;
         if (
           document.visibilityState === "visible" &&
-          screenReconnect().report(message.rakazoScreen) === "reconnect"
+          screenReconnect().report(message.nurlaiScreen) === "reconnect"
         ) {
           if (reconnectPending) return;
           reconnectPending = true;
@@ -297,7 +297,7 @@ export function useComputerState({
         setScreenLoadError(screenFrameError(message, fallback));
         return;
       }
-      if (screenReconnect().report(message.rakazoScreen) === "reconnect") {
+      if (screenReconnect().report(message.nurlaiScreen) === "reconnect") {
         if (reconnectPending) return;
         reconnectPending = true;
         screenRefocus.current.dropped(document.activeElement === screenFrame);

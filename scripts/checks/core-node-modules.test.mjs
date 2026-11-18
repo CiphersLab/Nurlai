@@ -1,5 +1,5 @@
 // Core is imported by the web app, the mobile app and the desktop renderer. Its Node-only modules
-// live in packages/core/src/node and are exported only under @rakazo/core/node/*, so the main
+// live in packages/core/src/node and are exported only under @nurlai/core/node/*, so the main
 // barrel and every other subpath stay safe to bundle for a browser.
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
@@ -45,11 +45,11 @@ test("core outside src/node imports no Node builtin or Node-only module", () => 
   assert.deepEqual(
     offenders,
     [],
-    "Move Node-only code into packages/core/src/node and export it under @rakazo/core/node/*.",
+    "Move Node-only code into packages/core/src/node and export it under @nurlai/core/node/*.",
   );
 });
 
-test("only @rakazo/core/node/* exports reach src/node, and they reach nothing else", () => {
+test("only @nurlai/core/node/* exports reach src/node, and they reach nothing else", () => {
   const manifest = JSON.parse(readFileSync(path.join(root, "packages/core/package.json"), "utf8"));
   const misplaced = Object.entries(manifest.exports).filter(([key, target]) => {
     const file = typeof target === "string" ? target : target.default;

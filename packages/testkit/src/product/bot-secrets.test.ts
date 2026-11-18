@@ -1,7 +1,7 @@
 import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import type { AgentRuntimeEvent } from "@rakazo/adapter-kit";
+import type { AgentRuntimeEvent } from "@nurlai/adapter-kit";
 import {
   EncryptedSecretStore,
   forgetBotSecret,
@@ -14,11 +14,11 @@ import {
   revealBotSecret,
   ScriptedAgentRuntime,
   storeBotSecret,
-} from "@rakazo/adapters";
-import type { createApp } from "@rakazo/api/app";
-import { resolveEncryptionKey } from "@rakazo/core/node/secrets-guard";
-import { deferred } from "@rakazo/core/test-async";
-import { answerRunInput, runAsSystem, runAsTenant } from "@rakazo/db";
+} from "@nurlai/adapters";
+import type { createApp } from "@nurlai/api/app";
+import { resolveEncryptionKey } from "@nurlai/core/node/secrets-guard";
+import { deferred } from "@nurlai/core/test-async";
+import { answerRunInput, runAsSystem, runAsTenant } from "@nurlai/db";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { discardBotIntroFromCreate } from "../discard-bot-intro.js";
 import { asSystem } from "../system-db.js";
@@ -50,7 +50,7 @@ describeIntegration("reusable credential lifecycle", () => {
   });
 
   beforeAll(async () => {
-    const { createApp } = await import("@rakazo/api/app");
+    const { createApp } = await import("@nurlai/api/app");
     handles = await createApp({
       databaseUrl: process.env.DATABASE_URL!,
       dataDir,
@@ -1393,7 +1393,7 @@ describeIntegration("reusable credential lifecycle", () => {
         "content-type": "application/json",
         origin: "http://127.0.0.1:5173",
         cookie,
-        ...(space ? { "x-rakazo-space-id": space } : {}),
+        ...(space ? { "x-nurlai-space-id": space } : {}),
       },
       body: JSON.stringify({ json: body }),
     });

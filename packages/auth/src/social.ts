@@ -1,4 +1,4 @@
-import type { SignInProvider } from "@rakazo/contracts";
+import type { SignInProvider } from "@nurlai/contracts";
 import type { AppleProfile } from "better-auth/social-providers";
 import { appleSigningKey } from "./apple-client-secret.js";
 import { socialPresentation } from "./social-presentation.js";

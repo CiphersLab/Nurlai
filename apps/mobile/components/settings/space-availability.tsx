@@ -1,6 +1,6 @@
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import type { AvailabilityKind, SpaceAvailability } from "@rakazo/contracts";
+import type { AvailabilityKind, SpaceAvailability } from "@nurlai/contracts";
 import type { QueryKey } from "@tanstack/react-query";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";

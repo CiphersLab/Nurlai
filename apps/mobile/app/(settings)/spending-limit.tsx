@@ -1,8 +1,8 @@
 import { useLingui } from "@lingui/react/macro";
-import type { SpendingCurrency, SpendingLimit, SpendingPeriod } from "@rakazo/contracts";
-import { SPENDING_CURRENCIES } from "@rakazo/contracts";
-import { formatMinorAmount, parseLimitInput } from "@rakazo/core";
-import { writeSaved } from "@rakazo/core/query";
+import type { SpendingCurrency, SpendingLimit, SpendingPeriod } from "@nurlai/contracts";
+import { SPENDING_CURRENCIES } from "@nurlai/contracts";
+import { formatMinorAmount, parseLimitInput } from "@nurlai/core";
+import { writeSaved } from "@nurlai/core/query";
 import { useFocusEffect } from "expo-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Alert, Platform, ScrollView, StyleSheet, View } from "react-native";

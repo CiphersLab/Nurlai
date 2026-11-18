@@ -9,25 +9,25 @@ import type {
   PaymentWalletProvider,
   SandboxProvider,
   SecretStore,
-} from "@rakazo/adapter-kit";
-import { routineJobKey, routineWakeupJob } from "@rakazo/adapter-kit";
-import type { RoutineWatch, RoutineWatchState } from "@rakazo/contracts";
-import { RoutineWatchSchema, RoutineWatchStateSchema } from "@rakazo/contracts";
-import type { ActionApprovalRule } from "@rakazo/core";
+} from "@nurlai/adapter-kit";
+import { routineJobKey, routineWakeupJob } from "@nurlai/adapter-kit";
+import type { RoutineWatch, RoutineWatchState } from "@nurlai/contracts";
+import { RoutineWatchSchema, RoutineWatchStateSchema } from "@nurlai/contracts";
+import type { ActionApprovalRule } from "@nurlai/core";
 import {
   connectorKindFromToolName,
   isAbandonedRequest,
   redactSecrets,
   watchToolRefusal,
-} from "@rakazo/core";
-import type { ComputerMode, PrismaClient, ThreadEvents } from "@rakazo/db";
+} from "@nurlai/core";
+import type { ComputerMode, PrismaClient, ThreadEvents } from "@nurlai/db";
 import {
   appendEventInTransaction,
   createThreadMessageInTransaction,
   listApprovalRules,
   parseComputerMode,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { scheduleComputerSleep } from "../computers/computer-idle.js";
 import { ComputerBusyError, provisionComputer } from "../computers/computer-lifecycle.js";
 import { nativeShellCommandArgv } from "../computers/host/native-shell.js";

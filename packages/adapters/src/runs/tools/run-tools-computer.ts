@@ -1,12 +1,12 @@
 import { randomUUID } from "node:crypto";
 import { setTimeout as sleep } from "node:timers/promises";
-import type { BrowserProvider, SandboxProvider } from "@rakazo/adapter-kit";
-import type { ComputerCommand } from "@rakazo/contracts";
-import { COMPUTER_COMMAND_OUTPUT_MAX_CHARS } from "@rakazo/contracts";
-import { redactSecrets } from "@rakazo/core";
-import { sandboxCommandTimeoutMs } from "@rakazo/core/node/sandbox-command";
-import { RunHistoryWriteError, releasePayment } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+import type { BrowserProvider, SandboxProvider } from "@nurlai/adapter-kit";
+import type { ComputerCommand } from "@nurlai/contracts";
+import { COMPUTER_COMMAND_OUTPUT_MAX_CHARS } from "@nurlai/contracts";
+import { redactSecrets } from "@nurlai/core";
+import { sandboxCommandTimeoutMs } from "@nurlai/core/node/sandbox-command";
+import { RunHistoryWriteError, releasePayment } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { recordPagePayment } from "../../billing/spending-gate.js";
 import { getActiveTeachingSession } from "../../bots/teaching-session.js";
 import {

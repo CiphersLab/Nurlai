@@ -1,6 +1,6 @@
-import type { AgentImportFile } from "@rakazo/contracts";
-import { BOT_INSTRUCTIONS_MAX_LENGTH } from "@rakazo/contracts";
-import { expectLinearTime } from "@rakazo/contracts/test-timing";
+import type { AgentImportFile } from "@nurlai/contracts";
+import { BOT_INSTRUCTIONS_MAX_LENGTH } from "@nurlai/contracts";
+import { expectLinearTime } from "@nurlai/contracts/test-timing";
 import { describe, expect, it } from "vitest";
 import { parseSkillMd } from "../skills/agent-skill.js";
 import {

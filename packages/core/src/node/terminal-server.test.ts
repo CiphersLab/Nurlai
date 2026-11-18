@@ -13,7 +13,7 @@ import {
 import net from "node:net";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { encodeTerminalInput, encodeTerminalResize } from "@rakazo/contracts";
+import { encodeTerminalInput, encodeTerminalResize } from "@nurlai/contracts";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { interactiveScreenCommand, screenPorts, startTerminalCommand } from "./desktop-runtime.js";
 import { TERMINAL_SERVER_PROGRAM } from "./terminal-server.js";
@@ -199,7 +199,7 @@ describe.skipIf(!canRunScript)("terminal start script", () => {
     expect(release("lease-a").status).toBe(0);
     current.client.write(encodeTerminalInput("echo alive-$((40 + 5))\n"));
     await current.waitFor(/alive-45/);
-    expect(release("lease-b").stdout).toContain("RAKAZO_CONTROL_RELEASED");
+    expect(release("lease-b").stdout).toContain("NURLAI_CONTROL_RELEASED");
     await expect(current.closed).resolves.toBeDefined();
     expect(readFileSync(target, "utf8")).toBe("");
 

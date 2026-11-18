@@ -1,6 +1,6 @@
-import type { HistoryToolStep, RunTrigger } from "@rakazo/contracts";
-import { RUN_TRIGGERS } from "@rakazo/contracts";
-import { appendToolCallSegment } from "@rakazo/core";
+import type { HistoryToolStep, RunTrigger } from "@nurlai/contracts";
+import { RUN_TRIGGERS } from "@nurlai/contracts";
+import { appendToolCallSegment } from "@nurlai/core";
 import { describe, expect, it, vi } from "vitest";
 import type { ReplyState, RunContext } from "../assembly/run-context.js";
 import { redactBlocks } from "../assembly/run-messages.js";

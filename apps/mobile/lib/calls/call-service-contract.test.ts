@@ -16,7 +16,7 @@ describe("Android call foreground service", () => {
     const manifest = source("AndroidManifest.xml");
     expect(manifest).toContain("android.permission.FOREGROUND_SERVICE_MICROPHONE");
     expect(manifest).toContain("android.permission.WAKE_LOCK");
-    expect(manifest).toContain('android:name=".RakazoCallService"');
+    expect(manifest).toContain('android:name=".NurlaiCallService"');
     expect(manifest).toContain('android:foregroundServiceType="microphone"');
   });
 

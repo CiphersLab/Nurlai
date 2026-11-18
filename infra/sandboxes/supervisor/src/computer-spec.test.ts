@@ -17,7 +17,7 @@ import {
   DEFAULT_DESKTOP_ENV,
   ensureScreenCommand,
   TERMINAL_MENU_COMMAND,
-} from "@rakazo/core/node/desktop-runtime";
+} from "@nurlai/core/node/desktop-runtime";
 import type Docker from "dockerode";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import {
@@ -79,24 +79,24 @@ describe("graphical computer spec", () => {
   });
 
   it("resolves the computer image tag outside Compose", () => {
-    // Explicit "" stands for unset, so exported RAKAZO_COMPUTER_IMAGE* values cannot leak in.
-    expect(resolveComputerImage("", "")).toBe("rakazo/computer:local");
-    expect(resolveComputerImage("", "edge")).toBe("rakazo/computer:local");
-    expect(resolveComputerImage("ghcr.io/elie222/rakazo/computer", "edge")).toBe(
-      "ghcr.io/elie222/rakazo/computer:edge",
+    // Explicit "" stands for unset, so exported NURLAI_COMPUTER_IMAGE* values cannot leak in.
+    expect(resolveComputerImage("", "")).toBe("nurlai/computer:local");
+    expect(resolveComputerImage("", "edge")).toBe("nurlai/computer:local");
+    expect(resolveComputerImage("ghcr.io/elie222/nurlai/computer", "edge")).toBe(
+      "ghcr.io/elie222/nurlai/computer:edge",
     );
-    expect(resolveComputerImage("ghcr.io/elie222/rakazo/computer", "")).toBe(
-      "ghcr.io/elie222/rakazo/computer",
+    expect(resolveComputerImage("ghcr.io/elie222/nurlai/computer", "")).toBe(
+      "ghcr.io/elie222/nurlai/computer",
     );
     // Compose already appends the tag, so a tagged or pinned image is never tagged twice.
-    expect(resolveComputerImage("ghcr.io/elie222/rakazo/computer:edge", "edge")).toBe(
-      "ghcr.io/elie222/rakazo/computer:edge",
+    expect(resolveComputerImage("ghcr.io/elie222/nurlai/computer:edge", "edge")).toBe(
+      "ghcr.io/elie222/nurlai/computer:edge",
     );
-    expect(resolveComputerImage("registry.example.com:5000/rakazo/computer", "v1.2.3")).toBe(
-      "registry.example.com:5000/rakazo/computer:v1.2.3",
+    expect(resolveComputerImage("registry.example.com:5000/nurlai/computer", "v1.2.3")).toBe(
+      "registry.example.com:5000/nurlai/computer:v1.2.3",
     );
-    expect(resolveComputerImage("rakazo/computer@sha256:abc", "edge")).toBe(
-      "rakazo/computer@sha256:abc",
+    expect(resolveComputerImage("nurlai/computer@sha256:abc", "edge")).toBe(
+      "nurlai/computer@sha256:abc",
     );
   });
 
@@ -121,7 +121,7 @@ describe("graphical computer spec", () => {
       homePath: "/var/rakazo/homes/abc",
       networkMode: "rakazo_default",
     });
-    expect(options.Image).toBe("rakazo/computer:local");
+    expect(options.Image).toBe("nurlai/computer:local");
     expect(options.Image).not.toMatch(/alpine/);
     expect(options).not.toHaveProperty("Entrypoint");
     expect(JSON.stringify(options)).not.toMatch(/sleep/);
@@ -253,9 +253,9 @@ describe("graphical computer spec", () => {
     };
     const pac = "https://proxy.example.com/proxy.pac";
     const unset = containerCreateOptions(base).Env;
-    expect(unset.some((entry) => entry.startsWith("RAKAZO_BROWSER_PROXY_PAC_URL="))).toBe(false);
+    expect(unset.some((entry) => entry.startsWith("NURLAI_BROWSER_PROXY_PAC_URL="))).toBe(false);
     const env = containerCreateOptions({ ...base, browserProxyPacUrl: pac }).Env;
-    expect(env).toContain(`RAKAZO_BROWSER_PROXY_PAC_URL=${pac}`);
+    expect(env).toContain(`NURLAI_BROWSER_PROXY_PAC_URL=${pac}`);
 
     // The environment is fixed at creation, so adding, changing or removing it replaces a computer.
     expect(computerBrowserProxyPacMatches(unset, undefined)).toBe(true);
@@ -501,7 +501,7 @@ describe("graphical computer spec", () => {
       Driver: "bridge",
       CheckDuplicate: true,
       EnableIPv6: true,
-      Labels: { "rakazo.computerOwner": "owner", "rakazo.botId": "bot_1" },
+      Labels: { "nurlai.cipherslab.computerOwner": "owner", "rakazo.botId": "bot_1" },
     });
     expect(open).not.toHaveProperty("Options");
 
@@ -617,15 +617,15 @@ describe("graphical computer spec", () => {
   });
 
   it("pulls a missing computer image only from a registry the name spells out", () => {
-    expect(isRegistryQualifiedImage("ghcr.io/elie222/rakazo/computer:edge")).toBe(true);
-    expect(isRegistryQualifiedImage("registry.test/rakazo/computer@sha256:0123")).toBe(true);
-    expect(isRegistryQualifiedImage("localhost:5000/rakazo/computer")).toBe(true);
-    expect(isRegistryQualifiedImage("localhost/rakazo/computer:local")).toBe(true);
-    expect(isRegistryQualifiedImage("docker.io/rakazo/computer:edge")).toBe(true);
-    expect(isRegistryQualifiedImage("Registry/rakazo/computer:edge")).toBe(true);
+    expect(isRegistryQualifiedImage("ghcr.io/elie222/nurlai/computer:edge")).toBe(true);
+    expect(isRegistryQualifiedImage("registry.test/nurlai/computer@sha256:0123")).toBe(true);
+    expect(isRegistryQualifiedImage("localhost:5000/nurlai/computer")).toBe(true);
+    expect(isRegistryQualifiedImage("localhost/nurlai/computer:local")).toBe(true);
+    expect(isRegistryQualifiedImage("docker.io/nurlai/computer:edge")).toBe(true);
+    expect(isRegistryQualifiedImage("Registry/nurlai/computer:edge")).toBe(true);
     expect(isRegistryQualifiedImage("rakazO/computer:edge")).toBe(true);
-    expect(isRegistryQualifiedImage("rakazo/computer:local")).toBe(false);
-    expect(isRegistryQualifiedImage("rakazo/computer@sha256:0123")).toBe(false);
+    expect(isRegistryQualifiedImage("nurlai/computer:local")).toBe(false);
+    expect(isRegistryQualifiedImage("nurlai/computer@sha256:0123")).toBe(false);
     expect(isRegistryQualifiedImage("computer:local")).toBe(false);
   });
 
@@ -655,7 +655,7 @@ describe("graphical computer spec", () => {
     expect(browser).toMatch(/\.browser-profiles\/chromium/);
     expect(browser).toMatch(/chromium-screen-\$DISPLAY_NUM/);
     expect(browser).toMatch(/USER_DATA_DIR_SET/);
-    expect(browser).toMatch(/RAKAZO_BROWSER_PROFILE/);
+    expect(browser).toMatch(/NURLAI_BROWSER_PROFILE/);
     expect(desktop).toMatch(/Exec=\/usr\/local\/bin\/rakazo-browser %U/);
     expect(dockerfile).toMatch(/rakazo-page-browser/);
     expect(browser).toMatch(/remote-debugging-port/);
@@ -703,11 +703,11 @@ describe("graphical computer spec", () => {
       mkdirSync(bin);
       // Every network step records itself; the download fails as if Google were unreachable.
       for (const [name, body] of [
-        ["dpkg", 'printf "%s\\n" "$RAKAZO_TEST_ARCH"'],
-        ["apt-security.sh", 'printf "apt-security\\n" >> "$RAKAZO_TEST_CALLS"'],
-        ["apt-get", 'printf "apt-get %s\\n" "$*" >> "$RAKAZO_TEST_CALLS"'],
-        ["curl", 'printf "curl\\n" >> "$RAKAZO_TEST_CALLS"; exit 7'],
-        ["gpg", 'printf "gpg\\n" >> "$RAKAZO_TEST_CALLS"'],
+        ["dpkg", 'printf "%s\\n" "$NURLAI_TEST_ARCH"'],
+        ["apt-security.sh", 'printf "apt-security\\n" >> "$NURLAI_TEST_CALLS"'],
+        ["apt-get", 'printf "apt-get %s\\n" "$*" >> "$NURLAI_TEST_CALLS"'],
+        ["curl", 'printf "curl\\n" >> "$NURLAI_TEST_CALLS"; exit 7'],
+        ["gpg", 'printf "gpg\\n" >> "$NURLAI_TEST_CALLS"'],
       ] as const) {
         writeFileSync(path.join(bin, name), `#!/bin/sh\n${body}\n`);
         chmodSync(path.join(bin, name), 0o755);
@@ -729,8 +729,8 @@ describe("graphical computer spec", () => {
               ...process.env,
               BROWSER: browser,
               PATH: `${bin}${path.delimiter}${process.env.PATH ?? ""}`,
-              RAKAZO_TEST_ARCH: arch,
-              RAKAZO_TEST_CALLS: calls,
+              NURLAI_TEST_ARCH: arch,
+              NURLAI_TEST_CALLS: calls,
             },
             encoding: "utf8",
           },
@@ -779,7 +779,7 @@ describe("graphical computer spec", () => {
       const chrome = path.join(bin, "google-chrome");
       mkdirSync(bin);
       writeFileSync(snapChromium, '#!/bin/sh\nexec /snap/bin/chromium "$@"\n');
-      writeFileSync(chrome, '#!/bin/sh\nprintf "%s" "$0" > "$RAKAZO_TEST_LAUNCHED"\n');
+      writeFileSync(chrome, '#!/bin/sh\nprintf "%s" "$0" > "$NURLAI_TEST_LAUNCHED"\n');
       chmodSync(snapChromium, 0o755);
       chmodSync(chrome, 0o755);
 
@@ -812,7 +812,7 @@ describe("graphical computer spec", () => {
             DISPLAY: ":1",
             HOME: path.join(temp, "home"),
             PATH: `${bin}${path.delimiter}${tools}`,
-            RAKAZO_TEST_LAUNCHED: capture,
+            NURLAI_TEST_LAUNCHED: capture,
           },
           encoding: "utf8",
         });
@@ -910,7 +910,7 @@ describe("graphical computer spec", () => {
       try {
         for (const name of ["xterm", "rakazo-browser"]) {
           const stub = path.join(bin, name);
-          writeFileSync(stub, '#!/bin/sh\nprintf "%s\\n" "$@" > "$RAKAZO_TEST_ARGS"\n');
+          writeFileSync(stub, '#!/bin/sh\nprintf "%s\\n" "$@" > "$NURLAI_TEST_ARGS"\n');
           chmodSync(stub, 0o755);
         }
         const argvFor = (label: string) => {
@@ -924,7 +924,7 @@ describe("graphical computer spec", () => {
             env: {
               ...process.env,
               PATH: `${bin}${path.delimiter}${process.env.PATH ?? ""}`,
-              RAKAZO_TEST_ARGS: capture,
+              NURLAI_TEST_ARGS: capture,
             },
             encoding: "utf8",
           });
@@ -1041,7 +1041,7 @@ describe("graphical computer spec", () => {
               env: {
                 ...process.env,
                 HOME: temp,
-                RAKAZO_BROWSER_PROFILE: path.join(temp, "profile"),
+                NURLAI_BROWSER_PROFILE: path.join(temp, "profile"),
                 PATH: `${temp}${path.delimiter}${process.env.PATH ?? ""}`,
                 LD_PRELOAD: preload,
               },
@@ -1068,7 +1068,7 @@ describe("graphical computer spec", () => {
       const home = path.join(temp, "home");
       const chromium = path.join(bin, "chromium");
       mkdirSync(bin);
-      writeFileSync(chromium, '#!/bin/sh\nprintf "%s\\n" "$@" > "$RAKAZO_TEST_ARGS"\n');
+      writeFileSync(chromium, '#!/bin/sh\nprintf "%s\\n" "$@" > "$NURLAI_TEST_ARGS"\n');
       chmodSync(chromium, 0o755);
 
       const run = (display: string, args: string[] = []) => {
@@ -1078,7 +1078,7 @@ describe("graphical computer spec", () => {
             DISPLAY: display,
             HOME: home,
             PATH: `${bin}${path.delimiter}${process.env.PATH ?? ""}`,
-            RAKAZO_TEST_ARGS: capture,
+            NURLAI_TEST_ARGS: capture,
           },
           encoding: "utf8",
         });
@@ -1126,7 +1126,7 @@ describe("graphical computer spec", () => {
       writeFileSync(
         chromium,
         // biome-ignore lint/suspicious/noTemplateCurlyInString: shell parameter expansion
-        '#!/bin/sh\nprintf "LANGUAGE=%s\\n" "${LANGUAGE-unset}" > "$RAKAZO_TEST_ARGS"\nprintf "%s\\n" "$@" >> "$RAKAZO_TEST_ARGS"\n',
+        '#!/bin/sh\nprintf "LANGUAGE=%s\\n" "${LANGUAGE-unset}" > "$NURLAI_TEST_ARGS"\nprintf "%s\\n" "$@" >> "$NURLAI_TEST_ARGS"\n',
       );
       chmodSync(chromium, 0o755);
       const run = (language: string | undefined) => {
@@ -1138,7 +1138,7 @@ describe("graphical computer spec", () => {
             DISPLAY: ":1",
             HOME: path.join(temp, "home"),
             PATH: `${bin}${path.delimiter}${process.env.PATH ?? ""}`,
-            RAKAZO_TEST_ARGS: capture,
+            NURLAI_TEST_ARGS: capture,
           },
           encoding: "utf8",
         });
@@ -1175,19 +1175,19 @@ describe("graphical computer spec", () => {
       mkdirSync(path.join(temp, "data:text"));
       writeFileSync(path.join(temp, "data:text", "plain"), "");
       const chromium = path.join(bin, "chromium");
-      writeFileSync(chromium, '#!/bin/sh\nprintf "%s\\n" "$@" > "$RAKAZO_TEST_ARGS"\n');
+      writeFileSync(chromium, '#!/bin/sh\nprintf "%s\\n" "$@" > "$NURLAI_TEST_ARGS"\n');
       chmodSync(chromium, 0o755);
       const run = (pac: string | undefined, args: string[] = []) => {
-        const { RAKAZO_BROWSER_PROXY_PAC_URL: _host, ...env } = process.env;
+        const { NURLAI_BROWSER_PROXY_PAC_URL: _host, ...env } = process.env;
         const result = spawnSync("sh", [path.join(root, "rakazo-browser"), ...args], {
           cwd: temp,
           env: {
             ...env,
-            ...(pac === undefined ? {} : { RAKAZO_BROWSER_PROXY_PAC_URL: pac }),
+            ...(pac === undefined ? {} : { NURLAI_BROWSER_PROXY_PAC_URL: pac }),
             DISPLAY: ":1",
             HOME: path.join(temp, "home"),
             PATH: `${bin}${path.delimiter}${process.env.PATH ?? ""}`,
-            RAKAZO_TEST_ARGS: capture,
+            NURLAI_TEST_ARGS: capture,
           },
           encoding: "utf8",
         });
@@ -1224,7 +1224,7 @@ describe("graphical computer spec", () => {
       const home = path.join(temp, "home");
       const chromium = path.join(bin, "chromium");
       mkdirSync(bin);
-      writeFileSync(chromium, '#!/bin/sh\nprintf "%s\\n" "$@" > "$RAKAZO_TEST_ARGS"\n');
+      writeFileSync(chromium, '#!/bin/sh\nprintf "%s\\n" "$@" > "$NURLAI_TEST_ARGS"\n');
       chmodSync(chromium, 0o755);
 
       // browser-launch-N execs this wrapper with --user-data-dir and
@@ -1248,7 +1248,7 @@ describe("graphical computer spec", () => {
               DISPLAY: ":1",
               HOME: home,
               PATH: `${bin}${path.delimiter}${process.env.PATH ?? ""}`,
-              RAKAZO_TEST_ARGS: capture,
+              NURLAI_TEST_ARGS: capture,
             },
             encoding: "utf8",
           },
@@ -1273,7 +1273,7 @@ describe("graphical computer spec", () => {
       const home = path.join(temp, "home");
       const chromium = path.join(bin, "chromium");
       mkdirSync(bin);
-      writeFileSync(chromium, '#!/bin/sh\nprintf "%s\\n" "$@" > "$RAKAZO_TEST_ARGS"\n');
+      writeFileSync(chromium, '#!/bin/sh\nprintf "%s\\n" "$@" > "$NURLAI_TEST_ARGS"\n');
       chmodSync(chromium, 0o755);
       const profile = path.join(home, ".browser-profiles", "chromium-bot-screen");
       mkdirSync(profile, { recursive: true });
@@ -1292,7 +1292,7 @@ describe("graphical computer spec", () => {
               DISPLAY: ":1",
               HOME: home,
               PATH: `${bin}${path.delimiter}${process.env.PATH ?? ""}`,
-              RAKAZO_TEST_ARGS: capture,
+              NURLAI_TEST_ARGS: capture,
             },
             encoding: "utf8",
           },
@@ -1323,7 +1323,7 @@ describe("graphical computer spec", () => {
       mkdirSync(path.dirname(prefsPath), { recursive: true });
       writeFileSync(
         path.join(bin, "chromium"),
-        '#!/bin/sh\nprintf "%s\\n" "$@" > "$RAKAZO_TEST_ARGS"\n',
+        '#!/bin/sh\nprintf "%s\\n" "$@" > "$NURLAI_TEST_ARGS"\n',
       );
       chmodSync(path.join(bin, "chromium"), 0o755);
       // /proc/pid/exe is this binary, so the basename is chromium without compiling.
@@ -1359,7 +1359,7 @@ describe("graphical computer spec", () => {
               DISPLAY: ":1",
               HOME: home,
               PATH: `${bin}${path.delimiter}${process.env.PATH ?? ""}`,
-              RAKAZO_TEST_ARGS: capture,
+              NURLAI_TEST_ARGS: capture,
             },
             encoding: "utf8",
           },
@@ -1395,7 +1395,7 @@ describe("graphical computer spec", () => {
       mkdirSync(path.dirname(prefsPath), { recursive: true });
       writeFileSync(
         path.join(bin, "chromium"),
-        '#!/bin/sh\nprintf "%s\\n" "$@" > "$RAKAZO_TEST_ARGS"\n',
+        '#!/bin/sh\nprintf "%s\\n" "$@" > "$NURLAI_TEST_ARGS"\n',
       );
       chmodSync(path.join(bin, "chromium"), 0o755);
       const sleeper = path.join(bin, "sleeper");
@@ -1422,7 +1422,7 @@ describe("graphical computer spec", () => {
               DISPLAY: ":1",
               HOME: home,
               PATH: `${bin}${path.delimiter}${process.env.PATH ?? ""}`,
-              RAKAZO_TEST_ARGS: capture,
+              NURLAI_TEST_ARGS: capture,
             },
             encoding: "utf8",
           },
@@ -1453,7 +1453,7 @@ describe("graphical computer spec", () => {
       const chromium = path.join(bin, "chromium");
       const capture = path.join(temp, "args");
       mkdirSync(bin);
-      writeFileSync(chromium, '#!/bin/sh\nprintf "%s\\n" "$@" > "$RAKAZO_TEST_ARGS"\n');
+      writeFileSync(chromium, '#!/bin/sh\nprintf "%s\\n" "$@" > "$NURLAI_TEST_ARGS"\n');
       chmodSync(chromium, 0o755);
 
       const profile = path.join(home, ".browser-profiles/chromium");
@@ -1474,7 +1474,7 @@ describe("graphical computer spec", () => {
             DISPLAY: ":1",
             HOME: home,
             PATH: `${bin}${path.delimiter}${process.env.PATH ?? ""}`,
-            RAKAZO_TEST_ARGS: capture,
+            NURLAI_TEST_ARGS: capture,
           },
           encoding: "utf8",
         });
@@ -1510,7 +1510,7 @@ describe("graphical computer spec", () => {
               DISPLAY: ":1",
               HOME: home,
               PATH: `${bin}${path.delimiter}${process.env.PATH ?? ""}`,
-              RAKAZO_TEST_ARGS: capture,
+              NURLAI_TEST_ARGS: capture,
             },
             encoding: "utf8",
           });
@@ -1604,7 +1604,7 @@ describe("graphical computer spec", () => {
                     DISPLAY: ":1",
                     HOME: spacedHome,
                     PATH: `${bin}${path.delimiter}${process.env.PATH ?? ""}`,
-                    RAKAZO_TEST_ARGS: capture,
+                    NURLAI_TEST_ARGS: capture,
                   },
                   encoding: "utf8",
                 });
@@ -1669,7 +1669,7 @@ describe("graphical computer spec", () => {
       mkdirSync(bin);
       writeFileSync(
         path.join(bin, "chromium"),
-        '#!/bin/sh\nprintf "%s\\n" "$@" > "$RAKAZO_TEST_ARGS"\n',
+        '#!/bin/sh\nprintf "%s\\n" "$@" > "$NURLAI_TEST_ARGS"\n',
       );
       chmodSync(path.join(bin, "chromium"), 0o755);
       symlinkSync(path.join(root, "rakazo-browser"), path.join(bin, "rakazo-browser"));
@@ -1686,7 +1686,7 @@ describe("graphical computer spec", () => {
           "state = {'consumed': False, 'listed': False, 'mode': ''}",
           "def mode():",
           "    try:",
-          "        with open(os.environ['RAKAZO_TEST_DROP'], encoding='utf-8') as handle:",
+          "        with open(os.environ['NURLAI_TEST_DROP'], encoding='utf-8') as handle:",
           "            current = handle.read().strip()",
           "    except OSError:",
           "        current = ''",
@@ -1724,7 +1724,7 @@ describe("graphical computer spec", () => {
           "            return",
           "        query = self.path.split('?', 1)[1] if '?' in self.path else ''",
           "        opened = urllib.parse.unquote(query)",
-          "        with open(os.environ['RAKAZO_TEST_URLS'], 'a', encoding='utf-8') as handle:",
+          "        with open(os.environ['NURLAI_TEST_URLS'], 'a', encoding='utf-8') as handle:",
           "            handle.write(self.path + '\\n')",
           "        current = mode()",
           "        if current == 'before' and not state['listed']:",
@@ -1745,7 +1745,7 @@ describe("graphical computer spec", () => {
           "    def log_message(self, fmt, *args):",
           "        return",
           "server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)",
-          "with open(os.environ['RAKAZO_TEST_PORT'], 'w', encoding='utf-8') as handle:",
+          "with open(os.environ['NURLAI_TEST_PORT'], 'w', encoding='utf-8') as handle:",
           "    handle.write(str(server.server_address[1]))",
           "server.serve_forever()",
           "",
@@ -1761,11 +1761,11 @@ describe("graphical computer spec", () => {
           "sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)",
           "sock.bind(('127.0.0.1', 0))",
           "sock.listen(8)",
-          "with open(os.environ['RAKAZO_TEST_PORT'], 'w', encoding='utf-8') as handle:",
+          "with open(os.environ['NURLAI_TEST_PORT'], 'w', encoding='utf-8') as handle:",
           "    handle.write(str(sock.getsockname()[1]))",
           "while True:",
           "    connection, _addr = sock.accept()",
-          "    with open(os.environ['RAKAZO_TEST_ACCEPTED'], 'a', encoding='utf-8') as handle:",
+          "    with open(os.environ['NURLAI_TEST_ACCEPTED'], 'a', encoding='utf-8') as handle:",
           "        handle.write('accepted\\n')",
           "    time.sleep(30)",
           "    connection.close()",
@@ -1787,17 +1787,17 @@ describe("graphical computer spec", () => {
         DISPLAY: ":1",
         HOME: home,
         PATH: `${bin}${path.delimiter}${process.env.PATH ?? ""}`,
-        RAKAZO_BROWSER_PROFILE: profile,
-        RAKAZO_TEST_ARGS: capture,
+        NURLAI_BROWSER_PROFILE: profile,
+        NURLAI_TEST_ARGS: capture,
       };
       const endpointProcess = spawn("python3", [endpoint], {
         stdio: "ignore",
         detached: true,
         env: {
           ...process.env,
-          RAKAZO_TEST_PORT: portFile,
-          RAKAZO_TEST_URLS: urlsFile,
-          RAKAZO_TEST_DROP: dropFile,
+          NURLAI_TEST_PORT: portFile,
+          NURLAI_TEST_URLS: urlsFile,
+          NURLAI_TEST_DROP: dropFile,
         },
       });
       const children = [endpointProcess];
@@ -1948,8 +1948,8 @@ describe("graphical computer spec", () => {
           detached: true,
           env: {
             ...process.env,
-            RAKAZO_TEST_PORT: hungPortFile,
-            RAKAZO_TEST_ACCEPTED: acceptedFile,
+            NURLAI_TEST_PORT: hungPortFile,
+            NURLAI_TEST_ACCEPTED: acceptedFile,
           },
         });
         children.push(hung);
@@ -2340,9 +2340,9 @@ describe("graphical computer spec", () => {
 
 describe("computer resource limits", () => {
   const KEYS = [
-    "RAKAZO_COMPUTER_MEMORY",
-    "RAKAZO_COMPUTER_CPUS",
-    "RAKAZO_COMPUTER_PIDS_LIMIT",
+    "NURLAI_COMPUTER_MEMORY",
+    "NURLAI_COMPUTER_CPUS",
+    "NURLAI_COMPUTER_PIDS_LIMIT",
   ] as const;
   const saved = new Map<string, string | undefined>();
 
@@ -2362,7 +2362,7 @@ describe("computer resource limits", () => {
 
   const createInput = {
     name: "rakazo-bot-x",
-    image: "rakazo/computer:local",
+    image: "nurlai/computer:local",
     botId: "bot-x",
     spaceId: "ws",
     homePath: "/var/rakazo/homes/bot-x",
@@ -2378,9 +2378,9 @@ describe("computer resource limits", () => {
 
   it("falls back to the defaults when a variable is blank", () => {
     // .env.example ships these keys blank; a blank value must read as "unset".
-    process.env.RAKAZO_COMPUTER_MEMORY = "";
-    process.env.RAKAZO_COMPUTER_CPUS = "  ";
-    process.env.RAKAZO_COMPUTER_PIDS_LIMIT = "";
+    process.env.NURLAI_COMPUTER_MEMORY = "";
+    process.env.NURLAI_COMPUTER_CPUS = "  ";
+    process.env.NURLAI_COMPUTER_PIDS_LIMIT = "";
     const { HostConfig } = containerCreateOptions(createInput);
     expect(HostConfig.Memory).toBe(2 * 1024 ** 3);
     expect(HostConfig.NanoCpus).toBe(2e9);
@@ -2388,21 +2388,21 @@ describe("computer resource limits", () => {
   });
 
   it("pins MemorySwap to Memory so the ceiling cannot be swapped past", () => {
-    process.env.RAKAZO_COMPUTER_MEMORY = "1536m";
+    process.env.NURLAI_COMPUTER_MEMORY = "1536m";
     const { HostConfig } = containerCreateOptions(createInput);
     expect(HostConfig.Memory).toBe(1536 * 1024 ** 2);
     expect(HostConfig.MemorySwap).toBe(1536 * 1024 ** 2);
   });
 
   it("accepts fractional CPUs", () => {
-    process.env.RAKAZO_COMPUTER_CPUS = "1.5";
+    process.env.NURLAI_COMPUTER_CPUS = "1.5";
     expect(containerCreateOptions(createInput).HostConfig.NanoCpus).toBe(1_500_000_000);
   });
 
   it("lets an operator opt out explicitly", () => {
-    process.env.RAKAZO_COMPUTER_MEMORY = "unlimited";
-    process.env.RAKAZO_COMPUTER_CPUS = "0";
-    process.env.RAKAZO_COMPUTER_PIDS_LIMIT = "none";
+    process.env.NURLAI_COMPUTER_MEMORY = "unlimited";
+    process.env.NURLAI_COMPUTER_CPUS = "0";
+    process.env.NURLAI_COMPUTER_PIDS_LIMIT = "none";
     const { HostConfig } = containerCreateOptions(createInput);
     expect(HostConfig.Memory).toBe(0);
     expect(HostConfig.NanoCpus).toBe(0);
@@ -2410,44 +2410,44 @@ describe("computer resource limits", () => {
   });
 
   it("rejects a malformed size instead of silently falling back", () => {
-    process.env.RAKAZO_COMPUTER_MEMORY = "2 gigs";
-    expect(() => containerCreateOptions(createInput)).toThrow(/RAKAZO_COMPUTER_MEMORY/);
+    process.env.NURLAI_COMPUTER_MEMORY = "2 gigs";
+    expect(() => containerCreateOptions(createInput)).toThrow(/NURLAI_COMPUTER_MEMORY/);
   });
 
   it("rejects a negative cpu count", () => {
-    process.env.RAKAZO_COMPUTER_CPUS = "-1";
-    expect(() => containerCreateOptions(createInput)).toThrow(/RAKAZO_COMPUTER_CPUS/);
+    process.env.NURLAI_COMPUTER_CPUS = "-1";
+    expect(() => containerCreateOptions(createInput)).toThrow(/NURLAI_COMPUTER_CPUS/);
   });
 
   it("rejects a pids limit that is not a positive integer", () => {
-    process.env.RAKAZO_COMPUTER_PIDS_LIMIT = "12.5";
-    expect(() => containerCreateOptions(createInput)).toThrow(/RAKAZO_COMPUTER_PIDS_LIMIT/);
+    process.env.NURLAI_COMPUTER_PIDS_LIMIT = "12.5";
+    expect(() => containerCreateOptions(createInput)).toThrow(/NURLAI_COMPUTER_PIDS_LIMIT/);
   });
 
   it("rejects a memory limit below Docker's 6 MiB minimum", () => {
     // The daemon refuses these at container creation, so accepting them here would turn a typo
     // into a 500 on the first bot rather than a startup failure naming the variable.
     for (const value of ["1", "1m", "5m", "5242880"]) {
-      process.env.RAKAZO_COMPUTER_MEMORY = value;
-      expect(() => containerCreateOptions(createInput)).toThrow(/RAKAZO_COMPUTER_MEMORY/);
+      process.env.NURLAI_COMPUTER_MEMORY = value;
+      expect(() => containerCreateOptions(createInput)).toThrow(/NURLAI_COMPUTER_MEMORY/);
     }
-    process.env.RAKAZO_COMPUTER_MEMORY = "6m";
+    process.env.NURLAI_COMPUTER_MEMORY = "6m";
     expect(containerCreateOptions(createInput).HostConfig.Memory).toBe(6 * 1024 ** 2);
   });
 
   it("rejects a CPU count that would floor to Docker's unlimited", () => {
     // Math.floor(1e-10 * 1e9) is 0, and 0 NanoCpus means uncapped. An accepted value must never
     // turn a ceiling into no ceiling.
-    process.env.RAKAZO_COMPUTER_CPUS = "0.0000000001";
-    expect(() => containerCreateOptions(createInput)).toThrow(/RAKAZO_COMPUTER_CPUS/);
+    process.env.NURLAI_COMPUTER_CPUS = "0.0000000001";
+    expect(() => containerCreateOptions(createInput)).toThrow(/NURLAI_COMPUTER_CPUS/);
   });
 
   it("rejects a CPU count that leaves the safe-integer NanoCpus range", () => {
     // 1e300 is finite, but Math.floor(1e300 * 1e9) is Infinity. 1e7 CPUs yields a non-safe
     // integer. Both must fail closed rather than reach HostConfig.NanoCpus.
     for (const value of ["1e300", "10000000"]) {
-      process.env.RAKAZO_COMPUTER_CPUS = value;
-      expect(() => containerCreateOptions(createInput)).toThrow(/RAKAZO_COMPUTER_CPUS/);
+      process.env.NURLAI_COMPUTER_CPUS = value;
+      expect(() => containerCreateOptions(createInput)).toThrow(/NURLAI_COMPUTER_CPUS/);
     }
   });
 

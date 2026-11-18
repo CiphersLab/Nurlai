@@ -1,4 +1,4 @@
-import type { DesktopSetup } from "@rakazo/contracts";
+import type { DesktopSetup } from "@nurlai/contracts";
 import type { BrowserWindow } from "electron";
 import type { UserDeviceAccess } from "./auth/user-device.js";
 import type { prepareHostComputer } from "./this-computer/host-computer.js";

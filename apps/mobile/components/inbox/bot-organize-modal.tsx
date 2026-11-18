@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import { SNOOZE_PRESETS, snoozePresetTime } from "@rakazo/core";
+import { SNOOZE_PRESETS, snoozePresetTime } from "@nurlai/core";
 import type { ComponentRef, ReactNode } from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { ViewStyle } from "react-native";

@@ -1,4 +1,4 @@
-import type { RakazoDesktopOAuthCallback } from "@rakazo/contracts";
+import type { NurlaiDesktopOAuthCallback } from "@nurlai/contracts";
 
 export type OAuthCallbackFromOptions = {
   /** SSO callbacks must reach the API, including a loopback API on a separate port. */
@@ -47,7 +47,7 @@ export function mcpOAuthCallbackFrom(
 export function oauthCallbackFrom(
   url: string,
   options: OAuthCallbackFromOptions = {},
-): RakazoDesktopOAuthCallback | undefined {
+): NurlaiDesktopOAuthCallback | undefined {
   if (options.frameName === "rakazo-sso-oauth") return undefined;
   let target: URL;
   try {

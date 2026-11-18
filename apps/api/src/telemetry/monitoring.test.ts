@@ -1,5 +1,5 @@
-import { createLogger, createTestSink, installLogger, monitoringUserId } from "@rakazo/logging";
-import { requestLogging } from "@rakazo/logging/hono";
+import { createLogger, createTestSink, installLogger, monitoringUserId } from "@nurlai/logging";
+import { requestLogging } from "@nurlai/logging/hono";
 import { Hono } from "hono";
 import { afterEach, describe, expect, it } from "vitest";
 import { loadEnv } from "../env.js";

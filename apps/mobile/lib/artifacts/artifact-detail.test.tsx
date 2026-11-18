@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { i18n } from "@lingui/core";
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import type { ReactNode } from "react";
 import { act, createElement, useEffect } from "react";
 import { createRoot } from "react-dom/client";
@@ -59,7 +59,7 @@ vi.mock("react-native", () => {
     Alert: { alert: state.alert },
   };
 });
-vi.mock("@rakazo/chat-ui/native", () => ({ ChatMarkdown: () => null }));
+vi.mock("@nurlai/chat-ui/native", () => ({ ChatMarkdown: () => null }));
 vi.mock("../../components/native/native-symbol", () => ({ NativeSymbol: () => null }));
 vi.mock("../../components/media/pdf-preview", () => ({ PdfPreview: () => null }));
 vi.mock("../../components/media/sandboxed-html-preview", () => ({ SandboxedHtmlPreview: () => null }));

@@ -2,8 +2,8 @@ import {
   connectedBackupOptions,
   MODEL_KEY_FORMAT_ERROR,
   ModelConnectInputSchema,
-} from "@rakazo/contracts";
-import { canUseCompatibleModelAsDefault } from "@rakazo/core";
+} from "@nurlai/contracts";
+import { canUseCompatibleModelAsDefault } from "@nurlai/core";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   CLOUDFLARE_AI_GATEWAY_CONFIG_MESSAGE,
@@ -884,7 +884,7 @@ describe("compatible connection updates", () => {
     });
   });
   it("revalidates inherited keys against the public-HTTPS policy", () => {
-    vi.stubEnv("RAKAZO_OPENAI_COMPAT_ALLOW_PUBLIC", "1");
+    vi.stubEnv("NURLAI_OPENAI_COMPAT_ALLOW_PUBLIC", "1");
     const baseUrl = "http://example.invalid/v1";
     const legacy = serializeModelSecret({ kind: "openai_compatible", baseUrl, apiKey: "fake-key" });
     expect(() => connectAsOwner({ ...input, baseUrl }, legacy)).toThrow(/HTTPS/);
@@ -985,7 +985,7 @@ it("returns only header names in a compatible credential DTO", () => {
 });
 
 it("requires HTTPS when saving new or inherited headers on public HTTP", () => {
-  vi.stubEnv("RAKAZO_OPENAI_COMPAT_ALLOW_PUBLIC", "1");
+  vi.stubEnv("NURLAI_OPENAI_COMPAT_ALLOW_PUBLIC", "1");
   try {
     const input = {
       provider: "openai-compatible",

@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
-import type { MemoryProviderDescriptor, SpaceMemoryConfig } from "@rakazo/contracts";
-import { flush } from "@rakazo/core/test-async";
+import type { MemoryProviderDescriptor, SpaceMemoryConfig } from "@nurlai/contracts";
+import { flush } from "@nurlai/core/test-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 import { act } from "react";

@@ -1,6 +1,6 @@
 import { t } from "@lingui/core/macro";
-import type { AccountSecurity } from "@rakazo/contracts";
-import { identityConfirmationProviders } from "@rakazo/contracts";
+import type { AccountSecurity } from "@nurlai/contracts";
+import { identityConfirmationProviders } from "@nurlai/contracts";
 
 export type IdentityMethod = "sso" | "email";
 

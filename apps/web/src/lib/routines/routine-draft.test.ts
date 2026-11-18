@@ -4,7 +4,7 @@ vi.mock("@lingui/core/macro", () => ({
   t: (strings: TemplateStringsArray) => strings.join(""),
 }));
 
-import type { Routine } from "@rakazo/contracts";
+import type { Routine } from "@nurlai/contracts";
 import {
   draftStateFromRoutine,
   emptyRoutineDraftState,

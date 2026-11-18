@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
-import type { SearchHit } from "@rakazo/contracts";
-import { ContextMenuContent, ContextMenuItem } from "@rakazo/ui-web";
+import type { SearchHit } from "@nurlai/contracts";
+import { ContextMenuContent, ContextMenuItem } from "@nurlai/ui-web";
 import type { ReactNode } from "react";
 import { act, useState } from "react";
 import type { Root } from "react-dom/client";

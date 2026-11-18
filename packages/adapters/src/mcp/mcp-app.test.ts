@@ -1,4 +1,4 @@
-import { MCP_APP_MIME_TYPE } from "@rakazo/contracts";
+import { MCP_APP_MIME_TYPE } from "@nurlai/contracts";
 import { describe, expect, it, vi } from "vitest";
 import { InstalledConnectorProvider } from "../integrations/installed-connectors.js";
 import {

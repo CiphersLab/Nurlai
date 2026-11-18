@@ -1,5 +1,5 @@
-import type { AdapterContext } from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
+import type { AdapterContext } from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
 import { describe, expect, it, vi } from "vitest";
 import { callRemoteMcpTool } from "../../../mcp/remote-mcp.js";
 import { MAX_WEB_FETCH_OFFSET } from "../../../web/web-limits.js";
@@ -220,7 +220,7 @@ describe("optional Parallel web provider", () => {
       for (const request of peer.requests) {
         expect(request.url).toBe("https://search.parallel.ai/mcp");
         expect(request.headers.get("user-agent")).toBe(
-          "Rakazo/0.1 (+https://github.com/elie222/rakazo; web tools)",
+          "Nurlai/0.1 (+https://github.com/elie222/rakazo; web tools)",
         );
         expect(request.headers.has("authorization")).toBe(false);
       }
@@ -278,7 +278,7 @@ describe("optional Parallel web provider", () => {
     try {
       vi.stubEnv("NODE_ENV", "production");
       vi.stubEnv("VITEST", "");
-      vi.stubEnv("RAKAZO_ALLOW_DEV_SECRETS", "");
+      vi.stubEnv("NURLAI_ALLOW_DEV_SECRETS", "");
       vi.stubEnv("BETTER_AUTH_SECRET", "");
       vi.stubEnv("ENCRYPTION_KEY", "a".repeat(64));
       await createWebProvider("parallel", peer.network).search({ query: "question" }, context);

@@ -2,8 +2,8 @@ import type { MenuAction } from "@expo/ui/community/menu";
 import { MenuView } from "@expo/ui/community/menu";
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import { useTimeout } from "@rakazo/chat-ui/hooks";
-import type { AgentSkillCatalogEntry } from "@rakazo/contracts";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
+import type { AgentSkillCatalogEntry } from "@nurlai/contracts";
 import type {
   buildComposerMentionOptions,
   ComposerMention,
@@ -11,7 +11,7 @@ import type {
   ComposerMentionQuery,
   ComposerMentionRange,
   SlashActionId,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import {
   bindComposerMention,
   composerMentionQuery,
@@ -27,8 +27,8 @@ import {
   resolveComposerMentionEdit,
   serializeComposerPrompt,
   truncateSlashDescription,
-} from "@rakazo/core";
-import { MAX_FONT_SCALE } from "@rakazo/ui-tokens";
+} from "@nurlai/core";
+import { MAX_FONT_SCALE } from "@nurlai/ui-tokens";
 import type { Ref } from "react";
 import { useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
 import type { TextInputInstance, ViewStyle } from "react-native";

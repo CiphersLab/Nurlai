@@ -9,8 +9,8 @@ import net from "node:net";
 import path from "node:path";
 import type { Duplex } from "node:stream";
 import tls from "node:tls";
-import { wuyingScreenPolicy } from "@rakazo/adapters/wuying-screen-policy";
-import type { DesktopStackProbeResponse } from "@rakazo/contracts";
+import { wuyingScreenPolicy } from "@nurlai/adapters/wuying-screen-policy";
+import type { DesktopStackProbeResponse } from "@nurlai/contracts";
 import {
   appContentSecurityPolicy,
   COMPUTER_SCREEN_RUNTIME_PATH,
@@ -18,13 +18,13 @@ import {
   contentSecurityPolicyFor,
   parseContentSecuritySources,
   parseCrispWebsiteId,
-} from "@rakazo/contracts/content-security-policy";
+} from "@nurlai/contracts/content-security-policy";
 import {
   safeScreenProxyResponseHeaders,
   stripSensitiveHandshakeHeaders,
-} from "@rakazo/core/node/screen-proxy-response";
-import { resolveScreenProxySecret } from "@rakazo/core/node/secrets-guard";
-import type { Logger } from "@rakazo/logging";
+} from "@nurlai/core/node/screen-proxy-response";
+import { resolveScreenProxySecret } from "@nurlai/core/node/secrets-guard";
+import type { Logger } from "@nurlai/logging";
 import { ASSET_ARCHIVE_DIR, archiveAssets } from "./asset-archive.js";
 import { instanceThemeIndexMiddleware, instanceThemeMiddleware } from "./instance-theme.js";
 import { missingAssetMiddleware } from "./missing-asset.js";
@@ -69,7 +69,7 @@ export type WebServerHost = {
 };
 
 const DESKTOP_STACK_PROBE_PATH = "/.well-known/rakazo-desktop-stack";
-const DESKTOP_STACK_TOKEN_HEADER = "x-rakazo-desktop-stack-token";
+const DESKTOP_STACK_TOKEN_HEADER = "x-nurlai-desktop-stack-token";
 const SCREEN_UPSTREAM_TIMEOUT_MS = 20_000;
 
 function screenPolicy(url: string | undefined) {
@@ -483,13 +483,13 @@ export function attachNovncProxy(server: WebServerHost, settings: WebServerSetti
 
 /** The web server's environment, read once. Invalid CSP origins throw, so it refuses to start. */
 export function webServerSettings(read: (name: string) => string | undefined, log: Logger) {
-  const themeFile = read("RAKAZO_THEME");
+  const themeFile = read("NURLAI_THEME");
   return {
     log,
     api: read("API_PROXY_TARGET") ?? "http://127.0.0.1:3100",
     allowedHosts: [
-      read("RAKAZO_HOST") ?? "localhost",
-      ...(read("RAKAZO_ALLOWED_HOSTS") ?? "")
+      read("NURLAI_HOST") ?? "localhost",
+      ...(read("NURLAI_ALLOWED_HOSTS") ?? "")
         .split(",")
         .map((entry) => entry.trim())
         .filter(Boolean),
@@ -501,22 +501,22 @@ export function webServerSettings(read: (name: string) => string | undefined, lo
         SANDBOX_SUPERVISOR_TOKEN: read("SANDBOX_SUPERVISOR_TOKEN"),
         BETTER_AUTH_SECRET: read("BETTER_AUTH_SECRET"),
       }),
-    performanceAssetDelayMs: Number(read("RAKAZO_PERFORMANCE_ASSET_DELAY_MS") ?? 0),
-    desktopStackToken: read("RAKAZO_DESKTOP_STACK_TOKEN") ?? "",
+    performanceAssetDelayMs: Number(read("NURLAI_PERFORMANCE_ASSET_DELAY_MS") ?? 0),
+    desktopStackToken: read("NURLAI_DESKTOP_STACK_TOKEN") ?? "",
     instanceTheme:
       themeFile &&
       instanceThemeMiddleware(themeFile, (reason) =>
         log.warn("web.instance_theme_ignored", { reason }),
       ),
-    imageTag: read("RAKAZO_IMAGE_TAG") ?? "edge",
+    imageTag: read("NURLAI_IMAGE_TAG") ?? "edge",
     appPolicy: appContentSecurityPolicy({
       scriptSrc: parseContentSecuritySources(
-        "RAKAZO_CSP_SCRIPT_SRC",
-        read("RAKAZO_CSP_SCRIPT_SRC"),
+        "NURLAI_CSP_SCRIPT_SRC",
+        read("NURLAI_CSP_SCRIPT_SRC"),
       ),
       connectSrc: parseContentSecuritySources(
-        "RAKAZO_CSP_CONNECT_SRC",
-        read("RAKAZO_CSP_CONNECT_SRC"),
+        "NURLAI_CSP_CONNECT_SRC",
+        read("NURLAI_CSP_CONNECT_SRC"),
       ),
       crisp: parseCrispWebsiteId(read("CRISP_WEBSITE_ID")) !== null,
     }),
@@ -559,7 +559,7 @@ export function attachPreviewMiddleware(
     settings.log.warn("web.asset_archive_failed", { "error.code": socketErrorCode(error) });
   }
   middlewares.use(missingAssetMiddleware(site.assetsDir, site.assetsUrl, archive));
-  // Without RAKAZO_THEME the page never links the theme, so the default deploy is unchanged.
+  // Without NURLAI_THEME the page never links the theme, so the default deploy is unchanged.
   if (settings.instanceTheme) middlewares.use(settings.instanceTheme);
   attachDesktopStackProbe(server, settings);
   const delayMs = settings.performanceAssetDelayMs;

@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 
-import type { Bot } from "@rakazo/contracts";
-import { foldPeerReplies } from "@rakazo/core";
-import { deferred, flush } from "@rakazo/core/test-async";
+import type { Bot } from "@nurlai/contracts";
+import { foldPeerReplies } from "@nurlai/core";
+import { deferred, flush } from "@nurlai/core/test-async";
 import { act, lazy, StrictMode, Suspense, useEffect, useRef } from "react";
 import type { Root } from "react-dom/client";
 import { createRoot } from "react-dom/client";

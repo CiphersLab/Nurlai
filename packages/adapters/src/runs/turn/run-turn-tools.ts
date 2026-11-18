@@ -1,5 +1,5 @@
-import { humanizeToolName, isBackgroundRunTrigger } from "@rakazo/core";
-import { getLogger } from "@rakazo/logging";
+import { humanizeToolName, isBackgroundRunTrigger } from "@nurlai/core";
+import { getLogger } from "@nurlai/logging";
 import { isToolPauseResult } from "../../approvals/approval-effect.js";
 import { returnBotMessageOutcome } from "../../messaging/bot-messages.js";
 import { clearRoutineBackoff } from "../../routines/routine-backoff.js";

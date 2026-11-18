@@ -5,16 +5,16 @@ import type { AgentResourceGroup } from "./marketing-site";
 import { marketing } from "./marketing-site";
 import { SITE_URL } from "./site";
 
-const AGENT_INSTRUCTIONS_INTRO = `# Rakazo
+const AGENT_INSTRUCTIONS_INTRO = `# Nurlai
 
 > Open source AI teammates with sandboxed browser and shell access. Your keys, your model, your machine.
 
 ## Canonical resources
 
-- [AI Catalog](https://rakazo.com/.well-known/ai-catalog.json): machine-readable index of the public agent resources.
-- [Website](https://rakazo.com/): product overview, supported models, and common questions.
-- [Website Markdown](https://rakazo.com/index.md): the English product overview as Markdown.
-- [Docs](https://rakazo.com/docs/): getting started, using Rakazo, and self-hosting. Each page has a Markdown version.
+- [AI Catalog](https://nurlai.cipherslab.com/.well-known/ai-catalog.json): machine-readable index of the public agent resources.
+- [Website](https://nurlai.cipherslab.com/): product overview, supported models, and common questions.
+- [Website Markdown](https://nurlai.cipherslab.com/index.md): the English product overview as Markdown.
+- [Docs](https://nurlai.cipherslab.com/docs/): getting started, using Nurlai, and self-hosting. Each page has a Markdown version.
 - [Source](https://github.com/elie222/rakazo)
 `;
 
@@ -63,20 +63,20 @@ export function aiCatalog(groups: readonly AgentResourceGroup[]) {
   return {
     specVersion: "1.0",
     host: {
-      displayName: "Rakazo",
+      displayName: "Nurlai",
       documentationUrl: `${SITE_URL}${marketing.agentDocumentationPath ?? "/docs/"}`,
     },
     entries: [
       {
-        identifier: "urn:air:rakazo.com:docs:llms",
-        displayName: "Rakazo agent guide",
+        identifier: "urn:air:nurlai.cipherslab.com:docs:llms",
+        displayName: "Nurlai agent guide",
         type: "text/plain",
         url: `${SITE_URL}/llms.txt`,
         description: "Product overview, agent-assisted setup guidance, and canonical resources.",
       },
       {
-        identifier: "urn:air:rakazo.com:docs:overview",
-        displayName: "Rakazo overview",
+        identifier: "urn:air:nurlai.cipherslab.com:docs:overview",
+        displayName: "Nurlai overview",
         type: "text/markdown",
         url: `${SITE_URL}/index.md`,
         description: "Features, model choices, self-hosting, and common questions.",
@@ -84,7 +84,7 @@ export function aiCatalog(groups: readonly AgentResourceGroup[]) {
       ...marketing.agentCatalogEntries,
       ...groups.flatMap((group) =>
         group.resources.map((resource) => ({
-          identifier: `urn:air:rakazo.com:${group.id}:${resource.id}`,
+          identifier: `urn:air:nurlai.cipherslab.com:${group.id}:${resource.id}`,
           displayName: resource.name,
           type: "text/markdown",
           url: `${SITE_URL}${markdownPath(resource.path)}`,

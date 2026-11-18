@@ -1,17 +1,17 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { SettingsScope } from "@rakazo/contracts";
+import type { SettingsScope } from "@nurlai/contracts";
 import {
   connectionDisplayName,
   modelRoleChoiceKey,
   OPENAI_COMPATIBLE_PROVIDER_ID,
   savedCompatibleEndpointMatches,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   catalogEntryFor,
   connectionModels,
   connectionServesModel,
   popularModelProvidersFirst,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import {
   Button,
   Dialog,
@@ -21,7 +21,7 @@ import {
   DialogTitle,
   DropdownMenuItem,
   Spinner,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { useQuery } from "@tanstack/react-query";
 import { X } from "lucide-react";
 import type { ReactNode } from "react";

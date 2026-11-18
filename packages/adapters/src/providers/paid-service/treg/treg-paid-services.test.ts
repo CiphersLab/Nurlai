@@ -1,4 +1,4 @@
-import type { AdapterContext, PaidService } from "@rakazo/adapter-kit";
+import type { AdapterContext, PaidService } from "@nurlai/adapter-kit";
 import { describe, expect, it, vi } from "vitest";
 import {
   createPaidServiceProvider,

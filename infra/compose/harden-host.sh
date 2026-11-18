@@ -7,7 +7,7 @@ SSH_PORT="${SSH_PORT:-22}"
 [[ "${SSH_PORT}" =~ ^[0-9]+$ ]] && ((SSH_PORT > 0 && SSH_PORT <= 65535)) || { echo "Invalid SSH_PORT" >&2; exit 1; }
 
 if [[ "${EUID}" -ne 0 ]]; then
-  exec sudo --preserve-env=DEPLOY_USER,SSH_PORT,SSH_CONNECTION,RAKAZO_DEPLOY_DIR bash "$0" "$@"
+  exec sudo --preserve-env=DEPLOY_USER,SSH_PORT,SSH_CONNECTION,NURLAI_DEPLOY_DIR bash "$0" "$@"
 fi
 
 # Validate the guard's session identity before installing packages or writing host settings.
@@ -129,11 +129,11 @@ systemctl daemon-reload
 systemctl enable rakazo-drop-ip-options.service
 systemctl restart rakazo-drop-ip-options.service
 
-if [[ -z "${RAKAZO_DEPLOY_DIR:-}" && -r /etc/rakazo/deploy.env ]]; then
-  RAKAZO_DEPLOY_DIR="$(sed -n 's/^RAKAZO_DEPLOY_DIR=//p' /etc/rakazo/deploy.env | tail -1 | tr -d '"')"
+if [[ -z "${NURLAI_DEPLOY_DIR:-}" && -r /etc/rakazo/deploy.env ]]; then
+  NURLAI_DEPLOY_DIR="$(sed -n 's/^NURLAI_DEPLOY_DIR=//p' /etc/rakazo/deploy.env | tail -1 | tr -d '"')"
 fi
-DEPLOY_DIR="${RAKAZO_DEPLOY_DIR:-/srv/rakazo}"
-[[ "${DEPLOY_DIR}" == /* ]] || { echo "RAKAZO_DEPLOY_DIR must be an absolute path" >&2; exit 1; }
+DEPLOY_DIR="${NURLAI_DEPLOY_DIR:-/srv/rakazo}"
+[[ "${DEPLOY_DIR}" == /* ]] || { echo "NURLAI_DEPLOY_DIR must be an absolute path" >&2; exit 1; }
 DEPLOY_HOME="$(getent passwd "${DEPLOY_USER}" | cut -d: -f6)"
 
 # The kernel needs a watched path's parent directory to exist; rerun after creating a skipped one.
@@ -185,8 +185,8 @@ systemctl reload ssh
 
 # Ship the audit trail off the host only when an operator configured a sink; see docs/self-host-observability.md#host-audit-trail.
 AUDIT_ENV=/etc/rakazo/audit-ship.env
-if grep -q '^RAKAZO_AUDIT_SINK_URL=.' "${AUDIT_ENV}" 2>/dev/null; then
-  audit_token="$(sed -n 's/^RAKAZO_AUDIT_TOKEN_FILE=//p' "${AUDIT_ENV}" | tail -1 | tr -d '"')"
+if grep -q '^NURLAI_AUDIT_SINK_URL=.' "${AUDIT_ENV}" 2>/dev/null; then
+  audit_token="$(sed -n 's/^NURLAI_AUDIT_TOKEN_FILE=//p' "${AUDIT_ENV}" | tail -1 | tr -d '"')"
   audit_token="${audit_token:-/etc/rakazo/audit-ship.token}"
   [[ -s "${audit_token}" ]] || { echo "Audit sink is configured but ${audit_token} is missing or empty" >&2; exit 1; }
   chown root:root "${AUDIT_ENV}" "${audit_token}"

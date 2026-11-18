@@ -1,6 +1,6 @@
-import { TAKEOVER_COMPUTER_PENDING_STATE } from "@rakazo/core";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import { TAKEOVER_COMPUTER_PENDING_STATE } from "@nurlai/core";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { i18n } from "../locale/i18n.js";
 import type {

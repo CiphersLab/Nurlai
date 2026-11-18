@@ -28,9 +28,9 @@ import type {
   ScreenRequest,
   ScreenSession,
   WorkspaceDirectoryRequest,
-} from "@rakazo/adapter-kit";
-import { SandboxFileTooLargeError } from "@rakazo/adapter-kit";
-import { boundedSandboxCommandTimeoutMs } from "@rakazo/core/node/sandbox-command";
+} from "@nurlai/adapter-kit";
+import { SandboxFileTooLargeError } from "@nurlai/adapter-kit";
+import { boundedSandboxCommandTimeoutMs } from "@nurlai/core/node/sandbox-command";
 import { hostCommandEnvironment } from "../../../computers/sandbox/sandbox-command-environment.js";
 import { abortedCommandEvents } from "../../../computers/sandbox/sandbox-command-events.js";
 import {

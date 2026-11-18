@@ -11,7 +11,7 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const ALLOWLIST_FILE = "scripts/checks/import-boundaries.allowlist.json";
 const SOURCE_FILE = /\.(?:[cm]?[jt]sx?|astro)$/;
-const SCOPE = "@rakazo/";
+const SCOPE = "@nurlai/";
 
 const LEAF_PACKAGES = ["packages/contracts", "packages/logging", "packages/ui-tokens"];
 const CORE = "packages/core";
@@ -47,7 +47,7 @@ const BROWSER_CODE = [
   "packages/ui-web",
 ];
 // Core's Node-only modules, kept out of its main barrel.
-const SERVER_SUBPATH = /^@rakazo\/core\/node(?:\/|$)/;
+const SERVER_SUBPATH = /^@nurlai\/core\/node(?:\/|$)/;
 // The desktop build bundles workspace code into its output, and the packager copies every
 // package under "dependencies" into the app, so bundled packages belong in devDependencies.
 const BUNDLED = ["apps/desktop"];
@@ -97,7 +97,7 @@ const RULES = {
   },
   server: {
     title: "UI packages and client apps never import server packages",
-    fix: "Client code reaches this through the API: add it in apps/api and call it over RPC, with shared types in @rakazo/contracts.",
+    fix: "Client code reaches this through the API: add it in apps/api and call it over RPC, with shared types in @nurlai/contracts.",
   },
   vendor: {
     title: "a provider's folder never imports another provider's folder",
@@ -494,22 +494,22 @@ test("resolves specifiers to packages and reports each rule", () => {
       .map((violation) => `${violation.rule}: ${entry(violation)}`)
       .sort(),
     [
-      "app: packages/db/src/index.ts -> @rakazo/api",
-      "app: packages/testkit/src/browser.ts -> @rakazo/web",
+      "app: packages/db/src/index.ts -> @nurlai/api",
+      "app: packages/testkit/src/browser.ts -> @nurlai/web",
       "app: packages/testkit/src/index.ts -> ../../../apps/api/src/app.ts",
-      "core: packages/core/src/index.ts -> @rakazo/db",
-      "exports: apps/web/src/app.tsx -> @rakazo/ui-web/src/internal",
-      "leaf: packages/contracts/src/index.ts -> @rakazo/core",
+      "core: packages/core/src/index.ts -> @nurlai/db",
+      "exports: apps/web/src/app.tsx -> @nurlai/ui-web/src/internal",
+      "leaf: packages/contracts/src/index.ts -> @nurlai/core",
       "relative: apps/web/src/app.tsx -> ../../../packages/contracts/src/index.ts",
       "relative: packages/testkit/src/index.ts -> ../../../apps/api/src/app.ts",
       "relative: scripts/build.mjs -> ../packages/core/src/index.ts",
       "runtime: apps/desktop/src/preload/preload.cjs -> ../main/ipc.js",
       "runtime: apps/web/src/page.tsx -> ../server/proxy.js",
-      "runtime: apps/web/src/page.tsx -> @rakazo/core/node/screen",
-      "server: apps/web/src/app.tsx -> @rakazo/db",
-      "testkit: apps/api/src/index.ts -> @rakazo/testkit",
-      "undeclared: apps/web/package.json -> @rakazo/core",
-      "unused: packages/ui-web/package.json -> @rakazo/contracts",
+      "runtime: apps/web/src/page.tsx -> @nurlai/core/node/screen",
+      "server: apps/web/src/app.tsx -> @nurlai/db",
+      "testkit: apps/api/src/index.ts -> @nurlai/testkit",
+      "undeclared: apps/web/package.json -> @nurlai/core",
+      "unused: packages/ui-web/package.json -> @nurlai/contracts",
       "vendor: packages/adapters/src/providers/computer/one/one-sandbox.ts -> ../two/two-sandbox.js",
     ],
   );

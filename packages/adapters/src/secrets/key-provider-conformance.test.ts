@@ -2,8 +2,8 @@ import { createCipheriv, createDecipheriv, randomBytes } from "node:crypto";
 import { createServer } from "node:http";
 import type { AddressInfo } from "node:net";
 import { KMSClient } from "@aws-sdk/client-kms";
-import type { KeyProvider } from "@rakazo/adapter-kit";
-import { LocalKeyProvider, withLocalMasterKeys } from "@rakazo/db";
+import type { KeyProvider } from "@nurlai/adapter-kit";
+import { LocalKeyProvider, withLocalMasterKeys } from "@nurlai/db";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import {
   AwsKmsKeyProvider,

@@ -6,12 +6,12 @@ import type {
   ConnectorProvider,
   ConnectorTool,
   SecretStore,
-} from "@rakazo/adapter-kit";
-import type { McpSourcePreset } from "@rakazo/contracts";
-import { ConnectionSetupError } from "@rakazo/contracts";
-import { cancelResponseBody } from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
-import { availableInSpace, itemSecretIn } from "@rakazo/db";
+} from "@nurlai/adapter-kit";
+import type { McpSourcePreset } from "@nurlai/contracts";
+import { ConnectionSetupError } from "@nurlai/contracts";
+import { cancelResponseBody } from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
+import { availableInSpace, itemSecretIn } from "@nurlai/db";
 import { parse as parseYaml } from "yaml";
 import { z } from "zod";
 import { readMcpApp } from "../mcp/mcp-app.js";

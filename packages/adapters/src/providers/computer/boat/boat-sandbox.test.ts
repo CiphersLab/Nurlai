@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 import type * as TimersPromises from "node:timers/promises";
 import type { FileUrlResponse, SandboxStateEnum } from "@boatdev/sdk";
 import { FetchError, ResponseError } from "@boatdev/sdk";
-import type { ComputerRef, PortableFile, StreamedPortableFile } from "@rakazo/adapter-kit";
+import type { ComputerRef, PortableFile, StreamedPortableFile } from "@nurlai/adapter-kit";
 import {
   SandboxDamagedError,
   SandboxRateLimitError,
@@ -10,13 +10,13 @@ import {
   SandboxUnavailableError,
   SandboxUnresponsiveError,
   WorkspaceTooLargeError,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import {
   desktopWorkCommand,
   screenDisplayArgv,
   shellQuote,
-} from "@rakazo/core/node/desktop-runtime";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+} from "@nurlai/core/node/desktop-runtime";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { parse } from "shell-quote";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { installPageBrowserCommand } from "../../../browser/page-browser-install.js";
@@ -287,7 +287,7 @@ describe("BoatSandboxProvider", () => {
         createSandboxRequest: {
           ttlSeconds: 7200,
           noEnv: true,
-          env: { RAKAZO_BOT_ID: "bot-a", RAKAZO_SANDBOX: "computer" },
+          env: { NURLAI_BOT_ID: "bot-a", NURLAI_SANDBOX: "computer" },
           from: BOAT_COMPUTER_SNAPSHOT,
         },
       },
@@ -2505,7 +2505,7 @@ describe("BoatSandboxProvider", () => {
           "bot-a",
           undefined,
           0,
-          "DISPLAY=:20 RAKAZO_CDP_PORT=9241 HOME='/home/user/rakazo-home' RAKAZO_BROWSER_ARGS_STDIN=1 /usr/local/bin/rakazo-page-browser act",
+          "DISPLAY=:20 NURLAI_CDP_PORT=9241 HOME='/home/user/rakazo-home' NURLAI_BROWSER_ARGS_STDIN=1 /usr/local/bin/rakazo-page-browser act",
         ),
         input: `${JSON.stringify({ command: "act", actions: [fill] })}\n`,
       },
@@ -2749,7 +2749,7 @@ describe("Boat computer snapshot", () => {
       {
         ttlSeconds: 7200,
         noEnv: true,
-        env: { RAKAZO_BOT_ID: "bot-a", RAKAZO_SANDBOX: "computer" },
+        env: { NURLAI_BOT_ID: "bot-a", NURLAI_SANDBOX: "computer" },
         from: BOAT_COMPUTER_SNAPSHOT,
       },
       expect.objectContaining({ from: BOAT_COMPUTER_SNAPSHOT }),
@@ -2773,13 +2773,13 @@ describe("Boat computer snapshot", () => {
       await vi.waitFor(() => expect(remove).toHaveBeenCalledOnce());
       const third = await provision(provider);
 
-      const computers = api.creates.filter((request) => request.env?.RAKAZO_BOT_ID);
+      const computers = api.creates.filter((request) => request.env?.NURLAI_BOT_ID);
       expect(computers.map((request) => request.from)).toEqual([
         undefined,
         undefined,
         BOAT_COMPUTER_SNAPSHOT,
       ]);
-      const builds = api.creates.filter((request) => !request.env?.RAKAZO_BOT_ID);
+      const builds = api.creates.filter((request) => !request.env?.NURLAI_BOT_ID);
       expect(builds).toEqual([{ ttlSeconds: 1800, noEnv: true }]);
       const buildId = api.savedSnapshots.get(BOAT_COMPUTER_SNAPSHOT)?.sourceSandboxId;
       expect([first.id, second.id, third.id]).not.toContain(buildId);
@@ -2812,7 +2812,7 @@ describe("Boat computer snapshot", () => {
       {
         ttlSeconds: 7200,
         noEnv: true,
-        env: { RAKAZO_BOT_ID: "bot-a", RAKAZO_SANDBOX: "computer" },
+        env: { NURLAI_BOT_ID: "bot-a", NURLAI_SANDBOX: "computer" },
       },
     ]);
     expect(computer.id).toBe("bx_fake2");
@@ -2836,7 +2836,7 @@ describe("Boat computer snapshot", () => {
     const commands = command.mock.calls.map(([request]) => request.commandRequest.command);
     expect(commands.some((line) => line.includes("apt-get install"))).toBe(true);
     expect(commands.some((line) => line.includes("xdpyinfo -display :99"))).toBe(true);
-    expect(commands.join("\n")).not.toContain("RAKAZO_BOT_ID");
+    expect(commands.join("\n")).not.toContain("NURLAI_BOT_ID");
 
     await expect(provider.buildComputerSnapshot()).resolves.toEqual({
       name: BOAT_COMPUTER_SNAPSHOT,

@@ -5,7 +5,7 @@ import {
   projectBotMentions,
   projectMessageReactions,
   shouldShowBotSenderName,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { useMemo, useState } from "react";
 import type { MobileMessage } from "../api/mobile-types";
 import {

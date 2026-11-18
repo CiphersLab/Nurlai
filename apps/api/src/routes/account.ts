@@ -8,23 +8,23 @@ import {
   PushSessionEndedError,
   settleCallRequest,
   validateCreditOfferingChoice,
-} from "@rakazo/adapters";
+} from "@nurlai/adapters";
 import type {
   ActionApprovalRule,
   Actor,
   Me,
   SettingsScope,
   SpaceChangeKind,
-} from "@rakazo/contracts";
-import { parseLabs } from "@rakazo/contracts";
+} from "@nurlai/contracts";
+import { parseLabs } from "@nurlai/contracts";
 import {
   abortableDelay,
   approvalModeFromPreference,
   approvalPreferenceFromMode,
   ClientError,
   callRequestClientNonce,
-} from "@rakazo/core";
-import { urlSite } from "@rakazo/core/egress";
+} from "@nurlai/core";
+import { urlSite } from "@nurlai/core/egress";
 import {
   auditLogOrganization,
   commitBotUpdate,
@@ -47,8 +47,8 @@ import {
   selectVoicePreference,
   voicePreferenceTarget,
   withTransactionRetry,
-} from "@rakazo/db";
-import { bestEffort, getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { bestEffort, getLogger } from "@nurlai/logging";
 import { aiConsentStatus, allowAiConsent } from "../account/ai-consent.js";
 import { createAccessGrant, listAccessGrants, revokeAccessGrant } from "../auth/access-grants.js";
 import { requireAdmin } from "../auth/admins.js";

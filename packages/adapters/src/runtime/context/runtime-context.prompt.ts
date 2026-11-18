@@ -1,4 +1,4 @@
-import type { AgentRunRequest } from "@rakazo/adapter-kit";
+import type { AgentRunRequest } from "@nurlai/adapter-kit";
 
 /** Opens the recalled-memory history message, which context trimming keeps. */
 export const RECALLED_MEMORY_LEAD = "Memory recalled from earlier conversations.";

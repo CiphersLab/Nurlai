@@ -1,7 +1,7 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { useTimeout } from "@rakazo/chat-ui/hooks";
-import type { DesktopUpdateState } from "@rakazo/contracts";
-import { Button, SectionHeading, toast } from "@rakazo/ui-web";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
+import type { DesktopUpdateState } from "@nurlai/contracts";
+import { Button, SectionHeading, toast } from "@nurlai/ui-web";
 import type { ReactNode } from "react";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { desktopBridge } from "../lib/platform/desktop";

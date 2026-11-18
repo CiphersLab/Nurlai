@@ -1,7 +1,7 @@
-import type { ConnectorApp } from "@rakazo/adapter-kit";
-import { isBackgroundRunTrigger, redactSecrets } from "@rakazo/core";
-import { normalizedHttpUrl } from "@rakazo/core/egress";
-import { getLogger } from "@rakazo/logging";
+import type { ConnectorApp } from "@nurlai/adapter-kit";
+import { isBackgroundRunTrigger, redactSecrets } from "@nurlai/core";
+import { normalizedHttpUrl } from "@nurlai/core/egress";
+import { getLogger } from "@nurlai/logging";
 import { executeCloudAgentTool } from "../../cloud-agents/cloud-agent-service.js";
 import { connectApp } from "../../integrations/connect-app.js";
 import {

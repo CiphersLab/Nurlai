@@ -1,4 +1,4 @@
-import { rememberPartnerClick, rememberSignupAttribution } from "@rakazo/core/signup-attribution";
+import { rememberPartnerClick, rememberSignupAttribution } from "@nurlai/core/signup-attribution";
 
 rememberSignupAttribution(window);
 // Partner links on the affiliate program add their click id under this parameter.

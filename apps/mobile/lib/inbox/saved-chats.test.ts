@@ -1,4 +1,4 @@
-import { displayIdentityResult, displayMessageBlock } from "@rakazo/core";
+import { displayIdentityResult, displayMessageBlock } from "@nurlai/core";
 import { beforeEach, expect, it, vi } from "vitest";
 import type { MobileMe, MobileSnapshot, MobileSpaceNavigation } from "../api/mobile-types";
 import { identityLabels } from "../bots/identity-display";

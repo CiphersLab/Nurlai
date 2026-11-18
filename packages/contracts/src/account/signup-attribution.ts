@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const SIGNUP_ATTRIBUTION_COOKIE = "rakazo_signup_attribution";
-export const SIGNUP_SURFACE_HEADER = "x-rakazo-signup-surface";
+export const SIGNUP_SURFACE_HEADER = "x-nurlai-signup-surface";
 export const SignupSurface = z.enum(["web", "desktop", "ios", "android"]);
 
 // Campaign labels only: never URLs, query strings, email addresses, or click identifiers.

@@ -1,6 +1,6 @@
-import type { RealtimeFanout } from "@rakazo/adapter-kit";
-import { DATABASE_KEEPALIVE } from "@rakazo/db";
-import { bestEffort } from "@rakazo/logging";
+import type { RealtimeFanout } from "@nurlai/adapter-kit";
+import { DATABASE_KEEPALIVE } from "@nurlai/db";
+import { bestEffort } from "@nurlai/logging";
 import type { Notification } from "pg";
 import { Client } from "pg";
 

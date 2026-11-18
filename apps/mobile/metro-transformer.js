@@ -1,6 +1,6 @@
 const lingui = require("@lingui/metro-transformer/expo");
 
-const upstream = require(process.env.RAKAZO_UPSTREAM_BABEL_TRANSFORMER);
+const upstream = require(process.env.NURLAI_UPSTREAM_BABEL_TRANSFORMER);
 
 module.exports = {
   ...upstream,

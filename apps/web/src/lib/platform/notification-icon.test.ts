@@ -1,4 +1,4 @@
-import { flush } from "@rakazo/core/test-async";
+import { flush } from "@nurlai/core/test-async";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { notificationIcon, prepareNotificationIcons } from "./notification-icon.js";
 

@@ -1,21 +1,21 @@
 import { ORPCError } from "@orpc/server";
-import type { SecretStore } from "@rakazo/adapter-kit";
+import type { SecretStore } from "@nurlai/adapter-kit";
 import {
   forgetBotSecret,
   getBotSecretMetadata,
   listBotSecretMetadata,
   storeBotSecret,
-} from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
+} from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
 import {
   AGENT_SECRET_NAME_PATTERN,
   BotSecretAuth,
   BotSecretName,
   commandVariableName,
   commandVariableProblem,
-} from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
-import { requireSpaceOwner } from "@rakazo/db";
+} from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
+import { requireSpaceOwner } from "@nurlai/db";
 
 type AgentSecretDeps = {
   prisma: PrismaClient;

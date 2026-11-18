@@ -1,9 +1,9 @@
-import type * as Db from "@rakazo/db";
+import type * as Db from "@nurlai/db";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { ExecutorDeps } from "../runs/executor/executor-deps.js";
 import { resolveConnectedModelKey, resolveModelKey } from "../runs/turn/run-model.js";
 
-vi.mock("@rakazo/db", async (original) => ({
+vi.mock("@nurlai/db", async (original) => ({
   ...(await original<typeof Db>()),
   organizationForMember: async () => ({ organizationId: "organization-example" }),
   creditAccount: async () => ({ mode: "credits", balanceMicros: 1000000n }),

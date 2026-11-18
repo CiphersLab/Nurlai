@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
-import type { Bot } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
+import type { Bot } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
 import { QueryClient, QueryClientProvider, useQuery } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 import { act } from "react";

@@ -1,7 +1,7 @@
 import { randomBytes } from "node:crypto";
-import type { Actor } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
-import { asSystem, bootstrapUserSpace, createDb, createOrganizationForUser } from "@rakazo/db";
+import type { Actor } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
+import { asSystem, bootstrapUserSpace, createDb, createOrganizationForUser } from "@nurlai/db";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { otherSpaceOfBot, otherSpaceOfGroup } from "./bot-space.js";
 

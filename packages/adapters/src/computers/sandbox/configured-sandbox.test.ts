@@ -1,5 +1,5 @@
-import type { ComputerRef } from "@rakazo/adapter-kit";
-import type { PrismaClient } from "@rakazo/db";
+import type { ComputerRef } from "@nurlai/adapter-kit";
+import type { PrismaClient } from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import { FakeSandboxProvider } from "../../providers/computer/fake/fake-sandbox.js";
 import type { ComputerProviderSelection, StoredComputerSettings } from "./configured-sandbox.js";

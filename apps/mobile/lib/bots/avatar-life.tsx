@@ -1,11 +1,11 @@
-import { useTimeout } from "@rakazo/chat-ui/hooks";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
 import type {
   AvatarClock,
   AvatarLifeState,
   AvatarMotionMode,
   AvatarPoke,
   AvatarSegment,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import {
   AVATAR_POKE_SECONDS,
   AVATAR_POKES,
@@ -14,7 +14,7 @@ import {
   avatarClipPool,
   avatarSchedule,
   avatarSchedulePose,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import type { ReactNode } from "react";
 import {
   createContext,

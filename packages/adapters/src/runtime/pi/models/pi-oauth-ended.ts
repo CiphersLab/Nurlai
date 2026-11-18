@@ -1,7 +1,7 @@
 import type {
   AnalyticsModelSignInEndReason,
   AnalyticsModelSignInErrorClass,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 
 /** Kept with a sign-in whose steps are measured: the app it began in and which try it is. */
 export type PiOAuthMeasure = { surface?: string; attempt: number };

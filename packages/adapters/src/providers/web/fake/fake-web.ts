@@ -5,7 +5,7 @@ import type {
   WebProvider,
   WebSearchHit,
   WebSearchRequest,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import { clampOffset, pageWindow } from "../../../web/web-limits.js";
 
 /** In-memory web provider for offline tests. Never hits the network. */

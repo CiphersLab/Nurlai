@@ -1,13 +1,13 @@
-import type { AdapterContext } from "@rakazo/adapter-kit";
+import type { AdapterContext } from "@nurlai/adapter-kit";
 import {
   destroyBot,
   forgetPageShareSecrets,
   removeAgentHome,
   removeDeletedBotsFromLegacyTeamHome,
   toComputerRef,
-} from "@rakazo/adapters";
-import { requestDeadline } from "@rakazo/core";
-import type { HeldLease, Prisma, ThreadEvents } from "@rakazo/db";
+} from "@nurlai/adapters";
+import { requestDeadline } from "@nurlai/core";
+import type { HeldLease, Prisma, ThreadEvents } from "@nurlai/db";
 import {
   assertLeaseHeld,
   assertNoOwnedOrganizationWithMembers,
@@ -33,8 +33,8 @@ import {
   setOrganizationDeletionLease,
   withLease,
   withTransactionRetry,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import type { BillingService } from "../billing/billing.js";
 import type { SpaceDeletionDeps } from "../spaces/space-deletion.js";
 import { afterSpaceDeparture } from "../spaces/space-departure.js";

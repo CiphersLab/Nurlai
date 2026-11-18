@@ -1,9 +1,9 @@
 import { ORPCError } from "@orpc/server";
-import { SandboxUnavailableError } from "@rakazo/adapter-kit";
-import { databaseOutage } from "@rakazo/db";
-import type { TestSink } from "@rakazo/logging";
-import { createLogger, createTestSink, installLogger, runWithLogContext } from "@rakazo/logging";
-import { requestLogging } from "@rakazo/logging/hono";
+import { SandboxUnavailableError } from "@nurlai/adapter-kit";
+import { databaseOutage } from "@nurlai/db";
+import type { TestSink } from "@nurlai/logging";
+import { createLogger, createTestSink, installLogger, runWithLogContext } from "@nurlai/logging";
+import { requestLogging } from "@nurlai/logging/hono";
 import { Hono } from "hono";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { authLibraryLogger, withAuthLibraryFailures } from "./app.js";

@@ -17,19 +17,19 @@ import type {
   ConnectorProvider,
   ConnectorTool,
   SecretStore,
-} from "@rakazo/adapter-kit";
-import { SecretStoreUnavailableError } from "@rakazo/adapter-kit";
-import type { McpOAuthEnvField } from "@rakazo/contracts";
+} from "@nurlai/adapter-kit";
+import { SecretStoreUnavailableError } from "@nurlai/adapter-kit";
+import type { McpOAuthEnvField } from "@nurlai/contracts";
 import {
   isLocalhostOrLoopbackIp,
   mcpOAuthEnvReferences,
   resolveMcpOAuthEnv,
   resolveMcpOAuthFileTemplate,
-} from "@rakazo/contracts";
-import type { McpServer, PrismaClient, ThreadEvents } from "@rakazo/db";
-import { availableInSpace, itemSecretIn } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
-import { sanitizedError } from "@rakazo/logging/monitoring";
+} from "@nurlai/contracts";
+import type { McpServer, PrismaClient, ThreadEvents } from "@nurlai/db";
+import { availableInSpace, itemSecretIn } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
+import { sanitizedError } from "@nurlai/logging/monitoring";
 import { catalogToolPrefix } from "../approvals/approval-effect.js";
 import {
   combineSignals,

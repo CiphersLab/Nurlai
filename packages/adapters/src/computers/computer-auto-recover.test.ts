@@ -2,10 +2,10 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import type * as TimersPromises from "node:timers/promises";
-import type { AdapterContext } from "@rakazo/adapter-kit";
-import { SandboxDamagedError } from "@rakazo/adapter-kit";
-import type { PrismaClient, ThreadEvents } from "@rakazo/db";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+import type { AdapterContext } from "@nurlai/adapter-kit";
+import { SandboxDamagedError } from "@nurlai/adapter-kit";
+import type { PrismaClient, ThreadEvents } from "@nurlai/db";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   FakeBoatApi,

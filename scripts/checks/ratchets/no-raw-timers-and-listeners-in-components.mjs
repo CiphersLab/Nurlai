@@ -1,5 +1,5 @@
 export const message =
-  "Do not hand-write a timer or an add/remove listener pair in a component or hook. Use useTimeout(callback, ms | null, restartKey) or useNow(ms | null) from @rakazo/chat-ui/hooks, and on web useEventListener(target, type, handler, options) from apps/web/src/lib/use-event-listener.ts: they call the latest callback, clean up on unmount and when their inputs change, and never fire after unmount. A data read waits for the server's change signal rather than a timer.";
+  "Do not hand-write a timer or an add/remove listener pair in a component or hook. Use useTimeout(callback, ms | null, restartKey) or useNow(ms | null) from @nurlai/chat-ui/hooks, and on web useEventListener(target, type, handler, options) from apps/web/src/lib/use-event-listener.ts: they call the latest callback, clean up on unmount and when their inputs change, and never fire after unmount. A data read waits for the server's change signal rather than a timer.";
 
 export const include = [
   "apps/web/src/**/*.{ts,tsx}",

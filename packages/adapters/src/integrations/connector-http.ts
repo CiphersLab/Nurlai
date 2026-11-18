@@ -1,4 +1,4 @@
-import { ConnectionSetupError } from "@rakazo/contracts";
+import { ConnectionSetupError } from "@nurlai/contracts";
 import { z } from "zod";
 
 /** Tab and printable Latin-1: what `Headers` accepts, without other control characters. */

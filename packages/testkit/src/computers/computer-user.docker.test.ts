@@ -1,6 +1,6 @@
 import { execFileSync } from "node:child_process";
 import { randomUUID } from "node:crypto";
-import { ensureScreenCommand } from "@rakazo/core/node/desktop-runtime";
+import { ensureScreenCommand } from "@nurlai/core/node/desktop-runtime";
 import { describe, expect, it } from "vitest";
 
 describe.skipIf(process.env.RUN_COMPUTER_REPLAY_DOCKER !== "1")(
@@ -32,7 +32,7 @@ describe.skipIf(process.env.RUN_COMPUTER_REPLAY_DOCKER !== "1")(
               "/tmp:mode=1777,exec",
               "--tmpfs",
               `/home/rakazo:uid=${uid},gid=${gid},mode=700`,
-              process.env.RAKAZO_COMPUTER_IMAGE ?? "rakazo/computer:local",
+              process.env.NURLAI_COMPUTER_IMAGE ?? "nurlai/computer:local",
             ],
             { stdio: "pipe", timeout: 30_000 },
           );

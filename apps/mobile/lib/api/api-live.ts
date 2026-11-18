@@ -1,12 +1,12 @@
-import type { IncomingBotCall } from "@rakazo/contracts";
-import { IncomingBotCallSchema, SpaceChangeKind } from "@rakazo/contracts";
+import type { IncomingBotCall } from "@nurlai/contracts";
+import { IncomingBotCallSchema, SpaceChangeKind } from "@nurlai/contracts";
 import {
   cancelResponseBody,
   displayIdentityEvent,
   IDLE_TIMEOUT_MS,
   isServerUnreachable,
   isUnreachableStatus,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { identityLabels } from "../bots/identity-display";
 import {
   beginMobileAvatarFeed,

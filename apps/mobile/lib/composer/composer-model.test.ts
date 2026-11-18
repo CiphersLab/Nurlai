@@ -1,4 +1,4 @@
-import type { ModelCatalogEntry, ModelCredential } from "@rakazo/contracts";
+import type { ModelCatalogEntry, ModelCredential } from "@nurlai/contracts";
 import { describe, expect, it, vi } from "vitest";
 import type { MobileMe } from "../api/mobile-types";
 import { composerModelChip } from "./composer-model";

@@ -1,6 +1,6 @@
 import { t } from "@lingui/core/macro";
-import type { ModelMark } from "@rakazo/core";
-import { botModelState, modelOptionKey } from "@rakazo/core";
+import type { ModelMark } from "@nurlai/core";
+import { botModelState, modelOptionKey } from "@nurlai/core";
 import { useRouter } from "expo-router";
 import { useSyncExternalStore } from "react";
 import type { MobileMe, MobileModel, MobileModelCredential } from "../api/mobile-types";

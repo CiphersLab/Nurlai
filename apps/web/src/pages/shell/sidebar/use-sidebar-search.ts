@@ -1,5 +1,5 @@
-import { useTimeout } from "@rakazo/chat-ui/hooks";
-import type { SearchHit } from "@rakazo/contracts";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
+import type { SearchHit } from "@nurlai/contracts";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import type { ActivityListFilters } from "../../../lib/activity-list-filters";
 import { emptyActivityFilters } from "../../../lib/activity-list-filters";

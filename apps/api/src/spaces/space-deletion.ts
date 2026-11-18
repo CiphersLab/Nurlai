@@ -5,16 +5,16 @@ import type {
   JobPublisher,
   SandboxProvider,
   SecretStore,
-} from "@rakazo/adapter-kit";
-import type { MemoryProviderResolver } from "@rakazo/adapters";
+} from "@nurlai/adapter-kit";
+import type { MemoryProviderResolver } from "@nurlai/adapters";
 import {
   destroyBot,
   forgetPageShareSecrets,
   removeAgentHome,
   toComputerRef,
-} from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
-import type { HeldLease, PrismaClient } from "@rakazo/db";
+} from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
+import type { HeldLease, PrismaClient } from "@nurlai/db";
 import {
   assertLeaseHeld,
   assertSpaceDeletable,
@@ -30,8 +30,8 @@ import {
   SPACE_DELETION_CLAIM_TIMEOUT_MS,
   SpaceDeletionInProgressError,
   withLease,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { rehomeItemsLeaving } from "./name-claims.js";
 
 /** Bound for one bot or sandbox teardown. Providers may ignore the abort signal, so without a

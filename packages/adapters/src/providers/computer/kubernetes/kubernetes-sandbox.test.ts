@@ -3,10 +3,10 @@ import { link, mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import type { Exec, V1Pod } from "@kubernetes/client-node";
-import type { AdapterContext, ComputerRef, ProcessEvent } from "@rakazo/adapter-kit";
-import { shellQuote } from "@rakazo/core/node/desktop-runtime";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import type { AdapterContext, ComputerRef, ProcessEvent } from "@nurlai/adapter-kit";
+import { shellQuote } from "@nurlai/core/node/desktop-runtime";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { describe, expect, it, vi } from "vitest";
 import { encodeTarEntry, TarReader } from "../../../computers/sandbox/exec-computer.js";
 import { isSandboxGoneError } from "../../../computers/sandbox/sandbox-errors.js";
@@ -271,7 +271,7 @@ describe("KubernetesSandboxProvider", () => {
   });
 
   it("attaches the controlled terminal without replacing the bot run screen fence", async () => {
-    const exec = successfulExec("RAKAZO_DESKTOP=0:view-token\n");
+    const exec = successfulExec("NURLAI_DESKTOP=0:view-token\n");
     const provider = providerFor({}, exec);
 
     await provider.connectTerminal(
@@ -917,7 +917,7 @@ describe("KubernetesSandboxProvider", () => {
       ["10.0.0.8", "10.0.0.8"],
       ["2001:db8::1", "[2001:db8::1]"],
     ] as const) {
-      const exec = successfulExec("RAKAZO_DESKTOP=0:token");
+      const exec = successfulExec("NURLAI_DESKTOP=0:token");
       const provider = providerFor(
         { readNamespacedPod: vi.fn().mockResolvedValue(screenPod(ip)) },
         exec,
@@ -937,7 +937,7 @@ describe("KubernetesSandboxProvider", () => {
     await expect(
       providerFor(
         { readNamespacedPod: vi.fn().mockResolvedValue(screenPod(undefined)) },
-        successfulExec("RAKAZO_DESKTOP=0:token"),
+        successfulExec("NURLAI_DESKTOP=0:token"),
       ).connectScreen(computer, { view: "stream", interactive: false }, context),
     ).rejects.toThrow("no pod IP");
   });

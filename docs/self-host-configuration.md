@@ -1,6 +1,6 @@
 # Configuration
 
-Rakazo reads its settings from environment variables, normally kept in the `.env` file next to
+Nurlai reads its settings from environment variables, normally kept in the `.env` file next to
 the Compose file.
 
 ## Where settings live
@@ -13,7 +13,7 @@ Do not commit `.env`. Never put `COMPOSIO_API_KEY`, OpenRouter keys, or provider
 
 ## Settings with names you choose
 
-The Compose files pass the API and worker only the settings each one reads, listed by name, rather than the whole `.env`. A setting whose name you choose, such as `TELEGRAM_BOT_TOKEN_<NAME>` or `PHOTON_PROJECT_ID_<NAME>`, therefore needs its own line: add it under `api` and `worker` `environment` in an override file layered after the base file (and in `RAKAZO_COMPOSE_FILE` when the updater is enabled), with no value so Compose fills it from `.env`. `install-images.sh` names any `.env` setting that no container receives.
+The Compose files pass the API and worker only the settings each one reads, listed by name, rather than the whole `.env`. A setting whose name you choose, such as `TELEGRAM_BOT_TOKEN_<NAME>` or `PHOTON_PROJECT_ID_<NAME>`, therefore needs its own line: add it under `api` and `worker` `environment` in an override file layered after the base file (and in `NURLAI_COMPOSE_FILE` when the updater is enabled), with no value so Compose fills it from `.env`. `install-images.sh` names any `.env` setting that no container receives.
 
 ```yaml
 # docker-compose.override.yml
@@ -36,7 +36,7 @@ commands, add `-f docker-compose.override.yml` after the base file.
 All of these are optional:
 
 ```env
-RAKAZO_EXTRA_AUTH_ORIGINS=   # extra origins allowed to sign in and call the API; see below
+NURLAI_EXTRA_AUTH_ORIGINS=   # extra origins allowed to sign in and call the API; see below
 SIGNUPS_ENABLED=true
 SIGNUP_ALLOWLIST=you@example.com,@company.com
 SCIM_BEARER_TOKEN=        # lets your identity provider add and remove accounts; see self-host-accounts.md
@@ -50,7 +50,7 @@ COMPUTER_MAX_ACTIVE_MS=7200000 # uptime cap for providers that bill while runnin
 COMPUTER_MAX_ACTIVE_UNBILLED_MS=0 # uptime cap for providers that do not bill while running (Docker, Kubernetes, Incus); minimum 60000; 0 (default) disables; needs SANDBOX_IDLE_MS on
 SANDBOX_COMMAND_TIMEOUT_MS=300000 # stop a shell command after 5 minutes
 MAX_TOOL_CALLS_PER_TURN=  # optional Pi turn tool-call fuse; unset/0 = unlimited
-RAKAZO_MESSAGE_USER_MAX_CHARS=500 # message_user length cap; narration stays at 500
+NURLAI_MESSAGE_USER_MAX_CHARS=500 # message_user length cap; narration stays at 500
 BOT_MESSAGE_MAX_HOPS=6    # bot-to-bot messages one chain may carry before the next is refused
 E2B_API_KEY=              # when SANDBOX_PROVIDER=e2b
 NOVITA_API_KEY=           # when SANDBOX_PROVIDER=novita; build its template first
@@ -72,8 +72,8 @@ retries let long turns survive brief provider failures.
 
 Model timeouts are configurable in milliseconds. Invalid or out-of-range values retain their
 defaults. Longer timeouts can help when several bots share a local inference server that queues
-requests. For `RAKAZO_LOCAL_MODELS` servers and compatible model connections added in the app,
-these settings are the only limits Rakazo applies, and a stream that is cut off names why in the
+requests. For `NURLAI_LOCAL_MODELS` servers and compatible model connections added in the app,
+these settings are the only limits Nurlai applies, and a stream that is cut off names why in the
 run's error details, such as `terminated (other side closed)`. Built-in providers still drop a
 response after 5 minutes without data, and a proxy or load balancer in between may cut off a
 silent stream sooner.
@@ -84,22 +84,22 @@ silent stream sooner.
   Other APIs, such as Google, Vertex AI, Bedrock and some routed models, use their own client
   timeouts.
 - `MODEL_STREAM_IDLE_TIMEOUT_MS` (default `180000`, range `0`–`2147483647`) bounds how long
-  a started response may remain silent. Set it to `0` to disable Rakazo's inactivity watchdog.
+  a started response may remain silent. Set it to `0` to disable Nurlai's inactivity watchdog.
   Explicit request cancellation remains available. Disabling this protection can leave stalled
   requests waiting indefinitely if neither the provider nor the caller terminates them.
 - `MODEL_CONNECT_TIMEOUT_MS` (default `30000`, range `1000`–`300000`) bounds connecting to an
-  OpenAI-compatible model or speech connection added in the app. `RAKAZO_LOCAL_MODELS` servers
+  OpenAI-compatible model or speech connection added in the app. `NURLAI_LOCAL_MODELS` servers
   and built-in providers retain Node's own connection timeout.
 
-### Reaching Rakazo from a second address
+### Reaching Nurlai from a second address
 
 Sign-in and API calls are accepted only from `WEB_ORIGIN`, `API_URL`, `BETTER_AUTH_URL` and the
 mobile app. If you also open the same install from another address, such as a Tailscale name or a
 LAN IP, the browser or desktop app gets `403 INVALID_ORIGIN`. List that address in
-`RAKAZO_EXTRA_AUTH_ORIGINS`, comma-separated:
+`NURLAI_EXTRA_AUTH_ORIGINS`, comma-separated:
 
 ```env
-RAKAZO_EXTRA_AUTH_ORIGINS=https://rakazo.your-tailnet.ts.net,http://192.168.1.20:5173
+NURLAI_EXTRA_AUTH_ORIGINS=https://rakazo.your-tailnet.ts.net,http://192.168.1.20:5173
 ```
 
 Each entry must be a bare origin (scheme, host, optional port; no path). `https://` is accepted for
@@ -115,11 +115,11 @@ callbacks.
 | `TICKET_BOARD_ENABLED` | `false`         | Turns the ticket board on for every account. Otherwise each person turns it on in **Settings → Labs**. Set it on the API and worker.                    |
 | `USER_DEVICES_ENABLED` | on              | `false` stops signed-in desktop apps from letting bots run commands on the user's own computer. Set it on the API and worker.                           |
 | `PI_SESSION_RECORDING` | off             | `true` records agent sessions as JSONL under `DATA_DIR/pi-sessions`. The files are not encrypted, so do not use it on a shared or multi-tenant install. |
-| `PRIVACY_POLICY_URL`   | Rakazo's policy | The privacy policy linked from the AI data-sharing notice. Set it on the API.                                                                           |
+| `PRIVACY_POLICY_URL`   | Nurlai's policy | The privacy policy linked from the AI data-sharing notice. Set it on the API.                                                                           |
 
 ## Chat history retention
 
-Rakazo keeps chat history until someone clears the chat or deletes the bot. To delete it
+Nurlai keeps chat history until someone clears the chat or deletes the bot. To delete it
 automatically, set `CHAT_HISTORY_RETENTION_DAYS` on the API and worker to a whole number of days:
 
 ```env
@@ -143,21 +143,21 @@ keep it for their own retention.
 
 ## Database roles
 
-Rakazo uses two Postgres logins:
+Nurlai uses two Postgres logins:
 
 - The owner (`POSTGRES_USER`, or `DATABASE_MIGRATION_URL` outside Compose) runs migrations and
   owns the tables.
-- The app login (`rakazo_app` with `POSTGRES_APP_PASSWORD`, or `DATABASE_URL`) is not a
+- The app login (`nurlai_app` with `POSTGRES_APP_PASSWORD`, or `DATABASE_URL`) is not a
   superuser, cannot bypass row-level security, cannot create objects, and can only read and write
   the app tables.
 
-`pnpm db:migrate` (in containers, its prebuilt form `pnpm --filter @rakazo/api db:deploy`, which the
+`pnpm db:migrate` (in containers, its prebuilt form `pnpm --filter @nurlai/api db:deploy`, which the
 one-shot `migrate` container runs before the API starts) applies the migrations and the job queue
 schema as the owner. Only that container gets the owner login, so code running in the API or
 worker cannot find one that bypasses row-level security. It then creates the app login named in `DATABASE_URL`, or updates its
-password, and grants it the `rakazo_app` role. When migrations run as a role without
+password, and grants it the `nurlai_app` role. When migrations run as a role without
 `CREATEROLE`, as on some managed Postgres, create the login yourself and
-`GRANT rakazo_app TO <login>`.
+`GRANT nurlai_app TO <login>`.
 
 Messages, events, threads, memory, artifacts, secrets, model and voice credentials, skills, bots,
 runs, tasks, routines, connections, MCP servers and sign-ins, computers, boards and tickets,
@@ -204,14 +204,14 @@ a worker killed sooner leaves a run mid-turn waiting for its lease to expire.
 
 Chat runs execute in the API container that receives the message, and routines and other
 background runs execute in the worker, so both hold live agent turns. In the production Compose
-file, `RAKAZO_API_MEMORY_LIMIT` and `RAKAZO_WORKER_MEMORY_LIMIT` cap them (Compose sizes such as
+file, `NURLAI_API_MEMORY_LIMIT` and `NURLAI_WORKER_MEMORY_LIMIT` cap them (Compose sizes such as
 `2g` or `3072m`, default `2g` each). Raise them on a larger host. Deploys briefly run the old and
 new container of each side by side, so leave room for both.
 
 ## More API and worker containers
 
 Each API and worker container runs on about one CPU core. On a host with more cores,
-`RAKAZO_API_REPLICAS` and `RAKAZO_WORKER_REPLICAS` (default `1` each) run several; they share work
+`NURLAI_API_REPLICAS` and `NURLAI_WORKER_REPLICAS` (default `1` each) run several; they share work
 through Postgres and Caddy spreads requests across the API containers. The deploy script applies a
 new count on its next run, starting that many new containers before it stops the old ones, so
 leave memory for twice the count during a deploy. With more than one API container, give Telegram
@@ -236,8 +236,8 @@ them restarts Postgres.
 The API listens on `API_HOST` (default `127.0.0.1`) and `API_PORT` (default `3100`). Keep loopback
 unless a container or a trusted reverse proxy must reach it; the Compose files set this for you.
 The published-images stack publishes the web app on `127.0.0.1:5173` and the API on
-`127.0.0.1:3100`; set `RAKAZO_WEB_PORT` or `RAKAZO_API_PORT` to use other host ports.
-For LAN access, set `RAKAZO_WEB_BIND` as described in
+`127.0.0.1:3100`; set `NURLAI_WEB_PORT` or `NURLAI_API_PORT` to use other host ports.
+For LAN access, set `NURLAI_WEB_BIND` as described in
 [Connecting a phone on the same network](./self-host-clients.md#connecting-a-phone-on-the-same-network).
 
 ## Outbound proxy

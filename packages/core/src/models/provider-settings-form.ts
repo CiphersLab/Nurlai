@@ -1,5 +1,5 @@
-import type { ProviderSettingsField } from "@rakazo/contracts";
-import { trimEndChars } from "@rakazo/contracts";
+import type { ProviderSettingsField } from "@nurlai/contracts";
+import { trimEndChars } from "@nurlai/contracts";
 
 type Values = Record<string, string>;
 

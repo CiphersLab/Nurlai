@@ -107,13 +107,13 @@ Set `OTEL_EXPORTER_OTLP_ENDPOINT` on the worker to enable optional OpenTelemetry
 to the base endpoint and honors standard `OTEL_EXPORTER_OTLP_HEADERS` (comma-separated
 `key=value` pairs) and `OTEL_SERVICE_NAME` (default `rakazo-worker`). Compose workers
 read these settings from `.env`. With an empty or unset endpoint, no tracing SDK loads
-or initializes. No collector or hosted service is required to run Rakazo.
+or initializes. No collector or hosted service is required to run Nurlai.
 
 Traces contain a `rakazo.agent.run` span with `pi.ai.request` model-call spans and
 `pi.agent.tool` steps, including duration, token usage, cost when known, and success/error
 status. Each span carries `rakazo.bot.id`, `rakazo.run.id`, and `rakazo.routine.id`
 when the run belongs to a routine. Helper model calls inherit the same correlation.
-Pi 0.87.1 exposes built-in telemetry through its newer harness; Rakazo’s legacy Agent
+Pi 0.87.1 exposes built-in telemetry through its newer harness; Nurlai’s legacy Agent
 adapter maps its model and tool lifecycle through the same Pi telemetry contract.
 
 Prompt, response, tool arguments and tool results are excluded by default.
@@ -245,11 +245,11 @@ Monitoring is opt-in. Install `host-alert.py` as `/usr/local/sbin/rakazo-host-al
 and timer and enable `rakazo-host-check.timer`. Checks run every five minutes and report low disk
 space, failed backups, a verified backup older than 36 hours, missing configured IPv4 SSH rules, or
 installed updates waiting for a reboot.
-To also check API and worker containers, set `RAKAZO_MONITOR_COMPOSE_PROJECT` in `backup.env` to
+To also check API and worker containers, set `NURLAI_MONITOR_COMPOSE_PROJECT` in `backup.env` to
 the Compose project name (`rakazo-prod` for production). The worker probe checks heartbeat and
 reconciliation freshness. Leave the variable unset if container monitoring is managed elsewhere.
 
-The dedicated-volume check is enabled only by `RAKAZO_BACKUP_REQUIRE_VOLUME=1` in `backup.env`.
+The dedicated-volume check is enabled only by `NURLAI_BACKUP_REQUIRE_VOLUME=1` in `backup.env`.
 Identical alerts are suppressed for a day; recovery sends a separate notification.
 
 Alerts go to the system journal by default; no external service is required. For optional Slack
@@ -275,18 +275,18 @@ endpoint that accepts a JSON array of events with a bearer token, for example Ax
 `https://api.axiom.co/v1/datasets/<dataset>/ingest`.
 
 ```env
-RAKAZO_AUDIT_SINK_URL=https://ingest.example.com/v1/events
+NURLAI_AUDIT_SINK_URL=https://ingest.example.com/v1/events
 # Optional: name the SSH keys you expect (fingerprints from `ssh-keygen -lf key.pub`).
-RAKAZO_AUDIT_KNOWN_KEYS=SHA256:replace-with-fingerprint=laptop SHA256:replace-with-fingerprint=ci
-# Optional: RAKAZO_AUDIT_TOKEN_FILE (default /etc/rakazo/audit-ship.token), RAKAZO_AUDIT_HOST
-# (default: the hostname), and RAKAZO_AUDIT_HEARTBEAT_SECONDS (default 10800, three hours).
+NURLAI_AUDIT_KNOWN_KEYS=SHA256:replace-with-fingerprint=laptop SHA256:replace-with-fingerprint=ci
+# Optional: NURLAI_AUDIT_TOKEN_FILE (default /etc/rakazo/audit-ship.token), NURLAI_AUDIT_HOST
+# (default: the hostname), and NURLAI_AUDIT_HEARTBEAT_SECONDS (default 10800, three hours).
 ```
 
 Use a token that can only write to that one destination, so a compromised host cannot read or delete
 what it already sent. The shipper follows `/var/log/auth.log` and the audit log and sends `ssh.login`
 (with `key_name`, `unknown` for keys not listed), `ssh.failed`, `sudo.command`, `su`,
 `identity.change`, and `file.change` (with the rule's `watch` key and the changed `paths`), plus a
-`shipper.heartbeat` on start and every `RAKAZO_AUDIT_HEARTBEAT_SECONDS`. Every
+`shipper.heartbeat` on start and every `NURLAI_AUDIT_HEARTBEAT_SECONDS`. Every
 event carries `event`, `host`, `source`, `message`, and `_time`. Offsets advance only after the sink
 accepts a batch, and failures retry with backoff, so events arrive at least once. On first start it
 ships the current auth log and starts the audit log at its end. With monitoring installed, the host

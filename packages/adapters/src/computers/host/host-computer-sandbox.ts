@@ -7,9 +7,9 @@ import type {
   ProcessEvent,
   SandboxProvider,
   WorkspaceDirectoryRequest,
-} from "@rakazo/adapter-kit";
-import { SandboxFileTooLargeError } from "@rakazo/adapter-kit";
-import { boundedSandboxCommandTimeoutMs } from "@rakazo/core/node/sandbox-command";
+} from "@nurlai/adapter-kit";
+import { SandboxFileTooLargeError } from "@nurlai/adapter-kit";
+import { boundedSandboxCommandTimeoutMs } from "@nurlai/core/node/sandbox-command";
 import { describeDesktopSandbox } from "../../providers/computer/desktop/desktop-sandbox.js";
 import { shouldSkipPortableWorkspaceFile } from "../../storage/workspace-save-policy.js";
 import type {

@@ -1,6 +1,6 @@
 vi.mock("../settings/ai-consent", () => ({ promptAiConsent: vi.fn() }));
 
-import { IDLE_TIMEOUT_MS } from "@rakazo/core";
+import { IDLE_TIMEOUT_MS } from "@nurlai/core";
 import * as SecureStore from "expo-secure-store";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { MAX_MOBILE_RPC_RESPONSE_BYTES } from "./api.js";

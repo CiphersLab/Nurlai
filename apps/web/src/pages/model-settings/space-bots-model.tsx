@@ -1,7 +1,7 @@
 import { useLingui } from "@lingui/react/macro";
-import type { Bot } from "@rakazo/contracts";
-import { botsWithOwnModel } from "@rakazo/core";
-import { Button, Popover, PopoverContent, PopoverTrigger, toast } from "@rakazo/ui-web";
+import type { Bot } from "@nurlai/contracts";
+import { botsWithOwnModel } from "@nurlai/core";
+import { Button, Popover, PopoverContent, PopoverTrigger, toast } from "@nurlai/ui-web";
 import { Bot as BotIcon } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useSave } from "../../lib/query/query";

@@ -1,7 +1,7 @@
 import { t } from "@lingui/core/macro";
-import { agentImportErrorReason } from "@rakazo/contracts";
-import type { GrokBotExportErrorCode } from "@rakazo/core";
-import { translateRunError } from "@rakazo/i18n/run-error";
+import { agentImportErrorReason } from "@nurlai/contracts";
+import type { GrokBotExportErrorCode } from "@nurlai/core";
+import { translateRunError } from "@nurlai/i18n/run-error";
 
 function errorProvider(error: unknown): string {
   const data = error && typeof error === "object" && "data" in error ? error.data : undefined;

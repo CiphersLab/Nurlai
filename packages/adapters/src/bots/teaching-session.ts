@@ -4,23 +4,23 @@ import type {
   ControlLeaseRef,
   JobPublisher,
   SandboxProvider,
-} from "@rakazo/adapter-kit";
-import { skillTeachingExpireJobKey } from "@rakazo/adapter-kit";
-import type { Actor, MessageBlock, TaughtSkill } from "@rakazo/contracts";
-import type { SkillPlaybook, TeachRecordingEvent, TeachSnapshot } from "@rakazo/core";
+} from "@nurlai/adapter-kit";
+import { skillTeachingExpireJobKey } from "@nurlai/adapter-kit";
+import type { Actor, MessageBlock, TaughtSkill } from "@nurlai/contracts";
+import type { SkillPlaybook, TeachRecordingEvent, TeachSnapshot } from "@nurlai/core";
 import {
   buildPlaybookFromRecording,
   computerInputForDomKey,
   sanitizeTeachRecordingEvent,
-} from "@rakazo/core";
-import type { Prisma, PrismaClient, ThreadEvents } from "@rakazo/db";
+} from "@nurlai/core";
+import type { Prisma, PrismaClient, ThreadEvents } from "@nurlai/db";
 import {
   appendEventInTransaction,
   createThreadMessageInTransaction,
   draftTeachingRecordingInTransaction,
   IsolationError,
   storedMessageBlocks,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { scheduleComputerSleep } from "../computers/computer-idle.js";
 import { releaseComputerControlLease } from "../computers/screens/computer-control.js";
 import { toComputerRef } from "../computers/screens/computer-support.js";

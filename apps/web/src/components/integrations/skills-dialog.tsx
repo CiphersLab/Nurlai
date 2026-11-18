@@ -1,7 +1,7 @@
 import { Plural, Trans, useLingui } from "@lingui/react/macro";
-import type { CapabilityInstall, PluginMarketplaceEntry } from "@rakazo/contracts";
-import { PluginPreviewSchema } from "@rakazo/contracts";
-import { installedPluginParts, matchesPluginQuery } from "@rakazo/core";
+import type { CapabilityInstall, PluginMarketplaceEntry } from "@nurlai/contracts";
+import { PluginPreviewSchema } from "@nurlai/contracts";
+import { installedPluginParts, matchesPluginQuery } from "@nurlai/core";
 import {
   Button,
   Dialog,
@@ -14,7 +14,7 @@ import {
   Input,
   SectionHeading,
   Spinner,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { ChevronLeft, LayoutTemplate, X } from "lucide-react";
 import { useState } from "react";

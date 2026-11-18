@@ -1,6 +1,6 @@
 import type { JsonObject, JsonValue } from "@earendil-works/pi-ai";
 import { validateToolArguments } from "@earendil-works/pi-ai/utils/validation";
-import type { ConnectorTool } from "@rakazo/adapter-kit";
+import type { ConnectorTool } from "@nurlai/adapter-kit";
 import { describe, expect, it, vi } from "vitest";
 import { parametersFor } from "../runtime/pi/tools/pi-runtime-tool-parameters.js";
 import { parseConnectorToolArgs } from "../tools/lazy-tool-catalog.js";
@@ -185,7 +185,7 @@ describe("GraphQL nullable inputs", () => {
         resolveHostname: async () => [{ address: "203.0.113.10", family: 4 as const }],
         fetch: vi.fn(async (_url: unknown, init?: RequestInit) => {
           const body = JSON.parse(String(init?.body));
-          if (body.operationName === "RakazoIntrospection") {
+          if (body.operationName === "NurlaiIntrospection") {
             return Response.json(
               document([
                 { name: "nickname", type: scalar("String") },

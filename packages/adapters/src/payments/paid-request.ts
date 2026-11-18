@@ -3,11 +3,11 @@ import type {
   AdapterContext,
   HttpPaymentAuthorization,
   PaymentWalletProvider,
-} from "@rakazo/adapter-kit";
-import { PaidRequestInput } from "@rakazo/contracts";
-import { stableJsonValue } from "@rakazo/core/node/approval-effect-key";
-import type { Purchase } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { PaidRequestInput } from "@nurlai/contracts";
+import { stableJsonValue } from "@nurlai/core/node/approval-effect-key";
+import type { Purchase } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { redactConnectorPayload } from "../integrations/connector-safety.js";
 import type { SecretCleanup } from "../secrets/secret-cleanup.js";
 import { cleanUpUnsavedSecret, purchaseRequestRecordId } from "../secrets/secret-cleanup.js";

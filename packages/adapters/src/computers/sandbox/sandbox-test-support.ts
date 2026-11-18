@@ -5,9 +5,9 @@ import type {
   SandboxProvider,
   UnreferencedMachine,
   UnreferencedMachineRecords,
-} from "@rakazo/adapter-kit";
-import { SandboxFileTooLargeError } from "@rakazo/adapter-kit";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { SandboxFileTooLargeError } from "@nurlai/adapter-kit";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { expect, vi } from "vitest";
 
 /** Deadline signals run on the runtime's own clock; this puts them on the faked one. */

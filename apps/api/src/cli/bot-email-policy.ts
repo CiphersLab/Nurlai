@@ -1,7 +1,7 @@
 // Operator-only: bot-email-policy.js status <email> | limit <email> <0..1000> | replies <email> on|off | allow|deny <email> <recipient>
-import { contentKeyProviderFromEnv, unwrapEnvFromKeyManager } from "@rakazo/adapters";
-import { BotEmailRecipientSchema } from "@rakazo/contracts";
-import { createDb, runAsSystem } from "@rakazo/db";
+import { contentKeyProviderFromEnv, unwrapEnvFromKeyManager } from "@nurlai/adapters";
+import { BotEmailRecipientSchema } from "@nurlai/contracts";
+import { createDb, runAsSystem } from "@nurlai/db";
 import { loadEnv } from "../env.js";
 
 const [action, address, value, ...extra] = process.argv.slice(2);

@@ -1,5 +1,5 @@
-import type { AgentRunModel } from "@rakazo/adapter-kit";
-import { MODEL_REQUEST_LIMIT_ERROR, normalizeRunError } from "@rakazo/core";
+import type { AgentRunModel } from "@nurlai/adapter-kit";
+import { MODEL_REQUEST_LIMIT_ERROR, normalizeRunError } from "@nurlai/core";
 import { withChatCompletionsCompatibility } from "../runtime/chat-completions-compat.js";
 import { resolveRuntimeModel } from "../runtime/pi/pi-runtime-models.js";
 import { reliableModelStream } from "../runtime/pi/stream/pi-runtime-stream.js";

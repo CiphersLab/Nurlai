@@ -1,12 +1,12 @@
-import type { PushTokenStore } from "@rakazo/adapters";
-import type { DirectoryAccountChange } from "@rakazo/auth";
-import type { PrismaClient, SpaceDeparture, ThreadEvents } from "@rakazo/db";
+import type { PushTokenStore } from "@nurlai/adapters";
+import type { DirectoryAccountChange } from "@nurlai/auth";
+import type { PrismaClient, SpaceDeparture, ThreadEvents } from "@nurlai/db";
 import {
   cancelDeactivatedAccountRuns,
   leaveInvitedSpaces,
   recordSecurityEvent,
   runAsSystem,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import type { DeviceStore } from "../auth/user-devices.js";
 import { revokeUserDevices } from "../auth/user-devices.js";
 

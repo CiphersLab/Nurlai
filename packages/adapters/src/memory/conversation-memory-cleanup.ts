@@ -1,7 +1,7 @@
-import type { AdapterContext, BackgroundJobPayloads, JobPublisher } from "@rakazo/adapter-kit";
-import { memoryPurgeHistoryJob } from "@rakazo/adapter-kit";
-import type { PrismaClient } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+import type { AdapterContext, BackgroundJobPayloads, JobPublisher } from "@nurlai/adapter-kit";
+import { memoryPurgeHistoryJob } from "@nurlai/adapter-kit";
+import type { PrismaClient } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import type { MemoryProviderResolver } from "./memory-provider-factory.js";
 
 /** Clear removes conversation-derived memory (summaries and learned turns) of the cleared chat's

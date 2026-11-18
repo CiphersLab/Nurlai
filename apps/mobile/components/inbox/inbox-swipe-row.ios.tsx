@@ -23,7 +23,7 @@ import {
   tint,
 } from "@expo/ui/swift-ui/modifiers";
 import { useLingui } from "@lingui/react/macro";
-import { SNOOZE_PRESETS, snoozePresetTime } from "@rakazo/core";
+import { SNOOZE_PRESETS, snoozePresetTime } from "@nurlai/core";
 import type { ReactElement } from "react";
 import { useContext, useState } from "react";
 import { PlatformColor, useWindowDimensions, View } from "react-native";

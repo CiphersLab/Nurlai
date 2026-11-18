@@ -33,7 +33,7 @@ const rolloutSteps = (revision: string) => [
   `${RESTART_POLICIES} api-old`,
   // Only this container gets the database owner login; the old API keeps serving meanwhile.
   `${COMPOSE} config --services`,
-  `${COMPOSE} run --rm -T -e RAKAZO_DEPLOYED_MIGRATIONS= migrate`,
+  `${COMPOSE} run --rm -T -e NURLAI_DEPLOYED_MIGRATIONS= migrate`,
   // The old API stops taking requests and lets its chat turns end instead of being stopped.
   `${COMPOSE} ps --all --quiet api`,
   `${RESTART_POLICIES} api-old`,
@@ -108,7 +108,7 @@ function rollout(commands: string[]) {
     .filter(
       (line) =>
         / (config|build|up|ps) /.test(`${line} `) ||
-        line.includes(" run --rm -T -e RAKAZO_DEPLOYED_MIGRATIONS=") ||
+        line.includes(" run --rm -T -e NURLAI_DEPLOYED_MIGRATIONS=") ||
         /^docker (inspect|stop|rm|update|kill|wait) /.test(line),
     );
 }
@@ -123,7 +123,7 @@ function fixture() {
   git(upstream, "init", "-q", "-b", "main");
   const first = commit(upstream, "first");
   git(root, "clone", "-q", upstream, checkout);
-  write(path.join(checkout, ".env"), "RAKAZO_HOST=app.example.test\n");
+  write(path.join(checkout, ".env"), "NURLAI_HOST=app.example.test\n");
   const log = path.join(root, "commands.log");
   // Record every privileged or network command instead of running it.
   write(path.join(bin, "sudo"), '#!/bin/bash\nexec "$@"\n', 0o755);
@@ -159,7 +159,7 @@ elif [[ "$*" == *" config --services" ]]; then
   echo web
   [[ "$revision" == "\${NO_MIGRATE_REVISION:-}" ]] || echo migrate
 fi
-if [[ "$*" == *" run --rm -T -e RAKAZO_DEPLOYED_MIGRATIONS="* && ( -n "\${FAIL_MIGRATE:-}" || "$revision" == "\${NO_MIGRATE_REVISION:-}" ) ]]; then exit 1; fi
+if [[ "$*" == *" run --rm -T -e NURLAI_DEPLOYED_MIGRATIONS="* && ( -n "\${FAIL_MIGRATE:-}" || "$revision" == "\${NO_MIGRATE_REVISION:-}" ) ]]; then exit 1; fi
 if [[ "$1" == pull && -n "\${FAIL_PULL:-}" ]]; then exit 1; fi
 if [[ "$*" == *" images -q" ]]; then echo sha256:running; fi
 if [[ "$1" == tag && -n "\${FAIL_TAG:-}" ]]; then exit 1; fi
@@ -232,8 +232,8 @@ echo "/dev/fake 104857600 0 \${FREE_KB:-52428800} 0% /"
     PATH: [bin, "/usr/bin", "/bin"].join(path.delimiter),
     HOME: root,
     COMMAND_LOG: log,
-    RAKAZO_DEPLOY_DIR: checkout,
-    RAKAZO_DEPLOY_HEALTH_INTERVAL: "0",
+    NURLAI_DEPLOY_DIR: checkout,
+    NURLAI_DEPLOY_HEALTH_INTERVAL: "0",
   };
   return {
     upstream,
@@ -296,7 +296,7 @@ describe("production deploy script", () => {
     const deploy = fixture();
     const pinned = commit(deploy.upstream, "pinned");
     commit(deploy.upstream, "later");
-    const result = deploy.run({ RAKAZO_DEPLOY_REVISION: pinned });
+    const result = deploy.run({ NURLAI_DEPLOY_REVISION: pinned });
     expect(result.status).toBe(0);
     expect(deploy.head()).toBe(pinned);
     expect(deploy.deployed()).toBe(pinned);
@@ -306,7 +306,7 @@ describe("production deploy script", () => {
   it("builds, starts, records, and prunes after a healthy rollout", () => {
     const deploy = fixture();
     const next = commit(deploy.upstream, "next");
-    const result = deploy.run({ RAKAZO_DEPLOY_BUILD_CACHE_GB: "3" });
+    const result = deploy.run({ NURLAI_DEPLOY_BUILD_CACHE_GB: "3" });
     expect(result.status).toBe(0);
     expect(deploy.head()).toBe(next);
     expect(deploy.deployed()).toBe(next);
@@ -331,19 +331,19 @@ describe("production deploy script", () => {
     commit(deploy.upstream, "next");
     expect(deploy.run({ MIGRATE_LISTED_FIRST: "1" }).status).toBe(0);
     expect(rollout(deploy.commands())).toContain(
-      `${COMPOSE} run --rm -T -e RAKAZO_DEPLOYED_MIGRATIONS= migrate`,
+      `${COMPOSE} run --rm -T -e NURLAI_DEPLOYED_MIGRATIONS= migrate`,
     );
   });
 
   it("refuses malformed size settings before deploying", () => {
     const deploy = fixture();
     commit(deploy.upstream, "next");
-    const cache = deploy.run({ RAKAZO_DEPLOY_BUILD_CACHE_GB: "8GB" });
+    const cache = deploy.run({ NURLAI_DEPLOY_BUILD_CACHE_GB: "8GB" });
     expect(cache.status).toBe(1);
-    expect(cache.stderr).toContain("RAKAZO_DEPLOY_BUILD_CACHE_GB must be a whole number");
-    const threshold = deploy.run({ RAKAZO_DEPLOY_MIN_FREE_GB: "08" });
+    expect(cache.stderr).toContain("NURLAI_DEPLOY_BUILD_CACHE_GB must be a whole number");
+    const threshold = deploy.run({ NURLAI_DEPLOY_MIN_FREE_GB: "08" });
     expect(threshold.status).toBe(1);
-    expect(threshold.stderr).toContain("RAKAZO_DEPLOY_MIN_FREE_GB must be a whole number");
+    expect(threshold.stderr).toContain("NURLAI_DEPLOY_MIN_FREE_GB must be a whole number");
     expect(deploy.commands()).toEqual([]);
     expect(deploy.head()).toBe(deploy.first);
   });
@@ -360,7 +360,7 @@ describe("production deploy script", () => {
   it("refuses to build with too little free disk", () => {
     const deploy = fixture();
     commit(deploy.upstream, "next");
-    const result = deploy.run({ FREE_KB: String(2 * 1024 * 1024), RAKAZO_DEPLOY_MIN_FREE_GB: "5" });
+    const result = deploy.run({ FREE_KB: String(2 * 1024 * 1024), NURLAI_DEPLOY_MIN_FREE_GB: "5" });
     expect(result.status).toBe(1);
     expect(result.stderr).toContain("Only 2GB free");
     expect(deploy.head()).toBe(deploy.first);
@@ -427,7 +427,7 @@ describe("production deploy script", () => {
     it("pulls the image published for the commit instead of building", () => {
       const deploy = fixture();
       const next = commit(deploy.upstream, "next");
-      const result = deploy.run({ RAKAZO_DEPLOY_IMAGE: REGISTRY });
+      const result = deploy.run({ NURLAI_DEPLOY_IMAGE: REGISTRY });
       expect(result.status).toBe(0);
       expect(deploy.deployed()).toBe(next);
       const commands = commandsOf(deploy);
@@ -455,7 +455,7 @@ describe("production deploy script", () => {
     it("uses the GHCR image of the GitHub repository the checkout tracks by default", () => {
       const deploy = fixture();
       const next = commit(deploy.upstream, "next");
-      const github = "https://github.com/Example/Rakazo.git";
+      const github = "https://github.com/Example/Nurlai.git";
       git(deploy.checkout, "remote", "set-url", "origin", github);
       // The deploy runs with HOME set to the fixture root, so fetches still reach the local upstream.
       write(
@@ -471,7 +471,7 @@ describe("production deploy script", () => {
     it("builds on the host, loudly, when the image cannot be pulled", () => {
       const deploy = fixture();
       const next = commit(deploy.upstream, "next");
-      const result = deploy.run({ RAKAZO_DEPLOY_IMAGE: REGISTRY, FAIL_PULL: "1" });
+      const result = deploy.run({ NURLAI_DEPLOY_IMAGE: REGISTRY, FAIL_PULL: "1" });
       expect(result.status).toBe(0);
       expect(result.stderr).toContain(`::warning::Could not pull ${published(next)}`);
       expect(deploy.deployed()).toBe(next);
@@ -483,7 +483,7 @@ describe("production deploy script", () => {
     it("rolls back by retagging the previous image when production never becomes healthy", () => {
       const deploy = fixture();
       commit(deploy.upstream, "unhealthy");
-      const result = deploy.run({ RAKAZO_DEPLOY_IMAGE: REGISTRY, FAIL_HEALTH: "1" });
+      const result = deploy.run({ NURLAI_DEPLOY_IMAGE: REGISTRY, FAIL_HEALTH: "1" });
       expect(result.status).toBe(1);
       expect(result.stderr).toContain("did not recover");
       expect(deploy.head()).toBe(deploy.first);
@@ -496,7 +496,7 @@ describe("production deploy script", () => {
       const deploy = fixture();
       const next = commit(deploy.upstream, "unhealthy");
       const result = deploy.run({
-        RAKAZO_DEPLOY_IMAGE: REGISTRY,
+        NURLAI_DEPLOY_IMAGE: REGISTRY,
         FAIL_HEALTH: "1",
         PREVIOUS_IMAGE: "",
       });
@@ -519,7 +519,7 @@ describe("production deploy script", () => {
     expect(commands).toContain(`${COMPOSE} up -d --no-deps --wait web`);
     expect(commands).toContain(`${COMPOSE} up -d --no-deps --wait worker`);
     expect(
-      commands.filter((line) => line.includes(" run --rm -T -e RAKAZO_DEPLOYED_MIGRATIONS=")),
+      commands.filter((line) => line.includes(" run --rm -T -e NURLAI_DEPLOYED_MIGRATIONS=")),
     ).toHaveLength(1);
     expect(commands.some((line) => line.includes("--scale"))).toBe(false);
   });
@@ -548,22 +548,22 @@ describe("production deploy script", () => {
     // Both the failed rollout and its rollback retain the last healthy release's eligibility.
     expect(migrationCommands()).toHaveLength(2);
     for (const line of migrationCommands()) {
-      expect(line).toContain("RAKAZO_DEPLOYED_MIGRATIONS=001_add migrate");
+      expect(line).toContain("NURLAI_DEPLOYED_MIGRATIONS=001_add migrate");
     }
     start = deploy.commands().length;
     expect(deploy.run({ FAIL_HEALTH: "1" }).status).toBe(1);
     for (const line of migrationCommands()) {
-      expect(line).toContain("RAKAZO_DEPLOYED_MIGRATIONS=001_add migrate");
+      expect(line).toContain("NURLAI_DEPLOYED_MIGRATIONS=001_add migrate");
     }
     commit(deploy.upstream, "release-c");
     start = deploy.commands().length;
     expect(deploy.run().status).toBe(0);
-    expect(migrationCommands()[0]).toContain("RAKAZO_DEPLOYED_MIGRATIONS=001_add migrate");
+    expect(migrationCommands()[0]).toContain("NURLAI_DEPLOYED_MIGRATIONS=001_add migrate");
 
     commit(deploy.upstream, "release-d");
     start = deploy.commands().length;
     expect(deploy.run().status).toBe(0);
-    expect(migrationCommands()[0]).toContain("RAKAZO_DEPLOYED_MIGRATIONS=001_add,002_drop migrate");
+    expect(migrationCommands()[0]).toContain("NURLAI_DEPLOYED_MIGRATIONS=001_add,002_drop migrate");
   });
 
   it("starts no new container and keeps the old one serving when migrations fail", () => {
@@ -571,7 +571,7 @@ describe("production deploy script", () => {
     commit(deploy.upstream, "next");
     expect(deploy.run({ FAIL_MIGRATE: "1" }).status).toBe(1);
     const commands = rollout(deploy.commands());
-    expect(commands).toContain(`${COMPOSE} run --rm -T -e RAKAZO_DEPLOYED_MIGRATIONS= migrate`);
+    expect(commands).toContain(`${COMPOSE} run --rm -T -e NURLAI_DEPLOYED_MIGRATIONS= migrate`);
     expect(commands.some((line) => line.includes(" up "))).toBe(false);
     expect(commands.some((line) => line.startsWith("docker stop"))).toBe(false);
     expect(deploy.head()).toBe(deploy.first);
@@ -585,7 +585,7 @@ describe("production deploy script", () => {
     expect(deploy.head()).toBe(deploy.first);
     const commands = rollout(deploy.commands());
     expect(
-      commands.filter((line) => line.includes(" run --rm -T -e RAKAZO_DEPLOYED_MIGRATIONS=")),
+      commands.filter((line) => line.includes(" run --rm -T -e NURLAI_DEPLOYED_MIGRATIONS=")),
     ).toHaveLength(1);
     expect(commands).toContain(`${COMPOSE} up -d --wait postgres`);
     // The rollback still replaces the failed release's containers.
@@ -617,7 +617,7 @@ describe("production deploy script", () => {
     expect(deploy.run({ EXTRA_WORKER: "running" }).status).toBe(0);
     const commands = rollout(deploy.commands());
     const migrate = commands.indexOf(
-      `${COMPOSE} run --rm -T -e RAKAZO_DEPLOYED_MIGRATIONS= migrate`,
+      `${COMPOSE} run --rm -T -e NURLAI_DEPLOYED_MIGRATIONS= migrate`,
     );
     expect(commands.slice(migrate - 6, migrate)).toEqual([
       `${RESTART_POLICIES} worker-old worker-older`,
@@ -661,7 +661,7 @@ describe("production deploy script", () => {
     expect(deploy.run({ EXTRA_API: "running" }).status).toBe(0);
     const commands = rollout(deploy.commands());
     const migrate = commands.indexOf(
-      `${COMPOSE} run --rm -T -e RAKAZO_DEPLOYED_MIGRATIONS= migrate`,
+      `${COMPOSE} run --rm -T -e NURLAI_DEPLOYED_MIGRATIONS= migrate`,
     );
     expect(commands.slice(migrate - 5, migrate)).toEqual([
       `${RESTART_POLICIES} api-old api-older`,
@@ -716,7 +716,7 @@ describe("production deploy script", () => {
     const deploy = fixture();
     write(
       path.join(deploy.checkout, ".env"),
-      "RAKAZO_HOST=app.example.test\nRAKAZO_API_REPLICAS=2\nRAKAZO_WORKER_REPLICAS=3\n",
+      "NURLAI_HOST=app.example.test\nNURLAI_API_REPLICAS=2\nNURLAI_WORKER_REPLICAS=3\n",
     );
     commit(deploy.upstream, "next");
     expect(deploy.run().status).toBe(0);
@@ -747,7 +747,7 @@ describe("production deploy script", () => {
     const deploy = fixture();
     write(
       path.join(deploy.checkout, ".env"),
-      "RAKAZO_HOST=app.example.test\nRAKAZO_API_REPLICAS=0\n",
+      "NURLAI_HOST=app.example.test\nNURLAI_API_REPLICAS=0\n",
     );
     commit(deploy.upstream, "next");
     const result = deploy.run();
@@ -814,7 +814,7 @@ describe("production deploy launcher", () => {
     git(upstream, "add", script);
     commit(upstream, "first");
     git(root, "clone", "-q", upstream, checkout);
-    write(path.join(upstream, script), 'echo "deploy $RAKAZO_DEPLOY_REVISION $0 $*"\n');
+    write(path.join(upstream, script), 'echo "deploy $NURLAI_DEPLOY_REVISION $0 $*"\n');
     git(upstream, "add", script);
     tested = commit(upstream, "tested");
     later = commit(upstream, "merged after the green run");
@@ -828,7 +828,7 @@ describe("production deploy launcher", () => {
       env: {
         PATH: process.env.PATH,
         HOME: root,
-        RAKAZO_DEPLOY_DIR: checkout,
+        NURLAI_DEPLOY_DIR: checkout,
         ...(command === undefined ? {} : { SSH_ORIGINAL_COMMAND: command }),
       },
       encoding: "utf8",
@@ -874,7 +874,7 @@ describe("production deploy launcher", () => {
 
   it("refuses a relative checkout path", () => {
     const result = spawnSync("/bin/bash", [launcher], {
-      env: { PATH: process.env.PATH, RAKAZO_DEPLOY_DIR: "relative" },
+      env: { PATH: process.env.PATH, NURLAI_DEPLOY_DIR: "relative" },
       encoding: "utf8",
     });
     expect(result.status).toBe(1);

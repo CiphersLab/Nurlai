@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
-import { isModelRequiredSendError } from "@rakazo/core";
-import { typeScale } from "@rakazo/ui-tokens";
+import { isModelRequiredSendError } from "@nurlai/core";
+import { typeScale } from "@nurlai/ui-tokens";
 import { Alert, Image, Platform, Pressable, Text, View } from "react-native";
 import type { UserBubble } from "../../lib/messages/user-bubble";
 import { withUserBubble } from "../../lib/messages/user-bubble";

@@ -1,4 +1,4 @@
-import type { BackgroundJob, JobPublisher } from "@rakazo/adapter-kit";
+import type { BackgroundJob, JobPublisher } from "@nurlai/adapter-kit";
 import { describe, expect, it, vi } from "vitest";
 import { deferFutureRoutine } from "../runs/assembly/run-routines.js";
 import { createRunExecutor } from "../runs/executor/executor.js";

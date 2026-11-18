@@ -1,11 +1,11 @@
-import { BOT_COLORS } from "@rakazo/contracts";
+import { BOT_COLORS } from "@nurlai/contracts";
 import {
   newClientId,
   ORGANIC_AVATAR_HEART_FAMILY,
   organicAvatarFamily,
   organicAvatarLook,
   seededLogoAvatarColor,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import type { PrismaClient } from "../database/client.js";
 import { createDb } from "../database/client.js";

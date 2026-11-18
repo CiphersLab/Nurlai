@@ -1,8 +1,8 @@
 import { useLingui } from "@lingui/react/macro";
-import type { PlanLimitWindow } from "@rakazo/contracts";
-import { modelCreditsUsd, planUsagePercent } from "@rakazo/contracts";
-import { formatTimeUntil } from "@rakazo/core";
-import { Progress } from "@rakazo/ui-web";
+import type { PlanLimitWindow } from "@nurlai/contracts";
+import { modelCreditsUsd, planUsagePercent } from "@nurlai/contracts";
+import { formatTimeUntil } from "@nurlai/core";
+import { Progress } from "@nurlai/ui-web";
 import { useQuery } from "@tanstack/react-query";
 import { useSpaceQueries } from "../../lib/query/query";
 import { useBilling } from "./SubscriptionGate";

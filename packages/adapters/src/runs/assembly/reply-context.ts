@@ -1,15 +1,15 @@
-import type { MessageBlock, ToolHistory } from "@rakazo/contracts";
-import { ToolHistorySchema, truncateReplyQuote } from "@rakazo/contracts";
-import type { AgentHistorySegment } from "@rakazo/core";
+import type { MessageBlock, ToolHistory } from "@nurlai/contracts";
+import { ToolHistorySchema, truncateReplyQuote } from "@nurlai/contracts";
+import type { AgentHistorySegment } from "@nurlai/core";
 import {
   blocksToAgentHistorySegments,
   blocksToAgentHistoryText,
   messageReaction,
   withToolHistory,
-} from "@rakazo/core";
-import { isPageCardMessage } from "@rakazo/core/message-quote";
-import type { PrismaClient } from "@rakazo/db";
-import { storedMessageBlocks } from "@rakazo/db";
+} from "@nurlai/core";
+import { isPageCardMessage } from "@nurlai/core/message-quote";
+import type { PrismaClient } from "@nurlai/db";
+import { storedMessageBlocks } from "@nurlai/db";
 import { replyTargetNote } from "../../runtime/context/history-replay.prompt.js";
 
 type QuotedMessage = {

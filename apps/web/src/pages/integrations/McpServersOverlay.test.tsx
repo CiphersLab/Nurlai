@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 
-import type { McpServer } from "@rakazo/contracts";
-import { MCP_OAUTH_CLIENT_REQUIRED } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
+import type { McpServer } from "@nurlai/contracts";
+import { MCP_OAUTH_CLIENT_REQUIRED } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { ReactElement, ReactNode } from "react";
 import { act } from "react";
@@ -50,7 +50,7 @@ vi.mock("@lingui/react/macro", () => ({
       parts.reduce((text, part, i) => text + (i ? String(values[i - 1]) : "") + part, ""),
   }),
 }));
-vi.mock("@rakazo/ui-web", async () => {
+vi.mock("@nurlai/ui-web", async () => {
   const { cloneElement, createElement } = await import("react");
   const container = ({ children }: { children: ReactNode }) => createElement("div", null, children);
   return Object.fromEntries([
@@ -212,10 +212,10 @@ function oauthServer(id: string) {
 
 it("disconnecting also empties the server's own sign-in browser", async () => {
   const clear = vi.fn().mockResolvedValue(undefined);
-  window.rakazoDesktop = {
+  window.nurlaiDesktop = {
     platform: "darwin",
     mcpBrowser: { clear, onOAuthCallback: () => () => {} },
-  } as unknown as NonNullable<Window["rakazoDesktop"]>;
+  } as unknown as NonNullable<Window["nurlaiDesktop"]>;
   mocks.list.mockReset().mockResolvedValue([oauthServer("Mobbin")]);
   api.mcp.oauth.disconnect.mockReset().mockResolvedValue({ ok: true });
   const host = document.createElement("div");
@@ -231,7 +231,7 @@ it("disconnecting also empties the server's own sign-in browser", async () => {
     expect(api.mcp.oauth.disconnect).toHaveBeenCalledWith({ serverId: "Mobbin" });
   } finally {
     await act(async () => root.unmount());
-    delete window.rakazoDesktop;
+    delete window.nurlaiDesktop;
   }
 });
 
@@ -753,7 +753,7 @@ it("links callback mismatches in MCP settings to the shared recovery guide", asy
     await vi.waitFor(() => expect(connectButton()).toBeDefined());
     await act(async () => connectButton()?.click());
     expect(host.querySelector('[role="alert"] a')?.getAttribute("href")).toBe(
-      "https://rakazo.com/docs/troubleshooting/#mcp-oauth-redirect-mismatch",
+      "https://nurlai.cipherslab.com/docs/troubleshooting/#mcp-oauth-redirect-mismatch",
     );
     expect(connectButton()?.disabled).toBe(false);
   } finally {

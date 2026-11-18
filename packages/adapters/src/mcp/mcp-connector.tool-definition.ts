@@ -1,5 +1,5 @@
-import type { ConnectorTool } from "@rakazo/adapter-kit";
-import type { McpServer } from "@rakazo/db";
+import type { ConnectorTool } from "@nurlai/adapter-kit";
+import type { McpServer } from "@nurlai/db";
 
 /** Route name of the stand-in tool for an assigned server whose discovery failed. */
 export const UNAVAILABLE_TOOL = "__rakazo_unavailable";

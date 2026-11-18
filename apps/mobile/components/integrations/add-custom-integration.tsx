@@ -1,7 +1,7 @@
 import { MenuView } from "@expo/ui/community/menu";
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import type { McpSourcePreset } from "@rakazo/contracts";
+import type { McpSourcePreset } from "@nurlai/contracts";
 import { Text, TextInput, View } from "react-native";
 import { native, useResolvedAppearance, useThemedStyles } from "../../lib/native/native";
 import { iosAtLeast } from "../../lib/native/native-controls";

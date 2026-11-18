@@ -10,9 +10,9 @@ import {
 } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import type { ComputerRef, ProcessEvent } from "@rakazo/adapter-kit";
-import { SandboxFileTooLargeError } from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
+import type { ComputerRef, ProcessEvent } from "@nurlai/adapter-kit";
+import { SandboxFileTooLargeError } from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { win32NtRelativeAvailable } from "../../providers/computer/desktop/desktop-sandbox-win32-path.js";
 import { LocalAgentHomeStore } from "../../storage/home.js";
@@ -152,11 +152,11 @@ describe("native host computer transport", () => {
           argv: [
             process.execPath,
             "-e",
-            "console.log(process.argv[1]); console.error(process.env.RAKAZO_TEST_REMOVED ?? 'unset')",
+            "console.log(process.argv[1]); console.error(process.env.NURLAI_TEST_REMOVED ?? 'unset')",
             payload,
           ],
-          env: { ...nodeEnv, RAKAZO_TEST_REMOVED: "remove" },
-          unsetEnv: ["RAKAZO_TEST_REMOVED"],
+          env: { ...nodeEnv, NURLAI_TEST_REMOVED: "remove" },
+          unsetEnv: ["NURLAI_TEST_REMOVED"],
         },
         context,
       ),

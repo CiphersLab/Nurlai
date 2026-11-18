@@ -1,7 +1,7 @@
 import { i18n } from "@lingui/core";
 import { t } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { Bot, BotSection, Group, Me, Space, ThreadSnapshot } from "@rakazo/contracts";
+import type { Bot, BotSection, Group, Me, Space, ThreadSnapshot } from "@nurlai/contracts";
 import {
   BotAvatar,
   Button,
@@ -16,7 +16,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import {
   ChevronDown,
   CircleAlert,

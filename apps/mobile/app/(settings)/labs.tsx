@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
-import type { LabFeature } from "@rakazo/contracts";
-import { withLab } from "@rakazo/contracts";
+import type { LabFeature } from "@nurlai/contracts";
+import { withLab } from "@nurlai/contracts";
 import { Alert, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {

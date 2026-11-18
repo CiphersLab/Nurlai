@@ -1,4 +1,4 @@
-// Relative source path: Vercel functions cannot resolve the TypeScript exports of @rakazo/core.
+// Relative source path: Vercel functions cannot resolve the TypeScript exports of @nurlai/core.
 import { readBoundedJsonResponse } from "../../../packages/core/src/primitives/http-response.js";
 import { GITHUB_API_REPO } from "./site";
 
@@ -104,7 +104,7 @@ async function fetchGithubJson<T>(
   maxBytes: number,
   fetchImpl: typeof fetch,
 ): Promise<T | null> {
-  if (process.env.RAKAZO_GITHUB_API === "offline") return null;
+  if (process.env.NURLAI_GITHUB_API === "offline") return null;
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), GITHUB_STARS_TIMEOUT_MS);
   try {

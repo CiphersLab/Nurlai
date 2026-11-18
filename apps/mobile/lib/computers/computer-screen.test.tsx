@@ -1,9 +1,9 @@
 // @vitest-environment jsdom
 
-import type { ComputerStatus } from "@rakazo/contracts";
-import { COMPUTER_ALLOWANCE_USED_ERROR } from "@rakazo/contracts";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import type { ComputerStatus } from "@nurlai/contracts";
+import { COMPUTER_ALLOWANCE_USED_ERROR } from "@nurlai/contracts";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import type { ReactNode } from "react";
 import { act, createElement, Fragment, useEffect } from "react";
 import type { Root } from "react-dom/client";
@@ -387,7 +387,7 @@ describe("computer screen", () => {
     await act(async () => {
       screens.onLoadStart?.({ nativeEvent: { url: screen } });
       screens.onMessage?.({
-        nativeEvent: { url: "null", data: '{"rakazoScreen":"connected"}' },
+        nativeEvent: { url: "null", data: '{"nurlaiScreen":"connected"}' },
       });
     });
     await act(async () => vi.advanceTimersByTimeAsync(16_000));
@@ -404,7 +404,7 @@ describe("computer screen", () => {
     await act(async () => {
       screens.onLoadStart?.({ nativeEvent: { url: "https://elsewhere.example.test/" } });
       screens.onMessage?.({
-        nativeEvent: { url: "null", data: '{"rakazoScreen":"connected"}' },
+        nativeEvent: { url: "null", data: '{"nurlaiScreen":"connected"}' },
       });
     });
     await act(async () => vi.advanceTimersByTimeAsync(16_000));
@@ -425,7 +425,7 @@ describe("computer screen", () => {
     const view = await render();
     act(() =>
       screens.onMessage?.({
-        nativeEvent: { data: JSON.stringify({ rakazoScreen: "connected" }), url: screens.source },
+        nativeEvent: { data: JSON.stringify({ nurlaiScreen: "connected" }), url: screens.source },
       }),
     );
     token = "second";
@@ -465,7 +465,7 @@ describe("computer screen", () => {
       );
     expect(view.textContent).not.toContain("Could not connect to the computer screen");
     expect(screens.onMessage).toBeTypeOf("function");
-    report({ rakazoScreen: "failed" });
+    report({ nurlaiScreen: "failed" });
     expect(view.textContent).toContain("Could not connect to the computer screen");
     const mounted = screens.mounts;
     const retry = Array.from(view.querySelectorAll("button")).find(
@@ -475,20 +475,20 @@ describe("computer screen", () => {
     await act(async () => retry?.click());
     await settle();
     expect(screens.mounts).toBeGreaterThan(mounted);
-    report({ rakazoScreen: "connected" });
+    report({ nurlaiScreen: "connected" });
     expect(view.textContent).not.toContain("Could not connect to the computer screen");
     // A drop reconnects by itself. A dying page's further terminal reports are more words for
     // the same drop: they don't spend tries. Only loads that come back without connecting do.
     const load = () => act(() => screens.onLoadStart?.());
-    report({ rakazoScreen: "disconnected" });
+    report({ nurlaiScreen: "disconnected" });
     expect(view.textContent).not.toContain("The screen connection closed.");
-    report({ rakazoScreen: "failed" });
+    report({ nurlaiScreen: "failed" });
     expect(view.textContent).not.toContain("Could not connect to the computer screen");
-    report({ rakazoScreen: "failed" });
+    report({ nurlaiScreen: "failed" });
     expect(view.textContent).not.toContain("Could not connect to the computer screen");
     for (let reload = 0; reload < 3; reload += 1) {
       await load();
-      report({ rakazoScreen: "failed" });
+      report({ nurlaiScreen: "failed" });
       if (reload < 2) {
         expect(view.textContent).not.toContain("Could not connect to the computer screen");
       }
@@ -503,8 +503,8 @@ describe("computer screen", () => {
     await act(async () => retryAgain?.click());
     await settle();
     await load();
-    report({ rakazoScreen: "connected" });
-    report({ rakazoScreen: "disconnected" });
+    report({ nurlaiScreen: "connected" });
+    report({ nurlaiScreen: "disconnected" });
     expect(view.textContent).not.toContain("The screen connection closed.");
     vi.useRealTimers();
   });
@@ -526,11 +526,11 @@ describe("computer screen", () => {
     const load = () => act(() => screens.onLoadStart?.());
     // Exhaust this bot's screen: flash connections and failed reloads reach the error.
     await load();
-    await report({ rakazoScreen: "connected" });
-    await report({ rakazoScreen: "disconnected" });
+    await report({ nurlaiScreen: "connected" });
+    await report({ nurlaiScreen: "disconnected" });
     for (let reload = 0; reload < 3; reload += 1) {
       await load();
-      await report({ rakazoScreen: "failed" });
+      await report({ nurlaiScreen: "failed" });
     }
     expect(view.textContent).toContain("Could not connect to the computer screen");
     // Another bot's screen starts with its own budget: its first flash connection
@@ -541,8 +541,8 @@ describe("computer screen", () => {
     });
     await settle();
     await load();
-    await report({ rakazoScreen: "connected" });
-    await report({ rakazoScreen: "disconnected" });
+    await report({ nurlaiScreen: "connected" });
+    await report({ nurlaiScreen: "disconnected" });
     expect(view.textContent).not.toContain("The screen connection closed.");
     vi.useRealTimers();
   });
@@ -954,9 +954,9 @@ describe("computer screen", () => {
       vi.stubGlobal("fetch", fetchStub);
       await openScreen();
       await load();
-      await post('{"rakazoScreen":"connected"}');
+      await post('{"nurlaiScreen":"connected"}');
       const opened = screens.mounts;
-      await post('{"rakazoScreen":"disconnected"}');
+      await post('{"nurlaiScreen":"disconnected"}');
       expect(screens.mounts).toBe(opened);
       await wait(1100);
       await settle();
@@ -968,8 +968,8 @@ describe("computer screen", () => {
       // A second drop of a connection that only flashed up reconnects too, waiting twice
       // as long this time.
       await load();
-      await post('{"rakazoScreen":"connected"}');
-      await post('{"rakazoScreen":"disconnected"}');
+      await post('{"nurlaiScreen":"connected"}');
+      await post('{"nurlaiScreen":"disconnected"}');
       await wait(1100);
       await settle();
       expect(screens.mounts).toBe(opened + 1);
@@ -983,7 +983,7 @@ describe("computer screen", () => {
       vi.stubGlobal("fetch", fetchStub);
       await openScreen();
       await load();
-      await post('{"rakazoScreen":"connected"}');
+      await post('{"nurlaiScreen":"connected"}');
       const opened = screens.mounts;
       // The reconnect's refresh answers slowly; the dying page reports the same drop again
       // while that one reload is still loading.
@@ -1001,11 +1001,11 @@ describe("computer screen", () => {
       hangNext = (resolve) => {
         release = resolve;
       };
-      await post('{"rakazoScreen":"disconnected"}');
+      await post('{"nurlaiScreen":"disconnected"}');
       await wait(1100);
       await settle();
       expect(screens.mounts).toBe(opened);
-      await post('{"rakazoScreen":"failed"}');
+      await post('{"nurlaiScreen":"failed"}');
       await act(async () => release?.());
       await settle();
       expect(screens.mounts).toBe(opened + 1);
@@ -1021,9 +1021,9 @@ describe("computer screen", () => {
       vi.stubGlobal("fetch", fetchStub);
       await openScreen();
       await load();
-      await post('{"rakazoScreen":"connected"}');
+      await post('{"nurlaiScreen":"connected"}');
       const opened = screens.mounts;
-      await post('{"rakazoScreen":"disconnected"}');
+      await post('{"nurlaiScreen":"disconnected"}');
       await wait(2200);
       await settle();
       // Still waiting: two unavailable answers, no reload yet.
@@ -1039,8 +1039,8 @@ describe("computer screen", () => {
       vi.stubGlobal("fetch", fetchStub);
       const view = await openScreen();
       await load();
-      await post('{"rakazoScreen":"connected"}');
-      await post('{"rakazoScreen":"disconnected"}');
+      await post('{"nurlaiScreen":"connected"}');
+      await post('{"nurlaiScreen":"disconnected"}');
       await wait(1100);
       await settle();
       const asked = fetchStub.mock.calls.length;
@@ -1061,9 +1061,9 @@ describe("computer screen", () => {
         vi.stubGlobal("fetch", fetchStub);
         await openScreen("http://192.168.1.10:5173/novnc/session/control/1.t/vnc.html");
         await load();
-        await post('{"rakazoScreen":"connected"}');
+        await post('{"nurlaiScreen":"connected"}');
         const opened = screens.mounts;
-        await post('{"rakazoScreen":"disconnected"}');
+        await post('{"nurlaiScreen":"disconnected"}');
         await wait(1100);
         await settle();
         expect(String((fetchStub.mock.calls[0] as unknown[])[0])).toBe(
@@ -1080,9 +1080,9 @@ describe("computer screen", () => {
       vi.stubGlobal("fetch", fetchStub);
       await openScreen("https://screen.example.test/embed");
       await load();
-      await post('{"rakazoScreen":"connected"}');
+      await post('{"nurlaiScreen":"connected"}');
       const opened = screens.mounts;
-      await post('{"rakazoScreen":"disconnected"}');
+      await post('{"nurlaiScreen":"disconnected"}');
       await wait(1100);
       await settle();
       expect(screens.mounts).toBe(opened + 1);
@@ -1097,9 +1097,9 @@ describe("computer screen", () => {
       await openScreen();
       await load();
       const opened = screens.mounts;
-      await post('{"rakazoScreen":"connected"}', "https://elsewhere.example.test/page");
-      await post('{"rakazoScreen":"disconnected"}', "https://elsewhere.example.test/page");
-      await post('{"rakazoScreen":"connected"}', undefined as unknown as string);
+      await post('{"nurlaiScreen":"connected"}', "https://elsewhere.example.test/page");
+      await post('{"nurlaiScreen":"disconnected"}', "https://elsewhere.example.test/page");
+      await post('{"nurlaiScreen":"connected"}', undefined as unknown as string);
       await wait(1100);
       await settle();
       expect(screens.mounts).toBe(opened);
@@ -1109,10 +1109,10 @@ describe("computer screen", () => {
       await openScreen();
       await load();
       const opened = screens.mounts;
-      await post('{"rakazoScreen":"disconnected"}');
-      await post('{"rakazoScreen":"connected","detail":"x"}');
-      await post('{"rakazoScreen":"disconnected"}');
-      await post('{"rakazoScreen":"reconnect"}');
+      await post('{"nurlaiScreen":"disconnected"}');
+      await post('{"nurlaiScreen":"connected","detail":"x"}');
+      await post('{"nurlaiScreen":"disconnected"}');
+      await post('{"nurlaiScreen":"reconnect"}');
       await post("not json");
       await wait(1100);
       await settle();

@@ -1,5 +1,5 @@
 import { t } from "@lingui/core/macro";
-import { commandVariableName } from "@rakazo/contracts";
+import { commandVariableName } from "@nurlai/contracts";
 
 /** The host a site card shows, or the origin when it does not parse. */
 export function siteHost(origin: string): string {

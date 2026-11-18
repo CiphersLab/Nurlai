@@ -1,4 +1,4 @@
-import type { DesktopEnvironment } from "@rakazo/core/node/desktop-runtime";
+import type { DesktopEnvironment } from "@nurlai/core/node/desktop-runtime";
 import {
   ensureScreenCommand as coreEnsureScreenCommand,
   interactiveScreenCommand as coreInteractiveScreenCommand,
@@ -11,7 +11,7 @@ import {
   stopBrowserCommand,
   stopExtraScreenCommand,
   stopScreenTransportsCommand,
-} from "@rakazo/core/node/desktop-runtime";
+} from "@nurlai/core/node/desktop-runtime";
 
 export {
   browserProfilePathForScreen,
@@ -19,13 +19,13 @@ export {
   quiesceBrowserProfilesCommand,
   stopBrowserCommand,
   stopExtraScreenCommand,
-} from "@rakazo/core/node/desktop-runtime";
+} from "@nurlai/core/node/desktop-runtime";
 
 import { timingSafeEqual } from "node:crypto";
 import path from "node:path";
 import { StringDecoder } from "node:string_decoder";
 import { pathToFileURL } from "node:url";
-import { canReleaseScreenLease, canTakeScreenLease } from "@rakazo/core/node/screen-lease";
+import { canReleaseScreenLease, canTakeScreenLease } from "@nurlai/core/node/screen-lease";
 import type Docker from "dockerode";
 import { z } from "zod";
 import type { SandboxInput } from "./computer-spec.js";
@@ -90,7 +90,7 @@ export const computerActionSchema = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("focus"), application: z.string(), uri: z.string().optional() }),
 ]);
 
-export { BROWSER_APPLICATIONS as DOCKER_BROWSER_ALIASES } from "@rakazo/core/node/desktop-runtime";
+export { BROWSER_APPLICATIONS as DOCKER_BROWSER_ALIASES } from "@nurlai/core/node/desktop-runtime";
 
 export function assertRequestIdentity(
   botId: string | undefined,
@@ -530,7 +530,7 @@ export function containerActionStep(
     argv = [
       "env",
       `DISPLAY=${display}`,
-      ...(browserProfile ? [`RAKAZO_BROWSER_PROFILE=${browserProfile}`] : []),
+      ...(browserProfile ? [`NURLAI_BROWSER_PROFILE=${browserProfile}`] : []),
       isHttpUrl ? "xdg-open" : "rakazo-browser",
       target,
     ];
@@ -539,7 +539,7 @@ export function containerActionStep(
     argv = [
       "env",
       `DISPLAY=${display}`,
-      ...(browser && browserProfile ? [`RAKAZO_BROWSER_PROFILE=${browserProfile}`] : []),
+      ...(browser && browserProfile ? [`NURLAI_BROWSER_PROFILE=${browserProfile}`] : []),
       // focus routes through the image wrapper, which raises a matching window
       // by WM_CLASS or execs the allowlisted launcher to spawn one.
       ...(action.kind === "focus" ? ["rakazo-focus-or-launch"] : []),

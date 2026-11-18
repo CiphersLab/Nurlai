@@ -4,13 +4,13 @@ import type {
   AgentRuntime,
   ModelCredentialFailedState,
   ModelCredentialRetireReason,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import {
   canonicalPiProviderId,
   creditOfferingFromConnectionId,
   OPENAI_COMPATIBLE_PROVIDER_ID,
-} from "@rakazo/contracts";
-import { MISSING_MODEL_RUN_ERROR } from "@rakazo/core";
+} from "@nurlai/contracts";
+import { MISSING_MODEL_RUN_ERROR } from "@nurlai/core";
 import {
   approvedModelCreditOffering,
   modelCreditOfferings,

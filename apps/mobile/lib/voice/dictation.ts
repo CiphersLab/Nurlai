@@ -5,7 +5,7 @@
  * Its end of speech together with its final words is stronger, so that shortens the gap.
  */
 
-import { supportedSpeechTag } from "@rakazo/core";
+import { supportedSpeechTag } from "@nurlai/core";
 import { Platform } from "react-native";
 import { reportMobileError } from "../platform/monitoring";
 

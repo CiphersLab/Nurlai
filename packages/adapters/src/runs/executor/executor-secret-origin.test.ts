@@ -1,5 +1,5 @@
-import type { ComputerRef } from "@rakazo/adapter-kit";
-import * as Logging from "@rakazo/logging";
+import type { ComputerRef } from "@nurlai/adapter-kit";
+import * as Logging from "@nurlai/logging";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type * as ComputerLifecycleModule from "../../computers/computer-lifecycle.js";
 import { prepareRequestSecretArguments } from "../../runtime/pi/tools/pi-runtime-tools.js";

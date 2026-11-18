@@ -1,5 +1,5 @@
 import { ORPCError } from "@orpc/server";
-import type { Actor } from "@rakazo/contracts";
+import type { Actor } from "@nurlai/contracts";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { answerComputerRequest } from "../computers/computer-control.js";
 import type { RouterDeps } from "../router.js";

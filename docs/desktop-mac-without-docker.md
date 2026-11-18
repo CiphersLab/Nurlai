@@ -34,7 +34,7 @@ existed; the egress row shows the result with it.
 | Step                                                        | Result                                                                                                                                                               |
 | ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `container` 1.7.1 release package (Apple-signed, notarized) | Expanded with `pkgutil`; `container system start --install-root … --app-root … --log-root …` registered user launchd agents in 45 s, including kernel download       |
-| Pull `ghcr.io/elie222/rakazo/computer:edge` (linux/arm64)   | 50 s, 1.58 GB unpacked                                                                                                                                               |
+| Pull `ghcr.io/elie222/nurlai/computer:edge` (linux/arm64)   | 50 s, 1.58 GB unpacked                                                                                                                                               |
 | First computer VM, noVNC gateway ready                      | 11 s (includes the one-time 66 MB init image); later VMs 2–3 s                                                                                                       |
 | Host reaches VM screen gateway                              | `http://<vm-ip>:6080/embed.html` and per-bot `:6100` answered 200                                                                                                    |
 | Two computers on separate networks                          | Cannot reach each other; each reaches the internet                                                                                                                   |
@@ -78,7 +78,7 @@ A start, in order:
    web URL file in `<userData>/stack`, and stops processes a crashed launch left behind (recorded in
    `run/*.pid` and checked against their command line; the database last).
 2. In parallel: the server bundle (`server-bundle.json` in the app's resources;
-   `RAKAZO_SERVER_BUNDLE=<local .tar.xz>` in unpackaged builds) and the computer runtime (below),
+   `NURLAI_SERVER_BUNDLE=<local .tar.xz>` in unpackaged builds) and the computer runtime (below),
    then the database image through that runtime (by digest, `--platform linux/arm64`, only when it
    is missing). Each download streams to a temporary file, is checked for size and SHA-256, and only
    then unpacked into a scratch folder that is renamed to `runtime/<name>-<version>`.
@@ -91,12 +91,12 @@ A start, in order:
    `logs/postgres.log` and the app sees it stop. The start waits for the server that listens on the
    network: on a new volume the image's setup server also reports ready.
 4. Runs the bundle's migrate entrypoint (owner login `rakazo` with `POSTGRES_PASSWORD`, runtime
-   login `rakazo_app` with `POSTGRES_APP_PASSWORD`). The owner's name is fixed rather than read
+   login `nurlai_app` with `POSTGRES_APP_PASSWORD`). The owner's name is fixed rather than read
    from `POSTGRES_USER`, so it can never be the runtime login.
 5. Spawns API, worker and web with `ELECTRON_RUN_AS_NODE=1` on loopback ports. The API and worker get
    the `.env` minus Compose-only and owner-login lines (including `DATABASE_MIGRATION_URL`), plus
    `SANDBOX_PROVIDER=local-vm`, `LOCAL_VM_CLI`, `LOCAL_VM_COMPUTER_IMAGE` (the app's image tag), the stack token and the host
-   computer bridge on `127.0.0.1`. The web gets only what Compose gives it. `RAKAZO_ENV_FILE=none`
+   computer bridge on `127.0.0.1`. The web gets only what Compose gives it. `NURLAI_ENV_FILE=none`
    stops the server from reading any `.env` from a parent folder such as the home directory.
 6. Waits for the API's `/health` and the web's authenticated stack probe, then removes unused
    runtime versions and pulls the computer image in the background.
@@ -223,11 +223,11 @@ plus the kernel download on its first start (about 45 s measured). The computer 
   the app pins the image tag of its own version.
 - Docker users: when a Docker stack exists (its compose file is in the stack folder), no native
   stack exists yet (`.native-ports`), the saved setup is **This computer** and Docker answers, the
-  app asks once ("Run Rakazo without Docker?" with **Move** and **Keep Docker**) and remembers the
+  app asks once ("Run Nurlai without Docker?" with **Move** and **Keep Docker**) and remembers the
   answer in `.desktop-stack-choice`. **Keep Docker** keeps today's path. **Move** keeps the same
   `.env` (so `BETTER_AUTH_SECRET`, `ENCRYPTION_KEY` and the other secrets carry over) and, on the
   next start, after the database VM is up and before migrations: empties the `rakazo` database,
-  stops the Docker API, worker, web and supervisor, creates the `rakazo_app` role if it is missing,
+  stops the Docker API, worker, web and supervisor, creates the `nurlai_app` role if it is missing,
   then streams `pg_dump --format=custom` from the Docker database container through the app into
   `pg_restore --no-owner --exit-on-error` in the database VM. Both run each database's own tools
   over its local socket, so no password is used and no shell runs on the Mac. It then copies `/data`

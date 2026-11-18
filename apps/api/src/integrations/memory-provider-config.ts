@@ -1,5 +1,5 @@
 import { ORPCError } from "@orpc/server";
-import type { SecretStore } from "@rakazo/adapter-kit";
+import type { SecretStore } from "@nurlai/adapter-kit";
 import {
   assertMemoryProviderSettings,
   classifyMemoryProviderSettings,
@@ -11,11 +11,11 @@ import {
   memoryProviderRequiresPrivateEndpoint,
   prepareMemoryProviderConnection,
   toStringRecord,
-} from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
-import { findSpaceMemoryConfig, Prisma, requireSpaceOwner, withTransactionRetry } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
+import { findSpaceMemoryConfig, Prisma, requireSpaceOwner, withTransactionRetry } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 
 export interface MemoryProviderConfigDeps {
   prisma: PrismaClient;

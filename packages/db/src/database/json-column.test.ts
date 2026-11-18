@@ -1,5 +1,5 @@
-import type { MessageBlock } from "@rakazo/contracts";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+import type { MessageBlock } from "@nurlai/contracts";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { beforeEach, describe, expect, it } from "vitest";
 import { z } from "zod";
 import {

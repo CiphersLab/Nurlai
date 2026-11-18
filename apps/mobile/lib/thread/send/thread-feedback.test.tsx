@@ -1,14 +1,14 @@
 // @vitest-environment jsdom
 
-import * as core from "@rakazo/core";
+import * as core from "@nurlai/core";
 import {
   AiConsentBlocked,
   MODEL_REQUIRED_SEND_ERROR,
   reduceThreadSnapshot,
   resolveComposerSendPlan,
-} from "@rakazo/core";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+} from "@nurlai/core";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { router } from "expo-router";
 import type { ReactNode } from "react";
 import { act, createElement, useMemo } from "react";

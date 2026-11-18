@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
-import { useNow, useTimeout } from "@rakazo/chat-ui/hooks";
-import { Button, cn } from "@rakazo/ui-web";
+import { useNow, useTimeout } from "@nurlai/chat-ui/hooks";
+import { Button, cn } from "@nurlai/ui-web";
 import { ArrowUp, ChevronUp, Lock, Mic, Trash2 } from "lucide-react";
 import type { PointerEvent } from "react";
 import { useCallback, useEffect, useRef, useState } from "react";

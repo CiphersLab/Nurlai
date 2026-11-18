@@ -1,5 +1,5 @@
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { Alert, Platform } from "react-native";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { isComposeViewAvailable } from "../native/compose-available";

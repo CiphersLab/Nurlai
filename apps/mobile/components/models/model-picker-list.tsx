@@ -1,13 +1,13 @@
 import { useLingui } from "@lingui/react/macro";
-import { useTimeout } from "@rakazo/chat-ui/hooks";
-import { withConnectionName } from "@rakazo/contracts";
-import type { ChatModelChoice } from "@rakazo/core";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
+import { withConnectionName } from "@nurlai/contracts";
+import type { ChatModelChoice } from "@nurlai/core";
 import {
   groupModelChoices,
   modelChoiceSearchText,
   modelMark,
   newestModelsFirst,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { useNavigation } from "expo-router";
 import type { ReactElement } from "react";
 import {

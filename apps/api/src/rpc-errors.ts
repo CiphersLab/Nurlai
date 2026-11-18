@@ -7,13 +7,13 @@ import {
   SandboxUnavailableError,
   SandboxUnresponsiveError,
   VoiceAccountError,
-} from "@rakazo/adapter-kit";
-import { ComputerRecoveryRequiredError } from "@rakazo/adapters";
-import { ConnectionSetupError } from "@rakazo/contracts";
-import { ClientError } from "@rakazo/core";
-import { databaseOutage, IsolationError, ProviderTransactionBusyError } from "@rakazo/db";
-import { enrichLogContext, getLogContext, getLogger } from "@rakazo/logging";
-import { markExpectedFailure } from "@rakazo/logging/hono";
+} from "@nurlai/adapter-kit";
+import { ComputerRecoveryRequiredError } from "@nurlai/adapters";
+import { ConnectionSetupError } from "@nurlai/contracts";
+import { ClientError } from "@nurlai/core";
+import { databaseOutage, IsolationError, ProviderTransactionBusyError } from "@nurlai/db";
+import { enrichLogContext, getLogContext, getLogger } from "@nurlai/logging";
+import { markExpectedFailure } from "@nurlai/logging/hono";
 import type { Context } from "hono";
 import { HTTPException } from "hono/http-exception";
 import { clientErrorStatus } from "./client-error-status.js";

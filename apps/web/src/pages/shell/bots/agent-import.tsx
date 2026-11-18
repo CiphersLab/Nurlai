@@ -1,7 +1,7 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { Bot, ComputerMode } from "@rakazo/contracts";
-import { AGENT_IMPORT_PROMPT, GROK_BOT_EXPORT_PROMPT } from "@rakazo/core";
-import { Button, CopyTextFallback, Textarea, useCopyText } from "@rakazo/ui-web";
+import type { Bot, ComputerMode } from "@nurlai/contracts";
+import { AGENT_IMPORT_PROMPT, GROK_BOT_EXPORT_PROMPT } from "@nurlai/core";
+import { Button, CopyTextFallback, Textarea, useCopyText } from "@nurlai/ui-web";
 import { ArrowLeft, X } from "lucide-react";
 import type { ReactNode } from "react";
 import { useCallback, useId, useState } from "react";

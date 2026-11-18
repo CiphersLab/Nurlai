@@ -2,7 +2,7 @@ import {
   toolRequiresApproval,
   toolRequiresExplicitApproval,
   toolResultTaintsRun,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { describe, expect, it, vi } from "vitest";
 import { botEmailInstruction } from "../assembly/run-instructions.prompt.js";
 import { selectBuiltinToolsForRun } from "./run-tool-selection.js";

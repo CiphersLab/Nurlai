@@ -1,5 +1,5 @@
 import { Plural, Trans, useLingui } from "@lingui/react/macro";
-import { toggleEnabledModelId } from "@rakazo/core";
+import { toggleEnabledModelId } from "@nurlai/core";
 import {
   Button,
   Checkbox,
@@ -8,7 +8,7 @@ import {
   Label,
   ListSearchInput,
   OptionSelect,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { ModelPreflightFeedback } from "../../components/models/ModelConnectionPreflightNotice";
 import { ModelHeadersEditor } from "../../components/models/ModelHeadersEditor";
 import { useListSearch } from "../../lib/use-list-search";

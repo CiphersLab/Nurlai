@@ -1,5 +1,5 @@
-import type { KeptTimezone } from "@rakazo/core";
-import { parseKeptTimezone } from "@rakazo/core";
+import type { KeptTimezone } from "@nurlai/core";
+import { parseKeptTimezone } from "@nurlai/core";
 import { createStoredPreference } from "../preferences/stored-preference";
 
 function parseKept(raw: string | null): Record<string, KeptTimezone> {

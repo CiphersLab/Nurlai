@@ -1,4 +1,4 @@
-import { MODEL_CONTEXT_TOO_SMALL_ERROR } from "@rakazo/core";
+import { MODEL_CONTEXT_TOO_SMALL_ERROR } from "@nurlai/core";
 import { describe, expect, it } from "vitest";
 import { selectBuiltinToolsForRun } from "../runs/tools/run-tool-selection.js";
 import { selectContext } from "../runtime/context/context-selection.js";

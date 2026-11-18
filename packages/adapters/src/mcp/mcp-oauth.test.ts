@@ -1,8 +1,8 @@
-import { MCP_OAUTH_CLIENT_REQUIRED, MOBILE_MCP_OAUTH_STATE_PREFIX } from "@rakazo/contracts";
-import { ClientError } from "@rakazo/core";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
-import { getLogger } from "@rakazo/logging";
+import { MCP_OAUTH_CLIENT_REQUIRED, MOBILE_MCP_OAUTH_STATE_PREFIX } from "@nurlai/contracts";
+import { ClientError } from "@nurlai/core";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
+import { getLogger } from "@nurlai/logging";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { OAuthMaterial } from "./mcp-oauth.js";
 import {
@@ -1899,7 +1899,7 @@ describe("MCP OAuth", () => {
       if (started.status !== "authorization_required") throw new Error("OAuth was not requested");
       const authorizationUrl = new URL(started.authorizationUrl);
 
-      expect(registration).toMatchObject({ client_name: "Rakazo", application_type: "native" });
+      expect(registration).toMatchObject({ client_name: "Nurlai", application_type: "native" });
       expect(authorizationUrl.origin).toBe("https://auth.example.test");
       expect(authorizationUrl.searchParams.get("client_id")).toBe("registered-client-id");
       expect(authorizationUrl.searchParams.get("code_challenge_method")).toBe("S256");
@@ -2060,7 +2060,7 @@ describe("MCP OAuth", () => {
       ephemeral: true,
     });
 
-    expect(registration).toMatchObject({ client_name: "Rakazo" });
+    expect(registration).toMatchObject({ client_name: "Nurlai" });
     expect(registration).not.toHaveProperty("token_endpoint_auth_method");
     expect(new URL(started.authorizationUrl).searchParams.get("client_id")).toBe(
       "confidential-client-id",

@@ -2,17 +2,17 @@ import { randomUUID } from "node:crypto";
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import type { AdapterContext } from "@rakazo/adapter-kit";
+import type { AdapterContext } from "@nurlai/adapter-kit";
 import {
   InMemoryRealtimeFanout,
   RUN_DRAIN_MS,
   ScriptedAgentRuntime,
   wakeRun,
-} from "@rakazo/adapters";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
-import type { PrismaClient } from "@rakazo/db";
-import { asSystem, createDb, runAsSystem, runAsTenant } from "@rakazo/db";
+} from "@nurlai/adapters";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
+import type { PrismaClient } from "@nurlai/db";
+import { asSystem, createDb, runAsSystem, runAsTenant } from "@nurlai/db";
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 import type { AppHandles } from "../app.js";
 import { createApp } from "../app.js";

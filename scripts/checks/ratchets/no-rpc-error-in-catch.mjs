@@ -1,5 +1,5 @@
 export const message =
-  "Do not translate a caught error into an ORPCError by hand. Throw a domain error that carries its client answer (extend ClientError from @rakazo/core, or add the class to apps/api/src/rpc-errors.ts) and let it propagate: handleRpcError translates it once, and anything else stays a logged server error.";
+  "Do not translate a caught error into an ORPCError by hand. Throw a domain error that carries its client answer (extend ClientError from @nurlai/core, or add the class to apps/api/src/rpc-errors.ts) and let it propagate: handleRpcError translates it once, and anything else stays a logged server error.";
 
 export const include = ["apps/api/src/**/*.ts"];
 

@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import type { ReactNode } from "react";
 import { act } from "react";
 import type { Root } from "react-dom/client";
@@ -26,7 +26,7 @@ vi.mock("../api/api", () => ({
   captureApiRequestContext: async (spaceId: string | null = state.selectedSpace) => ({
     apiBase: "http://api.test",
     sessionGeneration: 1,
-    headers: spaceId ? { "x-rakazo-space-id": spaceId } : {},
+    headers: spaceId ? { "x-nurlai-space-id": spaceId } : {},
   }),
 }));
 vi.mock("../api/session", () => ({ currentSessionGeneration: () => 1 }));
@@ -143,7 +143,7 @@ it("creates the organization for the account and opens it", async () => {
       requestContext: {
         apiBase: "http://api.test",
         sessionGeneration: 1,
-        headers: { "x-rakazo-space-id": "space-1" },
+        headers: { "x-nurlai-space-id": "space-1" },
       },
     },
   );

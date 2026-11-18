@@ -1,6 +1,6 @@
-import type { RealtimeFanout } from "@rakazo/adapter-kit";
-import type { ProductEvent } from "@rakazo/contracts";
-import { getLogger } from "@rakazo/logging";
+import type { RealtimeFanout } from "@nurlai/adapter-kit";
+import type { ProductEvent } from "@nurlai/contracts";
+import { getLogger } from "@nurlai/logging";
 import type { PrismaClient } from "../database/client.js";
 import { JsonObject, readJsonColumn } from "../database/json-column.js";
 import { readRunTimingFields } from "../runs/run-timing.js";

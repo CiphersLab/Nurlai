@@ -1,4 +1,4 @@
-import type { SignupAttribution as Attribution } from "@rakazo/contracts";
+import type { SignupAttribution as Attribution } from "@nurlai/contracts";
 import {
   PARTNER_CLICK_COOKIE,
   PartnerClickId,
@@ -6,7 +6,7 @@ import {
   SIGNUP_SURFACE_HEADER,
   SignupAttribution,
   SignupSurface,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 
 export function signupAttributionFromCookie(cookie: string): Attribution {
   const encoded = cookie

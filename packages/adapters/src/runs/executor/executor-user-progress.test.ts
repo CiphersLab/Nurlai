@@ -1,13 +1,13 @@
-import type { AgentRunRequest, AgentRuntimeEvent, BackgroundJob } from "@rakazo/adapter-kit";
-import type { MessageBlock } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
-import type { AppendEventInput, Prisma } from "@rakazo/db";
+import type { AgentRunRequest, AgentRuntimeEvent, BackgroundJob } from "@nurlai/adapter-kit";
+import type { MessageBlock } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
+import type { AppendEventInput, Prisma } from "@nurlai/db";
 import {
   appendEventInTransaction,
   createThreadMessageInTransaction,
   partialReplyClientNonce,
   RunHistoryWriteError,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import type * as ComputerLifecycleModule from "../../computers/computer-lifecycle.js";
 import { PARTIAL_REPLY_NOTE } from "../../messaging/automated-messages.prompt.js";

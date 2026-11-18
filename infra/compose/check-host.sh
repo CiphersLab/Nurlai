@@ -14,7 +14,7 @@ for target in / /var/backups; do
     report "${target} storage is low (at least 80% used or less than 5GiB free)"
   fi
 done
-if [[ "${RAKAZO_BACKUP_REQUIRE_VOLUME:-0}" == 1 ]] && { ! mountpoint -q /var/backups || [[ "$(stat -c %d /var/backups)" == "$(stat -c %d /)" ]]; }; then
+if [[ "${NURLAI_BACKUP_REQUIRE_VOLUME:-0}" == 1 ]] && { ! mountpoint -q /var/backups || [[ "$(stat -c %d /var/backups)" == "$(stat -c %d /)" ]]; }; then
   report "Backup volume is not mounted separately"
 fi
 latest=""
@@ -26,8 +26,8 @@ fi
 latest_time="${latest%% *}"
 if [[ -z "${latest}" ]] || (($(date +%s) - ${latest_time%.*} > 36 * 3600)); then
   report "No verified backup completed in the last 36 hours"
-elif [[ -e "${latest#* }/rakazo.dump" && "${RAKAZO_BACKUP_ALLOW_PLAINTEXT:-0}" != 1 ]]; then
-  report "The latest backup is not encrypted; set RAKAZO_BACKUP_AGE_RECIPIENTS"
+elif [[ -e "${latest#* }/rakazo.dump" && "${NURLAI_BACKUP_ALLOW_PLAINTEXT:-0}" != 1 ]]; then
+  report "The latest backup is not encrypted; set NURLAI_BACKUP_AGE_RECIPIENTS"
 fi
 if systemctl is-failed --quiet rakazo-backup.service; then
   report "The last backup service run failed"
@@ -71,13 +71,13 @@ if [[ -e /run/reboot-required ]]; then
   report "Installed updates need a reboot to take effect"
 fi
 
-if grep -q '^RAKAZO_AUDIT_SINK_URL=.' /etc/rakazo/audit-ship.env 2>/dev/null && ! systemctl is-active --quiet rakazo-audit-ship.service; then
+if grep -q '^NURLAI_AUDIT_SINK_URL=.' /etc/rakazo/audit-ship.env 2>/dev/null && ! systemctl is-active --quiet rakazo-audit-ship.service; then
   report "Audit trail shipping is not running"
 fi
 
 # Opt-in because self-hosted Compose project names are chosen by the operator.
-if [[ -n "${RAKAZO_MONITOR_COMPOSE_PROJECT:-}" ]]; then
-  if ! service_health="$(/usr/local/sbin/rakazo-check-services "${RAKAZO_MONITOR_COMPOSE_PROJECT}")"; then
+if [[ -n "${NURLAI_MONITOR_COMPOSE_PROJECT:-}" ]]; then
+  if ! service_health="$(/usr/local/sbin/rakazo-check-services "${NURLAI_MONITOR_COMPOSE_PROJECT}")"; then
     report "${service_health:-Could not inspect application container health}"
   fi
 fi

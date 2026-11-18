@@ -1,4 +1,4 @@
-import { LifecycleEmailKind } from "@rakazo/contracts";
+import { LifecycleEmailKind } from "@nurlai/contracts";
 import { z } from "zod";
 import type {
   BackgroundJob,

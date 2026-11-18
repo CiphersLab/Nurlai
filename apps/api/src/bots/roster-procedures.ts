@@ -1,5 +1,5 @@
-import type { Actor } from "@rakazo/contracts";
-import type { RosterChange } from "@rakazo/db";
+import type { Actor } from "@nurlai/contracts";
+import type { RosterChange } from "@nurlai/db";
 
 type RosterScope = (actor: Actor, input: unknown, output: unknown) => RosterChange;
 

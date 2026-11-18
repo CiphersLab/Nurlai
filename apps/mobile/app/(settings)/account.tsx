@@ -1,8 +1,8 @@
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import type { PlanLimits, UsageSummary } from "@rakazo/contracts";
-import { hasLab, modelCreditsUsd } from "@rakazo/contracts";
-import { accountDisplay, formatTimeUntil } from "@rakazo/core";
+import type { PlanLimits, UsageSummary } from "@nurlai/contracts";
+import { hasLab, modelCreditsUsd } from "@nurlai/contracts";
+import { accountDisplay, formatTimeUntil } from "@nurlai/core";
 import type { Href } from "expo-router";
 import { useFocusEffect, useLocalSearchParams, useRouter } from "expo-router";
 import type { ComponentProps } from "react";

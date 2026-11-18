@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { useTimeout } from "@rakazo/chat-ui/hooks";
-import { Button, buttonVariants, Spinner } from "@rakazo/ui-web";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
+import { Button, buttonVariants, Spinner } from "@nurlai/ui-web";
 import { useEffect, useRef, useState } from "react";
 import type { SandboxAvailabilityPhase } from "../../lib/computers/computer-sandbox";
 import {

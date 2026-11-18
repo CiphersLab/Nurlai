@@ -1,6 +1,6 @@
-import type { Actor, Group, GroupMember, SpaceGroup } from "@rakazo/contracts";
-import { GROUP_MEMBER_MAX, GROUP_MEMBER_MIN, resolveBotAvatarSet } from "@rakazo/contracts";
-import { displayName } from "@rakazo/core";
+import type { Actor, Group, GroupMember, SpaceGroup } from "@nurlai/contracts";
+import { GROUP_MEMBER_MAX, GROUP_MEMBER_MIN, resolveBotAvatarSet } from "@nurlai/contracts";
+import { displayName } from "@nurlai/core";
 import { deletePageShareSecrets } from "../artifacts/page-shares.js";
 import {
   expireComputerExecutionLeases,

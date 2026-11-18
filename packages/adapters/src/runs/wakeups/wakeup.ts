@@ -7,11 +7,11 @@ import type {
   JobPublisher,
   JobTransaction,
   JobWorkerHost,
-} from "@rakazo/adapter-kit";
-import { dispatchBackgroundJob, RetryJobLaterError } from "@rakazo/adapter-kit";
-import type { DatabaseOutage, PrismaClient } from "@rakazo/db";
-import { databaseCapacityBackoffMs, databaseOutage, runAsSystem } from "@rakazo/db";
-import { getLogger, runCorrelatedJob, unwrapJobPayload, wrapJobPayload } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { dispatchBackgroundJob, RetryJobLaterError } from "@nurlai/adapter-kit";
+import type { DatabaseOutage, PrismaClient } from "@nurlai/db";
+import { databaseCapacityBackoffMs, databaseOutage, runAsSystem } from "@nurlai/db";
+import { getLogger, runCorrelatedJob, unwrapJobPayload, wrapJobPayload } from "@nurlai/logging";
 import type { JobHelpers, Runner, WorkerUtils } from "graphile-worker";
 import { consoleLogFactory, Logger, makeWorkerUtils, run } from "graphile-worker";
 import type { Pool } from "pg";

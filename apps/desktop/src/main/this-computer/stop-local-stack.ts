@@ -2,7 +2,7 @@ import type {
   DesktopInstanceMode,
   DesktopLocalStackPhase,
   DesktopLocalStackState,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import type { MenuItemConstructorOptions } from "electron";
 import { t } from "../i18n.js";
 import { managedLocalOpenUrl } from "../setup/setup-config.js";

@@ -1,10 +1,10 @@
-import type { PiOAuthPending } from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
+import type { PiOAuthPending } from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
 import {
   AnalyticsEvent,
   MODEL_KEY_REJECTED_ERROR,
   OPENAI_COMPATIBLE_PROVIDER_ID,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { RouterDeps } from "../router.js";
 import {

@@ -1,5 +1,5 @@
-import type { AgentRuntimeEvent } from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
+import type { AgentRuntimeEvent } from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
 import { describe, expect, it, vi } from "vitest";
 import { withRuntimeCleanup } from "./runtime-stream.js";
 

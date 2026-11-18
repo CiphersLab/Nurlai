@@ -1,8 +1,8 @@
-import type { JobPublisher, TransactionalEmail } from "@rakazo/adapter-kit";
-import { lifecycleEmailJob } from "@rakazo/adapter-kit";
-import { modelConnectionEmail } from "@rakazo/auth";
-import type { LifecycleEmailKind } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
+import type { JobPublisher, TransactionalEmail } from "@nurlai/adapter-kit";
+import { lifecycleEmailJob } from "@nurlai/adapter-kit";
+import { modelConnectionEmail } from "@nurlai/auth";
+import type { LifecycleEmailKind } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
 import { unsubscribeUrl } from "./marketing-email.js";
 
 /** How long after a plan starts the model-connection mail is due. */

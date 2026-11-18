@@ -12,8 +12,8 @@ import type {
   VoiceProvider,
   VoiceSynthesizeRequest,
   VoiceVerifyResult,
-} from "@rakazo/adapter-kit";
-import { MAX_VOICE_AUDIO_BYTES } from "@rakazo/core";
+} from "@nurlai/adapter-kit";
+import { MAX_VOICE_AUDIO_BYTES } from "@nurlai/core";
 import { MAX_SPEAK_CHARS } from "../../../voice/voice-http.js";
 import type { VoiceProviderDefinition } from "../../../voice/voice-provider-descriptor.js";
 

@@ -1,5 +1,5 @@
-import type { BotAvatarSet } from "@rakazo/contracts";
-import { BOT_COLORS, parseBotAvatarValue } from "@rakazo/contracts";
+import type { BotAvatarSet } from "@nurlai/contracts";
+import { BOT_COLORS, parseBotAvatarValue } from "@nurlai/contracts";
 import {
   ORGANIC_AVATAR_HEART_FAMILY,
   ORGANIC_AVATAR_LOOKS,

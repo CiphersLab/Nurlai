@@ -1,13 +1,13 @@
 import { fileURLToPath } from "node:url";
-import { isBuildId } from "@rakazo/contracts/client-build";
-import { webDarkTokens } from "@rakazo/ui-tokens";
+import { isBuildId } from "@nurlai/contracts/client-build";
+import { webDarkTokens } from "@nurlai/ui-tokens";
 import type { Plugin, Rolldown } from "vite";
 import { CACHE_PREFIX } from "../src/pwa/service-worker.js";
 
 const SERVICE_WORKER_FILE = "sw.js";
 const MANIFEST_FILE = "site.webmanifest";
-const PRECACHE_PLACEHOLDER = "__RAKAZO_SW_PRECACHE__";
-const CACHE_PLACEHOLDER = "__RAKAZO_SW_CACHE__";
+const PRECACHE_PLACEHOLDER = "__NURLAI_SW_PRECACHE__";
+const CACHE_PLACEHOLDER = "__NURLAI_SW_CACHE__";
 
 export function webManifest() {
   const icons = [192, 512].map((size) => ({

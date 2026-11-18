@@ -5,22 +5,22 @@ import {
   COMPUTER_CACHE_ENV,
   MAX_DESKTOP_DISPLAY,
   screenPorts,
-} from "@rakazo/core/node/desktop-runtime";
+} from "@nurlai/core/node/desktop-runtime";
 import type Docker from "dockerode";
 import type { ComputerLocale } from "./computer-locale.js";
 import { computerLocaleEnv } from "./computer-locale.js";
 
 /**
- * The computer image. RAKAZO_COMPUTER_IMAGE_TAG is appended the way Compose does, so a
+ * The computer image. NURLAI_COMPUTER_IMAGE_TAG is appended the way Compose does, so a
  * supervisor started outside Compose pulls the same published tag instead of an untagged
  * (`:latest`) name. An image that already carries a tag or digest is used as is.
  */
 export function resolveComputerImage(
-  image = process.env.RAKAZO_COMPUTER_IMAGE,
-  tag = process.env.RAKAZO_COMPUTER_IMAGE_TAG,
+  image = process.env.NURLAI_COMPUTER_IMAGE,
+  tag = process.env.NURLAI_COMPUTER_IMAGE_TAG,
 ): string {
   const name = image?.trim();
-  if (!name) return "rakazo/computer:local";
+  if (!name) return "nurlai/computer:local";
   const wantedTag = tag?.trim();
   const lastSegment = name.slice(name.lastIndexOf("/") + 1);
   if (!wantedTag || name.includes("@") || lastSegment.includes(":")) return name;
@@ -57,7 +57,7 @@ export const COMPUTER_IMAGE_CONTEXT_FILES = [
  * Docker's rule for a name that carries its registry: the first path component has a "." or
  * ":", is "localhost", or has an uppercase letter. The supervisor pulls only such names, never an
  * unqualified one that Docker would look up on Docker Hub, where anyone could register
- * rakazo/computer.
+ * nurlai/computer.
  */
 export function isRegistryQualifiedImage(image: string): boolean {
   const slash = image.indexOf("/");
@@ -172,16 +172,16 @@ function envOrDefault(name: string, fallback: string): string {
 
 export function computerResourceLimits() {
   const memoryBytes = parseMemoryBytes(
-    "RAKAZO_COMPUTER_MEMORY",
-    envOrDefault("RAKAZO_COMPUTER_MEMORY", DEFAULT_COMPUTER_MEMORY),
+    "NURLAI_COMPUTER_MEMORY",
+    envOrDefault("NURLAI_COMPUTER_MEMORY", DEFAULT_COMPUTER_MEMORY),
   );
   const nanoCpus = parseNanoCpus(
-    "RAKAZO_COMPUTER_CPUS",
-    envOrDefault("RAKAZO_COMPUTER_CPUS", DEFAULT_COMPUTER_CPUS),
+    "NURLAI_COMPUTER_CPUS",
+    envOrDefault("NURLAI_COMPUTER_CPUS", DEFAULT_COMPUTER_CPUS),
   );
   const pidsLimit = parsePidsLimit(
-    "RAKAZO_COMPUTER_PIDS_LIMIT",
-    envOrDefault("RAKAZO_COMPUTER_PIDS_LIMIT", DEFAULT_COMPUTER_PIDS_LIMIT),
+    "NURLAI_COMPUTER_PIDS_LIMIT",
+    envOrDefault("NURLAI_COMPUTER_PIDS_LIMIT", DEFAULT_COMPUTER_PIDS_LIMIT),
   );
   return {
     // Memory and MemorySwap are set together: leaving MemorySwap unset lets the
@@ -251,7 +251,7 @@ export function computerDnsMatches(current: string[] | null | undefined, desired
 }
 
 /** The computer environment variable rakazo-browser reads for --proxy-pac-url. */
-export const BROWSER_PROXY_PAC_ENV = "RAKAZO_BROWSER_PROXY_PAC_URL";
+export const BROWSER_PROXY_PAC_ENV = "NURLAI_BROWSER_PROXY_PAC_URL";
 // Chromium takes the PAC script as one argument; a data: URL holds the whole script.
 const MAX_BROWSER_PROXY_PAC_URL_LENGTH = 64 * 1024;
 const BROWSER_PROXY_PAC_PROTOCOLS: Record<string, true> = {
@@ -558,7 +558,7 @@ export function computerNetworkCreateOptions(
     Driver: "bridge",
     CheckDuplicate: true,
     ...(ipv6 && egress === "open" ? { EnableIPv6: true } : {}),
-    Labels: { "rakazo.computerOwner": owner, "rakazo.botId": botId },
+    Labels: { "nurlai.cipherslab.computerOwner": owner, "rakazo.botId": botId },
     ...(egress === "restricted"
       ? { Options: { "com.docker.network.bridge.name": computerBridgeNameFor(botId) } }
       : {}),
@@ -698,7 +698,7 @@ export function containerCreateOptions(input: ComputerCreateInput) {
       "PATH=/home/rakazo/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
       "NPM_CONFIG_PREFIX=/home/rakazo/.local",
       "PIP_USER=1",
-      ...(input.controlToken ? [`RAKAZO_COMPUTER_CONTROL_TOKEN=${input.controlToken}`] : []),
+      ...(input.controlToken ? [`NURLAI_COMPUTER_CONTROL_TOKEN=${input.controlToken}`] : []),
       ...computerLocaleEnv(input.locale),
       ...(input.browserProxyPacUrl ? [`${BROWSER_PROXY_PAC_ENV}=${input.browserProxyPacUrl}`] : []),
     ],

@@ -1,5 +1,5 @@
 export const message =
-  "Do not parse a Retry-After header locally. Use parseRetryAfter(header, now) from @rakazo/core; if a caller needs a different cap, apply it at the call site.";
+  "Do not parse a Retry-After header locally. Use parseRetryAfter(header, now) from @nurlai/core; if a caller needs a different cap, apply it at the call site.";
 
 export const include = [
   "{packages/{adapters,core,db,auth,memory,logging},apps/{api,worker},infra/sandboxes/supervisor,infra/updater}/src/**/*.{ts,tsx,mts,cts,js,mjs,cjs}",

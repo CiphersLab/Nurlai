@@ -1,4 +1,4 @@
-import { getLogger } from "@rakazo/logging";
+import { getLogger } from "@nurlai/logging";
 import type { FleetCardSummary } from "../approvals/approval-ask.js";
 import { redactConnectorPayload } from "../integrations/connector-safety.js";
 import type { RunContext } from "../runs/assembly/run-context.js";

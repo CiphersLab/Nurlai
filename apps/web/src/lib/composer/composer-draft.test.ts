@@ -27,8 +27,8 @@ function memoryStorage(initial: Record<string, string> = {}) {
 
 describe("composer drafts", () => {
   it("scopes stored drafts per thread", () => {
-    expect(composerDraftStorageKey("bot:1")).toBe("rakazo.composerDraft.bot:1");
-    expect(composerDraftStorageKey("group:2")).toBe("rakazo.composerDraft.group:2");
+    expect(composerDraftStorageKey("bot:1")).toBe("nurlai.cipherslab.composerDraft.bot:1");
+    expect(composerDraftStorageKey("group:2")).toBe("nurlai.cipherslab.composerDraft.group:2");
   });
 
   it("round-trips a draft and clears the key when empty", () => {
@@ -148,18 +148,18 @@ describe("legacy send envelope cleanup", () => {
 
   it("removes envelopes for unopened chats on upgrade while preserving drafts and nonces", async () => {
     const storage = browserStorage();
-    storage.setItem("rakazo.composerSend.bot:old", "private payload");
-    storage.setItem("rakazo.composerSend.group:old", "private reply");
-    storage.setItem("rakazo.composerDraft.bot:old", "draft");
-    storage.setItem("rakazo.composerNonce.bot:old", "nonce");
+    storage.setItem("nurlai.cipherslab.composerSend.bot:old", "private payload");
+    storage.setItem("nurlai.cipherslab.composerSend.group:old", "private reply");
+    storage.setItem("nurlai.cipherslab.composerDraft.bot:old", "draft");
+    storage.setItem("nurlai.cipherslab.composerNonce.bot:old", "nonce");
     storage.setItem("unrelated", "keep");
     vi.stubGlobal("localStorage", storage);
     try {
       vi.resetModules();
       await import("./composer-draft.js");
       expect(storage.length).toBe(3);
-      expect(storage.getItem("rakazo.composerDraft.bot:old")).toBe("draft");
-      expect(storage.getItem("rakazo.composerNonce.bot:old")).toBe("nonce");
+      expect(storage.getItem("nurlai.cipherslab.composerDraft.bot:old")).toBe("draft");
+      expect(storage.getItem("nurlai.cipherslab.composerNonce.bot:old")).toBe("nonce");
       expect(storage.getItem("unrelated")).toBe("keep");
     } finally {
       vi.unstubAllGlobals();

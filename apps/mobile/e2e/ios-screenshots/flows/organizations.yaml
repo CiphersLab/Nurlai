@@ -1,11 +1,11 @@
-appId: com.rakazo.app
+appId: com.nurlai.app
 name: Organizations
 ---
 # Last in the catalog: it leaves a second organization in the populated account.
 - runFlow:
     file: ../subflows/sign-in.yaml
     env:
-      RAKAZO_ACTIVE_EMAIL: ${RAKAZO_SCREENSHOT_EMAIL}
+      NURLAI_ACTIVE_EMAIL: ${NURLAI_SCREENSHOT_EMAIL}
 - openLink: "rakazo:///account"
 - scrollUntilVisible:
     element: "Organization.*"

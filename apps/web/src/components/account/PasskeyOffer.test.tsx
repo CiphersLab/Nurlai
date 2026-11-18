@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { passkeyOfferDismissedKey } from "@rakazo/core";
+import { passkeyOfferDismissedKey } from "@nurlai/core";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { ComponentProps, ReactNode } from "react";
 import { act } from "react";
@@ -14,7 +14,7 @@ vi.mock("@lingui/react/macro", () => ({
   useLingui: () => ({ t: (strings: TemplateStringsArray) => strings.join("") }),
   Trans: ({ children }: { children: ReactNode }) => children,
 }));
-vi.mock("@rakazo/ui-web", () => ({
+vi.mock("@nurlai/ui-web", () => ({
   Button: ({
     variant: _variant,
     size: _size,

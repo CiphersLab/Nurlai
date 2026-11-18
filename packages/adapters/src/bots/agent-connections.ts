@@ -1,13 +1,13 @@
-import type { JobPublisher } from "@rakazo/adapter-kit";
-import type { MessageBlock } from "@rakazo/contracts";
+import type { JobPublisher } from "@nurlai/adapter-kit";
+import type { MessageBlock } from "@nurlai/contracts";
 import {
   botMessageHopExhausted,
   buildBotMessageWakePrompt,
   clampBotMessage,
   nextBotMessageHop,
   sanitizeMessagingLabel,
-} from "@rakazo/core";
-import type { PrismaClient, ThreadEvents } from "@rakazo/db";
+} from "@nurlai/core";
+import type { PrismaClient, ThreadEvents } from "@nurlai/db";
 import {
   appendEventInTransaction,
   createThreadMessageInTransaction,
@@ -15,7 +15,7 @@ import {
   isUniqueViolation,
   runAsSystem,
   THREAD_LOCK_TRANSACTION_OPTIONS,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { currentBotMessageHop } from "../messaging/bot-messages.js";
 import type { MessagingDelivery } from "../messaging/messaging-delivery.js";
 import { runLeaseFor } from "../runs/assembly/run-messages.js";

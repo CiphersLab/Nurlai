@@ -1,7 +1,7 @@
-import { QUEUE_HOLDING_RUN_STATUSES } from "@rakazo/core";
-import type { Prisma } from "@rakazo/db";
-import { HOLDS_CHAT, handQueuedRunToWorkingRun } from "@rakazo/db";
-import { bestEffort, getLogger } from "@rakazo/logging";
+import { QUEUE_HOLDING_RUN_STATUSES } from "@nurlai/core";
+import type { Prisma } from "@nurlai/db";
+import { HOLDS_CHAT, handQueuedRunToWorkingRun } from "@nurlai/db";
+import { bestEffort, getLogger } from "@nurlai/logging";
 import type { ExecutorDeps } from "../runs/executor/executor-deps.js";
 import { wakeRun } from "../runs/wakeups/wake-run.js";
 import { dueRoutineHandoverPrompt } from "./routine-conversation.prompt.js";

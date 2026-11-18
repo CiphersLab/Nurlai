@@ -1375,8 +1375,8 @@ msgid "Allow once"
 msgstr "允许一次"
 
 #: apps/web/src/lib/calls/dictation.ts
-msgid "Allow Rakazo to use Speech Recognition and the microphone in System Settings."
-msgstr "请在系统设置中允许 Rakazo 使用语音识别和麦克风。"
+msgid "Allow Nurlai to use Speech Recognition and the microphone in System Settings."
+msgstr "请在系统设置中允许 Nurlai 使用语音识别和麦克风。"
 
 #: apps/mobile/lib/calls/call-session.ts
 #: apps/mobile/lib/composer/composer-dictation.ts
@@ -2464,8 +2464,8 @@ msgstr "选择文件夹"
 
 #: apps/web/src/components/billing/ModelCredits.tsx
 #: apps/web/src/components/billing/SubscriptionGate.tsx
-msgid "Choose how to use Rakazo"
-msgstr "选择如何使用 Rakazo"
+msgid "Choose how to use Nurlai"
+msgstr "选择如何使用 Nurlai"
 
 #. js-lingui-explicit-id
 #: packages/i18n/src/vault.ts
@@ -2922,8 +2922,8 @@ msgstr "连接你的 AI"
 
 #. js-lingui-explicit-id
 #: packages/i18n/src/run-error.ts
-msgid "Connect your own API key in Models or choose Rakazo credits in Billing."
-msgstr "请在“模型”中连接你自己的 API 密钥，或在“账单”中选择 Rakazo 额度。"
+msgid "Connect your own API key in Models or choose Nurlai credits in Billing."
+msgstr "请在“模型”中连接你自己的 API 密钥，或在“账单”中选择 Nurlai 额度。"
 
 #: apps/mobile/app/(settings)/bot-template.tsx
 #: apps/mobile/app/(settings)/computers.tsx
@@ -5088,8 +5088,8 @@ msgid "Ends {day}"
 msgstr "将于 {day} 结束"
 
 #: apps/web/src/pages/shell/composer/github-star-prompt.tsx
-msgid "Enjoying Rakazo?"
-msgstr "喜欢 Rakazo 吗？"
+msgid "Enjoying Nurlai?"
+msgstr "喜欢 Nurlai 吗？"
 
 #: apps/mobile/lib/api/user-error.ts
 #: apps/web/src/lib/query/user-error.ts
@@ -5861,8 +5861,8 @@ msgstr "如何检查"
 
 #: apps/mobile/app/(settings)/signup-survey.tsx
 #: apps/web/src/components/account/SignupSurvey.tsx
-msgid "How will you use Rakazo?"
-msgstr "你会如何使用 Rakazo？"
+msgid "How will you use Nurlai?"
+msgstr "你会如何使用 Nurlai？"
 
 #: apps/mobile/components/models/compatible-endpoint-form.tsx
 msgid "http://127.0.0.1:8000/v1"
@@ -7487,8 +7487,8 @@ msgid "Not in {organizationName}. They'll only see this Space."
 msgstr "不在 {organizationName} 中，只能看到此空间。"
 
 #: apps/web/src/pages/shell/bots/import-status.ts
-msgid "Not in Rakazo's catalog"
-msgstr "不在 Rakazo 目录中"
+msgid "Not in Nurlai's catalog"
+msgstr "不在 Nurlai 目录中"
 
 #: apps/mobile/app/(settings)/integrations.tsx
 #: apps/web/src/pages/plugins/plugin-browse.tsx
@@ -7537,12 +7537,12 @@ msgstr "未发送。轻点重试"
 
 #: apps/web/src/pages/shell/bots/agent-import-plan.tsx
 #: apps/web/src/pages/shell/bots/import-status.ts
-msgid "Not supported in Rakazo"
-msgstr "Rakazo 不支持"
+msgid "Not supported in Nurlai"
+msgstr "Nurlai 不支持"
 
 #: apps/web/src/pages/shell/bots/agent-import-plan.tsx
-msgid "Not used by Rakazo"
-msgstr "Rakazo 不使用"
+msgid "Not used by Nurlai"
+msgstr "Nurlai 不使用"
 
 #: apps/mobile/app/(settings)/integrations.tsx
 #: apps/web/src/components/integrations/McpServerHealthLine.tsx
@@ -7768,8 +7768,8 @@ msgstr "打开导航"
 #: apps/web/src/pages/auth/Invite.tsx
 #: apps/web/src/pages/auth/JoinOrganization.tsx
 #: apps/web/src/pages/SharedPage.tsx
-msgid "Open Rakazo"
-msgstr "打开 Rakazo"
+msgid "Open Nurlai"
+msgstr "打开 Nurlai"
 
 #: apps/mobile/lib/composer/composer-dictation.ts
 #: apps/mobile/lib/thread/thread-voice.ts
@@ -8028,8 +8028,8 @@ msgstr "粘贴替换密钥"
 
 #: apps/mobile/components/models/compatible-endpoint-form.tsx
 #: apps/web/src/pages/model-settings/compatible-model-fields.tsx
-msgid "Paste the OpenAI-compatible address from your server. Rakazo adds /v1 if needed."
-msgstr "粘贴服务器的 OpenAI 兼容地址。需要时 Rakazo 会补上 /v1。"
+msgid "Paste the OpenAI-compatible address from your server. Nurlai adds /v1 if needed."
+msgstr "粘贴服务器的 OpenAI 兼容地址。需要时 Nurlai 会补上 /v1。"
 
 #: apps/web/src/pages/shell/bots/agent-import.tsx
 msgid "Paste the reply"
@@ -8351,19 +8351,19 @@ msgstr "引用所选内容"
 #: apps/mobile/app/bot-settings.tsx
 #: apps/web/src/pages/settings/AccountSettingsOverlay.tsx
 #: apps/web/src/pages/shell/bots/avatar-studio-popover.tsx
-msgid "Rakazo"
-msgstr "Rakazo"
+msgid "Nurlai"
+msgstr "Nurlai"
 
 #: apps/mobile/app/(settings)/billing.tsx
 #: apps/mobile/components/models/model-role-settings.tsx
 #: apps/web/src/pages/model-settings/ModelRoleSettings.tsx
 #: apps/web/src/pages/onboarding/use-onboarding-model.ts
-msgid "Rakazo credits"
-msgstr "Rakazo 额度"
+msgid "Nurlai credits"
+msgstr "Nurlai 额度"
 
 #: apps/web/src/components/models/ProviderSettingsForm.tsx
-msgid "rakazo-shared and IDs starting with bot- are reserved for Rakazo."
-msgstr "rakazo-shared 和以 bot- 开头的 ID 保留给 Rakazo 使用。"
+msgid "rakazo-shared and IDs starting with bot- are reserved for Nurlai."
+msgstr "rakazo-shared 和以 bot- 开头的 ID 保留给 Nurlai 使用。"
 
 #: apps/mobile/components/thread/message-row.tsx
 #: apps/web/src/pages/shell/chat/message-hover-actions.tsx
@@ -8409,8 +8409,8 @@ msgid "Recall from banks"
 msgstr "从记忆库读取"
 
 #: apps/web/src/components/models/ProviderSettingsForm.tsx
-msgid "Recall from this peer; save to Rakazo’s own peers."
-msgstr "从此 peer 读取；保存到 Rakazo 自己的 peer。"
+msgid "Recall from this peer; save to Nurlai’s own peers."
+msgstr "从此 peer 读取；保存到 Nurlai 自己的 peer。"
 
 #: apps/web/src/components/models/ProviderSettingsForm.tsx
 msgid "Recall only"
@@ -9017,8 +9017,8 @@ msgstr "返回收件箱"
 
 #: apps/web/src/pages/integrations/McpOAuthCallback.tsx
 #: apps/web/src/pages/integrations/SlackInstallCallback.tsx
-msgid "Return to Rakazo"
-msgstr "返回 Rakazo"
+msgid "Return to Nurlai"
+msgstr "返回 Nurlai"
 
 #: apps/web/src/lib/models/model-connection-preflight.ts
 msgid "Review provider settings and test again."
@@ -9796,13 +9796,13 @@ msgid "Sign in at <0>{0}</0>, then paste the code here."
 msgstr "在 <0>{0}</0> 登录，然后将代码粘贴到这里。"
 
 #: apps/mobile/app/sign-in.tsx
-msgid "Sign in to continue to Rakazo"
-msgstr "登录以继续使用 Rakazo"
+msgid "Sign in to continue to Nurlai"
+msgstr "登录以继续使用 Nurlai"
 
 #: apps/mobile/app/sign-in.tsx
 #: apps/web/src/pages/auth/Auth.tsx
-msgid "Sign in to Rakazo"
-msgstr "登录 Rakazo"
+msgid "Sign in to Nurlai"
+msgstr "登录 Nurlai"
 
 #: apps/mobile/lib/api/user-error.ts
 #: apps/web/src/lib/query/user-error.ts
@@ -9833,8 +9833,8 @@ msgid "Sign up"
 msgstr "注册"
 
 #: apps/mobile/app/sign-in.tsx
-msgid "Sign up for Rakazo"
-msgstr "注册 Rakazo"
+msgid "Sign up for Nurlai"
+msgstr "注册 Nurlai"
 
 #: apps/web/src/pages/plugins/PluginsOverlay.tsx
 msgid "Sign-in cancelled. Retry in Manage MCP servers."
@@ -10153,8 +10153,8 @@ msgid "Start recording"
 msgstr "开始录制"
 
 #: apps/mobile/app/paywall.tsx
-msgid "Start using Rakazo"
-msgstr "开始使用 Rakazo"
+msgid "Start using Nurlai"
+msgstr "开始使用 Nurlai"
 
 #: apps/mobile/app/(settings)/billing.tsx
 #: apps/web/src/components/billing/ModelCredits.tsx
@@ -10479,8 +10479,8 @@ msgid "That isn't a Grok Bot export. Paste the Bot's whole reply."
 msgstr "这不是 Grok Bot 的导出内容。请粘贴该 Bot 的完整回复。"
 
 #: apps/mobile/lib/api/endpoint.ts
-msgid "That URL did not look like a Rakazo server"
-msgstr "该地址看起来不是 Rakazo 服务器"
+msgid "That URL did not look like a Nurlai server"
+msgstr "该地址看起来不是 Nurlai 服务器"
 
 #: apps/mobile/lib/api/endpoint.ts
 msgid "That URL is missing a host"
@@ -10773,8 +10773,8 @@ msgid "This device"
 msgstr "本设备"
 
 #: apps/web/src/lib/bots/agent-import-errors.ts
-msgid "This export is newer than Rakazo can read. Update Rakazo and try again."
-msgstr "此导出内容的版本比 Rakazo 能读取的更新。请更新 Rakazo 后重试。"
+msgid "This export is newer than Nurlai can read. Update Nurlai and try again."
+msgstr "此导出内容的版本比 Nurlai 能读取的更新。请更新 Nurlai 后重试。"
 
 #: apps/web/src/lib/bots/agent-import-errors.ts
 msgid "This export is too large to import."
@@ -10949,8 +10949,8 @@ msgstr "此空间有自己的保管库。其中的 Bot 会在那里保存和使�
 
 #: apps/mobile/app/(settings)/model-connection.tsx
 #: apps/web/src/pages/model-settings/connection-controls.tsx
-msgid "This subscription sign-in is not available in Rakazo yet. Use a deployment credential or choose another provider."
-msgstr "此订阅登录在 Rakazo 中尚不可用。请使用部署凭据或选择其他提供商。"
+msgid "This subscription sign-in is not available in Nurlai yet. Use a deployment credential or choose another provider."
+msgstr "此订阅登录在 Nurlai 中尚不可用。请使用部署凭据或选择其他提供商。"
 
 #: apps/mobile/app/(settings)/bot-template.tsx
 #: apps/web/src/components/bot-templates/bot-templates-dialog.tsx
@@ -11504,8 +11504,8 @@ msgstr "输入密码时请用受保护输入。"
 
 #: apps/mobile/app/(settings)/billing.tsx
 #: apps/web/src/components/billing/ModelCredits.tsx
-msgid "Use Rakazo credits"
-msgstr "使用 Rakazo 额度"
+msgid "Use Nurlai credits"
+msgstr "使用 Nurlai 额度"
 
 #: apps/mobile/components/settings/space-bots-model.tsx
 msgid "Use space default"
@@ -11741,8 +11741,8 @@ msgstr "欢迎回来"
 
 #: apps/mobile/app/(settings)/_layout.tsx
 #: apps/web/src/components/account/SignupSurvey.tsx
-msgid "Welcome to Rakazo"
-msgstr "欢迎使用 Rakazo"
+msgid "Welcome to Nurlai"
+msgstr "欢迎使用 Nurlai"
 
 #: apps/web/src/pages/shell/create-delete-dialogs.tsx
 msgid "What about its memories?"
@@ -11754,8 +11754,8 @@ msgstr "这个空间可以使用什么？"
 
 #: apps/mobile/app/(settings)/signup-survey.tsx
 #: apps/web/src/components/account/SignupSurvey.tsx
-msgid "What do you most want Rakazo to help with?"
-msgstr "你最希望 Rakazo 帮你做什么？"
+msgid "What do you most want Nurlai to help with?"
+msgstr "你最希望 Nurlai 帮你做什么？"
 
 #: apps/web/src/pages/shell/chat/message-cards.tsx
 msgid "What do you want me on first?"

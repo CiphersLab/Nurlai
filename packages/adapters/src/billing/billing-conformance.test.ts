@@ -1,5 +1,5 @@
-import type { BillingProvider, BillingSubscriptionStatus } from "@rakazo/adapter-kit";
-import { BillingCheckoutCompletedError, BillingCustomerNotFoundError } from "@rakazo/adapter-kit";
+import type { BillingProvider, BillingSubscriptionStatus } from "@nurlai/adapter-kit";
+import { BillingCheckoutCompletedError, BillingCustomerNotFoundError } from "@nurlai/adapter-kit";
 import { describe, expect, it } from "vitest";
 import {
   StripeBillingProvider,

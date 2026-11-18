@@ -35,7 +35,7 @@ The Compose files also pass the standard provider key variables the agent runtim
 (`OPENAI_API_KEY`, `GEMINI_API_KEY`, `MISTRAL_API_KEY`, `GROQ_API_KEY`, `XAI_API_KEY` and others) to
 the API and worker, for models that have no stored credential.
 
-`RAKAZO_LIVE_MODEL_CATALOG=off` disables provider and Codex live catalog probing; the default is on.
+`NURLAI_LIVE_MODEL_CATALOG=off` disables provider and Codex live catalog probing; the default is on.
 
 ## Approvals
 
@@ -49,19 +49,19 @@ unattended runs that cannot request approval refuse them.
 
 In **Settings → Models → Approval model**, each user can select a model
 from an existing connection and add ordered backups, independently of their main model. Personal
-connections use their own credentials; hosted calls follow the same Rakazo credit rules as chat.
+connections use their own credentials; hosted calls follow the same Nurlai credit rules as chat.
 Backups are tried only when a checker fails. An explicit ask, including an uncertain decision,
 still requires a person.
 
 The deployment checker remains the default when no approval model is selected. For OpenRouter
-Jev, set `RAKAZO_AUTO_REVIEW_PROVIDER=openrouter` and
-`RAKAZO_AUTO_REVIEW_MODEL=typesafe/jev-1.14`; it uses `OPENROUTER_API_KEY` and the Decisions API.
-TypeSafe direct remains available through `RAKAZO_AUTO_REVIEW_PROVIDER=jev` and
+Jev, set `NURLAI_AUTO_REVIEW_PROVIDER=openrouter` and
+`NURLAI_AUTO_REVIEW_MODEL=typesafe/jev-1.14`; it uses `OPENROUTER_API_KEY` and the Decisions API.
+TypeSafe direct remains available through `NURLAI_AUTO_REVIEW_PROVIDER=jev` and
 `TYPESAFE_API_KEY`. Core runs without either hosted service.
 
-With TypeSafe, `RAKAZO_AUTO_REVIEW_MODEL` defaults to `jev-latest`, and
-`RAKAZO_AUTO_REVIEW_MIN_CONFIDENCE` (0 to 1, default `0.5`) is the confidence below which Auto asks
-the person instead. `RAKAZO_AUTO_REVIEW_TIMEOUT_MS` (200 to 30000, default `10000`) bounds each
+With TypeSafe, `NURLAI_AUTO_REVIEW_MODEL` defaults to `jev-latest`, and
+`NURLAI_AUTO_REVIEW_MIN_CONFIDENCE` (0 to 1, default `0.5`) is the confidence below which Auto asks
+the person instead. `NURLAI_AUTO_REVIEW_TIMEOUT_MS` (200 to 30000, default `10000`) bounds each
 check.
 
 ## Local models
@@ -70,55 +70,55 @@ To use an operator-controlled OpenAI-compatible server such as Ollama, LM Studio
 MLX, list its model IDs and an endpoint that both the API and worker processes can reach:
 
 ```env
-RAKAZO_LOCAL_MODELS=qwen3:4b,llama3.1:8b,qwen3-vl
-RAKAZO_LOCAL_MODELS_URL=http://127.0.0.1:11434/v1
+NURLAI_LOCAL_MODELS=qwen3:4b,llama3.1:8b,qwen3-vl
+NURLAI_LOCAL_MODELS_URL=http://127.0.0.1:11434/v1
 # Optional: key for a server that requires one, sent as the bearer token.
-RAKAZO_LOCAL_MODELS_API_KEY=
-RAKAZO_LOCAL_CONTEXT_WINDOW=32768
-RAKAZO_LOCAL_MAX_TOKENS=4096
+NURLAI_LOCAL_MODELS_API_KEY=
+NURLAI_LOCAL_CONTEXT_WINDOW=32768
+NURLAI_LOCAL_MAX_TOKENS=4096
 # Optional: model ids on this endpoint that accept images (screenshot computer tools).
-RAKAZO_LOCAL_VISION_MODELS=qwen3-vl
+NURLAI_LOCAL_VISION_MODELS=qwen3-vl
 # Optional: model ids on this endpoint that accept OpenAI-style reasoning_effort.
-RAKAZO_LOCAL_REASONING_MODELS=qwen3:4b
+NURLAI_LOCAL_REASONING_MODELS=qwen3:4b
 # Optional: prompt tokens per minute the server accepts (a rate-limited key or quota).
-RAKAZO_LOCAL_TOKENS_PER_MINUTE=200000
+NURLAI_LOCAL_TOKENS_PER_MINUTE=200000
 # Optional: off when the server does not cache prompts.
-RAKAZO_LOCAL_PROMPT_CACHE=off
+NURLAI_LOCAL_PROMPT_CACHE=off
 ```
 
-Set `RAKAZO_LOCAL_MODELS_API_KEY` when the server requires a key, such as LiteLLM, vLLM started
-with `--api-key`, or a company gateway. Every request to `RAKAZO_LOCAL_MODELS_URL` then sends it as
+Set `NURLAI_LOCAL_MODELS_API_KEY` when the server requires a key, such as LiteLLM, vLLM started
+with `--api-key`, or a company gateway. Every request to `NURLAI_LOCAL_MODELS_URL` then sends it as
 `Authorization: Bearer`; unset, requests carry the placeholder `local`. Like the other deployment
 keys, it stays on the API and worker and is redacted from run output. Use HTTPS unless the network
 is trusted. To make a local model the deployment model, set `PI_DEFAULT_PROVIDER=local`,
-`PI_DEFAULT_MODEL` to one of `RAKAZO_LOCAL_MODELS` and `PI_DEFAULT_CREDENTIALS=host`.
+`PI_DEFAULT_MODEL` to one of `NURLAI_LOCAL_MODELS` and `PI_DEFAULT_CREDENTIALS=host`.
 
-A model in `RAKAZO_LOCAL_REASONING_MODELS` offers thinking levels and sends the chosen level as
+A model in `NURLAI_LOCAL_REASONING_MODELS` offers thinking levels and sends the chosen level as
 `reasoning_effort` (`medium` by default, `none` when thinking is off). Other local models never
 receive the field.
 
-`RAKAZO_LOCAL_MAX_TOKENS` is the output limit sent with every request to a local model, unless the
+`NURLAI_LOCAL_MAX_TOKENS` is the output limit sent with every request to a local model, unless the
 connection sets its own max-tokens value. It never exceeds a quarter of
-`RAKAZO_LOCAL_CONTEXT_WINDOW`, so the prompt keeps the rest; a higher limit leaves less room for the
+`NURLAI_LOCAL_CONTEXT_WINDOW`, so the prompt keeps the rest; a higher limit leaves less room for the
 prompt, so long chats are compacted sooner.
 
 A server behind a rate-limited key (a free tier, an organisation token quota) often answers `429`
 with a fixed `Retry-After` of a minute, so each rejected call costs a minute. Set
-`RAKAZO_LOCAL_TOKENS_PER_MINUTE` to the server's prompt-token limit and Rakazo paces calls to the
+`NURLAI_LOCAL_TOKENS_PER_MINUTE` to the server's prompt-token limit and Nurlai paces calls to the
 local provider under it with a sliding one-minute window, waiting only as long as the window needs.
 The estimate is calibrated against the prompt tokens the server reports. Leave some headroom if
 other clients share the key; a `429` that still happens keeps the usual `Retry-After` handling.
 Unset, calls are sent as soon as they are ready. Like the other token limits, a value that is not
 a positive integer is rejected when the local provider is configured.
 
-Rakazo keeps a run's earlier messages unchanged between calls so a server's prompt cache keeps
+Nurlai keeps a run's earlier messages unchanged between calls so a server's prompt cache keeps
 hitting, and trims old page state only when that saves more than the cache would. A server without
 prompt caching (several hosted gateways and confidential-compute endpoints report no cached
 tokens) gets nothing from that, and old page snapshots are only sent again on every call. Set
-`RAKAZO_LOCAL_PROMPT_CACHE=off` to declare this: stale page state is then trimmed once about 3,000
+`NURLAI_LOCAL_PROMPT_CACHE=off` to declare this: stale page state is then trimmed once about 3,000
 tokens of it have built up. Unset, behaviour is unchanged.
 
-The loopback default is suitable when running Rakazo from a source checkout. From containers,
+The loopback default is suitable when running Nurlai from a source checkout. From containers,
 prefer a stable LAN RFC1918 address (not Compose service DNS alone). On Docker Desktop,
 `host.docker.internal` also works.
 On Docker Desktop, a bot computer shell can often reach services bound to host `127.0.0.1`
@@ -126,14 +126,14 @@ through that same hostname. Do not run sensitive unauthenticated services on loo
 bots run, or firewall / block that path. Linux does not get `host.docker.internal` the same
 way by default.
 Only configure an endpoint you control: prompts, attachments, and tool results sent to that model
-leave Rakazo through this URL. Leave `RAKAZO_LOCAL_MODELS` blank to disable the provider.
+leave Nurlai through this URL. Leave `NURLAI_LOCAL_MODELS` blank to disable the provider.
 
 ## Claude Code CLI
 
 With a Claude subscription, a server that only you use can run its deployment model through the
-official Claude Code CLI, signed in with your own account. For each model turn Rakazo starts the
-`claude` command installed on the server and reads its reply. Rakazo never reads, stores, forwards
-or refreshes your Claude sign-in, and every request to Anthropic is the CLI's own. Rakazo keeps the
+official Claude Code CLI, signed in with your own account. For each model turn Nurlai starts the
+`claude` command installed on the server and reads its reply. Nurlai never reads, stores, forwards
+or refreshes your Claude sign-in, and every request to Anthropic is the CLI's own. Nurlai keeps the
 conversation, tools, memory and approvals: the CLI only answers as the model, with its own tools,
 settings, project files and saved sessions turned off.
 
@@ -143,9 +143,9 @@ What it needs:
   OS user. The official Docker images and the desktop app's local stack do not include Claude
   Code, and adding it to them is not supported.
 - Claude Code 2.1.280 or newer on that user's `PATH`, signed in once in a terminal as that user
-  with `claude auth login`. This route uses no Claude sign-in inside Rakazo and no Claude token,
+  with `claude auth login`. This route uses no Claude sign-in inside Nurlai and no Claude token,
   so `claude setup-token` is not needed.
-- One account on the server. A Claude sign-in belongs to one person, so Rakazo refuses Claude Code
+- One account on the server. A Claude sign-in belongs to one person, so Nurlai refuses Claude Code
   runs while the server has more than one account (people who only message bots from chat apps do
   not count) or bills for model usage.
 
@@ -155,9 +155,9 @@ PI_DEFAULT_CREDENTIALS=host
 PI_DEFAULT_MODEL=claude-sonnet-5
 ```
 
-Use a full model id the CLI accepts with `claude --model`, so Rakazo knows the model's context
+Use a full model id the CLI accepts with `claude --model`, so Nurlai knows the model's context
 and output limits. Usage counts against your own Claude plan and its limits, which assume
-ordinary individual use; Rakazo shows no cost for these runs, and once the plan's limit is reached
+ordinary individual use; Nurlai shows no cost for these runs, and once the plan's limit is reached
 runs fail with a rate-limit error until it resets. Your use of Claude Code is covered by
 Anthropic's terms; see [Legal and compliance](https://code.claude.com/docs/en/legal-and-compliance).
 
@@ -168,7 +168,7 @@ own sign-in. Only the deployment model runs on Claude Code; it is not offered as
 
 ## Ollama Cloud
 
-In **Settings → Models**, choose **Ollama Cloud**, paste an API key from ollama.com, then **Find models**. This uses an OpenAI-compatible connection with no environment configuration, and stays available when `RAKAZO_OPENAI_COMPAT_ALLOW_PUBLIC=0`.
+In **Settings → Models**, choose **Ollama Cloud**, paste an API key from ollama.com, then **Find models**. This uses an OpenAI-compatible connection with no environment configuration, and stays available when `NURLAI_OPENAI_COMPAT_ALLOW_PUBLIC=0`.
 
 ## OpenAI-compatible connections
 
@@ -178,7 +178,7 @@ Each user can also connect their own OpenAI-compatible endpoint from **Connect a
 Add optional request headers under **Advanced**; values are stored encrypted, and only their names
 are shown afterwards.
 Public hosts and ordinary hostnames need HTTPS when they receive an API key or custom headers,
-and must resolve only to public addresses. Set `RAKAZO_OPENAI_COMPAT_ALLOW_PUBLIC=0` on the API
+and must resolve only to public addresses. Set `NURLAI_OPENAI_COMPAT_ALLOW_PUBLIC=0` on the API
 and worker to block them.
 Literal private IP, loopback, and `host.docker.internal` targets do not, but they are refused
 unless `MCP_ALLOW_PRIVATE_ENDPOINT=true` is set on the API and worker, which allows them for every
@@ -187,10 +187,10 @@ With the Docker images install and the desktop app, a `localhost` or `127.0.0.1`
 reaches the computer running Docker (through `host.docker.internal`). On Linux, the model server
 must listen on an address the Docker bridge can reach, not only `127.0.0.1`.
 For a self-hosted endpoint whose hostname resolves to private IPs, set
-`RAKAZO_OPENAI_COMPAT_PRIVATE_HOSTS=models.example.test,other.example.test` in the deployment
+`NURLAI_OPENAI_COMPAT_PRIVATE_HOSTS=models.example.test,other.example.test` in the deployment
 environment for both API and worker, then recreate those containers. Entries are exact hostnames
 (case-insensitive, optional trailing dot), not URLs, suffixes, or wildcards. These hosts ignore
-`RAKAZO_OPENAI_COMPAT_ALLOW_PUBLIC`; every DNS answer must be private, and metadata and
+`NURLAI_OPENAI_COMPAT_ALLOW_PUBLIC`; every DNS answer must be private, and metadata and
 link-local destinations remain blocked. This applies to discovery and model requests.
 HTTPS still validates the hostname's certificate. Like private IP endpoints, trusted hostnames
 also permit HTTP with API keys; use HTTPS unless the network is trusted. Only allow hosts you
@@ -199,18 +199,18 @@ If that endpoint's model
 accepts images, enable **Supports images** under **Advanced** when connecting so attachments and
 screenshot computer tools stay available. Existing connections default to disabled. For centrally
 managed endpoints, the deployment-wide fallback remains
-`RAKAZO_OPENAI_COMPATIBLE_VISION_MODELS=gpt4o-vision,llava`.
+`NURLAI_OPENAI_COMPATIBLE_VISION_MODELS=gpt4o-vision,llava`.
 
 ## Thinking
 
 For servers that accept standard `reasoning_effort`, enable **Supports thinking** under
 **Advanced** when connecting. The setting is saved on the connection (no env var or restart).
 Existing connections default to disabled. Deployment-local models opt in through
-`RAKAZO_LOCAL_REASONING_MODELS`; reconnect through **Settings → Models** only to move to a personal
+`NURLAI_LOCAL_REASONING_MODELS`; reconnect through **Settings → Models** only to move to a personal
 connection.
 
 Enabled connections default to medium thinking. Web and desktop expose **Thinking** in a bot's
-advanced settings; mobile inherits the same backend policy. Rakazo sends standard
+advanced settings; mobile inherits the same backend policy. Nurlai sends standard
 `reasoning_effort` (`minimal`, `low`, `medium`, `high`, or `none` when off); the server owns
 model-specific translation. Leave **Supports thinking** off when the server lacks standard effort
 support. Existing token limits still apply; effort is not a separate reasoning-token budget.

@@ -39,9 +39,9 @@ afterEach(async () => {
 async function plan(route = "/plan", currentTag = "v1.0.0") {
   const dir = await mkdtemp(path.join(os.tmpdir(), "rakazo-command-output-"));
   directories.push(dir);
-  await writeFile(path.join(dir, ".env"), `RAKAZO_IMAGE_TAG=${currentTag}\n`);
+  await writeFile(path.join(dir, ".env"), `NURLAI_IMAGE_TAG=${currentTag}\n`);
   const app = createUpdaterApp({
-    ...resolveUpdaterConfig({ RAKAZO_DEPLOY_DIR: "/fixture", RAKAZO_UPDATER_TOKEN: token }),
+    ...resolveUpdaterConfig({ NURLAI_DEPLOY_DIR: "/fixture", NURLAI_UPDATER_TOKEN: token }),
     deployDir: dir,
     envFile: path.join(dir, ".env"),
   });

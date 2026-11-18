@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { expect, test } from "@playwright/test";
-import { BOT_COLORS } from "@rakazo/contracts";
+import { BOT_COLORS } from "@nurlai/contracts";
 import { captureScreenshot } from "../helpers/helpers";
 
 test.use({ viewport: { width: 1260, height: 1000 } });
@@ -21,12 +21,12 @@ test("renders the real logo in every requested pose in both themes", async ({ pa
     for (const label of ["Idle", "Reading", "Writing", "Thinking", "Computer use"]) {
       await expect(cards.getByRole("img", { name: label, exact: true })).toBeVisible();
     }
-    await expect(page.locator('.rakazo-logo-avatar[data-artwork-fallback="true"]')).toHaveCount(0);
+    await expect(page.locator('.nurlai-logo-avatar[data-artwork-fallback="true"]')).toHaveCount(0);
     expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(
       false,
     );
     const smallAnimations = await page
-      .locator('.rakazo-logo-avatar[data-motion="false"]')
+      .locator('.nurlai-logo-avatar[data-motion="false"]')
       .evaluateAll((elements) =>
         elements.flatMap((element) =>
           element.getAnimations({ subtree: true }).map((animation) => animation.playState),
@@ -102,7 +102,7 @@ test("motion changes the gaze, transitions smoothly and stops under reduced moti
   expect(await selected.locator(".logo-avatar-art > path").first().getAttribute("d")).toBe(source);
   await page.emulateMedia({ reducedMotion: "reduce" });
   const animated = await page
-    .locator(".rakazo-logo-avatar")
+    .locator(".nurlai-logo-avatar")
     .evaluateAll((elements) =>
       elements.flatMap((element) =>
         element.getAnimations({ subtree: true }).map((animation) => animation.playState),
@@ -328,7 +328,7 @@ test("activity changes keep elapsed phase and interrupted fades settle to one la
     .getByRole("region", { name: "Transitions and runtime events" })
     .locator("article")
     .first();
-  const avatar = switcher.locator(".rakazo-logo-avatar[role=img]");
+  const avatar = switcher.locator(".nurlai-logo-avatar[role=img]");
   await page.waitForTimeout(650);
   const timeBefore = await avatar.evaluate((element) =>
     Number(element.querySelector(".logo-avatar-scan")!.getAnimations()[0]!.currentTime),
@@ -359,7 +359,7 @@ test("writing keeps the head level with a small vertical typing cadence at avata
     .evaluate((button: HTMLButtonElement) => button.click());
   await page.waitForTimeout(250);
   const proof = await page
-    .locator('.rakazo-logo-avatar[data-activity="writing"][data-motion="true"]')
+    .locator('.nurlai-logo-avatar[data-activity="writing"][data-motion="true"]')
     .evaluateAll((avatars) =>
       avatars.map((avatar) => {
         const body = avatar.querySelector(".logo-avatar-body")!;
@@ -412,7 +412,7 @@ test("thinking ponders in one direction with a long squint and a small reconside
     .evaluate((button: HTMLButtonElement) => button.click());
   await page.waitForTimeout(250);
   const proof = await page
-    .locator('.rakazo-logo-avatar[data-activity="thinking"][data-motion="true"]')
+    .locator('.nurlai-logo-avatar[data-activity="thinking"][data-motion="true"]')
     .evaluateAll((avatars) =>
       avatars.map((avatar) => {
         const body = avatar.querySelector(".logo-avatar-body")!;
@@ -540,7 +540,7 @@ test("paired blinks last 160ms with uneven spacing and reduced motion opens the 
 test("expressive gaze reads at24/32/38px and stays on the logo silhouette", async ({ page }) => {
   await page.goto("/e2e/fixtures/logo-avatars.html?compare=1");
   const proof = await page.evaluate(async () => {
-    const avatars = [...document.querySelectorAll<SVGSVGElement>(".rakazo-logo-avatar")].filter(
+    const avatars = [...document.querySelectorAll<SVGSVGElement>(".nurlai-logo-avatar")].filter(
       (avatar) =>
         [24, 32, 38].includes(Number(avatar.getAttribute("width"))) &&
         avatar.dataset.activity !== "idle",
@@ -698,7 +698,7 @@ test("native small-size indicators keep one-pixel strokes and omit fine detail i
 }) => {
   for (const theme of ["dark", "light"]) {
     await page.goto(`/e2e/fixtures/logo-avatars.html?strip=1&theme=${theme}`);
-    const proof = await page.locator(".rakazo-logo-avatar").evaluateAll((avatars) =>
+    const proof = await page.locator(".nurlai-logo-avatar").evaluateAll((avatars) =>
       avatars.map((avatar) => {
         const size = Number(avatar.getAttribute("width"));
         const bounds = avatar.getBoundingClientRect();
@@ -801,7 +801,7 @@ test("seed colours persist through rerenders and reloads at actual avatar sizes"
 }, testInfo) => {
   for (const theme of ["light", "dark"]) {
     await page.goto(`/e2e/fixtures/logo-avatars.html?seeded=1&count=18&theme=${theme}`);
-    const avatars = page.getByTestId("seeded-fleet").locator(".rakazo-logo-avatar");
+    const avatars = page.getByTestId("seeded-fleet").locator(".nurlai-logo-avatar");
     await expect(avatars).toHaveCount(72);
     const before = await avatars.evaluateAll((nodes) =>
       nodes.map((node) => node.getAttribute("data-color")),
@@ -832,12 +832,12 @@ test("new activity does not restart an existing outgoing fade", async ({ page })
     .locator("article")
     .first();
   await switcher.scrollIntoViewIfNeeded();
-  await expect(switcher.locator(".rakazo-logo-avatar[role=img]")).toHaveAttribute(
+  await expect(switcher.locator(".nurlai-logo-avatar[role=img]")).toHaveAttribute(
     "data-paused",
     "false",
   );
   const proof = await switcher.evaluate(async (article) => {
-    const avatar = article.querySelector(".rakazo-logo-avatar[role=img]")!;
+    const avatar = article.querySelector(".nurlai-logo-avatar[role=img]")!;
     const change = (name: string, activity: string) =>
       new Promise<void>((resolve, reject) => {
         const timeout = setTimeout(() => {

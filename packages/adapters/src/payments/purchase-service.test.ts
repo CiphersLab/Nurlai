@@ -1,5 +1,5 @@
-import type { AdapterContext } from "@rakazo/adapter-kit";
-import { PaymentWalletDisconnected, PaymentWalletRequestRejected } from "@rakazo/adapter-kit";
+import type { AdapterContext } from "@nurlai/adapter-kit";
+import { PaymentWalletDisconnected, PaymentWalletRequestRejected } from "@nurlai/adapter-kit";
 import { Challenge, Credential } from "mppx";
 import { beforeEach, describe, expect, it, onTestFinished, vi } from "vitest";
 import type { SecretCleanup } from "../secrets/secret-cleanup.js";

@@ -1,5 +1,5 @@
 import { ORPCError } from "@orpc/server";
-import { MemoryRevisionConflictError } from "@rakazo/adapter-kit";
+import { MemoryRevisionConflictError } from "@nurlai/adapter-kit";
 import {
   buildAgentMemoryPrompt,
   isScratchpadStatus,
@@ -7,10 +7,10 @@ import {
   mapScratchpadItem,
   memoryProviderDescriptors,
   readAgentMemory,
-} from "@rakazo/adapters";
-import { isDeletableMemoryDocument } from "@rakazo/contracts";
-import { ClientError } from "@rakazo/core";
-import { findSpaceMemoryConfig, IsolationError } from "@rakazo/db";
+} from "@nurlai/adapters";
+import { isDeletableMemoryDocument } from "@nurlai/contracts";
+import { ClientError } from "@nurlai/core";
+import { findSpaceMemoryConfig, IsolationError } from "@nurlai/db";
 import {
   disconnectMemoryProvider,
   persistMemoryProviderConfig,

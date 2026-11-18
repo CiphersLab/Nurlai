@@ -1,10 +1,10 @@
 import { randomUUID } from "node:crypto";
 import { readFileSync } from "node:fs";
-import type { BackgroundJobHandlers, JobPublisher } from "@rakazo/adapter-kit";
-import { runContinueJob } from "@rakazo/adapter-kit";
-import { stuckWorkStatusMessage } from "@rakazo/core";
-import { deferred } from "@rakazo/core/test-async";
-import type { PrismaClient } from "@rakazo/db";
+import type { BackgroundJobHandlers, JobPublisher } from "@nurlai/adapter-kit";
+import { runContinueJob } from "@nurlai/adapter-kit";
+import { stuckWorkStatusMessage } from "@nurlai/core";
+import { deferred } from "@nurlai/core/test-async";
+import type { PrismaClient } from "@nurlai/db";
 import {
   appendEvent,
   appendEventInTransaction,
@@ -15,8 +15,8 @@ import {
   provisionMessagingIdentity,
   runAsSystem,
   runAsTenant,
-} from "@rakazo/db";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { InMemoryRealtimeFanout } from "../../notifications/realtime.js";
 import type { ExecutorDeps } from "../executor/executor-deps.js";

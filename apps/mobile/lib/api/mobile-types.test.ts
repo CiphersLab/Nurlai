@@ -1,7 +1,7 @@
 vi.mock("../settings/ai-consent", () => ({ promptAiConsent: vi.fn() }));
 
-import { mergeThreadSnapshot, reduceThreadSnapshot } from "@rakazo/core";
-import { deferred } from "@rakazo/core/test-async";
+import { mergeThreadSnapshot, reduceThreadSnapshot } from "@nurlai/core";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { threadRefreshDelayMs } from "../thread/refresh";
 import type { MobileMessage, MobileSnapshot } from "./mobile-types.js";

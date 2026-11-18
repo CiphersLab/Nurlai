@@ -1,5 +1,5 @@
-import { ResponseTooLargeError } from "@rakazo/core";
-import { bestEffort } from "@rakazo/logging";
+import { ResponseTooLargeError } from "@nurlai/core";
+import { bestEffort } from "@nurlai/logging";
 import type { LocalServiceConnection } from "../../../network/local-service-endpoint.js";
 import { fetchLocalService, parseServiceBaseUrl } from "../../../network/local-service-endpoint.js";
 import { readBodyCapped } from "../../../web/web-ssrf.js";

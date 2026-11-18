@@ -1,5 +1,5 @@
-import { phoneCallSettings, uploadSizeFromEnv } from "@rakazo/core";
-import { resolveEncryptionKey } from "@rakazo/core/node/secrets-guard";
+import { phoneCallSettings, uploadSizeFromEnv } from "@nurlai/core";
+import { resolveEncryptionKey } from "@nurlai/core/node/secrets-guard";
 import { describe, expect, it } from "vitest";
 import { mcpStdioOptionsFromEnv } from "../../mcp/mcp-connector.js";
 import { resolveDeploymentModel } from "../../models/deployment-model.js";

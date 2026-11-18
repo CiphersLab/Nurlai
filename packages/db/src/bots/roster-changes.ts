@@ -1,6 +1,6 @@
-import type { RealtimeFanout } from "@rakazo/adapter-kit";
-import { abortableDelay } from "@rakazo/core";
-import { getLogger } from "@rakazo/logging";
+import type { RealtimeFanout } from "@nurlai/adapter-kit";
+import { abortableDelay } from "@nurlai/core";
+import { getLogger } from "@nurlai/logging";
 import type { PrismaClient } from "../database/client.js";
 import { retryWhileDatabaseUnavailable } from "../database/database-outage.js";
 import { runAsSystem } from "../database/row-security.js";

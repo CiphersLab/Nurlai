@@ -1,5 +1,5 @@
-import type { ConnectorTool } from "@rakazo/adapter-kit";
-import { PAID_REQUEST_METHODS } from "@rakazo/contracts";
+import type { ConnectorTool } from "@nurlai/adapter-kit";
+import { PAID_REQUEST_METHODS } from "@nurlai/contracts";
 import { MAX_WEB_FETCH_OFFSET } from "../web/web-limits.js";
 
 /** Web, paid service, cloud agent and purchase tools. */

@@ -1,6 +1,6 @@
 import { setImmediate } from "node:timers/promises";
-import type { ProcessEvent } from "@rakazo/adapter-kit";
-import { redactSecrets } from "@rakazo/core";
+import type { ProcessEvent } from "@nurlai/adapter-kit";
+import { redactSecrets } from "@nurlai/core";
 import { automated } from "../../messaging/automated-messages.prompt.js";
 import { shortenPlainText } from "../../runtime/context/context-selection.js";
 import { TOOL_RESULT_TEXT_LIMIT } from "../../runtime/pi/pi-runtime-limits.js";

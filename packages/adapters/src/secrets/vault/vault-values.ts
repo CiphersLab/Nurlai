@@ -1,6 +1,6 @@
-import type { AdapterContext, SecretStore } from "@rakazo/adapter-kit";
-import { withAbort } from "@rakazo/core";
-import type { ContentLocation, PrismaClient } from "@rakazo/db";
+import type { AdapterContext, SecretStore } from "@nurlai/adapter-kit";
+import { withAbort } from "@nurlai/core";
+import type { ContentLocation, PrismaClient } from "@nurlai/db";
 import {
   CIPHERTEXT_PREFIX,
   ContentDecryptionError,
@@ -9,7 +9,7 @@ import {
   decryptText,
   encryptText,
   VaultKeyOwnerGoneError,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { INFISICAL_REF_PREFIX } from "../../providers/secret-store/infisical/infisical-secret-store.js";
 
 type VaultRow = { id: string; userId: string; spaceId: string | null };

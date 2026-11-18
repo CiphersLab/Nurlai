@@ -1,5 +1,5 @@
 import { Plural, Trans, useLingui } from "@lingui/react/macro";
-import type { AvailabilityKind, SpaceAvailability } from "@rakazo/contracts";
+import type { AvailabilityKind, SpaceAvailability } from "@nurlai/contracts";
 import {
   Button,
   DropdownMenu,
@@ -7,7 +7,7 @@ import {
   DropdownMenuContent,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { useQuery } from "@tanstack/react-query";
 import { ChevronDown } from "lucide-react";
 import { useSave, useSpaceQueries } from "../../lib/query/query";

@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
-import { useTimeout } from "@rakazo/chat-ui/hooks";
-import { botColors, typeScale } from "@rakazo/ui-tokens";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
+import { botColors, typeScale } from "@nurlai/ui-tokens";
 import type { NativeStackNavigationProp } from "expo-router";
 import { useFocusEffect, useNavigation, useRouter } from "expo-router";
 import { useCallback, useContext, useMemo, useRef, useState, useSyncExternalStore } from "react";

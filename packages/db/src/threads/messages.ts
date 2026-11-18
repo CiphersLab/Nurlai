@@ -1,5 +1,5 @@
-import type { MessageAuthor, MessageBlock, ToolHistory } from "@rakazo/contracts";
-import { splitToolHistory } from "@rakazo/core";
+import type { MessageAuthor, MessageBlock, ToolHistory } from "@nurlai/contracts";
+import { splitToolHistory } from "@nurlai/core";
 import type { PrismaClient } from "../database/client.js";
 import { Prisma } from "../database/client.js";
 import {

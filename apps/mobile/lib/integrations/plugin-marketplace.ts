@@ -2,9 +2,9 @@ import type {
   CapabilityInstall,
   ConnectionCatalogItem,
   PluginMarketplaceEntry,
-} from "@rakazo/contracts";
-import { PluginPreviewSchema } from "@rakazo/contracts";
-import type { PluginCategory } from "@rakazo/core";
+} from "@nurlai/contracts";
+import { PluginPreviewSchema } from "@nurlai/contracts";
+import type { PluginCategory } from "@nurlai/core";
 import {
   catalogItemKey,
   installedPluginParts,
@@ -13,7 +13,7 @@ import {
   OTHER_PLUGINS,
   PLUGIN_CATEGORIES,
   pluginSite,
-} from "@rakazo/core";
+} from "@nurlai/core";
 
 /** What the plugin screen needs, from a catalog entry or a pasted GitHub URL. */
 export type PluginParams = {

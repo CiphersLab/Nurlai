@@ -1,4 +1,4 @@
-import { useLinkFavicon } from "@rakazo/chat-ui/native";
+import { useLinkFavicon } from "@nurlai/chat-ui/native";
 import type { ReactNode } from "react";
 import type { StyleProp, ViewStyle } from "react-native";
 import { Image, StyleSheet, View } from "react-native";

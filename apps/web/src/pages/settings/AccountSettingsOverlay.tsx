@@ -1,5 +1,5 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { AccountSecurity, BotAvatarSet, SignInProvider } from "@rakazo/contracts";
+import type { AccountSecurity, BotAvatarSet, SignInProvider } from "@nurlai/contracts";
 import {
   APP_LOCALE_LABELS,
   accountDisplay,
@@ -8,7 +8,7 @@ import {
   MAX_PASSWORD_LENGTH,
   MIN_PASSWORD_LENGTH,
   sameTimeZone,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import {
   Button,
   Field,
@@ -20,7 +20,7 @@ import {
   Switch,
   ToggleGroup,
   ToggleGroupItem,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { useEffect, useId, useRef, useState } from "react";
 import { AccountAccess, LinkSsoRow } from "../../components/account/AccountAccess";
 import { PasskeySettings } from "../../components/account/PasskeySettings";

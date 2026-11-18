@@ -1,8 +1,8 @@
-import { SecretStoreUnavailableError } from "@rakazo/adapter-kit";
-import * as adapters from "@rakazo/adapters";
-import { listPiCatalog, serializeModelSecret } from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
-import { getLogger } from "@rakazo/logging";
+import { SecretStoreUnavailableError } from "@nurlai/adapter-kit";
+import * as adapters from "@nurlai/adapters";
+import { listPiCatalog, serializeModelSecret } from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
+import { getLogger } from "@nurlai/logging";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 import {
@@ -290,9 +290,9 @@ describe("role-based model settings API", () => {
 
     function clearApprovalEnvironment() {
       for (const key of [
-        "RAKAZO_AUTO_REVIEW_PROVIDER",
-        "RAKAZO_AUTO_REVIEW_MODEL",
-        "RAKAZO_LOCAL_MODELS",
+        "NURLAI_AUTO_REVIEW_PROVIDER",
+        "NURLAI_AUTO_REVIEW_MODEL",
+        "NURLAI_LOCAL_MODELS",
         "PI_DEFAULT_PROVIDER",
         "PI_DEFAULT_MODEL",
         "PI_DEFAULT_CREDENTIALS",
@@ -334,7 +334,7 @@ describe("role-based model settings API", () => {
         if (configuration === "connection") {
           vi.mocked(prisma.userModelCredential.findMany).mockResolvedValue(credentials);
         }
-        if (configuration === "local") vi.stubEnv("RAKAZO_LOCAL_MODELS", "local-judge");
+        if (configuration === "local") vi.stubEnv("NURLAI_LOCAL_MODELS", "local-judge");
         const { response } = await call("models/role", { role: "approval" });
         expect(response.status).toBe(200);
         expect((await response.json()).json.deploymentPrimary).toMatchObject({
@@ -358,8 +358,8 @@ describe("role-based model settings API", () => {
 
     it("keeps an approval default served by a connection stored under a provider alias", async () => {
       clearApprovalEnvironment();
-      vi.stubEnv("RAKAZO_AUTO_REVIEW_PROVIDER", "azure");
-      vi.stubEnv("RAKAZO_AUTO_REVIEW_MODEL", "gpt-4o");
+      vi.stubEnv("NURLAI_AUTO_REVIEW_PROVIDER", "azure");
+      vi.stubEnv("NURLAI_AUTO_REVIEW_MODEL", "gpt-4o");
       const { call } = setup({ credentialProvider: "azure-openai-responses" });
       const { response } = await call("models/role", { role: "approval" });
       expect(response.status).toBe(200);
@@ -393,8 +393,8 @@ describe("role-based model settings API", () => {
       "checks whether a compatible connection enables the approval model: %s",
       async (enabled) => {
         clearApprovalEnvironment();
-        vi.stubEnv("RAKAZO_AUTO_REVIEW_PROVIDER", "openai-compatible");
-        vi.stubEnv("RAKAZO_AUTO_REVIEW_MODEL", "judge");
+        vi.stubEnv("NURLAI_AUTO_REVIEW_PROVIDER", "openai-compatible");
+        vi.stubEnv("NURLAI_AUTO_REVIEW_MODEL", "judge");
         const { call } = setup({
           compatible: { enabledModelIds: enabled ? ["judge"] : ["other"], defaultModel: "other" },
         });
@@ -410,8 +410,8 @@ describe("role-based model settings API", () => {
       "checks the current private endpoint policy for an approval default: %s",
       async (allowPrivateEndpoint) => {
         clearApprovalEnvironment();
-        vi.stubEnv("RAKAZO_AUTO_REVIEW_PROVIDER", "openai-compatible");
-        vi.stubEnv("RAKAZO_AUTO_REVIEW_MODEL", "judge");
+        vi.stubEnv("NURLAI_AUTO_REVIEW_PROVIDER", "openai-compatible");
+        vi.stubEnv("NURLAI_AUTO_REVIEW_MODEL", "judge");
         const { call } = setup({
           allowPrivateEndpoint,
           compatible: { enabledModelIds: ["judge"], defaultModel: "judge" },
@@ -428,9 +428,9 @@ describe("role-based model settings API", () => {
       "checks the current public endpoint policy for an approval default: %s",
       async (allowPublic) => {
         clearApprovalEnvironment();
-        vi.stubEnv("RAKAZO_AUTO_REVIEW_PROVIDER", "openai-compatible");
-        vi.stubEnv("RAKAZO_AUTO_REVIEW_MODEL", "judge");
-        vi.stubEnv("RAKAZO_OPENAI_COMPAT_ALLOW_PUBLIC", allowPublic ? "1" : "0");
+        vi.stubEnv("NURLAI_AUTO_REVIEW_PROVIDER", "openai-compatible");
+        vi.stubEnv("NURLAI_AUTO_REVIEW_MODEL", "judge");
+        vi.stubEnv("NURLAI_OPENAI_COMPAT_ALLOW_PUBLIC", allowPublic ? "1" : "0");
         const { call } = setup({
           compatible: {
             enabledModelIds: ["judge"],
@@ -452,9 +452,9 @@ describe("role-based model settings API", () => {
       { name: "custom headers", apiKey: undefined, headers: { "X-Auth": "fake-model-header" } },
     ])("checks public transport security with $name", async ({ apiKey, headers }) => {
       clearApprovalEnvironment();
-      vi.stubEnv("RAKAZO_AUTO_REVIEW_PROVIDER", "openai-compatible");
-      vi.stubEnv("RAKAZO_AUTO_REVIEW_MODEL", "judge");
-      vi.stubEnv("RAKAZO_OPENAI_COMPAT_ALLOW_PUBLIC", "1");
+      vi.stubEnv("NURLAI_AUTO_REVIEW_PROVIDER", "openai-compatible");
+      vi.stubEnv("NURLAI_AUTO_REVIEW_MODEL", "judge");
+      vi.stubEnv("NURLAI_OPENAI_COMPAT_ALLOW_PUBLIC", "1");
       for (const secure of [true, false]) {
         const { call, deps } = setup({
           compatible: { enabledModelIds: ["judge"], defaultModel: "judge" },
@@ -482,8 +482,8 @@ describe("role-based model settings API", () => {
       "checks subscription access to an approval model against the live catalog: %s",
       async (listed) => {
         clearApprovalEnvironment();
-        vi.stubEnv("RAKAZO_AUTO_REVIEW_PROVIDER", "openai-codex");
-        vi.stubEnv("RAKAZO_AUTO_REVIEW_MODEL", "gpt-5.3-codex-spark");
+        vi.stubEnv("NURLAI_AUTO_REVIEW_PROVIDER", "openai-codex");
+        vi.stubEnv("NURLAI_AUTO_REVIEW_MODEL", "gpt-5.3-codex-spark");
         const { call, deps } = setup({
           credentialProvider: "openai-codex",
           codexCatalog: {
@@ -813,7 +813,7 @@ describe("role-based model settings API", () => {
       .mockImplementation(async ({ secretId }) =>
         secretId === "credential-personal-secret" ? bundled : [...bundled, ...liveOnly],
       );
-    vi.stubEnv("RAKAZO_LIVE_MODEL_CATALOG", "on");
+    vi.stubEnv("NURLAI_LIVE_MODEL_CATALOG", "on");
     try {
       const catalog = (await (await call("models/forRole", { role: "main" })).response.json())
         .json as Array<{ id: string; credentialIds?: string[] }>;

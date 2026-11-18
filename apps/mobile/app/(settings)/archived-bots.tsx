@@ -100,7 +100,7 @@ export default function ArchivedBots() {
       skipSpaceAuthRecovery: true,
       requestContext: {
         ...context,
-        headers: { ...context.headers, ...(spaceId ? { "x-rakazo-space-id": spaceId } : {}) },
+        headers: { ...context.headers, ...(spaceId ? { "x-nurlai-space-id": spaceId } : {}) },
       },
     };
   }

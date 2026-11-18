@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
-import type { Routine } from "@rakazo/contracts";
-import { flush } from "@rakazo/core/test-async";
+import type { Routine } from "@nurlai/contracts";
+import { flush } from "@nurlai/core/test-async";
 import { act, createElement } from "react";
 import type { Root } from "react-dom/client";
 import { createRoot } from "react-dom/client";

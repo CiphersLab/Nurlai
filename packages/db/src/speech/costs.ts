@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
-import type { VoiceUsage } from "@rakazo/adapter-kit";
-import { ClientError } from "@rakazo/core";
+import type { VoiceUsage } from "@nurlai/adapter-kit";
+import { ClientError } from "@nurlai/core";
 import type { PrismaClient } from "../database/client.js";
 import { currentDbContext, runAsSystem } from "../database/row-security.js";
 

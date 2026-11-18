@@ -1,5 +1,5 @@
-import { withAbort } from "@rakazo/core";
-import { deferred } from "@rakazo/core/test-async";
+import { withAbort } from "@nurlai/core";
+import { deferred } from "@nurlai/core/test-async";
 import { expect, vi } from "vitest";
 import type { ExecOutput } from "../../../computers/sandbox/exec-computer.test-support.js";
 import { execComputerShell } from "../../../computers/sandbox/exec-computer.test-support.js";

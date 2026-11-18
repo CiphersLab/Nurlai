@@ -8,9 +8,9 @@ import {
   organicAvatarPath,
   seededLogoAvatarColor,
   shippedBotAvatarShapePath,
-} from "@rakazo/core";
-import type { ColorTokens } from "@rakazo/ui-tokens";
-import { tokensForAppearance } from "@rakazo/ui-tokens";
+} from "@nurlai/core";
+import type { ColorTokens } from "@nurlai/ui-tokens";
+import { tokensForAppearance } from "@nurlai/ui-tokens";
 import type { ReactNode } from "react";
 import { act, createElement, useRef } from "react";
 import type { Root } from "react-dom/client";

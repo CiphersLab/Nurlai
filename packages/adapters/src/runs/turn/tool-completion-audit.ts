@@ -1,8 +1,8 @@
-import type { AgentToolCompletion } from "@rakazo/adapter-kit";
-import { redactSecrets } from "@rakazo/core";
-import type { ThreadEvents } from "@rakazo/db";
-import { RunHistoryWriteError } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+import type { AgentToolCompletion } from "@nurlai/adapter-kit";
+import { redactSecrets } from "@nurlai/core";
+import type { ThreadEvents } from "@nurlai/db";
+import { RunHistoryWriteError } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { isToolPauseResult } from "../../approvals/approval-effect.js";
 import { sanitizeConnectorError } from "../../integrations/connector-safety.js";
 import type { ToolRefusal } from "./tool-refusal.js";

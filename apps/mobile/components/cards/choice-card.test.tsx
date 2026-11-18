@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 
-import type { MessageBlock } from "@rakazo/contracts";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import type { MessageBlock } from "@nurlai/contracts";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import type { ReactNode } from "react";
 import { act } from "react";
 import type { Root } from "react-dom/client";
@@ -72,7 +72,7 @@ vi.mock("../../lib/api/api", () => ({
   captureApiRequestContext: async () => ({
     apiBase: "http://api.test",
     sessionGeneration: 1,
-    headers: { "x-rakazo-space-id": "space-1" },
+    headers: { "x-nurlai-space-id": "space-1" },
   }),
 }));
 vi.mock("../../lib/api/session", () => ({ currentSessionGeneration: () => 1 }));

@@ -4,12 +4,12 @@
 # this launcher is installed, and it rarely changes.
 set -Eeuo pipefail
 
-if [[ -z "${RAKAZO_DEPLOY_DIR:-}" && -r /etc/rakazo/deploy.env ]]; then
+if [[ -z "${NURLAI_DEPLOY_DIR:-}" && -r /etc/rakazo/deploy.env ]]; then
   # shellcheck disable=SC1091
   source /etc/rakazo/deploy.env
 fi
-APP_DIR="${RAKAZO_DEPLOY_DIR:-/srv/rakazo}"
-[[ "${APP_DIR}" == /* ]] || { echo "RAKAZO_DEPLOY_DIR must be an absolute path" >&2; exit 1; }
+APP_DIR="${NURLAI_DEPLOY_DIR:-/srv/rakazo}"
+[[ "${APP_DIR}" == /* ]] || { echo "NURLAI_DEPLOY_DIR must be an absolute path" >&2; exit 1; }
 
 cd "${APP_DIR}"
 git fetch --quiet --prune origin main
@@ -38,4 +38,4 @@ else
   revision="$(git rev-parse origin/main)"
 fi
 script="$(git show "${revision}:infra/compose/deploy-main.sh")"
-RAKAZO_DEPLOY_REVISION="${revision}" exec bash -c "${script}" rakazo-deploy-main "$@"
+NURLAI_DEPLOY_REVISION="${revision}" exec bash -c "${script}" rakazo-deploy-main "$@"

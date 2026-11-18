@@ -15,19 +15,19 @@ import type {
   ScreenRequest,
   ScreenSession,
   TerminalRequest,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import {
   INVALID_BROWSER_REQUEST,
   SandboxDamagedError,
   SandboxFileTooLargeError,
   SandboxRequestRejectedError,
   SandboxUnresponsiveError,
-} from "@rakazo/adapter-kit";
-import { COMPUTER_UNRESPONSIVE_ERROR } from "@rakazo/contracts";
-import { cancelResponseBody, ResponseTooLargeError, requestDeadline } from "@rakazo/core";
-import { boundedSandboxCommandTimeoutMs } from "@rakazo/core/node/sandbox-command";
-import { resolveSupervisorToken } from "@rakazo/core/node/secrets-guard";
-import { outgoingCorrelationHeaders } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { COMPUTER_UNRESPONSIVE_ERROR } from "@nurlai/contracts";
+import { cancelResponseBody, ResponseTooLargeError, requestDeadline } from "@nurlai/core";
+import { boundedSandboxCommandTimeoutMs } from "@nurlai/core/node/sandbox-command";
+import { resolveSupervisorToken } from "@nurlai/core/node/secrets-guard";
+import { outgoingCorrelationHeaders } from "@nurlai/logging";
 import { sandboxCommandArgv } from "../../../computers/sandbox/sandbox-command-environment.js";
 import {
   isSandboxGoneError,
@@ -155,12 +155,12 @@ export class DockerSandboxProvider implements SandboxProvider {
   private headers(context: AdapterContext, botId?: string) {
     return {
       authorization: `Bearer ${this.supervisorToken}`,
-      "x-rakazo-space-id": context.spaceId,
+      "x-nurlai-space-id": context.spaceId,
       ...outgoingCorrelationHeaders(),
-      ...(botId ? { "x-rakazo-bot-id": botId } : {}),
-      ...(context.botId ? { "x-rakazo-screen-id": context.botId } : {}),
-      ...(context.screenLeaseId ? { "x-rakazo-screen-lease-id": context.screenLeaseId } : {}),
-      ...(context.cancelRunWork ? { "x-rakazo-cancel-run-work": "1" } : {}),
+      ...(botId ? { "x-nurlai-bot-id": botId } : {}),
+      ...(context.botId ? { "x-nurlai-screen-id": context.botId } : {}),
+      ...(context.screenLeaseId ? { "x-nurlai-screen-lease-id": context.screenLeaseId } : {}),
+      ...(context.cancelRunWork ? { "x-nurlai-cancel-run-work": "1" } : {}),
     };
   }
 
@@ -646,7 +646,7 @@ export class DockerSandboxProvider implements SandboxProvider {
           headers: {
             ...this.headers(context, computer.botId),
             ...(context.keepScreenWarm && !context.cancelRunWork && !context.signal.aborted
-              ? { "x-rakazo-preserve-screen": "1" }
+              ? { "x-nurlai-preserve-screen": "1" }
               : {}),
           },
           signal: deadline.signal,
@@ -673,7 +673,7 @@ export class DockerSandboxProvider implements SandboxProvider {
       method: "POST",
       headers: {
         ...this.headers(context, computer.botId),
-        ...(options?.discardUnsaved ? { "x-rakazo-discard-unsaved": "1" } : {}),
+        ...(options?.discardUnsaved ? { "x-nurlai-discard-unsaved": "1" } : {}),
       },
       signal: context.signal,
     });

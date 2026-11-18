@@ -10,7 +10,7 @@ Open **Settings → Approvals** and pick a **Mode**:
   editing a document. Reading usually doesn't ask. Saving to memory or creating or changing a skill
   asks first once the run's permissions are reduced: after it reads outside content (including
   what `recall_memory` or `reflect_memory` returns), when it resumes after a pause, and in runs that
-  didn't start from your message in Rakazo, such as routines, webhooks, bot messages, a new bot's
+  didn't start from your message in Nurlai, such as routines, webhooks, bot messages, a new bot's
   first message from the bot that created it, and chat-app messages. Memory the bot
   recalls automatically, its notes and chat history don't make it ask.
 - **Auto**: an approval model checks each action against what you asked for. Actions that fit go

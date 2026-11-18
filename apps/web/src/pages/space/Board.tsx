@@ -1,15 +1,15 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { ChatMarkdown } from "@rakazo/chat-ui/web";
-import type { Bot, Ticket, TicketPriority, TicketStatus } from "@rakazo/contracts";
+import { ChatMarkdown } from "@nurlai/chat-ui/web";
+import type { Bot, Ticket, TicketPriority, TicketStatus } from "@nurlai/contracts";
 import {
   TICKET_COMMENT_MAX_LENGTH,
   TICKET_DESCRIPTION_MAX_LENGTH,
   TICKET_PRIORITIES,
   TICKET_STATUSES,
   TICKET_TITLE_MAX_LENGTH,
-} from "@rakazo/contracts";
-import { abortableDelay, isRetryableError, reconnectDelayMs, retryDelayMs } from "@rakazo/core";
-import { fetchFresh, writeSaved } from "@rakazo/core/query";
+} from "@nurlai/contracts";
+import { abortableDelay, isRetryableError, reconnectDelayMs, retryDelayMs } from "@nurlai/core";
+import { fetchFresh, writeSaved } from "@nurlai/core/query";
 import {
   Button,
   buttonVariants,
@@ -20,7 +20,7 @@ import {
   Input,
   OptionSelect,
   Textarea,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { skipToken, useQuery, useQueryClient } from "@tanstack/react-query";
 import { ChevronLeft } from "lucide-react";
 import { useEffect, useId, useState } from "react";

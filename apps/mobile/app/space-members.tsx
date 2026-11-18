@@ -1,8 +1,8 @@
 import { MenuView } from "@expo/ui/community/menu";
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import type { SpaceMember } from "@rakazo/contracts";
-import { accountDisplay, spaceInvitee } from "@rakazo/core";
+import type { SpaceMember } from "@nurlai/contracts";
+import { accountDisplay, spaceInvitee } from "@nurlai/core";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { useMemo, useState } from "react";
 import { ActivityIndicator, Alert, Platform, ScrollView, Share, StyleSheet } from "react-native";

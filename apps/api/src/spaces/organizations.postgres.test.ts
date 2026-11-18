@@ -8,11 +8,11 @@ import type {
   ComputerRef,
   JobPublisher,
   SandboxProvider,
-} from "@rakazo/adapter-kit";
-import { BillingEmulator, ObjectAgentHomeStore, PrismaAgentHomeRecords } from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
-import type { PrismaClient, SpaceKeyRecord, SpaceKeyStore } from "@rakazo/db";
+} from "@nurlai/adapter-kit";
+import { BillingEmulator, ObjectAgentHomeStore, PrismaAgentHomeRecords } from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
+import type { PrismaClient, SpaceKeyRecord, SpaceKeyStore } from "@nurlai/db";
 import {
   asSystem,
   billingAccountForOrganization,
@@ -30,7 +30,7 @@ import {
   requireMembership,
   runAsSystem,
   setOrganizationDeletionLease,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { MemoryObjectStorage } from "../../../../packages/adapters/src/storage/object-storage.test-support.js";
 import {

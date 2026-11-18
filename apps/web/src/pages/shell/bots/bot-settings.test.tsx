@@ -1,9 +1,9 @@
 // @vitest-environment jsdom
 
-import type { Bot } from "@rakazo/contracts";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred, flush } from "@rakazo/core/test-async";
-import type * as UiWeb from "@rakazo/ui-web";
+import type { Bot } from "@nurlai/contracts";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred, flush } from "@nurlai/core/test-async";
+import type * as UiWeb from "@nurlai/ui-web";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { ComponentProps, ReactNode } from "react";
 import { act } from "react";
@@ -34,7 +34,7 @@ vi.mock("@lingui/react/macro", () => {
     parts.reduce((text, part, index) => `${text}${index > 0 ? values[index - 1] : ""}${part}`, "");
   return { useLingui: () => ({ t }), Trans: ({ children }: { children: ReactNode }) => children };
 });
-vi.mock("@rakazo/ui-web", async (importOriginal) => ({
+vi.mock("@nurlai/ui-web", async (importOriginal) => ({
   OptionSelect: (await importOriginal<typeof UiWeb>()).OptionSelect,
   SectionHeading: ({ variant, ...props }: ComponentProps<"h3"> & { variant?: string }) => (
     <h3 data-variant={variant} {...props} />

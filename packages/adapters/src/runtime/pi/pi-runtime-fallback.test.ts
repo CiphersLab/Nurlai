@@ -9,15 +9,15 @@ import type {
 } from "@earendil-works/pi-ai";
 import { clampThinkingLevel } from "@earendil-works/pi-ai";
 import { AssistantMessageEventStream } from "@earendil-works/pi-ai/utils/event-stream";
-import type { AgentRunRequest, AgentRuntimeEvent, ModelCallObserver } from "@rakazo/adapter-kit";
-import type * as Core from "@rakazo/core";
+import type { AgentRunRequest, AgentRuntimeEvent, ModelCallObserver } from "@nurlai/adapter-kit";
+import type * as Core from "@nurlai/core";
 import {
   MODEL_CONTEXT_TOO_SMALL_ERROR,
   MODEL_REQUEST_LIMIT_ERROR,
   normalizeRunError,
-} from "@rakazo/core";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred, flush } from "@rakazo/core/test-async";
+} from "@nurlai/core";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred, flush } from "@nurlai/core/test-async";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const providerState = vi.hoisted(() => ({
@@ -29,7 +29,7 @@ const providerState = vi.hoisted(() => ({
   delay: vi.fn<(delayMs: number, signal?: AbortSignal) => Promise<void>>(),
 }));
 
-vi.mock("@rakazo/core", async (importOriginal) => ({
+vi.mock("@nurlai/core", async (importOriginal) => ({
   ...(await importOriginal<typeof Core>()),
   abortableDelay: providerState.delay,
 }));
@@ -435,7 +435,7 @@ describe("Pi runtime transient model retries", () => {
 
   it("bounds repeated early timeouts by elapsed request budget", async () => {
     vi.useFakeTimers();
-    const { abortableDelay } = await vi.importActual<typeof Core>("@rakazo/core");
+    const { abortableDelay } = await vi.importActual<typeof Core>("@nurlai/core");
     providerState.delay.mockImplementation(abortableDelay);
     providerState.stream.mockImplementation((_target, _context, options) => {
       const pending = new AssistantMessageEventStream();
@@ -463,7 +463,7 @@ describe("Pi runtime transient model retries", () => {
 
   it("does not back off when the delay would consume the remaining budget", async () => {
     vi.useFakeTimers();
-    const { abortableDelay } = await vi.importActual<typeof Core>("@rakazo/core");
+    const { abortableDelay } = await vi.importActual<typeof Core>("@nurlai/core");
     providerState.delay.mockImplementation(abortableDelay);
     providerState.stream.mockImplementation(() => {
       const pending = new AssistantMessageEventStream();
@@ -613,7 +613,7 @@ describe("Pi runtime transient model retries", () => {
 
   it("waits for each bounded backoff before retrying", async () => {
     vi.useFakeTimers();
-    const { abortableDelay } = await vi.importActual<typeof Core>("@rakazo/core");
+    const { abortableDelay } = await vi.importActual<typeof Core>("@nurlai/core");
     providerState.delay.mockImplementation(abortableDelay);
     providerState.stream.mockImplementation(() =>
       stream(primary, message(primary, [], "error", "429 rate limit")),
@@ -642,7 +642,7 @@ describe("Pi runtime transient model retries", () => {
     "stops promptly when the $source signal aborts during $error backoff",
     async ({ source, error }) => {
       vi.useFakeTimers();
-      const { abortableDelay } = await vi.importActual<typeof Core>("@rakazo/core");
+      const { abortableDelay } = await vi.importActual<typeof Core>("@nurlai/core");
       providerState.delay.mockImplementation(abortableDelay);
       providerState.stream.mockImplementation(() =>
         stream(primary, message(primary, [], "error", error)),
@@ -3024,7 +3024,7 @@ describe("Pi runtime token pacer hook", () => {
   const reply = () => stream(local, message(local, [{ type: "text", text: "Done." }], "stop"));
 
   it("reserves the prompt before the call and settles it with the reported tokens", async () => {
-    vi.stubEnv("RAKAZO_LOCAL_TOKENS_PER_MINUTE", "123456");
+    vi.stubEnv("NURLAI_LOCAL_TOKENS_PER_MINUTE", "123456");
     const slot = { settle: vi.fn(), release: vi.fn() };
     const acquire = vi.spyOn(sharedTokenPacer, "acquire").mockResolvedValue({ slot, waitedMs: 0 });
     providerState.stream.mockImplementation(reply);
@@ -3042,7 +3042,7 @@ describe("Pi runtime token pacer hook", () => {
     const acquire = vi.spyOn(sharedTokenPacer, "acquire");
     providerState.stream.mockImplementation(reply);
     await run(localRequest());
-    vi.stubEnv("RAKAZO_LOCAL_TOKENS_PER_MINUTE", "123456");
+    vi.stubEnv("NURLAI_LOCAL_TOKENS_PER_MINUTE", "123456");
     providerState.stream.mockImplementation(() =>
       stream(primary, message(primary, [{ type: "text", text: "Done." }], "stop")),
     );
@@ -3051,7 +3051,7 @@ describe("Pi runtime token pacer hook", () => {
   });
 
   it("frees the reservation when the call fails", async () => {
-    vi.stubEnv("RAKAZO_LOCAL_TOKENS_PER_MINUTE", "123456");
+    vi.stubEnv("NURLAI_LOCAL_TOKENS_PER_MINUTE", "123456");
     const slot = { settle: vi.fn(), release: vi.fn() };
     vi.spyOn(sharedTokenPacer, "acquire").mockResolvedValue({ slot, waitedMs: 0 });
     providerState.stream.mockImplementation(() =>

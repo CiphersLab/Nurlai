@@ -1,4 +1,4 @@
-import type { MessageBlock } from "@rakazo/contracts";
+import type { MessageBlock } from "@nurlai/contracts";
 import type { Prisma } from "../database/client.js";
 import { warnJsonColumnOnce } from "../database/json-column.js";
 

@@ -1,6 +1,6 @@
-import { MAX_VOICE_AUDIO_BYTES, VOICE_RESPONSE_TIMEOUT_MS } from "@rakazo/core";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import { MAX_VOICE_AUDIO_BYTES, VOICE_RESPONSE_TIMEOUT_MS } from "@nurlai/core";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { Speaker } from "./tts.js";
 import { invalidateVoiceConsent } from "./voice-consent.js";
@@ -359,7 +359,7 @@ describe("Speaker", () => {
       expect.objectContaining({ credentials: "include" }),
     );
     const headers = new Headers(fetchMock.mock.calls[0]?.[1]?.headers);
-    expect(headers.get("x-rakazo-space-id")).toBe(expectedSpaceId);
+    expect(headers.get("x-nurlai-space-id")).toBe(expectedSpaceId);
     expect(headers.get("content-type")).toBe("application/json");
     expect(prepare.mock.calls[0]?.[3]).toBe(expectedSpaceId);
   });

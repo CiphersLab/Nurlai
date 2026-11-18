@@ -1,4 +1,4 @@
-import { expectLinearTime } from "@rakazo/contracts/test-timing";
+import { expectLinearTime } from "@nurlai/contracts/test-timing";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { Bars, LineChart, Pie } from "./charts.js";

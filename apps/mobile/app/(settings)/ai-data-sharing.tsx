@@ -1,8 +1,8 @@
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import type { AiRecipient } from "@rakazo/contracts";
-import { AI_PRIVACY_URL } from "@rakazo/contracts";
-import { writeSaved } from "@rakazo/core/query";
+import type { AiRecipient } from "@nurlai/contracts";
+import { AI_PRIVACY_URL } from "@nurlai/contracts";
+import { writeSaved } from "@nurlai/core/query";
 import { useIsFocused } from "expo-router";
 import { useEffect } from "react";
 import { ActivityIndicator, Alert, Linking, ScrollView, StyleSheet } from "react-native";

@@ -1,6 +1,6 @@
-import { routineWakeupJob } from "@rakazo/adapter-kit";
-import { ONCE_ROUTINE_CRON } from "@rakazo/core";
-import { Prisma } from "@rakazo/db";
+import { routineWakeupJob } from "@nurlai/adapter-kit";
+import { ONCE_ROUTINE_CRON } from "@nurlai/core";
+import { Prisma } from "@nurlai/db";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   ROUTINE_CHAT_TRIGGER_NOTE,

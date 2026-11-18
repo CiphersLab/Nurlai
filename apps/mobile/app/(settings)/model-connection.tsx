@@ -1,6 +1,6 @@
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import type { ModelApiProtocol, ModelHeaderRow, ThinkingLevel } from "@rakazo/contracts";
+import type { ModelApiProtocol, ModelHeaderRow, ThinkingLevel } from "@nurlai/contracts";
 import {
   compatibleEndpointPresets,
   connectionDisplayName,
@@ -10,7 +10,7 @@ import {
   modelRoutingForm,
   OPENAI_COMPATIBLE_PROVIDER_ID,
   savedCompatibleEndpointMatches,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   compatibleConnectionReady,
   compatibleModelRows,
@@ -23,7 +23,7 @@ import {
   modelConnectRequest,
   sanitizeModelConnectionError,
   savedCompatibleModelIds,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { useFocusEffect, useLocalSearchParams, useRouter } from "expo-router";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {

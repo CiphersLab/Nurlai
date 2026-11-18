@@ -1,5 +1,5 @@
 export const message =
-  "Do not enqueue runContinueJob(...) directly. Call wakeRun(jobs, runId) from @rakazo/adapters; it applies the one error policy for nudging a run: a failed nudge is logged and never fails the work that recorded the run.";
+  "Do not enqueue runContinueJob(...) directly. Call wakeRun(jobs, runId) from @nurlai/adapters; it applies the one error policy for nudging a run: a failed nudge is logged and never fails the work that recorded the run.";
 
 export const include = ["{apps,packages}/**/*.{ts,tsx,mts}"];
 

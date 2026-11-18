@@ -7,7 +7,7 @@ export const AGENT_DISCOVERY_LINKS =
 
 const home = getHomeCopy("en");
 
-export const HOME_MARKDOWN = `# Rakazo
+export const HOME_MARKDOWN = `# Nurlai
 
 ${home.hero.eyebrow}
 
@@ -58,43 +58,43 @@ ${getHomeCopy("en")
 ${home.cta.copy}
 
 - [Agent setup prompt](https://github.com/elie222/rakazo/blob/main/SETUP_PROMPT.md)
-- [Self-hosting guide](https://rakazo.com/self-hosted-ai-agent/)
+- [Self-hosting guide](https://nurlai.cipherslab.com/self-hosted-ai-agent/)
 - [Full self-hosting reference](https://github.com/elie222/rakazo/blob/main/docs/self-host.md)
-- [OpenClaw comparison](https://rakazo.com/openclaw-alternative/)
+- [OpenClaw comparison](https://nurlai.cipherslab.com/openclaw-alternative/)
 - [Source code](https://github.com/elie222/rakazo)
 
 ## Site index
 
-- [Agent instructions](https://rakazo.com/llms.txt)
-- [Self-hosted AI agent](https://rakazo.com/self-hosted-ai-agent/)
-- [OpenClaw comparison](https://rakazo.com/openclaw-alternative/)
-- [Alternatives](https://rakazo.com/alternatives/)
-- [Docs](https://rakazo.com/docs/)
-- [Integrations](https://rakazo.com/integrations/)
-- [Sandboxes for AI agents](https://rakazo.com/sandboxes/)
-- [Integration platforms for AI agents](https://rakazo.com/integration-platforms/)
-- [Voice providers for AI agents](https://rakazo.com/voice-providers/)
-- [Blog](https://rakazo.com/blog/)
-- [Grok Bot alternatives](https://rakazo.com/grok-bot-alternative/)
-- [Pricing](https://rakazo.com/pricing/): free to self-host, or hosted with your own model or Rakazo credits.
-- [Enterprise](https://rakazo.com/enterprise/): SSO, SCIM, audit log, encryption at rest, and approval rules on your own infrastructure.
-- [Download](https://rakazo.com/download/): desktop, mobile, and web apps.
-- [About](https://rakazo.com/about/)
-- [Brand](https://rakazo.com/brand/)
-- [Support](https://rakazo.com/support/)
-- [Privacy](https://rakazo.com/privacy/)
-- [Terms](https://rakazo.com/terms/)
-- [Sitemap](https://rakazo.com/sitemap-index.xml)
+- [Agent instructions](https://nurlai.cipherslab.com/llms.txt)
+- [Self-hosted AI agent](https://nurlai.cipherslab.com/self-hosted-ai-agent/)
+- [OpenClaw comparison](https://nurlai.cipherslab.com/openclaw-alternative/)
+- [Alternatives](https://nurlai.cipherslab.com/alternatives/)
+- [Docs](https://nurlai.cipherslab.com/docs/)
+- [Integrations](https://nurlai.cipherslab.com/integrations/)
+- [Sandboxes for AI agents](https://nurlai.cipherslab.com/sandboxes/)
+- [Integration platforms for AI agents](https://nurlai.cipherslab.com/integration-platforms/)
+- [Voice providers for AI agents](https://nurlai.cipherslab.com/voice-providers/)
+- [Blog](https://nurlai.cipherslab.com/blog/)
+- [Grok Bot alternatives](https://nurlai.cipherslab.com/grok-bot-alternative/)
+- [Pricing](https://nurlai.cipherslab.com/pricing/): free to self-host, or hosted with your own model or Nurlai credits.
+- [Enterprise](https://nurlai.cipherslab.com/enterprise/): SSO, SCIM, audit log, encryption at rest, and approval rules on your own infrastructure.
+- [Download](https://nurlai.cipherslab.com/download/): desktop, mobile, and web apps.
+- [About](https://nurlai.cipherslab.com/about/)
+- [Brand](https://nurlai.cipherslab.com/brand/)
+- [Support](https://nurlai.cipherslab.com/support/)
+- [Privacy](https://nurlai.cipherslab.com/privacy/)
+- [Terms](https://nurlai.cipherslab.com/terms/)
+- [Sitemap](https://nurlai.cipherslab.com/sitemap-index.xml)
 `;
 
 export const NOT_FOUND_MARKDOWN = `# Page not found
 
-The requested Rakazo page does not exist.
+The requested Nurlai page does not exist.
 
-- [Agent instructions](https://rakazo.com/llms.txt)
-- [Site map](https://rakazo.com/sitemap-index.xml)
-- [Home](https://rakazo.com/)
-- [Self-hosting guide](https://rakazo.com/self-hosted-ai-agent/)
+- [Agent instructions](https://nurlai.cipherslab.com/llms.txt)
+- [Site map](https://nurlai.cipherslab.com/sitemap-index.xml)
+- [Home](https://nurlai.cipherslab.com/)
+- [Self-hosting guide](https://nurlai.cipherslab.com/self-hosted-ai-agent/)
 `;
 
 type MediaPreference = {

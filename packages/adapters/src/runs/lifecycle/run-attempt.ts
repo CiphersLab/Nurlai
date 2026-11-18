@@ -1,6 +1,6 @@
-import type { AgentContextStrategy } from "@rakazo/adapter-kit";
-import type { RunStatus } from "@rakazo/contracts";
-import { BACKGROUND_HELPER_TRIGGER, isTerminal } from "@rakazo/core";
+import type { AgentContextStrategy } from "@nurlai/adapter-kit";
+import type { RunStatus } from "@nurlai/contracts";
+import { BACKGROUND_HELPER_TRIGGER, isTerminal } from "@nurlai/core";
 import {
   accountDeactivated,
   appendEventInTransaction,
@@ -12,8 +12,8 @@ import {
   readRunTimingFields,
   retryWhileDatabaseUnavailable,
   settleReleasedTakeoverCards,
-} from "@rakazo/db";
-import { bestEffort, enrichLogContext, getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { bestEffort, enrichLogContext, getLogger } from "@nurlai/logging";
 import type { ComputerExecutionLease } from "../../computers/computer-lifecycle.js";
 import {
   acquireComputerExecutionLease,

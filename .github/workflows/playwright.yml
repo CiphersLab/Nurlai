@@ -71,7 +71,7 @@ jobs:
         timeout-minutes: 5
         # Skip --with-deps: GitHub ubuntu-latest already has Chromium's OS libraries,
         # and apt-get against azure.archive.ubuntu.com can stall until the job timeout.
-        run: pnpm --filter @rakazo/web exec playwright install chromium
+        run: pnpm --filter @nurlai/web exec playwright install chromium
       # Chinese, Japanese, and Korean pages render as boxes in screenshots without these fonts. The
       # .deb is cached so a hit needs no network; no assertion depends on the glyphs, so a failed
       # download only warns instead of failing the shard.
@@ -169,13 +169,13 @@ jobs:
           playwright: "true"
       - name: Install Chromium
         timeout-minutes: 5
-        run: pnpm --filter @rakazo/web exec playwright install chromium
+        run: pnpm --filter @nurlai/web exec playwright install chromium
       - name: Install agent-browser
         if: matrix.agent_browser
         timeout-minutes: 2
         run: |
           infra/sandboxes/computer/install-agent-browser.sh "$RUNNER_TEMP/agent-browser"
-          echo "RAKAZO_AGENT_BROWSER=$RUNNER_TEMP/agent-browser/agent-browser" >> "$GITHUB_ENV"
+          echo "NURLAI_AGENT_BROWSER=$RUNNER_TEMP/agent-browser/agent-browser" >> "$GITHUB_ENV"
       - name: Wait for Postgres
         run: bash .github/actions/start-postgres/wait.sh
       - name: Run Playwright tests
@@ -209,10 +209,10 @@ jobs:
           playwright: "true"
       - name: Install Chromium
         timeout-minutes: 5
-        run: pnpm --filter @rakazo/www exec playwright install chromium
+        run: pnpm --filter @nurlai/www exec playwright install chromium
       - name: Capture marketing homepage screenshots
         id: www_e2e
-        run: pnpm --filter @rakazo/www e2e
+        run: pnpm --filter @nurlai/www e2e
       - name: Upload homepage screenshots
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4

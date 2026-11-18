@@ -1,4 +1,4 @@
-import { BOT_COLORS } from "@rakazo/contracts";
+import { BOT_COLORS } from "@nurlai/contracts";
 import { resolvePersonaColorDef, shippedHash, shippedRandom } from "./bot-avatar-colors.js";
 
 /** Every supported track completes whole cycles in this exact export interval. */

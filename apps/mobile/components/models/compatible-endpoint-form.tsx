@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
-import type { ModelApiProtocol, ModelHeaderRow } from "@rakazo/contracts";
-import { toggleEnabledModelId } from "@rakazo/core";
+import type { ModelApiProtocol, ModelHeaderRow } from "@nurlai/contracts";
+import { toggleEnabledModelId } from "@nurlai/core";
 import type { Dispatch, ReactNode, SetStateAction } from "react";
 import { Pressable, Text, TextInput, View } from "react-native";
 import { native, useThemedStyles } from "../../lib/native/native";

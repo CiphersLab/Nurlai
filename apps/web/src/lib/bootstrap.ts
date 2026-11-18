@@ -1,6 +1,6 @@
-import type { AppBootstrap, LabFeature } from "@rakazo/contracts";
-import { ATTACHMENT_MAX_BYTES, attachmentMaxBytes, parseLabs } from "@rakazo/contracts";
-import { displayIdentityResult } from "@rakazo/core";
+import type { AppBootstrap, LabFeature } from "@nurlai/contracts";
+import { ATTACHMENT_MAX_BYTES, attachmentMaxBytes, parseLabs } from "@nurlai/contracts";
+import { displayIdentityResult } from "@nurlai/core";
 import { initialBootstrapTarget } from "./bootstrap-target";
 import { identityLabels } from "./bots/identity-display";
 import { markOnce } from "./platform/performance";
@@ -39,7 +39,7 @@ let primedBootstrap: {
 
 const initialTarget = initialBootstrapTarget(
   window.location.pathname,
-  Boolean(window.rakazoDesktop),
+  Boolean(window.nurlaiDesktop),
 );
 if (initialTarget) {
   const { botId, groupId } = initialTarget;

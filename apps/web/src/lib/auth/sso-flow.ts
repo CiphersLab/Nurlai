@@ -1,5 +1,5 @@
 import { t } from "@lingui/core/macro";
-import { newClientId } from "@rakazo/core";
+import { newClientId } from "@nurlai/core";
 import { desktopBridge } from "../platform/desktop";
 
 type SsoResult = {

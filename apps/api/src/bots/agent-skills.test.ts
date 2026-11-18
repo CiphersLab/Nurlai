@@ -1,6 +1,6 @@
-import type { Actor } from "@rakazo/contracts";
-import { buildSkillMd, parseSkillMd } from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
+import type { Actor } from "@nurlai/contracts";
+import { buildSkillMd, parseSkillMd } from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import { createAgentSkillsService, resolveSkillContent } from "./agent-skills.js";
 

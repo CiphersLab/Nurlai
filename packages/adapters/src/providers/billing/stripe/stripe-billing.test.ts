@@ -2,7 +2,7 @@ import {
   BillingCheckoutCompletedError,
   BillingCustomerNotFoundError,
   BillingPaymentNotCompletedError,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import { describe, expect, it, vi } from "vitest";
 import {
   encodeStripeForm,

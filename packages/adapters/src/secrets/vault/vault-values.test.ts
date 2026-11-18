@@ -1,14 +1,14 @@
 import { randomBytes } from "node:crypto";
-import type { AdapterContext, SecretStore } from "@rakazo/adapter-kit";
-import type { BotSecretDestination } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
-import type { PrismaClient, SpaceKeyRecord, SpaceKeyStore } from "@rakazo/db";
+import type { AdapterContext, SecretStore } from "@nurlai/adapter-kit";
+import type { BotSecretDestination } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
+import type { PrismaClient, SpaceKeyRecord, SpaceKeyStore } from "@nurlai/db";
 import {
   ContentKeyRing,
   ciphertextKeyId,
   LocalKeyProvider,
   VaultKeyOwnerGoneError,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import type { Mock } from "vitest";
 import { describe, expect, it, vi } from "vitest";
 import { InfisicalSecretStore } from "../../providers/secret-store/infisical/infisical-secret-store.js";

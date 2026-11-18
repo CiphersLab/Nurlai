@@ -1,5 +1,5 @@
-import type { AdapterContext } from "@rakazo/adapter-kit";
-import { MemoryRevisionConflictError } from "@rakazo/adapter-kit";
+import type { AdapterContext } from "@nurlai/adapter-kit";
+import { MemoryRevisionConflictError } from "@nurlai/adapter-kit";
 import { describe, expect, it, vi } from "vitest";
 import { MarkdownMemoryStore } from "./index.js";
 

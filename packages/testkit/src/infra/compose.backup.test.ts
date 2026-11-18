@@ -65,7 +65,7 @@ describeBackup("compose backup and restore", () => {
       execSync(`${path.join(repoRoot, "scripts/backup.sh")} ${stamp}`, {
         stdio: "pipe",
         timeout: 60_000,
-        env: { ...process.env, RAKAZO_BACKUP_SKIP_HOMES: "1" },
+        env: { ...process.env, NURLAI_BACKUP_SKIP_HOMES: "1" },
       });
       const dump = path.join(repoRoot, "backups", stamp, "rakazo.sql");
       expect(existsSync(dump)).toBe(true);
@@ -81,7 +81,7 @@ describeBackup("compose backup and restore", () => {
           "-X",
           "--set=ON_ERROR_STOP=on",
           "-c",
-          "DO $$ BEGIN IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'rakazo_app') THEN CREATE ROLE rakazo_app NOLOGIN; END IF; END $$",
+          "DO $$ BEGIN IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'nurlai_app') THEN CREATE ROLE nurlai_app NOLOGIN; END IF; END $$",
         ]),
         { stdio: "pipe", timeout: 20_000 },
       );

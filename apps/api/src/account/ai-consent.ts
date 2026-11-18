@@ -9,15 +9,15 @@ import {
   resolveMemberMainModel,
   selectConfiguredModel,
   toStringRecord,
-} from "@rakazo/adapters";
+} from "@nurlai/adapters";
 import type {
   Actor,
   AiConsentQuery,
   AiConsentStatus,
   AiRecipient,
   SettingsScope,
-} from "@rakazo/contracts";
-import { AI_DISCLOSURE_VERSION, AI_PRIVACY_URL } from "@rakazo/contracts";
+} from "@nurlai/contracts";
+import { AI_DISCLOSURE_VERSION, AI_PRIVACY_URL } from "@nurlai/contracts";
 import {
   findDefaultVoiceCredential,
   findModelCredential,
@@ -26,7 +26,7 @@ import {
   listVoicePreferences,
   modelRoleTarget,
   voicePreferenceTarget,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { includedVoice, voiceCredentialServer } from "../calls/voice.js";
 import type { RouterDeps } from "../router.js";
 import { resolveThreadTarget } from "../threads/thread-target.js";

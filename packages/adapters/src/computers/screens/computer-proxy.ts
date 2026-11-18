@@ -1,7 +1,7 @@
 /**
  * Optional outbound proxy for the browser on bot computers.
  *
- * RAKAZO_COMPUTER_PROXY names an upstream proxy, with or without credentials:
+ * NURLAI_COMPUTER_PROXY names an upstream proxy, with or without credentials:
  *   http://user:pass@proxy.example.com:8080
  *   socks5://user:pass@proxy.example.com:1080
  *
@@ -15,9 +15,9 @@
 
 import { shellQuote } from "./computer-support.js";
 
-export const COMPUTER_PROXY_ENV = "RAKAZO_COMPUTER_PROXY";
+export const COMPUTER_PROXY_ENV = "NURLAI_COMPUTER_PROXY";
 /** Name of the variable that carries the generated tinyproxy config into the prepare command. */
-export const COMPUTER_PROXY_CONFIG_ENV = "RAKAZO_COMPUTER_PROXY_CONFIG";
+export const COMPUTER_PROXY_CONFIG_ENV = "NURLAI_COMPUTER_PROXY_CONFIG";
 export const COMPUTER_PROXY_PORT = 18_080;
 
 const UPSTREAM_TYPES: Record<string, "http" | "socks5" | "socks4"> = {
@@ -35,7 +35,7 @@ export interface ComputerProxy {
   password?: string;
 }
 
-/** Parses RAKAZO_COMPUTER_PROXY. Unset or blank means no proxy; anything malformed throws. */
+/** Parses NURLAI_COMPUTER_PROXY. Unset or blank means no proxy; anything malformed throws. */
 export function computerProxyFromEnv(
   env: Record<string, string | undefined> = process.env,
 ): ComputerProxy | undefined {
@@ -135,7 +135,7 @@ export const PREPARE_COMPUTER_PROXY = [
   "  pid=$(cat /run/rakazo-proxy/tinyproxy.pid 2>/dev/null || true)",
   '  [ -n "$pid" ] && [ "$(cat "/proc/$pid/comm" 2>/dev/null)" = tinyproxy ] && echo "$pid" || true',
   "}",
-  // Stops Rakazo's own instance and waits until its port is free, so a restart can bind it.
+  // Stops Nurlai's own instance and waits until its port is free, so a restart can bind it.
   "stop_computer_proxy() {",
   "  pid=$(computer_proxy_pid)",
   '  [ -n "$pid" ] || return 0',
@@ -174,7 +174,7 @@ export const PREPARE_COMPUTER_PROXY = [
   '  rm -f "$new"',
   '  running=0; [ -n "$(computer_proxy_pid)" ] && running=1',
   '  if [ "$running" -eq 1 ] && [ "$changed" -eq 1 ]; then stop_computer_proxy; running=0; fi',
-  // Only Rakazo's own instance is ever stopped; policy-rc.d kept the package's from starting.
+  // Only Nurlai's own instance is ever stopped; policy-rc.d kept the package's from starting.
   '  if [ "$running" -eq 0 ]; then $root tinyproxy -c /etc/rakazo-proxy/tinyproxy.conf; fi',
   "  ready=0",
   "  for _ in $(seq 1 50); do",

@@ -1,4 +1,4 @@
-import { getLogger } from "@rakazo/logging";
+import { getLogger } from "@nurlai/logging";
 import type { MessagingPlatform } from "../../../messaging/chat-sdk-surface.js";
 import type { MessagingMountContext } from "../../../messaging/messaging-platform-descriptor.js";
 import { defineMessagingPlatform } from "../../../messaging/messaging-platform-descriptor.js";
@@ -64,7 +64,7 @@ const PHOTON_NAMED_PROJECT = /^PHOTON_PROJECT_ID_([A-Z0-9]+)$/;
  * Extra Photon projects from PHOTON_PROJECT_ID_<NAME> plus
  * PHOTON_PROJECT_SECRET_<NAME> (and optionally PHOTON_WEBHOOK_SECRET_<NAME>).
  * Photon gives each person a different number in each project, so one person
- * can link a different Rakazo bot to each, as with named Telegram bots.
+ * can link a different Nurlai bot to each, as with named Telegram bots.
  * <NAME> is letters and digits only and becomes the provider id
  * `photon-<name>` (lowercased), which also names its webhook route.
  */

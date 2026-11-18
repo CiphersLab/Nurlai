@@ -1,7 +1,7 @@
-import type { MessagingInboundAttachment } from "@rakazo/adapter-kit";
-import { isAttachmentAudioMimeType } from "@rakazo/contracts";
-import { sanitizeMessagingLabel } from "@rakazo/core";
-import { getLogger } from "@rakazo/logging";
+import type { MessagingInboundAttachment } from "@nurlai/adapter-kit";
+import { isAttachmentAudioMimeType } from "@nurlai/contracts";
+import { sanitizeMessagingLabel } from "@nurlai/core";
+import { getLogger } from "@nurlai/logging";
 
 type InboundArtifact = { id: string; name: string; mimeType: string; size: number };
 

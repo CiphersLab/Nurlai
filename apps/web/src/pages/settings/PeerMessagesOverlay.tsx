@@ -1,12 +1,12 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { ChatMarkdown } from "@rakazo/chat-ui/web";
-import type { BotAvatarSet } from "@rakazo/contracts";
+import { ChatMarkdown } from "@nurlai/chat-ui/web";
+import type { BotAvatarSet } from "@nurlai/contracts";
 import {
   loadPeerHistory,
   newestPageCards,
   pageCardSuperseded,
   peerConversations,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import {
   BotAvatar,
   Button,
@@ -15,7 +15,7 @@ import {
   DialogContent,
   DialogTitle,
   Spinner,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { useQuery } from "@tanstack/react-query";
 import { XIcon } from "lucide-react";
 import { useLayoutEffect, useMemo, useRef } from "react";

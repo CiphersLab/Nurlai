@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { flush } from "@rakazo/core/test-async";
+import { flush } from "@nurlai/core/test-async";
 import type { ReactNode, Ref } from "react";
 import { act, createElement, useEffect, useImperativeHandle } from "react";
 import type { Root } from "react-dom/client";
@@ -58,7 +58,7 @@ vi.mock("../api/api", () => ({
   captureApiRequestContext: async () => ({
     apiBase: "https://app.example.test",
     sessionGeneration: 1,
-    headers: { "x-rakazo-space-id": "space-1" },
+    headers: { "x-nurlai-space-id": "space-1" },
   }),
 }));
 vi.mock("../platform/app-foreground", () => ({ useAppForeground: () => true }));
@@ -71,7 +71,7 @@ vi.mock("../native/native", () => ({
   useThemedStyles: (createStyles: () => unknown) => createStyles(),
 }));
 vi.mock("../../components/native/glass-title", () => ({ glassHeaderOptions: () => ({}) }));
-vi.mock("@rakazo/chat-ui/native", () => ({
+vi.mock("@nurlai/chat-ui/native", () => ({
   ChatMarkdown: ({ children }: { children: ReactNode }) => createElement("p", null, children),
 }));
 vi.mock("expo-router", () => ({

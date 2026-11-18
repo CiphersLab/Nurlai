@@ -8,20 +8,20 @@ import type {
   DesktopReachability,
   DesktopSetup,
   DesktopSetupState,
-  RakazoSetup,
-} from "@rakazo/contracts";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+  NurlaiSetup,
+} from "@nurlai/contracts";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { ES_MESSAGES } from "../main/locales/es.js";
 import { HE_MESSAGES } from "../main/locales/he.js";
 import { PL_MESSAGES } from "../main/locales/pl.js";
 
-type DesktopSetupResult = Awaited<ReturnType<RakazoSetup["save"]>>;
+type DesktopSetupResult = Awaited<ReturnType<NurlaiSetup["save"]>>;
 
 const DEFAULT_LOCAL_URL = "http://127.0.0.1:6130";
 const CLOUD_URL = "https://cloud.rakazo.example";
-const ENGLISH: RakazoSetup["locale"] = { lang: "en", dir: "ltr", messages: {} };
+const ENGLISH: NurlaiSetup["locale"] = { lang: "en", dir: "ltr", messages: {} };
 
 // The jsdom environment replaces the global URL, so resolve the sibling files via Node's.
 const srcDir = path.dirname(fileURLToPath(import.meta.url));
@@ -95,7 +95,7 @@ function mount(saved: DesktopSetup | null, locale = ENGLISH, platform = "linux")
   const links: string[] = [];
   let starts = 0;
 
-  const bridge: RakazoSetup = {
+  const bridge: NurlaiSetup = {
     platform,
     locale,
     state: () => {
@@ -134,7 +134,7 @@ function mount(saved: DesktopSetup | null, locale = ENGLISH, platform = "linux")
       },
     },
   };
-  (window as { rakazoSetup?: RakazoSetup }).rakazoSetup = bridge;
+  (window as { rakazoSetup?: NurlaiSetup }).rakazoSetup = bridge;
   // Run the plain script the same way setup.html's script tag does.
   new Function(setupScript)();
 
@@ -182,7 +182,7 @@ describe("setup", () => {
   afterEach(() => {
     vi.useRealTimers();
     document.body.innerHTML = "";
-    delete (window as { rakazoSetup?: RakazoSetup }).rakazoSetup;
+    delete (window as { rakazoSetup?: NurlaiSetup }).rakazoSetup;
   });
 
   it("keeps an address edited while the connection check is pending", async () => {

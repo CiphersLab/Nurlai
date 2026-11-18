@@ -1,7 +1,7 @@
-import { SecretStoreUnavailableError } from "@rakazo/adapter-kit";
-import type { Actor } from "@rakazo/contracts";
-import { credentialForModel } from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
+import { SecretStoreUnavailableError } from "@nurlai/adapter-kit";
+import type { Actor } from "@nurlai/contracts";
+import { credentialForModel } from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import { listAvailablePiCatalog } from "../runtime/pi/models/pi-catalog-availability.js";
 import type { CodexLiveCatalog } from "../runtime/pi/models/pi-codex-catalog.js";

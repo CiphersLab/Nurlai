@@ -1,4 +1,4 @@
-import { computerHoursOut } from "@rakazo/contracts";
+import { computerHoursOut } from "@nurlai/contracts";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";

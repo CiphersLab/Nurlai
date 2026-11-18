@@ -5,10 +5,10 @@ import type {
   MediaGenerationInput,
   MediaGenerationProvider,
   MediaVideoJob,
-} from "@rakazo/adapter-kit";
-import { MediaGenerationError } from "@rakazo/adapter-kit";
-import { ATTACHMENT_MAX_BYTES } from "@rakazo/contracts";
-import { deadlineSignal, ResponseTooLargeError } from "@rakazo/core";
+} from "@nurlai/adapter-kit";
+import { MediaGenerationError } from "@nurlai/adapter-kit";
+import { ATTACHMENT_MAX_BYTES } from "@nurlai/contracts";
+import { deadlineSignal, ResponseTooLargeError } from "@nurlai/core";
 import { z } from "zod";
 import type { ResolveHostname } from "../web/web-ssrf.js";
 import { fetchSafeWebBytes } from "../web/web-ssrf.js";

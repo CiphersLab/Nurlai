@@ -1,15 +1,15 @@
-import type { ModelCallObserver } from "@rakazo/adapter-kit";
+import type { ModelCallObserver } from "@nurlai/adapter-kit";
 import {
   creditAccount,
   organizationForMember,
   recordModelCreditReceipt,
   reserveModelCredits,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { HttpDecisionProvider } from "../../approvals/http-decisions.js";
 import { hostedModelCreditObserver } from "./model-credit-observer.js";
 
-vi.mock("@rakazo/db", () => ({
+vi.mock("@nurlai/db", () => ({
   organizationForMember: vi.fn(),
   creditAccount: vi.fn(),
   reserveModelCredits: vi.fn(),

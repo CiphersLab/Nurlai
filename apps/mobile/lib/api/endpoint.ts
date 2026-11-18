@@ -1,6 +1,6 @@
 import { t } from "@lingui/core/macro";
-import { isPrivateNetworkHost } from "@rakazo/contracts";
-import { cancelResponseBody, readBoundedJsonResponse, withAbort } from "@rakazo/core";
+import { isPrivateNetworkHost } from "@nurlai/contracts";
+import { cancelResponseBody, readBoundedJsonResponse, withAbort } from "@nurlai/core";
 import { DEFAULT_API, LOCAL_API } from "./server-config";
 
 export const API_PROBE_TIMEOUT_MS = 8_000;

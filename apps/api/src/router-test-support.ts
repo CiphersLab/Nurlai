@@ -1,7 +1,7 @@
 import type { InferRouterInitialContext } from "@orpc/server";
 import { onError } from "@orpc/server";
 import { RPCHandler } from "@orpc/server/fetch";
-import type { Actor, Bot } from "@rakazo/contracts";
+import type { Actor, Bot } from "@nurlai/contracts";
 import { withModelRoles } from "../../../packages/adapters/src/models/model-roles.test-support.js";
 import type { RouterDeps } from "./router.js";
 import {

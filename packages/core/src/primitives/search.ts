@@ -1,4 +1,4 @@
-import type { SearchHit } from "@rakazo/contracts";
+import type { SearchHit } from "@nurlai/contracts";
 import { textBoundary, truncatePlainText } from "../messages/markdown-plain.js";
 
 const URL_PATTERN = /https?:\/\/[^\s<>"'`\]][^\s<>"'`]*/gi;

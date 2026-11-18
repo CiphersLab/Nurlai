@@ -1,17 +1,17 @@
 import { MenuView } from "@expo/ui/community/menu";
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import type { BillingStatus, ByokInterval } from "@rakazo/contracts";
+import type { BillingStatus, ByokInterval } from "@nurlai/contracts";
 import {
   AI_PRIVACY_URL,
   DEFAULT_MONTHLY_CREDIT_AMOUNT,
   MODEL_CREDIT_AMOUNTS,
   ModelCreditAmountSchema,
   paymentOverdue,
-} from "@rakazo/contracts";
-import { canDeleteOrganization } from "@rakazo/core";
-import { writeSaved } from "@rakazo/core/query";
-import { botColors, botEyeColor, typeScale } from "@rakazo/ui-tokens";
+} from "@nurlai/contracts";
+import { canDeleteOrganization } from "@nurlai/core";
+import { writeSaved } from "@nurlai/core/query";
+import { botColors, botEyeColor, typeScale } from "@nurlai/ui-tokens";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import type { ComponentProps, ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
@@ -65,7 +65,7 @@ import { confirmUnsentSendLoss } from "../lib/thread/send/unsent-send-warning";
 type Amount = (typeof MODEL_CREDIT_AMOUNTS)[number];
 type SymbolName = ComponentProps<typeof NativeSymbol>["android"];
 
-const TERMS_URL = "https://rakazo.com/terms/";
+const TERMS_URL = "https://nurlai.cipherslab.com/terms/";
 
 // Bots carry the app's only colour, so the paywall's colour is a small crew of them.
 const CREW = [

@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 
-import type { AccountSecurity } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
-import { tokensForAppearance } from "@rakazo/ui-tokens";
+import type { AccountSecurity } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
+import { tokensForAppearance } from "@nurlai/ui-tokens";
 import type { ReactNode } from "react";
 import { act, createElement } from "react";
 import { createRoot } from "react-dom/client";

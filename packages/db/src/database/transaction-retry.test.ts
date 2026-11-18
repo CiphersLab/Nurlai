@@ -1,4 +1,4 @@
-import { ClientError } from "@rakazo/core";
+import { ClientError } from "@nurlai/core";
 import { describe, expect, it, vi } from "vitest";
 import { TransactionConflictError, withTransactionRetry } from "./transaction-retry.js";
 

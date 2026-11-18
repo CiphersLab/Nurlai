@@ -1,4 +1,4 @@
-import type { HistoryToolStep } from "@rakazo/contracts";
+import type { HistoryToolStep } from "@nurlai/contracts";
 import type { Criterion } from "./cases.js";
 import type { JudgeInput } from "./judge.js";
 

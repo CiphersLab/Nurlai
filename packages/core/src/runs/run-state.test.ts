@@ -1,4 +1,4 @@
-import { RunStatus } from "@rakazo/contracts";
+import { RunStatus } from "@nurlai/contracts";
 import * as fc from "fast-check";
 import { describe, expect, it } from "vitest";
 import {

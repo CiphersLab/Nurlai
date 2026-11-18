@@ -1,9 +1,9 @@
 import { randomUUID } from "node:crypto";
 import { onError } from "@orpc/server";
 import { RPCHandler } from "@orpc/server/fetch";
-import type { TransactionalEmail } from "@rakazo/adapter-kit";
-import type { Actor } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
+import type { TransactionalEmail } from "@nurlai/adapter-kit";
+import type { Actor } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
 import {
   acceptOrganizationInvitation,
   asSystem,
@@ -16,7 +16,7 @@ import {
   OwnedOrganizationHasMembersError,
   publishOrganizationChange,
   revokeOrganizationMember,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import type { RouterDeps } from "../router.js";
 import { createRouter } from "../router.js";
@@ -628,7 +628,7 @@ describePostgres("organization members and invitations (PostgreSQL)", () => {
     expect(sent.slice(before)).toHaveLength(1);
     const message = sent.at(-1)!;
     expect(message.to).toBe(outsider.email);
-    expect(message.subject).toBe("owner invited you to Clients on Rakazo");
+    expect(message.subject).toBe("owner invited you to Clients on Nurlai");
     expect(message.text).toContain(url);
     // Anyone holding the link may join, so the email asks for no particular address.
     expect(message.text).not.toContain("Sign in with this email address");

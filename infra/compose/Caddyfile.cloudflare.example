@@ -59,16 +59,16 @@
 	}
 }
 
-http://{$RAKAZO_HOST:app.example.com} {
+http://{$NURLAI_HOST:app.example.com} {
 	import cloudflare_only
-	redir https://{$RAKAZO_HOST:app.example.com}{uri} 308
+	redir https://{$NURLAI_HOST:app.example.com}{uri} 308
 }
 
 :80 {
 	abort
 }
 
-{$RAKAZO_HOST:app.example.com} {
+{$NURLAI_HOST:app.example.com} {
 	import cloudflare_only
 	import access_log
 	encode zstd gzip

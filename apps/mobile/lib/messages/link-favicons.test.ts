@@ -1,7 +1,7 @@
 vi.mock("../settings/ai-consent", () => ({ promptAiConsent: vi.fn() }));
 
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { currentApiBase, subscribeApiBase, subscribeSessionRejected } from "../api/api";
 import { resetApiBase, saveApiBase } from "../api/api-server";

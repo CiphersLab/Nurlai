@@ -1,17 +1,17 @@
 import { createRouterClient } from "@orpc/server";
 import { RPCHandler } from "@orpc/server/fetch";
-import type { BackgroundJob, ManagedConnectorProvider } from "@rakazo/adapter-kit";
-import { connectionCleanupJob } from "@rakazo/adapter-kit";
+import type { BackgroundJob, ManagedConnectorProvider } from "@nurlai/adapter-kit";
+import { connectionCleanupJob } from "@nurlai/adapter-kit";
 import {
   EncryptedSecretStore,
   IntegrationProviderSettings,
   providerScopeKey,
-} from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
-import type { PrismaClient } from "@rakazo/db";
-import { configureProviderTransactionPool, runProviderTransaction } from "@rakazo/db";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+} from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
+import type { PrismaClient } from "@nurlai/db";
+import { configureProviderTransactionPool, runProviderTransaction } from "@nurlai/db";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { RouterDeps } from "../router.js";
 import { createRouter, handle } from "../router-test-support.js";

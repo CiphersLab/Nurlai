@@ -199,7 +199,7 @@ export async function deployMigrations(input: {
           env: {
             ...process.env,
             DATABASE_MIGRATION_URL: deployUrl,
-            RAKAZO_MIGRATIONS_PATH: migrationsPath,
+            NURLAI_MIGRATIONS_PATH: migrationsPath,
           },
         });
         break;

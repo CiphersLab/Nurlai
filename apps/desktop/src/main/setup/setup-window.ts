@@ -1,6 +1,6 @@
 import path from "node:path";
-import type { DesktopReachability, DesktopSetup } from "@rakazo/contracts";
-import { parseServerHeaders } from "@rakazo/contracts";
+import type { DesktopReachability, DesktopSetup } from "@nurlai/contracts";
+import { parseServerHeaders } from "@nurlai/contracts";
 import type { Session } from "electron";
 import { app, BrowserWindow, screen, shell } from "electron";
 import { desktop } from "../desktop-state.js";
@@ -10,7 +10,7 @@ import { dockerDownloadUrl, isDesktopSetupLink } from "../this-computer/docker-c
 import type { createAppOpener } from "../windows/app-opener.js";
 import { developmentIcon, markOnce } from "../windows/app-window.js";
 import { setupWindowOptions } from "../windows/window-options.js";
-import { managedLocalOpenUrl, parseSetupInput, RAKAZO_CLOUD_URL } from "./setup-config.js";
+import { managedLocalOpenUrl, parseSetupInput, NURLAI_CLOUD_URL } from "./setup-config.js";
 import { writeSetup } from "./setup-store.js";
 
 let setupSaveInProgress = false;
@@ -133,7 +133,7 @@ export function registerSetupIpc({
   }));
   handleIpc("desktop.setup.state", () => ({
     defaultLocalUrl: desktop.localStack.webUrl(),
-    cloudUrl: RAKAZO_CLOUD_URL,
+    cloudUrl: NURLAI_CLOUD_URL,
     saved: desktop.currentSetup,
     error: desktop.setupError ?? undefined,
   }));

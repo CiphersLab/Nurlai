@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import type { ActionAutoReviewSettings, ApprovalMode } from "@rakazo/contracts";
+import type { ActionAutoReviewSettings, ApprovalMode } from "@nurlai/contracts";
 import { useFocusEffect } from "expo-router";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { Alert } from "react-native";

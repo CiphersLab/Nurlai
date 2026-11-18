@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import type { ComputerUpdate } from "@rakazo/contracts";
+import type { ComputerUpdate } from "@nurlai/contracts";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 const space = vi.hoisted(() => ({ id: "space-1" as string | null }));

@@ -1,5 +1,5 @@
-import { deferred } from "@rakazo/core/test-async";
-import type { Prisma, PrismaClient } from "@rakazo/db";
+import { deferred } from "@nurlai/core/test-async";
+import type { Prisma, PrismaClient } from "@nurlai/db";
 
 type Queries = Pick<PrismaClient, "$executeRaw">;
 

@@ -1,5 +1,5 @@
-import { useTimeout } from "@rakazo/chat-ui/hooks";
-import { nextChatWake } from "@rakazo/core";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
+import { nextChatWake } from "@nurlai/core";
 import { useMemo, useState } from "react";
 import { useEventListener } from "../../../lib/use-event-listener";
 

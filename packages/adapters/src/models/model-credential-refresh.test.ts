@@ -1,6 +1,6 @@
-import type { RealtimeFanout } from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
-import type { Prisma, PrismaClient } from "@rakazo/db";
+import type { RealtimeFanout } from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
+import type { Prisma, PrismaClient } from "@nurlai/db";
 import { describe, expect, it } from "vitest";
 import { ComposedSecretStore } from "../secrets/secret-store-factory.js";
 import { EncryptedSecretStore } from "../secrets/secrets.js";

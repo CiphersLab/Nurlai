@@ -3,9 +3,9 @@ import { mkdirSync, mkdtempSync, readFileSync, renameSync, rmSync, writeFileSync
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { parseArgs } from "node:util";
-import type { AgentRunRequest } from "@rakazo/adapter-kit";
-import { ModelConnectInputSchema, ReplyModeSchema } from "@rakazo/contracts";
-import { loadRootEnv } from "@rakazo/core/node/load-root-env";
+import type { AgentRunRequest } from "@nurlai/adapter-kit";
+import { ModelConnectInputSchema, ReplyModeSchema } from "@nurlai/contracts";
+import { loadRootEnv } from "@nurlai/core/node/load-root-env";
 import type { EvalCase } from "../evals/cases.js";
 import {
   EVAL_CASES,
@@ -688,18 +688,18 @@ async function main() {
       STRIPE_WEBHOOK_SECRET: "",
       STRIPE_PRICE_ID: "",
     });
-    execFileSync("pnpm", ["--filter", "@rakazo/db", "generate"], {
+    execFileSync("pnpm", ["--filter", "@nurlai/db", "generate"], {
       stdio: "pipe",
       timeout: 120_000,
     });
-    execFileSync("pnpm", ["--filter", "@rakazo/db", "exec", "prisma", "migrate", "deploy"], {
+    execFileSync("pnpm", ["--filter", "@nurlai/db", "exec", "prisma", "migrate", "deploy"], {
       stdio: "pipe",
       timeout: 120_000,
     });
     // Import runtime modules only after generation; their barrel exports load Prisma.
-    const { createApp } = await import("@rakazo/api/app");
+    const { createApp } = await import("@nurlai/api/app");
     const { runTrial } = await import("../evals/runner.js");
-    const { dispatcherFetch, PiAgentRuntime } = await import("@rakazo/adapters");
+    const { dispatcherFetch, PiAgentRuntime } = await import("@nurlai/adapters");
     const { EvalSandboxProvider } = await import("../evals/sandbox.js");
     const { observeToolCalls } = await import("../evals/tool-calls.js");
     type StoredPlan = Exclude<CasePlan, { kind: "run" }>;

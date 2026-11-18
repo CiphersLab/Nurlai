@@ -1,5 +1,5 @@
-import type { Actor } from "@rakazo/contracts";
-import { asSystem, createDb, runAsTenant } from "@rakazo/db";
+import type { Actor } from "@nurlai/contracts";
+import { asSystem, createDb, runAsTenant } from "@nurlai/db";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import type { VoiceDeps } from "../calls/voice.js";
 import { effectiveVoiceStatus, synthesizeVoice, transcribeVoice } from "../calls/voice.js";

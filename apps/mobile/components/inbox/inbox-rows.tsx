@@ -1,8 +1,8 @@
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import type { SpaceBot, SpaceGroup } from "@rakazo/contracts";
-import { chatSnoozed, chatWoke, isRunWorking } from "@rakazo/core";
-import { botColors } from "@rakazo/ui-tokens";
+import type { SpaceBot, SpaceGroup } from "@nurlai/contracts";
+import { chatSnoozed, chatWoke, isRunWorking } from "@nurlai/core";
+import { botColors } from "@nurlai/ui-tokens";
 import type { ReactElement, ReactNode } from "react";
 import { createContext, memo, useContext, useEffect, useState, useSyncExternalStore } from "react";
 import type { PressableProps } from "react-native";

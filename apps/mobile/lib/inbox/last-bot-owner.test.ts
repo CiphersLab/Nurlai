@@ -1,4 +1,4 @@
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import * as SecureStore from "expo-secure-store";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type * as Session from "../api/session";
@@ -147,7 +147,7 @@ describe("last bot ownership", () => {
       if (change === "account") account.userId = "account-b";
       else account.apiBase = "https://other.example.test";
       await session.saveSessionToken("session-b");
-      expect(saved.get("rakazo.session_token")).toBe("session-b");
+      expect(saved.get("nurlai.session_token")).toBe("session-b");
       expect(saved.has("rakazo.last_bot_id")).toBe(true);
       vi.useFakeTimers();
       const loaded = vi.fn();

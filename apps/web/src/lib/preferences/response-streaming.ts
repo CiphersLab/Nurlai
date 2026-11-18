@@ -1,4 +1,4 @@
-import { normalizeResponseStreamingPreference, RESPONSE_STREAMING_STORAGE_KEY } from "@rakazo/core";
+import { normalizeResponseStreamingPreference, RESPONSE_STREAMING_STORAGE_KEY } from "@nurlai/core";
 import { createStoredPreference } from "./stored-preference";
 
 /** Saved choice wins. Nothing saved leaves streaming off. */

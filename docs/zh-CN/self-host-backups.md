@@ -15,7 +15,7 @@
 
 脚本使用 `pg_dump` 备份数据库，并将 `data/` 打包到 `backups/<stamp>/`。
 备份目录权限是 `0700`，文件权限是 `0600`，即使复用已有路径也会设置权限。
-没有 `data/` 时备份会失败；设置 `RAKAZO_BACKUP_SKIP_HOMES=1` 时只备份数据库，并生成空归档，恢复时视为未包含主目录。
+没有 `data/` 时备份会失败；设置 `NURLAI_BACKUP_SKIP_HOMES=1` 时只备份数据库，并生成空归档，恢复时视为未包含主目录。
 数据库或归档失败会使备份失败，应丢弃该次输出目录。
 
 ### 恢复源码备份
@@ -44,18 +44,18 @@ SQL 提交后的文件替换失败不能自动回滚数据库。应保持应用�
 并启用配套的 `rakazo-backup.timer`。它在 `/var/backups/rakazo` 创建经过验证的 Postgres 自定义格式备份和应用数据归档，文件权限为 `0600`。
 安装步骤见[生产部署（英文）](../self-host-production.md)。
 
-默认保留 `RAKAZO_BACKUP_KEEP=3` 份快照，受 `RAKAZO_BACKUP_MAX_GB=50` GiB 限制，并保留至少
-`RAKAZO_BACKUP_MIN_FREE_GB=5` GiB 可用磁盘空间。
+默认保留 `NURLAI_BACKUP_KEEP=3` 份快照，受 `NURLAI_BACKUP_MAX_GB=50` GiB 限制，并保留至少
+`NURLAI_BACKUP_MIN_FREE_GB=5` GiB 可用磁盘空间。
 脚本先清理遗留的未完成快照和超额历史，再检查容量；空间不足时保留最新的已验证快照，失败时清理该次未完成输出。
 仅有本地快照无法应对整台服务器丢失。
 
 默认部署目录是 `/srv/rakazo`。其他目录可在 root 所有、权限为 `0600` 的 `/etc/rakazo/backup.env` 中设置：
 
 ```env
-RAKAZO_DEPLOY_DIR=/srv/rakazo
-RAKAZO_BACKUP_KEEP=3
-RAKAZO_BACKUP_MAX_GB=50
-RAKAZO_BACKUP_MIN_FREE_GB=5
+NURLAI_DEPLOY_DIR=/srv/rakazo
+NURLAI_BACKUP_KEEP=3
+NURLAI_BACKUP_MAX_GB=50
+NURLAI_BACKUP_MIN_FREE_GB=5
 ```
 
 自定义 Compose 项目名时，还要设置相同的 `COMPOSE_PROJECT_NAME`。
@@ -63,7 +63,7 @@ RAKAZO_BACKUP_MIN_FREE_GB=5
 
 使用专用备份盘时，应持久挂载该磁盘，并把它的 `backups` 目录 bind mount 到 `/var/backups`。
 在 `/etc/fstab` 的 bind 挂载选项中加上 `x-systemd.requires-mounts-for=/mnt/your-backup-volume`。
-在 `/etc/rakazo/backup.env` 中设置 `RAKAZO_BACKUP_REQUIRE_VOLUME=1`，并为备份服务添加
+在 `/etc/rakazo/backup.env` 中设置 `NURLAI_BACKUP_REQUIRE_VOLUME=1`，并为备份服务添加
 `[Unit]` drop-in，写入：
 
 ```ini
@@ -86,22 +86,22 @@ age-keygen -o rakazo-backup.key
 服务器需安装 `age`；`harden-host.sh` 会安装它。将公钥填入 `/etc/rakazo/backup.env`：
 
 ```env
-RAKAZO_BACKUP_AGE_RECIPIENTS=age1exampleprimaryrecipient age1examplerecoveryrecipient
+NURLAI_BACKUP_AGE_RECIPIENTS=age1exampleprimaryrecipient age1examplerecoveryrecipient
 # 也可指定每行一个公钥的文件：
-# RAKAZO_BACKUP_AGE_RECIPIENTS_FILE=/etc/rakazo/backup-recipients.txt
+# NURLAI_BACKUP_AGE_RECIPIENTS_FILE=/etc/rakazo/backup-recipients.txt
 ```
 
 示例公钥必须替换为实际公钥。设置后，快照包含 `rakazo.dump.age`、`appdata.tgz.age`、`SOURCE_SIZE_KB` 和 `SHA256SUMS`。
 数据库和文件流直接进入 age，明文不落盘；验证过程不需要私钥。
 未设置接收者时会生成明文并告警；一旦成功生成过加密备份，之后缺少接收者会拒绝备份。
-只有明确接受明文风险时才设置 `RAKAZO_BACKUP_ALLOW_PLAINTEXT=1`。
+只有明确接受明文风险时才设置 `NURLAI_BACKUP_ALLOW_PLAINTEXT=1`。
 
 异地备份需要 `rclone`。在同一设置文件中把目标设为任意 rclone 远端和路径，
 例如 S3 兼容存储桶或 SFTP 服务器：
 
 ```env
-RAKAZO_BACKUP_OFFSITE_REMOTE=offsite:rakazo-backups
-RAKAZO_BACKUP_OFFSITE_KEEP=14
+NURLAI_BACKUP_OFFSITE_REMOTE=offsite:rakazo-backups
+NURLAI_BACKUP_OFFSITE_KEEP=14
 RCLONE_CONFIG_OFFSITE_TYPE=s3
 RCLONE_CONFIG_OFFSITE_PROVIDER=Other
 RCLONE_CONFIG_OFFSITE_ENDPOINT=https://s3.example.com
@@ -111,7 +111,7 @@ RCLONE_CONFIG_OFFSITE_SECRET_ACCESS_KEY=replace-me
 
 将占位值替换为自己的配置。异地副本必须加密；上传后通过 `rclone check` 校验，最后上传 `SHA256SUMS` 标记完成。
 默认保留最新 14 份完整异地快照，与本地保留数量独立。
-设置 `RAKAZO_BACKUP_OFFSITE_KEEP=0` 可让存储桶生命周期规则负责删除，此时凭据无需删除权限。
+设置 `NURLAI_BACKUP_OFFSITE_KEEP=0` 可让存储桶生命周期规则负责删除，此时凭据无需删除权限。
 上传失败保留本地快照，但备份服务会失败并触发告警。
 
 ## 演练与恢复生产快照
@@ -186,13 +186,13 @@ ssh deploy@app.example.com \
 明文快照没有 `.age` 后缀，应分别用 `cat` 代替 `age -d`，文件名是 `rakazo.dump` 和 `appdata.tgz`；
 干净目录与回滚步骤不变。
 
-恢复到新部署时，必须先创建 `rakazo_app` 角色，再执行上述流程。备份会把权限授予该角色，
+恢复到新部署时，必须先创建 `nurlai_app` 角色，再执行上述流程。备份会把权限授予该角色，
 而新部署只有迁移会创建它，因此缺少角色时 `pg_restore` 会停止。
 不要先运行迁移：比快照更新的表会阻止恢复；流程最后启动应用时才会应用迁移。
 
 ```bash
 ssh deploy@app.example.com "cd /srv/rakazo && $COMPOSE up -d --wait postgres"
-ssh deploy@app.example.com "cd /srv/rakazo && $COMPOSE exec -T postgres sh -c 'psql -U \"\$POSTGRES_USER\" -d \"\$POSTGRES_DB\" -c \"CREATE ROLE rakazo_app NOLOGIN NOSUPERUSER NOBYPASSRLS NOCREATEDB NOCREATEROLE\"'"
+ssh deploy@app.example.com "cd /srv/rakazo && $COMPOSE exec -T postgres sh -c 'psql -U \"\$POSTGRES_USER\" -d \"\$POSTGRES_DB\" -c \"CREATE ROLE nurlai_app NOLOGIN NOSUPERUSER NOBYPASSRLS NOCREATEDB NOCREATEROLE\"'"
 ```
 
 ## 时间点恢复
@@ -242,7 +242,7 @@ sudo infra/compose/pitr.sh enable
 上传内容按集群的系统标识分组，因此新集群不会覆盖旧集群的 WAL。
 
 上传等待超过十分钟、接收暂停、复制槽没有流，或最近基础备份超过 30 小时时，sidecar 的健康检查会失败。
-设置 `RAKAZO_MONITOR_COMPOSE_PROJECT` 后，宿主机检查会对此告警。可查看详细状态：
+设置 `NURLAI_MONITOR_COMPOSE_PROJECT` 后，宿主机检查会对此告警。可查看详细状态：
 
 ```bash
 sudo docker compose --env-file .env -f infra/compose/docker-compose.prod.yml exec pitr rakazo-pitr health
@@ -281,7 +281,7 @@ ssh deploy@app.example.com \
 
 ## 在不同实例间迁移账号
 
-在不同 Rakazo 实例之间迁移账号，可在旧实例“设置 → 导出数据”，在新实例导入。
+在不同 Nurlai 实例之间迁移账号，可在旧实例“设置 → 导出数据”，在新实例导入。
 导出 ZIP 包含所属空间的机器人、聊天、文件、记忆、例行任务、技能、工作区文件，以及自己拥有空间的看板。
 ZIP 中的内容已解密，应保密保存。导入会创建自己拥有的新空间，例行任务默认关闭。
 模型密钥和其他连接凭据（包括应用、MCP 服务器和消息集成）不会迁移，需重新连接。

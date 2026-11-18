@@ -1,5 +1,5 @@
-import type { TransactionalEmailProvider } from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
+import type { TransactionalEmailProvider } from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { startHourlySweep } from "../http/hourly-sweep.js";
 import { unsubscribeUrl } from "./marketing-email.js";

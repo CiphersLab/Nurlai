@@ -1,4 +1,4 @@
-import type { ProductEvent } from "@rakazo/contracts";
+import type { ProductEvent } from "@nurlai/contracts";
 import {
   displayName,
   memberMessageAlerts,
@@ -6,7 +6,7 @@ import {
   payloadAuthor,
   plainTextFromMarkdown,
   TAKEOVER_COMPUTER_PENDING_STATE,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { i18n } from "../locale/i18n";
 
 export type BrowserNotificationPermission = "default" | "denied" | "granted";

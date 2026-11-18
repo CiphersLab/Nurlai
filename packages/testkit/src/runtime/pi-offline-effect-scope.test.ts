@@ -1,4 +1,4 @@
-import { PiAgentRuntime } from "@rakazo/adapters";
+import { PiAgentRuntime } from "@nurlai/adapters";
 import { expect, it, vi } from "vitest";
 import {
   recordEffect,

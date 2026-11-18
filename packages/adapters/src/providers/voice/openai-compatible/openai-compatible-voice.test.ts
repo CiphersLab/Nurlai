@@ -1,4 +1,4 @@
-import { ConnectionSetupError } from "@rakazo/contracts";
+import { ConnectionSetupError } from "@nurlai/contracts";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { PRIVATE_MODEL_ENDPOINT_MESSAGE } from "../../../models/endpoints/openai-compatible-url.js";
 import {
@@ -112,12 +112,12 @@ describe("serializeOpenAiCompatibleVoiceSecret", () => {
   });
 
   it("blocks public hosts, metadata hosts, and cleartext keys to public servers", () => {
-    vi.stubEnv("RAKAZO_OPENAI_COMPAT_ALLOW_PUBLIC", "0");
+    vi.stubEnv("NURLAI_OPENAI_COMPAT_ALLOW_PUBLIC", "0");
     expect(() => serializeAsOwner({ baseUrl: "https://speech.example.com" })).toThrow(
       /Public model endpoints are disabled/,
     );
     expect(() => serializeAsOwner({ baseUrl: "http://169.254.169.254" })).toThrow(/blocked/);
-    vi.stubEnv("RAKAZO_OPENAI_COMPAT_ALLOW_PUBLIC", "1");
+    vi.stubEnv("NURLAI_OPENAI_COMPAT_ALLOW_PUBLIC", "1");
     expect(() =>
       serializeAsOwner({
         baseUrl: "http://speech.example.com",
@@ -266,7 +266,7 @@ describe("serializeOpenAiCompatibleVoiceSecret", () => {
     expect(() =>
       serializeAsOwner({ baseUrl: "http://127.0.0.1:8810", sttBaseUrl: "http://169.254.169.254" }),
     ).toThrow(/blocked/);
-    vi.stubEnv("RAKAZO_OPENAI_COMPAT_ALLOW_PUBLIC", "1");
+    vi.stubEnv("NURLAI_OPENAI_COMPAT_ALLOW_PUBLIC", "1");
     expect(() =>
       serializeAsOwner({
         baseUrl: "http://127.0.0.1:8810",

@@ -2,7 +2,7 @@
 vi.mock("../settings/ai-consent", () => ({ promptAiConsent: vi.fn() }));
 vi.mock("react-native", () => ({ Platform: { OS: "ios" } }));
 
-import { deferred, flush } from "@rakazo/core/test-async";
+import { deferred, flush } from "@nurlai/core/test-async";
 import * as SecureStore from "expo-secure-store";
 import { act } from "react";
 import type { Root } from "react-dom/client";
@@ -29,7 +29,7 @@ vi.mock("../api/network-cache", () => ({ clearNetworkCache: vi.fn() }));
 
 const OLD = "https://old.example.test";
 const NEW = "https://new.example.test";
-const SESSION_KEY = "rakazo.session_token";
+const SESSION_KEY = "nurlai.session_token";
 const WRITE = "spaceSettings/setOverride";
 
 const onSaved = vi.fn();
@@ -70,7 +70,7 @@ beforeEach(async () => {
       requests.push({
         url: String(input),
         authorization: headers.get("authorization"),
-        space: headers.get("x-rakazo-space-id"),
+        space: headers.get("x-nurlai-space-id"),
       });
       return jsonResponse({ json: [] });
     }),

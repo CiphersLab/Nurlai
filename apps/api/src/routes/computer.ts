@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { ORPCError } from "@orpc/server";
-import type { SandboxProvider } from "@rakazo/adapter-kit";
-import { computerControlExpireJobKey, SandboxFileTooLargeError } from "@rakazo/adapter-kit";
+import type { SandboxProvider } from "@nurlai/adapter-kit";
+import { computerControlExpireJobKey, SandboxFileTooLargeError } from "@nurlai/adapter-kit";
 import {
   applyTeachingDesktopInput,
   ComputerScreenUnavailableError,
@@ -27,24 +27,24 @@ import {
   toComputerRef,
   touchRunningComputer,
   WorkspacePathError,
-} from "@rakazo/adapters";
+} from "@nurlai/adapters";
 import {
   attachmentMaxBytes,
   attachmentSizeLabel,
   ComputerCommandSchema,
   foldComputerCommands,
-} from "@rakazo/contracts";
-import { ACTIVE_RUN_STATUSES, ClientError, computerUsingRuns, scrollDirection } from "@rakazo/core";
-import { addScreenProxyCapability } from "@rakazo/core/node/screen-capability";
-import type { ComputerRunEnd } from "@rakazo/db";
+} from "@nurlai/contracts";
+import { ACTIVE_RUN_STATUSES, ClientError, computerUsingRuns, scrollDirection } from "@nurlai/core";
+import { addScreenProxyCapability } from "@nurlai/core/node/screen-capability";
+import type { ComputerRunEnd } from "@nurlai/db";
 import {
   expireComputerExecutionLeases,
   IsolationError,
   isRecordNotFound,
   parseComputerMode,
   recordComputerRunEnd,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import {
   acquireBootLease,
   answerComputerRequest,

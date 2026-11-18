@@ -4,14 +4,14 @@ import type {
   ModelCredential,
   ModelSettings,
   ThinkingLevel,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   assertHeaderSafeApiKey,
   OPENAI_COMPATIBLE_PROVIDER_ID as CONTRACT_OPENAI_COMPAT,
   canonicalPiProviderId,
   MAX_ENABLED_MODEL_IDS,
   modelOutputLeavesInputRoom,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import { modelCredentialAuthKind } from "../runtime/pi/models/pi-catalog-availability.js";
 import { CHATGPT_OAUTH_PROVIDER } from "../runtime/pi/models/pi-oauth.js";
 import {

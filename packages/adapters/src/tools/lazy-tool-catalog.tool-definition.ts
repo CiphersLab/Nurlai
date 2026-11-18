@@ -1,4 +1,4 @@
-import type { ConnectorTool } from "@rakazo/adapter-kit";
+import type { ConnectorTool } from "@nurlai/adapter-kit";
 
 export const TOOL_SEARCH_LIMIT = 10;
 export const NAME_INDEX_MAX_NAMES = 200;

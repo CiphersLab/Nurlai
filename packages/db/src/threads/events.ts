@@ -1,11 +1,11 @@
-import type { ProductAnalytics, RealtimeFanout } from "@rakazo/adapter-kit";
-import type { ChatAlert, MessageBlock, ProductEvent, SpaceChangeKind } from "@rakazo/contracts";
+import type { ProductAnalytics, RealtimeFanout } from "@nurlai/adapter-kit";
+import type { ChatAlert, MessageBlock, ProductEvent, SpaceChangeKind } from "@nurlai/contracts";
 import {
   AnalyticsTrigger,
   hasThinkingActivityMarker,
   STEP_SCREENSHOT_MIME_TYPES,
   ThreadActivityPayloadSchema,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   BACKGROUND_HELPER_TRIGGER,
   callIdFromClientNonce,
@@ -17,8 +17,8 @@ import {
   QUEUE_HOLDING_RUN_STATUSES,
   sanitizeJsonValue,
   splitToolHistory,
-} from "@rakazo/core";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/core";
+import { getLogger } from "@nurlai/logging";
 import type { RosterChange } from "../bots/roster-changes.js";
 import {
   followRosterChanges,

@@ -1,6 +1,6 @@
-import type { ToolBatch } from "@rakazo/adapter-kit";
-import type { AskReceipt, MessageBlock } from "@rakazo/contracts";
-import { BOT_INSTRUCTIONS_MAX_LENGTH } from "@rakazo/contracts";
+import type { ToolBatch } from "@nurlai/adapter-kit";
+import type { AskReceipt, MessageBlock } from "@nurlai/contracts";
+import { BOT_INSTRUCTIONS_MAX_LENGTH } from "@nurlai/contracts";
 import {
   batchActions,
   CARD_TITLE_ESCAPED_CHARACTERS,
@@ -10,8 +10,8 @@ import {
   SITE_SENDING_TOOLS,
   sanitizeMessagingLabel,
   toolRequiresExplicitApproval,
-} from "@rakazo/core";
-import { urlSite } from "@rakazo/core/egress";
+} from "@nurlai/core";
+import { urlSite } from "@nurlai/core/egress";
 import {
   USER_COMPUTER_SCREEN_TOOLS,
   userComputerAppName,

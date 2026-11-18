@@ -243,9 +243,9 @@ test("a framed screen that drops after connecting loads again by itself through 
       contentType: "text/html",
       headers: { "content-security-policy": "sandbox allow-scripts allow-pointer-lock" },
       body: `<!doctype html><title>Test desktop</title><script>
-        parent.postMessage({ rakazoScreen: "loading" }, "*");
-        parent.postMessage({ rakazoScreen: "${stuck ? "failed" : "connected"}" }, "*");
-        ${drop ? 'setTimeout(() => parent.postMessage({ rakazoScreen: "disconnected" }, "*"), 300);' : ""}
+        parent.postMessage({ nurlaiScreen: "loading" }, "*");
+        parent.postMessage({ nurlaiScreen: "${stuck ? "failed" : "connected"}" }, "*");
+        ${drop ? 'setTimeout(() => parent.postMessage({ nurlaiScreen: "disconnected" }, "*"), 300);' : ""}
       </script><p>Desktop</p>`,
     });
   });
@@ -277,7 +277,7 @@ test("a framed screen that drops after connecting loads again by itself through 
     page
       .frames()
       .find((candidate) => candidate.url().includes("1.drop-test"))
-      ?.evaluate((rakazoScreen) => parent.postMessage({ rakazoScreen }, "*"), state);
+      ?.evaluate((nurlaiScreen) => parent.postMessage({ nurlaiScreen }, "*"), state);
   await postState("disconnected");
   await expect.poll(() => loads).toBe(3);
   await page.waitForTimeout(1_000);

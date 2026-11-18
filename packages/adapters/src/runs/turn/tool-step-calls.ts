@@ -1,8 +1,8 @@
-import type { AgentRunRequest, AgentToolCompletion } from "@rakazo/adapter-kit";
-import type { ToolStepCall } from "@rakazo/contracts";
-import { storedImageMimeType } from "@rakazo/contracts";
-import { redactSecrets } from "@rakazo/core";
-import { getLogger } from "@rakazo/logging";
+import type { AgentRunRequest, AgentToolCompletion } from "@nurlai/adapter-kit";
+import type { ToolStepCall } from "@nurlai/contracts";
+import { storedImageMimeType } from "@nurlai/contracts";
+import { redactSecrets } from "@nurlai/core";
+import { getLogger } from "@nurlai/logging";
 import { redactToolArgsForReview } from "../../approvals/auto-review.js";
 import { sanitizeConnectorError } from "../../integrations/connector-safety.js";
 import { sanitizeSensitiveText } from "../../runtime/pi/pi-runtime-errors.js";

@@ -3,13 +3,13 @@ import {
   ModelAccountError,
   ModelOutputError,
   TransientModelError,
-} from "@rakazo/adapter-kit";
-import { OPENAI_COMPATIBLE_PROVIDER_ID } from "@rakazo/contracts";
+} from "@nurlai/adapter-kit";
+import { OPENAI_COMPATIBLE_PROVIDER_ID } from "@nurlai/contracts";
 import {
   MODEL_OUTPUT_LIMIT_ERROR,
   normalizeRunError,
   parseModelFallbackFailure,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { LOCAL_PROVIDER_ID } from "./models/pi-local-provider-id.js";
 import { terminalOAuthRefreshErrorMarker } from "./models/pi-oauth.js";
 import { isOpenCodeProvider } from "./stream/pi-runtime-stream.js";
@@ -150,11 +150,11 @@ function modelFailureClass(
     return MODEL_FAILURE_RANK.indexOf(ModelAccountError);
   if (kind || recovery) return MODEL_FAILURE_RANK.indexOf(ModelAccountError);
   // The user's own endpoint refused a request its model or settings cannot take. On a named
-  // provider the same rejection more likely means Rakazo built the request wrong.
+  // provider the same rejection more likely means Nurlai built the request wrong.
   if ((status === 400 || status === 422) && OWN_ENDPOINT_PROVIDERS.has(provider))
     return MODEL_FAILURE_RANK.indexOf(ModelAccountError);
   // The user's own endpoint took the request, then reported a failure of its own in the reply
-  // with no status to place it: nothing Rakazo sent was refused, and another try can succeed.
+  // with no status to place it: nothing Nurlai sent was refused, and another try can succeed.
   if (failedAfterAccepting && status === undefined && OWN_ENDPOINT_PROVIDERS.has(provider))
     return MODEL_FAILURE_RANK.indexOf(TransientModelError);
   return MODEL_FAILURE_RANK.indexOf(Error);

@@ -1,5 +1,5 @@
-import type { VaultCsv } from "@rakazo/contracts";
-import { parseVaultCsv, VAULT_IMPORT_FILE_LIMIT } from "@rakazo/contracts";
+import type { VaultCsv } from "@nurlai/contracts";
+import { parseVaultCsv, VAULT_IMPORT_FILE_LIMIT } from "@nurlai/contracts";
 import * as DocumentPicker from "expo-document-picker";
 import { File } from "expo-file-system";
 

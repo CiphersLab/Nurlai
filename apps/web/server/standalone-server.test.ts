@@ -3,7 +3,7 @@ import http from "node:http";
 import type { AddressInfo } from "node:net";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { USER_DEVICE_CONNECT_PATH } from "@rakazo/contracts";
+import { USER_DEVICE_CONNECT_PATH } from "@nurlai/contracts";
 import { afterEach, describe, expect, it } from "vitest";
 import { createWebServer } from "./standalone-server.js";
 
@@ -46,7 +46,7 @@ async function start(handler?: http.RequestListener) {
   await writeFile(path.join(root, "dist", "build-id"), "test\n");
   const web = createWebServer(root, {
     API_PROXY_TARGET: `http://127.0.0.1:${apiPort}`,
-    RAKAZO_HOST: "app.example.test",
+    NURLAI_HOST: "app.example.test",
     SCREEN_PROXY_SECRET: "test-screen-proxy-secret-0123456789abcdef",
   });
   return listen(web);

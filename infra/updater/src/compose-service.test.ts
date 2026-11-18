@@ -2,7 +2,7 @@ import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import { RECREATED_SERVICES } from "@rakazo/core";
+import { RECREATED_SERVICES } from "@nurlai/core";
 import { describe, expect, it } from "vitest";
 import { parse } from "yaml";
 
@@ -67,11 +67,11 @@ describe("the updater compose service", () => {
 
   it("is opt-in because it grants root-equivalent Docker access", () => {
     expect(updater.profiles).toEqual(["updater"]);
-    expect(updater.environment?.RAKAZO_COMPUTER_IMAGE).toBe(
-      `\${RAKAZO_COMPUTER_IMAGE:-ghcr.io/elie222/rakazo/computer}`,
+    expect(updater.environment?.NURLAI_COMPUTER_IMAGE).toBe(
+      `\${NURLAI_COMPUTER_IMAGE:-ghcr.io/elie222/nurlai/computer}`,
     );
-    expect(updater.environment?.RAKAZO_AUTO_UPDATE_INTERVAL_HOURS).toBe(
-      interpolated("RAKAZO_AUTO_UPDATE_INTERVAL_HOURS", "0"),
+    expect(updater.environment?.NURLAI_AUTO_UPDATE_INTERVAL_HOURS).toBe(
+      interpolated("NURLAI_AUTO_UPDATE_INTERVAL_HOURS", "0"),
     );
   });
 
@@ -96,13 +96,13 @@ describe("the updater compose service", () => {
   });
 
   it("is bind-mounted at the same path it has on the host", () => {
-    const mount = (updater.volumes ?? []).find((volume) => volume.includes("RAKAZO_DEPLOY_DIR"));
+    const mount = (updater.volumes ?? []).find((volume) => volume.includes("NURLAI_DEPLOY_DIR"));
     // biome-ignore lint/suspicious/noTemplateCurlyInString: this is the literal Compose expression
-    const deployDir = "${RAKAZO_DEPLOY_DIR:-/srv/rakazo}";
+    const deployDir = "${NURLAI_DEPLOY_DIR:-/srv/rakazo}";
     const separatorIndex = mount?.indexOf("}:${") ?? -1;
     const source = separatorIndex < 0 ? undefined : mount?.slice(0, separatorIndex + 1);
     const destination = separatorIndex < 0 ? undefined : mount?.slice(separatorIndex + 2);
-    expect(updater.environment?.RAKAZO_DEPLOY_DIR).toBe(deployDir);
+    expect(updater.environment?.NURLAI_DEPLOY_DIR).toBe(deployDir);
     expect(mount).toBe(`${deployDir}:${deployDir}`);
     expect(source).toBe(destination);
   });
@@ -115,9 +115,9 @@ describe("the updater compose service", () => {
   });
 
   it("pins its own image tag separately from the application image", () => {
-    expect(updater.image).toContain("RAKAZO_UPDATER_IMAGE_TAG");
+    expect(updater.image).toContain("NURLAI_UPDATER_IMAGE_TAG");
     for (const service of RECREATED_SERVICES) {
-      expect(compose.services[service]?.image).toContain("RAKAZO_IMAGE_TAG");
+      expect(compose.services[service]?.image).toContain("NURLAI_IMAGE_TAG");
     }
   });
 
@@ -137,11 +137,11 @@ describe("the updater compose service", () => {
     // environment is exactly what this file declares. Pinning them here would make the documented
     // variables inert: the operator sets them, the updater never sees them, and the overlay is
     // dropped on every recreate.
-    expect(updater.environment?.RAKAZO_COMPOSE_FILE).toBe(
-      interpolated("RAKAZO_COMPOSE_FILE", "infra/compose/docker-compose.prod.yml"),
+    expect(updater.environment?.NURLAI_COMPOSE_FILE).toBe(
+      interpolated("NURLAI_COMPOSE_FILE", "infra/compose/docker-compose.prod.yml"),
     );
-    expect(updater.environment?.RAKAZO_UPDATE_SERVICES).toBe(
-      interpolated("RAKAZO_UPDATE_SERVICES"),
+    expect(updater.environment?.NURLAI_UPDATE_SERVICES).toBe(
+      interpolated("NURLAI_UPDATE_SERVICES"),
     );
     expect(updater.environment?.COMPOSE_PATH_SEPARATOR).toBe(
       interpolated("COMPOSE_PATH_SEPARATOR"),
@@ -156,13 +156,13 @@ describe("the updater compose service", () => {
   it("does not load the application env_file into the root-equivalent process", () => {
     expect(updater.env_file).toBeUndefined();
     // biome-ignore lint/suspicious/noTemplateCurlyInString: this is the literal Compose expression
-    expect(updater.environment?.RAKAZO_UPDATER_TOKEN).toBe("${RAKAZO_UPDATER_TOKEN:-}");
+    expect(updater.environment?.NURLAI_UPDATER_TOKEN).toBe("${NURLAI_UPDATER_TOKEN:-}");
   });
 
   it("does not let the api container reach the Docker socket to update itself", () => {
     expect(compose.services.api?.volumes ?? []).not.toContain("/var/run/docker.sock");
-    expect(compose.services.api?.environment?.RAKAZO_UPDATER_URL).toBeUndefined();
-    expect(compose.services.api?.environment?.RAKAZO_UPDATER_TOKEN).toBeUndefined();
+    expect(compose.services.api?.environment?.NURLAI_UPDATER_URL).toBeUndefined();
+    expect(compose.services.api?.environment?.NURLAI_UPDATER_TOKEN).toBeUndefined();
   });
 
   it("passes logging configuration without using env_file", () => {

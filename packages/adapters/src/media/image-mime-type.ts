@@ -1,4 +1,4 @@
-import type { AttachmentImageMimeType } from "@rakazo/contracts";
+import type { AttachmentImageMimeType } from "@nurlai/contracts";
 
 /** Identify supported image formats from their headers without decoding pixels. */
 export function detectImageMimeType(bytes: Uint8Array): AttachmentImageMimeType | undefined {

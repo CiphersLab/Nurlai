@@ -1,7 +1,7 @@
-import type { ConnectorRegistry } from "@rakazo/adapters";
-import type { Actor, ConnectionCatalogItem, MessageBlock } from "@rakazo/contracts";
-import { appConnectCard, connectedAppBlock, matchAppCatalog } from "@rakazo/core";
-import type { Prisma, PrismaClient, ThreadEvents } from "@rakazo/db";
+import type { ConnectorRegistry } from "@nurlai/adapters";
+import type { Actor, ConnectionCatalogItem, MessageBlock } from "@nurlai/contracts";
+import { appConnectCard, connectedAppBlock, matchAppCatalog } from "@nurlai/core";
+import type { Prisma, PrismaClient, ThreadEvents } from "@nurlai/db";
 import {
   appendEventInTransaction,
   changeMessageBlocks,
@@ -9,7 +9,7 @@ import {
   IsolationError,
   storedMessageBlocks,
   THREAD_LOCK_TRANSACTION_OPTIONS,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { requireBotThread } from "../bots/bot-thread.js";
 import { resolveThreadTarget } from "../threads/thread-target.js";
 

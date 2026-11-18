@@ -1,8 +1,8 @@
-import type { BackgroundJobHandlers } from "@rakazo/adapter-kit";
-import type { PrismaClient } from "@rakazo/db";
-import { DatabaseOutage } from "@rakazo/db";
-import type { LogEvent } from "@rakazo/logging";
-import { createLogger, createTestSink, getLogger, installLogger } from "@rakazo/logging";
+import type { BackgroundJobHandlers } from "@nurlai/adapter-kit";
+import type { PrismaClient } from "@nurlai/db";
+import { DatabaseOutage } from "@nurlai/db";
+import type { LogEvent } from "@nurlai/logging";
+import { createLogger, createTestSink, getLogger, installLogger } from "@nurlai/logging";
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
 import { InMemoryRealtimeFanout } from "../../notifications/realtime.js";
 import { RunStarter, RunWorkerHost } from "./run-wakeup.js";

@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, describe, expect, it } from "vitest";
 import type { UpdaterCommandRunner } from "./index.js";
 import { createUpdaterApp } from "./index.js";
@@ -12,7 +12,7 @@ import { resolveUpdaterConfig } from "./updater-logic.js";
 const older = "1".repeat(40);
 const newer = "2".repeat(40);
 const appImage = "ghcr.io/elie222/rakazo/app";
-const computerImage = "ghcr.io/elie222/rakazo/computer";
+const computerImage = "ghcr.io/elie222/nurlai/computer";
 const cachePrefix = `cached-${createHash("sha256").update("cache-test").digest("hex").slice(0, 16)}-`;
 const cachedOlder = `${cachePrefix}${"1".repeat(64)}`;
 const cachedNewer = `${cachePrefix}${"2".repeat(64)}`;
@@ -28,8 +28,8 @@ async function fixture(env: string, commit: string, computers = false) {
   const envFile = path.join(dir, ".env");
   await writeFile(envFile, env);
   const config = resolveUpdaterConfig({
-    RAKAZO_DEPLOY_DIR: dir,
-    RAKAZO_UPDATER_TOKEN: token,
+    NURLAI_DEPLOY_DIR: dir,
+    NURLAI_UPDATER_TOKEN: token,
     COMPOSE_PROJECT_NAME: "cache-test",
   });
   if (computers) config.updateServices = ["api", "worker", "web", "supervisor", "computer"];
@@ -175,15 +175,15 @@ async function fixture(env: string, commit: string, computers = false) {
     if (args.includes("up")) {
       if (
         state.failTarget &&
-        options.env?.RAKAZO_IMAGE_TAG === `sha-${newer}` &&
-        (!computers || options.env?.RAKAZO_COMPUTER_IMAGE_TAG === `sha-${newer}`)
+        options.env?.NURLAI_IMAGE_TAG === `sha-${newer}` &&
+        (!computers || options.env?.NURLAI_COMPUTER_IMAGE_TAG === `sha-${newer}`)
       )
         return failed("target unhealthy");
-      const next = options.env?.RAKAZO_IMAGE_TAG?.slice(4);
+      const next = options.env?.NURLAI_IMAGE_TAG?.slice(4);
       if (!next) throw new Error("Missing application pin");
       for (const service of Object.keys(state.versions)) state.versions[service] = next;
-      if (options.env?.RAKAZO_COMPUTER_IMAGE_TAG)
-        state.computer = `${computerImage}:${options.env.RAKAZO_COMPUTER_IMAGE_TAG}`;
+      if (options.env?.NURLAI_COMPUTER_IMAGE_TAG)
+        state.computer = `${computerImage}:${options.env.NURLAI_COMPUTER_IMAGE_TAG}`;
       return ok();
     }
     throw new Error(`Unexpected Docker command: ${args.join(" ")}`);
@@ -198,10 +198,10 @@ async function fixture(env: string, commit: string, computers = false) {
 }
 
 describe("scheduled release state and recovery", () => {
-  it.each(["RAKAZO_IMAGE", "RAKAZO_COMPUTER_IMAGE"])(
+  it.each(["NURLAI_IMAGE", "NURLAI_COMPUTER_IMAGE"])(
     "refuses a live %s mirror edit before any command",
     async (key) => {
-      const subject = await fixture(`RAKAZO_IMAGE_TAG=sha-${older}\n`, older, true);
+      const subject = await fixture(`NURLAI_IMAGE_TAG=sha-${older}\n`, older, true);
       await subject.setEnv(`${await subject.env()}${key}=registry.example.com/mirror/image\n`);
       await expect(subject.app.applyScheduledUpdate()).rejects.toThrow(
         "official stable image repositories",
@@ -214,7 +214,7 @@ describe("scheduled release state and recovery", () => {
     "freezes official repositories across a mid-update env edit (failure=%s)",
     async (failure) => {
       const subject = await fixture(
-        `RAKAZO_IMAGE_TAG=sha-${older}\nRAKAZO_COMPUTER_IMAGE_TAG=sha-${older}\n`,
+        `NURLAI_IMAGE_TAG=sha-${older}\nNURLAI_COMPUTER_IMAGE_TAG=sha-${older}\n`,
         older,
         true,
       );
@@ -223,7 +223,7 @@ describe("scheduled release state and recovery", () => {
       const pending = subject.app.applyScheduledUpdate();
       await subject.state.pullStarted.promise;
       await subject.setEnv(
-        `${await subject.env()}RAKAZO_IMAGE=registry.example.com/mirror/app\nRAKAZO_COMPUTER_IMAGE=registry.example.com/mirror/computer\n`,
+        `${await subject.env()}NURLAI_IMAGE=registry.example.com/mirror/app\nNURLAI_COMPUTER_IMAGE=registry.example.com/mirror/computer\n`,
       );
       subject.state.continuePull.resolve();
       expect((await pending).ok).toBe(!failure);
@@ -232,8 +232,8 @@ describe("scheduled release state and recovery", () => {
       );
       expect(commands.length).toBe(failure ? 3 : 2);
       for (const { env } of commands) {
-        expect(env.RAKAZO_IMAGE).toBe(appImage);
-        expect(env.RAKAZO_COMPUTER_IMAGE).toBe(computerImage);
+        expect(env.NURLAI_IMAGE).toBe(appImage);
+        expect(env.NURLAI_COMPUTER_IMAGE).toBe(computerImage);
       }
       expect(
         subject.calls.some(({ args }) =>
@@ -248,14 +248,14 @@ describe("scheduled release state and recovery", () => {
 
   it("aligns stale pins with the verified running image without a deployment", async () => {
     const subject = await fixture(
-      `RAKAZO_IMAGE_TAG=sha-${older}\nRAKAZO_IMAGE_TAG_PREVIOUS=v0.9.0\n`,
+      `NURLAI_IMAGE_TAG=sha-${older}\nNURLAI_IMAGE_TAG_PREVIOUS=v0.9.0\n`,
       newer,
     );
     const result = await subject.app.applyScheduledUpdate();
     expect(result.ok).toBe(true);
     expect(result.restart).toBe("not-required");
-    expect(await subject.env()).toContain(`RAKAZO_IMAGE_TAG=sha-${newer}\n`);
-    expect(await subject.env()).toContain("RAKAZO_IMAGE_TAG_PREVIOUS=v0.9.0\n");
+    expect(await subject.env()).toContain(`NURLAI_IMAGE_TAG=sha-${newer}\n`);
+    expect(await subject.env()).toContain("NURLAI_IMAGE_TAG_PREVIOUS=v0.9.0\n");
     expect(subject.calls.some(({ args }) => args.includes("pull") || args.includes("up"))).toBe(
       false,
     );
@@ -266,7 +266,7 @@ describe("scheduled release state and recovery", () => {
   });
 
   it("does not retag another stack's published image with source-built bytes", async () => {
-    const env = `RAKAZO_IMAGE_TAG=latest\n`;
+    const env = `NURLAI_IMAGE_TAG=latest\n`;
     const subject = await fixture(env, older);
     for (const service of Object.keys(subject.state.versions))
       subject.state.imageOverrides[service] = `sha256:${"f".repeat(64)}`;
@@ -281,7 +281,7 @@ describe("scheduled release state and recovery", () => {
   });
 
   it("caches a missing baseline from the registry before updating a latest install", async () => {
-    const subject = await fixture("RAKAZO_IMAGE_TAG=latest\n", older);
+    const subject = await fixture("NURLAI_IMAGE_TAG=latest\n", older);
     delete subject.state.appImages[`sha-${older}`];
     expect((await subject.app.applyScheduledUpdate()).ok).toBe(true);
     expect(
@@ -299,7 +299,7 @@ describe("scheduled release state and recovery", () => {
 
   it("does not retry a failed target as recovery for a mixed runtime", async () => {
     const subject = await fixture(
-      `RAKAZO_IMAGE_TAG=sha-${newer}\nRAKAZO_IMAGE_TAG_PREVIOUS=sha-${older}\n`,
+      `NURLAI_IMAGE_TAG=sha-${newer}\nNURLAI_IMAGE_TAG_PREVIOUS=sha-${older}\n`,
       newer,
     );
     subject.state.versions.worker = older;
@@ -310,11 +310,11 @@ describe("scheduled release state and recovery", () => {
     expect(result.restartAdvice).toContain("not retried as recovery");
     expect(subject.calls.filter(({ args }) => args.includes("up"))).toHaveLength(1);
     expect(result.steps.some((step) => step.id === "recover")).toBe(false);
-    expect(await subject.env()).toContain(`RAKAZO_IMAGE_TAG_PREVIOUS=sha-${older}`);
+    expect(await subject.env()).toContain(`NURLAI_IMAGE_TAG_PREVIOUS=sha-${older}`);
   });
 
   it("restores the verified running baseline rather than a stale .env tag", async () => {
-    const subject = await fixture("RAKAZO_IMAGE_TAG=v0.9.0\n", older);
+    const subject = await fixture("NURLAI_IMAGE_TAG=v0.9.0\n", older);
     subject.state.failTarget = true;
     const result = await subject.app.applyScheduledUpdate();
     expect(result.ok).toBe(false);
@@ -323,14 +323,14 @@ describe("scheduled release state and recovery", () => {
     expect(
       subject.calls
         .filter(({ args }) => args.includes("up"))
-        .map(({ env }) => env.RAKAZO_IMAGE_TAG),
+        .map(({ env }) => env.NURLAI_IMAGE_TAG),
     ).toEqual([`sha-${newer}`, `sha-${older}`]);
-    expect(await subject.env()).toContain(`RAKAZO_IMAGE_TAG=sha-${older}\n`);
+    expect(await subject.env()).toContain(`NURLAI_IMAGE_TAG=sha-${older}\n`);
   });
 
   it("restores the previous computer pin on a failed release update", async () => {
     const subject = await fixture(
-      "RAKAZO_IMAGE_TAG=v0.9.0\nRAKAZO_COMPUTER_IMAGE_TAG=latest\n",
+      "NURLAI_IMAGE_TAG=v0.9.0\nNURLAI_COMPUTER_IMAGE_TAG=latest\n",
       older,
       true,
     );
@@ -341,18 +341,18 @@ describe("scheduled release state and recovery", () => {
     expect(
       subject.calls
         .filter(({ args }) => args.includes("up"))
-        .map(({ env }) => [env.RAKAZO_IMAGE_TAG, env.RAKAZO_COMPUTER_IMAGE_TAG]),
+        .map(({ env }) => [env.NURLAI_IMAGE_TAG, env.NURLAI_COMPUTER_IMAGE_TAG]),
     ).toEqual([
       [`sha-${newer}`, `sha-${newer}`],
       [`sha-${older}`, cachedOlder],
     ]);
     expect(subject.state.computer).toBe(`${computerImage}:${cachedOlder}`);
-    expect(await subject.env()).toContain("RAKAZO_COMPUTER_IMAGE_TAG=latest\n");
+    expect(await subject.env()).toContain("NURLAI_COMPUTER_IMAGE_TAG=latest\n");
   });
 
   it("preserves registry pins across a failed pull and failed updates with recovery", async () => {
     const subject = await fixture(
-      `RAKAZO_IMAGE_TAG=sha-${older}\nRAKAZO_COMPUTER_IMAGE_TAG=latest\n`,
+      `NURLAI_IMAGE_TAG=sha-${older}\nNURLAI_COMPUTER_IMAGE_TAG=latest\n`,
       older,
       true,
     );
@@ -360,23 +360,23 @@ describe("scheduled release state and recovery", () => {
     subject.state.unavailableComputer = true;
     expect((await subject.app.applyScheduledUpdate()).ok).toBe(false);
     expect(subject.calls.some(({ args }) => args.includes("up"))).toBe(false);
-    expect(await subject.env()).toContain("RAKAZO_COMPUTER_IMAGE_TAG=latest\n");
+    expect(await subject.env()).toContain("NURLAI_COMPUTER_IMAGE_TAG=latest\n");
     subject.state.unavailableComputer = false;
     subject.state.failTarget = true;
     expect((await subject.app.applyScheduledUpdate()).ok).toBe(false);
     expect(subject.state.computer).toBe(`${computerImage}:${cachedOlder}`);
-    expect(await subject.env()).toContain("RAKAZO_COMPUTER_IMAGE_TAG=latest\n");
+    expect(await subject.env()).toContain("NURLAI_COMPUTER_IMAGE_TAG=latest\n");
     // A later check observes the local recovery tag in the supervisor, not the .env pin.
     expect((await subject.app.applyScheduledUpdate()).ok).toBe(false);
-    expect(await subject.env()).toContain("RAKAZO_COMPUTER_IMAGE_TAG=latest\n");
+    expect(await subject.env()).toContain("NURLAI_COMPUTER_IMAGE_TAG=latest\n");
     expect(
-      subject.calls.filter(({ args }) => args.includes("up")).at(-1)?.env.RAKAZO_COMPUTER_IMAGE_TAG,
+      subject.calls.filter(({ args }) => args.includes("up")).at(-1)?.env.NURLAI_COMPUTER_IMAGE_TAG,
     ).toBe(cachedOlder);
   });
 
   it("waits for the exact computer commit image and never relies on computer:latest", async () => {
     const subject = await fixture(
-      `RAKAZO_IMAGE_TAG=sha-${newer}\nRAKAZO_COMPUTER_IMAGE_TAG=latest\n`,
+      `NURLAI_IMAGE_TAG=sha-${newer}\nNURLAI_COMPUTER_IMAGE_TAG=latest\n`,
       newer,
       true,
     );
@@ -389,11 +389,11 @@ describe("scheduled release state and recovery", () => {
     const afterPublication = await subject.app.applyScheduledUpdate();
     expect(afterPublication.ok).toBe(true);
     expect(subject.state.computer).toBe(`${computerImage}:sha-${newer}`);
-    expect(await subject.env()).toContain(`RAKAZO_COMPUTER_IMAGE_TAG=sha-${newer}\n`);
+    expect(await subject.env()).toContain(`NURLAI_COMPUTER_IMAGE_TAG=sha-${newer}\n`);
     expect(
       subject.calls
         .filter(({ args }) => args.includes("pull"))
-        .every(({ env }) => env.RAKAZO_COMPUTER_IMAGE_TAG === `sha-${newer}`),
+        .every(({ env }) => env.NURLAI_COMPUTER_IMAGE_TAG === `sha-${newer}`),
     ).toBe(true);
     const deployments = subject.calls.filter(({ args }) => args.includes("up")).length;
     await subject.app.applyScheduledUpdate();
@@ -404,7 +404,7 @@ describe("scheduled release state and recovery", () => {
     "repulls a missing pinned computer while the app is on %s",
     async (commit) => {
       const subject = await fixture(
-        `RAKAZO_IMAGE_TAG=sha-${commit}\nRAKAZO_IMAGE_TAG_PREVIOUS=sha-${older}\nRAKAZO_COMPUTER_IMAGE_TAG=sha-${newer}\nRAKAZO_COMPUTER_IMAGE_TAG_PREVIOUS=${cachedOlder}\n`,
+        `NURLAI_IMAGE_TAG=sha-${commit}\nNURLAI_IMAGE_TAG_PREVIOUS=sha-${older}\nNURLAI_COMPUTER_IMAGE_TAG=sha-${newer}\nNURLAI_COMPUTER_IMAGE_TAG_PREVIOUS=${cachedOlder}\n`,
         commit,
         true,
       );
@@ -417,7 +417,7 @@ describe("scheduled release state and recovery", () => {
       subject.state.unavailableComputer = false;
       expect((await subject.app.applyScheduledUpdate()).ok).toBe(true);
       expect(subject.state.images[`sha-${newer}`]).toBeDefined();
-      expect(await subject.env()).toContain(`RAKAZO_COMPUTER_IMAGE_TAG_PREVIOUS=${cachedOlder}\n`);
+      expect(await subject.env()).toContain(`NURLAI_COMPUTER_IMAGE_TAG_PREVIOUS=${cachedOlder}\n`);
       const pulls = subject.calls.filter(({ args }) => args.includes("pull")).length;
       await subject.app.applyScheduledUpdate();
       expect(subject.calls.filter(({ args }) => args.includes("pull"))).toHaveLength(pulls);
@@ -428,7 +428,7 @@ describe("scheduled release state and recovery", () => {
     "does not recover different image bytes sharing commit %s",
     async (commit) => {
       const subject = await fixture(
-        `RAKAZO_IMAGE_TAG=sha-${commit}\nRAKAZO_IMAGE_TAG_PREVIOUS=sha-${older}\n`,
+        `NURLAI_IMAGE_TAG=sha-${commit}\nNURLAI_IMAGE_TAG_PREVIOUS=sha-${older}\n`,
         commit,
       );
       subject.state.imageOverrides.worker = `sha256:${"f".repeat(64)}`;
@@ -443,7 +443,7 @@ describe("scheduled release state and recovery", () => {
   );
 
   it("refuses application rollback when managed computer history is missing", async () => {
-    const env = `RAKAZO_IMAGE_TAG=sha-${newer}\nRAKAZO_IMAGE_TAG_PREVIOUS=sha-${older}\nRAKAZO_COMPUTER_IMAGE_TAG=sha-${newer}\n`;
+    const env = `NURLAI_IMAGE_TAG=sha-${newer}\nNURLAI_IMAGE_TAG_PREVIOUS=sha-${older}\nNURLAI_COMPUTER_IMAGE_TAG=sha-${newer}\n`;
     const subject = await fixture(env, newer, true);
     const response = await subject.app.request("/rollback", {
       method: "POST",
@@ -456,7 +456,7 @@ describe("scheduled release state and recovery", () => {
   });
 
   it("refuses rollback before changing pins when the previous computer cache was deleted", async () => {
-    const env = `RAKAZO_IMAGE_TAG=sha-${newer}\nRAKAZO_IMAGE_TAG_PREVIOUS=sha-${older}\nRAKAZO_COMPUTER_IMAGE_TAG=sha-${newer}\nRAKAZO_COMPUTER_IMAGE_TAG_PREVIOUS=${cachedOlder}\n`;
+    const env = `NURLAI_IMAGE_TAG=sha-${newer}\nNURLAI_IMAGE_TAG_PREVIOUS=sha-${older}\nNURLAI_COMPUTER_IMAGE_TAG=sha-${newer}\nNURLAI_COMPUTER_IMAGE_TAG_PREVIOUS=${cachedOlder}\n`;
     const subject = await fixture(env, newer, true);
     const response = await subject.app.request("/rollback", {
       method: "POST",
@@ -472,7 +472,7 @@ describe("scheduled release state and recovery", () => {
 
   it("recovers the prior app when its computer already selected the target release", async () => {
     const subject = await fixture(
-      `RAKAZO_IMAGE_TAG=sha-${older}\nRAKAZO_COMPUTER_IMAGE_TAG=sha-${newer}\n`,
+      `NURLAI_IMAGE_TAG=sha-${older}\nNURLAI_COMPUTER_IMAGE_TAG=sha-${newer}\n`,
       older,
       true,
     );
@@ -486,7 +486,7 @@ describe("scheduled release state and recovery", () => {
   });
 
   it("refuses a manual repository migration before changing deployment pins", async () => {
-    const env = `RAKAZO_IMAGE_TAG=sha-${older}\nRAKAZO_COMPUTER_IMAGE_TAG=sha-${older}\nRAKAZO_COMPUTER_IMAGE=registry.example.com/mirror/computer\n`;
+    const env = `NURLAI_IMAGE_TAG=sha-${older}\nNURLAI_COMPUTER_IMAGE_TAG=sha-${older}\nNURLAI_COMPUTER_IMAGE=registry.example.com/mirror/computer\n`;
     const subject = await fixture(env, older, true);
     const response = await subject.app.request("/apply", {
       method: "POST",
@@ -503,14 +503,14 @@ describe("scheduled release state and recovery", () => {
 
   it("captures the complete prior pairing when only the application image changes", async () => {
     const subject = await fixture(
-      `RAKAZO_IMAGE_TAG=sha-${older}\nRAKAZO_COMPUTER_IMAGE_TAG=sha-${newer}\nRAKAZO_COMPUTER_IMAGE_TAG_PREVIOUS=${cachedOlder}\n`,
+      `NURLAI_IMAGE_TAG=sha-${older}\nNURLAI_COMPUTER_IMAGE_TAG=sha-${newer}\nNURLAI_COMPUTER_IMAGE_TAG_PREVIOUS=${cachedOlder}\n`,
       older,
       true,
     );
     subject.state.computer = `${computerImage}:sha-${newer}`;
     subject.state.images[cachedOlder] = `sha256:${"1".repeat(64)}`;
     expect((await subject.app.applyScheduledUpdate()).ok).toBe(true);
-    expect(await subject.env()).toContain(`RAKAZO_COMPUTER_IMAGE_TAG_PREVIOUS=${cachedNewer}\n`);
+    expect(await subject.env()).toContain(`NURLAI_COMPUTER_IMAGE_TAG_PREVIOUS=${cachedNewer}\n`);
     expect(subject.state.images[cachedNewer]).toBeDefined();
     const rollback = await subject.app.request("/rollback", {
       method: "POST",
@@ -524,15 +524,15 @@ describe("scheduled release state and recovery", () => {
   it("saves the replaced computer during a computer-only repair", async () => {
     const obsolete = `${cachePrefix}${"3".repeat(64)}`;
     const subject = await fixture(
-      `RAKAZO_IMAGE_TAG=sha-${newer}\nRAKAZO_IMAGE_TAG_PREVIOUS=sha-${older}\nRAKAZO_COMPUTER_IMAGE_TAG=latest\nRAKAZO_COMPUTER_IMAGE_TAG_PREVIOUS=${obsolete}\n`,
+      `NURLAI_IMAGE_TAG=sha-${newer}\nNURLAI_IMAGE_TAG_PREVIOUS=sha-${older}\nNURLAI_COMPUTER_IMAGE_TAG=latest\nNURLAI_COMPUTER_IMAGE_TAG_PREVIOUS=${obsolete}\n`,
       newer,
       true,
     );
     subject.state.computer = `${computerImage}:latest`;
     subject.state.images[obsolete] = `sha256:${"3".repeat(64)}`;
     expect((await subject.app.applyScheduledUpdate()).ok).toBe(true);
-    expect(await subject.env()).toContain(`RAKAZO_IMAGE_TAG_PREVIOUS=sha-${older}\n`);
-    expect(await subject.env()).toContain(`RAKAZO_COMPUTER_IMAGE_TAG_PREVIOUS=${cachedOlder}\n`);
+    expect(await subject.env()).toContain(`NURLAI_IMAGE_TAG_PREVIOUS=sha-${older}\n`);
+    expect(await subject.env()).toContain(`NURLAI_COMPUTER_IMAGE_TAG_PREVIOUS=${cachedOlder}\n`);
     expect(subject.state.images[cachedOlder]).toBeDefined();
     expect(subject.state.images[obsolete]).toBeUndefined();
     const rollback = await subject.app.request("/rollback", {
@@ -549,8 +549,8 @@ describe("scheduled release state and recovery", () => {
     const obsolete = `${cachePrefix}${"4".repeat(64)}`;
     const removed: string[] = [];
     const config = resolveUpdaterConfig({
-      RAKAZO_DEPLOY_DIR: "/tmp",
-      RAKAZO_UPDATER_TOKEN: token,
+      NURLAI_DEPLOY_DIR: "/tmp",
+      NURLAI_UPDATER_TOKEN: token,
       COMPOSE_PROJECT_NAME: "cache-test",
     });
     const run: UpdaterCommandRunner = async (_command, args) => {
@@ -567,7 +567,7 @@ describe("scheduled release state and recovery", () => {
 
   it("removes obsolete cache tags after success while preserving rollback and ordinary tags", async () => {
     const subject = await fixture(
-      `RAKAZO_IMAGE_TAG=sha-${older}\nRAKAZO_COMPUTER_IMAGE_TAG=latest\n`,
+      `NURLAI_IMAGE_TAG=sha-${older}\nNURLAI_COMPUTER_IMAGE_TAG=latest\n`,
       older,
       true,
     );
@@ -594,7 +594,7 @@ describe("scheduled release state and recovery", () => {
 
   it("retains a project cache tag selected by another supervisor even when pins omit it", async () => {
     const subject = await fixture(
-      `RAKAZO_IMAGE_TAG=sha-${older}\nRAKAZO_COMPUTER_IMAGE_TAG=latest\n`,
+      `NURLAI_IMAGE_TAG=sha-${older}\nNURLAI_COMPUTER_IMAGE_TAG=latest\n`,
       older,
       true,
     );
@@ -618,7 +618,7 @@ describe("scheduled release state and recovery", () => {
   ] as const)(
     "skips shared-host image cleanup (managed computer=%s, foreign project=%s)",
     async (computers, project) => {
-      const subject = await fixture(`RAKAZO_IMAGE_TAG=sha-${older}\n`, older, computers);
+      const subject = await fixture(`NURLAI_IMAGE_TAG=sha-${older}\n`, older, computers);
       const otherRollback = `sha-${"3".repeat(40)}`;
       subject.state.appImages[otherRollback] = `sha256:${"3".repeat(64)}`;
       const cache = `${cachePrefix}${"3".repeat(64)}`;
@@ -634,7 +634,7 @@ describe("scheduled release state and recovery", () => {
 
   it("pins an already-current latest computer once so later latest pulls cannot move its selection", async () => {
     const subject = await fixture(
-      "RAKAZO_IMAGE_TAG=latest\nRAKAZO_COMPUTER_IMAGE_TAG=latest\n",
+      "NURLAI_IMAGE_TAG=latest\nNURLAI_COMPUTER_IMAGE_TAG=latest\n",
       newer,
       true,
     );
@@ -652,7 +652,7 @@ describe("scheduled release state and recovery", () => {
   });
 
   it("cleans app releases without a managed computer while preserving rollback and used images", async () => {
-    const subject = await fixture(`RAKAZO_IMAGE_TAG=sha-${older}\n`, older);
+    const subject = await fixture(`NURLAI_IMAGE_TAG=sha-${older}\n`, older);
     const obsolete = `sha-${"3".repeat(40)}`;
     const used = `sha-${"4".repeat(40)}`;
     const aliased = `sha-${"5".repeat(40)}`;
@@ -675,7 +675,7 @@ describe("scheduled release state and recovery", () => {
 
   it("reclaims obsolete release images while retaining current, previous, used and shared images", async () => {
     const subject = await fixture(
-      `RAKAZO_IMAGE_TAG=sha-${older}\nRAKAZO_COMPUTER_IMAGE_TAG=latest\n`,
+      `NURLAI_IMAGE_TAG=sha-${older}\nNURLAI_COMPUTER_IMAGE_TAG=latest\n`,
       older,
       true,
     );
@@ -704,7 +704,7 @@ describe("scheduled release state and recovery", () => {
 
   it("repairs a missing previous computer without inventing rollback history", async () => {
     const subject = await fixture(
-      `RAKAZO_IMAGE_TAG=sha-${older}\nRAKAZO_COMPUTER_IMAGE_TAG=latest\n`,
+      `NURLAI_IMAGE_TAG=sha-${older}\nNURLAI_COMPUTER_IMAGE_TAG=latest\n`,
       older,
       true,
     );
@@ -712,7 +712,7 @@ describe("scheduled release state and recovery", () => {
     delete subject.state.images.latest;
     expect((await subject.app.applyScheduledUpdate()).ok).toBe(true);
     expect(subject.state.computer).toBe(`${computerImage}:sha-${newer}`);
-    expect(await subject.env()).toContain("RAKAZO_COMPUTER_IMAGE_TAG_PREVIOUS=\n");
+    expect(await subject.env()).toContain("NURLAI_COMPUTER_IMAGE_TAG_PREVIOUS=\n");
     const rollback = await subject.app.request("/rollback", {
       method: "POST",
       headers: { authorization: `Bearer ${token}` },
@@ -722,7 +722,7 @@ describe("scheduled release state and recovery", () => {
 
   it("recovers a failed manual computer-only repair from the actual cached computer", async () => {
     const subject = await fixture(
-      `RAKAZO_IMAGE_TAG=sha-${newer}\nRAKAZO_COMPUTER_IMAGE_TAG=latest\n`,
+      `NURLAI_IMAGE_TAG=sha-${newer}\nNURLAI_COMPUTER_IMAGE_TAG=latest\n`,
       newer,
       true,
     );
@@ -736,14 +736,14 @@ describe("scheduled release state and recovery", () => {
     expect(
       subject.calls
         .filter(({ args }) => args.includes("up"))
-        .map(({ env }) => env.RAKAZO_COMPUTER_IMAGE_TAG),
+        .map(({ env }) => env.NURLAI_COMPUTER_IMAGE_TAG),
     ).toEqual([`sha-${newer}`, cachedOlder]);
     expect(subject.state.computer).toBe(`${computerImage}:${cachedOlder}`);
   });
 
   it("manual updates snapshot the recovered supervisor image after the original tag moves", async () => {
     const subject = await fixture(
-      `RAKAZO_IMAGE_TAG=sha-${older}\nRAKAZO_COMPUTER_IMAGE_TAG=latest\n`,
+      `NURLAI_IMAGE_TAG=sha-${older}\nNURLAI_COMPUTER_IMAGE_TAG=latest\n`,
       older,
       true,
     );
@@ -759,7 +759,7 @@ describe("scheduled release state and recovery", () => {
       body: JSON.stringify({ repoUrl: "https://github.com/elie222/rakazo", branch: "main" }),
     });
     await expect(applied.json()).resolves.toMatchObject({ ok: true });
-    expect(await subject.env()).toContain(`RAKAZO_COMPUTER_IMAGE_TAG_PREVIOUS=${cachedOlder}\n`);
+    expect(await subject.env()).toContain(`NURLAI_COMPUTER_IMAGE_TAG_PREVIOUS=${cachedOlder}\n`);
     const rollback = await subject.app.request("/rollback", {
       method: "POST",
       headers: { authorization: `Bearer ${token}` },
@@ -770,7 +770,7 @@ describe("scheduled release state and recovery", () => {
 
   it("manual rollback captures the recovered image even if its configured tag moved", async () => {
     const subject = await fixture(
-      `RAKAZO_IMAGE_TAG=sha-${older}\nRAKAZO_IMAGE_TAG_PREVIOUS=sha-${newer}\nRAKAZO_COMPUTER_IMAGE_TAG=latest\nRAKAZO_COMPUTER_IMAGE_TAG_PREVIOUS=${cachedNewer}\n`,
+      `NURLAI_IMAGE_TAG=sha-${older}\nNURLAI_IMAGE_TAG_PREVIOUS=sha-${newer}\nNURLAI_COMPUTER_IMAGE_TAG=latest\nNURLAI_COMPUTER_IMAGE_TAG_PREVIOUS=${cachedNewer}\n`,
       older,
       true,
     );
@@ -791,13 +791,13 @@ describe("scheduled release state and recovery", () => {
 
   it("retains the previous computer bytes when latest moves before rollback", async () => {
     const subject = await fixture(
-      `RAKAZO_IMAGE_TAG=sha-${older}\nRAKAZO_COMPUTER_IMAGE_TAG=latest\n`,
+      `NURLAI_IMAGE_TAG=sha-${older}\nNURLAI_COMPUTER_IMAGE_TAG=latest\n`,
       older,
       true,
     );
     subject.state.computer = `${computerImage}:latest`;
     expect((await subject.app.applyScheduledUpdate()).ok).toBe(true);
-    expect(await subject.env()).toContain(`RAKAZO_COMPUTER_IMAGE_TAG_PREVIOUS=${cachedOlder}\n`);
+    expect(await subject.env()).toContain(`NURLAI_COMPUTER_IMAGE_TAG_PREVIOUS=${cachedOlder}\n`);
     subject.state.images.latest = `sha256:${"2".repeat(64)}`;
     const pulled = subject.calls.filter(({ args }) => args.includes("pull")).length;
     const response = await subject.app.request("/rollback", {
@@ -808,7 +808,7 @@ describe("scheduled release state and recovery", () => {
     expect(subject.state.computer).toBe(`${computerImage}:${cachedOlder}`);
     expect(subject.state.versions.worker).toBe(older);
     expect(subject.state.images[cachedOlder]).toBe(`sha256:${"1".repeat(64)}`);
-    expect(await subject.env()).toContain(`RAKAZO_COMPUTER_IMAGE_TAG_PREVIOUS=${cachedNewer}\n`);
+    expect(await subject.env()).toContain(`NURLAI_COMPUTER_IMAGE_TAG_PREVIOUS=${cachedNewer}\n`);
     const redo = await subject.app.request("/rollback", {
       method: "POST",
       headers: { authorization: `Bearer ${token}` },

@@ -1,12 +1,12 @@
-import type { JobPublisher } from "@rakazo/adapter-kit";
-import type { LabFeature } from "@rakazo/contracts";
+import type { JobPublisher } from "@nurlai/adapter-kit";
+import type { LabFeature } from "@nurlai/contracts";
 import {
   hasLab,
   isTicketCompletedStatus,
   resolveLabs,
   TicketStatusSchema,
-} from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
+} from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
 import { wakeRun } from "../runs/wakeups/wake-run.js";
 import { ticketWakePrompt } from "../runs/wakeups/wakes.prompt.js";
 

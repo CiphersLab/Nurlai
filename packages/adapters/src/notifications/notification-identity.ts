@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
-import { notificationAvatarSource } from "@rakazo/core";
-import { getLogger } from "@rakazo/logging";
+import { notificationAvatarSource } from "@nurlai/core";
+import { getLogger } from "@nurlai/logging";
 
 /** Installed apps drop an avatar over 1400 base64 characters, and Android one over 96px. */
 const MAX_AVATAR_BYTES = 1050;

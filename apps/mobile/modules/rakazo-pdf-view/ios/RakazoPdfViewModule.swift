@@ -2,18 +2,18 @@ import ExpoModulesCore
 import PDFKit
 
 /** The system PDF viewer, so a PDF reads in the app with zoom and search like Files. */
-public final class RakazoPdfViewModule: Module {
+public final class NurlaiPdfViewModule: Module {
   public func definition() -> ModuleDefinition {
-    Name("RakazoPdfView")
+    Name("NurlaiPdfView")
 
-    View(RakazoPdfView.self) {
+    View(NurlaiPdfView.self) {
       Events("onLoadError")
-      Prop("uri") { (view: RakazoPdfView, uri: String) in view.load(uri) }
+      Prop("uri") { (view: NurlaiPdfView, uri: String) in view.load(uri) }
     }
   }
 }
 
-final class RakazoPdfView: ExpoView {
+final class NurlaiPdfView: ExpoView {
   let onLoadError = EventDispatcher()
   private let pdfView = PDFView()
   private var uri: String?

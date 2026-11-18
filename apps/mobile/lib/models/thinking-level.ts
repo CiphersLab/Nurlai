@@ -1,5 +1,5 @@
 import { t } from "@lingui/core/macro";
-import type { ThinkingLevel } from "@rakazo/contracts";
+import type { ThinkingLevel } from "@nurlai/contracts";
 
 export function thinkingLevelLabel(level: ThinkingLevel): string {
   if (level === "xhigh") return t`Extra high`;

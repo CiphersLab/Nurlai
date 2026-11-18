@@ -1,4 +1,4 @@
-import { encodeTerminalInput, encodeTerminalResize } from "@rakazo/contracts";
+import { encodeTerminalInput, encodeTerminalResize } from "@nurlai/contracts";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { FakeTerminalGateway } from "./fake-terminal.js";
 

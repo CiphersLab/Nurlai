@@ -4,7 +4,7 @@ import type {
   ComputerRef,
   JobPublisher,
   SandboxProvider,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import {
   computerSleepJob,
   isSandboxProviderOutage,
@@ -13,10 +13,10 @@ import {
   SandboxUnavailableError,
   SandboxUnresponsiveError,
   WorkspaceTooLargeError,
-} from "@rakazo/adapter-kit";
-import { COMPUTER_ALLOWANCE_USED_ERROR } from "@rakazo/contracts";
-import { computerUsingRuns, QUEUE_HOLDING_RUN_STATUSES, withAbort } from "@rakazo/core";
-import type { PrismaClient, ThreadEvents } from "@rakazo/db";
+} from "@nurlai/adapter-kit";
+import { COMPUTER_ALLOWANCE_USED_ERROR } from "@nurlai/contracts";
+import { computerUsingRuns, QUEUE_HOLDING_RUN_STATUSES, withAbort } from "@nurlai/core";
+import type { PrismaClient, ThreadEvents } from "@nurlai/db";
 import {
   appendEventInTransaction,
   createGroupRepos,
@@ -25,8 +25,8 @@ import {
   recordComputerRunEnd,
   recordComputerRunSeen,
   THREAD_LOCK_TRANSACTION_OPTIONS,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { activeCodingAgent } from "../cloud-agents/coding-agent-activity.js";
 import { HomeSaveConflictError } from "../storage/home-object-store.js";
 import { diskUpdate, measureComputerDisk } from "./computer-disk.js";

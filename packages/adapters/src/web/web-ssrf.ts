@@ -6,8 +6,8 @@ import {
   isInternalHostname,
   isNonPublicAddress,
   normalizeHost,
-} from "@rakazo/contracts";
-import { ResponseTooLargeError, readBoundedResponseBytes } from "@rakazo/core";
+} from "@nurlai/contracts";
+import { ResponseTooLargeError, readBoundedResponseBytes } from "@nurlai/core";
 import type { Dispatcher } from "undici";
 import type { ResolvedAddress, ResolveHostname } from "../network/network-address.js";
 import { egressRefused } from "../network/network-address.js";
@@ -17,7 +17,7 @@ import { fetchPairedWithDispatcher } from "../network/undici-fetch.js";
 const DEFAULT_TIMEOUT_MS = 15_000;
 const DEFAULT_MAX_BYTES = 5 * 1024 * 1024;
 const MAX_REDIRECTS = 5;
-const DEFAULT_USER_AGENT = "Rakazo/0.1 (+https://github.com/elie222/rakazo)";
+const DEFAULT_USER_AGENT = "Nurlai/0.1 (+https://github.com/elie222/rakazo)";
 
 export type { ResolveHostname } from "../network/network-address.js";
 

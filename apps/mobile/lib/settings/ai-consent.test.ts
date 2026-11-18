@@ -1,5 +1,5 @@
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred, flush } from "@rakazo/core/test-async";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred, flush } from "@nurlai/core/test-async";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const native = vi.hoisted(() => {
@@ -31,7 +31,7 @@ vi.mock("react-native", () => ({
 
 import { i18n } from "@lingui/core";
 import { generateMessageId } from "@lingui/message-utils/generateMessageId";
-import type { AiRecipient } from "@rakazo/contracts";
+import type { AiRecipient } from "@nurlai/contracts";
 import { Alert } from "react-native";
 import { resetI18nForTests } from "../i18n/i18n";
 import { FOREGROUND_FALLBACK_MS, promptAiConsent } from "./ai-consent";

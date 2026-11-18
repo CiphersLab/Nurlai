@@ -1,5 +1,5 @@
-import type { Actor, Bot } from "@rakazo/contracts";
-import { AgentImportCreateInput, GROK_BOT_EXPORT_PATH } from "@rakazo/contracts";
+import type { Actor, Bot } from "@nurlai/contracts";
+import { AgentImportCreateInput, GROK_BOT_EXPORT_PATH } from "@nurlai/contracts";
 import { describe, expect, it, vi } from "vitest";
 import type { AgentImportServices } from "./agent-import.js";
 import {

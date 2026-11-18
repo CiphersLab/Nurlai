@@ -1,5 +1,5 @@
 import { Plural, Trans, useLingui } from "@lingui/react/macro";
-import type { AccessGrant, AccessGrantInput } from "@rakazo/contracts";
+import type { AccessGrant, AccessGrantInput } from "@nurlai/contracts";
 import {
   Badge,
   Button,
@@ -9,7 +9,7 @@ import {
   Input,
   Spinner,
   toast,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { useQuery } from "@tanstack/react-query";
 import { ChevronLeft } from "lucide-react";
 import type { FormEvent } from "react";

@@ -4,8 +4,8 @@ import type {
   PartnerProgram,
   ProductAnalytics,
   TransactionalEmailProvider,
-} from "@rakazo/adapter-kit";
-import { LAST_SIGN_IN_COOKIE, PartnerClickId, SignupAttribution } from "@rakazo/contracts";
+} from "@nurlai/adapter-kit";
+import { LAST_SIGN_IN_COOKIE, PartnerClickId, SignupAttribution } from "@nurlai/contracts";
 import {
   displayName,
   emailAllowed,
@@ -16,16 +16,16 @@ import {
   partnerClickFromHeaders,
   signupAttributionFromHeaders,
   signupPolicyFromEnv,
-} from "@rakazo/core";
-import type { PrismaClient, SecurityEventType } from "@rakazo/db";
+} from "@nurlai/core";
+import type { PrismaClient, SecurityEventType } from "@nurlai/db";
 import {
   bootstrapUserSpace,
   OwnedOrganizationHasMembersError,
   personalOrganizationIds,
   recordSecurityEvent,
   SpaceDeletionInProgressError,
-} from "@rakazo/db";
-import { bestEffort } from "@rakazo/logging";
+} from "@nurlai/db";
+import { bestEffort } from "@nurlai/logging";
 import type { BetterAuthOptions, BetterAuthPlugin } from "better-auth";
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
@@ -150,7 +150,7 @@ export const SIGN_IN_CODE_EXPIRES_IN_SECONDS = 10 * 60;
 
 /**
  * The email OTP plugin also exposes OTP email verification, password reset and
- * email change. Rakazo uses links for those, so only sign-in codes stay open.
+ * email change. Nurlai uses links for those, so only sign-in codes stay open.
  */
 function isUnusedEmailCodePath(path: string, body: { type?: unknown } | undefined): boolean {
   if (path === SEND_SIGN_IN_CODE_PATH) return body?.type !== "sign-in";
@@ -161,7 +161,7 @@ function isUnusedEmailCodePath(path: string, body: { type?: unknown } | undefine
  * The only header Better Auth reads a client IP from. The API sets it from the socket peer and its
  * trusted proxies and drops any client-supplied copy, so a caller cannot choose its own address.
  */
-export const CLIENT_IP_HEADER = "x-rakazo-client-ip";
+export const CLIENT_IP_HEADER = "x-nurlai-client-ip";
 
 /** Routes that end sessions other than the caller's own sign-out. Recorded per deleted session. */
 const REVOCATION_PATHS = new Set(["/revoke-session", "/revoke-sessions", "/revoke-other-sessions"]);
@@ -289,7 +289,7 @@ export function createAuth(prisma: PrismaClient, env: AuthEnv) {
     returned: false,
   } as const;
   const auth = betterAuth({
-    appName: "Rakazo",
+    appName: "Nurlai",
     logger: env.logger,
     secret: env.secret,
     baseURL: env.baseURL,
@@ -554,7 +554,7 @@ export function createAuth(prisma: PrismaClient, env: AuthEnv) {
         ? [
             passkey({
               rpID: relyingParty.rpID,
-              rpName: "Rakazo",
+              rpName: "Nurlai",
               origin: relyingParty.origins,
             }) as BetterAuthPlugin,
           ]
@@ -723,7 +723,7 @@ export function createAuth(prisma: PrismaClient, env: AuthEnv) {
               internalAdapter: {
                 ...ctx.context.internalAdapter,
                 // Better Auth drops an unverified account's logins and sessions when a
-                // code proves the mailbox; credentials Rakazo stores elsewhere go too.
+                // code proves the mailbox; credentials Nurlai stores elsewhere go too.
                 ...(ctx.path === CODE_SIGN_IN_PATH
                   ? {
                       updateUser: async (...args: Parameters<typeof updateUser>) => {

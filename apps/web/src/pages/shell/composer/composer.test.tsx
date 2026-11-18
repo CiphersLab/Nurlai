@@ -1,11 +1,11 @@
 // @vitest-environment jsdom
 
 import { i18n } from "@lingui/core";
-import type { AgentSkillCatalogEntry, BillingStatus, ThreadMessage } from "@rakazo/contracts";
-import type { ComposerMention } from "@rakazo/core";
-import { MODEL_REQUIRED_SEND_ERROR, resolveComposerSendPlan } from "@rakazo/core";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import type { AgentSkillCatalogEntry, BillingStatus, ThreadMessage } from "@nurlai/contracts";
+import type { ComposerMention } from "@nurlai/core";
+import { MODEL_REQUIRED_SEND_ERROR, resolveComposerSendPlan } from "@nurlai/core";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import type { ComponentProps, ReactNode } from "react";
 import { act, createRef } from "react";
 import type { Root } from "react-dom/client";
@@ -640,7 +640,7 @@ describe("Composer", () => {
   });
 
   it("restores a legacy raw same-name draft without inventing either target identity", async () => {
-    localStorage.setItem("rakazo.composerDraft.bot:bot-1", "@Bob ");
+    localStorage.setItem("nurlai.cipherslab.composerDraft.bot:bot-1", "@Bob ");
     const group: ComposerMention = { kind: "group", id: "group-bob", name: "Bob" };
     const onSend = vi.fn().mockResolvedValue(true);
     const textarea = renderComposer(onSend, { mentionTargets: [bob, group] });
@@ -954,7 +954,7 @@ describe("Composer", () => {
     const draftKey = "bot:draft-restore-test";
     const first = renderComposer(onSend, { draftKey });
     type(first, "unsent thought");
-    expect(window.localStorage.getItem(`rakazo.composerDraft.${draftKey}`)).toBe("unsent thought");
+    expect(window.localStorage.getItem(`nurlai.cipherslab.composerDraft.${draftKey}`)).toBe("unsent thought");
     act(() => root?.unmount());
     container?.remove();
     const second = renderComposer(onSend, { draftKey });
@@ -1272,7 +1272,7 @@ it.each([true, false])(
     type(textarea, "pending text");
     pressEnter(textarea);
     expect(textarea.value).toBe("");
-    expect(localStorage.getItem(`rakazo.composerDraft.${draftKey}`)).toBe("pending text");
+    expect(localStorage.getItem(`nurlai.cipherslab.composerDraft.${draftKey}`)).toBe("pending text");
     act(() => root?.unmount());
     container?.remove();
     await act(async () => finishSend?.resolve(accepted));
@@ -1294,7 +1294,7 @@ it.each([true, false])(
     type(textarea, "newer text");
     await act(async () => finishSend?.resolve(accepted));
     expect(textarea.value).toBe("newer text");
-    expect(localStorage.getItem("rakazo.composerDraft.bot:bot-1")).toBe("newer text");
+    expect(localStorage.getItem("nurlai.cipherslab.composerDraft.bot:bot-1")).toBe("newer text");
   },
 );
 
@@ -1318,7 +1318,7 @@ it.each([true, false])(
     expect(returned.value).toBe("submitted text");
     await act(async () => finishSend?.resolve(accepted));
     expect(returned.value).toBe(accepted ? "" : "submitted text");
-    expect(localStorage.getItem(`rakazo.composerDraft.${draftKey}`)).toBe(
+    expect(localStorage.getItem(`nurlai.cipherslab.composerDraft.${draftKey}`)).toBe(
       accepted ? null : "submitted text",
     );
   },
@@ -1343,7 +1343,7 @@ it("preserves edits made after returning, even when the text matches the submiss
   type(returned, "submitted text");
   await act(async () => finishSend?.resolve(true));
   expect(returned.value).toBe("submitted text");
-  expect(localStorage.getItem(`rakazo.composerDraft.${draftKey}`)).toBe("submitted text");
+  expect(localStorage.getItem(`nurlai.cipherslab.composerDraft.${draftKey}`)).toBe("submitted text");
 });
 
 it("clears accepted saved text when only an attachment was picked during the send", async () => {
@@ -1357,7 +1357,7 @@ it("clears accepted saved text when only an attachment was picked during the sen
   pickAttachment();
   await act(async () => finishSend?.resolve(true));
   expect(textarea.value).toBe("");
-  expect(localStorage.getItem("rakazo.composerDraft.bot:bot-1")).toBeNull();
+  expect(localStorage.getItem("nurlai.cipherslab.composerDraft.bot:bot-1")).toBeNull();
 });
 
 it.each([false, true])(
@@ -1389,7 +1389,7 @@ it.each([false, true])(
       });
       // The draft the user typed while the send was in flight stays theirs alone.
       expect(textarea.value).toBe("typed draft");
-      expect(localStorage.getItem("rakazo.composerDraft.bot:bot-1")).toBe("typed draft");
+      expect(localStorage.getItem("nurlai.cipherslab.composerDraft.bot:bot-1")).toBe("typed draft");
     } finally {
       listen.mockRestore();
     }
@@ -1426,17 +1426,17 @@ it.each([
       type(returned, "@Bo");
       pressEnter(returned);
       type(returned, "@Bob newer draft");
-      const saved = localStorage.getItem(`rakazo.composerDraft.${draftKey}`);
-      const bindings = localStorage.getItem(`rakazo.composerBindings.${draftKey}`);
+      const saved = localStorage.getItem(`nurlai.cipherslab.composerDraft.${draftKey}`);
+      const bindings = localStorage.getItem(`nurlai.cipherslab.composerBindings.${draftKey}`);
       await act(async () => {
         if (throws) sending.reject(new Error("offline"));
         else sending.resolve(false);
       });
       expect(returned.value).toBe("@Bob newer draft");
-      expect(localStorage.getItem(`rakazo.composerDraft.${draftKey}`)).toBe(saved);
-      expect(localStorage.getItem(`rakazo.composerBindings.${draftKey}`)).toBe(bindings);
+      expect(localStorage.getItem(`nurlai.cipherslab.composerDraft.${draftKey}`)).toBe(saved);
+      expect(localStorage.getItem(`nurlai.cipherslab.composerBindings.${draftKey}`)).toBe(bindings);
       if (differentChat)
-        expect(localStorage.getItem("rakazo.composerDraft.bot:bot-1")).toBe("original draft");
+        expect(localStorage.getItem("nurlai.cipherslab.composerDraft.bot:bot-1")).toBe("original draft");
       act(() => root?.unmount());
       container?.remove();
       const reloaded = renderComposer(vi.fn(), { draftKey });
@@ -1471,8 +1471,8 @@ it("restores dictation to the previous chat after switching draft keys", async (
     type(textarea, "newer draft");
     await act(async () => finish.resolve(false));
     expect(textarea.value).toBe("newer draft");
-    expect(localStorage.getItem("rakazo.composerDraft.bot:other-bot")).toBe("newer draft");
-    expect(localStorage.getItem("rakazo.composerDraft.bot:bot-1")).toBe("late dictation");
+    expect(localStorage.getItem("nurlai.cipherslab.composerDraft.bot:other-bot")).toBe("newer draft");
+    expect(localStorage.getItem("nurlai.cipherslab.composerDraft.bot:bot-1")).toBe("late dictation");
   } finally {
     listen.mockRestore();
   }
@@ -1490,7 +1490,7 @@ it("keeps a dictation still being transcribed in the chat it was recorded in", a
     .mockReturnValue({ status: "transcribing", transcript: "" });
   try {
     renderComposer(onSend, { phoneCallsEnabled: true });
-    localStorage.setItem("rakazo.composerDraft.bot:bot-1", "earlier draft");
+    localStorage.setItem("nurlai.cipherslab.composerDraft.bot:bot-1", "earlier draft");
     const mic = container?.querySelector<HTMLButtonElement>('button[aria-label="Hold to talk"]');
     act(() => mic?.dispatchEvent(new MouseEvent("click", { bubbles: true, detail: 0 })));
     // The user opens another chat while the recording is on its way to the server.
@@ -1499,10 +1499,10 @@ it("keeps a dictation still being transcribed in the chat it was recorded in", a
     act(() => onFinal("and a hotel"));
     await act(async () => {});
     expect(onSend).not.toHaveBeenCalled();
-    expect(localStorage.getItem("rakazo.composerDraft.bot:bot-1")).toBe(
+    expect(localStorage.getItem("nurlai.cipherslab.composerDraft.bot:bot-1")).toBe(
       "earlier draft and a hotel",
     );
-    expect(localStorage.getItem("rakazo.composerDraft.bot:bot-2")).toBeNull();
+    expect(localStorage.getItem("nurlai.cipherslab.composerDraft.bot:bot-2")).toBeNull();
   } finally {
     state.mockRestore();
     stop.mockRestore();
@@ -1534,7 +1534,7 @@ it("shows late dictated words in the chat's composer when the user came back fir
     expect(returned.value).toBe("and a hotel");
     // The next edit keeps the words instead of writing over them.
     type(returned, "and a hotel please");
-    expect(localStorage.getItem("rakazo.composerDraft.bot:bot-1")).toBe("and a hotel please");
+    expect(localStorage.getItem("nurlai.cipherslab.composerDraft.bot:bot-1")).toBe("and a hotel please");
   } finally {
     state.mockRestore();
     listen.mockRestore();
@@ -1565,7 +1565,7 @@ it("keeps only the late dictated words once the earlier send is accepted", async
     act(() => root?.render(<Composer {...composerProps} key="bot:bot-2" draftKey="bot:bot-2" />));
     act(() => onFinal("new words"));
     await act(async () => finish.resolve(true));
-    expect(localStorage.getItem("rakazo.composerDraft.bot:bot-1")).toBe("new words");
+    expect(localStorage.getItem("nurlai.cipherslab.composerDraft.bot:bot-1")).toBe("new words");
   } finally {
     state.mockRestore();
     listen.mockRestore();
@@ -1595,7 +1595,7 @@ it("keeps the failed send's text with the late dictated words", async () => {
     act(() => root?.render(<Composer {...composerProps} key="bot:bot-2" draftKey="bot:bot-2" />));
     act(() => onFinal("new words"));
     await act(async () => finish.resolve(false));
-    expect(localStorage.getItem("rakazo.composerDraft.bot:bot-1")).toBe("not sent new words");
+    expect(localStorage.getItem("nurlai.cipherslab.composerDraft.bot:bot-1")).toBe("not sent new words");
   } finally {
     state.mockRestore();
     listen.mockRestore();
@@ -1632,7 +1632,7 @@ it("keeps late dictated words that landed during a send that then fails", async 
     await act(async () => finish.resolve(false));
     expect(returned.value).toBe("not sent new words");
     type(returned, "not sent new words please");
-    expect(localStorage.getItem("rakazo.composerDraft.bot:bot-1")).toBe(
+    expect(localStorage.getItem("nurlai.cipherslab.composerDraft.bot:bot-1")).toBe(
       "not sent new words please",
     );
   } finally {
@@ -1712,7 +1712,7 @@ it("does not retry a changed payload with a dictation's nonce", async () => {
     await act(async () => {});
     expect(onSend).toHaveBeenCalled();
     expect(new Set(nonces).size).toBe(nonces.length);
-    expect(localStorage.getItem("rakazo.composerDraft.bot:bot-1")).toBe("create the task");
+    expect(localStorage.getItem("nurlai.cipherslab.composerDraft.bot:bot-1")).toBe("create the task");
   } finally {
     listen.mockRestore();
   }
@@ -1797,7 +1797,7 @@ it.each(["a typed draft", "a chosen skill", "a pending attachment"])(
       const expected = content === "a typed draft" ? "half typed dictated words" : "dictated words";
       expect(onSend).not.toHaveBeenCalled();
       expect(textarea.value).toBe(expected);
-      expect(localStorage.getItem("rakazo.composerDraft.bot:bot-1")).toBe(expected);
+      expect(localStorage.getItem("nurlai.cipherslab.composerDraft.bot:bot-1")).toBe(expected);
       if (content === "a chosen skill")
         expect(container?.querySelector("[data-testid='skill-chip']")?.textContent).toBe(
           "summarize",
@@ -1835,8 +1835,8 @@ it("keeps a reply-linked dictation's words without its nonce", async () => {
     await act(async () => {
       fail.reject(new Error("offline"));
     });
-    expect(localStorage.getItem("rakazo.composerDraft.bot:bot-1")).toBe("spoken words");
-    expect(localStorage.getItem("rakazo.composerNonce.bot:bot-1")).toBeNull();
+    expect(localStorage.getItem("nurlai.cipherslab.composerDraft.bot:bot-1")).toBe("spoken words");
+    expect(localStorage.getItem("nurlai.cipherslab.composerNonce.bot:bot-1")).toBeNull();
     const reopened = renderComposer(
       vi.fn(async (_text: string, _mentions: unknown[], clientNonce: string) => {
         nonces.push(clientNonce);
@@ -1878,8 +1878,8 @@ it("reuses the stored nonce when a send that lost its answer is retried from the
     await act(async () => {
       fail.reject(new Error("offline"));
     });
-    expect(localStorage.getItem("rakazo.composerDraft.bot:bot-1")).toBe("spoken words");
-    expect(localStorage.getItem("rakazo.composerNonce.bot:bot-1")).toBe(nonces[0]);
+    expect(localStorage.getItem("nurlai.cipherslab.composerDraft.bot:bot-1")).toBe("spoken words");
+    expect(localStorage.getItem("nurlai.cipherslab.composerNonce.bot:bot-1")).toBe(nonces[0]);
     const reopened = renderComposer(
       vi.fn(async (_text: string, _mentions: unknown[], clientNonce: string) => {
         nonces.push(clientNonce);
@@ -1927,7 +1927,7 @@ it("recovers a dictation in a chat reopened before the send settles", async () =
     await act(async () => {
       fail.reject(new Error("offline"));
     });
-    expect(localStorage.getItem("rakazo.composerNonce.bot:bot-1")).toBe(nonces[0]);
+    expect(localStorage.getItem("nurlai.cipherslab.composerNonce.bot:bot-1")).toBe(nonces[0]);
     pressEnter(reopened);
     await act(async () => {});
     expect(nonces[1]).toBe(nonces[0]);
@@ -1992,7 +1992,7 @@ it("keeps a dictation queued behind a send that fails with that send's words", a
     await act(async () => {});
     expect(onSend).toHaveBeenCalledTimes(1);
     expect(textarea.value).toBe("please book the flight and a hotel");
-    expect(localStorage.getItem("rakazo.composerDraft.bot:bot-1")).toBe(
+    expect(localStorage.getItem("nurlai.cipherslab.composerDraft.bot:bot-1")).toBe(
       "please book the flight and a hotel",
     );
   } finally {
@@ -2029,7 +2029,7 @@ it("keeps a newer draft typed after returning to the chat when the queued send f
 
     expect(onSend).toHaveBeenCalledTimes(1);
     expect(returned.value).toBe("newer draft");
-    expect(localStorage.getItem("rakazo.composerDraft.bot:bot-1")).toBe("newer draft");
+    expect(localStorage.getItem("nurlai.cipherslab.composerDraft.bot:bot-1")).toBe("newer draft");
   } finally {
     listen.mockRestore();
   }
@@ -2065,7 +2065,7 @@ it("recovers a queued dictation's failed send for a chat that was left and not e
     expect(onSend).toHaveBeenCalledTimes(1);
     expect(returned.value).toBe("please book the flight and a hotel");
     type(returned, "please book the flight and a hotel tonight");
-    expect(localStorage.getItem("rakazo.composerDraft.bot:bot-1")).toBe(
+    expect(localStorage.getItem("nurlai.cipherslab.composerDraft.bot:bot-1")).toBe(
       "please book the flight and a hotel tonight",
     );
   } finally {
@@ -2101,14 +2101,14 @@ it("keeps a mention bound after reopening the chat when the queued send fails", 
     pressEnter(returned);
     type(returned, "@Bob");
     expect(container?.querySelectorAll('[data-testid="mention-chip"]')).toHaveLength(1);
-    const saved = localStorage.getItem("rakazo.composerDraft.bot:bot-1");
-    const bindings = localStorage.getItem("rakazo.composerBindings.bot:bot-1");
+    const saved = localStorage.getItem("nurlai.cipherslab.composerDraft.bot:bot-1");
+    const bindings = localStorage.getItem("nurlai.cipherslab.composerBindings.bot:bot-1");
     expect(saved).toBe("@Bob");
     expect(bindings).not.toBeNull();
 
     await act(async () => finish.resolve(false));
-    expect(localStorage.getItem("rakazo.composerDraft.bot:bot-1")).toBe(saved);
-    expect(localStorage.getItem("rakazo.composerBindings.bot:bot-1")).toBe(bindings);
+    expect(localStorage.getItem("nurlai.cipherslab.composerDraft.bot:bot-1")).toBe(saved);
+    expect(localStorage.getItem("nurlai.cipherslab.composerBindings.bot:bot-1")).toBe(bindings);
     expect(container?.querySelectorAll('[data-testid="mention-chip"]')).toHaveLength(1);
   } finally {
     listen.mockRestore();
@@ -2245,7 +2245,7 @@ it("does not keep the nonce when a reopened chat rebinds the same mention text",
   await act(async () => {
     fail.reject(new Error("offline"));
   });
-  expect(localStorage.getItem("rakazo.composerNonce.bot:bot-1")).toBeNull();
+  expect(localStorage.getItem("nurlai.cipherslab.composerNonce.bot:bot-1")).toBeNull();
 });
 
 function renderWithOpenPage(onSend: ComponentProps<typeof Composer>["onSend"]) {
@@ -2277,8 +2277,8 @@ it("does not store a retry nonce for a send made with a page open", async () => 
   await act(async () => {
     fail.reject(new Error("offline"));
   });
-  expect(localStorage.getItem("rakazo.composerDraft.bot:bot-1")).toBe("about the page");
-  expect(localStorage.getItem("rakazo.composerNonce.bot:bot-1")).toBeNull();
+  expect(localStorage.getItem("nurlai.cipherslab.composerDraft.bot:bot-1")).toBe("about the page");
+  expect(localStorage.getItem("nurlai.cipherslab.composerNonce.bot:bot-1")).toBeNull();
 });
 
 it("renews the nonce when the page closes before a retry", async () => {
@@ -2322,7 +2322,7 @@ it.each([false, true])(
         if (throws) sending.reject(new Error("offline"));
         else sending.resolve(false);
       });
-      expect(localStorage.getItem("rakazo.composerDraft.bot:bot-1")).toBe("spoken words");
+      expect(localStorage.getItem("nurlai.cipherslab.composerDraft.bot:bot-1")).toBe("spoken words");
       const returned = renderComposer(vi.fn());
       expect(returned.value).toBe("spoken words");
     } finally {
@@ -2363,7 +2363,7 @@ it.each([false, true])(
         else sending.resolve(false);
       });
       expect(textarea.value).toBe("@Bob");
-      const record = JSON.parse(localStorage.getItem("rakazo.composerBindings.bot:bot-1")!);
+      const record = JSON.parse(localStorage.getItem("nurlai.cipherslab.composerBindings.bot:bot-1")!);
       expect(record.bindings).toMatchObject([{ start: 0, end: 4, mention: bob }]);
       type(textarea, "@Bob ");
       expect(container?.querySelectorAll('[data-testid="mention-chip"]')).toHaveLength(1);

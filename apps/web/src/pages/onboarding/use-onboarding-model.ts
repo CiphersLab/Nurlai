@@ -7,8 +7,8 @@ import {
   modelRoutingInput,
   OPENAI_COMPATIBLE_PROVIDER_ID,
   openAiCompatibleConnectReady,
-} from "@rakazo/contracts";
-import { connectionFormFields, pickCatalogModelId, popularModelProvidersFirst } from "@rakazo/core";
+} from "@nurlai/contracts";
+import { connectionFormFields, pickCatalogModelId, popularModelProvidersFirst } from "@nurlai/core";
 import { useMemo, useState } from "react";
 import { useCopyText } from "../../lib/copy-text";
 import { providerDisplayName } from "../../lib/models/localized-provider-hint";

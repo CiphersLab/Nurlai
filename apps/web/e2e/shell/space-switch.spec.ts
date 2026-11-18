@@ -12,7 +12,7 @@ test("opening a bot in another space switches in place, without a page reload", 
   });
   const { json: space } = (await otherSpace.json()) as { json: { id: string } };
   const created = await page.request.post("/rpc/bots/create", {
-    headers: { "x-rakazo-space-id": space.id },
+    headers: { "x-nurlai-space-id": space.id },
     data: {
       json: {
         name: "Scout",

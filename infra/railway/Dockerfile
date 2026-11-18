@@ -9,13 +9,13 @@ RUN npm install --global --ignore-scripts npm@11.21.2 && npm cache clean --force
 WORKDIR /app
 COPY --chmod=755 . .
 RUN pnpm install --frozen-lockfile
-RUN pnpm --filter @rakazo/db generate
-RUN pnpm --filter @rakazo/api --filter @rakazo/worker build
-RUN RAKAZO_ALLOW_DEV_SECRETS=1 pnpm --filter @rakazo/web build
+RUN pnpm --filter @nurlai/db generate
+RUN pnpm --filter @nurlai/api --filter @nurlai/worker build
+RUN NURLAI_ALLOW_DEV_SECRETS=1 pnpm --filter @nurlai/web build
 RUN install -d -m 750 -o node -g node /data /app/apps/web/node_modules/.vite-temp
 RUN /tmp/apt-security.sh --check && rm -f /tmp/apt-security.sh
 ENV NODE_ENV=production
-ENV RAKAZO_ALLOWED_HOSTS=healthcheck.railway.app
+ENV NURLAI_ALLOWED_HOSTS=healthcheck.railway.app
 EXPOSE 5173
 ENTRYPOINT ["/usr/bin/tini", "-g", "--"]
 CMD ["bash", "infra/railway/start.sh"]

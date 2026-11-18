@@ -1,4 +1,4 @@
-import type { MessagingOutboundStatus } from "@rakazo/adapter-kit";
+import type { MessagingOutboundStatus } from "@nurlai/adapter-kit";
 import type { SendblueAdapterConfig, SendblueThreadId } from "chat-adapter-sendblue";
 import { lazyChatAdapter } from "../../../messaging/lazy-chat-adapter.js";
 import {

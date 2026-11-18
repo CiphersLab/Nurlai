@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
-import { BOT_INSTRUCTIONS_MAX_LENGTH, InstructionVersionSchema } from "@rakazo/contracts";
-import { ClientError } from "@rakazo/core";
+import { BOT_INSTRUCTIONS_MAX_LENGTH, InstructionVersionSchema } from "@nurlai/contracts";
+import { ClientError } from "@nurlai/core";
 import type { Prisma } from "../database/client.js";
 
 export class InstructionConflictError extends ClientError {

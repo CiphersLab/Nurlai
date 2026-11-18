@@ -1,4 +1,4 @@
-import { MCP_APP_MIME_TYPE, STEP_SCREENSHOT_MIME_TYPES } from "@rakazo/contracts";
+import { MCP_APP_MIME_TYPE, STEP_SCREENSHOT_MIME_TYPES } from "@nurlai/contracts";
 import type { PrismaClient } from "../database/client.js";
 import { Prisma } from "../database/client.js";
 import { isUniqueViolation } from "../database/prisma-errors.js";

@@ -1,5 +1,5 @@
-import type { Actor } from "@rakazo/contracts";
-import { ClientError } from "@rakazo/core";
+import type { Actor } from "@nurlai/contracts";
+import { ClientError } from "@nurlai/core";
 import type { PrismaClient } from "./client.js";
 import { runAsSystem } from "./row-security.js";
 

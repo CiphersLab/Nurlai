@@ -1,6 +1,6 @@
 import type { Route } from "@playwright/test";
 import { expect, test } from "@playwright/test";
-import type { McpServer } from "@rakazo/contracts";
+import type { McpServer } from "@nurlai/contracts";
 import {
   captureScreenshot,
   completeOnboarding,

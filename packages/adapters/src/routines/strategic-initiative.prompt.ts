@@ -1,4 +1,4 @@
-import { escapePromptData, truncatePlainText } from "@rakazo/core";
+import { escapePromptData, truncatePlainText } from "@nurlai/core";
 
 const MAX_NOTES_CHARS = 220;
 export function initiativePrompt(bot: {

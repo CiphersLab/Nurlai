@@ -1,5 +1,5 @@
 import { createServer, Socket } from "node:net";
-import { EmailRecipientRejectedError } from "@rakazo/adapter-kit";
+import { EmailRecipientRejectedError } from "@nurlai/adapter-kit";
 import nodemailer from "nodemailer";
 import { describe, expect, it, vi } from "vitest";
 import { SmtpEmailProvider } from "./smtp-email.js";
@@ -8,7 +8,7 @@ describe("SmtpEmailProvider", () => {
   it("delivers product-authored content through the injected transport", async () => {
     const sendMail = vi.fn(async () => ({ messageId: "message-1" }));
     const provider = new SmtpEmailProvider(
-      { url: "smtps://user:secret@smtp.example.test:465", from: "Rakazo <no-reply@example.test>" },
+      { url: "smtps://user:secret@smtp.example.test:465", from: "Nurlai <no-reply@example.test>" },
       { transport: { sendMail } as never },
     );
 
@@ -21,7 +21,7 @@ describe("SmtpEmailProvider", () => {
 
     expect(provider.describe().id).toBe("smtp");
     expect(sendMail).toHaveBeenCalledWith({
-      from: "Rakazo <no-reply@example.test>",
+      from: "Nurlai <no-reply@example.test>",
       to: "ada@example.test",
       subject: "Reset password",
       text: "Plain text",

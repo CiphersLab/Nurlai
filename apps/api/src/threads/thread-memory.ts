@@ -1,5 +1,5 @@
-import { purgeClearedConversationMemory } from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
+import { purgeClearedConversationMemory } from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
 import type { RouterDeps } from "../router.js";
 import { computerContext } from "../routes/shared.js";
 

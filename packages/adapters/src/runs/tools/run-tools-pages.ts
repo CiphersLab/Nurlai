@@ -1,8 +1,8 @@
-import type { MessageBlock } from "@rakazo/contracts";
-import { PAGE_TITLE_MAX_LENGTH, PageTitleSchema } from "@rakazo/contracts";
-import { CARD_TITLE_ESCAPED_CHARACTERS, containsSecret, redactSecrets } from "@rakazo/core";
-import { isUniqueViolation } from "@rakazo/db";
-import { checkPageSource, PAGE_KIT_GUIDE } from "@rakazo/page-kit/validate";
+import type { MessageBlock } from "@nurlai/contracts";
+import { PAGE_TITLE_MAX_LENGTH, PageTitleSchema } from "@nurlai/contracts";
+import { CARD_TITLE_ESCAPED_CHARACTERS, containsSecret, redactSecrets } from "@nurlai/core";
+import { isUniqueViolation } from "@nurlai/db";
+import { checkPageSource, PAGE_KIT_GUIDE } from "@nurlai/page-kit/validate";
 import { MAX_APPROVAL_DETAIL_LENGTH } from "../../approvals/approval-ask.js";
 import { argumentGiven } from "../../bots/update-bot-patch.js";
 import type { RunContext } from "../assembly/run-context.js";

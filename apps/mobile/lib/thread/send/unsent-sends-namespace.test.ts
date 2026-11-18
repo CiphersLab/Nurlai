@@ -1,4 +1,4 @@
-import { resolveComposerSendPlan } from "@rakazo/core";
+import { resolveComposerSendPlan } from "@nurlai/core";
 import * as SecureStore from "expo-secure-store";
 import { expect, it, vi } from "vitest";
 import {

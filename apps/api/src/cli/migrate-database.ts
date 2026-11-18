@@ -3,26 +3,26 @@
 // then connect with DATABASE_URL and only get the runtime grants.
 import { execFileSync } from "node:child_process";
 import path from "node:path";
-import { migrateJobQueue, unwrapEnvFromKeyManager } from "@rakazo/adapters";
-import { loadRootEnv } from "@rakazo/core/node/load-root-env";
+import { migrateJobQueue, unwrapEnvFromKeyManager } from "@nurlai/adapters";
+import { loadRootEnv } from "@nurlai/core/node/load-root-env";
 import {
   databaseUrls,
   deployMigrations,
   provisionRuntimeRole,
   RUNTIME_ROLE,
   SINGLE_DATABASE_URL_WARNING,
-} from "@rakazo/db";
+} from "@nurlai/db";
 
 loadRootEnv();
 await unwrapEnvFromKeyManager();
 const urls = databaseUrls(process.env);
 await deployMigrations({
   migrationUrl: urls.migrationUrl,
-  previousMigrations: process.env.RAKAZO_DEPLOYED_MIGRATIONS?.split(","),
+  previousMigrations: process.env.NURLAI_DEPLOYED_MIGRATIONS?.split(","),
   // A packaged server has no pnpm, so it names the database package's folder itself.
-  dbPackageDir: process.env.RAKAZO_DB_PACKAGE_DIR
-    ? path.resolve(process.env.RAKAZO_DB_PACKAGE_DIR)
-    : execFileSync("pnpm", ["--filter", "@rakazo/db", "exec", "pwd"], {
+  dbPackageDir: process.env.NURLAI_DB_PACKAGE_DIR
+    ? path.resolve(process.env.NURLAI_DB_PACKAGE_DIR)
+    : execFileSync("pnpm", ["--filter", "@nurlai/db", "exec", "pwd"], {
         encoding: "utf8",
       }).trim(),
 });

@@ -6,11 +6,11 @@ import path from "node:path";
 import { serve } from "@hono/node-server";
 import type { Browser, BrowserContext, CDPSession, Page } from "@playwright/test";
 import { chromium } from "@playwright/test";
-import type { createApp } from "@rakazo/api/app";
-import { abortableDelay, RESPONSE_STREAMING_STORAGE_KEY } from "@rakazo/core";
-import { loadRootEnv } from "@rakazo/core/node/load-root-env";
-import type { PrismaClient, ThreadEvents } from "@rakazo/db";
-import { createThreadEvents, createThreadMessage, runAsSystem } from "@rakazo/db";
+import type { createApp } from "@nurlai/api/app";
+import { abortableDelay, RESPONSE_STREAMING_STORAGE_KEY } from "@nurlai/core";
+import { loadRootEnv } from "@nurlai/core/node/load-root-env";
+import type { PrismaClient, ThreadEvents } from "@nurlai/db";
+import { createThreadEvents, createThreadMessage, runAsSystem } from "@nurlai/db";
 import type { NumericSummary } from "./performance-report.js";
 import {
   checkBudgets,
@@ -132,12 +132,12 @@ async function benchmark() {
       dataDir: path.join(temporaryRoot, "data"),
     });
     Object.assign(process.env, env);
-    if (!skipBuild) run("pnpm", ["--filter", "@rakazo/web", "build"], env);
+    if (!skipBuild) run("pnpm", ["--filter", "@nurlai/web", "build"], env);
     migrateDatabase(env);
 
     const [{ InMemoryRealtimeFanout }, { createApp }] = await Promise.all([
-      import("@rakazo/adapters"),
-      import("@rakazo/api/app"),
+      import("@nurlai/adapters"),
+      import("@nurlai/api/app"),
     ]);
     // Shared with the event writer below, so streamed updates reach the app's subscribers.
     const realtime = new InMemoryRealtimeFanout();
@@ -298,7 +298,7 @@ async function prepareAccount(bench: Bench, sizes: number[]): Promise<Account> {
         page,
         "bots/create",
         newBot(name),
-        spaceId ? { "x-rakazo-space-id": spaceId } : undefined,
+        spaceId ? { "x-nurlai-space-id": spaceId } : undefined,
       );
       return seedThread(bench.prisma, created.id, name, size);
     };

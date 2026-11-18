@@ -17,9 +17,9 @@ import type {
   SecretStore,
   TransactionalEmailProvider,
   WebProvider,
-} from "@rakazo/adapter-kit";
-import type { LabFeature } from "@rakazo/contracts";
-import type { PrismaClient, RunLease, ThreadEvents } from "@rakazo/db";
+} from "@nurlai/adapter-kit";
+import type { LabFeature } from "@nurlai/contracts";
+import type { PrismaClient, RunLease, ThreadEvents } from "@nurlai/db";
 import type {
   CloudAgentConnection,
   UserCloudAgents,

@@ -1,12 +1,12 @@
 import { useLingui } from "@lingui/react/macro";
-import type { ReplyPreview, ThreadMessage } from "@rakazo/contracts";
+import type { ReplyPreview, ThreadMessage } from "@nurlai/contracts";
 import {
   formatTimeSeparator,
   isPageOriginReply,
   isPeerReceiptBlocks,
   replyLabel,
-} from "@rakazo/core";
-import { cn } from "@rakazo/ui-web";
+} from "@nurlai/core";
+import { cn } from "@nurlai/ui-web";
 import { X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { ArtifactTarget } from "../../../lib/pages/artifact-open";

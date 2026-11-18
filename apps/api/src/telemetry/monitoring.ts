@@ -1,6 +1,6 @@
-import { getLogger, monitoringUserId } from "@rakazo/logging";
-import { markExpectedFailure } from "@rakazo/logging/hono";
-import type { MonitoringConfig } from "@rakazo/logging/monitoring";
+import { getLogger, monitoringUserId } from "@nurlai/logging";
+import { markExpectedFailure } from "@nurlai/logging/hono";
+import type { MonitoringConfig } from "@nurlai/logging/monitoring";
 import { Hono } from "hono";
 import type { AppEnv } from "../env.js";
 import { requestBodyLimit } from "../http/request-body-limit.js";

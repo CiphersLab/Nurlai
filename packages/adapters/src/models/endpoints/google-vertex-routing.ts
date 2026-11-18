@@ -1,6 +1,6 @@
 import type { Api, Model } from "@earendil-works/pi-ai";
-import type { ModelConnectInput } from "@rakazo/contracts";
-import { modelRoutingId } from "@rakazo/contracts";
+import type { ModelConnectInput } from "@nurlai/contracts";
+import { modelRoutingId } from "@nurlai/contracts";
 
 type ProjectRouting = { projectId?: string; region?: string };
 

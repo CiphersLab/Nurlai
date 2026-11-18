@@ -3,7 +3,7 @@ import type {
   ProductEvent,
   ThreadMessage,
   ThreadSnapshot,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import { describe, expect, it } from "vitest";
 import { answerableAskMessageIds, dismissableAskMessageIds } from "../asks/answerable-ask.js";
 import { withLiveStreamingProgress } from "../messages/events.js";

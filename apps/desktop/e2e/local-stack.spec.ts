@@ -7,14 +7,14 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import type { ElectronApplication } from "@playwright/test";
 import { _electron as electron, expect, test } from "@playwright/test";
-import type { RakazoDesktop } from "@rakazo/contracts";
+import type { NurlaiDesktop } from "@nurlai/contracts";
 import { prepareHostComputer } from "../src/main/this-computer/host-computer.js";
 import { shownWindow } from "./shown-window.js";
 
 const APP_MARKER = "Local Nurlai stack ready";
 const IMAGE_TAG = "v9.9.9";
 const STACK_PROBE_PATH = "/.well-known/rakazo-desktop-stack";
-const STACK_TOKEN_HEADER = "x-rakazo-desktop-stack-token";
+const STACK_TOKEN_HEADER = "x-nurlai-desktop-stack-token";
 const COMPOSE_DIR = path.resolve(import.meta.dirname, "..", "..", "..", "infra", "compose");
 // Waits that span the fake docker's 2 s pull and the calls around it; a busy runner is slow.
 const AFTER_PULL = { timeout: 15_000 };
@@ -96,7 +96,7 @@ function fakeDockerLog() {
 }
 
 /**
- * Stands in for the docker CLI: records `cwd | RAKAZO_IMAGE_TAG | argv` for every call and
+ * Stands in for the docker CLI: records `cwd | NURLAI_IMAGE_TAG | argv` for every call and
  * answers the handful of commands the app issues. The log path and mode are baked into the
  * script because the app passes docker an allowlisted environment.
  */
@@ -116,7 +116,7 @@ async function writeFakeDocker(mode: FakeDockerMode) {
   }
   const lines = [
     "#!/bin/sh",
-    `printf '%s | %s | %s\\n' "$PWD" "$RAKAZO_IMAGE_TAG" "$*" >> '${fakeDockerLog()}'`,
+    `printf '%s | %s | %s\\n' "$PWD" "$NURLAI_IMAGE_TAG" "$*" >> '${fakeDockerLog()}'`,
     'case "$1 $2" in',
     mode === "compose-check-fails"
       ? '  "compose version") echo "Access is denied." >&2; exit 7 ;;'
@@ -143,20 +143,20 @@ async function writeFakeDocker(mode: FakeDockerMode) {
 }
 
 async function launch(mode: FakeDockerMode | "missing") {
-  const env: NodeJS.ProcessEnv = { ...process.env, RAKAZO_PERFORMANCE_USER_DATA: userData };
-  // A stale RAKAZO_WEB_URL from the developer's shell would bypass setup entirely.
-  delete env.RAKAZO_WEB_URL;
+  const env: NodeJS.ProcessEnv = { ...process.env, NURLAI_PERFORMANCE_USER_DATA: userData };
+  // A stale NURLAI_WEB_URL from the developer's shell would bypass setup entirely.
+  delete env.NURLAI_WEB_URL;
   // A first launch opens Nurlai Cloud; these specs stay offline and start in setup instead.
-  if (!existsSync(path.join(userData, "setup.json"))) env.RAKAZO_FORCE_SETUP = "1";
+  if (!existsSync(path.join(userData, "setup.json"))) env.NURLAI_FORCE_SETUP = "1";
   return electron.launch({
     args: ["."],
     cwd: path.resolve(import.meta.dirname, ".."),
     env: {
       ...env,
       // "missing" points at where the fake docker will be written, so a spec can install it later.
-      RAKAZO_DOCKER_BINARY: mode === "missing" ? fakeDockerPath() : await writeFakeDocker(mode),
-      RAKAZO_LOCAL_WEB_URL: serverUrl,
-      RAKAZO_IMAGE_TAG: IMAGE_TAG,
+      NURLAI_DOCKER_BINARY: mode === "missing" ? fakeDockerPath() : await writeFakeDocker(mode),
+      NURLAI_LOCAL_WEB_URL: serverUrl,
+      NURLAI_IMAGE_TAG: IMAGE_TAG,
     },
   });
 }
@@ -217,8 +217,8 @@ test("This computer installs and starts the stack, then opens the app", async ()
   const env = await readFile(envFile, "utf8");
   expect(env).toMatch(/^POSTGRES_PASSWORD=[0-9a-f]{32}$/m);
   expect(env).toMatch(/^BETTER_AUTH_SECRET=[0-9a-f]{64}$/m);
-  expect(env).not.toContain("RAKAZO_IMAGE_TAG=");
-  expect(env).not.toContain("RAKAZO_COMPUTER_IMAGE_TAG=");
+  expect(env).not.toContain("NURLAI_IMAGE_TAG=");
+  expect(env).not.toContain("NURLAI_COMPUTER_IMAGE_TAG=");
   await expect(readFile(path.join(stackDir, "docker-compose.images.yml"), "utf8")).resolves.toBe(
     await readFile(path.join(COMPOSE_DIR, "docker-compose.images.yml"), "utf8"),
   );
@@ -591,7 +591,7 @@ test("the desktop never exposes server administration or account impersonation",
     await main.evaluate(
       () =>
         "localSettings" in
-        (window as typeof window & { rakazoDesktop: RakazoDesktop }).rakazoDesktop,
+        (window as typeof window & { nurlaiDesktop: NurlaiDesktop }).nurlaiDesktop,
     ),
   ).toBe(false);
   expect(

@@ -1,5 +1,5 @@
 import { isDeepStrictEqual } from "node:util";
-import type { AdapterContext, ConnectorCall } from "@rakazo/adapter-kit";
+import type { AdapterContext, ConnectorCall } from "@nurlai/adapter-kit";
 import { describe, expect, it } from "vitest";
 import type { EvalCase, Evidence } from "./cases.js";
 import {

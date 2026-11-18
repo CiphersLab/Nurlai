@@ -1,8 +1,8 @@
 import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import type { UsageBreakdown, UsageBreakdownInput } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
+import type { UsageBreakdown, UsageBreakdownInput } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { sessionCookieHeader } from "../index.js";
 import { asSystem } from "../system-db.js";
@@ -26,7 +26,7 @@ describeBreakdown("usage.breakdown", () => {
   const dataDir = mkdtempSync(path.join(tmpdir(), "rakazo-usage-breakdown-"));
 
   beforeAll(async () => {
-    const { createApp } = await import("@rakazo/api/app");
+    const { createApp } = await import("@nurlai/api/app");
     const handles = await createApp({
       databaseUrl: process.env.DATABASE_URL!,
       dataDir,

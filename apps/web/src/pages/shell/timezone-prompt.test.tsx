@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import type { Me } from "@rakazo/contracts";
+import type { Me } from "@nurlai/contracts";
 import type { ReactNode } from "react";
 import { act } from "react";
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
@@ -9,8 +9,8 @@ import { createQueryRoot } from "../../lib/query/query-root.test-support";
 import { TimezonePrompt } from "./timezone-prompt";
 
 const device = vi.hoisted(() => ({ zone: "Asia/Tokyo" }));
-vi.mock("@rakazo/core", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@rakazo/core")>()),
+vi.mock("@nurlai/core", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@nurlai/core")>()),
   localTimezone: () => device.zone,
 }));
 const rpc = vi.hoisted(() => ({

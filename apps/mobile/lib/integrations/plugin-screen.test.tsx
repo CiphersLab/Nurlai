@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { flush } from "@rakazo/core/test-async";
+import { flush } from "@nurlai/core/test-async";
 import type { ReactElement, ReactNode } from "react";
 import { act, useEffect } from "react";
 import type { Root } from "react-dom/client";
@@ -22,7 +22,7 @@ vi.mock("../api/api", () => ({
   captureApiRequestContext: async (spaceId: string | null = "space-fixture") => ({
     apiBase: "https://app.example.test",
     sessionGeneration: 1,
-    headers: spaceId ? { "x-rakazo-space-id": spaceId } : {},
+    headers: spaceId ? { "x-nurlai-space-id": spaceId } : {},
   }),
   rpc: (...call: unknown[]) => state.rpc(...call),
 }));
@@ -185,7 +185,7 @@ const pinned = {
   requestContext: {
     apiBase: "https://app.example.test",
     sessionGeneration: 1,
-    headers: { "x-rakazo-space-id": "space-fixture" },
+    headers: { "x-nurlai-space-id": "space-fixture" },
   },
 };
 

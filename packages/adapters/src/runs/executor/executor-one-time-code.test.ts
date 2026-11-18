@@ -1,5 +1,5 @@
-import type { ComputerRef } from "@rakazo/adapter-kit";
-import { runCodeKind } from "@rakazo/db";
+import type { ComputerRef } from "@nurlai/adapter-kit";
+import { runCodeKind } from "@nurlai/db";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type * as ComputerLifecycleModule from "../../computers/computer-lifecycle.js";
 import { encodeRunCode } from "../../secrets/bot-secrets.js";

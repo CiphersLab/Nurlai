@@ -1,5 +1,5 @@
-import type { PrismaClient } from "@rakazo/db";
-import { requireMembership } from "@rakazo/db";
+import type { PrismaClient } from "@nurlai/db";
+import { requireMembership } from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import { actorFromMembership } from "../app.js";
 

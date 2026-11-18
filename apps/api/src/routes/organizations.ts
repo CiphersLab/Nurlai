@@ -1,5 +1,5 @@
 import { ORPCError } from "@orpc/server";
-import { organizationInvitationEmail } from "@rakazo/auth";
+import { organizationInvitationEmail } from "@nurlai/auth";
 import {
   acceptOrganizationInvitation,
   cancelOrganizationInvitation,
@@ -18,8 +18,8 @@ import {
   revokeOrganizationMember,
   runAsSystem,
   setOrganizationMemberRole,
-} from "@rakazo/db";
-import { bestEffort } from "@rakazo/logging";
+} from "@nurlai/db";
+import { bestEffort } from "@nurlai/logging";
 import { deleteOrganization } from "../account/account-deletion.js";
 import { invitationRecipientKey, sendInvitationEmail } from "../email/invitation-email.js";
 import type { RouterDeps } from "../router.js";

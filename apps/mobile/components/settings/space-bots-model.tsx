@@ -1,6 +1,6 @@
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import { botsWithOwnModel } from "@rakazo/core";
+import { botsWithOwnModel } from "@nurlai/core";
 import { useState } from "react";
 import { Alert, StyleSheet, Text, View } from "react-native";
 import type { MobileBot } from "../../lib/api/mobile-types";

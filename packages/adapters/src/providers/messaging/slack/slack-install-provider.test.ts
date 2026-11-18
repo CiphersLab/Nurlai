@@ -1,5 +1,5 @@
 import { createHmac } from "node:crypto";
-import { MessagingInstallRefusedError } from "@rakazo/adapter-kit";
+import { MessagingInstallRefusedError } from "@nurlai/adapter-kit";
 import { expect, it, vi } from "vitest";
 import { SlackInstallProvider } from "./slack-install-provider.js";
 

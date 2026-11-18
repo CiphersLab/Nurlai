@@ -1,11 +1,11 @@
 import type { MenuAction } from "@expo/ui/community/menu";
 import { useLingui } from "@lingui/react/macro";
-import type { ModelCatalogEntry, ModelCredential } from "@rakazo/contracts";
+import type { ModelCatalogEntry, ModelCredential } from "@nurlai/contracts";
 import {
   canonicalPiProviderId,
   connectionDisplayName,
   MAX_MODEL_CONNECTION_LABEL,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import { Alert, Platform } from "react-native";
 import { SettingsGroup, SettingsRow } from "../settings/settings-group";
 import { RowMenu } from "./model-role-settings";

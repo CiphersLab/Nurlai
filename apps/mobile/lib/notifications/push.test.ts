@@ -1,4 +1,4 @@
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 vi.mock("../settings/ai-consent", () => ({ promptAiConsent: vi.fn() }));
@@ -185,7 +185,7 @@ it("does not restore a signed-out session while push registration loads its toke
     await loaded.promise;
     await signOut();
     expect(stopLiveNotifications).toHaveBeenCalledWith(true);
-    expect(native.store.has("rakazo.session_token")).toBe(false);
+    expect(native.store.has("nurlai.session_token")).toBe(false);
   } finally {
     release.resolve();
     await registration;

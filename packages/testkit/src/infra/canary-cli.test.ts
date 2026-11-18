@@ -9,7 +9,7 @@ const mocks = vi.hoisted(() => ({
 
 vi.mock("node:child_process", () => ({ execSync: mocks.execSync }));
 vi.mock("node:fs/promises", () => ({ mkdtemp: mocks.mkdtemp, rm: mocks.rm }));
-vi.mock("@rakazo/core/node/load-root-env", () => ({ loadRootEnv: vi.fn() }));
+vi.mock("@nurlai/core/node/load-root-env", () => ({ loadRootEnv: vi.fn() }));
 vi.mock("../cli/postgres.js", () => ({
   startPostgres: mocks.startPostgres,
   disposableDatabaseEnv: () => ({}),

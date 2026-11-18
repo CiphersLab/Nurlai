@@ -3,15 +3,15 @@ import type {
   BackgroundJobPayloads,
   JobPublisher,
   ManagedConnectorProvider,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import {
   connectionCleanupJob,
   connectionCleanupJobKey,
   RetryJobLaterError,
-} from "@rakazo/adapter-kit";
-import type { Prisma, PrismaClient } from "@rakazo/db";
-import { ProviderTransactionBusyError, runProviderTransaction } from "@rakazo/db";
-import { getLogger, unwrapJobPayload } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import type { Prisma, PrismaClient } from "@nurlai/db";
+import { ProviderTransactionBusyError, runProviderTransaction } from "@nurlai/db";
+import { getLogger, unwrapJobPayload } from "@nurlai/logging";
 import { advisoryLock } from "../locks/advisory-lock.js";
 import { sanitizeIntegrationError } from "../providers/integration/composio/composio-connector.js";
 import type { ConnectorRegistry } from "./connector-registry.js";

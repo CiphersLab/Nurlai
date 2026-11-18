@@ -1,7 +1,7 @@
 import { useLingui } from "@lingui/react/macro";
-import { useTimeout } from "@rakazo/chat-ui/hooks";
-import type { AgentSkillCatalogEntry, ThreadMessage } from "@rakazo/contracts";
-import type { ComposerMention, ComposerMentionRange, SlashActionId } from "@rakazo/core";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
+import type { AgentSkillCatalogEntry, ThreadMessage } from "@nurlai/contracts";
+import type { ComposerMention, ComposerMentionRange, SlashActionId } from "@nurlai/core";
 import {
   composerMentionQuery,
   composerMentionsForPrompt,
@@ -13,8 +13,8 @@ import {
   resolveMentionPickerKey,
   serializeComposerPrompt,
   updateComposerMentionBindings,
-} from "@rakazo/core";
-import { Button } from "@rakazo/ui-web";
+} from "@nurlai/core";
+import { Button } from "@nurlai/ui-web";
 import { Box, Plus } from "lucide-react";
 import type { ClipboardEvent, ComponentProps, ReactNode, RefObject } from "react";
 import {

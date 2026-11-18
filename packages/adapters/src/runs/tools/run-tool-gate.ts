@@ -4,7 +4,7 @@ import type {
   AutoReviewRequest,
   ConnectorCall,
   ToolBatch,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import {
   applyJudgeDecision,
   approvalModeFromPreference,
@@ -28,11 +28,11 @@ import {
   savedContextWriteNeedsApproval,
   toolRequiresApproval,
   toolRequiresExplicitApproval,
-} from "@rakazo/core";
-import { normalizedHttpUrl, urlSite } from "@rakazo/core/egress";
-import { approvalEffectKey, toolEffectIdempotencyKey } from "@rakazo/core/node/approval-effect-key";
-import type { AuditEventInput } from "@rakazo/db";
-import { recordAuditEvent, runSecretKind } from "@rakazo/db";
+} from "@nurlai/core";
+import { normalizedHttpUrl, urlSite } from "@nurlai/core/egress";
+import { approvalEffectKey, toolEffectIdempotencyKey } from "@nurlai/core/node/approval-effect-key";
+import type { AuditEventInput } from "@nurlai/db";
+import { recordAuditEvent, runSecretKind } from "@nurlai/db";
 import type { FleetCardSummary } from "../../approvals/approval-ask.js";
 import { buildApprovalAskBlock, MAX_FETCH_URL_LENGTH } from "../../approvals/approval-ask.js";
 import {
@@ -58,7 +58,7 @@ import { PURCHASE_CHECKED_TOOLS, purchaseApprovalOf } from "../../payments/purch
 import { asksRoutineEvents } from "../../routines/routine-triggers.js";
 import { resolveCompletedSecretLeftover } from "../../secrets/run-secret.js";
 import { scheduleRunSecretsExpiry } from "../../secrets/run-secrets-expiry.js";
-import { RAKAZO_DOCS_URLS } from "../../tools/builtin-skills.prompt.js";
+import { NURLAI_DOCS_URLS } from "../../tools/builtin-skills.prompt.js";
 import { CATALOG_LOAD, CATALOG_SEARCH } from "../../tools/lazy-tool-catalog.js";
 import { watchFromTool } from "../../tools/schedule-tools.js";
 import type { RunContext, RunTrust } from "../assembly/run-context.js";
@@ -221,7 +221,7 @@ export async function gateToolCall(
           site: fetchSite,
           trusted:
             ctx.trust.searchResultUrls.has(fetchUrl) ||
-            (name === "web_fetch" && RAKAZO_DOCS_URLS.includes(fetchUrl)) ||
+            (name === "web_fetch" && NURLAI_DOCS_URLS.includes(fetchUrl)) ||
             (await ctx.trust.loadTrustedSites()).has(fetchSite),
           rules: await ctx.trust.loadApprovalRules(),
         })

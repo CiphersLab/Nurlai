@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import type { CSSProperties, ReactElement, ReactNode } from "react";
 import { act, cloneElement, useEffect, useMemo, useState } from "react";
 import type { Root } from "react-dom/client";
@@ -159,7 +159,7 @@ vi.mock("../../lib/api/api-server", () => ({}));
 vi.mock("../../lib/api/api", () => ({
   rpc: ui.rpc,
   captureApiRequestContext: async (spaceId: string | null = "space-selected") => ({
-    headers: { "x-rakazo-space-id": spaceId },
+    headers: { "x-nurlai-space-id": spaceId },
   }),
   selectedSpaceId: () => ui.spaceId,
   spaceSelectionSeq: () => ui.spaceSeq,
@@ -168,7 +168,7 @@ vi.mock("../../lib/api/session", () => ({ currentSessionGeneration: () => 1 }));
 /** The caller's save: it pins every request to the Space it names, as `useSave` does. */
 function sendTo(spaceId?: string): SaveSend {
   const options = spaceId
-    ? { requestContext: { headers: { "x-rakazo-space-id": spaceId } } }
+    ? { requestContext: { headers: { "x-nurlai-space-id": spaceId } } }
     : undefined;
   return (proc, input) => ui.rpc(proc, input, options);
 }
@@ -911,7 +911,7 @@ it.each([true, false])(
       spaceId: "space-work",
     });
     expect(ui.rpc).toHaveBeenCalledWith("spaceSettings/overrides", undefined, {
-      requestContext: { headers: { "x-rakazo-space-id": "space-work" } },
+      requestContext: { headers: { "x-nurlai-space-id": "space-work" } },
     });
     const buttons = ui.alert.mock.lastCall?.[2] as { text: string; onPress?: () => void }[];
     buttons.find((button) => button.text === "Add model")?.onPress?.();

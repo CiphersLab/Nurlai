@@ -1,4 +1,4 @@
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
   activateUiLocale,
@@ -231,13 +231,13 @@ describe("activateUiLocale", () => {
     const set = vi.fn(async (_locale: string) => {
       throw new Error("refused");
     });
-    vi.stubGlobal("window", { rakazoDesktop: { locale: { set } } });
+    vi.stubGlobal("window", { nurlaiDesktop: { locale: { set } } });
 
     await expect(activateUiLocale("es")).resolves.toBe("es");
     expect(set).toHaveBeenCalledWith("es");
 
     // Older desktop releases have no locale bridge.
-    vi.stubGlobal("window", { rakazoDesktop: {} });
+    vi.stubGlobal("window", { nurlaiDesktop: {} });
     await expect(activateUiLocale("de")).resolves.toBe("de");
     vi.unstubAllGlobals();
   });

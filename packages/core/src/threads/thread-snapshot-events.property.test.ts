@@ -1,5 +1,5 @@
-import type { RunStatus } from "@rakazo/contracts";
-import { RUN_TRIGGERS, RunStatus as RunStatusSchema } from "@rakazo/contracts";
+import type { RunStatus } from "@nurlai/contracts";
+import { RUN_TRIGGERS, RunStatus as RunStatusSchema } from "@nurlai/contracts";
 import fc from "fast-check";
 import { describe, expect, it } from "vitest";
 import { isRunTerminalEvent } from "../messages/events.js";

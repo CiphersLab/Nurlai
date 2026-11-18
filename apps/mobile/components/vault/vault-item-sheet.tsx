@@ -1,14 +1,14 @@
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import type { BotSecretMetadata, ContactFields, VaultUse } from "@rakazo/contracts";
+import type { BotSecretMetadata, ContactFields, VaultUse } from "@nurlai/contracts";
 import {
   cardExpiry,
   commandVariableName,
   hasVaultAccess,
   otherSitesText,
   vaultKind,
-} from "@rakazo/contracts";
-import { vaultBotsLine } from "@rakazo/i18n/vault";
+} from "@nurlai/contracts";
+import { vaultBotsLine } from "@nurlai/i18n/vault";
 import * as Clipboard from "expo-clipboard";
 import { useState } from "react";
 import { Modal, Platform, ScrollView, StyleSheet, Text, View } from "react-native";

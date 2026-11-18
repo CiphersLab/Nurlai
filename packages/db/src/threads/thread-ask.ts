@@ -1,10 +1,10 @@
-import type { RealtimeFanout } from "@rakazo/adapter-kit";
+import type { RealtimeFanout } from "@nurlai/adapter-kit";
 import type {
   BotSecretDestination,
   LoginFieldInput,
   MessageBlock,
   OneTimeCodeTarget,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   BOT_INSTRUCTIONS_MAX_LENGTH,
   BOT_SECRET_VALUE_MAX_LENGTH,
@@ -12,7 +12,7 @@ import {
   loginAnswerValue,
   MessageBlock as MessageBlockSchema,
   normalizeOneTimeCode,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   ACTIVE_RUN_STATUSES,
   BACKGROUND_HELPER_TRIGGER,
@@ -24,9 +24,9 @@ import {
   messageReaction,
   resolveAskChoice,
   SITE_SENDING_TOOLS,
-} from "@rakazo/core";
-import { urlSite } from "@rakazo/core/egress";
-import { approvalEffectKey } from "@rakazo/core/node/approval-effect-key";
+} from "@nurlai/core";
+import { urlSite } from "@nurlai/core/egress";
+import { approvalEffectKey } from "@nurlai/core/node/approval-effect-key";
 import { recordSecurityEvent } from "../account/security-events.js";
 import { saveApprovalRule, storedBatchActions } from "../bots/approval-settings.js";
 import { expireComputerExecutionLeases } from "../computers/computers.js";

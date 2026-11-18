@@ -1,4 +1,4 @@
-package com.rakazo.notifications
+package com.nurlai.notifications
 
 import android.app.NotificationManager
 import android.content.Context
@@ -9,10 +9,10 @@ import expo.modules.kotlin.Promise
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
 
-class RakazoNotificationsModule : Module() {
+class NurlaiNotificationsModule : Module() {
   private var incomingReceiver: android.content.BroadcastReceiver? = null
   override fun definition() = ModuleDefinition {
-    Name("RakazoNotifications")
+    Name("NurlaiNotifications")
     Constants("supportsSenderAvatars" to true)
     Events("onIncomingCallChanged")
     OnStartObserving {
@@ -34,7 +34,7 @@ class RakazoNotificationsModule : Module() {
       val storage = NotificationStorage(context())
       storage.endpoint = endpoint
       storage.token = headers["authorization"]?.removePrefix("Bearer ") ?: ""
-      storage.headers = org.json.JSONObject(headers.filterKeys { it.lowercase() != "authorization" && it.lowercase() != "x-rakazo-space-id" }).toString()
+      storage.headers = org.json.JSONObject(headers.filterKeys { it.lowercase() != "authorization" && it.lowercase() != "x-nurlai-space-id" }).toString()
     }
     AsyncFunction("reportIncomingCall") { call: Map<String, String> ->
       IncomingCalls.report(context(), org.json.JSONObject(call), fromApp = true)
@@ -61,9 +61,9 @@ class RakazoNotificationsModule : Module() {
       storage.locale = locale
       storage.settings = NotificationSettings.fromMap(value)
       if (storage.settings.liveConnection && endpoint.isNotBlank() && token.isNotBlank()) {
-        RakazoNotificationService.start(context)
+        NurlaiNotificationService.start(context)
       } else {
-        RakazoNotificationService.stop(context)
+        NurlaiNotificationService.stop(context)
       }
     }
 
@@ -78,26 +78,26 @@ class RakazoNotificationsModule : Module() {
     AsyncFunction("stop") { clearSession: Boolean ->
       val context = context()
       if (clearSession) {
-        RakazoNotificationService.clearSession(context)
+        NurlaiNotificationService.clearSession(context)
         val storage = NotificationStorage(context)
         storage.token = ""
         storage.headers = ""
         storage.spaceId = ""
       } else {
-        RakazoNotificationService.stop(context)
+        NurlaiNotificationService.stop(context)
       }
     }
 
     AsyncFunction("setOpenThread") { botId: String?, threadId: String? ->
-      RakazoNotificationService.setOpenThread(context(), botId, threadId)
+      NurlaiNotificationService.setOpenThread(context(), botId, threadId)
     }
 
     AsyncFunction("startCall") { title: String, promise: Promise ->
-      RakazoCallService.start(context(), title) { started -> promise.resolve(started) }
+      NurlaiCallService.start(context(), title) { started -> promise.resolve(started) }
     }
 
     AsyncFunction("stopCall") {
-      RakazoCallService.stop(context())
+      NurlaiCallService.stop(context())
     }
 
     AsyncFunction("openSettings") {
@@ -150,7 +150,7 @@ class RakazoNotificationsModule : Module() {
   ) {
     val context = context()
     if (endpoint.isNotBlank() && !isAllowedNotificationEndpoint(endpoint)) {
-      RakazoNotificationService.stop(context)
+      NurlaiNotificationService.stop(context)
     } else {
       val storage = NotificationStorage(context)
       storage.endpoint = endpoint
@@ -159,7 +159,7 @@ class RakazoNotificationsModule : Module() {
       storage.spaceId = spaceId
       storage.locale = locale
       if (storage.settings.liveConnection && endpoint.isNotBlank() && token.isNotBlank()) {
-        RakazoNotificationService.start(context, mutedBotId = mutedBotId)
+        NurlaiNotificationService.start(context, mutedBotId = mutedBotId)
       }
     }
   }

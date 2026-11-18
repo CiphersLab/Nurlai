@@ -1,6 +1,6 @@
 import { t } from "@lingui/core/macro";
-import type { RpcInput, RpcOutput, RpcPath, ThreadSnapshot } from "@rakazo/contracts";
-import { CLIENT_UPDATE_REQUIRED_STATUS, parseServerHeaders } from "@rakazo/contracts";
+import type { RpcInput, RpcOutput, RpcPath, ThreadSnapshot } from "@nurlai/contracts";
+import { CLIENT_UPDATE_REQUIRED_STATUS, parseServerHeaders } from "@nurlai/contracts";
 import {
   aiConsentTargets,
   aiDataUsesForProcedure,
@@ -12,8 +12,8 @@ import {
   parseRetryAfter,
   readBoundedJsonResponse,
   withAbort,
-} from "@rakazo/core";
-import { clientCorrelationHeaders, responseCorrelation } from "@rakazo/logging/monitoring";
+} from "@nurlai/core";
+import { clientCorrelationHeaders, responseCorrelation } from "@nurlai/logging/monitoring";
 import * as SecureStore from "expo-secure-store";
 import { followSelectedSpace, selectedSpaceChanged } from "../billing/referral";
 import { identityLabels } from "../bots/identity-display";
@@ -173,7 +173,7 @@ export async function authHeaders(
   return {
     ...clientBuild.headers(),
     ...(token ? { authorization: `Bearer ${token}` } : {}),
-    ...(spaceId ? { "x-rakazo-space-id": spaceId } : {}),
+    ...(spaceId ? { "x-nurlai-space-id": spaceId } : {}),
   };
 }
 export type ApiRequestContext = {
@@ -183,7 +183,7 @@ export type ApiRequestContext = {
 };
 /** Keeps consent prompts separate across servers and the selected Space. */
 export function aiConsentCoalesceKey(requestContext: ApiRequestContext): string {
-  return [requestContext.apiBase, requestContext.headers["x-rakazo-space-id"] ?? ""].join("\u0000");
+  return [requestContext.apiBase, requestContext.headers["x-nurlai-space-id"] ?? ""].join("\u0000");
 }
 const aiConsentListeners = new Set<() => void>();
 /** Runs after a consent prompt's Allow is saved, so whatever shows the permissions reads them again. */
@@ -721,7 +721,7 @@ async function request(
   // a 401 arriving after the user switched Spaces — including A → B → A —
   // belongs to a stale request and must not touch the current selection.
   const requestHeaders = consentContext?.headers ?? (await authHeaders());
-  const requestSpaceId = requestHeaders["x-rakazo-space-id"];
+  const requestSpaceId = requestHeaders["x-nurlai-space-id"];
   try {
     if (
       consentContext?.sessionGeneration !== undefined &&

@@ -1,5 +1,5 @@
 import { EventEmitter } from "node:events";
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import type { BrowserWindow } from "electron";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { installRendererRecovery } from "./renderer-recovery.js";

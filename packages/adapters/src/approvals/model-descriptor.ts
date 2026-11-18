@@ -1,5 +1,5 @@
-import type { DecisionProvider, DecisionProviderOptions } from "@rakazo/adapter-kit";
-import type { ModelCatalogEntry } from "@rakazo/contracts";
+import type { DecisionProvider, DecisionProviderOptions } from "@nurlai/adapter-kit";
+import type { ModelCatalogEntry } from "@nurlai/contracts";
 
 /** Provider-owned decision protocol identifiers and pricing provenance. */
 export interface DecisionModelDescriptor {

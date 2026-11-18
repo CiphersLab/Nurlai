@@ -1,7 +1,7 @@
-import type { BillingProvider } from "@rakazo/adapter-kit";
-import { BillingPaymentNotCompletedError } from "@rakazo/adapter-kit";
-import type { Actor } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
+import type { BillingProvider } from "@nurlai/adapter-kit";
+import { BillingPaymentNotCompletedError } from "@nurlai/adapter-kit";
+import type { Actor } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import { createBillingService } from "./billing.js";
 import { trialOutcome } from "./trial-outcome.js";

@@ -1,4 +1,4 @@
-import { bestEffort } from "@rakazo/logging";
+import { bestEffort } from "@nurlai/logging";
 import type { LocalServiceConnection } from "../../../network/local-service-endpoint.js";
 import { fetchLocalService } from "../../../network/local-service-endpoint.js";
 import { readBodyCapped } from "../../../web/web-ssrf.js";

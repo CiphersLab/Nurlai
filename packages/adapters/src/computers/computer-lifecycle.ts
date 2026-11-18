@@ -5,7 +5,7 @@ import type {
   ComputerRef,
   JobPublisher,
   SandboxProvider,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import {
   computerControlExpireJobKey,
   machineCleanupJobKey,
@@ -14,8 +14,8 @@ import {
   SandboxSizeUnavailableError,
   SandboxUnavailableError,
   SandboxUnresponsiveError,
-} from "@rakazo/adapter-kit";
-import type { ComputerSize, ComputerUpdate } from "@rakazo/contracts";
+} from "@nurlai/adapter-kit";
+import type { ComputerSize, ComputerUpdate } from "@nurlai/contracts";
 import {
   ACTIVE_RUN_STATUSES,
   abortableDelay,
@@ -23,9 +23,9 @@ import {
   computerUsingRuns,
   isRetryableError,
   pollUntil,
-} from "@rakazo/core";
-import { parseScreenLeaseId, screenLeaseId } from "@rakazo/core/node/screen-lease";
-import type { Prisma, PrismaClient, ThreadEvents } from "@rakazo/db";
+} from "@nurlai/core";
+import { parseScreenLeaseId, screenLeaseId } from "@nurlai/core/node/screen-lease";
+import type { Prisma, PrismaClient, ThreadEvents } from "@nurlai/db";
 import {
   expireComputerExecutionLeases,
   isUniqueViolation,
@@ -35,8 +35,8 @@ import {
   recordComputerRunStart,
   spaceTakesWork,
   withTransactionRetry,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { resolveAgentHomePath } from "../storage/home.js";
 import { ObjectAgentHomeStore } from "../storage/home-object-store.js";
 import {

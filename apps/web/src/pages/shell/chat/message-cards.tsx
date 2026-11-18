@@ -1,8 +1,8 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { useLinkPrompt } from "@rakazo/chat-ui/web";
-import type { MessageBlock } from "@rakazo/contracts";
-import { appConnectedInput, waitForConnection } from "@rakazo/core";
-import { Button, Dialog, DialogClose, DialogContent, DialogTitle } from "@rakazo/ui-web";
+import { useLinkPrompt } from "@nurlai/chat-ui/web";
+import type { MessageBlock } from "@nurlai/contracts";
+import { appConnectedInput, waitForConnection } from "@nurlai/core";
+import { Button, Dialog, DialogClose, DialogContent, DialogTitle } from "@nurlai/ui-web";
 import { X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { BuiCard, SuccessPop } from "../../../components/ai/primitives";
@@ -254,7 +254,7 @@ function ChartCanvas({
     // Plot loads lazily so threads without charts never pay for the library.
     void (async () => {
       try {
-        const { buildPlotParts } = await importChunk(() => import("@rakazo/core/plot"));
+        const { buildPlotParts } = await importChunk(() => import("@nurlai/core/plot"));
         if (cancelled || !ref.current) return;
         // Hover inspection by default: give the first mark a tooltip unless
         // the spec already asks for one somewhere.

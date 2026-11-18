@@ -1,4 +1,4 @@
-import type { ThreadMessage } from "@rakazo/contracts";
+import type { ThreadMessage } from "@nurlai/contracts";
 import { describe, expect, it } from "vitest";
 import { BOT_MESSAGE_MAX_LENGTH, clampBotMessage } from "../bots/bot-messages.js";
 import { foldPeerReplies } from "../messages/message-visibility.js";

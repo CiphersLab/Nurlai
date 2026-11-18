@@ -2,7 +2,7 @@
 """Serve the page-browser commands on the Chromium showing on this computer's DISPLAY.
 
 agent-browser (pinned in the image) attaches to that Chromium over CDP and browses. This wrapper
-keeps Rakazo's contract and policy on top: which tab, refs that must still name the element the
+keeps Nurlai's contract and policy on top: which tab, refs that must still name the element the
 bot saw, the snapshot's size, masked secrets, upload confinement, and the computer_act fallback.
 Saved logins, cards and pay tokens go through page_secrets instead.
 """
@@ -33,7 +33,7 @@ from page_secrets import CardFieldUncertain, Refused, payment_frame_origin  # no
 
 discover_ws_url = page_secrets.discover_ws_url
 
-AGENT_BROWSER = os.environ.get("RAKAZO_AGENT_BROWSER") or "/usr/local/bin/agent-browser"
+AGENT_BROWSER = os.environ.get("NURLAI_AGENT_BROWSER") or "/usr/local/bin/agent-browser"
 
 NO_ANSWER = "The page did not answer in time."
 STALE_REF = "Stale element ref: the page has changed since that snapshot. Use a ref from the page below."
@@ -127,7 +127,7 @@ def display_num() -> int:
 
 
 def cdp_port() -> int:
-    override = os.environ.get("RAKAZO_CDP_PORT")
+    override = os.environ.get("NURLAI_CDP_PORT")
     if override:
         return int(override)
     # rakazo-browser uses 9221 + display number (:1 -> 9222).
@@ -1614,7 +1614,7 @@ class PageLoad:
 def max_file_bytes() -> int:
     """The most bytes a file moved between this computer and a page may have, uploaded or downloaded."""
     try:
-        override = int(os.environ.get("RAKAZO_BROWSER_UPLOAD_MAX_BYTES", ""))
+        override = int(os.environ.get("NURLAI_BROWSER_UPLOAD_MAX_BYTES", ""))
     except ValueError:
         return MAX_UPLOAD_BYTES
     return override if override > 0 else MAX_UPLOAD_BYTES
@@ -1769,7 +1769,7 @@ class Downloads:
             # Detached and holding none of this call's files or connections, so the call ends now. Each
             # call that leaves a download running starts one; it ends with them or after FINISH_LATER_SECONDS.
             env = {key: value for key, value in os.environ.items()
-                   if key not in ("RAKAZO_BROWSER_ARGS_STDIN", "RAKAZO_BROWSER_WATCH_STDIN")}
+                   if key not in ("NURLAI_BROWSER_ARGS_STDIN", "NURLAI_BROWSER_WATCH_STDIN")}
             subprocess.Popen([sys.executable, os.path.abspath(__file__), "finish", json.dumps({"downloads": later})],
                              stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
                              start_new_session=True, close_fds=True, env=env)
@@ -2592,8 +2592,8 @@ def tab_deadline() -> float:
 
 
 def run(argv: list[str]) -> int:
-    stdin_args = read_stdin_line() if os.environ.get("RAKAZO_BROWSER_ARGS_STDIN") == "1" else None
-    if os.environ.get("RAKAZO_BROWSER_WATCH_STDIN") == "1":
+    stdin_args = read_stdin_line() if os.environ.get("NURLAI_BROWSER_ARGS_STDIN") == "1" else None
+    if os.environ.get("NURLAI_BROWSER_WATCH_STDIN") == "1":
         threading.Thread(target=exit_when_stdin_closes, daemon=True).start()
     if len(argv) < 2:
         print(json.dumps({"ok": False, "error": "usage: rakazo-page-browser <command> [json-args]",

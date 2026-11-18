@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
-import type { AnalyticsModelSignInStep, ModelOAuthBegin, ThinkingLevel } from "@rakazo/contracts";
-import { clampCatalogThinkingLevel } from "@rakazo/core";
+import type { AnalyticsModelSignInStep, ModelOAuthBegin, ThinkingLevel } from "@nurlai/contracts";
+import { clampCatalogThinkingLevel } from "@nurlai/core";
 import * as Clipboard from "expo-clipboard";
 import type { RefObject } from "react";
 import { useCallback, useRef, useState } from "react";

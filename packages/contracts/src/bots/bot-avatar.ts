@@ -85,7 +85,7 @@ export const BOT_COLOR_LIST: readonly BotColorDef[] = [
 
 export const BOT_COLORS: readonly string[] = BOT_COLOR_LIST.map((color) => color.hex);
 
-/** Matches the eight shipped mascot shapes in `@rakazo/core`. */
+/** Matches the eight shipped mascot shapes in `@nurlai/core`. */
 export const BOT_AVATAR_SHAPE_COUNT = 8;
 
 /**

@@ -1,4 +1,4 @@
-import { TAKEOVER_COMPUTER_PENDING_STATE, TAKEOVER_COMPUTER_SKIPPED_STATE } from "@rakazo/core";
+import { TAKEOVER_COMPUTER_PENDING_STATE, TAKEOVER_COMPUTER_SKIPPED_STATE } from "@nurlai/core";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import type { PrismaClient } from "../database/client.js";
 import { createDb } from "../database/client.js";

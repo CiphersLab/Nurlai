@@ -1,8 +1,8 @@
 import { mkdir, mkdtemp, readFile, rm, stat, symlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { RunDocker, RunDockerResult } from "./docker-cli.js";
 import type { LocalStackDeps } from "./local-stack.js";
@@ -102,7 +102,7 @@ describe("resolveImageTag", () => {
     expect(resolveImageTag({ version: "0.2.0-beta.1", packaged: true })).toBe("edge");
   });
 
-  it("lets RAKAZO_IMAGE_TAG override everything", () => {
+  it("lets NURLAI_IMAGE_TAG override everything", () => {
     expect(resolveImageTag({ version: "0.2.0", packaged: true, override: " v9.9.9 " })).toBe(
       "v9.9.9",
     );
@@ -126,10 +126,10 @@ describe("renderStackEnv", () => {
     ]) {
       expect(lines).toContain(`${name}=${"ab".repeat(32)}`);
     }
-    expect(lines.some((line) => line.startsWith("RAKAZO_IMAGE_TAG="))).toBe(false);
-    expect(lines.some((line) => line.startsWith("RAKAZO_COMPUTER_IMAGE_TAG="))).toBe(false);
+    expect(lines.some((line) => line.startsWith("NURLAI_IMAGE_TAG="))).toBe(false);
+    expect(lines.some((line) => line.startsWith("NURLAI_COMPUTER_IMAGE_TAG="))).toBe(false);
     // Everything else, including the image names and empty optional keys, stays verbatim.
-    expect(lines).toContain("RAKAZO_IMAGE=ghcr.io/elie222/rakazo/app");
+    expect(lines).toContain("NURLAI_IMAGE=ghcr.io/elie222/rakazo/app");
     expect(lines).toContain("SANDBOX_PROVIDER=docker");
     expect(lines).toContain("OPENROUTER_API_KEY=");
     expect(rendered.endsWith("\n")).toBe(template.endsWith("\n"));
@@ -547,21 +547,21 @@ describe("LocalStackController", () => {
       expect(call.binary).toBe("/usr/bin/docker");
       expect(call.cwd).toBe(stackPath);
       expect(call.env).toMatchObject({
-        RAKAZO_IMAGE_TAG: "v1.2.3",
-        RAKAZO_COMPUTER_IMAGE_TAG: "v1.2.3",
+        NURLAI_IMAGE_TAG: "v1.2.3",
+        NURLAI_COMPUTER_IMAGE_TAG: "v1.2.3",
         COMPOSE_PROGRESS: "plain",
         HOME: "/home/me",
       });
       expect(call.env).not.toHaveProperty("OPENROUTER_API_KEY");
     }
-    expect(calls.at(-1)?.env.RAKAZO_DESKTOP_STACK_TOKEN).toBe("ab".repeat(32));
+    expect(calls.at(-1)?.env.NURLAI_DESKTOP_STACK_TOKEN).toBe("ab".repeat(32));
 
     await expect(readFile(path.join(stackPath, STACK_COMPOSE_FILE), "utf8")).resolves.toBe(
       await readFile(path.join(COMPOSE_DIR, STACK_COMPOSE_FILE), "utf8"),
     );
     const env = await readFile(path.join(stackPath, STACK_ENV_FILE), "utf8");
     expect(env).toContain(`POSTGRES_PASSWORD=${"ab".repeat(16)}`);
-    expect(env).not.toContain("RAKAZO_IMAGE_TAG=");
+    expect(env).not.toContain("NURLAI_IMAGE_TAG=");
     if (process.platform !== "win32") {
       expect((await stat(path.join(stackPath, STACK_ENV_FILE))).mode & 0o777).toBe(0o600);
       expect((await stat(stackPath)).mode & 0o777).toBe(0o700);
@@ -1003,7 +1003,7 @@ describe("LocalStackController", () => {
             ProgramFiles: "C:\\Program Files",
             PATH: "C:\\Windows\\System32;C:\\custom-helpers",
             USERPROFILE: "C:\\Users\\example",
-            RAKAZO_DOCKER_BINARY: binary,
+            NURLAI_DOCKER_BINARY: binary,
           },
           exists: (file) => file === binary,
         },
@@ -1210,10 +1210,10 @@ describe("LocalStackController", () => {
     expect(stack.webUrl()).toBe("http://127.0.0.1:45174");
     expect(calls.filter((call) => call.args[7] === "pull")).toHaveLength(1);
     expect(
-      calls.filter((call) => call.args[7] === "up").map((call) => call.env.RAKAZO_WEB_PORT),
+      calls.filter((call) => call.args[7] === "up").map((call) => call.env.NURLAI_WEB_PORT),
     ).toEqual(["5173", "45174"]);
     expect(calls.at(-1)?.env).toMatchObject({
-      RAKAZO_API_PORT: "0",
+      NURLAI_API_PORT: "0",
       WEB_ORIGIN: stack.webUrl(),
       BETTER_AUTH_URL: stack.webUrl(),
       API_URL: stack.webUrl(),

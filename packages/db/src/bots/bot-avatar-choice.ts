@@ -1,6 +1,6 @@
 import { randomInt } from "node:crypto";
-import type { BotAvatarSet } from "@rakazo/contracts";
-import { BOT_COLORS, parseBotAvatarValue } from "@rakazo/contracts";
+import type { BotAvatarSet } from "@nurlai/contracts";
+import { BOT_COLORS, parseBotAvatarValue } from "@nurlai/contracts";
 import {
   ORGANIC_AVATAR_HEART_FAMILY,
   ORGANIC_AVATAR_LOOKS,
@@ -8,7 +8,7 @@ import {
   organicAvatarLook,
   resolvePersonaColorDef,
   seededLogoAvatarColor,
-} from "@rakazo/core";
+} from "@nurlai/core";
 
 /** A uniform number in [0, 1). */
 export type Random = () => number;

@@ -15,7 +15,7 @@ import type {
   ScreenRequest,
   ScreenSession,
   TerminalRequest,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import { LinuxDesktop, onBotScreen } from "../screens/linux-desktop.js";
 import type { RawExec } from "./exec-computer.js";
 import { ExecComputer, COMPUTER_IMAGE_WORKSPACE as WORKSPACE } from "./exec-computer.js";

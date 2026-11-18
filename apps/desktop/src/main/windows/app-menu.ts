@@ -1,4 +1,4 @@
-import type { DesktopMenuCommand } from "@rakazo/contracts";
+import type { DesktopMenuCommand } from "@nurlai/contracts";
 import { app, dialog, Menu } from "electron";
 import { desktop } from "../desktop-state.js";
 import { desktopLocale, t } from "../i18n.js";

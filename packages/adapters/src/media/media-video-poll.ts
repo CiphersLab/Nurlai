@@ -3,10 +3,10 @@ import type {
   ArtifactStore,
   JobPublisher,
   MediaGenerationProvider,
-} from "@rakazo/adapter-kit";
-import { mediaPollJob } from "@rakazo/adapter-kit";
-import type { Prisma, PrismaClient, ThreadEvents } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { mediaPollJob } from "@nurlai/adapter-kit";
+import type { Prisma, PrismaClient, ThreadEvents } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { persistMessageInTransaction } from "../runs/assembly/run-messages.js";
 import { wakeRun } from "../runs/wakeups/wake-run.js";
 import { mediaVideoWakePrompt } from "../runs/wakeups/wakes.prompt.js";

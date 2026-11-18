@@ -1,5 +1,5 @@
-import type { AutoReviewRequest, DecisionQuestion } from "@rakazo/adapter-kit";
-import { escapePromptData } from "@rakazo/core";
+import type { AutoReviewRequest, DecisionQuestion } from "@nurlai/adapter-kit";
+import { escapePromptData } from "@nurlai/core";
 import { formatCurrentTimeInstruction } from "../runs/assembly/current-time.prompt.js";
 
 const MAX_TASK_CHARS = 400;

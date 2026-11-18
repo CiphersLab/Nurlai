@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
-import { useTimeout } from "@rakazo/chat-ui/hooks";
-import type { BotAvatarSet, LabFeature, SpaceMemoryConfig } from "@rakazo/contracts";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
+import type { BotAvatarSet, LabFeature, SpaceMemoryConfig } from "@nurlai/contracts";
 import {
   Button,
   Dialog,
@@ -8,7 +8,7 @@ import {
   DialogContent,
   DialogDescription,
   DialogTitle,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { ChevronLeft, ChevronRight, XIcon } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { PlanUsage } from "../../components/billing/PlanUsage";

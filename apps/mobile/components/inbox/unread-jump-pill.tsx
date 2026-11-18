@@ -1,4 +1,4 @@
-import { fontWeight, typeScale } from "@rakazo/ui-tokens";
+import { fontWeight, typeScale } from "@nurlai/ui-tokens";
 import { Pressable, StyleSheet, Text } from "react-native";
 import type { JumpDirection } from "../../lib/inbox/offscreen-unreads";
 import { useMobileTokens } from "../../lib/native/native";

@@ -1,4 +1,4 @@
-import type { RunActivityRow } from "@rakazo/contracts";
+import type { RunActivityRow } from "@nurlai/contracts";
 import type { RefObject } from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useSpaceChanges } from "../api/roster-signals";

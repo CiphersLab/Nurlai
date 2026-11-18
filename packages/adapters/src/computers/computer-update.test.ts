@@ -5,9 +5,9 @@ import {
   SandboxUnavailableError,
   SandboxUnresponsiveError,
   WorkspaceTooLargeError,
-} from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type * as ComputerIdleModule from "./computer-idle.js";
 import { announceUnsavedHome } from "./computer-idle.js";

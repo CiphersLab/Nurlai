@@ -1,4 +1,4 @@
-import { createLogger, createTestSink, installLogger, runWithLogContext } from "@rakazo/logging";
+import { createLogger, createTestSink, installLogger, runWithLogContext } from "@nurlai/logging";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   createSecurityEventPruner,

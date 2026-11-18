@@ -1,6 +1,6 @@
-import type { BillingSubscriptionSnapshot } from "@rakazo/adapter-kit";
-import type { BillingAccount } from "@rakazo/db";
-import { needsBillingPortal } from "@rakazo/db";
+import type { BillingSubscriptionSnapshot } from "@nurlai/adapter-kit";
+import type { BillingAccount } from "@nurlai/db";
+import { needsBillingPortal } from "@nurlai/db";
 
 /**
  * How a trial ended, once that is known: true when its first charge was paid, false when the

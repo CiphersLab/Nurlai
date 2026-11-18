@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
-import type { ComputerStatus } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
+import type { ComputerStatus } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
 import { notifyManager } from "@tanstack/react-query";
 import { act, createElement, useEffect } from "react";
 import type { Root } from "react-dom/client";
@@ -24,7 +24,7 @@ vi.mock("../../lib/api/api", () => ({
   captureApiRequestContext: async (spaceId?: string) => ({
     apiBase: "http://api.test",
     sessionGeneration: 1,
-    headers: { "x-rakazo-space-id": spaceId ?? selection.space },
+    headers: { "x-nurlai-space-id": spaceId ?? selection.space },
   }),
 }));
 vi.mock("../../lib/api/session", () => ({ currentSessionGeneration: () => 1 }));
@@ -174,7 +174,7 @@ describe("computer maintenance rows", () => {
     expect(rpc).toHaveBeenCalledWith(
       "computer/reset",
       { botId: "bot-fixture" },
-      { requestContext: expect.objectContaining({ headers: { "x-rakazo-space-id": "space-1" } }) },
+      { requestContext: expect.objectContaining({ headers: { "x-nurlai-space-id": "space-1" } }) },
     );
   });
 
@@ -193,7 +193,7 @@ describe("computer maintenance rows", () => {
     expect(rpc).toHaveBeenCalledWith(
       "computer/recover",
       { botId: "bot-fixture" },
-      { requestContext: expect.objectContaining({ headers: { "x-rakazo-space-id": "space-1" } }) },
+      { requestContext: expect.objectContaining({ headers: { "x-nurlai-space-id": "space-1" } }) },
     );
   });
 

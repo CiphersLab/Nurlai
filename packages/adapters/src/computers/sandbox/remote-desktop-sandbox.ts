@@ -14,12 +14,12 @@ import type {
   ScreenRequest,
   ScreenSession,
   TerminalRequest,
-} from "@rakazo/adapter-kit";
-import { SandboxFileTooLargeError } from "@rakazo/adapter-kit";
-import type { ComputerSize } from "@rakazo/contracts";
-import { retry } from "@rakazo/core";
-import { boundedSandboxCommandTimeoutMs } from "@rakazo/core/node/sandbox-command";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { SandboxFileTooLargeError } from "@nurlai/adapter-kit";
+import type { ComputerSize } from "@nurlai/contracts";
+import { retry } from "@nurlai/core";
+import { boundedSandboxCommandTimeoutMs } from "@nurlai/core/node/sandbox-command";
+import { getLogger } from "@nurlai/logging";
 import { installPageBrowserCommand, privatePageInput } from "../../browser/page-browser-install.js";
 import { shouldSkipPortableWorkspaceFile } from "../../storage/workspace-save-policy.js";
 import { sandboxIdleMs } from "../computer-idle.js";

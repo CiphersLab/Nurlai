@@ -2,7 +2,7 @@ import {
   DEFAULT_CONTEXT_STRATEGY,
   historyCompactJob,
   memoryRetainTurnJob,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import {
   BACKGROUND_HELPER_TRIGGER,
   containsSecret,
@@ -10,8 +10,8 @@ import {
   isBackgroundRunTrigger,
   redactSecrets,
   withoutLastToolStepNotes,
-} from "@rakazo/core";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/core";
+import { getLogger } from "@nurlai/logging";
 import { resolveBotWorkspacePath } from "../../computers/screens/computer-support.js";
 import {
   answeredSteeringMessageIds,

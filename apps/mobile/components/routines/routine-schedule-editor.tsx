@@ -1,12 +1,12 @@
 import { useLingui } from "@lingui/react/macro";
-import type { CronFreq, CronPreset, CronUnit } from "@rakazo/core";
+import type { CronFreq, CronPreset, CronUnit } from "@nurlai/core";
 import {
   CRON_FREQS,
   clampIntervalAmount,
   cronFromPreset,
   cronIntervalAmounts,
   localizedClock,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { useUiLocale } from "../../lib/i18n/i18n";
 import { SettingsGroup, SettingsInputRow } from "../settings/settings-group";
 import { MenuPicker } from "../ui/menu-picker";

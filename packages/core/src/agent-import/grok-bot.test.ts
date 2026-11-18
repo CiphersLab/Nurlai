@@ -1,4 +1,4 @@
-import { GROK_BOT_EXPORT_MAX_LENGTH, GROK_BOT_EXPORT_PATH } from "@rakazo/contracts";
+import { GROK_BOT_EXPORT_MAX_LENGTH, GROK_BOT_EXPORT_PATH } from "@nurlai/contracts";
 import { describe, expect, it } from "vitest";
 import type { GrokBot, RoutineTriggersAvailable } from "./index.js";
 import {

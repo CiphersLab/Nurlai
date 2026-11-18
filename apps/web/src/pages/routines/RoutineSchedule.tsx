@@ -1,5 +1,5 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { CronFreq, CronPreset, CronUnit } from "@rakazo/core";
+import type { CronFreq, CronPreset, CronUnit } from "@nurlai/core";
 import {
   CRON_FREQS,
   clampIntervalAmount,
@@ -7,8 +7,8 @@ import {
   cronIntervalAmounts,
   localizedClock,
   russianIntervalUnit,
-} from "@rakazo/core";
-import { Button, Input, OptionSelect } from "@rakazo/ui-web";
+} from "@nurlai/core";
+import { Button, Input, OptionSelect } from "@nurlai/ui-web";
 import { Clock, X } from "lucide-react";
 import { cronFreqLabel, cronUnitLabel } from "../../lib/routines/cron";
 

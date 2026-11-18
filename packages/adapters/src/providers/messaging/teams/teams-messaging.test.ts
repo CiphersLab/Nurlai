@@ -1,5 +1,5 @@
 import { TeamsAdapter } from "@chat-adapter/teams";
-import type { MessagingInboundEvent } from "@rakazo/adapter-kit";
+import type { MessagingInboundEvent } from "@nurlai/adapter-kit";
 import { describe, expect, it, vi } from "vitest";
 import { ChatSdkMessagingSurface } from "../../../messaging/chat-sdk-surface.js";
 import {

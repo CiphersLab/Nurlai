@@ -1,7 +1,7 @@
 import { plural } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import type { BotAvatarSet } from "@rakazo/contracts";
-import { splitPeerLabel } from "@rakazo/core";
+import type { BotAvatarSet } from "@nurlai/contracts";
+import { splitPeerLabel } from "@nurlai/core";
 import type { PressableProps } from "react-native";
 import { Pressable, StyleSheet, Text } from "react-native";
 import { mobileTokens } from "../../lib/appearance/appearance";

@@ -5,9 +5,9 @@ import type {
   ComputerMode,
   ModelCatalogEntry,
   ThinkingLevel,
-} from "@rakazo/contracts";
-import { BOT_NAME_MAX_LENGTH, isBuiltinToolName, resolveBotAvatarSet } from "@rakazo/contracts";
-import { botModelState, modelOptionKey } from "@rakazo/core";
+} from "@nurlai/contracts";
+import { BOT_NAME_MAX_LENGTH, isBuiltinToolName, resolveBotAvatarSet } from "@nurlai/contracts";
+import { botModelState, modelOptionKey } from "@nurlai/core";
 import {
   Button,
   DropdownMenu,
@@ -16,7 +16,7 @@ import {
   DropdownMenuTrigger,
   Input,
   SectionHeading,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { useQuery } from "@tanstack/react-query";
 import { ChevronDown, ChevronLeft, ChevronRight, MoreHorizontal, Plus, X } from "lucide-react";
 import type { ComponentProps, ReactNode } from "react";

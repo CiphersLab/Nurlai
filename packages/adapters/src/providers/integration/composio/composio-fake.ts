@@ -10,7 +10,7 @@ import type {
 import { collectPages } from "../../../integrations/connector-catalog.js";
 import type { EmulatedGithubRelease } from "../../../routines/release-watch.js";
 import {
-  DEFAULT_RAKAZO_EMULATED_RELEASES,
+  DEFAULT_NURLAI_EMULATED_RELEASES,
   RELEASE_WATCH_GITHUB_TOOL_NAMES,
 } from "../../../routines/release-watch.js";
 import type { ToolkitDirectoryEntry } from "./composio-catalog-cache.js";
@@ -215,7 +215,7 @@ export class FakeComposioClient implements ComposioClient {
   failAccountList = false;
   private readonly sessionsById = new Map<string, ComposioSession>();
   private readonly mailboxesByUser = new Map<string, Mailbox>();
-  private githubReleases: EmulatedGithubRelease[] = [...DEFAULT_RAKAZO_EMULATED_RELEASES];
+  private githubReleases: EmulatedGithubRelease[] = [...DEFAULT_NURLAI_EMULATED_RELEASES];
   private nextId = 0;
 
   constructor(private readonly directory: readonly ToolkitDirectoryEntry[] = DEFAULT_DIRECTORY) {}
@@ -676,11 +676,11 @@ function seedMailbox(): Mailbox {
       {
         messageId: "18c5f5d1a2b3c4d5",
         threadId: "18c5f5d1a2b3c4d5",
-        subject: "Welcome to Rakazo",
+        subject: "Welcome to Nurlai",
         sender: "hello@rakazo.test",
         to: "me@example.test",
         snippet: "Your inbox is ready for agent workflows.",
-        messageText: "Your inbox is ready for agent workflows.\n\n— Rakazo",
+        messageText: "Your inbox is ready for agent workflows.\n\n— Nurlai",
         labelIds: ["INBOX", "UNREAD"],
         internalDate: String(base),
       },

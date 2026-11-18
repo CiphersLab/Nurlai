@@ -5,9 +5,9 @@ import { createServer } from "node:http";
 import type { AddressInfo } from "node:net";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { USER_DEVICE_CONNECT_PATH } from "@rakazo/contracts";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import { USER_DEVICE_CONNECT_PATH } from "@nurlai/contracts";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { WebSocket } from "ws";
 import { WebSocketServer } from "ws";
@@ -52,7 +52,7 @@ describe("user device client", () => {
         request.url !== USER_DEVICE_CONNECT_PATH ||
         request.headers.authorization !== `Bearer ${token}`
       ) {
-        const why = refusedBecause ? `x-rakazo-device-revoked: ${refusedBecause}\r\n` : "";
+        const why = refusedBecause ? `x-nurlai-device-revoked: ${refusedBecause}\r\n` : "";
         socket.end(`HTTP/1.1 401 Unauthorized\r\n${why}Content-Length: 0\r\n\r\n`);
         return;
       }

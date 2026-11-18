@@ -1,5 +1,5 @@
-import { FEEDBACK_DESCRIPTION_MAX_LENGTH, FEEDBACK_KINDS } from "@rakazo/contracts";
-import { redactSecrets } from "@rakazo/core";
+import { FEEDBACK_DESCRIPTION_MAX_LENGTH, FEEDBACK_KINDS } from "@nurlai/contracts";
+import { redactSecrets } from "@nurlai/core";
 import { z } from "zod";
 import type { RunContext } from "../assembly/run-context.js";
 import type { ToolCall, ToolHandlers } from "./run-tool-gate.js";

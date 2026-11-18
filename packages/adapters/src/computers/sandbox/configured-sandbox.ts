@@ -14,9 +14,9 @@ import type {
   UnreferencedMachine,
   WorkspaceDirectoryRequest,
   WorkspaceExportLimits,
-} from "@rakazo/adapter-kit";
-import type { PrismaClient } from "@rakazo/db";
-import { runAsSystem } from "@rakazo/db";
+} from "@nurlai/adapter-kit";
+import type { PrismaClient } from "@nurlai/db";
+import { runAsSystem } from "@nurlai/db";
 import { credentialDigest } from "../../secrets/credential-digest.js";
 import { cancelComputerRunWork, probeBackgroundWork, providerKeepsHome } from "../computer-idle.js";
 import {

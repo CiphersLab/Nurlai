@@ -8,7 +8,7 @@ import type {
   VoiceSynthesizeRequest,
   VoiceTranscribeRequest,
   VoiceVerifyResult,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import type { VoiceProviderDefinition } from "../../../voice/voice-provider-descriptor.js";
 
 export const SCRIPTED_VOICE_ID = "alloy-test";

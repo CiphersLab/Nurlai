@@ -28,7 +28,7 @@ import {
   VaultRetryError,
   validateBotModelChange,
   wakeRun,
-} from "@rakazo/adapters";
+} from "@nurlai/adapters";
 import type {
   Actor,
   Bot,
@@ -38,7 +38,7 @@ import type {
   VaultImportReason,
   VaultImportResult,
   VaultPutInput,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   BotSecretAuth,
   noneSkipped,
@@ -46,9 +46,9 @@ import {
   VaultPolicy,
   vaultImportLogin,
   vaultImportOrigin,
-} from "@rakazo/contracts";
-import { ACTIVE_RUN_STATUSES, ClientError, computerUsingRuns, displayName } from "@rakazo/core";
-import type { Prisma } from "@rakazo/db";
+} from "@nurlai/contracts";
+import { ACTIVE_RUN_STATUSES, ClientError, computerUsingRuns, displayName } from "@nurlai/core";
+import type { Prisma } from "@nurlai/db";
 import {
   botProfileLabelsChanged,
   commitBotUpdate,
@@ -60,8 +60,8 @@ import {
   restoreBotUnderComputerQuota,
   settingsTarget,
   THREAD_LOCK_TRANSACTION_OPTIONS,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { managedAppCatalog } from "../account/onboarding.js";
 import { requireIdentityConfirmation } from "../auth/identity-confirmation.js";
 import type { AgentImportServices } from "../bots/agent-import.js";

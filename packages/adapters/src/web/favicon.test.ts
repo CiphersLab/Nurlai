@@ -1,8 +1,8 @@
 import type { IncomingMessage, Server, ServerResponse } from "node:http";
 import { createServer } from "node:http";
 import type { AddressInfo } from "node:net";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import sharp from "sharp";
 import { fetch as undiciFetch } from "undici";
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
@@ -823,6 +823,6 @@ describe("favicon SSRF guard", () => {
 
     expect(seen.cookie).toBeUndefined();
     expect(seen.authorization).toBeUndefined();
-    expect(seen["user-agent"]).toMatch(/^Rakazo\//);
+    expect(seen["user-agent"]).toMatch(/^Nurlai\//);
   });
 });

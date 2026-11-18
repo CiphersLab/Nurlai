@@ -5,8 +5,8 @@ import { access, lstat, open, readFile, rename, unlink } from "node:fs/promises"
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { serve } from "@hono/node-server";
-import type { ServerUpdateRun } from "@rakazo/contracts";
-import type { ComposeUpdateStep } from "@rakazo/core";
+import type { ServerUpdateRun } from "@nurlai/contracts";
+import type { ComposeUpdateStep } from "@nurlai/core";
 import {
   chooseUpdateStrategy,
   commitImageTag,
@@ -34,12 +34,12 @@ import {
   selectLatestRelease,
   upsertEnvAssignments,
   validateUpdateRequest,
-} from "@rakazo/core";
-import { hasValidBearerToken } from "@rakazo/core/node/secrets-guard";
-import type { Logger } from "@rakazo/logging";
-import { bestEffort, SERVICE_NAMES } from "@rakazo/logging";
-import { createRootLogger } from "@rakazo/logging/axiom";
-import { requestLogging } from "@rakazo/logging/hono";
+} from "@nurlai/core";
+import { hasValidBearerToken } from "@nurlai/core/node/secrets-guard";
+import type { Logger } from "@nurlai/logging";
+import { bestEffort, SERVICE_NAMES } from "@nurlai/logging";
+import { createRootLogger } from "@nurlai/logging/axiom";
+import { requestLogging } from "@nurlai/logging/hono";
 import type { Context } from "hono";
 import { Hono } from "hono";
 import type { ComputerTagChange } from "./runtime-state.js";
@@ -129,7 +129,7 @@ export function commandEnvironment(
   // Root against a checkout the deploy user owns makes git exit 128 with "detected dubious
   // ownership". It is declared here, not in Compose, because this allowlist drops the service
   // environment; it is applied after `overrides` so a caller cannot widen it.
-  const deployDir = source.RAKAZO_DEPLOY_DIR?.trim();
+  const deployDir = source.NURLAI_DEPLOY_DIR?.trim();
   const gitOwnership =
     deployDir === undefined || deployDir === ""
       ? {}
@@ -533,7 +533,7 @@ export function createUpdaterApp(
     if (decision.strategy === "build") {
       if (!checkout.present) {
         throw new UpdateRefused(
-          "Building a fork needs the deployment's git checkout, and RAKAZO_DEPLOY_DIR has no .git directory. Clone the fork to the deployment directory, or switch back to the official repository to use published images.",
+          "Building a fork needs the deployment's git checkout, and NURLAI_DEPLOY_DIR has no .git directory. Clone the fork to the deployment directory, or switch back to the official repository to use published images.",
         );
       }
       if (checkout.remoteUrl === null) {

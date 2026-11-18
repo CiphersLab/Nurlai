@@ -1,4 +1,4 @@
-import type { Routine } from "@rakazo/contracts";
+import type { Routine } from "@nurlai/contracts";
 import { describe, expect, it, vi } from "vitest";
 import { deferred } from "../primitives/async.test-support.js";
 import { createRoutineMentionBatcher } from "./routine-mention-batcher.js";

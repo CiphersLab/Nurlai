@@ -1,9 +1,9 @@
 import { createHash } from "node:crypto";
-import type { AdapterContext, ComputerRef, PageBrowserCommand } from "@rakazo/adapter-kit";
-import { authenticatorKey, encodeLoginSecret } from "@rakazo/contracts";
-import { createStreamingRedactor } from "@rakazo/core";
-import { installAuditEventStore, runLoginKind } from "@rakazo/db";
-import * as Logging from "@rakazo/logging";
+import type { AdapterContext, ComputerRef, PageBrowserCommand } from "@nurlai/adapter-kit";
+import { authenticatorKey, encodeLoginSecret } from "@nurlai/contracts";
+import { createStreamingRedactor } from "@nurlai/core";
+import { installAuditEventStore, runLoginKind } from "@nurlai/db";
+import * as Logging from "@nurlai/logging";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { FakeBrowserProvider } from "../../browser/fake-browser.js";
 import { ComputerBrowserProvider } from "../../computers/screens/computer-browser.js";

@@ -21,12 +21,12 @@ import type {
   JobPublisher,
   SandboxProvider,
   SemanticMemoryProvider,
-} from "@rakazo/adapter-kit";
-import { SandboxDamagedError } from "@rakazo/adapter-kit";
-import { browserProfilePathForScreen } from "@rakazo/core/node/desktop-runtime";
-import { deferred } from "@rakazo/core/test-async";
-import type { createRepos, PrismaClient } from "@rakazo/db";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { SandboxDamagedError } from "@nurlai/adapter-kit";
+import { browserProfilePathForScreen } from "@nurlai/core/node/desktop-runtime";
+import { deferred } from "@nurlai/core/test-async";
+import type { createRepos, PrismaClient } from "@nurlai/db";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { describe, expect, it, vi } from "vitest";
 import { BrowserStoppedReleaseError } from "../computers/screens/computer-screens.js";
 import { LocalAgentHomeStore } from "../storage/home.js";
@@ -141,7 +141,7 @@ describe("spawned bot creation", () => {
       name: "Painter",
       threadId: "thread-2",
     });
-    const createReposSpy = vi.spyOn(await import("@rakazo/db"), "createRepos").mockReturnValue({
+    const createReposSpy = vi.spyOn(await import("@nurlai/db"), "createRepos").mockReturnValue({
       createBot,
     } as unknown as ReturnType<typeof createRepos>);
 

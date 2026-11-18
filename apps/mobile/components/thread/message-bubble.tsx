@@ -1,9 +1,9 @@
 import { ph, t } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import { ChatMarkdown, MarkdownLongPressContext, withBlockMentions } from "@rakazo/chat-ui/native";
-import type { LoginFieldInput, MessageBlock } from "@rakazo/contracts";
-import { artifactPreviewKind, isAttachmentAudioMimeType } from "@rakazo/contracts";
-import type { ChildBotBlock, PeerExchange } from "@rakazo/core";
+import { ChatMarkdown, MarkdownLongPressContext, withBlockMentions } from "@nurlai/chat-ui/native";
+import type { LoginFieldInput, MessageBlock } from "@nurlai/contracts";
+import { artifactPreviewKind, isAttachmentAudioMimeType } from "@nurlai/contracts";
+import type { ChildBotBlock, PeerExchange } from "@nurlai/core";
 import {
   formatFileSize,
   isApprovalAskBlock,
@@ -11,8 +11,8 @@ import {
   messagingProviderLabel,
   resolveAskChoice,
   selectedAskActionLabel,
-} from "@rakazo/core";
-import { fontWeight, typeScale } from "@rakazo/ui-tokens";
+} from "@nurlai/core";
+import { fontWeight, typeScale } from "@nurlai/ui-tokens";
 import type { ComponentProps } from "react";
 import { memo, useContext, useMemo, useState } from "react";
 import type { TextProps } from "react-native";

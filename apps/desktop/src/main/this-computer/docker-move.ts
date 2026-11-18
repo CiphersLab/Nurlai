@@ -87,8 +87,8 @@ const READY_ATTEMPTS = 30;
 // The runtime role must exist before the restore, since the dump grants to it and its policies
 // name it. A move cut short may have created it already.
 const RUNTIME_ROLE_SQL = `DO $$ BEGIN
-  IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname = 'rakazo_app') THEN
-    CREATE ROLE rakazo_app NOLOGIN NOSUPERUSER NOBYPASSRLS NOCREATEDB NOCREATEROLE;
+  IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname = 'nurlai_app') THEN
+    CREATE ROLE nurlai_app NOLOGIN NOSUPERUSER NOBYPASSRLS NOCREATEDB NOCREATEROLE;
   END IF;
 END $$;
 `;

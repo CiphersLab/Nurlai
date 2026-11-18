@@ -1,4 +1,4 @@
-import type { AgentRunRequest } from "@rakazo/adapter-kit";
+import type { AgentRunRequest } from "@nurlai/adapter-kit";
 import { afterEach, expect, it, vi } from "vitest";
 import type * as ModelSelection from "../../models/model-selection.js";
 import { findConnectedModelCredential } from "../../models/model-selection.js";
@@ -80,8 +80,8 @@ it.each([false, true])(
   "keeps an included decision checker operator-funded with a personal connection (pinned=%s)",
   async (pinned) => {
     vi.stubEnv("OPENROUTER_API_KEY", "fake-operator-key");
-    vi.stubEnv("RAKAZO_AUTO_REVIEW_PROVIDER", pinned ? "openrouter" : "");
-    vi.stubEnv("RAKAZO_AUTO_REVIEW_MODEL", pinned ? "typesafe/jev-1.14" : "");
+    vi.stubEnv("NURLAI_AUTO_REVIEW_PROVIDER", pinned ? "openrouter" : "");
+    vi.stubEnv("NURLAI_AUTO_REVIEW_MODEL", pinned ? "typesafe/jev-1.14" : "");
     vi.mocked(findConnectedModelCredential).mockClear();
     vi.mocked(resolveModelKey).mockClear();
     const deps = {
@@ -186,7 +186,7 @@ it("keeps an explicitly credit-funded checker separate from the included checker
 });
 
 it("retains direct self-hosted checker usage in the customer usage view", async () => {
-  vi.stubEnv("RAKAZO_AUTO_REVIEW_PROVIDER", "jev");
+  vi.stubEnv("NURLAI_AUTO_REVIEW_PROVIDER", "jev");
   vi.stubEnv("TYPESAFE_API_KEY", "fake-direct-checker-key");
   vi.stubGlobal(
     "fetch",

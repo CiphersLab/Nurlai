@@ -1,7 +1,7 @@
 import { MenuView } from "@expo/ui/community/menu";
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import type { BillingStatus, HeldCreditAmount } from "@rakazo/contracts";
+import type { BillingStatus, HeldCreditAmount } from "@nurlai/contracts";
 import {
   ByokTierSchema,
   byokTierChangeOffered,
@@ -13,8 +13,8 @@ import {
   isCancelledTrial,
   MODEL_CREDIT_AMOUNTS,
   ModelCreditAmountSchema,
-} from "@rakazo/contracts";
-import { writeSaved } from "@rakazo/core/query";
+} from "@nurlai/contracts";
+import { writeSaved } from "@nurlai/core/query";
 import { useIsFocused, useRouter } from "expo-router";
 import { useEffect, useRef, useState } from "react";
 import { Alert, ScrollView, Share, StyleSheet } from "react-native";

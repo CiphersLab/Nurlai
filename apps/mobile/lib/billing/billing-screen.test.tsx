@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { notifyManager } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 import { act, useEffect } from "react";
@@ -35,7 +35,7 @@ vi.mock("../api/api", () => ({
   captureApiRequestContext: async (spaceId: string | null = mocks.selectedSpace) => ({
     apiBase: "https://app.example.test",
     sessionGeneration: 1,
-    headers: spaceId ? { "x-rakazo-space-id": spaceId } : {},
+    headers: spaceId ? { "x-nurlai-space-id": spaceId } : {},
   }),
 }));
 vi.mock("../api/session", () => ({ currentSessionGeneration: () => 1 }));
@@ -136,7 +136,7 @@ it("opens the portal once for a double tap and refreshes the status in the Space
   expect(sent("billing/portal")).toHaveLength(1);
   expect(mocks.openAuthSessionAsync).toHaveBeenCalledTimes(1);
   const [, , options] = sent("billing/refresh")[0] ?? [];
-  expect(options.requestContext.headers["x-rakazo-space-id"]).toBe("space-1");
+  expect(options.requestContext.headers["x-nurlai-space-id"]).toBe("space-1");
   await vi.waitFor(() => expect(container.textContent).toContain("Available credits"));
   expect(button("Manage billing").disabled).toBe(false);
 });

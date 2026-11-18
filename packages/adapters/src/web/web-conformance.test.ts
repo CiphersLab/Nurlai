@@ -1,4 +1,4 @@
-import type { AdapterContext, WebProvider } from "@rakazo/adapter-kit";
+import type { AdapterContext, WebProvider } from "@nurlai/adapter-kit";
 import { describe, expect, it } from "vitest";
 import { FakeWebProvider } from "../providers/web/fake/fake-web.js";
 import { KeenableWebProvider } from "../providers/web/keenable/keenable-web.js";

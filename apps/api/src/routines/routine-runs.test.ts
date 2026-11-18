@@ -1,7 +1,7 @@
-import type { Actor } from "@rakazo/contracts";
-import { RoutineHistorySchema } from "@rakazo/contracts";
-import { runFailureError } from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
+import type { Actor } from "@nurlai/contracts";
+import { RoutineHistorySchema } from "@nurlai/contracts";
+import { runFailureError } from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import { listRoutineRuns } from "./routine-runs.js";
 

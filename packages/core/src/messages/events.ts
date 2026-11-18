@@ -4,7 +4,7 @@ import type {
   ThreadMessage,
   ToolHistory,
   ToolStepCall,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import { preserveIdentitySource } from "../bots/identity-source.js";
 import { cloudAgentBlockFromPayload } from "../integrations/cloud-agent.js";
 import { modelFallbackFailure, parseModelFallbackFailure } from "../runs/run-error.js";

@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
-import type { OrganizationRole } from "@rakazo/contracts";
-import { ClientError } from "@rakazo/core";
+import type { OrganizationRole } from "@nurlai/contracts";
+import { ClientError } from "@nurlai/core";
 import { GUEST_ROLE, isOwnerRole, LIVE_ORGANIZATION } from "../billing/billing.js";
 import type { PrismaClient } from "../database/client.js";
 import { Prisma } from "../database/client.js";

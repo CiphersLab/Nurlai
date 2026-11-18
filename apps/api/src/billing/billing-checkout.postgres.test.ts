@@ -2,17 +2,17 @@ import type {
   BillingByokCheckoutRequest,
   BillingCheckoutRequest,
   BillingCreditCheckoutRequest,
-} from "@rakazo/adapter-kit";
-import { BillingEmulator } from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
-import type { PrismaClient } from "@rakazo/db";
+} from "@nurlai/adapter-kit";
+import { BillingEmulator } from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
+import type { PrismaClient } from "@nurlai/db";
 import {
   asSystem,
   billingAccountForOrganization,
   createBillingAccount,
   createDb,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { createBillingService } from "./billing.js";
 import { expireCheckoutLease, watchCheckoutLeaseClaims } from "./checkout-lease.test-support.js";

@@ -1,6 +1,6 @@
 import { t } from "@lingui/core/macro";
-import type { UserDeviceRequest } from "@rakazo/core";
-import { listUserDevicesWith, readBoundedJsonResponse, removeUserDeviceWith } from "@rakazo/core";
+import type { UserDeviceRequest } from "@nurlai/core";
+import { listUserDevicesWith, readBoundedJsonResponse, removeUserDeviceWith } from "@nurlai/core";
 
 const request: UserDeviceRequest = async (path, method) => {
   const response = await fetch(path, {

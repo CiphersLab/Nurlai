@@ -1,6 +1,6 @@
 import { createCipheriv, createDecipheriv, hkdfSync, randomBytes } from "node:crypto";
-import type { KeyProvider, KeyWrapContext, WrappedDataKey } from "@rakazo/adapter-kit";
-import { resolveEncryptionKey } from "@rakazo/core/node/secrets-guard";
+import type { KeyProvider, KeyWrapContext, WrappedDataKey } from "@nurlai/adapter-kit";
+import { resolveEncryptionKey } from "@nurlai/core/node/secrets-guard";
 import { createRowId } from "../database/row-id.js";
 import { runAsSystem } from "../database/row-security.js";
 import type { DataKey } from "./content-crypto.js";

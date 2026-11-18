@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
-import { BOT_COLORS, BOT_SETTINGS_SECTIONS } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
+import { BOT_COLORS, BOT_SETTINGS_SECTIONS } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
 import { notifyManager } from "@tanstack/react-query";
 import * as Notifications from "expo-notifications";
 import type { ComponentProps, ReactNode } from "react";
@@ -67,7 +67,7 @@ vi.mock("../api/api", () => ({
   captureApiRequestContext: async () => ({
     apiBase: "https://api.example.test",
     sessionGeneration: 1,
-    headers: { "x-rakazo-space-id": "space-a" },
+    headers: { "x-nurlai-space-id": "space-a" },
   }),
   rpc: async (procedure: string, input?: unknown) => {
     if (

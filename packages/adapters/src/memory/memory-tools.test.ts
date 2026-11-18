@@ -1,4 +1,4 @@
-import type { ConnectorTool, SemanticMemoryProvider } from "@rakazo/adapter-kit";
+import type { ConnectorTool, SemanticMemoryProvider } from "@nurlai/adapter-kit";
 import { describe, expect, it, vi } from "vitest";
 import type { RunContext } from "../runs/assembly/run-context.js";
 import type { ToolCall } from "../runs/tools/run-tool-gate.js";

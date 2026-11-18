@@ -1,9 +1,9 @@
-import type { AdapterContext, SecretStore } from "@rakazo/adapter-kit";
-import { VoiceAccountError } from "@rakazo/adapter-kit";
-import type { Actor, BotSettingsValues, VoiceInfo } from "@rakazo/contracts";
-import { ThinkingLevelSchema } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
-import { findDefaultVoiceCredential } from "@rakazo/db";
+import type { AdapterContext, SecretStore } from "@nurlai/adapter-kit";
+import { VoiceAccountError } from "@nurlai/adapter-kit";
+import type { Actor, BotSettingsValues, VoiceInfo } from "@nurlai/contracts";
+import { ThinkingLevelSchema } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
+import { findDefaultVoiceCredential } from "@nurlai/db";
 import {
   connectedModelChoices,
   echoedQuery,

@@ -1,6 +1,6 @@
-import { botMessageAllowsSilence, userTurnMessageForRun } from "@rakazo/core";
-import { isPartialReplyClientNonce, storedMessageBlocks } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+import { botMessageAllowsSilence, userTurnMessageForRun } from "@nurlai/core";
+import { isPartialReplyClientNonce, storedMessageBlocks } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { loadAgentMemoryContext } from "../../memory/memory-context.js";
 import { PARTIAL_REPLY_NOTE } from "../../messaging/automated-messages.prompt.js";
 import {

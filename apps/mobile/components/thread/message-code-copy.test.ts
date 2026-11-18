@@ -24,7 +24,7 @@ vi.mock("react-native-reanimated", () => ({
 }));
 vi.mock("expo-clipboard", () => ({ setStringAsync: mocks.setStringAsync }));
 vi.mock("expo-secure-store", () => ({}));
-vi.mock("@rakazo/chat-ui/native", () => ({ markdownCodeBlocks: mocks.markdownCodeBlocks }));
+vi.mock("@nurlai/chat-ui/native", () => ({ markdownCodeBlocks: mocks.markdownCodeBlocks }));
 vi.mock("../../lib/notifications/live-notifications", () => ({ resumeLiveNotifications: vi.fn() }));
 vi.mock("../../lib/api/network-cache", () => ({ clearNetworkCache: vi.fn() }));
 vi.mock("../../lib/native/native", () => ({

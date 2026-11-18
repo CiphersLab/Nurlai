@@ -1,9 +1,9 @@
 import { RPCHandler } from "@orpc/server/fetch";
-import type { PiOAuthConnected, PiOAuthPersist } from "@rakazo/adapters";
-import * as adapters from "@rakazo/adapters";
-import { ModelSignInError } from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
-import { MODEL_KEY_FORMAT_ERROR } from "@rakazo/contracts";
+import type { PiOAuthConnected, PiOAuthPersist } from "@nurlai/adapters";
+import * as adapters from "@nurlai/adapters";
+import { ModelSignInError } from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
+import { MODEL_KEY_FORMAT_ERROR } from "@nurlai/contracts";
 import { describe, expect, it, vi } from "vitest";
 import type { RouterDeps } from "../router.js";
 import type { RouterHandler } from "../router-test-support.js";

@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 
-import { GROUP_MEMBER_MAX } from "@rakazo/contracts";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import { GROUP_MEMBER_MAX } from "@nurlai/contracts";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { notifyManager } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 import { act } from "react";
@@ -46,7 +46,7 @@ vi.mock("../api/api", () => ({
   captureApiRequestContext: async (spaceId: string | null = session.selectedSpace) => ({
     apiBase: "http://api.test",
     sessionGeneration: 1,
-    headers: spaceId ? { "x-rakazo-space-id": spaceId } : {},
+    headers: spaceId ? { "x-nurlai-space-id": spaceId } : {},
   }),
 }));
 vi.mock("../api/session", () => ({ currentSessionGeneration: () => 1 }));
@@ -233,7 +233,7 @@ const sentFor = (spaceId: string) =>
     requestContext: {
       apiBase: "http://api.test",
       sessionGeneration: 1,
-      headers: { "x-rakazo-space-id": spaceId },
+      headers: { "x-nurlai-space-id": spaceId },
     },
   });
 const creations = () => rpc.mock.calls.filter(([procedure]) => procedure === "groups/create");

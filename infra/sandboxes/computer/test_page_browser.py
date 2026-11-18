@@ -769,17 +769,17 @@ class PurchaseTest(unittest.TestCase):
                 helper.validate_actions([step])
 
     def test_a_purchase_check_with_no_browser_finds_nothing_and_one_that_cannot_list_tabs_fails(self):
-        with patch.dict(os.environ, {"RAKAZO_CDP_PORT": "1"}), patch.object(helper, "browser_closed", return_value=True), \
+        with patch.dict(os.environ, {"NURLAI_CDP_PORT": "1"}), patch.object(helper, "browser_closed", return_value=True), \
                 patch("builtins.print") as printed:
             helper.run(["rakazo-page-browser", "purchase_check", '{"desktop": true}'])
         self.assertEqual(json.loads(printed.call_args.args[0])["purchase"], None)
         # A browser that is running but slow to answer is a failed check, which asks.
-        with patch.dict(os.environ, {"RAKAZO_CDP_PORT": "1"}), patch.object(helper, "browser_closed", return_value=False), \
+        with patch.dict(os.environ, {"NURLAI_CDP_PORT": "1"}), patch.object(helper, "browser_closed", return_value=False), \
                 patch.object(helper, "wait_for_cdp", side_effect=RuntimeError("CDP not ready on port 1: timed out")), \
                 patch("builtins.print") as printed:
             helper.run(["rakazo-page-browser", "purchase_check", '{"desktop": true}'])
         self.assertEqual(json.loads(printed.call_args.args[0])["ok"], False)
-        with patch.dict(os.environ, {"RAKAZO_CDP_PORT": "1"}), patch.object(helper, "wait_for_cdp"), \
+        with patch.dict(os.environ, {"NURLAI_CDP_PORT": "1"}), patch.object(helper, "wait_for_cdp"), \
                 patch.object(helper, "page_tabs", side_effect=RuntimeError("tab list too large")), \
                 patch("builtins.print") as printed:
             helper.run(["rakazo-page-browser", "purchase_check", '{"desktop": true}'])
@@ -788,7 +788,7 @@ class PurchaseTest(unittest.TestCase):
     def test_a_purchase_check_leaves_the_tabs_alone(self):
         listing = [{"type": "page", "id": "tab-1", "url": "https://shop.example.test/pay"}]
         browser = FakeAgentBrowser()
-        with patch.dict(os.environ, {"RAKAZO_CDP_PORT": "1"}), patch.object(helper, "wait_for_cdp"), \
+        with patch.dict(os.environ, {"NURLAI_CDP_PORT": "1"}), patch.object(helper, "wait_for_cdp"), \
                 patch.object(helper, "http_get_json", return_value=listing), \
                 patch.object(helper, "AgentBrowser", return_value=browser), \
                 patch.object(browser, "use_tab", create=True), \
@@ -799,7 +799,7 @@ class PurchaseTest(unittest.TestCase):
 
     def test_a_purchase_check_with_no_page_or_a_browser_page_showing_finds_nothing_to_buy(self):
         for listing in ([], [{"type": "page", "id": "newtab", "url": "chrome://newtab/"}]):
-            with self.subTest(listing=listing), patch.dict(os.environ, {"RAKAZO_CDP_PORT": "1"}), \
+            with self.subTest(listing=listing), patch.dict(os.environ, {"NURLAI_CDP_PORT": "1"}), \
                     patch.object(helper, "wait_for_cdp"), patch.object(helper, "http_get_json", return_value=listing), \
                     patch("builtins.print") as printed:
                 self.assertEqual(helper.run(["rakazo-page-browser", "purchase_check", '{"desktop": true}']), 0)
@@ -1112,7 +1112,7 @@ class ActTest(unittest.TestCase):
     def test_a_dialog_open_when_the_page_is_read_is_reported_in_place_of_the_failure(self):
         browser = FakeAgentBrowser()
         browser.dialog = {"type": "confirm", "message": "Delete this?"}
-        with patch.dict(os.environ, {"RAKAZO_CDP_PORT": "1"}), patch.object(helper, "wait_for_cdp"), \
+        with patch.dict(os.environ, {"NURLAI_CDP_PORT": "1"}), patch.object(helper, "wait_for_cdp"), \
                 patch.object(helper, "http_get_json", return_value=[{"type": "page", "id": "tab-1",
                                                                       "url": "https://portal.example.test/"}]), \
                 patch.object(helper, "AgentBrowser", return_value=browser), \
@@ -1124,7 +1124,7 @@ class ActTest(unittest.TestCase):
             "fallback": "computer_act"})
 
     def test_the_snapshot_command_passes_its_query_on(self):
-        with patch.dict(os.environ, {"RAKAZO_CDP_PORT": "1", "RAKAZO_BROWSER_ARGS_STDIN": "1"}), \
+        with patch.dict(os.environ, {"NURLAI_CDP_PORT": "1", "NURLAI_BROWSER_ARGS_STDIN": "1"}), \
                 patch.object(helper, "wait_for_cdp"), \
                 patch.object(helper, "read_stdin_line", return_value='{"command": "snapshot", "query": " zip "}'), \
                 patch.object(helper, "http_get_json", return_value=[{"type": "page", "id": "tab-1",
@@ -1557,7 +1557,7 @@ class NewTabTest(unittest.TestCase):
             return {**result, "url": f"https://portal.example.test/{chromium.ids[0]}",
                     **({"note": note} if note and first else {})}
 
-        with patch.dict(os.environ, {"RAKAZO_CDP_PORT": "9222"}), \
+        with patch.dict(os.environ, {"NURLAI_CDP_PORT": "9222"}), \
                 patch.object(helper, "wait_for_cdp", return_value={"webSocketDebuggerUrl": "ws://b/1"}), \
                 patch.object(helper, "page_tabs", chromium.list), \
                 patch.object(helper.urllib.request, "urlopen", chromium.urlopen), \
@@ -1649,7 +1649,7 @@ class NewTabTest(unittest.TestCase):
 
 class RunTest(unittest.TestCase):
     def test_without_a_browser_falls_back_to_the_desktop_without_doubt(self):
-        with patch.dict(os.environ, {"RAKAZO_CDP_PORT": "1"}), patch.object(helper, "wait_for_cdp",
+        with patch.dict(os.environ, {"NURLAI_CDP_PORT": "1"}), patch.object(helper, "wait_for_cdp",
                                                                               side_effect=RuntimeError("CDP not ready on port 1: refused")), \
                 patch("builtins.print") as printed:
             self.assertEqual(helper.run(["rakazo-page-browser", "act", '{"actions": []}']), 0)
@@ -1669,7 +1669,7 @@ class RunTest(unittest.TestCase):
             os.close(read)
 
     def test_closed_stdin_cancels_helper_without_a_browser(self):
-        env = {**os.environ, "RAKAZO_BROWSER_WATCH_STDIN": "1", "RAKAZO_CDP_PORT": "1"}
+        env = {**os.environ, "NURLAI_BROWSER_WATCH_STDIN": "1", "NURLAI_CDP_PORT": "1"}
         with subprocess.Popen([sys.executable, str(HERE / "rakazo-page-browser"), "snapshot", "{}"], env=env,
                               stdin=subprocess.PIPE, stdout=subprocess.PIPE) as process:
             process.stdin.close()
@@ -1704,7 +1704,7 @@ class RunTest(unittest.TestCase):
         opened = [{"type": "page", "id": "site", "url": "https://portal.example.test/"}]
         browser = FakeAgentBrowser(requests=[])
         browser.stuck = True
-        with patch.dict(os.environ, {"RAKAZO_CDP_PORT": "1"}), patch.object(helper, "wait_for_cdp"), \
+        with patch.dict(os.environ, {"NURLAI_CDP_PORT": "1"}), patch.object(helper, "wait_for_cdp"), \
                 patch.object(helper, "http_get_json", side_effect=[listing, opened]), \
                 patch.object(helper.urllib.request, "urlopen"), \
                 patch.object(helper, "AgentBrowser", return_value=browser), \
@@ -1722,7 +1722,7 @@ class RunTest(unittest.TestCase):
         browser.stuck = True
         original = browser.answer
         browser.answer = lambda command: {"targetId": "site"} if command[:2] == ["tab", "new"] else original(command)
-        with patch.dict(os.environ, {"RAKAZO_CDP_PORT": "1"}), patch.object(helper, "wait_for_cdp"), \
+        with patch.dict(os.environ, {"NURLAI_CDP_PORT": "1"}), patch.object(helper, "wait_for_cdp"), \
                 patch.object(helper, "http_get_json", side_effect=[listing, listing]), \
                 patch.object(helper, "front_tab", side_effect=[("newtab", "chrome://newtab/"), ("pop-up", "x")]), \
                 patch.object(helper.urllib.request, "urlopen"), \
@@ -2541,8 +2541,8 @@ class DownloadTest(unittest.TestCase):
         self.assertTrue(options["start_new_session"] and options["close_fds"])
         for stream in ("stdin", "stdout", "stderr"):
             self.assertEqual(options[stream], helper.subprocess.DEVNULL)
-        self.assertNotIn("RAKAZO_BROWSER_ARGS_STDIN", options["env"])
-        self.assertNotIn("RAKAZO_BROWSER_WATCH_STDIN", options["env"])
+        self.assertNotIn("NURLAI_BROWSER_ARGS_STDIN", options["env"])
+        self.assertNotIn("NURLAI_BROWSER_WATCH_STDIN", options["env"])
         self.assertFalse(Path(self.folder, "slow.pdf").exists())
 
     def test_the_finisher_names_a_download_only_once_it_is_complete_and_cancels_one_over_the_limit(self):

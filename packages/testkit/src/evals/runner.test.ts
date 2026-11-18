@@ -1,4 +1,4 @@
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { describe, expect, it, vi } from "vitest";
 import type { EvalActor, EvalApp } from "./runner.js";
 import { cleanupActors } from "./runner.js";

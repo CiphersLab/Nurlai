@@ -1,5 +1,5 @@
-import type { RealtimeFanout } from "@rakazo/adapter-kit";
-import { getLogger } from "@rakazo/logging";
+import type { RealtimeFanout } from "@nurlai/adapter-kit";
+import { getLogger } from "@nurlai/logging";
 import { GUEST_ROLE } from "../billing/billing.js";
 import type { PrismaClient } from "../database/client.js";
 import { retryWhileDatabaseUnavailable } from "../database/database-outage.js";

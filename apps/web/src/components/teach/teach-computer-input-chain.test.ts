@@ -1,4 +1,4 @@
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { describe, expect, it } from "vitest";
 import { enqueueTeachComputerInput } from "./teach-computer-input-chain";
 

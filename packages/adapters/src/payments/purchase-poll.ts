@@ -1,7 +1,7 @@
-import type { AdapterContext, PurchaseSnapshot, PurchaseStatus } from "@rakazo/adapter-kit";
-import { PaymentWalletDisconnected, PaymentWalletRequestRejected } from "@rakazo/adapter-kit";
-import type { Purchase } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+import type { AdapterContext, PurchaseSnapshot, PurchaseStatus } from "@nurlai/adapter-kit";
+import { PaymentWalletDisconnected, PaymentWalletRequestRejected } from "@nurlai/adapter-kit";
+import type { Purchase } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { releaseUnpaidPurchase } from "../billing/spending-gate.js";
 import { wakeRun } from "../runs/wakeups/wake-run.js";
 import { purchaseWakePrompt } from "../runs/wakeups/wakes.prompt.js";

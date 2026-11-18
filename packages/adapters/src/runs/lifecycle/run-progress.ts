@@ -1,5 +1,5 @@
-import type { MessageBlock } from "@rakazo/contracts";
-import type { ToolStepOutcome } from "@rakazo/core";
+import type { MessageBlock } from "@nurlai/contracts";
+import type { ToolStepOutcome } from "@nurlai/core";
 import {
   appendTextSegment,
   appendToolCallSegment,
@@ -11,9 +11,9 @@ import {
   redactSecrets,
   redactSecretsAfter,
   withToolStepOutcomes,
-} from "@rakazo/core";
-import type { Run } from "@rakazo/db";
-import { storedMessageBlocks } from "@rakazo/db";
+} from "@nurlai/core";
+import type { Run } from "@nurlai/db";
+import { storedMessageBlocks } from "@nurlai/db";
 import { USER_COMPUTER_SCREEN_TOOLS } from "../../computers/host/user-computer-tools.js";
 import { IMAGE_RETURNING_COMPUTER_TOOLS } from "../../models/model-vision.js";
 import type { ReplyState, RunContext } from "../assembly/run-context.js";

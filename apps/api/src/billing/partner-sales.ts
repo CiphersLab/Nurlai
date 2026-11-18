@@ -1,8 +1,8 @@
-import type { BillingPlanPayment, BillingProvider, PartnerProgram } from "@rakazo/adapter-kit";
-import { BillingCustomerNotFoundError } from "@rakazo/adapter-kit";
-import type { PrismaClient } from "@rakazo/db";
-import { isOwnerRole } from "@rakazo/db";
-import { bestEffort, getLogger } from "@rakazo/logging";
+import type { BillingPlanPayment, BillingProvider, PartnerProgram } from "@nurlai/adapter-kit";
+import { BillingCustomerNotFoundError } from "@nurlai/adapter-kit";
+import type { PrismaClient } from "@nurlai/db";
+import { isOwnerRole } from "@nurlai/db";
+import { bestEffort, getLogger } from "@nurlai/logging";
 
 /** A founding owner joins as signup creates the organization; anyone later did not create it. */
 const FOUNDING_WINDOW_MS = 60_000;

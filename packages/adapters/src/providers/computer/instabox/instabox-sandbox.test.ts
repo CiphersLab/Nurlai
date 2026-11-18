@@ -1,5 +1,5 @@
 import { InstaboxError } from "@insforge/instabox-sdk";
-import type { PageBrowserCommand } from "@rakazo/adapter-kit";
+import type { PageBrowserCommand } from "@nurlai/adapter-kit";
 import { describe, expect, it, vi } from "vitest";
 import { installPageBrowserCommand } from "../../../browser/page-browser-install.js";
 import type { RemoteDesktopSdk } from "../../../computers/sandbox/remote-desktop-sandbox.js";

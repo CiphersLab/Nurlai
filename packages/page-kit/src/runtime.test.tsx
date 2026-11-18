@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { flush } from "@rakazo/core/test-async";
+import { flush } from "@nurlai/core/test-async";
 import { act } from "react";
 import { expect, it, vi } from "vitest";
 import { pageViewerCode } from "./compile.js";
@@ -16,7 +16,7 @@ it("mounts a page and reports its height where the browser has no ResizeObserver
   const code = pageViewerCode(
     `const App = () => (\n  <Page title="Hello">\n    <Text>Drawn</Text>\n  </Page>\n);\nexport default App;\n`,
   );
-  const page = (window as unknown as { RakazoPage: { mount: (boot: object) => void } }).RakazoPage;
+  const page = (window as unknown as { NurlaiPage: { mount: (boot: object) => void } }).NurlaiPage;
   await act(async () => {
     page.mount({ code, theme: "light", errorTitle: "This page couldn't be shown." });
     await flush();
@@ -43,7 +43,7 @@ it("runs a saved page that declares its own component under a kit component's na
   );
   if (!checked.ok) throw new Error(checked.errors.join("\n"));
   document.body.replaceChildren();
-  const page = (window as unknown as { RakazoPage: { mount: (boot: object) => void } }).RakazoPage;
+  const page = (window as unknown as { NurlaiPage: { mount: (boot: object) => void } }).NurlaiPage;
   await act(async () => {
     page.mount({ code: checked.code, theme: "light", errorTitle: "This page couldn't be shown." });
     await flush();

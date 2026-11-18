@@ -1,4 +1,4 @@
-import type { MessageBlock } from "@rakazo/contracts";
+import type { MessageBlock } from "@nurlai/contracts";
 import type { PrismaClient } from "../database/client.js";
 
 const RESPONSE_BLOCK_KINDS = new Set<string>([

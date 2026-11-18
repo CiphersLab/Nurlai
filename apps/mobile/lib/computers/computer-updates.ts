@@ -1,4 +1,4 @@
-import { createComputerUpdates, isUnauthorizedError } from "@rakazo/core";
+import { createComputerUpdates, isUnauthorizedError } from "@nurlai/core";
 import { rpc, spaceSelectionSeq, subscribeSpaceSelection } from "../api/api";
 
 export const computerUpdates = createComputerUpdates({

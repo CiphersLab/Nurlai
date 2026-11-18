@@ -1,10 +1,10 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { useTimeout } from "@rakazo/chat-ui/hooks";
-import type { LinkFavicons } from "@rakazo/chat-ui/web";
-import { LinkFaviconsContext, RemoteImagesContext } from "@rakazo/chat-ui/web";
-import { mobileMcpOAuthReturnUrl } from "@rakazo/contracts";
-import { analyticsScreen } from "@rakazo/core";
-import { Button } from "@rakazo/ui-web";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
+import type { LinkFavicons } from "@nurlai/chat-ui/web";
+import { LinkFaviconsContext, RemoteImagesContext } from "@nurlai/chat-ui/web";
+import { mobileMcpOAuthReturnUrl } from "@nurlai/contracts";
+import { analyticsScreen } from "@nurlai/core";
+import { Button } from "@nurlai/ui-web";
 import {
   Suspense,
   useEffect,

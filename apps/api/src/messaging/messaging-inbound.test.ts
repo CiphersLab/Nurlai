@@ -1,11 +1,11 @@
-import type { OutboundLane, OutboundRow } from "@rakazo/adapters";
+import type { OutboundLane, OutboundRow } from "@nurlai/adapters";
 import {
   inboundDeliveryClientNonce,
   MESSAGING_DM_OUTBOUND_CAP,
   messagingWakeIdempotencyKey,
-} from "@rakazo/adapters";
-import { ATTACHMENT_MAX_COUNT } from "@rakazo/contracts";
-import { SendClaimLostError, SpaceDeletionInProgressError } from "@rakazo/db";
+} from "@nurlai/adapters";
+import { ATTACHMENT_MAX_COUNT } from "@nurlai/contracts";
+import { SendClaimLostError, SpaceDeletionInProgressError } from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import type { MessagingInboundDeps } from "./messaging-inbound.js";
 import {

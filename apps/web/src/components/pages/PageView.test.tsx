@@ -108,7 +108,7 @@ it("keeps its controls clickable over the window's drag areas in the desktop app
 });
 
 it("starts its top row below the macOS window controls in the desktop app", async () => {
-  window.rakazoDesktop = { platform: "darwin" } as never;
+  window.nurlaiDesktop = { platform: "darwin" } as never;
   const mac = mount({ document: "<p>v1</p>" });
   await mac.render({ document: "<p>v1</p>" });
   const close = document.querySelector<HTMLElement>('[aria-label="Close page"]')!;
@@ -118,7 +118,7 @@ it("starts its top row below the macOS window controls in the desktop app", asyn
   expect(document.querySelector(".app-drag")!.className).toContain("h-[70px]");
   await mac.unmount();
   document.body.replaceChildren();
-  delete window.rakazoDesktop;
+  delete window.nurlaiDesktop;
   vi.unstubAllGlobals();
 
   const browser = mount({ document: "<p>v1</p>" });

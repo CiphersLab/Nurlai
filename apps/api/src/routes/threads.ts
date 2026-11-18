@@ -1,7 +1,7 @@
 import { ORPCError } from "@orpc/server";
-import { createAdapterContext, runJobKey } from "@rakazo/adapter-kit";
-import { getActiveTeachingSession, settleCallRequest, wakeRun } from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
+import { createAdapterContext, runJobKey } from "@nurlai/adapter-kit";
+import { getActiveTeachingSession, settleCallRequest, wakeRun } from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
 import {
   AttachmentValidationError,
   CALL_CLIENT_NONCE_PREFIX,
@@ -10,8 +10,8 @@ import {
   expandSkillReferencesInPrompt,
   MODEL_REQUIRED_SEND_ERROR,
   QUEUE_HOLDING_RUN_STATUSES,
-} from "@rakazo/core";
-import type { Prisma } from "@rakazo/db";
+} from "@nurlai/core";
+import type { Prisma } from "@nurlai/db";
 import {
   AnswerTooLongError,
   appendEventInTransaction,
@@ -24,8 +24,8 @@ import {
   THREAD_LOCK_TRANSACTION_OPTIONS,
   touchGroupUpdatedAt,
   withTransactionRetry,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { HANG_UP_PROMPT } from "../bots/hidden-turns.prompt.js";
 import { assertTeachingSendAllowed } from "../bots/taught-skills.js";
 import { answerComputerRequest } from "../computers/computer-control.js";

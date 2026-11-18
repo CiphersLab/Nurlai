@@ -1,5 +1,5 @@
-import type { UserDeviceSummary } from "@rakazo/contracts";
-import { USER_DEVICE_PATH, userDeviceListSchema } from "@rakazo/contracts";
+import type { UserDeviceSummary } from "@nurlai/contracts";
+import { USER_DEVICE_PATH, userDeviceListSchema } from "@nurlai/contracts";
 
 export type UserDeviceRequest = (
   path: string,

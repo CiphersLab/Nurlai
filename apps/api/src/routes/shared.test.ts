@@ -1,6 +1,6 @@
 import { getEventListeners } from "node:events";
-import { IDLE_TIMEOUT_MS } from "@rakazo/core";
-import { deferred } from "@rakazo/core/test-async";
+import { IDLE_TIMEOUT_MS } from "@nurlai/core";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { HEARTBEAT, HEARTBEAT_MS, withHeartbeats } from "./shared.js";
 

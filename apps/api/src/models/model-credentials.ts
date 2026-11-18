@@ -1,6 +1,6 @@
 import { ORPCError } from "@orpc/server";
-import { SecretStoreUnavailableError } from "@rakazo/adapter-kit";
-import type { CodexLiveCatalog } from "@rakazo/adapters";
+import { SecretStoreUnavailableError } from "@nurlai/adapter-kit";
+import type { CodexLiveCatalog } from "@nurlai/adapters";
 import {
   buildModelConnectPlaintext,
   CHATGPT_OAUTH_PROVIDER,
@@ -21,14 +21,14 @@ import {
   verifyCatalogProviderApiKey,
   verifyOpenAiCompatibleApiKey,
   withModelSettings,
-} from "@rakazo/adapters";
+} from "@nurlai/adapters";
 import type {
   Actor,
   ModelConnectInput,
   ModelSettingsSave,
   SettingsScope,
   ThinkingLevel,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   canonicalPiProviderId,
   MAX_MODEL_SETTINGS_PER_CONNECTION,
@@ -36,13 +36,13 @@ import {
   OPENAI_COMPATIBLE_PROVIDER_ID,
   storedPiProviderIds,
   usableModelId,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   catalogEntryFor,
   clampCatalogThinkingLevel,
   modelSettingsDefaults,
   sanitizeModelConnectionError,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import {
   deleteUnreferencedCredentialSecret,
   findNewestUserModelCredential,
@@ -53,7 +53,7 @@ import {
   saveModelPreference,
   withTransactionRetry,
   writeModelRole,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { assertNoDanglingModelPins } from "../bots/model-pins.js";
 import { mayUsePrivateEndpoint } from "../integrations/mcp-servers.js";
 import type { RouterDeps } from "../router.js";

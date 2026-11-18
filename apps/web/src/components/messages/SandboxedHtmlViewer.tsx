@@ -1,4 +1,4 @@
-import { HTML_VIEWER_PATH } from "@rakazo/contracts/content-security-policy";
+import { HTML_VIEWER_PATH } from "@nurlai/contracts/content-security-policy";
 import { useEffect, useRef, useState } from "react";
 import { useEventListener } from "../../lib/use-event-listener";
 

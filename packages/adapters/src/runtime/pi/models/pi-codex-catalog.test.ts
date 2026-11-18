@@ -1,6 +1,6 @@
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
-import type { PrismaClient } from "@rakazo/db";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
+import type { PrismaClient } from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import { parseModelSecret } from "../../../models/model-secret.js";
 import { listAvailablePiCatalog } from "./pi-catalog-availability.js";

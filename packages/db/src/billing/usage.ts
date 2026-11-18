@@ -1,4 +1,4 @@
-import type { AgentRuntimeEvent, UsageOperationKind } from "@rakazo/adapter-kit";
+import type { AgentRuntimeEvent, UsageOperationKind } from "@nurlai/adapter-kit";
 import { withTransactionRetry } from "../database/transaction-retry.js";
 import type { PrismaClient } from "../generated/prisma/client.js";
 import {

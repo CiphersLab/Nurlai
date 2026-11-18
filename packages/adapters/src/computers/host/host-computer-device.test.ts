@@ -1,7 +1,7 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import type { PrismaClient } from "@rakazo/db";
+import type { PrismaClient } from "@nurlai/db";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { HostScreen } from "../screens/host-screen.js";
 import { HOST_COMPUTER_DEVICE_ID, withHostComputerScreen } from "./host-computer-device.js";

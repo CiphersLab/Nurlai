@@ -1,6 +1,6 @@
 import type { Route } from "@playwright/test";
 import { expect, test } from "@playwright/test";
-import type { BillingStatus } from "@rakazo/contracts";
+import type { BillingStatus } from "@nurlai/contracts";
 import {
   captureScreenshot,
   completeOnboarding,
@@ -285,7 +285,7 @@ test("delete an unpaid organization from the plan choice", async ({ page }, test
   await page.route("**/rpc/bootstrap", (route) => enableBilling(route, "bootstrap"));
   // Only the new organization is unpaid.
   await page.route("**/rpc/billing/status", async (route) => {
-    const unpaid = route.request().headers()["x-rakazo-space-id"] === work.defaultSpaceId;
+    const unpaid = route.request().headers()["x-nurlai-space-id"] === work.defaultSpaceId;
     await route.fulfill({
       json: { json: billingStatus(unpaid ? {} : { access: true, state: "active" }) },
     });

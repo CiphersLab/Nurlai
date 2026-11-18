@@ -1,5 +1,5 @@
-import type { Actor, MessageBlock } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
+import type { Actor, MessageBlock } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
 import {
   asSystem,
   createDb,
@@ -8,7 +8,7 @@ import {
   provisionMessagingIdentity,
   runAsSystem,
   runAsTenant,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { loadMessagePage } from "./thread-message-pages.js";
 import { threadSnapshot } from "./thread-snapshot.js";

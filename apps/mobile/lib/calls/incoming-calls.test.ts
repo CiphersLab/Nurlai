@@ -1,4 +1,4 @@
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const fake = vi.hoisted(() => ({
@@ -42,7 +42,7 @@ vi.mock("../api/api", () => ({
   captureApiRequestContext: async (spaceId: string) => ({
     apiBase: "https://example.invalid",
     headers: {
-      "x-rakazo-space-id": spaceId,
+      "x-nurlai-space-id": spaceId,
       ...(fake.locked ? {} : { authorization: "Bearer fake-session" }),
     },
     sessionGeneration: fake.generation,
@@ -159,7 +159,7 @@ describe("mobile incoming calls", () => {
         answered: { callId: "call-1" },
         session: 1,
         requestContext: expect.objectContaining({
-          headers: expect.objectContaining({ "x-rakazo-space-id": "space-1" }),
+          headers: expect.objectContaining({ "x-nurlai-space-id": "space-1" }),
         }),
       }),
     );
@@ -203,7 +203,7 @@ describe("mobile incoming calls", () => {
     { botId: orgBot.id, callId },
     {
       requestContext: expect.objectContaining({
-        headers: expect.objectContaining({ "x-rakazo-space-id": orgBot.spaceId }),
+        headers: expect.objectContaining({ "x-nurlai-space-id": orgBot.spaceId }),
       }),
     },
   ];

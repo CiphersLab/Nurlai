@@ -45,7 +45,7 @@ afterEach(() => {
   container.remove();
   Reflect.deleteProperty(document, "execCommand");
   Reflect.deleteProperty(navigator, "clipboard");
-  Reflect.deleteProperty(globalThis, "rakazoDesktop");
+  Reflect.deleteProperty(globalThis, "nurlaiDesktop");
 });
 
 it("keeps the newer copy's success when an older copy fails after it", async () => {
@@ -109,7 +109,7 @@ it("does not let a superseded copy fall back to selection over the newer text", 
 });
 
 function desktopClipboard(writeText = vi.fn(async () => true)) {
-  Object.defineProperty(globalThis, "rakazoDesktop", {
+  Object.defineProperty(globalThis, "nurlaiDesktop", {
     configurable: true,
     value: { clipboard: { writeText } },
   });

@@ -1,5 +1,5 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { RoutineRun, RoutineRunCursor } from "@rakazo/contracts";
+import type { RoutineRun, RoutineRunCursor } from "@nurlai/contracts";
 import {
   formatRoutineRunAt,
   mergeRoutineRunPages,
@@ -7,9 +7,9 @@ import {
   routineHistoryPage,
   routineRunAt,
   routineRunLateness,
-} from "@rakazo/core";
-import { translateRunError } from "@rakazo/i18n/run-error";
-import { Button, SectionHeading, Spinner } from "@rakazo/ui-web";
+} from "@nurlai/core";
+import { translateRunError } from "@nurlai/i18n/run-error";
+import { Button, SectionHeading, Spinner } from "@nurlai/ui-web";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";

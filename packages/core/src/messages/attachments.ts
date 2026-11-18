@@ -1,4 +1,4 @@
-import type { AttachmentMimeType, HistoryToolStep, MessageBlock } from "@rakazo/contracts";
+import type { AttachmentMimeType, HistoryToolStep, MessageBlock } from "@nurlai/contracts";
 import {
   ATTACHMENT_COUNT_CEILING,
   ATTACHMENT_MAX_BYTES,
@@ -6,7 +6,7 @@ import {
   attachmentSizeLabel,
   isAllowedAttachmentMimeType,
   isAttachmentImageMimeType,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import { isApprovalAskBlock, isSecretAskBlock } from "../runs/action-approval.js";
 
 export class AttachmentValidationError extends Error {

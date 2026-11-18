@@ -29,7 +29,7 @@ need no shared directory.
 
 ## Content encryption
 
-Rakazo encrypts chat messages, thread events, compacted history summaries, memory documents and
+Nurlai encrypts chat messages, thread events, compacted history summaries, memory documents and
 their revisions, and uploaded or generated files before they reach PostgreSQL or `DATA_DIR`.
 Names, ids, timestamps and other metadata stay readable. Credentials are always encrypted,
 whatever this setting says. Details and the threat model are in
@@ -51,7 +51,7 @@ It never prints the key. Store a copy somewhere other than the server and its ba
 | --------------------------------------------------------------------------- | ------------------------------------------------ |
 | Compose files, published images, Railway                                    | `on`                                             |
 | Desktop app, **This computer**                                              | `off` (the computer's disk encryption covers it) |
-| Source checkout with `NODE_ENV=development` or `RAKAZO_ALLOW_DEV_SECRETS=1` | `off`                                            |
+| Source checkout with `NODE_ENV=development` or `NURLAI_ALLOW_DEV_SECRETS=1` | `off`                                            |
 
 With `off`, new content and files are stored readable, so you can query your own database
 directly and a lost key cannot lose them. Content encrypted earlier still reads with the key, so
@@ -62,8 +62,8 @@ To switch on later, set `CONTENT_ENCRYPTION=on`, restart, then encrypt what was 
 it was off. From the published-images folder (other stacks use their own Compose file):
 
 ```bash
-docker compose -f docker-compose.images.yml exec api pnpm --filter @rakazo/api content-encryption migrate
-docker compose -f docker-compose.images.yml exec api pnpm --filter @rakazo/api content-encryption status
+docker compose -f docker-compose.images.yml exec api pnpm --filter @nurlai/api content-encryption migrate
+docker compose -f docker-compose.images.yml exec api pnpm --filter @nurlai/api content-encryption status
 ```
 
 Search works in both modes and while rows are mixed.
@@ -74,7 +74,7 @@ documents and revisions as JSON lines. It reads the whole database by default; n
 
 ```bash
 docker compose -f docker-compose.images.yml exec -T api \
-  pnpm -s --filter @rakazo/api content-encryption export --bot <bot id> > rakazo-export.jsonl
+  pnpm -s --filter @nurlai/api content-encryption export --bot <bot id> > rakazo-export.jsonl
 ```
 
 The export is plaintext: store it like the database itself. Files are not included; use
@@ -175,8 +175,8 @@ is mounted. It skips homes already stored, so it can be stopped and run again. E
 downloaded and checked before the home counts as moved. It never deletes local files.
 
 ```bash
-docker compose -f docker-compose.images.yml exec api pnpm --filter @rakazo/api home-storage migrate --dry-run
-docker compose -f docker-compose.images.yml exec api pnpm --filter @rakazo/api home-storage migrate
+docker compose -f docker-compose.images.yml exec api pnpm --filter @nurlai/api home-storage migrate --dry-run
+docker compose -f docker-compose.images.yml exec api pnpm --filter @nurlai/api home-storage migrate
 ```
 
 Homes listed as having no computer belong to bots that no longer exist; they are left alone.
@@ -212,8 +212,8 @@ node dist/cli/shared-storage.js push-tokens --dry-run
 node dist/cli/shared-storage.js push-tokens
 
 # Source checkout equivalents:
-pnpm --filter @rakazo/api shared-storage artifacts
-pnpm --filter @rakazo/api shared-storage push-tokens
+pnpm --filter @nurlai/api shared-storage artifacts
+pnpm --filter @nurlai/api shared-storage push-tokens
 ```
 
 The artifact migration uploads and decrypts each file to verify it before conditionally

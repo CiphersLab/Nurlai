@@ -1,4 +1,4 @@
-import { asSystem, createDb, Prisma, runAsSystem } from "@rakazo/db";
+import { asSystem, createDb, Prisma, runAsSystem } from "@nurlai/db";
 import { Pool } from "pg";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { createBackgroundJobHandlers } from "../runs/wakeups/background-job-handlers.js";

@@ -14,11 +14,11 @@ import {
 } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import type { CommandRequest, ComputerRef, SandboxProvider } from "@rakazo/adapter-kit";
-import { SandboxDamagedError } from "@rakazo/adapter-kit";
-import { flush } from "@rakazo/core/test-async";
-import type { PrismaClient } from "@rakazo/db";
-import * as Logging from "@rakazo/logging";
+import type { CommandRequest, ComputerRef, SandboxProvider } from "@nurlai/adapter-kit";
+import { SandboxDamagedError } from "@nurlai/adapter-kit";
+import { flush } from "@nurlai/core/test-async";
+import type { PrismaClient } from "@nurlai/db";
+import * as Logging from "@nurlai/logging";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { FakeSandboxProvider } from "../providers/computer/fake/fake-sandbox.js";
 import { LocalAgentHomeStore } from "../storage/home.js";

@@ -1,9 +1,9 @@
 import { randomUUID } from "node:crypto";
-import type { JobPublisher, NotificationProvider } from "@rakazo/adapter-kit";
-import { callExpireJob } from "@rakazo/adapter-kit";
-import type { IncomingBotCall, MessageBlock } from "@rakazo/contracts";
-import { resolveBotAvatarSet } from "@rakazo/contracts";
-import type { CallRequestBlock } from "@rakazo/core";
+import type { JobPublisher, NotificationProvider } from "@nurlai/adapter-kit";
+import { callExpireJob } from "@nurlai/adapter-kit";
+import type { IncomingBotCall, MessageBlock } from "@nurlai/contracts";
+import { resolveBotAvatarSet } from "@nurlai/contracts";
+import type { CallRequestBlock } from "@nurlai/core";
 import {
   CALL_CLIENT_NONCE_PREFIX,
   callIdFromClientNonce,
@@ -13,8 +13,8 @@ import {
   phoneCallSettings,
   ringingCall,
   sliceWellFormed,
-} from "@rakazo/core";
-import type { PrismaClient, ThreadEvents } from "@rakazo/db";
+} from "@nurlai/core";
+import type { PrismaClient, ThreadEvents } from "@nurlai/db";
 import {
   appendEventInTransaction,
   changeMessageBlocks,
@@ -23,8 +23,8 @@ import {
   runAsSystem,
   storedMessageBlocks,
   THREAD_LOCK_TRANSACTION_OPTIONS,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { advisoryLock } from "../locks/advisory-lock.js";
 import { publishMessage, runLeaseFor } from "../runs/assembly/run-messages.js";
 import type { ExecutorDeps } from "../runs/executor/executor-deps.js";

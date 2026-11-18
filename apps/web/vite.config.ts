@@ -1,11 +1,11 @@
 import path from "node:path";
 import { lingui } from "@lingui/vite-plugin";
-import { buildIdAt } from "@rakazo/contracts/client-build";
+import { buildIdAt } from "@nurlai/contracts/client-build";
 import {
   COMPUTER_SCREEN_PREFIX,
   COMPUTER_SCREEN_RUNTIME_PATH,
   contentSecurityPolicyFor,
-} from "@rakazo/contracts/content-security-policy";
+} from "@nurlai/contracts/content-security-policy";
 import babel from "@rolldown/plugin-babel";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
@@ -53,7 +53,7 @@ export default defineConfig(({ command, mode }) => {
         },
       },
     },
-    define: { "import.meta.env.RAKAZO_BUILD": JSON.stringify(buildId) },
+    define: { "import.meta.env.NURLAI_BUILD": JSON.stringify(buildId) },
     plugins: [
       {
         // The API reads this to name the deployed build, and a tab fetches it to confirm the
@@ -119,14 +119,14 @@ export default defineConfig(({ command, mode }) => {
         },
       },
       {
-        // Without RAKAZO_THEME the page never links the theme, so the default deploy is unchanged.
+        // Without NURLAI_THEME the page never links the theme, so the default deploy is unchanged.
         name: "rakazo-instance-theme",
         transformIndexHtml: (html) =>
           command === "serve" && instanceTheme ? withInstanceThemeLink(html) : html,
       },
     ],
     server: {
-      host: process.env.RAKAZO_DEV_HOST ?? rootEnv.RAKAZO_DEV_HOST ?? "127.0.0.1",
+      host: process.env.NURLAI_DEV_HOST ?? rootEnv.NURLAI_DEV_HOST ?? "127.0.0.1",
       port: webPort,
       strictPort: true,
       allowedHosts,

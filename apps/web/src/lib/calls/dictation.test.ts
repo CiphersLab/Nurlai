@@ -1,5 +1,5 @@
-import { MAX_TRANSCRIPTION_RESPONSE_BYTES, VOICE_RESPONSE_TIMEOUT_MS } from "@rakazo/core";
-import { deferred } from "@rakazo/core/test-async";
+import { MAX_TRANSCRIPTION_RESPONSE_BYTES, VOICE_RESPONSE_TIMEOUT_MS } from "@nurlai/core";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   combineTranscript,
@@ -231,7 +231,7 @@ describe("Dictation recorder fallback", () => {
       expect.objectContaining({ credentials: "include" }),
     );
     const headers = new Headers(fetchMock.mock.calls[0]?.[1]?.headers);
-    expect(headers.get("x-rakazo-space-id")).toBe("space-support");
+    expect(headers.get("x-nurlai-space-id")).toBe("space-support");
     expect(headers.get("content-type")).toBe("application/json");
   });
 
@@ -1183,7 +1183,7 @@ describe("dictation engine choice", () => {
   it("listens through the desktop app's system recognizer when it offers one", () => {
     vi.stubGlobal("window", {
       webkitSpeechRecognition: class {},
-      rakazoDesktop: { platform: "darwin", speech: {} },
+      nurlaiDesktop: { platform: "darwin", speech: {} },
     });
     expect(webSpeechAvailable()).toBe(true);
   });
@@ -1191,7 +1191,7 @@ describe("dictation engine choice", () => {
   it("treats Electron as having no usable Web Speech", () => {
     vi.stubGlobal("window", {
       webkitSpeechRecognition: class {},
-      rakazoDesktop: { platform: "darwin" },
+      nurlaiDesktop: { platform: "darwin" },
     });
     expect(webSpeechAvailable()).toBe(false);
   });
@@ -1227,7 +1227,7 @@ describe("dictation engine choice", () => {
         },
       );
       const start = vi.fn();
-      vi.stubGlobal("window", { rakazoDesktop: { platform: "darwin", speech: { start } } });
+      vi.stubGlobal("window", { nurlaiDesktop: { platform: "darwin", speech: { start } } });
       const dictation = new Dictation();
       await dictation.listen({ mode, transcribe: true, onFinal: vi.fn() });
       expect(navigator.mediaDevices.getUserMedia).toHaveBeenCalledOnce();
@@ -1245,7 +1245,7 @@ describe("dictation engine choice", () => {
         start = start;
         abort() {}
       },
-      ...(host === "desktop" ? { rakazoDesktop: { platform: "darwin" } } : {}),
+      ...(host === "desktop" ? { nurlaiDesktop: { platform: "darwin" } } : {}),
     });
     const dictation = new Dictation();
     await dictation.listen({ mode: "hold", transcribe: true, onFinal: vi.fn() });
@@ -1708,7 +1708,7 @@ describe("Dictation web speech", () => {
     }
     vi.stubGlobal("window", {
       webkitSpeechRecognition: FakeRecognition,
-      rakazoDesktop: { platform: "darwin" },
+      nurlaiDesktop: { platform: "darwin" },
     });
     const fetchMock = vi.fn(async () => Response.json({ text: "from fish" }));
     stubRecorderFallback(fetchMock);

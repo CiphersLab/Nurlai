@@ -5,19 +5,19 @@ import {
   persistPreparedSecret,
   recordMcpServerHealth,
   wakeRun,
-} from "@rakazo/adapters";
-import type { Actor, McpOAuthClientKind } from "@rakazo/contracts";
-import { MCP_OAUTH_REDIRECT_MISMATCH, McpServerConfigInput } from "@rakazo/contracts";
-import { ClientError, customMcpServerInput } from "@rakazo/core";
-import type { Prisma } from "@rakazo/db";
+} from "@nurlai/adapters";
+import type { Actor, McpOAuthClientKind } from "@nurlai/contracts";
+import { MCP_OAUTH_REDIRECT_MISMATCH, McpServerConfigInput } from "@nurlai/contracts";
+import { ClientError, customMcpServerInput } from "@nurlai/core";
+import type { Prisma } from "@nurlai/db";
 import {
   AVAILABILITY_SELECT,
   availableInSpace,
   IsolationError,
   isUniqueViolation,
   itemSecretIn,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import {
   queueMcpConnectedRun,
   resolveMcpApprovalCards,

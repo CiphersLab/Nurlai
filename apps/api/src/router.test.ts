@@ -9,11 +9,11 @@ import {
   MessagingInstallRefusedError,
   routineWakeupJob,
   SecretStoreUnavailableError,
-} from "@rakazo/adapter-kit";
-import * as adapters from "@rakazo/adapters";
-import { LocalAgentHomeStore, serializeModelSecret } from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
+} from "@nurlai/adapter-kit";
+import * as adapters from "@nurlai/adapters";
+import { LocalAgentHomeStore, serializeModelSecret } from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { RouterDeps } from "./router.js";
 import { createRouter as createRouterWith } from "./router.js";

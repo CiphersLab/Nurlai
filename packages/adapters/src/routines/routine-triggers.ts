@@ -1,9 +1,9 @@
 import { randomBytes } from "node:crypto";
-import type { AdapterContext, SecretStore } from "@rakazo/adapter-kit";
-import type { RoutineEmailSenders } from "@rakazo/contracts";
-import { RoutineEmailSendersSchema } from "@rakazo/contracts";
-import { messagingProviderName, messagingProviderNamed } from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
+import type { AdapterContext, SecretStore } from "@nurlai/adapter-kit";
+import type { RoutineEmailSenders } from "@nurlai/contracts";
+import { RoutineEmailSendersSchema } from "@nurlai/contracts";
+import { messagingProviderName, messagingProviderNamed } from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
 
 export const EMAIL_NOT_RECEIVED = "This server doesn't receive email.";
 

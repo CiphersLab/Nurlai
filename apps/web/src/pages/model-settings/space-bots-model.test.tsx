@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import type { ComponentProps, ReactNode } from "react";
 import { act } from "react";
 import { afterEach, expect, it, vi } from "vitest";
@@ -26,7 +26,7 @@ vi.mock("@lingui/react/macro", () => {
     String.raw({ raw: parts }, ...values);
   return { useLingui: () => ({ t }) };
 });
-vi.mock("@rakazo/ui-web", () => ({
+vi.mock("@nurlai/ui-web", () => ({
   Button: ({
     variant: _v,
     size: _s,

@@ -1,5 +1,5 @@
-import type { BillingSubscriptionSnapshot } from "@rakazo/adapter-kit";
-import { BYOK_TIERS } from "@rakazo/contracts";
+import type { BillingSubscriptionSnapshot } from "@nurlai/adapter-kit";
+import { BYOK_TIERS } from "@nurlai/contracts";
 import type { BillingAccount, PrismaClient } from "../database/client.js";
 import { Prisma } from "../database/client.js";
 import { isUniqueViolation } from "../database/prisma-errors.js";

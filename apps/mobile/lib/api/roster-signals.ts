@@ -1,5 +1,5 @@
-import type { SpaceChangeKind } from "@rakazo/contracts";
-import { abortableDelay, isRetryableError, reconnectDelayMs, retryDelayMs } from "@rakazo/core";
+import type { SpaceChangeKind } from "@nurlai/contracts";
+import { abortableDelay, isRetryableError, reconnectDelayMs, retryDelayMs } from "@nurlai/core";
 import { useEffect, useRef } from "react";
 import { computerUpdates } from "../computers/computer-updates";
 import { useAppForeground } from "../platform/app-foreground";

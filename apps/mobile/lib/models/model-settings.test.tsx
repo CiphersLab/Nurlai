@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
-import type { ModelCatalogEntry, ModelCredential, ModelRoleView } from "@rakazo/contracts";
+import type { ModelCatalogEntry, ModelCredential, ModelRoleView } from "@nurlai/contracts";
 
-import { MAX_MODEL_CONTEXT_WINDOW, MAX_MODEL_MAX_TOKENS } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
+import { MAX_MODEL_CONTEXT_WINDOW, MAX_MODEL_MAX_TOKENS } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
 import { notifyManager } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 import { act, createElement, useEffect } from "react";
@@ -29,7 +29,7 @@ const { push, back, replace, params, rpcCalls, saved, pinnedTo, focus } = vi.hoi
   pinnedTo: (spaceId: string) => ({
     apiBase: "https://app.example.test",
     sessionGeneration: 1,
-    headers: { "x-rakazo-space-id": spaceId },
+    headers: { "x-nurlai-space-id": spaceId },
   }),
   push: vi.fn(),
   back: vi.fn(),
@@ -776,7 +776,7 @@ it("reads and saves a Space override's model settings in that Space", async () =
     for (const procedure of ["models/credentials", "models/list", "models/saveModelSettings"])
       expect(
         rpcCalls.find(([called]) => called === procedure)?.[2]?.requestContext?.headers,
-      ).toEqual({ "x-rakazo-space-id": "space-override" });
+      ).toEqual({ "x-nurlai-space-id": "space-override" });
   } finally {
     delete params.credentialId;
     delete params.modelId;

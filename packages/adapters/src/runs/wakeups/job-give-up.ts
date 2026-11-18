@@ -1,4 +1,4 @@
-import { bestEffort, getLogger, unwrapJobPayload } from "@rakazo/logging";
+import { bestEffort, getLogger, unwrapJobPayload } from "@nurlai/logging";
 import type { Job } from "graphile-worker";
 import type { Pool } from "pg";
 

@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
-import type { SecretStore } from "@rakazo/adapter-kit";
-import type { Actor } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
+import type { SecretStore } from "@nurlai/adapter-kit";
+import type { Actor } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
 import {
   asSystem,
   createDb,
@@ -10,7 +10,7 @@ import {
   runAsTenant,
   teamChatRunClientNonce,
   teamChatRunFromOwner,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { Pool } from "pg";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { SlackInstallProvider } from "../providers/messaging/slack/slack-install-provider.js";

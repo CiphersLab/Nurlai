@@ -1,6 +1,6 @@
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { describe, expect, it, vi } from "vitest";
 import { deleteUnreferencedMachine, recordUnreferencedMachine } from "./sandbox-cleanup.js";
 import { MachineRecords, settleMachineCleanup, untilAborted } from "./sandbox-test-support.js";

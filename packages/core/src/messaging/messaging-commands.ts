@@ -1,4 +1,4 @@
-import { trimEndChars, trimStartChars } from "@rakazo/contracts";
+import { trimEndChars, trimStartChars } from "@nurlai/contracts";
 /**
  * Owner text commands, parsed only in the owner's verified 1:1 conversation.
  * Everything that is not an exact command is a normal message to the bot.

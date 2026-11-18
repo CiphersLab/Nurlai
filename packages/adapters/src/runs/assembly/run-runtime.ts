@@ -6,22 +6,22 @@ import type {
   ManagedConnectorProvider,
   MessagingSurface,
   SecretStore,
-} from "@rakazo/adapter-kit";
-import type { LabFeature } from "@rakazo/contracts";
+} from "@nurlai/adapter-kit";
+import type { LabFeature } from "@nurlai/contracts";
 import {
   availableChatApps,
   messagingProviderName,
   phoneCallSettings,
   uploadSizeFromEnv,
-} from "@rakazo/core";
-import { resolveEncryptionKey } from "@rakazo/core/node/secrets-guard";
-import type { PrismaClient, ThreadEvents } from "@rakazo/db";
+} from "@nurlai/core";
+import { resolveEncryptionKey } from "@nurlai/core/node/secrets-guard";
+import type { PrismaClient, ThreadEvents } from "@nurlai/db";
 import {
   chatHistoryRetentionDays,
   createChatHistoryPruner,
   createSecurityEventPruner,
   securityEventRetentionDays,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { cliModelRuntime } from "../../cli-models/runtime.js";
 import { reconcileCloudAgents } from "../../cloud-agents/cloud-agent-service.js";
 import { createIdleComputerSweeper } from "../../computers/computer-idle.js";

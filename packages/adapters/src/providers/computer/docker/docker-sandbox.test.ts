@@ -1,13 +1,13 @@
-import type { ProcessEvent } from "@rakazo/adapter-kit";
+import type { ProcessEvent } from "@nurlai/adapter-kit";
 import {
   SandboxDamagedError,
   SandboxFileTooLargeError,
   SandboxRequestRejectedError,
   SandboxUnresponsiveError,
-} from "@rakazo/adapter-kit";
-import { COMPUTER_UNRESPONSIVE_ERROR } from "@rakazo/contracts";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+} from "@nurlai/adapter-kit";
+import { COMPUTER_UNRESPONSIVE_ERROR } from "@nurlai/contracts";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { isSandboxGoneError } from "../../../computers/sandbox/sandbox-errors.js";
 import { assertSandboxReadLimit } from "../../../computers/sandbox/sandbox-test-support.js";
@@ -148,8 +148,8 @@ describe("Docker sandbox", () => {
       { type: "exit", code: 124 },
     ]);
     expect(fetchMock.mock.calls[0]?.[1]?.headers).toMatchObject({
-      "x-rakazo-bot-id": "bot",
-      "x-rakazo-screen-id": "bot",
+      "x-nurlai-bot-id": "bot",
+      "x-nurlai-screen-id": "bot",
     });
     expect(fetchMock.mock.calls[0]?.[1]?.headers).toMatchObject({
       "x-request-id": expect.any(String),
@@ -494,7 +494,7 @@ describe("Docker sandbox", () => {
       expect(fetchMock.mock.calls.at(-1)).toEqual([
         "http://supervisor.test/computers/computer/stop",
         expect.objectContaining({
-          headers: expect.objectContaining({ "x-rakazo-discard-unsaved": "1" }),
+          headers: expect.objectContaining({ "x-nurlai-discard-unsaved": "1" }),
         }),
       ]);
       await provider.prepare(computer, context);
@@ -790,10 +790,10 @@ describe("Docker sandbox", () => {
         method: "DELETE",
         headers: expect.objectContaining({
           authorization: "Bearer test-token",
-          "x-rakazo-bot-id": "home-bot",
-          "x-rakazo-screen-id": "bot",
-          "x-rakazo-screen-lease-id": "run-1:1",
-          "x-rakazo-space-id": "workspace",
+          "x-nurlai-bot-id": "home-bot",
+          "x-nurlai-screen-id": "bot",
+          "x-nurlai-screen-lease-id": "run-1:1",
+          "x-nurlai-space-id": "workspace",
         }),
       }),
     );
@@ -972,7 +972,7 @@ describe("Docker sandbox", () => {
       "http://supervisor.test/computers/computer-1/screen",
       expect.objectContaining({
         method: "DELETE",
-        headers: expect.objectContaining({ "x-rakazo-cancel-run-work": "1" }),
+        headers: expect.objectContaining({ "x-nurlai-cancel-run-work": "1" }),
       }),
     );
   });
@@ -990,7 +990,7 @@ describe("Docker sandbox", () => {
 
     await provider.releaseScreen(computer, { ...context, keepScreenWarm: true });
     expect(fetchMock.mock.calls[0]?.[1]?.headers).toMatchObject({
-      "x-rakazo-preserve-screen": "1",
+      "x-nurlai-preserve-screen": "1",
     });
 
     await provider.releaseScreen(computer, {
@@ -999,9 +999,9 @@ describe("Docker sandbox", () => {
       cancelRunWork: true,
     });
     expect(fetchMock.mock.calls[1]?.[1]?.headers).toMatchObject({
-      "x-rakazo-cancel-run-work": "1",
+      "x-nurlai-cancel-run-work": "1",
     });
-    expect(fetchMock.mock.calls[1]?.[1]?.headers).not.toHaveProperty("x-rakazo-preserve-screen");
+    expect(fetchMock.mock.calls[1]?.[1]?.headers).not.toHaveProperty("x-nurlai-preserve-screen");
 
     const abort = new AbortController();
     abort.abort();
@@ -1010,7 +1010,7 @@ describe("Docker sandbox", () => {
       keepScreenWarm: true,
       signal: abort.signal,
     });
-    expect(fetchMock.mock.calls[2]?.[1]?.headers).not.toHaveProperty("x-rakazo-preserve-screen");
+    expect(fetchMock.mock.calls[2]?.[1]?.headers).not.toHaveProperty("x-nurlai-preserve-screen");
   });
 });
 
@@ -1035,8 +1035,8 @@ describe("Docker page browser", () => {
         signal: context.signal,
         body: JSON.stringify({ command: "snapshot" }),
         headers: expect.objectContaining({
-          "x-rakazo-bot-id": "team-home",
-          "x-rakazo-screen-lease-id": "run-1:1",
+          "x-nurlai-bot-id": "team-home",
+          "x-nurlai-screen-lease-id": "run-1:1",
         }),
       }),
     );

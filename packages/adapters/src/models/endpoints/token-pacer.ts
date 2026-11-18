@@ -9,7 +9,7 @@ import { LOCAL_PROVIDER_ID } from "../../runtime/pi/models/pi-local-provider-id.
  */
 
 /** Prompt tokens per minute the local provider may send. Unset means no pacing. */
-export const LOCAL_TOKENS_PER_MINUTE_ENV = "RAKAZO_LOCAL_TOKENS_PER_MINUTE";
+export const LOCAL_TOKENS_PER_MINUTE_ENV = "NURLAI_LOCAL_TOKENS_PER_MINUTE";
 const WINDOW_MS = 60_000;
 const SLACK_MS = 50;
 

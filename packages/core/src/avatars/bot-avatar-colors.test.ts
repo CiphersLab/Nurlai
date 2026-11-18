@@ -1,4 +1,4 @@
-import { BOT_COLOR_LIST } from "@rakazo/contracts";
+import { BOT_COLOR_LIST } from "@nurlai/contracts";
 import { describe, expect, it } from "vitest";
 import { botEyeInk, botEyeTone, chatUserBubbleColors, contrastRatio } from "./bot-avatar-colors.js";
 

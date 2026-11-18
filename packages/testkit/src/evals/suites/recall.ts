@@ -1,6 +1,6 @@
-import type { HistoryToolStep } from "@rakazo/contracts";
-import { MessageBlock, ToolStepCallSchema } from "@rakazo/contracts";
-import { toolStepsHistoryText } from "@rakazo/core";
+import type { HistoryToolStep } from "@nurlai/contracts";
+import { MessageBlock, ToolStepCallSchema } from "@nurlai/contracts";
+import { toolStepsHistoryText } from "@nurlai/core";
 import { z } from "zod";
 import type { Criterion, EvalCase, Evidence } from "../cases.js";
 import { readCasesFile } from "../cases.js";

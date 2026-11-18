@@ -7,15 +7,15 @@ import {
   UserDevices,
   unwrapEnvFromKeyManager,
   userDeviceForwardSecret,
-} from "@rakazo/adapters";
+} from "@nurlai/adapters";
 import {
   createDb,
   createThreadEvents,
   installAuditEventStore,
   installSecurityEventStore,
   runAsSystem,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { setAccountActive } from "../account/account-status.js";
 import { loadEnv } from "../env.js";
 

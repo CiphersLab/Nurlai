@@ -1,4 +1,4 @@
-import { MessageBlock } from "@rakazo/contracts";
+import { MessageBlock } from "@nurlai/contracts";
 import {
   BOT_MESSAGE_MAX_LENGTH,
   BOT_MESSAGE_TOO_LONG,
@@ -8,8 +8,8 @@ import {
   renderBotGroupDirectory,
   renderGroupMembersContext,
   resolveBotAddress,
-} from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
+} from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
 import {
   appendEventInTransaction,
   createThreadMessageInTransaction,
@@ -17,8 +17,8 @@ import {
   lockSpaceGroup,
   THREAD_LOCK_TRANSACTION_OPTIONS,
   touchGroupUpdatedAt,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { runLeaseFor } from "../runs/assembly/run-messages.js";
 import type { ExecutorDeps } from "../runs/executor/executor-deps.js";
 import { wakeRun } from "../runs/wakeups/wake-run.js";

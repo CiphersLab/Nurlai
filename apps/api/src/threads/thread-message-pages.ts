@@ -1,15 +1,15 @@
-import type { MessageAuthor, ThreadMessage, ThreadMessagePage } from "@rakazo/contracts";
-import { MessageBlock as MessageBlockSchema } from "@rakazo/contracts";
+import type { MessageAuthor, ThreadMessage, ThreadMessagePage } from "@nurlai/contracts";
+import { MessageBlock as MessageBlockSchema } from "@nurlai/contracts";
 import {
   BACKGROUND_RUN_TRIGGERS,
   callIdFromClientNonce,
   isBackgroundInputBlock,
   isBackgroundRunTrigger,
   isPeerReceiptBlocks,
-} from "@rakazo/core";
-import { messageReplyPreview } from "@rakazo/core/message-quote";
-import type { Prisma, PrismaClient } from "@rakazo/db";
-import { loadMessageAuthors, storedMessageBlocks } from "@rakazo/db";
+} from "@nurlai/core";
+import { messageReplyPreview } from "@nurlai/core/message-quote";
+import type { Prisma, PrismaClient } from "@nurlai/db";
+import { loadMessageAuthors, storedMessageBlocks } from "@nurlai/db";
 
 type MessageDb = PrismaClient | Prisma.TransactionClient;
 

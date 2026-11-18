@@ -6,7 +6,7 @@ import type {
   JsonSchemaValidatorResult,
   jsonSchemaValidator,
 } from "@modelcontextprotocol/sdk/validation/types.js";
-import { getLogger } from "@rakazo/logging";
+import { getLogger } from "@nurlai/logging";
 
 const PATTERN_PREVIEW_CHARS = 160;
 const REASON_PREVIEW_CHARS = 300;

@@ -5,7 +5,7 @@ import AVFAudio
 import Security
 
 /// Created at application launch, before the JavaScript bridge exists.
-public class RakazoCallsSubscriber: ExpoAppDelegateSubscriber {
+public class NurlaiCallsSubscriber: ExpoAppDelegateSubscriber {
   public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
     _ = IncomingCalls.shared
     if #available(iOS 18.0, *) { WorkActivities.shared.observe() }
@@ -15,7 +15,7 @@ public class RakazoCallsSubscriber: ExpoAppDelegateSubscriber {
 
 final class IncomingCalls: NSObject, PKPushRegistryDelegate, CXProviderDelegate, URLSessionTaskDelegate {
   static let shared = IncomingCalls()
-  static let changed = Notification.Name("RakazoIncomingCallChanged")
+  static let changed = Notification.Name("NurlaiIncomingCallChanged")
   private let provider: CXProvider
   private var registry: PKPushRegistry!
   private var calls: [UUID: [String: String]] = [:]
@@ -241,10 +241,10 @@ final class IncomingCalls: NSObject, PKPushRegistryDelegate, CXProviderDelegate,
   }
 }
 
-public class RakazoNotificationsModule: Module {
+public class NurlaiNotificationsModule: Module {
   private var observer: NSObjectProtocol?
   public func definition() -> ModuleDefinition {
-    Name("RakazoNotifications")
+    Name("NurlaiNotifications")
     Events("onIncomingCallChanged", "onWorkActivityToken", "onWorkActivityStartToken")
     OnCreate {
       if #available(iOS 18.0, *) {

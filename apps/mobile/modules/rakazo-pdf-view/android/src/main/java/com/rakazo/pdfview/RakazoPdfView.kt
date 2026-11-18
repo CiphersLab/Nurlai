@@ -1,4 +1,4 @@
-package com.rakazo.pdfview
+package com.nurlai.pdfview
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -37,7 +37,7 @@ import java.util.concurrent.Executors
  * own coordinates (so recycling still only lays out what is on screen), this view pans it
  * horizontally, and pages redraw at the zoomed width once a gesture settles.
  */
-class RakazoPdfView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
+class NurlaiPdfView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
   override val shouldUseAndroidLayout = true
 
   private val onLoadError by EventDispatcher()

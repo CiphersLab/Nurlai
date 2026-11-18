@@ -1,8 +1,8 @@
 import { randomInt } from "node:crypto";
-import type { BillingProvider } from "@rakazo/adapter-kit";
-import type { BillingStatus } from "@rakazo/contracts";
-import { BYOK_TIERS } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
+import type { BillingProvider } from "@nurlai/adapter-kit";
+import type { BillingStatus } from "@nurlai/contracts";
+import { BYOK_TIERS } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
 import {
   billingAccountForOrganization,
   extendByokFreePeriod,
@@ -11,8 +11,8 @@ import {
   isUniqueViolation,
   needsBillingPortal,
   reconcileCreditPurchase,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 
 const CODE_ALPHABET = "abcdefghjkmnpqrstuvwxyz23456789";
 const CODE_LENGTH = 8;

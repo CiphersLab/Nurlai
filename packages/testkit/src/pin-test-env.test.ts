@@ -1,5 +1,5 @@
-import type { AdapterContext } from "@rakazo/adapter-kit";
-import { createSecretStore } from "@rakazo/adapters";
+import type { AdapterContext } from "@nurlai/adapter-kit";
+import { createSecretStore } from "@nurlai/adapters";
 import { describe, expect, it, vi } from "vitest";
 import { pinLocalSecretStore } from "./pin-secret-store.js";
 
@@ -9,7 +9,7 @@ const itOffline = process.env.VERIFY_DATABASE ? it.skip : it;
 describeFast("pnpm test emulator pin", () => {
   it("forces scripted runtime, fake sandbox, and in-memory wakeup", () => {
     expect(process.env.AGENT_RUNTIME).toBe("scripted");
-    expect(process.env.RAKAZO_LIVE_MODEL_CATALOG).toBe("off");
+    expect(process.env.NURLAI_LIVE_MODEL_CATALOG).toBe("off");
     expect(process.env.SANDBOX_PROVIDER).toBe("fake");
     expect(process.env.WAKEUP_DRIVER).toBe("memory");
   });

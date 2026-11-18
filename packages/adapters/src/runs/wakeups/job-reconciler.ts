@@ -1,10 +1,10 @@
 import { setImmediate } from "node:timers/promises";
-import type { JobPublisher, NotificationProvider } from "@rakazo/adapter-kit";
-import { routineWakeupJob, runContinueJob } from "@rakazo/adapter-kit";
-import { BACKGROUND_HELPER_TRIGGER, stuckWorkStatusMessages } from "@rakazo/core";
-import type { DatabaseOutage, Pool, PrismaClient, ThreadEvents } from "@rakazo/db";
-import { databaseOutage, reconcileComputerRuns, storedMessageBlocks } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+import type { JobPublisher, NotificationProvider } from "@nurlai/adapter-kit";
+import { routineWakeupJob, runContinueJob } from "@nurlai/adapter-kit";
+import { BACKGROUND_HELPER_TRIGGER, stuckWorkStatusMessages } from "@nurlai/core";
+import type { DatabaseOutage, Pool, PrismaClient, ThreadEvents } from "@nurlai/db";
+import { databaseOutage, reconcileComputerRuns, storedMessageBlocks } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import type { PoolClient } from "pg";
 import { reconcileCallRequests } from "../../calls/call-request.js";
 import { scheduleComputerControlExpiry } from "../../computers/screens/computer-control.js";
@@ -27,7 +27,7 @@ const CONTROL_LOOKAHEAD_MS = 60_000;
  * finishing a failed attempt holds it for seconds before Graphile unlocks it.
  */
 const ABANDONED_QUEUED_LOCK_MS = 5 * 60_000;
-// Two keys give Rakazo's lock a namespace without relying on a hash that might collide
+// Two keys give Nurlai's lock a namespace without relying on a hash that might collide
 // with an application using the one-key advisory-lock API.
 const RECONCILIATION_LOCK_NAMESPACE = 1_380_019_075;
 const RECONCILIATION_LOCK_ID = 1;

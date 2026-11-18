@@ -308,13 +308,13 @@ describe("compose project name resolution", () => {
     expect(
       resolveComposeProjectName({
         COMPOSE_PROJECT_NAME: "live-stack",
-        RAKAZO_COMPOSE_PROJECT_NAME: "manual-stack",
+        NURLAI_COMPOSE_PROJECT_NAME: "manual-stack",
       }),
     ).toBe("live-stack");
   });
 
   it("falls back to a dedicated override, then to the name pinned in the compose file", () => {
-    expect(resolveComposeProjectName({ RAKAZO_COMPOSE_PROJECT_NAME: "manual-stack" })).toBe(
+    expect(resolveComposeProjectName({ NURLAI_COMPOSE_PROJECT_NAME: "manual-stack" })).toBe(
       "manual-stack",
     );
     expect(resolveComposeProjectName({})).toBe(DEFAULT_COMPOSE_PROJECT_NAME);
@@ -508,88 +508,88 @@ describe("managed env assignments", () => {
     const contents = [
       "# deployment",
       "POSTGRES_PASSWORD=secret",
-      "RAKAZO_IMAGE_TAG=v1.0.0",
+      "NURLAI_IMAGE_TAG=v1.0.0",
       "",
     ].join("\n");
-    expect(upsertEnvAssignments(contents, { RAKAZO_IMAGE_TAG: "v1.1.0" })).toBe(
-      ["# deployment", "POSTGRES_PASSWORD=secret", "RAKAZO_IMAGE_TAG=v1.1.0", ""].join("\n"),
+    expect(upsertEnvAssignments(contents, { NURLAI_IMAGE_TAG: "v1.1.0" })).toBe(
+      ["# deployment", "POSTGRES_PASSWORD=secret", "NURLAI_IMAGE_TAG=v1.1.0", ""].join("\n"),
     );
   });
 
   it("appends keys that are not present yet", () => {
     const result = upsertEnvAssignments("POSTGRES_PASSWORD=secret\n", {
-      RAKAZO_IMAGE_TAG: "v1.1.0",
-      RAKAZO_IMAGE_TAG_PREVIOUS: "v1.0.0",
+      NURLAI_IMAGE_TAG: "v1.1.0",
+      NURLAI_IMAGE_TAG_PREVIOUS: "v1.0.0",
     });
     expect(result.split("\n")).toEqual([
       "POSTGRES_PASSWORD=secret",
       "",
-      "RAKAZO_IMAGE_TAG=v1.1.0",
-      "RAKAZO_IMAGE_TAG_PREVIOUS=v1.0.0",
+      "NURLAI_IMAGE_TAG=v1.1.0",
+      "NURLAI_IMAGE_TAG_PREVIOUS=v1.0.0",
       "",
     ]);
   });
 
   it("keeps the file's existing line endings", () => {
-    const result = upsertEnvAssignments("A=1\r\nRAKAZO_IMAGE_TAG=v1.0.0\r\n", {
-      RAKAZO_IMAGE_TAG: "v2.0.0",
+    const result = upsertEnvAssignments("A=1\r\nNURLAI_IMAGE_TAG=v1.0.0\r\n", {
+      NURLAI_IMAGE_TAG: "v2.0.0",
     });
-    expect(result).toBe("A=1\r\nRAKAZO_IMAGE_TAG=v2.0.0\r\n");
+    expect(result).toBe("A=1\r\nNURLAI_IMAGE_TAG=v2.0.0\r\n");
   });
 
   it("rewrites every duplicate managed assignment so the last value cannot win", () => {
     const result = upsertEnvAssignments(
-      "RAKAZO_IMAGE_TAG=stale\nA=1\nRAKAZO_IMAGE_TAG=still-stale\n",
-      { RAKAZO_IMAGE_TAG: "sha-0123456789abcdef0123456789abcdef01234567" },
+      "NURLAI_IMAGE_TAG=stale\nA=1\nNURLAI_IMAGE_TAG=still-stale\n",
+      { NURLAI_IMAGE_TAG: "sha-0123456789abcdef0123456789abcdef01234567" },
     );
-    expect(result.match(/RAKAZO_IMAGE_TAG=sha-/g)).toHaveLength(2);
+    expect(result.match(/NURLAI_IMAGE_TAG=sha-/g)).toHaveLength(2);
     expect(result).not.toContain("stale");
   });
 
   it.each([
-    " RAKAZO_IMAGE_TAG=v1.2.0",
-    "\tRAKAZO_IMAGE_TAG=v1.2.0",
-    "RAKAZO_IMAGE_TAG = v1.2.0",
-    "RAKAZO_IMAGE_TAG\t=\tv1.2.0",
-    "\u00a0RAKAZO_IMAGE_TAG\u00a0=\u00a0v1.2.0",
-    " export RAKAZO_IMAGE_TAG = 'v1.2.0' # pinned",
-    'RAKAZO_IMAGE_TAG: "v1.2.0"',
+    " NURLAI_IMAGE_TAG=v1.2.0",
+    "\tNURLAI_IMAGE_TAG=v1.2.0",
+    "NURLAI_IMAGE_TAG = v1.2.0",
+    "NURLAI_IMAGE_TAG\t=\tv1.2.0",
+    "\u00a0NURLAI_IMAGE_TAG\u00a0=\u00a0v1.2.0",
+    " export NURLAI_IMAGE_TAG = 'v1.2.0' # pinned",
+    'NURLAI_IMAGE_TAG: "v1.2.0"',
   ])("rewrites a later Compose assignment: %s", (duplicate) => {
-    const contents = `RAKAZO_IMAGE_TAG=v1.1.0\n${duplicate}\n`;
-    expect(parse(contents).RAKAZO_IMAGE_TAG).toBe("v1.2.0");
+    const contents = `NURLAI_IMAGE_TAG=v1.1.0\n${duplicate}\n`;
+    expect(parse(contents).NURLAI_IMAGE_TAG).toBe("v1.2.0");
     const result = upsertEnvAssignments(contents, {
-      RAKAZO_IMAGE_TAG: "v2.0.0",
+      NURLAI_IMAGE_TAG: "v2.0.0",
     });
 
-    expect(result).toBe("RAKAZO_IMAGE_TAG=v2.0.0\nRAKAZO_IMAGE_TAG=v2.0.0\n");
-    expect(parse(result).RAKAZO_IMAGE_TAG).toBe("v2.0.0");
+    expect(result).toBe("NURLAI_IMAGE_TAG=v2.0.0\nNURLAI_IMAGE_TAG=v2.0.0\n");
+    expect(parse(result).NURLAI_IMAGE_TAG).toBe("v2.0.0");
   });
 
   it("rewrites mixed current and rollback duplicates while preserving unrelated CRLF content", () => {
     const unrelated = [
-      "# RAKAZO_IMAGE_TAG = commented",
-      "  # RAKAZO_IMAGE_TAG=also-commented",
-      "RAKAZO_IMAGE_TAG_EXTRA=untouched",
+      "# NURLAI_IMAGE_TAG = commented",
+      "  # NURLAI_IMAGE_TAG=also-commented",
+      "NURLAI_IMAGE_TAG_EXTRA=untouched",
       "OTHER = 'keep # this' # comment",
       "",
     ];
     const contents = [
-      "RAKAZO_IMAGE_TAG=v1.0.0",
-      "RAKAZO_IMAGE_TAG_PREVIOUS=v0.9.0",
+      "NURLAI_IMAGE_TAG=v1.0.0",
+      "NURLAI_IMAGE_TAG_PREVIOUS=v0.9.0",
       ...unrelated,
-      " \tRAKAZO_IMAGE_TAG \t= v1.2.0 # pinned",
-      "\tRAKAZO_IMAGE_TAG_PREVIOUS = 'v1.1.0' # rollback",
+      " \tNURLAI_IMAGE_TAG \t= v1.2.0 # pinned",
+      "\tNURLAI_IMAGE_TAG_PREVIOUS = 'v1.1.0' # rollback",
     ].join("\r\n");
-    const assignments = { RAKAZO_IMAGE_TAG: "v2.0.0", RAKAZO_IMAGE_TAG_PREVIOUS: "v1.2.0" };
+    const assignments = { NURLAI_IMAGE_TAG: "v2.0.0", NURLAI_IMAGE_TAG_PREVIOUS: "v1.2.0" };
     const result = upsertEnvAssignments(contents, assignments);
 
     expect(result).toBe(
       [
-        "RAKAZO_IMAGE_TAG=v2.0.0",
-        "RAKAZO_IMAGE_TAG_PREVIOUS=v1.2.0",
+        "NURLAI_IMAGE_TAG=v2.0.0",
+        "NURLAI_IMAGE_TAG_PREVIOUS=v1.2.0",
         ...unrelated,
-        "RAKAZO_IMAGE_TAG=v2.0.0",
-        "RAKAZO_IMAGE_TAG_PREVIOUS=v1.2.0",
+        "NURLAI_IMAGE_TAG=v2.0.0",
+        "NURLAI_IMAGE_TAG_PREVIOUS=v1.2.0",
         "",
       ].join("\r\n"),
     );
@@ -601,31 +601,31 @@ describe("managed env assignments", () => {
   )(
     "preserves assignment-like text inside an unrelated %s quoted value with prefix %j",
     (quote, prefix) => {
-      const unrelated = `${prefix}notes.value: ${quote}first\\\nRAKAZO_IMAGE_TAG=v0.9.0\n RAKAZO_IMAGE_TAG = v1.0.0\nlast${quote} # keep`;
-      const result = upsertEnvAssignments(`${unrelated}\nRAKAZO_IMAGE_TAG=v1.2.0\n`, {
-        RAKAZO_IMAGE_TAG: "v2.0.0",
+      const unrelated = `${prefix}notes.value: ${quote}first\\\nNURLAI_IMAGE_TAG=v0.9.0\n NURLAI_IMAGE_TAG = v1.0.0\nlast${quote} # keep`;
+      const result = upsertEnvAssignments(`${unrelated}\nNURLAI_IMAGE_TAG=v1.2.0\n`, {
+        NURLAI_IMAGE_TAG: "v2.0.0",
       });
 
-      expect(result).toBe(`${unrelated}\nRAKAZO_IMAGE_TAG=v2.0.0\n`);
+      expect(result).toBe(`${unrelated}\nNURLAI_IMAGE_TAG=v2.0.0\n`);
       expect(parse(result)["notes.value"]).toBe(parse(unrelated)["notes.value"]);
     },
   );
 
   it("preserves a leading BOM when rewriting managed duplicates", () => {
     const result = upsertEnvAssignments(
-      "\uFEFFRAKAZO_IMAGE_TAG=v1.1.0\nRAKAZO_IMAGE_TAG = v1.2.0\n",
+      "\uFEFFNURLAI_IMAGE_TAG=v1.1.0\nNURLAI_IMAGE_TAG = v1.2.0\n",
       {
-        RAKAZO_IMAGE_TAG: "v2.0.0",
+        NURLAI_IMAGE_TAG: "v2.0.0",
       },
     );
-    expect(result).toBe("\uFEFFRAKAZO_IMAGE_TAG=v2.0.0\nRAKAZO_IMAGE_TAG=v2.0.0\n");
-    expect(parse(result).RAKAZO_IMAGE_TAG).toBe("v2.0.0");
+    expect(result).toBe("\uFEFFNURLAI_IMAGE_TAG=v2.0.0\nNURLAI_IMAGE_TAG=v2.0.0\n");
+    expect(parse(result).NURLAI_IMAGE_TAG).toBe("v2.0.0");
   });
 
   it("refuses values that would inject a second assignment or a compose expression", () => {
     // biome-ignore lint/suspicious/noTemplateCurlyInString: the literal is the hostile input under test
     for (const value of ["v1\nEVIL=1", "v1 v2", "$(id)", "v1;rm -rf /", "${OTHER}"]) {
-      expect(() => upsertEnvAssignments("", { RAKAZO_IMAGE_TAG: value })).toThrow(/Refusing/);
+      expect(() => upsertEnvAssignments("", { NURLAI_IMAGE_TAG: value })).toThrow(/Refusing/);
     }
   });
 

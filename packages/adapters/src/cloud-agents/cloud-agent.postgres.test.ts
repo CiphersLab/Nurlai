@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
-import type { AdapterContext, BackgroundJob, JobPublisher } from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
-import type { PrismaClient } from "@rakazo/db";
+import type { AdapterContext, BackgroundJob, JobPublisher } from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
+import type { PrismaClient } from "@nurlai/db";
 import {
   asSystem,
   clearThread,
@@ -9,7 +9,7 @@ import {
   RunHistoryWriteError,
   runAsSystem,
   runAsTenant,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import type { OAuthMaterial } from "../mcp/mcp-oauth.js";
 import { McpOAuthBroker } from "../mcp/mcp-oauth.js";
@@ -845,7 +845,7 @@ describePostgres("cloud agent lifecycle and recovery (PostgreSQL + Cursor emulat
   describe("on a T3 Code environment the user connected", () => {
     const secrets = new EncryptedSecretStore("test-only-encryption-key");
 
-    /** An MCP server connected over OAuth, as Rakazo stores it after T3 Code's approval. */
+    /** An MCP server connected over OAuth, as Nurlai stores it after T3 Code's approval. */
     async function connectServer(
       owner: { spaceId: string; userId: string },
       overrides: {

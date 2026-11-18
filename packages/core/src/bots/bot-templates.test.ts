@@ -1,4 +1,4 @@
-import { BotTemplateSchema } from "@rakazo/contracts";
+import { BotTemplateSchema } from "@nurlai/contracts";
 import { describe, expect, it } from "vitest";
 import { looksLikeCredential } from "../agent-import/index.js";
 import { matchFeaturedConnectorId } from "../integrations/featured-connectors.js";

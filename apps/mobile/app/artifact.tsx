@@ -1,8 +1,8 @@
 import { ph, t } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import { ChatMarkdown } from "@rakazo/chat-ui/native";
-import type { ArtifactVersion, ArtifactWithContent } from "@rakazo/contracts";
-import { artifactPreviewKind } from "@rakazo/contracts";
+import { ChatMarkdown } from "@nurlai/chat-ui/native";
+import type { ArtifactVersion, ArtifactWithContent } from "@nurlai/contracts";
+import { artifactPreviewKind } from "@nurlai/contracts";
 import type { File } from "expo-file-system";
 import { useFocusEffect, useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import type { ReactNode } from "react";

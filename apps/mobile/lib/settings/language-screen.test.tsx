@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 
-import { APP_LOCALE_LABELS } from "@rakazo/core";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import { APP_LOCALE_LABELS } from "@nurlai/core";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { setItemAsync } from "expo-secure-store";
 import type { ReactNode } from "react";
 import { act } from "react";
@@ -24,7 +24,7 @@ vi.mock("../api/api", () => ({
   captureApiRequestContext: async (spaceId: string | null = scope.spaceId) => ({
     apiBase: "https://rakazo.test",
     sessionGeneration: 1,
-    headers: spaceId ? { "x-rakazo-space-id": spaceId } : {},
+    headers: spaceId ? { "x-nurlai-space-id": spaceId } : {},
   }),
 }));
 vi.mock("../api/session", () => ({
@@ -79,7 +79,7 @@ const pinned = {
   requestContext: {
     apiBase: "https://rakazo.test",
     sessionGeneration: 1,
-    headers: { "x-rakazo-space-id": "space-1" },
+    headers: { "x-nurlai-space-id": "space-1" },
   },
 };
 let container: HTMLDivElement;

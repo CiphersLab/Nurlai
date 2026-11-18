@@ -31,7 +31,7 @@ async function runTurn(
   provider: "local" | "openai-compatible",
   respond: (response: ServerResponse) => void,
 ) {
-  vi.stubEnv("RAKAZO_LOCAL_MODELS", "example-model");
+  vi.stubEnv("NURLAI_LOCAL_MODELS", "example-model");
   // One attempt: a retry would only repeat the same scripted response.
   vi.stubEnv("MODEL_STREAM_MAX_RETRIES", "0");
   vi.stubEnv("MODEL_STREAM_TIMEOUT_MS", "1000");
@@ -44,7 +44,7 @@ async function runTurn(
   const address = server.address();
   if (!address || typeof address === "string") throw new Error("Fixture endpoint unavailable");
   const baseUrl = `http://127.0.0.1:${address.port}/v1`;
-  vi.stubEnv("RAKAZO_LOCAL_MODELS_URL", baseUrl);
+  vi.stubEnv("NURLAI_LOCAL_MODELS_URL", baseUrl);
   // The model catalog reads the environment once, so each scenario loads a fresh one.
   vi.resetModules();
   const { PiAgentRuntime } = await import("../pi-runtime.js");

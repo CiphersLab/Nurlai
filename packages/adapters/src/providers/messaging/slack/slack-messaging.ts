@@ -1,4 +1,4 @@
-import type { MessagingInboundMessage } from "@rakazo/adapter-kit";
+import type { MessagingInboundMessage } from "@nurlai/adapter-kit";
 import type { Adapter } from "chat";
 import { boundInboundMarkdown } from "../../../messaging/chat-sdk-surface.js";
 import { lazyChatAdapter } from "../../../messaging/lazy-chat-adapter.js";

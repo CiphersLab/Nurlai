@@ -1,7 +1,7 @@
 import "./zod-config";
 import "./monitoring-bootstrap";
-import { rememberSignupAttribution } from "@rakazo/core/signup-attribution";
-import { BotAvatarActivityProvider, Toaster, TooltipProvider } from "@rakazo/ui-web";
+import { rememberSignupAttribution } from "@nurlai/core/signup-attribution";
+import { BotAvatarActivityProvider, Toaster, TooltipProvider } from "@nurlai/ui-web";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { StrictMode, useEffect, useLayoutEffect, useRef } from "react";
 import { createRoot } from "react-dom/client";

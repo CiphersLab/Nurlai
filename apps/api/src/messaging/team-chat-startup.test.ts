@@ -1,5 +1,5 @@
-import type { MessagingInboundMessage } from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
+import type { MessagingInboundMessage } from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
 import { describe, expect, it, vi } from "vitest";
 import { prefersTeamChatSurface, settleWithTimeout } from "./team-chat-startup.js";
 

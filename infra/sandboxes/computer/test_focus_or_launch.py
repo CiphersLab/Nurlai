@@ -191,7 +191,7 @@ class MainTest(unittest.TestCase):
         # The fixture PIDs expose no profile, so the only chromium window is raised.
         self.assertEqual(calls, [("run", ["wmctrl", "-ia", "0x01800003"])])
         with patch.object(helper, "window_profile", return_value="/profiles/other"), patch.dict(
-            os.environ, {"RAKAZO_BROWSER_PROFILE": "/profiles/mine"}
+            os.environ, {"NURLAI_BROWSER_PROFILE": "/profiles/mine"}
         ):
             calls = self.run_wrapper(["rakazo-browser"])
         self.assertEqual(
@@ -575,7 +575,7 @@ class ControlArgvTest(unittest.TestCase):
             [
                 "env",
                 "DISPLAY=:1",
-                f"RAKAZO_BROWSER_PROFILE={PROFILE}",
+                f"NURLAI_BROWSER_PROFILE={PROFILE}",
                 "rakazo-focus-or-launch",
                 "rakazo-browser",
                 "https://example.test",
@@ -599,7 +599,7 @@ class ControlArgvTest(unittest.TestCase):
             [
                 "env",
                 "DISPLAY=:1",
-                f"RAKAZO_BROWSER_PROFILE={PROFILE}",
+                f"NURLAI_BROWSER_PROFILE={PROFILE}",
                 "rakazo-focus-or-launch",
                 "xterm",
             ],
@@ -618,7 +618,7 @@ class ControlArgvTest(unittest.TestCase):
         argv = [
             "env",
             "DISPLAY=:1",
-            f"RAKAZO_BROWSER_PROFILE={PROFILE}",
+            f"NURLAI_BROWSER_PROFILE={PROFILE}",
             "rakazo-focus-or-launch",
             "rakazo-browser",
         ]
@@ -933,11 +933,11 @@ class ScriptTest(unittest.TestCase):
                 wmctrl = bin_dir / "wmctrl"
                 wmctrl.write_text(
                     "#!/bin/sh\n"
-                    'if [ "$1" = "-lxp" ]; then cat "$RAKAZO_TEST_WINDOWS"; exit 0; fi\n'
-                    'printf "wmctrl %s\\n" "$*" >> "$RAKAZO_TEST_ARGS"\n'
+                    'if [ "$1" = "-lxp" ]; then cat "$NURLAI_TEST_WINDOWS"; exit 0; fi\n'
+                    'printf "wmctrl %s\\n" "$*" >> "$NURLAI_TEST_ARGS"\n'
                 )
                 browser = bin_dir / "rakazo-browser"
-                browser.write_text('#!/bin/sh\nprintf "browser %s\\n" "$*" >> "$RAKAZO_TEST_ARGS"\n')
+                browser.write_text('#!/bin/sh\nprintf "browser %s\\n" "$*" >> "$NURLAI_TEST_ARGS"\n')
                 # The listed windows are Chromium's, whatever browser the host has.
                 chromium = bin_dir / "chromium"
                 chromium.write_text("#!/bin/sh\n")
@@ -947,9 +947,9 @@ class ScriptTest(unittest.TestCase):
                 env = {
                     **os.environ,
                     "PATH": f"{bin_dir}{os.pathsep}{os.environ.get('PATH', '')}",
-                    "RAKAZO_BROWSER_PROFILE": "/profiles/mine",
-                    "RAKAZO_TEST_WINDOWS": str(windows),
-                    "RAKAZO_TEST_ARGS": str(args_log),
+                    "NURLAI_BROWSER_PROFILE": "/profiles/mine",
+                    "NURLAI_TEST_WINDOWS": str(windows),
+                    "NURLAI_TEST_ARGS": str(args_log),
                 }
                 script = str(Path(__file__).with_name("rakazo-focus-or-launch"))
                 result = subprocess.run(
@@ -1161,14 +1161,14 @@ class IsolatedHelperTest(unittest.TestCase):
                 fake.chmod(0o755)
             argv = ["env", "DISPLAY=:1", "xdotool", "key", "a"]
             with patch.dict(os.environ, {"PATH": f"{local_bin}{os.pathsep}{control.CHILD_PATH}",
-                                         "RAKAZO_COMPUTER_CONTROL_TOKEN": "secret-token"}):
+                                         "NURLAI_COMPUTER_CONTROL_TOKEN": "secret-token"}):
                 with patch.object(control.subprocess, "run",
                                   return_value=subprocess.CompletedProcess(argv, 0)) as run:
                     control.run_control_argv(argv, ":1")
                 child = run.call_args.kwargs["env"]
                 self.assertEqual(child["PATH"], control.CHILD_PATH)
                 self.assertEqual(child["DISPLAY"], ":1")
-                self.assertNotIn("RAKAZO_COMPUTER_CONTROL_TOKEN", child)
+                self.assertNotIn("NURLAI_COMPUTER_CONTROL_TOKEN", child)
                 try:
                     control.run_control_argv(argv, ":1")
                 except RuntimeError:
@@ -1319,8 +1319,8 @@ class XcaptureKeyTest(unittest.TestCase):
 
         return {
             "X11/Xlib.h": source("""\
-                #ifndef RAKAZO_STUB_XLIB_H
-                #define RAKAZO_STUB_XLIB_H
+                #ifndef NURLAI_STUB_XLIB_H
+                #define NURLAI_STUB_XLIB_H
                 typedef unsigned long XID;
                 typedef XID Window;
                 typedef XID Drawable;
@@ -1374,21 +1374,21 @@ class XcaptureKeyTest(unittest.TestCase):
                 #endif
                 """),
             "X11/XKBlib.h": source("""\
-                #ifndef RAKAZO_STUB_XKBLIB_H
-                #define RAKAZO_STUB_XKBLIB_H
+                #ifndef NURLAI_STUB_XKBLIB_H
+                #define NURLAI_STUB_XKBLIB_H
                 #include <X11/Xlib.h>
                 KeySym XkbKeycodeToKeysym(Display *display, KeyCode key, int group, int level);
                 #endif
                 """),
             "X11/Xutil.h": source("""\
-                #ifndef RAKAZO_STUB_XUTIL_H
-                #define RAKAZO_STUB_XUTIL_H
+                #ifndef NURLAI_STUB_XUTIL_H
+                #define NURLAI_STUB_XUTIL_H
                 #include <X11/Xlib.h>
                 #endif
                 """),
             "X11/extensions/XShm.h": source("""\
-                #ifndef RAKAZO_STUB_XSHM_H
-                #define RAKAZO_STUB_XSHM_H
+                #ifndef NURLAI_STUB_XSHM_H
+                #define NURLAI_STUB_XSHM_H
                 #include <X11/Xlib.h>
                 typedef struct {
                   int shmid;
@@ -1405,8 +1405,8 @@ class XcaptureKeyTest(unittest.TestCase):
                 #endif
                 """),
             "X11/extensions/Xdamage.h": source("""\
-                #ifndef RAKAZO_STUB_XDAMAGE_H
-                #define RAKAZO_STUB_XDAMAGE_H
+                #ifndef NURLAI_STUB_XDAMAGE_H
+                #define NURLAI_STUB_XDAMAGE_H
                 #include <X11/Xlib.h>
                 typedef XID Damage;
                 typedef XID XserverRegion;
@@ -1418,8 +1418,8 @@ class XcaptureKeyTest(unittest.TestCase):
                 #endif
                 """),
             "X11/extensions/Xfixes.h": source("""\
-                #ifndef RAKAZO_STUB_XFIXES_H
-                #define RAKAZO_STUB_XFIXES_H
+                #ifndef NURLAI_STUB_XFIXES_H
+                #define NURLAI_STUB_XFIXES_H
                 #include <X11/Xlib.h>
                 #include <X11/extensions/Xdamage.h>
                 XserverRegion XFixesCreateRegion(Display *display, XRectangle *rectangles, int count);
@@ -1428,8 +1428,8 @@ class XcaptureKeyTest(unittest.TestCase):
                 #endif
                 """),
             "X11/extensions/XTest.h": source("""\
-                #ifndef RAKAZO_STUB_XTEST_H
-                #define RAKAZO_STUB_XTEST_H
+                #ifndef NURLAI_STUB_XTEST_H
+                #define NURLAI_STUB_XTEST_H
                 #include <X11/Xlib.h>
                 Bool XTestQueryExtension(Display *display, int *event_base, int *error_base, int *major, int *minor);
                 int XTestFakeKeyEvent(Display *display, unsigned int keycode, Bool is_press, unsigned long delay);
@@ -1438,8 +1438,8 @@ class XcaptureKeyTest(unittest.TestCase):
                 #endif
                 """),
             "png.h": source("""\
-                #ifndef RAKAZO_STUB_PNG_H
-                #define RAKAZO_STUB_PNG_H
+                #ifndef NURLAI_STUB_PNG_H
+                #define NURLAI_STUB_PNG_H
                 #include <setjmp.h>
                 #include <stddef.h>
                 #include <stdint.h>

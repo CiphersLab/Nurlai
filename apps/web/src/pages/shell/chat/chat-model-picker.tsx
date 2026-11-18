@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { ChatModelChoice, ModelMark } from "@rakazo/core";
-import { groupModelChoices, modelChoiceSearchText, modelMark } from "@rakazo/core";
+import type { ChatModelChoice, ModelMark } from "@nurlai/core";
+import { groupModelChoices, modelChoiceSearchText, modelMark } from "@nurlai/core";
 import {
   Command,
   CommandEmpty,
@@ -11,7 +11,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { ChevronDownIcon, ChevronRightIcon, PlusIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { useId, useMemo, useState } from "react";

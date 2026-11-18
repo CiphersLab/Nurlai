@@ -30,7 +30,7 @@ vi.mock("@tanstack/react-query", () => ({
   useMutation: () => ({ mutate: rename, reset: vi.fn() }),
   useInfiniteQuery: () => ({ data: { pages: [{ items: pageItems.current }] } }),
 }));
-vi.mock("@rakazo/ui-web", async (importActual) => ({
+vi.mock("@nurlai/ui-web", async (importActual) => ({
   ...(await importActual<object>()),
   DropdownMenu: ({ children }: { children: ReactNode }) => children,
   DropdownMenuTrigger: () => null,

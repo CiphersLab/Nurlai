@@ -1,4 +1,4 @@
-import type { AgentRuntimeEvent } from "@rakazo/adapter-kit";
+import type { AgentRuntimeEvent } from "@nurlai/adapter-kit";
 import { describe, expect, it, vi } from "vitest";
 import type { RunContext } from "../runs/assembly/run-context.js";
 import { completeRun } from "../runs/lifecycle/run-complete.js";

@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
-import type { SignupSurvey as SignupSurveyAnswers } from "@rakazo/contracts";
-import { signupSurveyAsksTeamSize } from "@rakazo/contracts";
+import type { SignupSurvey as SignupSurveyAnswers } from "@nurlai/contracts";
+import { signupSurveyAsksTeamSize } from "@nurlai/contracts";
 import { useContext, useState } from "react";
 import {
   KeyboardAvoidingView,

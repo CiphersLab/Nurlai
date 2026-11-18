@@ -1,7 +1,7 @@
-import type { AdapterContext } from "@rakazo/adapter-kit";
-import { ATTACHMENT_MAX_BYTES } from "@rakazo/contracts";
-import { toolRequiresApproval } from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
+import type { AdapterContext } from "@nurlai/adapter-kit";
+import { ATTACHMENT_MAX_BYTES } from "@nurlai/contracts";
+import { toolRequiresApproval } from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import { selectBuiltinToolsForRun } from "../runs/tools/run-tool-selection.js";
 import { FakeMediaGenerationProvider } from "./media-generation-provider.js";

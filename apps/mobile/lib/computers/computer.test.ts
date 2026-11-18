@@ -301,10 +301,10 @@ describe("readScreenUrl", () => {
 
 describe("screen page states", () => {
   it("takes only the exact state message a screen page posts", () => {
-    expect(screenPageState('{"rakazoScreen":"connected"}')).toBe("connected");
-    expect(screenPageState('{"rakazoScreen":"disconnected"}')).toBe("disconnected");
-    expect(screenPageState('{"rakazoScreen":"connected","detail":"text"}')).toBeNull();
-    expect(screenPageState('{"rakazoScreen":"reconnect"}')).toBeNull();
+    expect(screenPageState('{"nurlaiScreen":"connected"}')).toBe("connected");
+    expect(screenPageState('{"nurlaiScreen":"disconnected"}')).toBe("disconnected");
+    expect(screenPageState('{"nurlaiScreen":"connected","detail":"text"}')).toBeNull();
+    expect(screenPageState('{"nurlaiScreen":"reconnect"}')).toBeNull();
     expect(screenPageState('["connected"]')).toBeNull();
     expect(screenPageState('"connected"')).toBeNull();
     expect(screenPageState("null")).toBeNull();

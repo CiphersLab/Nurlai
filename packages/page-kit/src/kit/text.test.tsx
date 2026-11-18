@@ -2,8 +2,8 @@
 
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { expectLinearTime } from "@rakazo/contracts/test-timing";
-import { pageKitPalette } from "@rakazo/ui-tokens";
+import { expectLinearTime } from "@nurlai/contracts/test-timing";
+import { pageKitPalette } from "@nurlai/ui-tokens";
 import type { ReactElement } from "react";
 import { act } from "react";
 import { createRoot } from "react-dom/client";

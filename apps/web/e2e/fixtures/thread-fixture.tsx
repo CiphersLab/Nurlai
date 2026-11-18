@@ -1,7 +1,7 @@
-import type { ProductEvent, ThreadMessage, ThreadSnapshot } from "@rakazo/contracts";
-import { foldPeerReplies, reduceThreadSnapshot } from "@rakazo/core";
-import type { GroupAvatarMember } from "@rakazo/ui-web";
-import { DEFAULT_BOT_AVATAR_COLOR } from "@rakazo/ui-web";
+import type { ProductEvent, ThreadMessage, ThreadSnapshot } from "@nurlai/contracts";
+import { foldPeerReplies, reduceThreadSnapshot } from "@nurlai/core";
+import type { GroupAvatarMember } from "@nurlai/ui-web";
+import { DEFAULT_BOT_AVATAR_COLOR } from "@nurlai/ui-web";
 import type { ReactNode } from "react";
 import { useMemo, useRef } from "react";
 import { rpc } from "../../src/lib/query/rpc";

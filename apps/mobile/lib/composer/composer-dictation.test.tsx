@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { AudioModule } from "expo-audio";
 import { act, useState } from "react";
 import type { Root } from "react-dom/client";

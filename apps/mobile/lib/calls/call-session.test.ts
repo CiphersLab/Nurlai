@@ -1,14 +1,14 @@
-import type { AiConsentStatus, MessageBlock } from "@rakazo/contracts";
-import { AI_CONSENT_REQUIRED } from "@rakazo/contracts";
+import type { AiConsentStatus, MessageBlock } from "@nurlai/contracts";
+import { AI_CONSENT_REQUIRED } from "@nurlai/contracts";
 import {
   AiConsentBlocked,
   CALL_FAREWELL_TIMEOUT_MS,
   callIdFromClientNonce,
   ensureAiDataConsent,
   INTERIM_BARGE_IN_MS,
-} from "@rakazo/core";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred, flush } from "@rakazo/core/test-async";
+} from "@nurlai/core";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred, flush } from "@nurlai/core/test-async";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { hapticImpact, hapticSuccess } from "../native/haptics";
 
@@ -2753,7 +2753,7 @@ describe("mobile call on a session change", () => {
     // organization's Space, which changes no session generation.
     vi.mocked(captureApiRequestContext).mockImplementation(async () => ({
       apiBase: "https://api.example.test",
-      headers: { "x-rakazo-space-id": "space-b" },
+      headers: { "x-nurlai-space-id": "space-b" },
       sessionGeneration: currentSessionGeneration(),
     }));
     const fake = fakes();
@@ -2765,7 +2765,7 @@ describe("mobile call on a session change", () => {
         botName: "Ada",
         requestContext: {
           apiBase: "https://api.example.test",
-          headers: { "x-rakazo-space-id": "space-a" },
+          headers: { "x-nurlai-space-id": "space-a" },
           sessionGeneration: currentSessionGeneration(),
         },
       },
@@ -2787,7 +2787,7 @@ describe("mobile call on a session change", () => {
       .mocked(rpc)
       .mock.calls.map(([path, , options]) => [
         path,
-        options?.requestContext?.headers["x-rakazo-space-id"],
+        options?.requestContext?.headers["x-nurlai-space-id"],
       ]);
     expect(sent).toEqual([
       ["threads/send", "space-a"],

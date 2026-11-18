@@ -1,7 +1,7 @@
-import type { SecretMigrationRepository, SecretMigrationRow } from "@rakazo/adapters";
-import { openSealedVaultValue } from "@rakazo/adapters";
-import type { PrismaClient } from "@rakazo/db";
-import { isCiphertext } from "@rakazo/db";
+import type { SecretMigrationRepository, SecretMigrationRow } from "@nurlai/adapters";
+import { openSealedVaultValue } from "@nurlai/adapters";
+import type { PrismaClient } from "@nurlai/db";
+import { isCiphertext } from "@nurlai/db";
 
 const tables = ["secret", "botSecret", "vaultCredential", "integrationProviderConfig"] as const;
 

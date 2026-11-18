@@ -1,11 +1,11 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import type { ArtifactStore, JobPublisher } from "@rakazo/adapter-kit";
-import { BillingEmulator } from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
-import type { PrismaClient } from "@rakazo/db";
+import type { ArtifactStore, JobPublisher } from "@nurlai/adapter-kit";
+import { BillingEmulator } from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
+import type { PrismaClient } from "@nurlai/db";
 import {
   asSystem,
   billingAccountForOrganization,
@@ -14,7 +14,7 @@ import {
   FREE_MONTH_DAYS,
   keepOrganizationTrialUse,
   ownerHadTrial,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { deleteOrganization } from "../account/account-deletion.js";
 import type { SpaceDeletionDeps } from "../spaces/space-deletion.js";

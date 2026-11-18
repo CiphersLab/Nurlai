@@ -1,6 +1,6 @@
 import type { Locator, Page } from "@playwright/test";
 import { expect, test } from "@playwright/test";
-import type { Routine } from "@rakazo/contracts";
+import type { Routine } from "@nurlai/contracts";
 import { activeBotId, completeOnboarding, createNamedBot, rpc, signup } from "../helpers/helpers";
 
 async function openComposer(page: Page, prefix: string) {

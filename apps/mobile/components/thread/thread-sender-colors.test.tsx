@@ -1,5 +1,5 @@
-import { resolvePersonaColorDef, shouldShowBotSenderName } from "@rakazo/core";
-import { botColors, darkTokens } from "@rakazo/ui-tokens";
+import { resolvePersonaColorDef, shouldShowBotSenderName } from "@nurlai/core";
+import { botColors, darkTokens } from "@nurlai/ui-tokens";
 import type { ComponentProps } from "react";
 import { createContext } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -32,7 +32,7 @@ vi.mock("../../lib/api/network-cache", () => ({ clearNetworkCache: vi.fn() }));
 vi.mock("../../lib/artifacts/artifact-open", () => ({ openMobileArtifact: vi.fn() }));
 vi.mock("../../lib/native/native", () => ({ native: {}, useResolvedAppearance: () => "dark" }));
 
-vi.mock("@rakazo/chat-ui/native", () => ({
+vi.mock("@nurlai/chat-ui/native", () => ({
   MarkdownLongPressContext: createContext(undefined),
   ChatMarkdown: () => null,
   withBlockMentions: <T,>(blocks: T) => blocks,

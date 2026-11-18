@@ -1,4 +1,4 @@
-import type { OrganizationList } from "@rakazo/contracts";
+import type { OrganizationList } from "@nurlai/contracts";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { adoptDeletedSpaceFallback } from "../api/api-server";
 import { markNavigatorMounted } from "../navigation/navigator-mounted";

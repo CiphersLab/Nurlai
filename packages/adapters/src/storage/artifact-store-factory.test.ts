@@ -2,9 +2,9 @@ import { randomBytes } from "node:crypto";
 import { mkdtemp, readdir, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import type { AdapterContext } from "@rakazo/adapter-kit";
-import type { DataKey, PrismaClient } from "@rakazo/db";
-import { isSealedArtifact } from "@rakazo/db";
+import type { AdapterContext } from "@nurlai/adapter-kit";
+import type { DataKey, PrismaClient } from "@nurlai/db";
+import { isSealedArtifact } from "@nurlai/db";
 import { afterEach, describe, expect, it } from "vitest";
 import {
   createArtifactStore,

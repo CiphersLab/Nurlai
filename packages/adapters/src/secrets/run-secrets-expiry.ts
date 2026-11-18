@@ -1,6 +1,6 @@
-import type { JobPublisher, JobTransaction } from "@rakazo/adapter-kit";
-import { runForgetSecretsJob } from "@rakazo/adapter-kit";
-import { waitExpireAfterMs } from "@rakazo/core";
+import type { JobPublisher, JobTransaction } from "@nurlai/adapter-kit";
+import { runForgetSecretsJob } from "@nurlai/adapter-kit";
+import { waitExpireAfterMs } from "@nurlai/core";
 import { expireWaitHoldingSecrets } from "../runs/lifecycle/stuck-work.js";
 
 /** A paused run may keep its run-only logins and codes only until the expiry. Commits with the pause. */

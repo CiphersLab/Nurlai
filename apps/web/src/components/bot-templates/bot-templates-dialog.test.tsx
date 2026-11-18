@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
-import type { Bot, BotTemplateListing } from "@rakazo/contracts";
-import { BOT_TEMPLATE_CHANGED } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
+import type { Bot, BotTemplateListing } from "@nurlai/contracts";
+import { BOT_TEMPLATE_CHANGED } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
 import { QueryClient, QueryClientProvider, useQuery } from "@tanstack/react-query";
 import type { ComponentProps, ReactNode } from "react";
 import { act } from "react";
@@ -26,10 +26,10 @@ vi.mock("@lingui/react/macro", () => ({
     i18n: { locale: "en" },
   }),
 }));
-vi.mock("@rakazo/chat-ui/web", () => ({
+vi.mock("@nurlai/chat-ui/web", () => ({
   ChatMarkdown: ({ children }: { children?: ReactNode }) => <div>{children}</div>,
 }));
-vi.mock("@rakazo/ui-web", () => {
+vi.mock("@nurlai/ui-web", () => {
   const Box = ({ children }: { children?: ReactNode }) => <div>{children}</div>;
   return {
     Button: ({

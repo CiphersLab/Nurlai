@@ -1,6 +1,6 @@
 import { ph, t } from "@lingui/core/macro";
-import type { RoutineRun, RunActivityRow } from "@rakazo/contracts";
-import { routineRunLateness } from "@rakazo/core";
+import type { RoutineRun, RunActivityRow } from "@nurlai/contracts";
+import { routineRunLateness } from "@nurlai/core";
 import { rpc } from "../api/api";
 import { dateLocaleForUi } from "../i18n/i18n";
 

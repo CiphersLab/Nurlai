@@ -1,8 +1,8 @@
 import { mkdtemp, readdir, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import type { AgentRunRequest, AgentRuntimeEvent } from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
+import type { AgentRunRequest, AgentRuntimeEvent } from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
 import { describe, expect, it, vi } from "vitest";
 import { MAX_APPROVAL_DETAIL_LENGTH } from "../../../adapters/src/approvals/approval-ask.js";
 import { approvalPausedToolResult } from "../../../adapters/src/approvals/approval-effect.js";

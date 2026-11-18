@@ -1,4 +1,4 @@
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { beforeEach, describe, expect, it } from "vitest";
 import { assertSafeRemoteUrl, createSafeLookup } from "../mcp/remote-mcp.js";
 import { egressRefused, isEgressRefused } from "../network/network-address.js";

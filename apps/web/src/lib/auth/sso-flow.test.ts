@@ -1,4 +1,4 @@
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, expect, it, vi } from "vitest";
 import { completeSsoCallback, runSsoFlow, SSO_CALLBACK_PATH } from "./sso-flow";
 
@@ -33,7 +33,7 @@ function desktopWindow() {
   };
   const open = vi.fn(() => popup);
   const close = vi.fn();
-  vi.stubGlobal("window", { rakazoDesktop: {}, location, open, close });
+  vi.stubGlobal("window", { nurlaiDesktop: {}, location, open, close });
   const begin = vi.fn(async (_disableRedirect: boolean, callbackURL: (url: string) => string) => {
     returnTo = callbackURL("/app");
     return result;

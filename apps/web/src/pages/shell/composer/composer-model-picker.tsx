@@ -1,7 +1,7 @@
 import { useLingui } from "@lingui/react/macro";
-import type { Bot, ThinkingLevel } from "@rakazo/contracts";
-import { botModelPick, botModelState, modelOptionKey } from "@rakazo/core";
-import { Command, CommandGroup, CommandItem, CommandList, toast } from "@rakazo/ui-web";
+import type { Bot, ThinkingLevel } from "@nurlai/contracts";
+import { botModelPick, botModelState, modelOptionKey } from "@nurlai/core";
+import { Command, CommandGroup, CommandItem, CommandList, toast } from "@nurlai/ui-web";
 import { useQuery } from "@tanstack/react-query";
 import { thinkingLevelLabel } from "../../../lib/models/model-catalog";
 import { useSave, useSpaceQueries } from "../../../lib/query/query";

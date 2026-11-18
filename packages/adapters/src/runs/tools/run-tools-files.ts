@@ -1,12 +1,12 @@
-import type { MessageBlock } from "@rakazo/contracts";
-import { ATTACHMENT_MAX_BYTES } from "@rakazo/contracts";
+import type { MessageBlock } from "@nurlai/contracts";
+import { ATTACHMENT_MAX_BYTES } from "@nurlai/contracts";
 import {
   inferAttachmentMimeType,
   isBackgroundRunTrigger,
   messageBlockForArtifact,
-} from "@rakazo/core";
-import type { Artifact, Prisma } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/core";
+import type { Artifact, Prisma } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { resolveBotWorkspacePath } from "../../computers/screens/computer-support.js";
 import { generateMediaFromTool } from "../../media/media-generation-tools.js";
 import { mediaDelivery, scheduleMediaPoll } from "../../media/media-video-poll.js";

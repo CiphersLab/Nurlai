@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { MCP_SIGNIN_WINDOW_PREFIX } from "@rakazo/contracts";
+import { MCP_SIGNIN_WINDOW_PREFIX } from "@nurlai/contracts";
 
 const OAUTH_POPUP_NAMES = new Set([
   "rakazo-app-connect",

@@ -1,5 +1,5 @@
 import { t } from "@lingui/core/macro";
-import type { ComputerStatus, Me } from "@rakazo/contracts";
+import type { ComputerStatus, Me } from "@nurlai/contracts";
 import { rpc } from "../query/rpc";
 import { errorText } from "../query/user-error";
 

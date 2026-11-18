@@ -1,4 +1,4 @@
-import { MCP_SIGNIN_WINDOW_PREFIX } from "@rakazo/contracts";
+import { MCP_SIGNIN_WINDOW_PREFIX } from "@nurlai/contracts";
 import { MCP_OAUTH_CALLBACK_PATH } from "../auth/sign-in-next";
 import { desktopBridge } from "../platform/desktop";
 import { rpc } from "../query/rpc";

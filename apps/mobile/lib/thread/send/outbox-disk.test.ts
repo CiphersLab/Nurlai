@@ -1,4 +1,4 @@
-import { resolveComposerSendPlan } from "@rakazo/core";
+import { resolveComposerSendPlan } from "@nurlai/core";
 import { beforeEach, expect, it, vi } from "vitest";
 import { hasSavedUnsentSends, OUTBOX_MAX_BYTES, outboxDisk } from "./outbox-disk";
 import type { SendAttempt } from "./thread-feedback";

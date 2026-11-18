@@ -1,14 +1,14 @@
-import type { RealtimeFanout } from "@rakazo/adapter-kit";
+import type { RealtimeFanout } from "@nurlai/adapter-kit";
 import {
   BOT_SECRET_VALUE_MAX_LENGTH,
   encodeLoginSecret,
   STEP_SCREENSHOT_MIME_TYPES,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   TAKEOVER_COMPUTER_DONE_STATE,
   TAKEOVER_COMPUTER_PENDING_STATE,
   TAKEOVER_COMPUTER_SKIPPED_STATE,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { describe, expect, it, vi } from "vitest";
 import { installSecurityEventStore } from "../account/security-events.js";
 import { commitBotUpdate } from "../bots/bot-update.js";

@@ -4,8 +4,8 @@ import {
   ComputerBusyError,
   ComputerSpaceDeletingError,
   WorkspacePathError,
-} from "@rakazo/adapters";
-import { ClientError } from "@rakazo/core";
+} from "@nurlai/adapters";
+import { ClientError } from "@nurlai/core";
 import {
   BotSectionNameConflictError,
   CannotDeleteDefaultSpaceError,
@@ -27,8 +27,8 @@ import {
   SpaceNotFoundError,
   SpaceOwnerCannotLeaveError,
   SpaceOwnerRequiredError,
-} from "@rakazo/db";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { afterEach, describe, expect, it } from "vitest";
 import { ArtifactListCursorError } from "./content/artifacts.js";
 import { PageListCursorError, PageShareConflictError } from "./content/pages.js";

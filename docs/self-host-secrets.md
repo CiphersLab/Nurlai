@@ -13,12 +13,12 @@ overwrite an existing `.env` without an explicit backup and operator consent.**
 | Key                        | Installer fill         | Role                                                                          |
 | -------------------------- | ---------------------- | ----------------------------------------------------------------------------- |
 | `POSTGRES_PASSWORD`        | `openssl rand -hex 16` | Postgres owner password inside Compose (migrations)                           |
-| `POSTGRES_APP_PASSWORD`    | `openssl rand -hex 16` | Password of the app's `rakazo_app` login, which row-level security applies to |
+| `POSTGRES_APP_PASSWORD`    | `openssl rand -hex 16` | Password of the app's `nurlai_app` login, which row-level security applies to |
 | `BETTER_AUTH_SECRET`       | `openssl rand -hex 32` | Auth/session signing                                                          |
 | `ENCRYPTION_KEY`           | `openssl rand -hex 32` | Encrypts stored credentials at rest                                           |
 | `SCREEN_PROXY_SECRET`      | `openssl rand -hex 32` | Signs short-lived `/novnc/*` screen capabilities                              |
 | `SANDBOX_SUPERVISOR_TOKEN` | `openssl rand -hex 32` | API ↔ sandbox supervisor auth                                                 |
-| `RAKAZO_UPDATER_TOKEN`     | `openssl rand -hex 32` | Dedicated updater credential; unused until the updater profile is enabled     |
+| `NURLAI_UPDATER_TOKEN`     | `openssl rand -hex 32` | Dedicated updater credential; unused until the updater profile is enabled     |
 
 Re-runs **preserve** an existing `.env` (they do not rotate secrets); they only append
 `POSTGRES_APP_PASSWORD` when an older `.env` lacks it. Empty
@@ -59,7 +59,7 @@ secret into multiple keys):
 - `ENCRYPTION_KEY`
 - `SCREEN_PROXY_SECRET`
 - `SANDBOX_SUPERVISOR_TOKEN`
-- `RAKAZO_UPDATER_TOKEN` (only if the updater profile is enabled; ≥32 chars,
+- `NURLAI_UPDATER_TOKEN` (only if the updater profile is enabled; ≥32 chars,
   also distinct from the four above)
 
 Rotating `ENCRYPTION_KEY` after credentials were stored makes old ciphertext
@@ -84,7 +84,7 @@ From `.env.images.example` (images installer). Leave blank if unused:
 | Key(s)                                                         | When needed                                                                                         |
 | -------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | `OPENROUTER_API_KEY`                                           | Deployment-wide OpenRouter models                                                                   |
-| `TYPESAFE_API_KEY`                                             | Optional TypeSafe Jev Auto Review verifier (`RAKAZO_AUTO_REVIEW_PROVIDER=jev`)                      |
+| `TYPESAFE_API_KEY`                                             | Optional TypeSafe Jev Auto Review verifier (`NURLAI_AUTO_REVIEW_PROVIDER=jev`)                      |
 | `COMPOSIO_API_KEY`                                             | Composio managed catalog                                                                            |
 | `E2B_API_KEY` / `DAYTONA_API_KEY` / `BOAT_API_KEY`             | Remote computers when `SANDBOX_PROVIDER` is not `docker`                                            |
 | `EMAIL_PROVIDER` / `EMAIL_API_KEY` / `SMTP_URL` / `EMAIL_FROM` | Optional account email via Resend API or SMTP                                                       |

@@ -4,10 +4,10 @@ import type {
   VaultCsv,
   VaultImportResult,
   VaultImportRow,
-} from "@rakazo/contracts";
-import { newVaultImportRows, vaultImportCounts, vaultImportProblems } from "@rakazo/contracts";
-import { vaultImportProblemLines, vaultImportText } from "@rakazo/i18n/vault";
-import { Button } from "@rakazo/ui-web";
+} from "@nurlai/contracts";
+import { newVaultImportRows, vaultImportCounts, vaultImportProblems } from "@nurlai/contracts";
+import { vaultImportProblemLines, vaultImportText } from "@nurlai/i18n/vault";
+import { Button } from "@nurlai/ui-web";
 import { useState } from "react";
 import { SettingsPageHeader } from "../settings/SettingsPageHeader";
 

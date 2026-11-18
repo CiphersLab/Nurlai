@@ -1,5 +1,5 @@
-import type { Actor } from "@rakazo/contracts";
-import { AI_DISCLOSURE_VERSION } from "@rakazo/contracts";
+import type { Actor } from "@nurlai/contracts";
+import { AI_DISCLOSURE_VERSION } from "@nurlai/contracts";
 import { describe, expect, it, vi } from "vitest";
 
 vi.mock("../threads/thread-target.js", () => ({

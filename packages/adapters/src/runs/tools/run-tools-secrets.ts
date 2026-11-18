@@ -1,6 +1,6 @@
-import { BotSecretName, botSecretSubmissionSchema } from "@rakazo/contracts";
-import { createStreamingRedactor, displayName, redactSecrets } from "@rakazo/core";
-import { runCodeKind, runLoginKind, runSecretKind, spaceIsShared } from "@rakazo/db";
+import { BotSecretName, botSecretSubmissionSchema } from "@nurlai/contracts";
+import { createStreamingRedactor, displayName, redactSecrets } from "@nurlai/core";
+import { runCodeKind, runLoginKind, runSecretKind, spaceIsShared } from "@nurlai/db";
 import {
   completeExternalEffect,
   replaceCompletedExternalEffectResult,

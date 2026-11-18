@@ -43,7 +43,7 @@ vi.mock("../../lib/api/network-cache", () => ({ clearNetworkCache: vi.fn() }));
 vi.mock("../../lib/artifacts/artifact-open", () => ({ openMobileArtifact: vi.fn() }));
 vi.mock("../../lib/native/native", () => ({ native: {}, useResolvedAppearance: () => "dark" }));
 
-vi.mock("@rakazo/chat-ui/native", () => ({
+vi.mock("@nurlai/chat-ui/native", () => ({
   MarkdownLongPressContext: createContext(undefined),
   ChatMarkdown: () => null,
   plainTextLinkParts: (text: string) =>

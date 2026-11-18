@@ -1,6 +1,6 @@
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import { replyAttachment } from "@rakazo/core";
+import { replyAttachment } from "@nurlai/core";
 import type { ReactNode } from "react";
 import { useContext, useEffect, useRef } from "react";
 import { Image, Platform, Pressable, Text, View } from "react-native";

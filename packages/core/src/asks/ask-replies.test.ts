@@ -1,4 +1,4 @@
-import type { MessageBlock } from "@rakazo/contracts";
+import type { MessageBlock } from "@nurlai/contracts";
 import { describe, expect, it } from "vitest";
 import { separateAskAnswers } from "./ask-replies.js";
 

@@ -1,4 +1,4 @@
-import { importSetupStateInput, isImportSetupComplete, isImportSetupDone } from "@rakazo/core";
+import { importSetupStateInput, isImportSetupComplete, isImportSetupDone } from "@nurlai/core";
 import { describe, expect, it } from "vitest";
 import type { ImportSetupBlock } from "./import-setup";
 import { importSetupDetail } from "./import-setup";

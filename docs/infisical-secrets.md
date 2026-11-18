@@ -101,8 +101,8 @@ logs degraded storage. A successful later request restores healthy status.
 Back up the database and retain the encryption key. Configure Infisical, then run:
 
 ```sh
-pnpm --filter @rakazo/api secrets:infisical --dry-run
-pnpm --filter @rakazo/api secrets:infisical
+pnpm --filter @nurlai/api secrets:infisical --dry-run
+pnpm --filter @nurlai/api secrets:infisical
 ```
 
 The CLI loads the root `.env` before reading configuration. It covers credential rows, bot secrets, and integration provider settings.
@@ -116,8 +116,8 @@ exit code. Dry-run resolves source refs but performs no writes or deletions.
 To roll back, keep Infisical accessible and run:
 
 ```sh
-pnpm --filter @rakazo/api secrets:infisical --reverse --dry-run
-pnpm --filter @rakazo/api secrets:infisical --reverse
+pnpm --filter @nurlai/api secrets:infisical --reverse --dry-run
+pnpm --filter @nurlai/api secrets:infisical --reverse
 ```
 
 Pause credential writes while completing the final rollback pass, verify it

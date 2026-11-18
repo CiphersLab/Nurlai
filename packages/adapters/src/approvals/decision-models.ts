@@ -1,4 +1,4 @@
-import type { ModelCatalogEntry } from "@rakazo/contracts";
+import type { ModelCatalogEntry } from "@nurlai/contracts";
 import { openRouterDecisionModel } from "../providers/decision/openrouter/decision-model.js";
 import { typesafeDecisionModel } from "../providers/decision/typesafe/decision-model.js";
 import type { DecisionModelDescriptor } from "./model-descriptor.js";

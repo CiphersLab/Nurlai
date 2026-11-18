@@ -1,5 +1,5 @@
-import type { ConnectorTool } from "@rakazo/adapter-kit";
-import { PURCHASE_CARD_FIELDS } from "@rakazo/contracts";
+import type { ConnectorTool } from "@nurlai/adapter-kit";
+import { PURCHASE_CARD_FIELDS } from "@nurlai/contracts";
 import { BROWSER_ACT_KINDS } from "../browser/browser-tools.js";
 
 export const READ_FILE_MAX_BYTES = 250_000;

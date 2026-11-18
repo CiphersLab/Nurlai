@@ -1,13 +1,13 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { useTimeout } from "@rakazo/chat-ui/hooks";
-import type { MessagingChannelMembership, MessagingInstallationsStatus } from "@rakazo/contracts";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
+import type { MessagingChannelMembership, MessagingInstallationsStatus } from "@nurlai/contracts";
 import {
   abortableDelay,
   createMessagingLinkGuard,
   isRetryableError,
   messagingConnectOptions,
-} from "@rakazo/core";
-import { fetchFresh, writeSaved } from "@rakazo/core/query";
+} from "@nurlai/core";
+import { fetchFresh, writeSaved } from "@nurlai/core/query";
 import {
   Button,
   DropdownMenu,
@@ -16,7 +16,7 @@ import {
   DropdownMenuTrigger,
   OptionSelect,
   SectionHeading,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { ChevronDownIcon, PlusIcon } from "lucide-react";
 import type { ReactNode } from "react";

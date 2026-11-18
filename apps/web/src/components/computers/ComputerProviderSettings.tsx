@@ -1,11 +1,11 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { ComputerProviderSettings as Settings } from "@rakazo/contracts";
-import { Button, Field, FieldLabel, Input, OptionSelect } from "@rakazo/ui-web";
+import type { ComputerProviderSettings as Settings } from "@nurlai/contracts";
+import { Button, Field, FieldLabel, Input, OptionSelect } from "@nurlai/ui-web";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@rakazo/ui-web/components/ui/collapsible";
+} from "@nurlai/ui-web/components/ui/collapsible";
 import { useEffect, useId, useState } from "react";
 import { useSave, useSpaceQueries } from "../../lib/query/query";
 import type { RpcClient } from "../../lib/query/rpc";

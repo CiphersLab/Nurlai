@@ -1,5 +1,5 @@
-import type { BillingStatus } from "@rakazo/contracts";
-import { MOBILE_BILLING_CALLBACK_URL } from "@rakazo/contracts";
+import type { BillingStatus } from "@nurlai/contracts";
+import { MOBILE_BILLING_CALLBACK_URL } from "@nurlai/contracts";
 import { Linking } from "react-native";
 import type { SaveSend } from "../query/query";
 

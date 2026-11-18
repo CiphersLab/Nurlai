@@ -1,6 +1,6 @@
 import { StreamableHTTPError } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
 import { ErrorCode, McpError } from "@modelcontextprotocol/sdk/types.js";
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { McpSession } from "../../../mcp/mcp-transport.js";
 import { WuyingMcpTools } from "./wuying-sandbox.js";

@@ -1,4 +1,4 @@
-import type { AdapterContext, MemoryStore } from "@rakazo/adapter-kit";
+import type { AdapterContext, MemoryStore } from "@nurlai/adapter-kit";
 import type { MemoryPromptDocument } from "./memory-context.prompt.js";
 import { AGENT_MEMORY_MAX_BYTES, buildAgentMemoryPrompt } from "./memory-context.prompt.js";
 

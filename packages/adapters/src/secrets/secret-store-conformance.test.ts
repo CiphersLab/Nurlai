@@ -1,6 +1,6 @@
-import type { AdapterContext, SecretStore } from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
-import { createLogger, createTestSink, getLogger, installLogger } from "@rakazo/logging";
+import type { AdapterContext, SecretStore } from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
+import { createLogger, createTestSink, getLogger, installLogger } from "@nurlai/logging";
 import { describe, expect, it, vi } from "vitest";
 import { InMemoryRealtimeFanout } from "../notifications/realtime.js";
 import {

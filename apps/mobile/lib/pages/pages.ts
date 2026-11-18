@@ -1,5 +1,5 @@
-import type { PageDetail, PageVisibility } from "@rakazo/contracts";
-import { isServerUnreachable, pageViewerDocument } from "@rakazo/core";
+import type { PageDetail, PageVisibility } from "@nurlai/contracts";
+import { isServerUnreachable, pageViewerDocument } from "@nurlai/core";
 import { rpc } from "../api/api";
 import { registerSessionDiskCache } from "../api/session";
 import { getActiveUiLocale } from "../i18n/i18n";

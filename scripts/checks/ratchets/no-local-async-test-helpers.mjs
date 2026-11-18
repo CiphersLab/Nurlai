@@ -1,5 +1,5 @@
 export const message =
-  "Do not hand-write an async test helper. To hold a call open and release it later, use deferred() from @rakazo/core/test-async; to let a due timer and the promise callbacks queued before it run, use flush() from the same module; to wait for a condition, use vi.waitFor(assertion) or vi.waitUntil(check) instead of a loop that sleeps.";
+  "Do not hand-write an async test helper. To hold a call open and release it later, use deferred() from @nurlai/core/test-async; to let a due timer and the promise callbacks queued before it run, use flush() from the same module; to wait for a condition, use vi.waitFor(assertion) or vi.waitUntil(check) instead of a loop that sleeps.";
 
 export const include = [
   "{packages,apps,infra}/**/*.test.{ts,tsx}",

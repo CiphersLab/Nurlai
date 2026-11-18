@@ -6,7 +6,7 @@ import type {
   ProductEvent,
   RoutineHistory,
   ThreadSnapshot,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   activeThreadRuns,
   anySignal,
@@ -19,8 +19,8 @@ import {
   reduceThreadSnapshot,
   rememberTerminalRun,
   runThreadSubscription,
-} from "@rakazo/core";
-import { fetchFresh } from "@rakazo/core/query";
+} from "@nurlai/core";
+import { fetchFresh } from "@nurlai/core/query";
 import type { RefObject } from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {

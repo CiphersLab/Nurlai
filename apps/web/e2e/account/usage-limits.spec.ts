@@ -1,6 +1,6 @@
 import type { Route } from "@playwright/test";
 import { expect, test } from "@playwright/test";
-import type { BillingStatus, PlanLimits, UsageBreakdownInput } from "@rakazo/contracts";
+import type { BillingStatus, PlanLimits, UsageBreakdownInput } from "@nurlai/contracts";
 import {
   captureScreenshot,
   chooseOption,

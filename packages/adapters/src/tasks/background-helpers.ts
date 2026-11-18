@@ -1,4 +1,4 @@
-import type { MessageBlock } from "@rakazo/contracts";
+import type { MessageBlock } from "@nurlai/contracts";
 import {
   ACTIVE_RUN_STATUSES,
   BACKGROUND_HELPER_TRIGGER,
@@ -6,7 +6,7 @@ import {
   isApprovalAskBlock,
   isConversationalRun,
   STOPPED_HELPER_RESULT,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import {
   appendEventInTransaction,
   assertRunCanWriteHistory,
@@ -14,8 +14,8 @@ import {
   createThreadMessageInTransaction,
   storedMessageBlocks,
   THREAD_LOCK_TRANSACTION_OPTIONS,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import type { RunContext } from "../runs/assembly/run-context.js";
 import { runLeaseFor } from "../runs/assembly/run-messages.js";
 import type { ExecutorDeps } from "../runs/executor/executor-deps.js";

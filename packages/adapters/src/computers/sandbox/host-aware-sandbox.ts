@@ -14,10 +14,10 @@ import type {
   TerminalRequest,
   WorkspaceDirectoryRequest,
   WorkspaceExportLimits,
-} from "@rakazo/adapter-kit";
-import type { PrismaClient } from "@rakazo/db";
-import { draftRecordingsOfLease, runAsSystem } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import type { PrismaClient } from "@nurlai/db";
+import { draftRecordingsOfLease, runAsSystem } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import {
   assertHostCommandsAllowed,
   DesktopSandboxProvider,

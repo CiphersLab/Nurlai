@@ -1,7 +1,7 @@
-import type { AgentRunRequest, AgentRuntimeEvent } from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
-import type { AppendEventInput, Prisma } from "@rakazo/db";
-import { appendEventInTransaction } from "@rakazo/db";
+import type { AgentRunRequest, AgentRuntimeEvent } from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
+import type { AppendEventInput, Prisma } from "@nurlai/db";
+import { appendEventInTransaction } from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import type * as ComputerLifecycleModule from "../../computers/computer-lifecycle.js";
 import type { RemoteConnectorDependencies } from "../../integrations/installed-connectors.js";

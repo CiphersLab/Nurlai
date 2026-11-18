@@ -1,4 +1,4 @@
-package com.rakazo.notifications
+package com.nurlai.notifications
 
 import android.app.*
 import android.content.*
@@ -18,7 +18,7 @@ import java.util.TimeZone
 import java.util.concurrent.Executors
 
 /** Expo remains the single FCM token owner; other messages use its normal delegate unless [SenderPush] renders them. */
-class RakazoMessagingService : ExpoFirebaseMessagingService() {
+class NurlaiMessagingService : ExpoFirebaseMessagingService() {
   override fun onMessageReceived(message: RemoteMessage) {
     val call = runCatching { JSONObject(message.data["body"] ?: "{}") }.getOrNull() ?: JSONObject()
     when (call.optString("kind")) {
@@ -30,7 +30,7 @@ class RakazoMessagingService : ExpoFirebaseMessagingService() {
 }
 
 internal object IncomingCalls {
-  const val CHANGED = "com.rakazo.notifications.INCOMING_CHANGED"
+  const val CHANGED = "com.nurlai.notifications.INCOMING_CHANGED"
   private const val CHANNEL = "incoming-call"
   private val executor = Executors.newCachedThreadPool()
   private fun prefs(context: Context) = context.getSharedPreferences("rakazo.incoming_calls", Context.MODE_PRIVATE)

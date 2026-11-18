@@ -1,7 +1,7 @@
-import type { RealtimeFanout } from "@rakazo/adapter-kit";
-import type { MessageBlock } from "@rakazo/contracts";
-import type { TeachRecordingEvent, TeachSnapshot } from "@rakazo/core";
-import { buildPlaybookFromRecording } from "@rakazo/core";
+import type { RealtimeFanout } from "@nurlai/adapter-kit";
+import type { MessageBlock } from "@nurlai/contracts";
+import type { TeachRecordingEvent, TeachSnapshot } from "@nurlai/core";
+import { buildPlaybookFromRecording } from "@nurlai/core";
 import type { Prisma, PrismaClient } from "../database/client.js";
 import { notifyRealtime } from "../threads/event-stream.js";
 import { appendEventInTransaction } from "../threads/events.js";

@@ -1,6 +1,6 @@
 import type { Models } from "@earendil-works/pi-ai";
 import { builtinModels } from "@earendil-works/pi-ai/providers/all";
-import { canonicalPiProviderId } from "@rakazo/contracts";
+import { canonicalPiProviderId } from "@nurlai/contracts";
 import {
   CLAUDE_CODE_PROVIDER_ID,
   claudeCodeModel,

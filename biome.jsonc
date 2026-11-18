@@ -70,7 +70,7 @@
                   "{chat-adapter-sendblue,mppx,novita-sandbox,railway,sendblue}",
                   "{chat-adapter-sendblue,mppx,novita-sandbox,railway,sendblue}/**"
                 ],
-                "message": "This is a vendor SDK. Extend the provider-neutral interface in `@rakazo/adapter-kit`, implement it in `packages/adapters`, and load the SDK there with `import()`."
+                "message": "This is a vendor SDK. Extend the provider-neutral interface in `@nurlai/adapter-kit`, implement it in `packages/adapters`, and load the SDK there with `import()`."
               }
             ]
           }

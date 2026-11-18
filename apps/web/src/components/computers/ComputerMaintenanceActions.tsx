@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { ComputerStatus } from "@rakazo/contracts";
-import { Button } from "@rakazo/ui-web";
+import type { ComputerStatus } from "@nurlai/contracts";
+import { Button } from "@nurlai/ui-web";
 import { useState } from "react";
 import { computerUpdates } from "../../lib/computers/computer-updates";
 import { useSave } from "../../lib/query/query";

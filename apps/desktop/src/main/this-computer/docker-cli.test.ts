@@ -124,8 +124,8 @@ describe("resolveDockerBinary", () => {
     ).toBe("/Users/me/.rd/bin/docker");
   });
 
-  it("treats RAKAZO_DOCKER_BINARY as the only candidate", () => {
-    const env = { RAKAZO_DOCKER_BINARY: "/fake/docker", PATH: "/usr/bin" };
+  it("treats NURLAI_DOCKER_BINARY as the only candidate", () => {
+    const env = { NURLAI_DOCKER_BINARY: "/fake/docker", PATH: "/usr/bin" };
     expect(resolveDockerBinary("linux", env, (file) => file === "/fake/docker")).toBe(
       "/fake/docker",
     );
@@ -147,7 +147,7 @@ describe("dockerSpawnEnv", () => {
         LANG: "en_US.UTF-8",
       },
       "/Users/me/.orbstack/bin/docker",
-      { RAKAZO_IMAGE_TAG: "v1.2.3" },
+      { NURLAI_IMAGE_TAG: "v1.2.3" },
     );
     expect(env).toEqual({
       HOME: "/Users/me",
@@ -164,7 +164,7 @@ describe("dockerSpawnEnv", () => {
       ].join(":"),
       DOCKER_HOST: "unix:///Users/me/.orbstack/run/docker.sock",
       LANG: "en_US.UTF-8",
-      RAKAZO_IMAGE_TAG: "v1.2.3",
+      NURLAI_IMAGE_TAG: "v1.2.3",
     });
     expect(env).not.toHaveProperty("OPENROUTER_API_KEY");
     expect(env).not.toHaveProperty("POSTGRES_PASSWORD");
@@ -223,7 +223,7 @@ describe("classifyDockerFailure", () => {
     ["Error response from daemon: manifest unknown", "image-not-found"],
     ["pull access denied for ghcr.io/x/y, repository does not exist", "image-not-found"],
     [
-      'Error response from daemon: failed to resolve reference "ghcr.io/elie222/rakazo/computer:v0.3.5": ghcr.io/elie222/rakazo/computer:v0.3.5: not found',
+      'Error response from daemon: failed to resolve reference "ghcr.io/elie222/nurlai/computer:v0.3.5": ghcr.io/elie222/nurlai/computer:v0.3.5: not found',
       "image-not-found",
     ],
     ["Get https://ghcr.io/v2/: dial tcp: lookup ghcr.io: no such host", "network"],

@@ -1,7 +1,7 @@
 import { Trans } from "@lingui/react/macro";
-import type { SignInProvider } from "@rakazo/contracts";
-import { LAST_SIGN_IN_COOKIE, lastSignInChoice, signInProviderGroups } from "@rakazo/contracts";
-import { Button } from "@rakazo/ui-web";
+import type { SignInProvider } from "@nurlai/contracts";
+import { LAST_SIGN_IN_COOKIE, lastSignInChoice, signInProviderGroups } from "@nurlai/contracts";
+import { Button } from "@nurlai/ui-web";
 import { KeyRound, Mail } from "lucide-react";
 import { useState } from "react";
 

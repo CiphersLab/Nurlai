@@ -1,10 +1,10 @@
-import { MemoryRevisionConflictError } from "@rakazo/adapter-kit";
+import { MemoryRevisionConflictError } from "@nurlai/adapter-kit";
 import {
   HistoryReadInputSchema,
   HistorySearchInputSchema,
   MEMORY_INDEX_PATH,
-} from "@rakazo/contracts";
-import { readHistory, searchHistory } from "@rakazo/db";
+} from "@nurlai/contracts";
+import { readHistory, searchHistory } from "@nurlai/db";
 import { redactConnectorPayload } from "../../integrations/connector-safety.js";
 import { editMemory } from "../../memory/memory-tools.js";
 import { MAX_RECALLED_MEMORIES } from "../../runtime/context/history-compaction.prompt.js";

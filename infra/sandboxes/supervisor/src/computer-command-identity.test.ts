@@ -1,6 +1,6 @@
 import { Duplex, Readable, Writable } from "node:stream";
-import { resolveSupervisorToken } from "@rakazo/core/node/secrets-guard";
-import { deferred } from "@rakazo/core/test-async";
+import { resolveSupervisorToken } from "@nurlai/core/node/secrets-guard";
+import { deferred } from "@nurlai/core/test-async";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { computerCommandEnv } from "./supervisor-logic.js";
 
@@ -52,8 +52,8 @@ function post(path: string, body: unknown) {
     headers: {
       authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
       "content-type": "application/json",
-      "x-rakazo-bot-id": "bot",
-      "x-rakazo-space-id": "space",
+      "x-nurlai-bot-id": "bot",
+      "x-nurlai-space-id": "space",
     },
     body: JSON.stringify(body),
   });

@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import type { ReactNode } from "react";
 import { act } from "react";
 import { createRoot } from "react-dom/client";
@@ -26,7 +26,7 @@ vi.mock("@lingui/core/macro", () => ({
     `«${strings.reduce((text, part, index) => text + part + (values[index] ?? ""), "")}»`,
 }));
 vi.mock("./PdfViewer", () => ({ PdfViewer: () => null }));
-vi.mock("@rakazo/chat-ui/web", () => ({ ChatMarkdown: () => null }));
+vi.mock("@nurlai/chat-ui/web", () => ({ ChatMarkdown: () => null }));
 
 import { ArtifactFileCard } from "./ArtifactFileCard";
 

@@ -1,5 +1,5 @@
-import type { CronPreset } from "@rakazo/core";
-import { cronFromPreset } from "@rakazo/core";
+import type { CronPreset } from "@nurlai/core";
+import { cronFromPreset } from "@nurlai/core";
 import { expect, it, vi } from "vitest";
 import { RoutineScheduleEditor } from "./routine-schedule-editor";
 

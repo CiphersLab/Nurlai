@@ -10,22 +10,22 @@ import type {
   BillingProvider,
   BillingSubscriptionSnapshot,
   BillingSubscriptionStatus,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import {
   BillingCheckoutCompletedError,
   BillingCustomerNotFoundError,
   BillingNoMonthlyCreditsError,
   BillingPaymentNotCompletedError,
-} from "@rakazo/adapter-kit";
-import type { BillingCancellationReason, ByokTier } from "@rakazo/contracts";
+} from "@nurlai/adapter-kit";
+import type { BillingCancellationReason, ByokTier } from "@nurlai/contracts";
 import {
   BILLING_CANCELLATION_REASONS,
   BYOK_TIERS,
   ByokTierSchema,
   HeldCreditAmountSchema,
   ModelCreditAmountSchema,
-} from "@rakazo/contracts";
-import { readBoundedJsonResponse } from "@rakazo/core";
+} from "@nurlai/contracts";
+import { readBoundedJsonResponse } from "@nurlai/core";
 import { z } from "zod";
 
 export const STRIPE_API_VERSION = "2026-09-30.endive";
@@ -238,7 +238,7 @@ export class StripeBillingProvider implements BillingProvider {
                 price: await this.recurringPrice(
                   `rakazo_monthly_credits_${input.amountCents}`,
                   input.amountCents,
-                  "Rakazo monthly model credits",
+                  "Nurlai monthly model credits",
                 ),
               }
             : {
@@ -246,7 +246,7 @@ export class StripeBillingProvider implements BillingProvider {
                 price_data: {
                   currency: "usd",
                   unit_amount: input.amountCents,
-                  product_data: { name: "Rakazo model credits" },
+                  product_data: { name: "Nurlai model credits" },
                 },
               },
         ],
@@ -281,7 +281,7 @@ export class StripeBillingProvider implements BillingProvider {
           price: await this.recurringPrice(
             `rakazo_monthly_credits_${amountCents}`,
             amountCents,
-            "Rakazo monthly model credits",
+            "Nurlai monthly model credits",
           ),
           quantity: 1,
         },
@@ -381,8 +381,8 @@ export class StripeBillingProvider implements BillingProvider {
         : `${BYOK_PRICE_KEY_PREFIX}${tier}_${period}_${amountCents}`,
       amountCents,
       tier === "standard"
-        ? "Rakazo own-key plan"
-        : `Rakazo own-key plan (${BYOK_TIERS[tier].name})`,
+        ? "Nurlai own-key plan"
+        : `Nurlai own-key plan (${BYOK_TIERS[tier].name})`,
       interval,
     );
   }

@@ -1,22 +1,22 @@
-import type * as Adapters from "@rakazo/adapters";
-import { destroyBot } from "@rakazo/adapters";
-import { deferred } from "@rakazo/core/test-async";
-import type * as Db from "@rakazo/db";
+import type * as Adapters from "@nurlai/adapters";
+import { destroyBot } from "@nurlai/adapters";
+import { deferred } from "@nurlai/core/test-async";
+import type * as Db from "@nurlai/db";
 import {
   claimOrganizationForDeletion,
   deleteClaimedSpace,
   recordAuditEvent,
   setOrganizationDeletionLease,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { deleteOrganization } from "./account-deletion.js";
 
-vi.mock("@rakazo/adapters", async (importOriginal) => ({
+vi.mock("@nurlai/adapters", async (importOriginal) => ({
   ...(await importOriginal<typeof Adapters>()),
   destroyBot: vi.fn(),
 }));
 
-vi.mock("@rakazo/db", async (importOriginal) => ({
+vi.mock("@nurlai/db", async (importOriginal) => ({
   ...(await importOriginal<typeof Db>()),
   assertOrganizationOwner: vi.fn(async () => undefined),
   claimOrganizationForDeletion: vi.fn(),

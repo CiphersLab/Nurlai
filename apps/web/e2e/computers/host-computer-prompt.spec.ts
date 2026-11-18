@@ -17,7 +17,7 @@ for (const platform of ["darwin", "linux"]) {
     );
     await completeOnboarding(page);
     await page.addInitScript((platform) => {
-      Object.defineProperty(window, "rakazoDesktop", {
+      Object.defineProperty(window, "nurlaiDesktop", {
         value: {
           platform,
           computer: {
@@ -88,7 +88,7 @@ for (const platform of ["darwin", "linux"]) {
     await expect(dialog).toBeVisible();
     expect(updates).toBe(0);
     await page.evaluate(() => {
-      window.rakazoDesktop!.computer!.requestAccess = async () => {
+      window.nurlaiDesktop!.computer!.requestAccess = async () => {
         await fetch("/__test/native-host", { method: "POST" });
         return true;
       };
@@ -114,7 +114,7 @@ test("a saved host choice closes when refreshing the profile fails", async ({ pa
   await signup(page, `host-choice-refresh-${Date.now()}@rakazo.test`, "password12", "Host Tester");
   await completeOnboarding(page);
   await page.addInitScript(() => {
-    Object.defineProperty(window, "rakazoDesktop", {
+    Object.defineProperty(window, "nurlaiDesktop", {
       value: {
         platform: "darwin",
         computer: {

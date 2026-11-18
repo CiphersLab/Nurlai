@@ -1,4 +1,4 @@
-import type { ProviderSettingsField } from "@rakazo/contracts";
+import type { ProviderSettingsField } from "@nurlai/contracts";
 import { describe, expect, it } from "vitest";
 import {
   initialSettingsValues,

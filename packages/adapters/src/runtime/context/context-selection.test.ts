@@ -1,5 +1,5 @@
-import { expectLinearTime } from "@rakazo/contracts/test-timing";
-import { MODEL_CONTEXT_TOO_SMALL_ERROR, VERBATIM_TOOL_RESULT_TOO_LARGE_ERROR } from "@rakazo/core";
+import { expectLinearTime } from "@nurlai/contracts/test-timing";
+import { MODEL_CONTEXT_TOO_SMALL_ERROR, VERBATIM_TOOL_RESULT_TOO_LARGE_ERROR } from "@nurlai/core";
 import { describe, expect, it } from "vitest";
 import {
   ContextBudgetError,

@@ -13,7 +13,7 @@ export default defineConfig({
   schema: "prisma/schema.prisma",
   migrations: {
     // The migrate command passes a copy without the deferred migrations it holds back.
-    path: process.env.RAKAZO_MIGRATIONS_PATH || "prisma/migrations",
+    path: process.env.NURLAI_MIGRATIONS_PATH || "prisma/migrations",
   },
   datasource: {
     // Migrations run as the owner role; DATABASE_URL may be the app's runtime login.

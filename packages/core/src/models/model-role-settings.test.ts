@@ -1,4 +1,4 @@
-import type { ModelRoleSettings } from "@rakazo/contracts";
+import type { ModelRoleSettings } from "@nurlai/contracts";
 import { describe, expect, it, vi } from "vitest";
 import { deferred } from "../primitives/async.test-support.js";
 import { createModelRoleSettings, modelRoleListPatch } from "./model-role-settings.js";

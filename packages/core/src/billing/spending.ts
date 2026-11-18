@@ -1,5 +1,5 @@
-import type { SpendingCurrency, SpendingPeriod } from "@rakazo/contracts";
-import { MAX_SPENDING_LIMIT } from "@rakazo/contracts";
+import type { SpendingCurrency, SpendingPeriod } from "@nurlai/contracts";
+import { MAX_SPENDING_LIMIT } from "@nurlai/contracts";
 import { wallClock, zonedDateTime } from "../primitives/time.js";
 
 // A symbol another currency shares is read as the one listed. Nearly every other dollar or pound is

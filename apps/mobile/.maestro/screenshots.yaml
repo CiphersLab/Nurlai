@@ -1,4 +1,4 @@
-appId: com.rakazo.app
+appId: com.nurlai.app
 name: Nurlai mobile screenshots
 tags:
   - screenshots
@@ -35,9 +35,9 @@ tags:
 - runFlow: helpers/server.yaml
 
 - tapOn: "Email"
-- inputText: ${RAKAZO_SCREENSHOT_EMAIL}
+- inputText: ${NURLAI_SCREENSHOT_EMAIL}
 - tapOn: "Password"
-- inputText: ${RAKAZO_SCREENSHOT_PASSWORD}
+- inputText: ${NURLAI_SCREENSHOT_PASSWORD}
 - hideKeyboard
 - tapOn: "Sign in"
 - tapOn:
@@ -131,7 +131,7 @@ tags:
     timeout: 10000
 - takeScreenshot: "14-integrations-advanced"
 
-- openLink: "rakazo:///thread?botId=${RAKAZO_SCREENSHOT_BOT_ID}&name=Researcher"
+- openLink: "rakazo:///thread?botId=${NURLAI_SCREENSHOT_BOT_ID}&name=Researcher"
 - extendedWaitUntil:
     visible: "The fixture workspace is ready."
     timeout: 10000
@@ -188,7 +188,7 @@ tags:
 - assertVisible: "Cancel reply"
 - tapOn: "Cancel reply"
 # Bot actions live in the bot's profile header.
-- openLink: "rakazo:///bot-profile?botId=${RAKAZO_SCREENSHOT_BOT_ID}&name=Researcher"
+- openLink: "rakazo:///bot-profile?botId=${NURLAI_SCREENSHOT_BOT_ID}&name=Researcher"
 - extendedWaitUntil:
     visible: "Bot actions"
     timeout: 10000
@@ -197,7 +197,7 @@ tags:
 - takeScreenshot: "16-bot-actions"
 - back
 
-- openLink: "rakazo:///bot-settings?botId=${RAKAZO_SCREENSHOT_BOT_ID}"
+- openLink: "rakazo:///bot-settings?botId=${NURLAI_SCREENSHOT_BOT_ID}"
 - extendedWaitUntil:
     visible: "Researcher"
     timeout: 10000
@@ -208,13 +208,13 @@ tags:
 - assertVisible: "Space default.*"
 - takeScreenshot: "17-bot-settings"
 
-- openLink: "rakazo:///computer?botId=${RAKAZO_SCREENSHOT_BOT_ID}&name=Researcher"
+- openLink: "rakazo:///computer?botId=${NURLAI_SCREENSHOT_BOT_ID}&name=Researcher"
 - extendedWaitUntil:
     visible: "Take control"
     timeout: 10000
 - takeScreenshot: "18-computer"
 
-- openLink: "rakazo:///group-thread?groupId=${RAKAZO_SCREENSHOT_GROUP_ID}&name=Launch%20team"
+- openLink: "rakazo:///group-thread?groupId=${NURLAI_SCREENSHOT_GROUP_ID}&name=Launch%20team"
 - extendedWaitUntil:
     visible: "The fixture launch plan is ready."
     timeout: 10000
@@ -235,13 +235,13 @@ tags:
 - assertVisible: "Speak message"
 - back
 
-- openLink: "rakazo:///group-settings?groupId=${RAKAZO_SCREENSHOT_GROUP_ID}"
+- openLink: "rakazo:///group-settings?groupId=${NURLAI_SCREENSHOT_GROUP_ID}"
 - extendedWaitUntil:
     visible: "Delete group"
     timeout: 10000
 - takeScreenshot: "20-group-settings"
 
-- openLink: "rakazo:///routine?botId=${RAKAZO_SCREENSHOT_BOT_ID}&botName=Researcher&routineId=${RAKAZO_SCREENSHOT_ROUTINE_ID}"
+- openLink: "rakazo:///routine?botId=${NURLAI_SCREENSHOT_BOT_ID}&botName=Researcher&routineId=${NURLAI_SCREENSHOT_ROUTINE_ID}"
 - extendedWaitUntil:
     visible: "Weekly fixture review"
     timeout: 10000
@@ -271,25 +271,25 @@ tags:
 - assertVisible: "Customer support"
 - takeScreenshot: "25-new-space-dark"
 
-- openLink: "rakazo:///thread?botId=${RAKAZO_SCREENSHOT_BOT_ID}&name=Researcher"
+- openLink: "rakazo:///thread?botId=${NURLAI_SCREENSHOT_BOT_ID}&name=Researcher"
 - extendedWaitUntil:
     visible: "The fixture workspace is ready."
     timeout: 10000
 - takeScreenshot: "26-thread-dark"
 
-- openLink: "rakazo:///group-thread?groupId=${RAKAZO_SCREENSHOT_GROUP_ID}&name=Launch%20team"
+- openLink: "rakazo:///group-thread?groupId=${NURLAI_SCREENSHOT_GROUP_ID}&name=Launch%20team"
 - extendedWaitUntil:
     visible: "The fixture launch plan is ready."
     timeout: 10000
 - takeScreenshot: "27-group-thread-dark"
 
-- openLink: "rakazo:///group-settings?groupId=${RAKAZO_SCREENSHOT_GROUP_ID}"
+- openLink: "rakazo:///group-settings?groupId=${NURLAI_SCREENSHOT_GROUP_ID}"
 - assertVisible: "Delete group"
 - takeScreenshot: "28-group-settings-dark"
 
 - openLink: "rakazo:///general"
 - tapOn: "Light"
-- openLink: "rakazo:///thread?botId=${RAKAZO_SCREENSHOT_BOT_ID}&name=Researcher"
+- openLink: "rakazo:///thread?botId=${NURLAI_SCREENSHOT_BOT_ID}&name=Researcher"
 - assertVisible: "The fixture workspace is ready."
 - takeScreenshot: "29-thread-light-restored"
 

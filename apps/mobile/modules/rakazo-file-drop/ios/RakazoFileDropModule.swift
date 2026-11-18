@@ -6,7 +6,7 @@ import UniformTypeIdentifiers
 /// Images pasted into a chat's text field arrive as dropped files, the same payload
 /// Android sends for a drop, so the chat attaches them like any other file. Text
 /// pasted with them still goes into the field.
-public class RakazoFileDropModule: Module {
+public class NurlaiFileDropModule: Module {
   private struct Limits {
     var enabled = false
     var maxBytes = 0
@@ -15,7 +15,7 @@ public class RakazoFileDropModule: Module {
 
   // Only touched on the main thread, where text views handle paste.
   nonisolated(unsafe) private static var limits = Limits()
-  nonisolated(unsafe) private static weak var current: RakazoFileDropModule?
+  nonisolated(unsafe) private static weak var current: NurlaiFileDropModule?
 
   private static let root = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
     .appendingPathComponent("dropped", isDirectory: true)
@@ -28,7 +28,7 @@ public class RakazoFileDropModule: Module {
   private let worker = DispatchQueue(label: "rakazo.file-drop")
 
   public func definition() -> ModuleDefinition {
-    Name("RakazoFileDrop")
+    Name("NurlaiFileDrop")
 
     Events("onFilesDropped", "onDropStarted")
 
@@ -86,7 +86,7 @@ public class RakazoFileDropModule: Module {
       typealias CanPerform = @convention(c) (AnyObject, Selector, Selector, AnyObject?) -> Bool
       let original = unsafeBitCast(method_getImplementation(method), to: CanPerform.self)
       let wrapped: @convention(block) (AnyObject, Selector, AnyObject?) -> Bool = { view, action, sender in
-        if action == pasteAction, RakazoFileDropModule.acceptsImages(view) { return true }
+        if action == pasteAction, NurlaiFileDropModule.acceptsImages(view) { return true }
         return original(view, canPerform, action, sender)
       }
       class_replaceMethod(
@@ -98,11 +98,11 @@ public class RakazoFileDropModule: Module {
       let original = unsafeBitCast(method_getImplementation(method), to: Paste.self)
       let wrapped: @convention(block) (AnyObject, AnyObject?) -> Void = { view, sender in
         let pasteboard = UIPasteboard.general
-        guard RakazoFileDropModule.acceptsImages(view), let module = RakazoFileDropModule.current else {
+        guard NurlaiFileDropModule.acceptsImages(view), let module = NurlaiFileDropModule.current else {
           original(view, pasteAction, sender)
           return
         }
-        module.attach(pasteboard.itemProviders, limits: RakazoFileDropModule.limits)
+        module.attach(pasteboard.itemProviders, limits: NurlaiFileDropModule.limits)
         if pasteboard.hasStrings { original(view, pasteAction, sender) }
       }
       class_replaceMethod(

@@ -1,6 +1,6 @@
 import { t } from "@lingui/core/macro";
-import type { KeptTimezone } from "@rakazo/core";
-import { deviceTimezoneStep, parseKeptTimezone, timeZonePlace } from "@rakazo/core";
+import type { KeptTimezone } from "@nurlai/core";
+import { deviceTimezoneStep, parseKeptTimezone, timeZonePlace } from "@nurlai/core";
 import * as SecureStore from "expo-secure-store";
 import { Alert } from "react-native";
 import { rpc } from "../api/api";

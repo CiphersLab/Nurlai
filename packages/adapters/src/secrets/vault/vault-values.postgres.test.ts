@@ -1,9 +1,9 @@
 import { randomBytes, randomUUID } from "node:crypto";
-import type { AdapterContext } from "@rakazo/adapter-kit";
-import type { BotSecretDestination } from "@rakazo/contracts";
-import { decodeLoginSecret } from "@rakazo/contracts";
-import { redactSecrets } from "@rakazo/core";
-import { deferred } from "@rakazo/core/test-async";
+import type { AdapterContext } from "@nurlai/adapter-kit";
+import type { BotSecretDestination } from "@nurlai/contracts";
+import { decodeLoginSecret } from "@nurlai/contracts";
+import { redactSecrets } from "@nurlai/core";
+import { deferred } from "@nurlai/core/test-async";
 import {
   asSystem,
   ciphertextKeyId,
@@ -14,7 +14,7 @@ import {
   provisionMessagingIdentity,
   runAsSystem,
   runAsTenant,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import {
   LOGIN_ALREADY_SAVED,

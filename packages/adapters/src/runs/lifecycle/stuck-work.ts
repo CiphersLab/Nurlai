@@ -1,5 +1,5 @@
-import type { JobPublisher, NotificationMessage, NotificationProvider } from "@rakazo/adapter-kit";
-import type { ExpirableWaitStatus, StuckWorkStatus } from "@rakazo/core";
+import type { JobPublisher, NotificationMessage, NotificationProvider } from "@nurlai/adapter-kit";
+import type { ExpirableWaitStatus, StuckWorkStatus } from "@nurlai/core";
 import {
   isStuckWorkStatus,
   STUCK_WORK_NOTICE,
@@ -10,16 +10,16 @@ import {
   stuckWorkReminder,
   stuckWorkStoppedNotification,
   waitExpireAfterMs,
-} from "@rakazo/core";
-import type { Prisma, PrismaClient, ThreadEvents } from "@rakazo/db";
+} from "@nurlai/core";
+import type { Prisma, PrismaClient, ThreadEvents } from "@nurlai/db";
 import {
   appendEventInTransaction,
   expireStuckRun,
   runHoldsOwnSecrets,
   THREAD_LOCK_TRANSACTION_OPTIONS,
   withTransactionRetry,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { ExpoPushProvider } from "../../notifications/expo-push.js";
 import { notificationIdentity } from "../../notifications/notification-identity.js";
 import { wakeRun } from "../wakeups/wake-run.js";

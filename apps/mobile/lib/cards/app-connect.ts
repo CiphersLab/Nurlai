@@ -1,5 +1,5 @@
 import { t } from "@lingui/core/macro";
-import type { MessageBlock } from "@rakazo/contracts";
+import type { MessageBlock } from "@nurlai/contracts";
 
 export type AppConnectBlock = Extract<MessageBlock, { kind: "app_connect" }>;
 

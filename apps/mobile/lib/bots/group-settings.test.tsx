@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { notifyManager } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 import { act } from "react";
@@ -27,7 +27,7 @@ vi.mock("../api/api", () => ({
   captureApiRequestContext: async (spaceId: string | null = selection.spaceId) => ({
     apiBase: "http://api.test",
     sessionGeneration: 1,
-    headers: spaceId ? { "x-rakazo-space-id": spaceId } : {},
+    headers: spaceId ? { "x-nurlai-space-id": spaceId } : {},
   }),
 }));
 vi.mock("../api/session", () => ({ currentSessionGeneration: () => 1 }));
@@ -150,7 +150,7 @@ it("saves once on a double tap to the group's Space, holds the form, then goes b
     [
       "groups/update",
       { groupId: "group-1", name: "Crew" },
-      { requestContext: expect.objectContaining({ headers: { "x-rakazo-space-id": "space-1" } }) },
+      { requestContext: expect.objectContaining({ headers: { "x-nurlai-space-id": "space-1" } }) },
     ],
   ]);
   expect(button("Saving…")!.disabled).toBe(true);

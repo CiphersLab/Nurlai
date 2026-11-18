@@ -1,9 +1,9 @@
-import { VoiceAccountError } from "@rakazo/adapter-kit";
-import * as adapters from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
-import * as db from "@rakazo/db";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+import { VoiceAccountError } from "@nurlai/adapter-kit";
+import * as adapters from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
+import * as db from "@nurlai/db";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { Hono } from "hono";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { isVoiceProviderFailure } from "../voice/http-errors.js";
@@ -907,7 +907,7 @@ describe("voiceCredentialPlaintext", () => {
   });
 
   it("rejects a public server address as a bad request", () => {
-    vi.stubEnv("RAKAZO_OPENAI_COMPAT_ALLOW_PUBLIC", "0");
+    vi.stubEnv("NURLAI_OPENAI_COMPAT_ALLOW_PUBLIC", "0");
     try {
       expect(() =>
         voiceCredentialPlaintext({

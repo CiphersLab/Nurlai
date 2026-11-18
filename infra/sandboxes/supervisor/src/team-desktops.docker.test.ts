@@ -12,7 +12,7 @@ import {
   releaseDesktopCommand,
   screenPorts,
   stopAllDesktopBrowsersCommand,
-} from "@rakazo/core/node/desktop-runtime";
+} from "@nurlai/core/node/desktop-runtime";
 import { expect, it } from "vitest";
 import {
   browserProfilePathForScreen,
@@ -79,7 +79,7 @@ it.skipIf(process.env.VERIFY_DOCKER_TEAM_SCREENS !== "1").each([false, true])(
         "--network",
         "none",
         "--shm-size=512m",
-        process.env.RAKAZO_COMPUTER_IMAGE ?? "rakazo/computer:local",
+        process.env.NURLAI_COMPUTER_IMAGE ?? "nurlai/computer:local",
       );
       docker("cp", commandFile, `${name}:/tmp/team-desktops-commands.json`);
       docker(

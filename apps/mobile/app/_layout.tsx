@@ -1,15 +1,15 @@
 import { i18n } from "@lingui/core";
 import { I18nProvider } from "@lingui/react";
 import { useLingui } from "@lingui/react/macro";
-import type { LinkFavicons } from "@rakazo/chat-ui/native";
+import type { LinkFavicons } from "@nurlai/chat-ui/native";
 import {
   CodeCopyButtonContext,
   LinkFaviconsContext,
   MarkdownLinkPromptProvider,
   MermaidDiagramContext,
   RemoteImagesContext,
-} from "@rakazo/chat-ui/native";
-import { analyticsScreen } from "@rakazo/core";
+} from "@nurlai/chat-ui/native";
+import { analyticsScreen } from "@nurlai/core";
 import {
   DarkTheme,
   Stack,

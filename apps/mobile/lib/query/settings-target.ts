@@ -1,4 +1,4 @@
-import type { RpcPath } from "@rakazo/contracts";
+import type { RpcPath } from "@nurlai/contracts";
 import type { RpcArgs } from "../api/api";
 import { captureApiRequestContext, rpc } from "../api/api";
 

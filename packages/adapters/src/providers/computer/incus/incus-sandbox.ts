@@ -8,9 +8,9 @@ import type {
   ComputerRef,
   UnreferencedMachine,
   UnreferencedMachineRecords,
-} from "@rakazo/adapter-kit";
-import { COMPUTER_CACHE_ENV } from "@rakazo/core/node/desktop-runtime";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { COMPUTER_CACHE_ENV } from "@nurlai/core/node/desktop-runtime";
+import { getLogger } from "@nurlai/logging";
 import { Agent, request as httpRequest } from "undici";
 import WebSocket from "ws";
 import type { RawExecEvent } from "../../../computers/sandbox/exec-computer.js";
@@ -28,7 +28,7 @@ import { sandboxNotFoundError } from "../../../computers/sandbox/sandbox-errors.
 
 const DEFAULT_PROJECT = "default";
 // Pin a release tag or digest with INCUS_SANDBOX_COMPUTER_IMAGE in production.
-const DEFAULT_COMPUTER_IMAGE = "ghcr.io/elie222/rakazo/computer:edge";
+const DEFAULT_COMPUTER_IMAGE = "ghcr.io/elie222/nurlai/computer:edge";
 // The Docker computer's default ceilings, in Incus units.
 const DEFAULT_CPU_LIMIT = "2";
 const DEFAULT_MEMORY_LIMIT = "2GiB";

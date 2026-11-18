@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { ComponentProps, ReactNode } from "react";
 import { act } from "react";
@@ -47,7 +47,7 @@ vi.mock("@lingui/react/macro", () => {
     Trans: ({ children }: { children?: ReactNode }) => children,
   };
 });
-vi.mock("@rakazo/ui-web", () => {
+vi.mock("@nurlai/ui-web", () => {
   const Pass = ({ children }: { children?: ReactNode }) => <div>{children}</div>;
   const ButtonLike = ({
     children,

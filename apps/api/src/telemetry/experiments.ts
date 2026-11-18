@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
-import type { ExperimentKey, ExperimentVariant } from "@rakazo/contracts";
-import { EXPERIMENTS } from "@rakazo/contracts";
+import type { ExperimentKey, ExperimentVariant } from "@nurlai/contracts";
+import { EXPERIMENTS } from "@nurlai/contracts";
 
 /** `runningKeys` is the deployment's `EXPERIMENTS` setting: comma-separated keys. Unknown keys are ignored. */
 export function createExperiments(runningKeys: string | undefined) {

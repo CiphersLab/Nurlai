@@ -1,12 +1,12 @@
-import type { ConnectorProvider, JobPublisher, SecretStore } from "@rakazo/adapter-kit";
-import { routineJobKey, routineWakeupJob } from "@rakazo/adapter-kit";
-import type { RoutineWatch } from "@rakazo/contracts";
+import type { ConnectorProvider, JobPublisher, SecretStore } from "@nurlai/adapter-kit";
+import { routineJobKey, routineWakeupJob } from "@nurlai/adapter-kit";
+import type { RoutineWatch } from "@nurlai/contracts";
 import {
   ROUTINE_WATCH_MIN_MINUTES,
   RoutineEmailSendersSchema,
   RoutineWatchSchema,
   TimeZoneSchema,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   cronFromPreset,
   formatCron,
@@ -18,10 +18,10 @@ import {
   unevenInterval,
   wallClock,
   zonedDateTime,
-} from "@rakazo/core";
-import type { PrismaClient, ThreadEvents } from "@rakazo/db";
-import { Prisma, runAsSystemInTransaction } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/core";
+import type { PrismaClient, ThreadEvents } from "@nurlai/db";
+import { Prisma, runAsSystemInTransaction } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { finishRoutineHandover } from "../routines/routine-handover.js";
 import type { RoutineEvents } from "../routines/routine-triggers.js";
 import {

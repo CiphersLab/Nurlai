@@ -4,7 +4,7 @@ import { captureScreenshot, completeOnboarding, signup } from "../helpers/helper
 test("the desktop app finds text in the open chat", async ({ page }, testInfo) => {
   // Browsers keep Cmd/Ctrl+F for their own find, so the bar belongs to the desktop app.
   await page.addInitScript(() => {
-    Object.defineProperty(window, "rakazoDesktop", {
+    Object.defineProperty(window, "nurlaiDesktop", {
       value: {
         platform: "linux",
         window: {

@@ -1,4 +1,4 @@
-import type { RakazoDesktop, RakazoSetup } from "@rakazo/contracts";
+import type { NurlaiDesktop, NurlaiSetup } from "@nurlai/contracts";
 
 /**
  * The window whose own page may call a channel. Its main frame only, and for an app window
@@ -70,7 +70,7 @@ const setupPageSync = <Method extends BridgeMethod>(): IpcChannel<Method> & { sy
 
 const SETUP_NOT_ACTIVE = { ok: false, error: "Setup is not active." };
 
-type Desktop = { [Key in keyof RakazoDesktop]-?: NonNullable<RakazoDesktop[Key]> };
+type Desktop = { [Key in keyof NurlaiDesktop]-?: NonNullable<NurlaiDesktop[Key]> };
 
 /**
  * Every channel a page can call, and who may call it. Types come from the bridge contracts the
@@ -107,14 +107,14 @@ export const ipcChannels = {
     fullScreen: false,
   }),
   "desktop.window.toggleMaximize": ownWindow<Desktop["window"]["toggleMaximize"]>(undefined),
-  "desktop.setup.locale": setupPageSync<() => RakazoSetup["locale"]>(),
-  "desktop.setup.openLink": setupPage<RakazoSetup["openLink"]>(undefined),
-  "desktop.setup.quit": setupPage<RakazoSetup["quit"]>(undefined),
-  "desktop.setup.save": setupPage<RakazoSetup["save"]>(SETUP_NOT_ACTIVE),
-  "desktop.setup.stack.start": setupPage<RakazoSetup["stack"]["start"]>(REJECTS),
-  "desktop.setup.stack.state": setupPage<RakazoSetup["stack"]["state"]>(REJECTS),
-  "desktop.setup.state": setupPage<RakazoSetup["state"]>(REJECTS),
-  "desktop.setup.test": setupPage<RakazoSetup["test"]>(SETUP_NOT_ACTIVE),
+  "desktop.setup.locale": setupPageSync<() => NurlaiSetup["locale"]>(),
+  "desktop.setup.openLink": setupPage<NurlaiSetup["openLink"]>(undefined),
+  "desktop.setup.quit": setupPage<NurlaiSetup["quit"]>(undefined),
+  "desktop.setup.save": setupPage<NurlaiSetup["save"]>(SETUP_NOT_ACTIVE),
+  "desktop.setup.stack.start": setupPage<NurlaiSetup["stack"]["start"]>(REJECTS),
+  "desktop.setup.stack.state": setupPage<NurlaiSetup["stack"]["state"]>(REJECTS),
+  "desktop.setup.state": setupPage<NurlaiSetup["state"]>(REJECTS),
+  "desktop.setup.test": setupPage<NurlaiSetup["test"]>(SETUP_NOT_ACTIVE),
 };
 
 export type IpcChannelName = keyof typeof ipcChannels;

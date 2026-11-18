@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { TelegramAdapter, TelegramFormatConverter } from "@chat-adapter/telegram";
-import { deadlineSignal, withAbort } from "@rakazo/core";
-import { getLogger } from "@rakazo/logging";
+import { deadlineSignal, withAbort } from "@nurlai/core";
+import { getLogger } from "@nurlai/logging";
 import type { AdapterPostableMessage, CardElement, Root } from "chat";
 import {
   convertEmojiPlaceholders,
@@ -67,7 +67,7 @@ const TELEGRAM_NAMED_TOKEN = /^TELEGRAM_BOT_TOKEN_([A-Z0-9]+)$/;
 /**
  * Extra Telegram bots from TELEGRAM_BOT_TOKEN_<NAME> plus
  * TELEGRAM_WEBHOOK_SECRET_TOKEN_<NAME>. Each is its own Telegram bot (own
- * token, own getUpdates slot), so one person can link a different Rakazo bot
+ * token, own getUpdates slot), so one person can link a different Nurlai bot
  * — typically one per space — to each. <NAME> is letters and digits only and
  * becomes the provider id `telegram-<name>` (lowercased), which also names
  * its webhook route. A name with no secret is skipped, like the default bot.

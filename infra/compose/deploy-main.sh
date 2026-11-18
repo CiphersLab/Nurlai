@@ -5,49 +5,49 @@
 # and always runs this file from origin/main. The deploy user needs passwordless sudo for Docker.
 #
 # CI publishes the app image for a main commit before it deploys that commit, so this pulls
-# <RAKAZO_DEPLOY_IMAGE>:sha-<commit> instead of building on the host that serves traffic. It builds
+# <NURLAI_DEPLOY_IMAGE>:sha-<commit> instead of building on the host that serves traffic. It builds
 # the checkout instead when the pull fails or times out, or when no image repository is configured.
 set -Eeuo pipefail
 
 # A forced SSH command carries no environment, so read the checkout path from a root-owned file.
-if [[ -z "${RAKAZO_DEPLOY_DIR:-}" && -r /etc/rakazo/deploy.env ]]; then
+if [[ -z "${NURLAI_DEPLOY_DIR:-}" && -r /etc/rakazo/deploy.env ]]; then
   # shellcheck disable=SC1091
   source /etc/rakazo/deploy.env
 fi
-APP_DIR="${RAKAZO_DEPLOY_DIR:-/srv/rakazo}"
-[[ "${APP_DIR}" == /* ]] || { echo "RAKAZO_DEPLOY_DIR must be an absolute path" >&2; exit 1; }
+APP_DIR="${NURLAI_DEPLOY_DIR:-/srv/rakazo}"
+[[ "${APP_DIR}" == /* ]] || { echo "NURLAI_DEPLOY_DIR must be an absolute path" >&2; exit 1; }
 COMPOSE_FILE="infra/compose/docker-compose.prod.yml"
 # CI allows 140 minutes: 5m pull + 15m fallback build + 5m start + ~1m of health retries + 8m
 # rollback, which only pulls or builds when the previous image is gone, + up to 50m (the worker's
 # stop_grace_period) twice: for a worker an earlier deploy left draining, then for this one's. The
 # replaced API's few minutes of draining run alongside the worker's.
-PULL_TIMEOUT="${RAKAZO_DEPLOY_PULL_TIMEOUT:-5m}"
-BUILD_TIMEOUT="${RAKAZO_DEPLOY_BUILD_TIMEOUT:-15m}"
-UP_TIMEOUT="${RAKAZO_DEPLOY_UP_TIMEOUT:-5m}"
-ROLLBACK_TIMEOUT="${RAKAZO_DEPLOY_ROLLBACK_TIMEOUT:-8m}"
+PULL_TIMEOUT="${NURLAI_DEPLOY_PULL_TIMEOUT:-5m}"
+BUILD_TIMEOUT="${NURLAI_DEPLOY_BUILD_TIMEOUT:-15m}"
+UP_TIMEOUT="${NURLAI_DEPLOY_UP_TIMEOUT:-5m}"
+ROLLBACK_TIMEOUT="${NURLAI_DEPLOY_ROLLBACK_TIMEOUT:-8m}"
 # Longer than a replaced API takes to stop: its HTTP drain, RUN_DRAIN_MS, then handing back.
 API_DRAIN_TIMEOUT=6m
 # Free disk a deploy needs before it pulls or builds.
-MIN_FREE_GB="${RAKAZO_DEPLOY_MIN_FREE_GB:-5}"
-BUILD_CACHE_GB="${RAKAZO_DEPLOY_BUILD_CACHE_GB:-8}"
-[[ "${BUILD_CACHE_GB}" =~ ^[0-9]+$ ]] || { echo "RAKAZO_DEPLOY_BUILD_CACHE_GB must be a whole number" >&2; exit 1; }
-[[ "${MIN_FREE_GB}" =~ ^(0|[1-9][0-9]*)$ ]] || { echo "RAKAZO_DEPLOY_MIN_FREE_GB must be a whole number" >&2; exit 1; }
+MIN_FREE_GB="${NURLAI_DEPLOY_MIN_FREE_GB:-5}"
+BUILD_CACHE_GB="${NURLAI_DEPLOY_BUILD_CACHE_GB:-8}"
+[[ "${BUILD_CACHE_GB}" =~ ^[0-9]+$ ]] || { echo "NURLAI_DEPLOY_BUILD_CACHE_GB must be a whole number" >&2; exit 1; }
+[[ "${MIN_FREE_GB}" =~ ^(0|[1-9][0-9]*)$ ]] || { echo "NURLAI_DEPLOY_MIN_FREE_GB must be a whole number" >&2; exit 1; }
 
 cd "${APP_DIR}"
 # Where CI publishes the app image. Unset: the GHCR app image of the GitHub repository the checkout
 # tracks, which is where publish-server-image.yml pushes. Empty: always build on the host.
-if [[ -z "${RAKAZO_DEPLOY_IMAGE+set}" ]]; then
-  RAKAZO_DEPLOY_IMAGE=""
+if [[ -z "${NURLAI_DEPLOY_IMAGE+set}" ]]; then
+  NURLAI_DEPLOY_IMAGE=""
   origin_url="$(git config --get remote.origin.url || true)"
   if [[ "${origin_url}" =~ github\.com[:/]([^/]+/[^/]+)$ ]]; then
     repository="$(tr '[:upper:]' '[:lower:]' <<<"${BASH_REMATCH[1]%.git}")"
-    RAKAZO_DEPLOY_IMAGE="ghcr.io/${repository}/app"
+    NURLAI_DEPLOY_IMAGE="ghcr.io/${repository}/app"
   fi
 fi
-if [[ -z "${RAKAZO_HEALTH_URL:-}" ]]; then
-  host="$(sed -n 's/^RAKAZO_HOST=//p' .env | tail -n 1)"
-  [[ -n "${host}" ]] || { echo "Set RAKAZO_HOST in .env or RAKAZO_HEALTH_URL" >&2; exit 1; }
-  RAKAZO_HEALTH_URL="https://${host}/health"
+if [[ -z "${NURLAI_HEALTH_URL:-}" ]]; then
+  host="$(sed -n 's/^NURLAI_HOST=//p' .env | tail -n 1)"
+  [[ -n "${host}" ]] || { echo "Set NURLAI_HOST in .env or NURLAI_HEALTH_URL" >&2; exit 1; }
+  NURLAI_HEALTH_URL="https://${host}/health"
 fi
 
 # How many API and worker containers to run, the same .env settings Compose reads.
@@ -56,10 +56,10 @@ replicas() {
   count="$(sed -n "s/^$1=//p" .env | tail -n 1)"
   echo "${count:-1}"
 }
-API_REPLICAS="$(replicas RAKAZO_API_REPLICAS)"
-WORKER_REPLICAS="$(replicas RAKAZO_WORKER_REPLICAS)"
+API_REPLICAS="$(replicas NURLAI_API_REPLICAS)"
+WORKER_REPLICAS="$(replicas NURLAI_WORKER_REPLICAS)"
 for count in "${API_REPLICAS}" "${WORKER_REPLICAS}"; do
-  [[ "${count}" =~ ^[1-9][0-9]*$ ]] || { echo "RAKAZO_API_REPLICAS and RAKAZO_WORKER_REPLICAS must be whole numbers of at least 1" >&2; exit 1; }
+  [[ "${count}" =~ ^[1-9][0-9]*$ ]] || { echo "NURLAI_API_REPLICAS and NURLAI_WORKER_REPLICAS must be whole numbers of at least 1" >&2; exit 1; }
 done
 
 compose() {
@@ -69,7 +69,7 @@ compose() {
 }
 
 healthy() {
-  curl --fail --silent --show-error --max-time 15 "${RAKAZO_HEALTH_URL}" >/dev/null
+  curl --fail --silent --show-error --max-time 15 "${NURLAI_HEALTH_URL}" >/dev/null
 }
 
 # The image the api, web and worker share, as Compose resolves it from .env (by default
@@ -86,8 +86,8 @@ compose_app_image() {
 # image cannot be pulled, so a registry outage slows a deploy down instead of blocking it.
 use_revision_image() {
   local revision="$1" limit="$2" published
-  if [[ -n "${RAKAZO_DEPLOY_IMAGE}" ]]; then
-    published="${RAKAZO_DEPLOY_IMAGE}:sha-${revision}"
+  if [[ -n "${NURLAI_DEPLOY_IMAGE}" ]]; then
+    published="${NURLAI_DEPLOY_IMAGE}:sha-${revision}"
     if timeout --kill-after=30s "${PULL_TIMEOUT}" sudo docker pull --quiet "${published}" >/dev/null; then
       sudo docker tag "${published}" "${app_image}"
       # Drop the sha- tag; the image stays as the app image, so these tags never pile up.
@@ -114,7 +114,7 @@ container_healthy() {
       "running starting" | created*) ;;
       *) break ;;
     esac
-    sleep "${RAKAZO_DEPLOY_HEALTH_INTERVAL:-1}"
+    sleep "${NURLAI_DEPLOY_HEALTH_INTERVAL:-1}"
   done
   echo "Container ${container} did not become healthy (${state:-unknown})." >&2
   sudo docker rm --force "${container}" >/dev/null || true
@@ -242,7 +242,7 @@ roll_out() {
   # grep -q would exit at the first match and SIGPIPE compose, which pipefail reads as no match.
   services="$(compose 1m config --services)"
   if grep -qx migrate <<<"${services}"; then
-    compose "${UP_TIMEOUT}" run --rm -T -e "RAKAZO_DEPLOYED_MIGRATIONS=${deployed_migrations}" migrate
+    compose "${UP_TIMEOUT}" run --rm -T -e "NURLAI_DEPLOYED_MIGRATIONS=${deployed_migrations}" migrate
   else
     compose "${UP_TIMEOUT}" up -d --wait postgres
   fi
@@ -297,7 +297,7 @@ docker_root="$(sudo docker info --format '{{.DockerRootDir}}')"
 for dir in "${APP_DIR}" "${docker_root}"; do
   free_gb="$(df -Pk "${dir}" | awk 'NR == 2 { print int($4 / 1048576) }')"
   if ((free_gb < MIN_FREE_GB)); then
-    echo "Only ${free_gb}GB free on ${dir}; deploys need ${MIN_FREE_GB}GB (RAKAZO_DEPLOY_MIN_FREE_GB)." >&2
+    echo "Only ${free_gb}GB free on ${dir}; deploys need ${MIN_FREE_GB}GB (NURLAI_DEPLOY_MIN_FREE_GB)." >&2
     echo "Free space first, for example: sudo docker image prune -f && sudo docker builder prune -f" >&2
     exit 1
   fi
@@ -306,7 +306,7 @@ done
 previous_revision="$(git rev-parse HEAD)"
 git fetch --quiet --prune origin main
 # The launcher pins the commit its copy of this script came from.
-target_revision="$(git rev-parse --verify "${RAKAZO_DEPLOY_REVISION:-origin/main}^{commit}")"
+target_revision="$(git rev-parse --verify "${NURLAI_DEPLOY_REVISION:-origin/main}^{commit}")"
 
 # Written only after a healthy rollout. A reset can make HEAD match before containers change.
 deployed_revision=""
@@ -359,7 +359,7 @@ previous_images="$(compose 1m images -q 2>/dev/null | sort -u)" || previous_imag
 
 # Runs after a healthy rollout. Tags the previous images so they survive, then drops untagged
 # images, which leaves the current and previous app image. The build cache only grows when a pull
-# fell back to a build, and is trimmed to RAKAZO_DEPLOY_BUILD_CACHE_GB (default 8). Cleanup is
+# fell back to a build, and is trimmed to NURLAI_DEPLOY_BUILD_CACHE_GB (default 8). Cleanup is
 # time-limited and never fails the deploy.
 prune_docker() {
   local id kept=true
@@ -421,7 +421,7 @@ for _ in {1..30}; do
     echo "Deployed ${target_revision} successfully."
     exit 0
   fi
-  sleep "${RAKAZO_DEPLOY_HEALTH_INTERVAL:-2}"
+  sleep "${NURLAI_DEPLOY_HEALTH_INTERVAL:-2}"
 done
 
 echo "Production health check did not recover in time." >&2

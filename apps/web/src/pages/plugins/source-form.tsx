@@ -3,8 +3,8 @@ import type {
   IntegrationCatalogResult,
   IntegrationCatalogSurface,
   McpSourcePreset,
-} from "@rakazo/contracts";
-import { Button, Field, FieldDescription, FieldLabel, Input, OptionSelect } from "@rakazo/ui-web";
+} from "@nurlai/contracts";
+import { Button, Field, FieldDescription, FieldLabel, Input, OptionSelect } from "@nurlai/ui-web";
 import { useState } from "react";
 import { ViewTitle } from "./parts";
 

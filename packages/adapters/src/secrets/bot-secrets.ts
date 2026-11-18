@@ -1,6 +1,6 @@
 import { createHmac, randomBytes } from "node:crypto";
-import type { SecretStore } from "@rakazo/adapter-kit";
-import { SecretNotFoundError, SecretStoreUnavailableError } from "@rakazo/adapter-kit";
+import type { SecretStore } from "@nurlai/adapter-kit";
+import { SecretNotFoundError, SecretStoreUnavailableError } from "@nurlai/adapter-kit";
 import type {
   BotSecretDestination,
   CardSecretValue,
@@ -10,7 +10,7 @@ import type {
   SettingsScope,
   VaultPolicy,
   VaultPreview,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   AUTHENTICATOR_KEY_UNREADABLE,
   authenticatorKey,
@@ -45,10 +45,10 @@ import {
   UNCHOSEN_ITEM_ANSWER,
   VAULT_ITEM_LIMIT,
   vaultLoginKey,
-} from "@rakazo/contracts";
-import { ClientError } from "@rakazo/core";
-import { resolveEncryptionKey } from "@rakazo/core/node/secrets-guard";
-import type { Prisma, PrismaClient } from "@rakazo/db";
+} from "@nurlai/contracts";
+import { ClientError } from "@nurlai/core";
+import { resolveEncryptionKey } from "@nurlai/core/node/secrets-guard";
+import type { Prisma, PrismaClient } from "@nurlai/db";
 import {
   ContentDecryptionError,
   ciphertextKeyId,
@@ -60,8 +60,8 @@ import {
   settingsTarget,
   TransactionConflictError,
   withTransactionRetry,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { z } from "zod";
 import { combineSignals, redactConnectorPayload } from "../integrations/connector-safety.js";
 import type { RemoteTransportDependencies } from "../mcp/remote-mcp.js";
@@ -325,7 +325,7 @@ function credentialHeader(destination: BotSecretDestination, plaintext: string) 
 
 /** Owner escape enabling plain-HTTP origins on private LAN hosts (see #907). */
 export function allowPrivateHttpSecretOrigins(): boolean {
-  return process.env.RAKAZO_SECRETS_ALLOW_PRIVATE_HTTP === "1";
+  return process.env.NURLAI_SECRETS_ALLOW_PRIVATE_HTTP === "1";
 }
 
 export function normalizeSecretDestination(value: unknown): BotSecretDestination {

@@ -1,4 +1,4 @@
-import { accountDisplay } from "@rakazo/core";
+import { accountDisplay } from "@nurlai/core";
 import type { ReactNode } from "react";
 import { useState } from "react";
 

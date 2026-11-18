@@ -8,10 +8,10 @@ import type {
   ComputerRef,
   PortableFile,
   ProcessEvent,
-} from "@rakazo/adapter-kit";
-import { SandboxFileTooLargeError } from "@rakazo/adapter-kit";
-import { COMPUTER_CACHE_ENV } from "@rakazo/core/node/desktop-runtime";
-import { boundedSandboxCommandTimeoutMs } from "@rakazo/core/node/sandbox-command";
+} from "@nurlai/adapter-kit";
+import { SandboxFileTooLargeError } from "@nurlai/adapter-kit";
+import { COMPUTER_CACHE_ENV } from "@nurlai/core/node/desktop-runtime";
+import { boundedSandboxCommandTimeoutMs } from "@nurlai/core/node/sandbox-command";
 import {
   shouldSkipPortableWorkspaceFile,
   workspaceSaveFindCommand,

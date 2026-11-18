@@ -1,8 +1,8 @@
 import { useLingui } from "@lingui/react/macro";
-import { ChatMarkdown } from "@rakazo/chat-ui/native";
-import type { PeerConversation } from "@rakazo/core";
-import { displayName, loadPeerHistory, newestPageCards, peerConversations } from "@rakazo/core";
-import { typeScale } from "@rakazo/ui-tokens";
+import { ChatMarkdown } from "@nurlai/chat-ui/native";
+import type { PeerConversation } from "@nurlai/core";
+import { displayName, loadPeerHistory, newestPageCards, peerConversations } from "@nurlai/core";
+import { typeScale } from "@nurlai/ui-tokens";
 import type { DataTag, QueryKey } from "@tanstack/react-query";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { useRef } from "react";

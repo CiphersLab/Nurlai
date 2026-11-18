@@ -1,5 +1,5 @@
-import type { AdapterContext, ComputerRef } from "@rakazo/adapter-kit";
-import { SandboxFileTooLargeError } from "@rakazo/adapter-kit";
+import type { AdapterContext, ComputerRef } from "@nurlai/adapter-kit";
+import { SandboxFileTooLargeError } from "@nurlai/adapter-kit";
 import { describe, expect, it, vi } from "vitest";
 import type { RawExec } from "./exec-computer.js";
 import { ExecComputer, encodeTarEntry, TarReader } from "./exec-computer.js";

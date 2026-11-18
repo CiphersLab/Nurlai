@@ -6,7 +6,7 @@ import type {
   LoginFieldInput,
   VaultKind,
   VaultRevealed,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   BotSecretName,
   CardSecretValue,
@@ -24,12 +24,12 @@ import {
   vaultItemSubtitle as sharedSubtitle,
   VAULT_KINDS,
   vaultKind,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 
 export type CredentialAuth = NonNullable<BotSecretMetadata["auth"]>;
 export type CredentialType = CredentialAuth["type"];
 export type VaultItem = BotSecretMetadata & { auth: CredentialAuth };
-export type { VaultBots } from "@rakazo/core";
+export type { VaultBots } from "@nurlai/core";
 /** What a save sends: no name for a new item, which the server names from its title. */
 export type VaultDestination = { name?: string; origin?: string; auth: CredentialAuth };
 

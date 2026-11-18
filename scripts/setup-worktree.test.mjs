@@ -32,7 +32,7 @@ test("worktree settings stay private and local", () => {
     setup(worktree);
     assert.equal(existsSync(path.join(worktree, ".env")), false);
 
-    const settings = "RAKAZO_DEV_TAILNET=\nBETTER_AUTH_SECRET=fake-test-secret\n";
+    const settings = "NURLAI_DEV_TAILNET=\nBETTER_AUTH_SECRET=fake-test-secret\n";
     writeFileSync(path.join(main, ".env"), settings);
     setup(worktree);
     assert.equal(readFileSync(path.join(worktree, ".env"), "utf8"), settings);
@@ -43,16 +43,16 @@ test("worktree settings stay private and local", () => {
       execFileSync("git", ["status", "--porcelain"], { cwd: worktree, encoding: "utf8" }),
       "",
     );
-    writeFileSync(path.join(worktree, ".env"), "RAKAZO_DEV_TAILNET=0\n");
+    writeFileSync(path.join(worktree, ".env"), "NURLAI_DEV_TAILNET=0\n");
     setup(worktree);
-    assert.equal(readFileSync(path.join(worktree, ".env"), "utf8"), "RAKAZO_DEV_TAILNET=0\n");
+    assert.equal(readFileSync(path.join(worktree, ".env"), "utf8"), "NURLAI_DEV_TAILNET=0\n");
 
     writeFileSync(path.join(worktree, ".gitignore"), "");
     setup(worktree);
-    assert.equal(readFileSync(path.join(worktree, ".env"), "utf8"), "RAKAZO_DEV_TAILNET=0\n");
+    assert.equal(readFileSync(path.join(worktree, ".env"), "utf8"), "NURLAI_DEV_TAILNET=0\n");
     execFileSync("git", ["add", ".env"], { cwd: worktree, stdio: "pipe" });
     setup(worktree);
-    assert.equal(readFileSync(path.join(worktree, ".env"), "utf8"), "RAKAZO_DEV_TAILNET=0\n");
+    assert.equal(readFileSync(path.join(worktree, ".env"), "utf8"), "NURLAI_DEV_TAILNET=0\n");
     execFileSync("git", ["reset", "--", ".env"], { cwd: worktree, stdio: "pipe" });
     rmSync(path.join(worktree, ".env"));
     assert.throws(() => setup(worktree));
@@ -80,9 +80,9 @@ test("worktree settings stay private and local", () => {
       symlinkSync(unrelated, path.join(main, ".env"));
       assert.throws(() => setup(worktree));
       assert.equal(existsSync(path.join(worktree, ".env")), false);
-      writeFileSync(path.join(worktree, ".env"), "RAKAZO_DEV_TAILNET=0\n");
+      writeFileSync(path.join(worktree, ".env"), "NURLAI_DEV_TAILNET=0\n");
       setup(worktree);
-      assert.equal(readFileSync(path.join(worktree, ".env"), "utf8"), "RAKAZO_DEV_TAILNET=0\n");
+      assert.equal(readFileSync(path.join(worktree, ".env"), "utf8"), "NURLAI_DEV_TAILNET=0\n");
     }
   } finally {
     rmSync(dir, { recursive: true, force: true });

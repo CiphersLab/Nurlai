@@ -1,5 +1,5 @@
-import type { AdapterContext } from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
+import type { AdapterContext } from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { createWebProvider, resolveWebProviderKind } from "../../../web/web-provider-factory.js";
 import { webFetchFromTool, webSearchFromTool } from "../../../web/web-tools.js";
@@ -45,7 +45,7 @@ describe("optional Keenable web provider", () => {
       expect(request.url).toBe("https://api.keenable.ai/mcp");
       expect(request.headers.get("x-keenable-title")).toBe("rakazo");
       expect(request.headers.get("user-agent")).toBe(
-        "Rakazo/0.1 (+https://github.com/elie222/rakazo; web tools)",
+        "Nurlai/0.1 (+https://github.com/elie222/rakazo; web tools)",
       );
       expect(request.headers.has("x-api-key")).toBe(false);
       expect(request.headers.has("authorization")).toBe(false);

@@ -1,7 +1,7 @@
-import type { VaultUse } from "@rakazo/contracts";
-import { VAULT_ACTIVITY_LIMIT } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
-import { runAsSystem, tryRecordAuditEvent } from "@rakazo/db";
+import type { VaultUse } from "@nurlai/contracts";
+import { VAULT_ACTIVITY_LIMIT } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
+import { runAsSystem, tryRecordAuditEvent } from "@nurlai/db";
 import type { BotSecretScope, VaultItemUse } from "../bot-secrets.js";
 import { vaultItemId } from "../bot-secrets.js";
 

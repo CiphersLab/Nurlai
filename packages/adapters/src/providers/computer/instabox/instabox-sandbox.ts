@@ -1,9 +1,9 @@
 import { setTimeout as delay } from "node:timers/promises";
-import type { UnreferencedMachine, UnreferencedMachineRecords } from "@rakazo/adapter-kit";
-import { SandboxRateLimitError, SandboxSizeUnavailableError } from "@rakazo/adapter-kit";
-import type { ComputerSize } from "@rakazo/contracts";
-import { COMPUTER_SIZE_SPECS } from "@rakazo/contracts";
-import { withAbort } from "@rakazo/core";
+import type { UnreferencedMachine, UnreferencedMachineRecords } from "@nurlai/adapter-kit";
+import { SandboxRateLimitError, SandboxSizeUnavailableError } from "@nurlai/adapter-kit";
+import type { ComputerSize } from "@nurlai/contracts";
+import { COMPUTER_SIZE_SPECS } from "@nurlai/contracts";
+import { withAbort } from "@nurlai/core";
 import type {
   CommandResult,
   CommandStartOpts,

@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
-import type { AccountSecurity } from "@rakazo/contracts";
-import { deferred, flush } from "@rakazo/core/test-async";
+import type { AccountSecurity } from "@nurlai/contracts";
+import { deferred, flush } from "@nurlai/core/test-async";
 import { notifyManager } from "@tanstack/react-query";
 import * as SecureStore from "expo-secure-store";
 import type { ReactNode } from "react";
@@ -280,7 +280,7 @@ vi.mock("../api/api", async (importOriginal) => ({
   captureApiRequestContext: async (spaceId: string | null = "space-1") => ({
     apiBase: "http://127.0.0.1:3100",
     sessionGeneration: currentSessionGeneration(),
-    headers: spaceId ? { "x-rakazo-space-id": spaceId } : {},
+    headers: spaceId ? { "x-nurlai-space-id": spaceId } : {},
   }),
 }));
 vi.mock("../platform/app-foreground", () => ({ useAppForeground: () => true }));
@@ -543,7 +543,7 @@ async function renderAccount(Screen: () => ReactNode = Account) {
 
 it("navigates to sign-in while a silent server still owes the sign-out delivery", async () => {
   const actual = await vi.importActual<typeof ApiAuth>("../auth/api-auth");
-  const store = new Map<string, string>([["rakazo.session_token", "session-token"]]);
+  const store = new Map<string, string>([["nurlai.session_token", "session-token"]]);
   vi.mocked(SecureStore.getItemAsync).mockImplementation(async (key) => store.get(key) ?? null);
   vi.mocked(SecureStore.setItemAsync).mockImplementation(async (key, value) => {
     store.set(key, value);
@@ -564,7 +564,7 @@ it("navigates to sign-in while a silent server still owes the sign-out delivery"
 
     // The screen leaves before the request timeout fires; the device is signed out.
     expect(replaceWithSignIn).toHaveBeenCalled();
-    expect(store.has("rakazo.session_token")).toBe(false);
+    expect(store.has("nurlai.session_token")).toBe(false);
     expect(JSON.parse(store.get("rakazo.pending_sign_out") ?? "[]")).toHaveLength(1);
 
     // The delivery still runs: it times out and the record waits for retry.

@@ -42,9 +42,9 @@ CREATE FUNCTION app_vault_run_unrestricted(owner_id text, space_id text) RETURNS
 REVOKE EXECUTE ON FUNCTION app_vault_item_unrestricted(text) FROM PUBLIC;
 REVOKE EXECUTE ON FUNCTION app_vault_run_unrestricted(text, text) FROM PUBLIC;
 DO $$ BEGIN
-  IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'rakazo_app') THEN
-    GRANT EXECUTE ON FUNCTION app_vault_item_unrestricted(text) TO rakazo_app;
-    GRANT EXECUTE ON FUNCTION app_vault_run_unrestricted(text, text) TO rakazo_app;
+  IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'nurlai_app') THEN
+    GRANT EXECUTE ON FUNCTION app_vault_item_unrestricted(text) TO nurlai_app;
+    GRANT EXECUTE ON FUNCTION app_vault_run_unrestricted(text, text) TO nurlai_app;
   END IF;
 END $$;
 

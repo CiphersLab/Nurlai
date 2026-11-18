@@ -1,8 +1,8 @@
-import type { TransactionalEmailProvider } from "@rakazo/adapter-kit";
-import { sandboxKindsWhere } from "@rakazo/adapters";
-import type { HomeDeletionReason } from "@rakazo/auth";
-import { emailLocale, homeDeletionEmail } from "@rakazo/auth";
-import type { PrismaClient } from "@rakazo/db";
+import type { TransactionalEmailProvider } from "@nurlai/adapter-kit";
+import { sandboxKindsWhere } from "@nurlai/adapters";
+import type { HomeDeletionReason } from "@nurlai/auth";
+import { emailLocale, homeDeletionEmail } from "@nurlai/auth";
+import type { PrismaClient } from "@nurlai/db";
 import {
   assertLeaseHeld,
   hasModelAccess,
@@ -11,8 +11,8 @@ import {
   Prisma,
   runAsSystem,
   withLease,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 const PLAN_ENDED_DAYS = 30;

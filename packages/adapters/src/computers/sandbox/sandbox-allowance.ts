@@ -1,7 +1,7 @@
-import type { ComputerRef, SandboxProvider } from "@rakazo/adapter-kit";
-import { SANDBOX_HOURLY_COST_MICROS } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
-import { MICROS_PER_DOLLAR, sandboxAllowancePlan, sandboxRunHours } from "@rakazo/db";
+import type { ComputerRef, SandboxProvider } from "@nurlai/adapter-kit";
+import { SANDBOX_HOURLY_COST_MICROS } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
+import { MICROS_PER_DOLLAR, sandboxAllowancePlan, sandboxRunHours } from "@nurlai/db";
 import { sandboxKindCapabilities } from "./sandbox-kind-capabilities.js";
 
 type AllowanceDeps = { prisma: PrismaClient; sandbox: SandboxProvider };

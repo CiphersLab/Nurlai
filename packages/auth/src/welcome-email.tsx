@@ -1,15 +1,15 @@
 /** @jsxRuntime automatic */
-import type { TransactionalEmail } from "@rakazo/adapter-kit";
-import { ANDROID_APP_STORE_URL, IOS_APP_STORE_URL } from "@rakazo/contracts";
+import type { TransactionalEmail } from "@nurlai/adapter-kit";
+import { ANDROID_APP_STORE_URL, IOS_APP_STORE_URL } from "@nurlai/contracts";
 import { Link, Text } from "react-email";
 import { emailText, greeting, linkStyle, message, withNodes } from "./email.js";
 
 const APPS: Readonly<Record<string, string>> = {
   iPhone: IOS_APP_STORE_URL,
   Android: ANDROID_APP_STORE_URL,
-  Mac: "https://rakazo.com/api/download?platform=mac",
-  Windows: "https://rakazo.com/api/download?platform=windows",
-  Linux: "https://rakazo.com/api/download?platform=linux",
+  Mac: "https://nurlai.cipherslab.com/api/download?platform=mac",
+  Windows: "https://nurlai.cipherslab.com/api/download?platform=windows",
+  Linux: "https://nurlai.cipherslab.com/api/download?platform=linux",
 };
 
 const stepStyle = { margin: "20px 0 4px" };
@@ -23,18 +23,18 @@ export function welcomeEmail(
   return message(
     user.email,
     locale,
-    say("Welcome to Rakazo"),
+    say("Welcome to Nurlai"),
     <>
       <Text>{greeting(say, user.name)}</Text>
       <Text>
-        {say("Welcome to Rakazo. The people who get the most out of it do three things:")}
+        {say("Welcome to Nurlai. The people who get the most out of it do three things:")}
       </Text>
       <Text style={stepStyle}>
         <strong>1. {say("Get the apps")}</strong>
       </Text>
       <Text style={{ marginTop: 0 }}>
         {withNodes(
-          say("Rakazo runs on {platforms}, so your bots can reach you wherever you are."),
+          say("Nurlai runs on {platforms}, so your bots can reach you wherever you are."),
           {
             // The language's own list ("A, B, and C", "A, B y C"), with each app a link.
             platforms: new Intl.ListFormat(locale, { type: "conjunction" })
@@ -72,7 +72,7 @@ export function welcomeEmail(
         <strong>3. {say("Star us on GitHub")}</strong>
       </Text>
       <Text style={{ marginTop: 0 }}>
-        {withNodes(say("Rakazo is open source. {star} helps more people find it."), {
+        {withNodes(say("Nurlai is open source. {star} helps more people find it."), {
           star: (
             <Link href="https://github.com/elie222/rakazo" style={linkStyle}>
               {say("A star on GitHub")}
@@ -84,6 +84,6 @@ export function welcomeEmail(
       <Text>Elie</Text>
     </>,
     unsubscribeUrl,
-    { src: "https://rakazo.com/email/welcome.jpg", alt: "Rakazo" },
+    { src: "https://nurlai.cipherslab.com/email/welcome.jpg", alt: "Nurlai" },
   );
 }

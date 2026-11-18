@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { isDeepStrictEqual } from "node:util";
-import type { AgentUsage, BillingCreditPurchase } from "@rakazo/adapter-kit";
-import { MODEL_CREDITS_EXHAUSTED_ERROR, MODEL_UNPRICED_FOR_CREDITS_ERROR } from "@rakazo/core";
+import type { AgentUsage, BillingCreditPurchase } from "@nurlai/adapter-kit";
+import { MODEL_CREDITS_EXHAUSTED_ERROR, MODEL_UNPRICED_FOR_CREDITS_ERROR } from "@nurlai/core";
 import type { PrismaClient } from "../database/client.js";
 import { isUniqueViolation } from "../database/prisma-errors.js";
 import type { Prisma } from "../generated/prisma/client.js";

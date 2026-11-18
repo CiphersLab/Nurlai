@@ -1,5 +1,5 @@
-import { useTimeout } from "@rakazo/chat-ui/hooks";
-import { nextChatWake } from "@rakazo/core";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
+import { nextChatWake } from "@nurlai/core";
 import { useEffect, useMemo, useState } from "react";
 import { AppState } from "react-native";
 

@@ -8,21 +8,21 @@ import type {
   PartnerProgram,
   ProductAnalytics,
   SandboxProvider,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import {
   BillingCheckoutCompletedError,
   BillingCustomerNotFoundError,
   BillingNoMonthlyCreditsError,
   BillingPaymentNotCompletedError,
-} from "@rakazo/adapter-kit";
-import { holdsBillingSubscription, sandboxAllowance, sandboxHoursLeft } from "@rakazo/adapters";
+} from "@nurlai/adapter-kit";
+import { holdsBillingSubscription, sandboxAllowance, sandboxHoursLeft } from "@nurlai/adapters";
 import type {
   Actor,
   AnalyticsEvent,
   BillingStatus,
   ByokInterval,
   ByokTier,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   BYOK_TIERS,
   ByokTierSchema,
@@ -30,9 +30,9 @@ import {
   INVITED_TRIAL_WEEKS,
   sandboxAllowanceHours,
   TRIAL_DAYS,
-} from "@rakazo/contracts";
-import { retry } from "@rakazo/core";
-import type { BillingAccount, PrismaClient } from "@rakazo/db";
+} from "@nurlai/contracts";
+import { retry } from "@nurlai/core";
+import type { BillingAccount, PrismaClient } from "@nurlai/db";
 import {
   billingAccountForOrganization,
   byokFreeUntil,
@@ -56,8 +56,8 @@ import {
   syncBillingSnapshot,
   syncCreditPurchases,
   unexpiredCreditAccount,
-} from "@rakazo/db";
-import { bestEffort, getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { bestEffort, getLogger } from "@nurlai/logging";
 import { applyAccessGrants } from "../auth/access-grants.js";
 import type { ScheduleLifecycleEmail } from "../email/lifecycle-email.js";
 import { MODEL_CONNECTION_EMAIL_DELAY_MS } from "../email/lifecycle-email.js";

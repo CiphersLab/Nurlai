@@ -1,9 +1,9 @@
 import { t } from "@lingui/core/macro";
 import { Plural, Trans, useLingui } from "@lingui/react/macro";
-import type { BotMcpServer, McpServer } from "@rakazo/contracts";
-import { MCP_OAUTH_CLIENT_REQUIRED } from "@rakazo/contracts";
-import { isRetryableError } from "@rakazo/core";
-import { fetchFresh, writeSaved } from "@rakazo/core/query";
+import type { BotMcpServer, McpServer } from "@nurlai/contracts";
+import { MCP_OAUTH_CLIENT_REQUIRED } from "@nurlai/contracts";
+import { isRetryableError } from "@nurlai/core";
+import { fetchFresh, writeSaved } from "@nurlai/core/query";
 import {
   Button,
   Dialog,
@@ -17,7 +17,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
   toast,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Ellipsis, Plus, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";

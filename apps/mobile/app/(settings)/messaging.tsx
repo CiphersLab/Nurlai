@@ -1,12 +1,12 @@
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import { useTimeout } from "@rakazo/chat-ui/hooks";
-import type { MessagingChannelMembership } from "@rakazo/contracts";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
+import type { MessagingChannelMembership } from "@nurlai/contracts";
 import {
   createMessagingLinkGuard,
   messagingConnectOptions,
   messagingProviderName,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { useFocusEffect, useRouter } from "expo-router";
 import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { Linking, ScrollView, StyleSheet, Text, View } from "react-native";

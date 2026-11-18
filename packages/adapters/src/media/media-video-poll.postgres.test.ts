@@ -7,10 +7,10 @@ import type {
   BackgroundJob,
   JobPublisher,
   MediaVideoJob,
-} from "@rakazo/adapter-kit";
-import { MediaGenerationError } from "@rakazo/adapter-kit";
-import type { PrismaClient } from "@rakazo/db";
-import { asSystem, clearThread, createDb, runAsSystem, runAsTenant } from "@rakazo/db";
+} from "@nurlai/adapter-kit";
+import { MediaGenerationError } from "@nurlai/adapter-kit";
+import type { PrismaClient } from "@nurlai/db";
+import { asSystem, clearThread, createDb, runAsSystem, runAsTenant } from "@nurlai/db";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { createArtifactStore } from "../storage/artifact-store-factory.js";
 import { FakeMediaGenerationProvider } from "./media-generation-provider.js";

@@ -10,7 +10,7 @@ const accountToken = vi.hoisted(() => vi.fn());
 // The dialog itself is tested on its own; here it is a button that confirms it.
 vi.mock("../account/ConfirmIdentityDialog", async () => {
   const { useState } = await import("react");
-  const { runWithIdentityConfirmation } = await import("@rakazo/contracts");
+  const { runWithIdentityConfirmation } = await import("@nurlai/contracts");
   return {
     useIdentityConfirmation: () => {
       const [settle, setSettle] = useState<((confirmed: boolean) => void) | null>(null);
@@ -48,7 +48,7 @@ vi.mock("@lingui/react/macro", () => ({
   useLingui: () => ({ t: (parts: TemplateStringsArray) => parts.join("") }),
   Trans: ({ children }: { children: ReactNode }) => children,
 }));
-vi.mock("@rakazo/ui-web", () => ({
+vi.mock("@nurlai/ui-web", () => ({
   Button: ({ variant: _variant, ...props }: ComponentProps<"button"> & { variant?: string }) => (
     <button type="button" {...props} />
   ),

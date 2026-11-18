@@ -1,4 +1,4 @@
-import { BotSettingsValuesSchema } from "@rakazo/contracts";
+import { BotSettingsValuesSchema } from "@nurlai/contracts";
 import {
   appendEventInTransaction,
   commitBotUpdate,
@@ -10,8 +10,8 @@ import {
   SpaceLimitError,
   THREAD_LOCK_TRANSACTION_OPTIONS,
   writeBotInstructions,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { uncertainEffectResult } from "../../approvals/approval-effect.js";
 import { archiveSpawnedBot, spawnBot } from "../../bots/child-bots.js";
 import {

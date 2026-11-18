@@ -1,5 +1,5 @@
-import { AppLocaleSchema } from "@rakazo/contracts";
-import { matchUiLocale } from "@rakazo/core";
+import { AppLocaleSchema } from "@nurlai/contracts";
+import { matchUiLocale } from "@nurlai/core";
 
 /** The app languages mobile ships catalogs for. */
 const SHIPPED_LOCALES = [

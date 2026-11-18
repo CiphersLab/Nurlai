@@ -1,6 +1,6 @@
-import type { JobPublisher, NotificationProvider } from "@rakazo/adapter-kit";
-import { STUCK_WORK_NOTICE, stuckWorkStatusMessage } from "@rakazo/core";
-import type { PrismaClient, ThreadEvents } from "@rakazo/db";
+import type { JobPublisher, NotificationProvider } from "@nurlai/adapter-kit";
+import { STUCK_WORK_NOTICE, stuckWorkStatusMessage } from "@nurlai/core";
+import type { PrismaClient, ThreadEvents } from "@nurlai/db";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { ExpoPushProvider } from "../../notifications/expo-push.js";
 import { MemoryPushTokenStore } from "../../notifications/push-token-store.test-support.js";

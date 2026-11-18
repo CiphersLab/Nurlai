@@ -1,6 +1,6 @@
 import { ORPCError } from "@orpc/server";
-import type { AdapterContext, SecretStore } from "@rakazo/adapter-kit";
-import { SecretStoreUnavailableError, VoiceAccountError } from "@rakazo/adapter-kit";
+import type { AdapterContext, SecretStore } from "@nurlai/adapter-kit";
+import { SecretStoreUnavailableError, VoiceAccountError } from "@nurlai/adapter-kit";
 import {
   createVoiceProvider,
   isModelConnectionVoiceSecret,
@@ -16,11 +16,11 @@ import {
   resolveVoiceKey,
   serializeOpenAiCompatibleVoiceSecret,
   voiceCatalogEntry,
-} from "@rakazo/adapters";
-import type { Actor, SettingsScope, VoiceCredential, VoiceStatus } from "@rakazo/contracts";
-import { ConnectionSetupError, SettingsScopeSchema } from "@rakazo/contracts";
-import { ClientError, speakable, toUtterances } from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
+} from "@nurlai/adapters";
+import type { Actor, SettingsScope, VoiceCredential, VoiceStatus } from "@nurlai/contracts";
+import { ConnectionSetupError, SettingsScopeSchema } from "@nurlai/contracts";
+import { ClientError, speakable, toUtterances } from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
 import {
   deleteUnreferencedCredentialSecret,
   findDefaultVoiceCredential,
@@ -38,8 +38,8 @@ import {
   selectVoicePreference,
   voicePreferenceTarget,
   withTransactionRetry,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import type { Context, Hono } from "hono";
 import { readBoundedBody } from "../http/http-body.js";
 import type { DeploymentVoice } from "../voice/deployment-config.js";

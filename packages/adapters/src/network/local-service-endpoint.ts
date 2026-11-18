@@ -7,7 +7,7 @@ import {
   isLocalhostOrLoopbackIp,
   isNonPublicAddress,
   normalizeHost,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import type { SafeRemoteFetch } from "../mcp/remote-mcp.js";
 import {
   createPrivateNetworkFetch,

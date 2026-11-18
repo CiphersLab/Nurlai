@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { notifyManager } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 import { act, useEffect } from "react";
@@ -17,7 +17,7 @@ vi.mock("../../lib/api/api", () => ({
   captureApiRequestContext: async (spaceId: string | null = "space-1") => ({
     apiBase: "https://app.example.test",
     sessionGeneration: 1,
-    headers: spaceId ? { "x-rakazo-space-id": spaceId } : {},
+    headers: spaceId ? { "x-nurlai-space-id": spaceId } : {},
   }),
 }));
 vi.mock("../../lib/api/session", () => ({ currentSessionGeneration: () => 1 }));
@@ -34,7 +34,7 @@ vi.mock("expo-router", () => ({
     useEffect(() => callback(), [callback]);
   },
 }));
-vi.mock("@rakazo/chat-ui/native", () => ({ ChatMarkdown: () => null }));
+vi.mock("@nurlai/chat-ui/native", () => ({ ChatMarkdown: () => null }));
 vi.mock("../native/native-symbol", () => ({ NativeSymbol: () => null }));
 vi.mock("../native/native-action-button", () => ({
   NativeActionButton: ({

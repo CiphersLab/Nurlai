@@ -1,4 +1,4 @@
-import type { MessageBlock } from "@rakazo/contracts";
+import type { MessageBlock } from "@nurlai/contracts";
 import { expect, it, vi } from "vitest";
 import type { ExecutorDeps } from "../executor/executor-deps.js";
 import { loadCurrentTurnImages, withRecentTurnImages } from "./run-turn-images.js";

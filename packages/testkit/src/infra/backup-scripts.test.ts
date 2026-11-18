@@ -483,14 +483,14 @@ describe("development backup failures", () => {
     const f = fixture();
     const result = f.run("scripts/backup.sh", ["example"]);
     expect(result.status).toBe(1);
-    expect(result.stderr).toContain("RAKAZO_BACKUP_SKIP_HOMES=1");
+    expect(result.stderr).toContain("NURLAI_BACKUP_SKIP_HOMES=1");
     expect(f.commands()).toEqual([]);
   });
 
   it("allows an empty archive when data is skipped", () => {
     const f = fixture();
     write(path.join(f.checkout, "data/home.txt"), "example home");
-    const result = f.run("scripts/backup.sh", ["example"], { RAKAZO_BACKUP_SKIP_HOMES: "1" });
+    const result = f.run("scripts/backup.sh", ["example"], { NURLAI_BACKUP_SKIP_HOMES: "1" });
     expect(result.status, result.stderr).toBe(0);
     expect(contents(path.join(f.checkout, "backups/example/homes.tgz"))).toBe("");
   });
@@ -551,7 +551,7 @@ describe("development restore failures", () => {
       });
       expect(result.status).toBe(fail ? 3 : 0);
       const psql = f.commands().filter((args) => args.includes("psql"));
-      expect(psql[0]?.at(-1)).toContain("CREATE ROLE rakazo_app NOLOGIN");
+      expect(psql[0]?.at(-1)).toContain("CREATE ROLE nurlai_app NOLOGIN");
       const command = psql.find((args) => args.includes("--single-transaction"));
       expect(command).toEqual(
         expect.arrayContaining([
@@ -705,7 +705,7 @@ PATH=/usr/bin:/bin exec mv "$@"
       rmSync(path.join(snapshot, "homes.tgz"));
     } else if (kind === "skipped") {
       expect(
-        f.run("scripts/backup.sh", ["example"], { RAKAZO_BACKUP_SKIP_HOMES: "1" }).status,
+        f.run("scripts/backup.sh", ["example"], { NURLAI_BACKUP_SKIP_HOMES: "1" }).status,
       ).toBe(0);
     } else {
       const source = path.join(f.root, "empty-snapshot");
@@ -787,10 +787,10 @@ describe("production backup deployment and archive behavior", () => {
     const result = f.run(
       "infra/compose/backup-prod.sh",
       [],
-      custom ? { RAKAZO_DEPLOY_DIR: deployment } : {},
+      custom ? { NURLAI_DEPLOY_DIR: deployment } : {},
     );
     expect(result.status, result.stderr).toBe(0);
-    expect(result.stdout).toContain("Verified Rakazo backup");
+    expect(result.stdout).toContain("Verified Nurlai backup");
     expect(result.stderr).toContain("not encrypted");
     expect(readdirSync(result.stdout.trim().split("written to ")[1]!).sort()).toEqual([
       "SHA256SUMS",
@@ -811,7 +811,7 @@ describe("production backup deployment and archive behavior", () => {
 
   it("rejects relative deployment paths before any backup commands", () => {
     const f = fixture();
-    const result = f.run("infra/compose/backup-prod.sh", [], { RAKAZO_DEPLOY_DIR: "relative" });
+    const result = f.run("infra/compose/backup-prod.sh", [], { NURLAI_DEPLOY_DIR: "relative" });
     expect(result.status).not.toBe(0);
     expect(result.stderr).toContain("absolute path");
     expect(f.commands()).toEqual([]);
@@ -823,7 +823,7 @@ describe("production backup deployment and archive behavior", () => {
     const result = f.run("infra/compose/backup-prod.sh", [], { CHANGED_TAR: "1" });
     expect(result.status, result.stderr).toBe(0);
     expect(result.stderr).toContain("file changed as we read it");
-    expect(result.stdout).toContain("Verified Rakazo backup");
+    expect(result.stdout).toContain("Verified Nurlai backup");
     const snapshot = result.stdout.trim().split("written to ")[1]!;
     expect(contents(path.join(snapshot, "appdata.tgz"))).toContain("home.txt");
     expect(existsSync(path.join(snapshot, "SHA256SUMS"))).toBe(true);
@@ -837,7 +837,7 @@ describe("production backup deployment and archive behavior", () => {
       const f = fixture();
       const result = f.run("infra/compose/backup-prod.sh", [], failure);
       expect(result.status).not.toBe(0);
-      expect(result.stdout).not.toContain("Verified Rakazo backup");
+      expect(result.stdout).not.toContain("Verified Nurlai backup");
       expect(snapshotNames(f.snapshots)).toEqual([]);
     },
   );
@@ -848,7 +848,7 @@ describe("production backup deployment and archive behavior", () => {
     for (const stamp of stamps) write(path.join(f.snapshots, stamp, "SHA256SUMS"), "sums");
     write(path.join(f.snapshots, "20261018T000000Z/appdata.tgz"), "partial");
     write(path.join(f.snapshots, "notes/keep.txt"), "not a snapshot");
-    const result = f.run("infra/compose/backup-prod.sh", [], { RAKAZO_BACKUP_KEEP: "2" });
+    const result = f.run("infra/compose/backup-prod.sh", [], { NURLAI_BACKUP_KEEP: "2" });
     expect(result.status, result.stderr).toBe(0);
     const current = path.basename(result.stdout.trim().split("written to ")[1]!);
     expect(snapshotNames(f.snapshots).sort()).toEqual(
@@ -872,7 +872,7 @@ describe("production backup deployment and archive behavior", () => {
     const f = fixture();
     write(path.join(f.snapshots, "20261016T000000Z/SHA256SUMS"), "older");
     write(path.join(f.snapshots, "20261017T000000Z/SHA256SUMS"), "newest");
-    const result = f.run("infra/compose/backup-prod.sh", [], { RAKAZO_BACKUP_MAX_GB: "1" });
+    const result = f.run("infra/compose/backup-prod.sh", [], { NURLAI_BACKUP_MAX_GB: "1" });
     expect(result.status).toBe(1);
     expect(result.stderr).toContain("Keeping the latest verified snapshot");
     expect(snapshotNames(f.snapshots)).toEqual(["20261017T000000Z"]);
@@ -884,7 +884,7 @@ describe("production backup deployment and archive behavior", () => {
     const mountpoint = path.join(f.root, "bin/mountpoint");
     write(mountpoint, "#!/bin/bash\nexit 1\n");
     chmodSync(mountpoint, 0o755);
-    const result = f.run("infra/compose/backup-prod.sh", [], { RAKAZO_BACKUP_REQUIRE_VOLUME: "1" });
+    const result = f.run("infra/compose/backup-prod.sh", [], { NURLAI_BACKUP_REQUIRE_VOLUME: "1" });
     expect(result.status).toBe(1);
     expect(result.stderr).toContain("backup volume");
     expect(f.commands()).toEqual([]);
@@ -914,8 +914,8 @@ fi
     chmodSync(du, 0o755);
     const result = f.run("infra/compose/backup-prod.sh", [], {
       FAKE_RAW_KB: grown ? "20971520" : "10485760",
-      RAKAZO_BACKUP_MAX_GB: "3",
-      RAKAZO_BACKUP_MIN_FREE_GB: "1",
+      NURLAI_BACKUP_MAX_GB: "3",
+      NURLAI_BACKUP_MIN_FREE_GB: "1",
     });
     expect(result.status, result.stderr).toBe(grown ? 1 : 0);
     expect(existsSync(path.join(last, "SHA256SUMS"))).toBe(true);
@@ -943,11 +943,11 @@ echo "/dev/fake 104857600 0 $free 0% /"
       );
       chmodSync(df, 0o755);
       const result = f.run("infra/compose/backup-prod.sh", [], {
-        RAKAZO_BACKUP_MIN_FREE_GB: "1",
+        NURLAI_BACKUP_MIN_FREE_GB: "1",
         ...(output === "dump" ? { OVERSIZE_DUMP: "1" } : { OVERSIZE_ARCHIVE: "1" }),
       });
       expect(result.status).not.toBe(0);
-      expect(result.stdout).not.toContain("Verified Rakazo backup");
+      expect(result.stdout).not.toContain("Verified Nurlai backup");
       expect(snapshotNames(f.snapshots)).toEqual(["20261017T000000Z"]);
       expect(readFileSync(path.join(last, "SHA256SUMS"), "utf8")).toBe("verified");
     },
@@ -994,7 +994,7 @@ exec /usr/bin/sync "$@"
       chmodSync(sync, 0o755);
       const result = f.run("infra/compose/backup-prod.sh");
       expect(result.status).not.toBe(0);
-      expect(result.stdout).not.toContain("Verified Rakazo backup");
+      expect(result.stdout).not.toContain("Verified Nurlai backup");
       expect(snapshotNames(f.snapshots)).toEqual(["20261017T000000Z"]);
     },
   );
@@ -1037,14 +1037,14 @@ exec /usr/bin/sync "$@"
       },
     );
     expect(result.status).toBe(1);
-    expect(result.stderr).toContain("Another Rakazo backup is running");
+    expect(result.stderr).toContain("Another Nurlai backup is running");
   });
 
   it("rejects a non-positive retention", () => {
     const f = fixture();
-    const result = f.run("infra/compose/backup-prod.sh", [], { RAKAZO_BACKUP_KEEP: "0" });
+    const result = f.run("infra/compose/backup-prod.sh", [], { NURLAI_BACKUP_KEEP: "0" });
     expect(result.status).toBe(1);
-    expect(result.stderr).toContain("RAKAZO_BACKUP_KEEP");
+    expect(result.stderr).toContain("NURLAI_BACKUP_KEEP");
   });
 });
 
@@ -1066,8 +1066,8 @@ describe("encrypted production backups", { timeout: 20_000 }, () => {
         "infra/compose/backup-prod.sh",
         [],
         fromFile
-          ? { RAKAZO_BACKUP_AGE_RECIPIENTS_FILE: file }
-          : { RAKAZO_BACKUP_AGE_RECIPIENTS: recipients },
+          ? { NURLAI_BACKUP_AGE_RECIPIENTS_FILE: file }
+          : { NURLAI_BACKUP_AGE_RECIPIENTS: recipients },
       );
       expect(result.status, result.stderr).toBe(0);
       expect(result.stderr).not.toContain("not encrypted");
@@ -1105,8 +1105,8 @@ describe("encrypted production backups", { timeout: 20_000 }, () => {
   );
 
   it.each([
-    [{ RAKAZO_BACKUP_AGE_RECIPIENTS: "not-a-recipient" }, "age rejected"],
-    [{ RAKAZO_BACKUP_AGE_RECIPIENTS_FILE: "/nonexistent/recipients" }, "not a readable"],
+    [{ NURLAI_BACKUP_AGE_RECIPIENTS: "not-a-recipient" }, "age rejected"],
+    [{ NURLAI_BACKUP_AGE_RECIPIENTS_FILE: "/nonexistent/recipients" }, "not a readable"],
   ])("refuses broken recipient settings before any backup commands: %j", (settings, message) => {
     const f = fixture();
     const result = f.run("infra/compose/backup-prod.sh", [], settings);
@@ -1119,7 +1119,7 @@ describe("encrypted production backups", { timeout: 20_000 }, () => {
   it("refuses plaintext after encryption was configured unless explicitly allowed", () => {
     const f = fixture();
     const first = f.run("infra/compose/backup-prod.sh", [], {
-      RAKAZO_BACKUP_AGE_RECIPIENTS: recipients,
+      NURLAI_BACKUP_AGE_RECIPIENTS: recipients,
     });
     expect(first.status, first.stderr).toBe(0);
     const before = snapshotNames(f.snapshots).sort();
@@ -1135,7 +1135,7 @@ describe("encrypted production backups", { timeout: 20_000 }, () => {
     write(path.join(f.root, "bin/date"), "#!/bin/bash\necho 20991231T000000Z\n");
     chmodSync(path.join(f.root, "bin/date"), 0o755);
     const allowed = f.run("infra/compose/backup-prod.sh", [], {
-      RAKAZO_BACKUP_ALLOW_PLAINTEXT: "1",
+      NURLAI_BACKUP_ALLOW_PLAINTEXT: "1",
     });
     expect(allowed.status, allowed.stderr).toBe(0);
     expect(allowed.stderr).toContain("not encrypted");
@@ -1150,10 +1150,10 @@ describe("encrypted production backups", { timeout: 20_000 }, () => {
       `#!/bin/bash\n[[ "$*" != *" -o "* ]] || { cat >/dev/null; exit 1; }\n`,
     );
     const result = f.run("infra/compose/backup-prod.sh", [], {
-      RAKAZO_BACKUP_AGE_RECIPIENTS: recipients,
+      NURLAI_BACKUP_AGE_RECIPIENTS: recipients,
     });
     expect(result.status).not.toBe(0);
-    expect(result.stdout).not.toContain("Verified Rakazo backup");
+    expect(result.stdout).not.toContain("Verified Nurlai backup");
     expect(snapshotNames(f.snapshots)).toEqual([]);
     expect(existsSync(path.join(f.snapshots, ".encrypted"))).toBe(false);
   });
@@ -1163,7 +1163,7 @@ describe("encrypted production backups", { timeout: 20_000 }, () => {
     (failure) => {
       const f = fixture();
       const result = f.run("infra/compose/backup-prod.sh", [], {
-        RAKAZO_BACKUP_AGE_RECIPIENTS: recipients,
+        NURLAI_BACKUP_AGE_RECIPIENTS: recipients,
         ...failure,
       });
       expect(result.status).not.toBe(0);
@@ -1185,9 +1185,9 @@ describe("off-site copies", { timeout: 20_000 }, () => {
     write(path.join(remoteDir(f), "20261017T000000Z/rakazo.dump.age"), "partial");
     write(path.join(remoteDir(f), "notes/keep.txt"), "not a snapshot");
     const result = f.run("infra/compose/backup-prod.sh", [], {
-      RAKAZO_BACKUP_AGE_RECIPIENTS: recipients,
-      RAKAZO_BACKUP_OFFSITE_REMOTE: remote,
-      RAKAZO_BACKUP_OFFSITE_KEEP: "2",
+      NURLAI_BACKUP_AGE_RECIPIENTS: recipients,
+      NURLAI_BACKUP_OFFSITE_REMOTE: remote,
+      NURLAI_BACKUP_OFFSITE_KEEP: "2",
     });
     expect(result.status, result.stderr).toBe(0);
     const stamp = path.basename(snapshotOf(result));
@@ -1205,9 +1205,9 @@ describe("off-site copies", { timeout: 20_000 }, () => {
     const f = fixture();
     write(path.join(remoteDir(f), "20261014T000000Z/SHA256SUMS"), "sums");
     const result = f.run("infra/compose/backup-prod.sh", [], {
-      RAKAZO_BACKUP_AGE_RECIPIENTS: recipients,
-      RAKAZO_BACKUP_OFFSITE_REMOTE: remote,
-      RAKAZO_BACKUP_OFFSITE_KEEP: "0",
+      NURLAI_BACKUP_AGE_RECIPIENTS: recipients,
+      NURLAI_BACKUP_OFFSITE_REMOTE: remote,
+      NURLAI_BACKUP_OFFSITE_KEEP: "0",
     });
     expect(result.status, result.stderr).toBe(0);
     expect(existsSync(path.join(remoteDir(f), "20261014T000000Z"))).toBe(true);
@@ -1217,16 +1217,16 @@ describe("off-site copies", { timeout: 20_000 }, () => {
   it.each([
     [{ FAIL_RCLONE: "copy" }, "upload"],
     [{ FAIL_RCLONE: "check" }, "verification"],
-    [{ RAKAZO_BACKUP_AGE_RECIPIENTS: "" }, "off-site copies require RAKAZO_BACKUP_AGE_RECIPIENTS"],
+    [{ NURLAI_BACKUP_AGE_RECIPIENTS: "" }, "off-site copies require NURLAI_BACKUP_AGE_RECIPIENTS"],
   ])("keeps the verified local snapshot but fails the run: %j", (settings, message) => {
     const f = fixture();
     const result = f.run("infra/compose/backup-prod.sh", [], {
-      RAKAZO_BACKUP_AGE_RECIPIENTS: recipients,
-      RAKAZO_BACKUP_OFFSITE_REMOTE: remote,
+      NURLAI_BACKUP_AGE_RECIPIENTS: recipients,
+      NURLAI_BACKUP_OFFSITE_REMOTE: remote,
       ...settings,
     });
     expect(result.status).toBe(1);
-    expect(result.stdout).toContain("Verified Rakazo backup");
+    expect(result.stdout).toContain("Verified Nurlai backup");
     expect(result.stderr).toContain(`Off-site copy failed: ${message}`);
     expect(existsSync(path.join(snapshotOf(result), "SHA256SUMS"))).toBe(true);
     if (message.includes("require")) expect(rcloneCalls(f)).toEqual([]);
@@ -1237,9 +1237,9 @@ describe("off-site copies", { timeout: 20_000 }, () => {
 
   it("rejects an off-site retention that is not a whole number", () => {
     const f = fixture();
-    const result = f.run("infra/compose/backup-prod.sh", [], { RAKAZO_BACKUP_OFFSITE_KEEP: "08" });
+    const result = f.run("infra/compose/backup-prod.sh", [], { NURLAI_BACKUP_OFFSITE_KEEP: "08" });
     expect(result.status).toBe(1);
-    expect(result.stderr).toContain("RAKAZO_BACKUP_OFFSITE_KEEP");
+    expect(result.stderr).toContain("NURLAI_BACKUP_OFFSITE_KEEP");
   });
 });
 
@@ -1266,7 +1266,7 @@ describe.skipIf(!realAge)("encrypted production backups with real age", { timeou
     const PATH = `${tools}${path.delimiter}${f.env.PATH}`;
     const result = f.run("infra/compose/backup-prod.sh", [], {
       PATH,
-      RAKAZO_BACKUP_AGE_RECIPIENTS: recipient,
+      NURLAI_BACKUP_AGE_RECIPIENTS: recipient,
     });
     expect(result.status, result.stderr).toBe(0);
     const snapshot = snapshotOf(result);

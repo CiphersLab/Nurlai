@@ -60,9 +60,9 @@ test("the updater's default project name is the one production Compose pins", ()
 test("Kubernetes computers use the published Compose image repository", () => {
   const [image] = capture(
     "infra/compose/docker-compose.images.yml",
-    /^ {4}image: (\$\{RAKAZO_COMPUTER_IMAGE:-[^}]+\}:\$\{RAKAZO_COMPUTER_IMAGE_TAG:-[^}]+\})$/m,
+    /^ {4}image: (\$\{NURLAI_COMPUTER_IMAGE:-[^}]+\}:\$\{NURLAI_COMPUTER_IMAGE_TAG:-[^}]+\})$/m,
   )
-    .match(/:-([^}]+)\}:\$\{RAKAZO_COMPUTER_IMAGE_TAG:-([^}]+)\}/)
+    .match(/:-([^}]+)\}:\$\{NURLAI_COMPUTER_IMAGE_TAG:-([^}]+)\}/)
     .slice(1);
   assert.equal(
     // Source/main deployments retain their development channel; published installs use stable.

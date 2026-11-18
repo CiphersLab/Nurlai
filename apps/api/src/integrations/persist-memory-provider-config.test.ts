@@ -1,6 +1,6 @@
 import { lookup } from "node:dns/promises";
-import { MemoryProviderPrivateEndpointRequiredError } from "@rakazo/adapters";
-import type { PrismaClient } from "@rakazo/db";
+import { MemoryProviderPrivateEndpointRequiredError } from "@nurlai/adapters";
+import type { PrismaClient } from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import {
   disconnectMemoryProvider,
@@ -793,7 +793,7 @@ describe("updateMemoryProviderConfig", () => {
       [
         "honcho",
         { workspaceId: "team", userPeerId: "bot-1" },
-        "rakazo-shared and IDs starting with bot- are reserved for Rakazo.",
+        "rakazo-shared and IDs starting with bot- are reserved for Nurlai.",
       ],
       ["hindsight", { recallBudget: "deepest" }, "recallBudget is not one of its choices"],
       ["serenity", { allowWrites: "false" }, "Serenity endpoint is required."],

@@ -8,8 +8,8 @@ import type {
 } from "@earendil-works/pi-ai";
 import { clampThinkingLevel } from "@earendil-works/pi-ai";
 import { builtinModels } from "@earendil-works/pi-ai/providers/all";
-import type { AgentRunRequest } from "@rakazo/adapter-kit";
-import { canonicalPiProviderId, usableModelId } from "@rakazo/contracts";
+import type { AgentRunRequest } from "@nurlai/adapter-kit";
+import { canonicalPiProviderId, usableModelId } from "@nurlai/contracts";
 import { DEFAULT_OPENROUTER_MODEL_ID } from "../../models/deployment-model.js";
 import { withVertexRouting } from "../../models/endpoints/google-vertex-routing.js";
 import { PiRuntimeCredentialStore, toOAuthCredential } from "./models/pi-credentials.js";

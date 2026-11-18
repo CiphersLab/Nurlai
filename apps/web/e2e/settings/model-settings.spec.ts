@@ -3,7 +3,7 @@ import { createServer } from "node:http";
 import type { AddressInfo } from "node:net";
 import type { Route } from "@playwright/test";
 import { expect, test } from "@playwright/test";
-import type { ModelRoleSettings } from "@rakazo/contracts";
+import type { ModelRoleSettings } from "@nurlai/contracts";
 import {
   captureScreenshot,
   chooseOption,

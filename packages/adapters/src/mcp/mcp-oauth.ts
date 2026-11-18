@@ -18,20 +18,20 @@ import type {
   OAuthClientMetadata,
   OAuthTokens,
 } from "@modelcontextprotocol/sdk/shared/auth.js";
-import type { SecretStore } from "@rakazo/adapter-kit";
-import { SecretStoreUnavailableError } from "@rakazo/adapter-kit";
-import type { McpOAuthClientKind } from "@rakazo/contracts";
+import type { SecretStore } from "@nurlai/adapter-kit";
+import { SecretStoreUnavailableError } from "@nurlai/adapter-kit";
+import type { McpOAuthClientKind } from "@nurlai/contracts";
 import {
   isLocalhostOrLoopbackIp,
   MCP_OAUTH_CLIENT_REQUIRED,
   MOBILE_MCP_OAUTH_STATE_PREFIX,
   mcpOAuthEnvReferences,
   parseMcpOAuthAuthorizationParams,
-} from "@rakazo/contracts";
-import { ClientError, readBoundedResponseBytes } from "@rakazo/core";
-import type { Prisma, PrismaClient } from "@rakazo/db";
-import { availableInSpace, itemSecretIn, runAsSystem } from "@rakazo/db";
-import { bestEffort, getLogger } from "@rakazo/logging";
+} from "@nurlai/contracts";
+import { ClientError, readBoundedResponseBytes } from "@nurlai/core";
+import type { Prisma, PrismaClient } from "@nurlai/db";
+import { availableInSpace, itemSecretIn, runAsSystem } from "@nurlai/db";
+import { bestEffort, getLogger } from "@nurlai/logging";
 import { sanitizeConnectorError } from "../integrations/connector-safety.js";
 import { isUnreachableHost } from "../integrations/connector-source.js";
 import { advisoryLock } from "../locks/advisory-lock.js";
@@ -641,7 +641,7 @@ export class StoredMcpOAuthProvider implements OAuthClientProvider {
       : registrationAuthMethod(this.material.oauth?.discoveryState);
     return {
       redirect_uris: [redirectUri],
-      client_name: "Rakazo",
+      client_name: "Nurlai",
       grant_types: ["authorization_code", "refresh_token"],
       response_types: ["code"],
       ...(authMethod ? { token_endpoint_auth_method: authMethod } : {}),

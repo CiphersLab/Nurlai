@@ -1,7 +1,7 @@
-import type { BackgroundJob, JobPublisher } from "@rakazo/adapter-kit";
-import { stuckWorkStatusMessages } from "@rakazo/core";
-import { deferred, flush } from "@rakazo/core/test-async";
-import type { Pool, PrismaClient, ThreadEvents } from "@rakazo/db";
+import type { BackgroundJob, JobPublisher } from "@nurlai/adapter-kit";
+import { stuckWorkStatusMessages } from "@nurlai/core";
+import { deferred, flush } from "@nurlai/core/test-async";
+import type { Pool, PrismaClient, ThreadEvents } from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import { returnBotMessageOutcome } from "../../messaging/bot-messages.js";
 import { returnHelperOutcome } from "../../tasks/background-helpers.js";

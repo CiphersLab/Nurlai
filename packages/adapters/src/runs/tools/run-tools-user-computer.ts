@@ -1,7 +1,7 @@
 import path from "node:path";
-import type { AgentToolExecutionResult, ProcessEvent } from "@rakazo/adapter-kit";
-import { redactSecrets } from "@rakazo/core";
-import { sandboxCommandTimeoutMs } from "@rakazo/core/node/sandbox-command";
+import type { AgentToolExecutionResult, ProcessEvent } from "@nurlai/adapter-kit";
+import { redactSecrets } from "@nurlai/core";
+import { sandboxCommandTimeoutMs } from "@nurlai/core/node/sandbox-command";
 import { z } from "zod";
 import type { HostComputerEnvironment } from "../../computers/host/host-computer-protocol.js";
 import { nativeShellCommandArgv } from "../../computers/host/native-shell.js";
@@ -40,7 +40,7 @@ export {
 export type UserComputerState = "connected" | "offline" | undefined;
 
 const USER_COMPUTER_UNAVAILABLE =
-  'The user\'s computer is not connected. If the task needs it, ask them to open the Rakazo desktop app and turn on "Let bots use this computer" in its settings.';
+  'The user\'s computer is not connected. If the task needs it, ask them to open the Nurlai desktop app and turn on "Let bots use this computer" in its settings.';
 
 /**
  * Whose own computer this run may reach: the person whose message started it, when they own the

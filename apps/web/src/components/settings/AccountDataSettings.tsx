@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { isIdentityConfirmationRequired } from "@rakazo/contracts";
-import { Button, Spinner } from "@rakazo/ui-web";
+import { isIdentityConfirmationRequired } from "@nurlai/contracts";
+import { Button, Spinner } from "@nurlai/ui-web";
 import { useRef, useState } from "react";
 import { useSave } from "../../lib/query/query";
 import { recheckSessionOnUnauthorized } from "../../lib/query/rpc";

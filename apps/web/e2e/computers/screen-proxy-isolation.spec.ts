@@ -12,8 +12,8 @@ import { expect, test } from "@playwright/test";
 import {
   addScreenProxyCapability,
   openScreenCapability,
-} from "@rakazo/core/node/screen-capability";
-import { screenProbeUrl } from "@rakazo/core/screen-reconnect";
+} from "@nurlai/core/node/screen-capability";
+import { screenProbeUrl } from "@nurlai/core/screen-reconnect";
 import type { Plugin, ViteDevServer } from "vite";
 import { createServer, preview } from "vite";
 
@@ -446,7 +446,7 @@ for (const mode of ["development", "preview"] as const) {
           await page.evaluate(
             () => (window as unknown as { screenReports: unknown[] }).screenReports,
           ),
-        ).toEqual([{ rakazoScreen: "loading" }]);
+        ).toEqual([{ nurlaiScreen: "loading" }]);
         expect(JSON.parse(await body.innerText())).toEqual({
           asset: "module loaded",
           socket: "ok",

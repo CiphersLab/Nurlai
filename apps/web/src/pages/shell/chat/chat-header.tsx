@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
-import type { Bot, Group, ThreadSnapshot } from "@rakazo/contracts";
-import { BotAvatar, Button, GroupAvatar } from "@rakazo/ui-web";
+import type { Bot, Group, ThreadSnapshot } from "@nurlai/contracts";
+import { BotAvatar, Button, GroupAvatar } from "@nurlai/ui-web";
 import { Gift, Menu, Phone } from "lucide-react";
 import { useState } from "react";
 import { useBilling } from "../../../components/billing/SubscriptionGate";

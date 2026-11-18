@@ -15,9 +15,9 @@ import type {
   PageBrowserCommand,
   PageBrowserResult,
   SandboxProvider,
-} from "@rakazo/adapter-kit";
-import { SandboxRequestRejectedError } from "@rakazo/adapter-kit";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { SandboxRequestRejectedError } from "@nurlai/adapter-kit";
+import { getLogger } from "@nurlai/logging";
 import type { FakeBrowserProviderOptions } from "../../browser/fake-browser.js";
 import { FakeBrowserProvider } from "../../browser/fake-browser.js";
 

@@ -1,4 +1,4 @@
-import type { ProcessEvent } from "@rakazo/adapter-kit";
+import type { ProcessEvent } from "@nurlai/adapter-kit";
 import type { HostScreenObservation } from "../screens/host-screen.js";
 import type { HostComputerEnvironment, HostComputerRequest } from "./host-computer-protocol.js";
 import type { UserDevice, UserDeviceGateway } from "./user-device-protocol.js";

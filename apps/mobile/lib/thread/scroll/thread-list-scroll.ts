@@ -1,6 +1,6 @@
-import { useTimeout } from "@rakazo/chat-ui/hooks";
-import type { ThreadItem } from "@rakazo/core";
-import { reconcileThreadScrollState } from "@rakazo/core";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
+import type { ThreadItem } from "@nurlai/core";
+import { reconcileThreadScrollState } from "@nurlai/core";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import type {
   FlatList,

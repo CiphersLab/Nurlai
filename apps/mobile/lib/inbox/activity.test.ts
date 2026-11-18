@@ -1,4 +1,4 @@
-import type { RunActivityRow } from "@rakazo/contracts";
+import type { RunActivityRow } from "@nurlai/contracts";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { resetI18nForTests } from "../i18n/i18n";
 import { activityPreview, formatActivityRelativeTime, routineRunLateLabel } from "./activity";

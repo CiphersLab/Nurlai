@@ -68,11 +68,11 @@ describe("the images compose file", () => {
     ]);
     for (const service of appServices) {
       expect(compose.services[service]?.image).toContain("ghcr.io/elie222/rakazo/app");
-      expect(compose.services[service]?.image).toContain("RAKAZO_IMAGE_TAG");
+      expect(compose.services[service]?.image).toContain("NURLAI_IMAGE_TAG");
     }
-    expect(compose.services.computer?.image).toContain("ghcr.io/elie222/rakazo/computer");
+    expect(compose.services.computer?.image).toContain("ghcr.io/elie222/nurlai/computer");
     expect(compose.services.computer?.pull_policy).toBe("missing");
-    expect(compose.services.computer?.image).toContain("RAKAZO_COMPUTER_IMAGE_TAG");
+    expect(compose.services.computer?.image).toContain("NURLAI_COMPUTER_IMAGE_TAG");
     expect(compose.services.postgres?.image).toMatch(
       /^\$\{POSTGRES_IMAGE:-postgres:16@sha256:[0-9a-f]{64}\}$/,
     );
@@ -83,43 +83,43 @@ describe("the images compose file", () => {
     expect(firstPartyImageNames(null)).toEqual([]);
     expect(firstPartyImageNames(true)).toEqual([]);
     expect(firstPartyImageNames(7091)).toEqual([]);
-    expect(firstPartyImageNames("ghcr.io/elie222/rakazo/computer:edge")).toEqual(["computer"]);
+    expect(firstPartyImageNames("ghcr.io/elie222/nurlai/computer:edge")).toEqual(["computer"]);
   });
 
   it("defaults application and computer images to stable releases", () => {
     for (const name of appServices) {
-      expect(compose.services[name]?.image).toContain("RAKAZO_IMAGE_TAG:-latest");
+      expect(compose.services[name]?.image).toContain("NURLAI_IMAGE_TAG:-latest");
     }
-    expect(compose.services.computer?.image).toContain("RAKAZO_COMPUTER_IMAGE_TAG:-latest");
+    expect(compose.services.computer?.image).toContain("NURLAI_COMPUTER_IMAGE_TAG:-latest");
     const template = readFileSync(path.join(repoRoot, "infra/compose/.env.images.example"), "utf8");
-    expect(template).toContain("RAKAZO_IMAGE_TAG=latest\n");
-    expect(template).toContain("RAKAZO_COMPUTER_IMAGE_TAG=latest\n");
+    expect(template).toContain("NURLAI_IMAGE_TAG=latest\n");
+    expect(template).toContain("NURLAI_COMPUTER_IMAGE_TAG=latest\n");
   });
 
   it("keeps the optional scheduled updater private and disabled by default", () => {
     const updater = compose.services.updater;
     expect(updater?.profiles).toEqual(["updater"]);
-    expect(updater?.environment?.RAKAZO_COMPUTER_IMAGE).toBe(
-      interpolated("RAKAZO_COMPUTER_IMAGE", "ghcr.io/elie222/rakazo/computer"),
+    expect(updater?.environment?.NURLAI_COMPUTER_IMAGE).toBe(
+      interpolated("NURLAI_COMPUTER_IMAGE", "ghcr.io/elie222/nurlai/computer"),
     );
     expect(updater?.ports).toBeUndefined();
     expect(updater?.env_file).toBeUndefined();
     expect(updater?.build).toBeUndefined();
     expect(updater?.networks).toEqual(["control"]);
-    expect(updater?.environment?.RAKAZO_AUTO_UPDATE_INTERVAL_HOURS).toBe(
-      interpolated("RAKAZO_AUTO_UPDATE_INTERVAL_HOURS", "0"),
+    expect(updater?.environment?.NURLAI_AUTO_UPDATE_INTERVAL_HOURS).toBe(
+      interpolated("NURLAI_AUTO_UPDATE_INTERVAL_HOURS", "0"),
     );
-    expect(updater?.environment?.RAKAZO_COMPOSE_FILE).toBe(
-      interpolated("RAKAZO_COMPOSE_FILE", "docker-compose.images.yml"),
+    expect(updater?.environment?.NURLAI_COMPOSE_FILE).toBe(
+      interpolated("NURLAI_COMPOSE_FILE", "docker-compose.images.yml"),
     );
-    expect(updater?.environment?.RAKAZO_UPDATE_SERVICES).toBe(
-      interpolated("RAKAZO_UPDATE_SERVICES", "supervisor,computer"),
+    expect(updater?.environment?.NURLAI_UPDATE_SERVICES).toBe(
+      interpolated("NURLAI_UPDATE_SERVICES", "supervisor,computer"),
     );
     expect(updater?.volumes).toContain(
-      `${interpolated("RAKAZO_DEPLOY_DIR", "/srv/rakazo")}:${interpolated("RAKAZO_DEPLOY_DIR", "/srv/rakazo")}`,
+      `${interpolated("NURLAI_DEPLOY_DIR", "/srv/rakazo")}:${interpolated("NURLAI_DEPLOY_DIR", "/srv/rakazo")}`,
     );
-    expect(compose.services.api?.environment?.RAKAZO_UPDATER_TOKEN).toBeUndefined();
-    expect(compose.services.worker?.environment?.RAKAZO_UPDATER_TOKEN).toBeUndefined();
+    expect(compose.services.api?.environment?.NURLAI_UPDATER_TOKEN).toBeUndefined();
+    expect(compose.services.worker?.environment?.NURLAI_UPDATER_TOKEN).toBeUndefined();
   });
 
   it("only references first-party images that the publish matrix publishes", () => {
@@ -219,9 +219,9 @@ describe("the images compose file", () => {
 
   it("defaults the configurable web bind to loopback and keeps the API private", () => {
     expect(compose.services.web?.ports).toEqual([
-      "${RAKAZO_WEB_BIND:-127.0.0.1}:${RAKAZO_WEB_PORT:-5173}:5173",
+      "${NURLAI_WEB_BIND:-127.0.0.1}:${NURLAI_WEB_PORT:-5173}:5173",
     ]);
-    expect(compose.services.api?.ports).toEqual(["127.0.0.1:${RAKAZO_API_PORT:-3100}:3100"]);
+    expect(compose.services.api?.ports).toEqual(["127.0.0.1:${NURLAI_API_PORT:-3100}:3100"]);
     for (const key of ["BETTER_AUTH_URL", "WEB_ORIGIN", "API_URL"]) {
       expect(compose.services.api?.environment?.[key]).toBe(`\${${key}:-http://127.0.0.1:5173}`);
     }

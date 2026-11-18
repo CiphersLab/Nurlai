@@ -1,6 +1,6 @@
 import * as SecureStore from "expo-secure-store";
 
-export const COMPOSER_MODEL_PICKER_STORAGE_KEY = "rakazo.composerModelPicker";
+export const COMPOSER_MODEL_PICKER_STORAGE_KEY = "nurlai.cipherslab.composerModelPicker";
 
 let enabled = false;
 const listeners = new Set<() => void>();

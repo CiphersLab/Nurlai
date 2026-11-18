@@ -6,8 +6,8 @@ import type {
   SecretContext,
   SecretPutOptions,
   SecretStore,
-} from "@rakazo/adapter-kit";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { getLogger } from "@nurlai/logging";
 import type { InfisicalSecretStoreOptions } from "../providers/secret-store/infisical/infisical-secret-store.js";
 import {
   INFISICAL_REF_PREFIX,

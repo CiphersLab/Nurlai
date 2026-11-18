@@ -1,6 +1,6 @@
-import type { BotAvatarSet, BotColorDef } from "@rakazo/contracts";
-import { BOT_COLOR_LIST, BOT_COLORS } from "@rakazo/contracts";
-import type { AvatarEyes, LogoAvatarActivity } from "@rakazo/core";
+import type { BotAvatarSet, BotColorDef } from "@nurlai/contracts";
+import { BOT_COLOR_LIST, BOT_COLORS } from "@nurlai/contracts";
+import type { AvatarEyes, LogoAvatarActivity } from "@nurlai/core";
 import {
   avatarEyeRects,
   avatarIdentitySeed,
@@ -17,7 +17,7 @@ import {
   SHIPPED_BOT_AVATAR_SHAPES,
   SHIPPED_BOT_AVATAR_VIEWBOX,
   shippedBotAvatarShapePath,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import type { ComponentProps, CSSProperties } from "react";
 import { memo, useEffect, useId, useMemo, useSyncExternalStore } from "react";
 import { useBotAvatarActivity } from "./bot-avatar-activity.js";
@@ -239,7 +239,7 @@ export const BotAvatar = memo(function BotAvatar({
   );
 });
 
-/** Only live Rakazo consumers subscribe to public activity updates. */
+/** Only live Nurlai consumers subscribe to public activity updates. */
 function LiveLogoAvatar({
   status,
   ...props
@@ -416,7 +416,7 @@ export function Wordmark({ className }: { className?: string }) {
       </div>
       {/* off-scale: wordmark sized to the 44px logo mark */}
       <span className="font-[Aeonik,ui-sans-serif] text-[28px] tracking-tight text-foreground">
-        Rakazo
+        Nurlai
       </span>
     </div>
   );

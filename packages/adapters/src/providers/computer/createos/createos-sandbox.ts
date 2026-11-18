@@ -16,15 +16,15 @@ import type {
   ScreenSession,
   UnreferencedMachine,
   UnreferencedMachineRecords,
-} from "@rakazo/adapter-kit";
-import { SandboxFileTooLargeError } from "@rakazo/adapter-kit";
-import { cancelResponseBody, ResponseTooLargeError } from "@rakazo/core";
+} from "@nurlai/adapter-kit";
+import { SandboxFileTooLargeError } from "@nurlai/adapter-kit";
+import { cancelResponseBody, ResponseTooLargeError } from "@nurlai/core";
 import {
   browserProfilePathForScreen,
   DEFAULT_DESKTOP_ENV,
   quiesceBrowserProfilesCommand,
-} from "@rakazo/core/node/desktop-runtime";
-import { boundedSandboxCommandTimeoutMs } from "@rakazo/core/node/sandbox-command";
+} from "@nurlai/core/node/desktop-runtime";
+import { boundedSandboxCommandTimeoutMs } from "@nurlai/core/node/sandbox-command";
 import { computerIdleSleepEnabled, sandboxIdleMs } from "../../../computers/computer-idle.js";
 import { PORTABLE_TRANSFER_BATCH_BYTES } from "../../../computers/computer-workspace.js";
 import {
@@ -70,7 +70,7 @@ function createosChromiumProfile(screenId: string) {
 }
 const CREATEOS_DRAINING_SCREEN = "draining:";
 const CREATEOS_SCREEN_MAP_PATH = `${CREATEOS_WORKSPACE}/.rakazo/screens.json`;
-export const CREATEOS_SCREEN_MAP_SENTINEL = "RAKAZO_SCREEN_MAP_V1";
+export const CREATEOS_SCREEN_MAP_SENTINEL = "NURLAI_SCREEN_MAP_V1";
 const CREATEOS_SCREEN_MAP_NEED_CREATE = "NEED_CREATE";
 const DEFAULT_CREATEOS_BASE_URL = "https://api.sb.createos.sh";
 const CREATEOS_INGRESS_ZONE = "sb.createos.sh";

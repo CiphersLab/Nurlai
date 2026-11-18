@@ -8,7 +8,7 @@ import {
 import type { RequestOptions } from "@modelcontextprotocol/sdk/shared/protocol.js";
 import type { Tool } from "@modelcontextprotocol/sdk/types.js";
 import { ErrorCode, McpError } from "@modelcontextprotocol/sdk/types.js";
-import type { ConnectorTool } from "@rakazo/adapter-kit";
+import type { ConnectorTool } from "@nurlai/adapter-kit";
 import {
   ConnectionSetupError,
   ipVersion,
@@ -21,8 +21,8 @@ import {
   isNonPublicAddress,
   MCP_APP_READ_TIMEOUT_MS,
   normalizeHost,
-} from "@rakazo/contracts";
-import { cancelResponseBody } from "@rakazo/core";
+} from "@nurlai/contracts";
+import { cancelResponseBody } from "@nurlai/core";
 import { Agent } from "undici";
 import { sensitiveQueryParameter } from "../integrations/connector-http.js";
 import { combineSignals } from "../integrations/connector-safety.js";

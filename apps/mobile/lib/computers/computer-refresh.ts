@@ -1,5 +1,5 @@
-import type { ComputerStatus } from "@rakazo/contracts";
-import { isRetryableError } from "@rakazo/core";
+import type { ComputerStatus } from "@nurlai/contracts";
+import { isRetryableError } from "@nurlai/core";
 import { SCREEN_URL_RENEW_MS, screenRenewReadAt } from "./computer";
 
 export { SCREEN_URL_RENEW_MS };

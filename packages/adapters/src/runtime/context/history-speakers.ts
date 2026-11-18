@@ -1,6 +1,6 @@
-import { botMessageContext } from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
-import { loadMessageAuthors, storedMessageBlocks } from "@rakazo/db";
+import { botMessageContext } from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
+import { loadMessageAuthors, storedMessageBlocks } from "@nurlai/db";
 
 /** What the model reads for the person of a personal space: never their real name. */
 export const USER_SPEAKER = "User";

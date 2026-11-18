@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import { appendNewerThreadPage, forwardProbeAfterPage, threadWindowMessages } from "@rakazo/core";
+import { appendNewerThreadPage, forwardProbeAfterPage, threadWindowMessages } from "@nurlai/core";
 import { useState } from "react";
 import type { LayoutChangeEvent, NativeScrollEvent, NativeSyntheticEvent } from "react-native";
 import { rpc } from "../api/api";

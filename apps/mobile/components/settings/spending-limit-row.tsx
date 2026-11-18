@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import type { SpendingStatus } from "@rakazo/contracts";
+import type { SpendingStatus } from "@nurlai/contracts";
 import { router } from "expo-router";
 import type { ReactNode } from "react";
 import { spendingLimitSummary } from "../../lib/account/spending-limit";

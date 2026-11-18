@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { INVITED_TRIAL_WEEKS } from "@rakazo/contracts";
+import { INVITED_TRIAL_WEEKS } from "@nurlai/contracts";
 import { describe, expect, it } from "vitest";
 import {
   accountDeletionEmail,
@@ -224,9 +224,9 @@ describe("email languages", () => {
 
   it("writes a code email in Spanish", async () => {
     const message = await signInCodeEmail("user@example.test", "123456", "es");
-    expect(message.subject).toBe("Tu código para iniciar sesión en Rakazo");
+    expect(message.subject).toBe("Tu código para iniciar sesión en Nurlai");
     expect(message.html).toContain('lang="es"');
-    expect(message.text).toContain("Introduce este código para iniciar sesión en Rakazo:");
+    expect(message.text).toContain("Introduce este código para iniciar sesión en Nurlai:");
     expect(message.html).toContain('dir="ltr"');
   });
 
@@ -242,19 +242,19 @@ describe("email languages", () => {
       "Hola, Ana:",
     );
     const english = await welcomeEmail(user, "https://example.test/u");
-    expect(english.subject).toBe("Welcome to Rakazo");
+    expect(english.subject).toBe("Welcome to Nurlai");
     expect(english.text).toContain("Hi Ana,");
-    expect(english.text).toContain("Rakazo runs on iPhone");
+    expect(english.text).toContain("Nurlai runs on iPhone");
   });
 
   it("names a Space invitation's Space, never an organization, in every language", async () => {
     const invitation = { spaceName: "Clients", inviterName: "Ana", url: "https://example.test/i" };
     const english = await spaceInvitationEmail("guest@example.test", invitation);
-    expect(english.subject).toBe("Ana invited you to Clients on Rakazo");
+    expect(english.subject).toBe("Ana invited you to Clients on Nurlai");
     expect(english.text).toContain("This invitation expires in 7 days.");
     expect(english.text).not.toContain("Sign in with this email address");
     const turkish = await spaceInvitationEmail("guest@example.test", invitation, "tr");
-    expect(turkish.subject).toBe("Ana sizi Rakazo'da Clients alanına davet etti");
+    expect(turkish.subject).toBe("Ana sizi Nurlai'da Clients alanına davet etti");
     expect(turkish.text).not.toContain("kuruluş");
   });
 
@@ -285,10 +285,10 @@ it("asks for one thing in the model connection email: the connect step", async (
     { name: "Ana", email: "user@example.test" },
     { webOrigin: "https://app.example.test", unsubscribeUrl },
   );
-  expect(message.subject).toBe("Connect a model to start using Rakazo");
+  expect(message.subject).toBe("Connect a model to start using Nurlai");
   expect(message.text).toContain("Hi Ana,");
   expect(message.text).toContain(
-    "Your Rakazo plan has started, but your bots can't reply until a model is connected.",
+    "Your Nurlai plan has started, but your bots can't reply until a model is connected.",
   );
   expect(message.text).toContain(
     "Sign in with your ChatGPT or Claude subscription, or paste an API key.",

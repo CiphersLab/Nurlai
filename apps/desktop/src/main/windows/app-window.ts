@@ -37,9 +37,9 @@ export const PROBE_TIMEOUT_MS = 8_000;
 /** The server or the network refused the page; the setup window says so and the server logs its side. */
 export class ServerUnavailable extends Error {}
 const bundledRendererInstallations = new Set<string>();
-const WARM_WINDOW_TTL_MS = warmWindowTtlMs(process.env.RAKAZO_WARM_WINDOW_TTL_MS);
+const WARM_WINDOW_TTL_MS = warmWindowTtlMs(process.env.NURLAI_WARM_WINDOW_TTL_MS);
 /** Test hook: how long a loaded page may take to mount the app before the server is rejected. */
-const appMountTimeout = Number(process.env.RAKAZO_APP_MOUNT_TIMEOUT_MS);
+const appMountTimeout = Number(process.env.NURLAI_APP_MOUNT_TIMEOUT_MS);
 const APP_MOUNT_TIMEOUT_MS = appMountTimeout > 0 ? appMountTimeout : undefined;
 export function markOnce(name: string) {
   if (performance.getEntriesByName(name).length === 0) performance.mark(name);
@@ -244,7 +244,7 @@ export function createWindow(url: string, partition: string | null) {
     if (
       process.platform === "darwin" &&
       !desktop.quitting &&
-      process.env.RAKAZO_DISABLE_WARM_WINDOW !== "1"
+      process.env.NURLAI_DISABLE_WARM_WINDOW !== "1"
     ) {
       event.preventDefault();
       win.hide();
@@ -417,7 +417,7 @@ export async function installBundledRenderer(
   partition: string | null,
   managedLocalStack: boolean,
 ) {
-  if (!app.isPackaged || process.env.RAKAZO_DISABLE_BUNDLED_RENDERER === "1") return;
+  if (!app.isPackaged || process.env.NURLAI_DISABLE_BUNDLED_RENDERER === "1") return;
   if (!servesBundledRenderer(targetUrl, managedLocalStack)) return;
   const webUrl = new URL(targetUrl);
   const installationKey = `${partition ?? "default"}:${webUrl.protocol}`;

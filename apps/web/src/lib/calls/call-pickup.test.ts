@@ -1,4 +1,4 @@
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, expect, it, vi } from "vitest";
 import { pickUp } from "./call-pickup.js";
 

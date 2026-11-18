@@ -1,8 +1,8 @@
 import { useLingui } from "@lingui/react/macro";
-import { useTimeout } from "@rakazo/chat-ui/hooks";
-import type { Bot, Routine, ThinkingLevel, ThreadSnapshot } from "@rakazo/contracts";
-import { isIdentityConfirmationRequired } from "@rakazo/contracts";
-import { cronFromPreset, localTimezone } from "@rakazo/core";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
+import type { Bot, Routine, ThinkingLevel, ThreadSnapshot } from "@nurlai/contracts";
+import { isIdentityConfirmationRequired } from "@nurlai/contracts";
+import { cronFromPreset, localTimezone } from "@nurlai/core";
 import type { ComponentProps, Dispatch, RefObject, SetStateAction } from "react";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { REVEAL_MS } from "../../components/vault/VaultItemDetail";

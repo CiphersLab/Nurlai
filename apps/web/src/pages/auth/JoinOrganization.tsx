@@ -1,7 +1,7 @@
 import { Trans } from "@lingui/react/macro";
 import { ORPCError } from "@orpc/client";
-import type { OrganizationInvitationPreview } from "@rakazo/contracts";
-import { Button, cn } from "@rakazo/ui-web";
+import type { OrganizationInvitationPreview } from "@nurlai/contracts";
+import { Button, cn } from "@nurlai/ui-web";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSave } from "../../lib/query/query";

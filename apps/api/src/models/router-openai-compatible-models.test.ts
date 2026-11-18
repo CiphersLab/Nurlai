@@ -1,15 +1,15 @@
 import { createRouterClient } from "@orpc/server";
 import { RPCHandler } from "@orpc/server/fetch";
-import * as adapters from "@rakazo/adapters";
+import * as adapters from "@nurlai/adapters";
 import {
   findConnectedModelCredential,
   listPiCatalog,
   modelCredentialDto,
   parseModelSecret,
   serializeModelSecret,
-} from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
+} from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { RouterDeps } from "../router.js";
 import {
@@ -436,7 +436,7 @@ describe("OpenAI-compatible model probes", () => {
   });
 
   it("still rejects saved keys on public HTTP endpoints", async () => {
-    vi.stubEnv("RAKAZO_OPENAI_COMPAT_ALLOW_PUBLIC", "1");
+    vi.stubEnv("NURLAI_OPENAI_COMPAT_ALLOW_PUBLIC", "1");
     try {
       const { client, fetch, load } = fixture();
       const baseUrl = "http://example.invalid/v1";

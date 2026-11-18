@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { i18n } from "@lingui/core";
 import { I18nProvider } from "@lingui/react";
-import type { RakazoDesktop } from "@rakazo/contracts";
+import type { NurlaiDesktop } from "@nurlai/contracts";
 import type { ComponentProps, ReactNode } from "react";
 import { act } from "react";
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
@@ -17,7 +17,7 @@ vi.mock("@lingui/react/macro", () => ({
   }),
   Trans: ({ children }: { children: ReactNode }) => children,
 }));
-vi.mock("@rakazo/ui-web", () => ({
+vi.mock("@nurlai/ui-web", () => ({
   Button: ({
     variant: _variant,
     size: _size,
@@ -74,7 +74,7 @@ beforeEach(() => {
 afterEach(async () => {
   await act(async () => root.unmount());
   host.remove();
-  delete window.rakazoDesktop;
+  delete window.nurlaiDesktop;
   if (window.location.href !== initialDocument) pointDocumentAt(initialDocument);
   vi.unstubAllGlobals();
 });
@@ -82,8 +82,8 @@ afterEach(async () => {
 const laptop = { deviceId: "d1", name: "Laptop", connected: true };
 const desk = { deviceId: "d2", name: "Desk PC", connected: false };
 
-function desktopWith(device: NonNullable<RakazoDesktop["device"]>) {
-  window.rakazoDesktop = { platform: "darwin", device } as RakazoDesktop;
+function desktopWith(device: NonNullable<NurlaiDesktop["device"]>) {
+  window.nurlaiDesktop = { platform: "darwin", device } as NurlaiDesktop;
 }
 
 /** The web build compiles macros onto the real hook, which throws without this provider. */
@@ -190,11 +190,11 @@ it("turns this computer on and off for the app-managed local server", async () =
     }),
     onConfigure: () => () => undefined,
   };
-  window.rakazoDesktop = {
+  window.nurlaiDesktop = {
     platform: "darwin",
     computer,
     device: { state: async () => null, setAllowed: vi.fn() },
-  } as unknown as RakazoDesktop;
+  } as unknown as NurlaiDesktop;
   await renderSettings();
   const toggle = host.querySelector<HTMLInputElement>('[data-testid="this-computer-toggle"]')!;
   expect(toggle.checked).toBe(false);
@@ -214,11 +214,11 @@ it("stays hidden on a server that does not run bots on this computer", async () 
     canChooseHostComputer: false,
     computerHost: null,
   } as Awaited<ReturnType<typeof rpc.me>>);
-  window.rakazoDesktop = {
+  window.nurlaiDesktop = {
     platform: "darwin",
     computer: { managesHostChoice: true },
     device: { state: async () => null },
-  } as unknown as RakazoDesktop;
+  } as unknown as NurlaiDesktop;
   await renderSettings();
   expect(host.innerHTML).toBe("");
 });
@@ -238,11 +238,11 @@ it("keeps the local switch when a later profile read fails", async () => {
     }),
     onConfigure: () => () => undefined,
   };
-  window.rakazoDesktop = {
+  window.nurlaiDesktop = {
     platform: "darwin",
     computer,
     device: { state: async () => null, setAllowed: vi.fn() },
-  } as unknown as RakazoDesktop;
+  } as unknown as NurlaiDesktop;
   await renderSettings();
   await act(async () =>
     host.querySelector<HTMLInputElement>('[data-testid="this-computer-toggle"]')!.click(),

@@ -1,5 +1,5 @@
 import { ORPCError } from "@orpc/server";
-import type { McpOAuthBroker, McpOAuthSummary, McpStdioPolicy } from "@rakazo/adapters";
+import type { McpOAuthBroker, McpOAuthSummary, McpStdioPolicy } from "@nurlai/adapters";
 import {
   assertNoMcpEndpointCredential,
   assertSafeRemoteUrl,
@@ -7,12 +7,12 @@ import {
   mcpServerHealthDto,
   mcpStdioRefusal,
   recordMcpServerHealth,
-} from "@rakazo/adapters";
-import type { Actor, McpServer, McpServerConfigInput } from "@rakazo/contracts";
-import { ConnectionSetupError, mcpOAuthEnvReferences } from "@rakazo/contracts";
-import type { McpServer as McpServerRow, Prisma } from "@rakazo/db";
-import { itemSecretIn, spaceAvailability } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/adapters";
+import type { Actor, McpServer, McpServerConfigInput } from "@nurlai/contracts";
+import { ConnectionSetupError, mcpOAuthEnvReferences } from "@nurlai/contracts";
+import type { McpServer as McpServerRow, Prisma } from "@nurlai/db";
+import { itemSecretIn, spaceAvailability } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { isAdmin } from "../auth/admins.js";
 import type { RouterDeps } from "../router.js";
 import { computerContext } from "../routes/shared.js";

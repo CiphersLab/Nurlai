@@ -1,5 +1,5 @@
-import type { BackgroundJobHandlers } from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
+import type { BackgroundJobHandlers } from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
 import type { JobHelpers, Runner } from "graphile-worker";
 import { vi } from "vitest";
 

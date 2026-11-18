@@ -1,5 +1,5 @@
 /** @jsxRuntime automatic */
-import type { TransactionalEmail } from "@rakazo/adapter-kit";
+import type { TransactionalEmail } from "@nurlai/adapter-kit";
 import { Text } from "react-email";
 import { Button, emailText, greeting, message } from "./email.js";
 
@@ -32,7 +32,7 @@ export function homeDeletionEmail(
               date,
             })}
       </Text>
-      <Button href={appUrl}>{say("Open Rakazo")}</Button>
+      <Button href={appUrl}>{say("Open Nurlai")}</Button>
     </>,
   );
 }

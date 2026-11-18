@@ -1,8 +1,8 @@
-import { aiRecipient } from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
-import { AI_DISCLOSURE_VERSION } from "@rakazo/contracts";
-import { ClientError } from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
+import { aiRecipient } from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
+import { AI_DISCLOSURE_VERSION } from "@nurlai/contracts";
+import { ClientError } from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
 import type { DeploymentVoice } from "./deployment-config.js";
 
 /** Shared disclosure identity for each operation's actual deployment endpoint. */

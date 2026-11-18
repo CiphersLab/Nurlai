@@ -1,6 +1,6 @@
-import type { ComputerRef } from "@rakazo/adapter-kit";
-import { encodeLoginSecret } from "@rakazo/contracts";
-import { runLoginKind } from "@rakazo/db";
+import type { ComputerRef } from "@nurlai/adapter-kit";
+import { encodeLoginSecret } from "@nurlai/contracts";
+import { runLoginKind } from "@nurlai/db";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type * as ComputerLifecycleModule from "../../computers/computer-lifecycle.js";
 import { encodeRunLogin } from "../../secrets/bot-secrets.js";
@@ -558,7 +558,7 @@ describe("request_secret for a login saved for another site", () => {
   });
 
   it("keeps turning down a change of type or a site off HTTPS", async () => {
-    vi.stubEnv("RAKAZO_SECRETS_ALLOW_PRIVATE_HTTP", "1");
+    vi.stubEnv("NURLAI_SECRETS_ALLOW_PRIVATE_HTTP", "1");
     try {
       const cases = [
         // Another kind of credential under the name, or a login asked for as another kind.

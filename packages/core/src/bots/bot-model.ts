@@ -1,4 +1,4 @@
-import type { ModelCatalogEntry, ModelCredential, ThinkingLevel } from "@rakazo/contracts";
+import type { ModelCatalogEntry, ModelCredential, ThinkingLevel } from "@nurlai/contracts";
 import { modelMark } from "../models/model-marks.js";
 import {
   chatModelChoices,

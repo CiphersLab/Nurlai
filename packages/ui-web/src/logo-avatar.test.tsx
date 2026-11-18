@@ -1,5 +1,5 @@
-import { BOT_COLOR_LIST } from "@rakazo/contracts";
-import { contrastRatio, seededLogoAvatarColor } from "@rakazo/core";
+import { BOT_COLOR_LIST } from "@nurlai/contracts";
+import { contrastRatio, seededLogoAvatarColor } from "@nurlai/core";
 import { renderToString } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { BotAvatar } from "./bot-avatar.js";

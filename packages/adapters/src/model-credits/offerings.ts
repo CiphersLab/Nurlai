@@ -1,4 +1,4 @@
-import type { AgentUsage } from "@rakazo/adapter-kit";
+import type { AgentUsage } from "@nurlai/adapter-kit";
 import { z } from "zod";
 
 const id = z.string().trim().min(1).max(512);

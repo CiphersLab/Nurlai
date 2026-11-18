@@ -1,6 +1,6 @@
-import { DEFAULT_CONTEXT_STRATEGY } from "@rakazo/adapter-kit";
-import type { ThreadEvents } from "@rakazo/db";
-import { retryWhileDatabaseUnavailable } from "@rakazo/db";
+import { DEFAULT_CONTEXT_STRATEGY } from "@nurlai/adapter-kit";
+import type { ThreadEvents } from "@nurlai/db";
+import { retryWhileDatabaseUnavailable } from "@nurlai/db";
 import { createBrowserProvider } from "../../browser/browser-provider-factory.js";
 import { createMediaGenerationProvider } from "../../media/media-generation-factory.js";
 import { createPaidServiceProvider } from "../../payments/paid-services-factory.js";

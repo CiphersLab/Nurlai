@@ -1,4 +1,4 @@
-import type { PluginPreview } from "@rakazo/contracts";
+import type { PluginPreview } from "@nurlai/contracts";
 import type { ParsedPlugin } from "./plugin-connectors.js";
 
 /** Public preview deliberately excludes skill bodies and all header values. */

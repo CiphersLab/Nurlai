@@ -1,6 +1,6 @@
 import type { Page } from "@playwright/test";
 import { expect, test } from "@playwright/test";
-import type { Me } from "@rakazo/contracts";
+import type { Me } from "@nurlai/contracts";
 import { captureScreenshot, completeOnboarding, rpc, signup } from "../helpers/helpers";
 
 test.use({ timezoneId: "Asia/Tokyo" });

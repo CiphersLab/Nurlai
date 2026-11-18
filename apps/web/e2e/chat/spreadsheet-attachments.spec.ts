@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { expect, test } from "@playwright/test";
-import type { Artifact, ArtifactWithContent } from "@rakazo/contracts";
+import type { Artifact, ArtifactWithContent } from "@nurlai/contracts";
 import {
   activeBotId,
   captureScreenshot,

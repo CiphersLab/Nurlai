@@ -1,10 +1,10 @@
 // @vitest-environment jsdom
 
 import { i18n } from "@lingui/core";
-import type { Bot, ChatAlert } from "@rakazo/contracts";
-import { TAKEOVER_COMPUTER_PENDING_STATE } from "@rakazo/core";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import type { Bot, ChatAlert } from "@nurlai/contracts";
+import { TAKEOVER_COMPUTER_PENDING_STATE } from "@nurlai/core";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { act } from "react";
 import type { Root } from "react-dom/client";
 import { createRoot } from "react-dom/client";

@@ -13,8 +13,8 @@ import {
   SandboxUnreachableError,
   TimeoutError,
 } from "@e2b/desktop";
-import type { CommandRequest, ComputerRef, ProcessEvent } from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
+import type { CommandRequest, ComputerRef, ProcessEvent } from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
 import { describe, expect, it, vi } from "vitest";
 import { sandboxIdleMs } from "../../../computers/computer-idle.js";
 import { shouldSkipPortableWorkspaceFile } from "../../../computers/computer-workspace.js";
@@ -62,10 +62,10 @@ describe("E2B computer backend", () => {
 
   it("revokes an extra display's control without starting or waiting for its view", async () => {
     const command = vi.fn(async (value: string) => {
-      if (value.includes("RAKAZO_SCREEN_INDEX=")) {
-        return { stdout: "RAKAZO_SCREEN_INDEX=1\n", stderr: "", exitCode: 0 };
+      if (value.includes("NURLAI_SCREEN_INDEX=")) {
+        return { stdout: "NURLAI_SCREEN_INDEX=1\n", stderr: "", exitCode: 0 };
       }
-      if (value.includes("RAKAZO_SCREEN_PASSWORD=") || value.includes("flock 8")) {
+      if (value.includes("NURLAI_SCREEN_PASSWORD=") || value.includes("flock 8")) {
         throw new Error("extra view is unavailable");
       }
       return { stdout: "", stderr: "", exitCode: 0 };
@@ -95,7 +95,7 @@ describe("E2B computer backend", () => {
 
   it("reconnects concurrent primary viewers without using the SDK's global VNC lifecycle", async () => {
     const command = vi.fn(async (_value: string) => ({
-      stdout: "RAKAZO_DESKTOP=0:savedkey\n",
+      stdout: "NURLAI_DESKTOP=0:savedkey\n",
       stderr: "",
       exitCode: 0,
     }));
@@ -150,7 +150,7 @@ describe("E2B computer backend", () => {
         setTimeout: async () => undefined,
         commands: {
           run: async () => ({
-            stdout: "RAKAZO_DESKTOP=0:savedkey\n",
+            stdout: "NURLAI_DESKTOP=0:savedkey\n",
             stderr: "",
             exitCode: 0,
           }),
@@ -295,7 +295,7 @@ describe("E2B computer backend", () => {
     }
   });
 
-  it("creates new computers from the Rakazo computer template", async () => {
+  it("creates new computers from the Nurlai computer template", async () => {
     const sdk: E2BSandboxSdk = {
       create: vi.fn().mockResolvedValue({ sandboxId: "fresh" }),
       connect: vi.fn(),

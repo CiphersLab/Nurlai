@@ -1,5 +1,5 @@
 import { createRouterClient } from "@orpc/server";
-import type { PrismaClient } from "@rakazo/db";
+import type { PrismaClient } from "@nurlai/db";
 import { describe, expect, it } from "vitest";
 import type { RouterDeps } from "../router.js";
 import { createRouter } from "../router-test-support.js";

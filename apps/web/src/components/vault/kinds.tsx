@@ -1,9 +1,9 @@
 import { useLingui } from "@lingui/react/macro";
-import { useLinkFavicon } from "@rakazo/chat-ui/web";
-import type { BotSecretMetadata, VaultKind } from "@rakazo/contracts";
-import { vaultItemSubtitle } from "@rakazo/contracts";
-import { registrableDomain } from "@rakazo/core/egress";
-import { cn } from "@rakazo/ui-web";
+import { useLinkFavicon } from "@nurlai/chat-ui/web";
+import type { BotSecretMetadata, VaultKind } from "@nurlai/contracts";
+import { vaultItemSubtitle } from "@nurlai/contracts";
+import { registrableDomain } from "@nurlai/core/egress";
+import { cn } from "@nurlai/ui-web";
 import type { LucideIcon } from "lucide-react";
 import { Braces, CreditCard, KeyRound, MapPin, SquareTerminal } from "lucide-react";
 

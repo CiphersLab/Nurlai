@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { RAKAZO_CLOUD_URL } from "../setup/setup-config.js";
+import { NURLAI_CLOUD_URL } from "../setup/setup-config.js";
 import { associatedPasskeyRpIds, PASSKEY_RP_ID, passkeyEntitlements } from "./passkeys.js";
 
 const root = path.resolve(import.meta.dirname, "../../..");
@@ -80,17 +80,17 @@ describe("self-hosted passkey domain", () => {
   });
 
   async function load(rpId: string) {
-    vi.stubEnv("RAKAZO_PASSKEY_RP_ID", rpId);
+    vi.stubEnv("NURLAI_PASSKEY_RP_ID", rpId);
     vi.resetModules();
     return import("./passkeys.js");
   }
 
   it("defaults to the hosted server's domain", async () => {
     const passkeys = await load("");
-    expect(passkeys.PASSKEY_RP_ID).toBe(new URL(RAKAZO_CLOUD_URL).hostname);
+    expect(passkeys.PASSKEY_RP_ID).toBe(new URL(NURLAI_CLOUD_URL).hostname);
   });
 
-  it("associates the build with RAKAZO_PASSKEY_RP_ID", async () => {
+  it("associates the build with NURLAI_PASSKEY_RP_ID", async () => {
     const passkeys = await load(" Nurlai.Example.org ");
     expect(passkeys.PASSKEY_RP_ID).toBe("rakazo.example.org");
     expect(passkeys.passkeyEntitlements(base, "ABCDE12345", pkg.build.appId)).toContain(
@@ -103,7 +103,7 @@ describe("self-hosted passkey domain", () => {
     async (rpId) => {
       const passkeys = await load(rpId);
       expect(() => passkeys.passkeyEntitlements(base, "ABCDE12345", pkg.build.appId)).toThrow(
-        "RAKAZO_PASSKEY_RP_ID",
+        "NURLAI_PASSKEY_RP_ID",
       );
     },
   );

@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
-import type { SecretStore } from "@rakazo/adapter-kit";
-import { SecretNotFoundError } from "@rakazo/adapter-kit";
-import { asSystem, createDb, runAsTenant } from "@rakazo/db";
+import type { SecretStore } from "@nurlai/adapter-kit";
+import { SecretNotFoundError } from "@nurlai/adapter-kit";
+import { asSystem, createDb, runAsTenant } from "@nurlai/db";
 import type { Pool } from "pg";
 import { afterAll, describe, expect, it } from "vitest";
 import { PostgresRealtimeFanout } from "../notifications/realtime.js";

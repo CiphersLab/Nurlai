@@ -2,11 +2,11 @@ import { randomBytes } from "node:crypto";
 import { mkdir, mkdtemp, readdir, readFile, rm, stat, utimes, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import type { PortableFile, SandboxProvider, StreamedPortableFile } from "@rakazo/adapter-kit";
-import { WorkspaceTooLargeError } from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
-import type { PrismaClient, SpaceKeyRecord, SpaceKeyStore } from "@rakazo/db";
-import { ContentDecryptionError, ContentKeyRing, LocalKeyProvider } from "@rakazo/db";
+import type { PortableFile, SandboxProvider, StreamedPortableFile } from "@nurlai/adapter-kit";
+import { WorkspaceTooLargeError } from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
+import type { PrismaClient, SpaceKeyRecord, SpaceKeyStore } from "@nurlai/db";
+import { ContentDecryptionError, ContentKeyRing, LocalKeyProvider } from "@nurlai/db";
 import { afterEach, describe, expect, it } from "vitest";
 import {
   checkpointComputerWorkspace,

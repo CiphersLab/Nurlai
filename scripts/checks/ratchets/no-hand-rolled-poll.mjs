@@ -1,5 +1,5 @@
 export const message =
-  "Do not hand-write a loop that sleeps until a deadline. Use pollUntil(check, { intervalMs, timeoutMs, signal, waitingFor }) from @rakazo/core.";
+  "Do not hand-write a loop that sleeps until a deadline. Use pollUntil(check, { intervalMs, timeoutMs, signal, waitingFor }) from @nurlai/core.";
 
 export const include = [
   "{packages/{adapters,core,db,auth,memory,logging},apps/{api,worker},infra/sandboxes/supervisor,infra/updater}/src/**/*.{ts,tsx,mts,cts,js,mjs,cjs}",

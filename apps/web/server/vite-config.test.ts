@@ -4,7 +4,7 @@ import http from "node:http";
 import type { AddressInfo } from "node:net";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { USER_DEVICE_CONNECT_PATH } from "@rakazo/contracts";
+import { USER_DEVICE_CONNECT_PATH } from "@nurlai/contracts";
 import type { ProxyOptions, UserConfig } from "vite";
 import { createServer, loadConfigFromFile, preview } from "vite";
 import { afterEach, describe, expect, it, vi } from "vitest";
@@ -60,8 +60,8 @@ async function useStandInApi() {
   await new Promise<void>((resolve) => api.listen(0, "127.0.0.1", resolve));
   cleanup.push(() => new Promise((resolve) => api.close(() => resolve())));
   vi.stubEnv("API_PROXY_TARGET", `http://127.0.0.1:${(api.address() as AddressInfo).port}`);
-  vi.stubEnv("RAKAZO_HOST", "app.example.test");
-  vi.stubEnv("RAKAZO_ALLOWED_HOSTS", ".team.example.test");
+  vi.stubEnv("NURLAI_HOST", "app.example.test");
+  vi.stubEnv("NURLAI_ALLOWED_HOSTS", ".team.example.test");
   vi.stubEnv("SCREEN_PROXY_SECRET", "test-screen-proxy-secret-0123456789abcdef");
   // Lingui's plugin finds its config from the working directory, as `vite` runs it.
   vi.spyOn(process, "cwd").mockReturnValue(path.dirname(configFile));

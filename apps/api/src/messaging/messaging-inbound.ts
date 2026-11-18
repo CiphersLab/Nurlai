@@ -1,10 +1,10 @@
-import type { JobPublisher, MessagingInboundMessage, SandboxProvider } from "@rakazo/adapter-kit";
-import { teamChatEngageJobKey } from "@rakazo/adapter-kit";
-import type { MessagingDelivery, OutboundLane } from "@rakazo/adapters";
-import { MESSAGING_DM_OUTBOUND_CAP, messagingWakeIdempotencyKey, wakeRun } from "@rakazo/adapters";
-import type { MessageBlock } from "@rakazo/contracts";
-import { ATTACHMENT_MAX_COUNT, isAttachmentAudioMimeType } from "@rakazo/contracts";
-import type { MessagingCommand } from "@rakazo/core";
+import type { JobPublisher, MessagingInboundMessage, SandboxProvider } from "@nurlai/adapter-kit";
+import { teamChatEngageJobKey } from "@nurlai/adapter-kit";
+import type { MessagingDelivery, OutboundLane } from "@nurlai/adapters";
+import { MESSAGING_DM_OUTBOUND_CAP, messagingWakeIdempotencyKey, wakeRun } from "@nurlai/adapters";
+import type { MessageBlock } from "@nurlai/contracts";
+import { ATTACHMENT_MAX_COUNT, isAttachmentAudioMimeType } from "@nurlai/contracts";
+import type { MessagingCommand } from "@nurlai/core";
 import {
   displayName,
   messageBlockForArtifact,
@@ -12,14 +12,14 @@ import {
   parseMessagingCommand,
   promptTextForAttachments,
   sanitizeMessagingLabel,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import type {
   MessagingIdentityRequest,
   Prisma,
   PrismaClient,
   ProvisionedMessagingIdentity,
   ThreadEvents,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import {
   accountDeactivated,
   createThreadMessage,
@@ -29,8 +29,8 @@ import {
   SendClaimLostError,
   SpaceDeletionInProgressError,
   THREAD_LOCK_TRANSACTION_OPTIONS,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import {
   cancelThreadRuns,
   finishThreadStop,
@@ -917,7 +917,7 @@ async function handleChannelEvent(
           idempotencyKey: `intro:${channel.id}`,
           kind: "intro",
           threadId: channel.threadId,
-          body: "Hi. This line hosts Rakazo personal agents. Some people in this group haven't messaged it yet; send any message to this line first if you want your own agent here.",
+          body: "Hi. This line hosts Nurlai personal agents. Some people in this group haven't messaged it yet; send any message to this line first if you want your own agent here.",
         },
       ]);
       await tx.messagingChannel.update({
@@ -1017,7 +1017,7 @@ async function queueInvite(
     idempotencyKey,
     kind: "dm",
     identityId: identity.id,
-    body: `"${name}" was linked to your Rakazo agent. Reply YES to let your agent join the conversation there, or NO to stay out.`,
+    body: `"${name}" was linked to your Nurlai agent. Reply YES to let your agent join the conversation there, or NO to stay out.`,
   });
   return true;
 }

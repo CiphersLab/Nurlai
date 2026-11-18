@@ -1,4 +1,4 @@
-import type { AdapterContext } from "@rakazo/adapter-kit";
+import type { AdapterContext } from "@nurlai/adapter-kit";
 import {
   computerControlExpireJobKey,
   isSandboxProviderOutage,
@@ -6,13 +6,13 @@ import {
   SandboxUnavailableError,
   SandboxUnresponsiveError,
   WorkspaceTooLargeError,
-} from "@rakazo/adapter-kit";
-import type { ComputerUpdate } from "@rakazo/contracts";
-import { ComputerUpdateSchema } from "@rakazo/contracts";
-import { ACTIVE_RUN_STATUSES, computerUsingRuns } from "@rakazo/core";
-import type { Prisma, PrismaClient, ThreadEvents } from "@rakazo/db";
-import { draftRecordingsOfLeaseInTransaction, spaceTakesWork } from "@rakazo/db";
-import { bestEffort, getLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import type { ComputerUpdate } from "@nurlai/contracts";
+import { ComputerUpdateSchema } from "@nurlai/contracts";
+import { ACTIVE_RUN_STATUSES, computerUsingRuns } from "@nurlai/core";
+import type { Prisma, PrismaClient, ThreadEvents } from "@nurlai/db";
+import { draftRecordingsOfLeaseInTransaction, spaceTakesWork } from "@nurlai/db";
+import { bestEffort, getLogger } from "@nurlai/logging";
 import { announceUnsavedHome, scheduleComputerSleep } from "./computer-idle.js";
 import {
   ComputerBusyError,

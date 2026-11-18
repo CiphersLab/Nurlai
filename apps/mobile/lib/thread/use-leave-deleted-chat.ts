@@ -26,7 +26,7 @@ export function useLeaveDeletedChat() {
       ) {
         const groupId = route.params.groupId;
         try {
-          const spaceId = recoveryContext.headers["x-rakazo-space-id"];
+          const spaceId = recoveryContext.headers["x-nurlai-space-id"];
           if (!spaceId || selectedSpaceId() !== spaceId) return;
           const options = { requestContext: recoveryContext, skipSpaceAuthRecovery: true };
           const [groups, archived] = await Promise.all([

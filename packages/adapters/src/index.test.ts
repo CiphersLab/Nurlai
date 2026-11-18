@@ -1,5 +1,5 @@
 import { createCipheriv, createHash } from "node:crypto";
-import { BUILTIN_TOOL_NAMES, FLEET_TOOL_NAMES } from "@rakazo/contracts";
+import { BUILTIN_TOOL_NAMES, FLEET_TOOL_NAMES } from "@nurlai/contracts";
 import { describe, expect, it } from "vitest";
 import {
   offersAgentConnectionTools,

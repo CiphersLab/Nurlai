@@ -1,4 +1,4 @@
-import { secureHttpOrigin } from "@rakazo/contracts/network-host";
+import { secureHttpOrigin } from "@nurlai/contracts/network-host";
 import type { AppTarget } from "../windows/app-frame.js";
 
 export function createClipboardHandler(

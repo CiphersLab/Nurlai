@@ -1,4 +1,4 @@
-import { isVitestRuntime } from "@rakazo/core/node/test-runtime";
+import { isVitestRuntime } from "@nurlai/core/node/test-runtime";
 import { larkMessaging } from "../providers/messaging/lark/lark-messaging.js";
 import { photonMessaging } from "../providers/messaging/photon/photon-messaging.js";
 import { sendblueMessaging } from "../providers/messaging/sendblue/sendblue-messaging.js";

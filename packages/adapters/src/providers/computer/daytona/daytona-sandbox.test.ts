@@ -14,9 +14,9 @@ import {
   DaytonaRateLimitError,
   DaytonaTimeoutError,
 } from "@daytona/sdk";
-import type { PageBrowserCommand } from "@rakazo/adapter-kit";
-import { shellQuote } from "@rakazo/core/node/desktop-runtime";
-import { deferred } from "@rakazo/core/test-async";
+import type { PageBrowserCommand } from "@nurlai/adapter-kit";
+import { shellQuote } from "@nurlai/core/node/desktop-runtime";
+import { deferred } from "@nurlai/core/test-async";
 import { parse } from "shell-quote";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { installPageBrowserCommand } from "../../../browser/page-browser-install.js";
@@ -82,7 +82,7 @@ describe("DaytonaSandboxProvider", () => {
         "const fs = require('node:fs');",
         "const request = JSON.parse(fs.readFileSync(0, 'utf8'));",
         `if (fs.existsSync(${JSON.stringify(inputFile)}) || fs.existsSync(${JSON.stringify(inputFile.slice(0, inputFile.lastIndexOf("/")))})) process.exit(1);`,
-        "console.log(JSON.stringify({ok:true,completed:request.actions.length,display:process.env.DISPLAY,port:process.env.RAKAZO_CDP_PORT}));",
+        "console.log(JSON.stringify({ok:true,completed:request.actions.length,display:process.env.DISPLAY,port:process.env.NURLAI_CDP_PORT}));",
       ].join("\n");
       const script = parse(command).at(-1);
       let actual =
@@ -92,7 +92,7 @@ describe("DaytonaSandboxProvider", () => {
               `node -e ${shellQuote(helper)}`,
             )
           : command;
-      if (actual.includes("RAKAZO_BROWSER_ARGS_STDIN")) {
+      if (actual.includes("NURLAI_BROWSER_ARGS_STDIN")) {
         const slot = actual.match(/slot="\$dir\/([^"/]+)"/)?.[1];
         if (!slot) throw new Error("Expected a fenced desktop command");
         await writeFile(
@@ -966,7 +966,7 @@ describe("DaytonaSandboxProvider", () => {
     const provider = new DaytonaSandboxProvider({}, fixture.client);
     const computer = await provider.provision({ botId: "bot-a", homePath: "/unused" }, context);
     await provider.prepare(computer, context);
-    // Stopped outside Rakazo, for example from the Daytona dashboard.
+    // Stopped outside Nurlai, for example from the Daytona dashboard.
     fixture.remote.state = "stopped";
     fixture.remote.desiredState = "stopped";
 

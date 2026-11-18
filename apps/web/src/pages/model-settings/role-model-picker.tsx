@@ -1,5 +1,5 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { modelCatalogSearchText, newestModelsFirst } from "@rakazo/core";
+import { modelCatalogSearchText, newestModelsFirst } from "@nurlai/core";
 import {
   Command,
   CommandEmpty,
@@ -12,7 +12,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import type { ReactElement } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { ModelCatalogEntry } from "../../lib/models/model-auth";

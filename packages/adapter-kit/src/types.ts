@@ -9,7 +9,7 @@ import type {
   PurchaseCardField,
   SandboxKind,
   VoiceAccountErrorCode,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 
 export interface AdapterContext {
   operationId: string;

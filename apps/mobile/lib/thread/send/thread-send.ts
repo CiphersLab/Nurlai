@@ -1,13 +1,13 @@
 import { useLingui } from "@lingui/react/macro";
-import type { LoginFieldInput, MessageReaction } from "@rakazo/contracts";
-import type { SlashActionId } from "@rakazo/core";
+import type { LoginFieldInput, MessageReaction } from "@nurlai/contracts";
+import type { SlashActionId } from "@nurlai/core";
 import {
   applyThreadSendReceipt,
   attachmentsForThread,
   newClientId,
   pageReply,
   resolveComposerSendPlan,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { useNavigation, useRouter } from "expo-router";
 import type { RefObject } from "react";
 import { useCallback, useEffect, useRef, useState } from "react";

@@ -1,9 +1,9 @@
-import type { SandboxProvider } from "@rakazo/adapter-kit";
-import type { Actor, MessageBlock } from "@rakazo/contracts";
-import { callClientNonce } from "@rakazo/core";
-import type * as MessageQuoteModule from "@rakazo/core/message-quote";
-import { flush } from "@rakazo/core/test-async";
-import type { PrismaClient } from "@rakazo/db";
+import type { SandboxProvider } from "@nurlai/adapter-kit";
+import type { Actor, MessageBlock } from "@nurlai/contracts";
+import { callClientNonce } from "@nurlai/core";
+import type * as MessageQuoteModule from "@nurlai/core/message-quote";
+import { flush } from "@nurlai/core/test-async";
+import type { PrismaClient } from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import { reactToThreadMessage } from "./thread-reactions.js";
 import { threadSnapshot } from "./thread-snapshot.js";
@@ -20,7 +20,7 @@ import {
 
 // Passthrough mock: every hint derives for real except the sentinel that
 // exercises the "derivation must never cost the send" path.
-vi.mock("@rakazo/core/message-quote", async (importOriginal) => {
+vi.mock("@nurlai/core/message-quote", async (importOriginal) => {
   const actual = await importOriginal<typeof MessageQuoteModule>();
   return {
     ...actual,

@@ -1,10 +1,10 @@
-import type { KeyProvider } from "@rakazo/adapter-kit";
+import type { KeyProvider } from "@nurlai/adapter-kit";
 import {
   LocalKeyProvider,
   lazyKeyProvider,
   masterKeysFromEnv,
   withLocalMasterKeys,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import {
   AwsKmsKeyProvider,
   awsKmsConfigFromEnv,

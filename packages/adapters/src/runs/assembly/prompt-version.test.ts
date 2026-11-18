@@ -3,7 +3,7 @@ import { mkdtempSync, readFileSync, realpathSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { PROMPT_SOURCE_GLOBS, promptSourceVersion } from "@rakazo/core/node/prompt-source-version";
+import { PROMPT_SOURCE_GLOBS, promptSourceVersion } from "@nurlai/core/node/prompt-source-version";
 import { describe, expect, it } from "vitest";
 import { promptVersion, promptVersionOf, promptVersionParts } from "./prompt-version.js";
 

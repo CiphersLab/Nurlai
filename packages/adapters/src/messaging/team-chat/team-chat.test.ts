@@ -1,15 +1,15 @@
-import type { BackgroundJob, JobTransaction } from "@rakazo/adapter-kit";
+import type { BackgroundJob, JobTransaction } from "@nurlai/adapter-kit";
 import {
   messagingReplyJob,
   messagingReplyJobKey,
   teamChatAmbientJob,
   teamChatEngageJob,
   teamChatEngageJobKey,
-} from "@rakazo/adapter-kit";
-import type { MessageBlock } from "@rakazo/contracts";
-import { teamChatAmbientPrompt, teamChatPrompt } from "@rakazo/core";
-import type { Prisma, PrismaClient, SendUserMessageInput, SendUserMessageResult } from "@rakazo/db";
-import { SendClaimLostError, SpaceDeletionInProgressError } from "@rakazo/db";
+} from "@nurlai/adapter-kit";
+import type { MessageBlock } from "@nurlai/contracts";
+import { teamChatAmbientPrompt, teamChatPrompt } from "@nurlai/core";
+import type { Prisma, PrismaClient, SendUserMessageInput, SendUserMessageResult } from "@nurlai/db";
+import { SendClaimLostError, SpaceDeletionInProgressError } from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import {
   inboundDeliveryClientNonce,

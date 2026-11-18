@@ -1,6 +1,6 @@
-import type { AdapterContext } from "@rakazo/adapter-kit";
-import { expectLinearTime } from "@rakazo/contracts/test-timing";
-import { deferred } from "@rakazo/core/test-async";
+import type { AdapterContext } from "@nurlai/adapter-kit";
+import { expectLinearTime } from "@nurlai/contracts/test-timing";
+import { deferred } from "@nurlai/core/test-async";
 import { describe, expect, it } from "vitest";
 import {
   clampMaxChars,

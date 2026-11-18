@@ -7,12 +7,12 @@ import {
   SandboxUnavailableError,
   SandboxUnresponsiveError,
   VoiceAccountError,
-} from "@rakazo/adapter-kit";
-import { ThreadMessagePageSchema } from "@rakazo/contracts";
-import { ClientError, MODEL_IMAGE_INPUT_ERROR } from "@rakazo/core";
-import { IsolationError, SpaceDeletionInProgressError } from "@rakazo/db";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
-import { markExpectedFailure, requestLogging } from "@rakazo/logging/hono";
+} from "@nurlai/adapter-kit";
+import { ThreadMessagePageSchema } from "@nurlai/contracts";
+import { ClientError, MODEL_IMAGE_INPUT_ERROR } from "@nurlai/core";
+import { IsolationError, SpaceDeletionInProgressError } from "@nurlai/db";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
+import { markExpectedFailure, requestLogging } from "@nurlai/logging/hono";
 import { Hono } from "hono";
 import { afterEach, describe, expect, it } from "vitest";
 import { handleRpcError, logUnexpectedRpcError } from "./rpc-errors.js";

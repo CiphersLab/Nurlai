@@ -13,11 +13,11 @@ compose=(docker compose -f "$ROOT/infra/compose/docker-compose.yml")
 # from the environment, so its absence is not an error).
 if [[ -f "$ROOT/.env" ]]; then compose=(docker compose --env-file "$ROOT/.env" -f "$ROOT/infra/compose/docker-compose.yml"); fi
 [[ ! -L "$ROOT/backups" && ! -L "$OUT" ]] || { echo "backup directory must not be a symlink" >&2; exit 1; }
-SKIP_HOMES="${RAKAZO_BACKUP_SKIP_HOMES:-0}"
+SKIP_HOMES="${NURLAI_BACKUP_SKIP_HOMES:-0}"
 if [[ "$SKIP_HOMES" != "1" ]]; then
   # An empty archive here would silently lose every attachment and bot home on restore.
   [[ -e "$ROOT/data" || -L "$ROOT/data" ]] || {
-    echo "data/ not found; set RAKAZO_BACKUP_SKIP_HOMES=1 to back up only the database" >&2
+    echo "data/ not found; set NURLAI_BACKUP_SKIP_HOMES=1 to back up only the database" >&2
     exit 1
   }
   [[ ! -L "$ROOT/data" && -d "$ROOT/data" ]] || { echo "data must be a directory, not a symlink" >&2; exit 1; }

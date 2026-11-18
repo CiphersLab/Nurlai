@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import type { MessageBlock } from "@rakazo/contracts";
+import type { MessageBlock } from "@nurlai/contracts";
 import { useState } from "react";
 import { Alert, Text, View } from "react-native";
 import { errorText } from "../../lib/api/user-error";

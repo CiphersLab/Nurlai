@@ -1,13 +1,13 @@
 import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
-import { ChatMarkdown } from "@rakazo/chat-ui/web";
-import type { ComputerReleaseReason, MessageBlock } from "@rakazo/contracts";
+import { ChatMarkdown } from "@nurlai/chat-ui/web";
+import type { ComputerReleaseReason, MessageBlock } from "@nurlai/contracts";
 import {
   TAKEOVER_COMPUTER_DONE_STATE,
   TAKEOVER_COMPUTER_PENDING_STATE,
   TAKEOVER_COMPUTER_SKIPPED_STATE,
-} from "@rakazo/core";
-import { Button } from "@rakazo/ui-web";
+} from "@nurlai/core";
+import { Button } from "@nurlai/ui-web";
 import { useQuery } from "@tanstack/react-query";
 import { Laptop, Monitor } from "lucide-react";
 import type { ReactNode } from "react";

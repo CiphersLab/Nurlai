@@ -1,11 +1,11 @@
-import type { AgentRunRequest, AgentSteeringMessage } from "@rakazo/adapter-kit";
-import type { MessageBlock } from "@rakazo/contracts";
+import type { AgentRunRequest, AgentSteeringMessage } from "@nurlai/adapter-kit";
+import type { MessageBlock } from "@nurlai/contracts";
 import {
   ATTACHMENT_MAX_BYTES,
   isAttachmentImageMimeType,
   storedImageMimeType,
-} from "@rakazo/contracts";
-import { blocksToAgentHistoryText } from "@rakazo/core";
+} from "@nurlai/contracts";
+import { blocksToAgentHistoryText } from "@nurlai/core";
 import { detectImageMimeType } from "../../media/image-mime-type.js";
 import { listCurrentTurnFiles } from "../../storage/thread-artifacts.js";
 import { currentTurnFilesInstruction } from "../../storage/thread-artifacts.prompt.js";

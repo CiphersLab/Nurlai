@@ -1,6 +1,6 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
-import type { SnoozePreset } from "@rakazo/core";
+import type { SnoozePreset } from "@nurlai/core";
 
 export type InboxChatKind = "bot" | "group";
 export type InboxRowAction = "read" | "unread" | "archive" | "pin" | "unpin" | "delete";

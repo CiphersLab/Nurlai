@@ -1,5 +1,5 @@
 import { CommandExitError, InstaboxError, InstaboxQuotaError } from "@insforge/instabox-sdk";
-import type { UnreferencedMachineRecords } from "@rakazo/adapter-kit";
+import type { UnreferencedMachineRecords } from "@nurlai/adapter-kit";
 import { parse } from "shell-quote";
 import {
   desktopCommandResponder,

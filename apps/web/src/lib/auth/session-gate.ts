@@ -1,4 +1,4 @@
-import { jitterMs } from "@rakazo/core";
+import { jitterMs } from "@nurlai/core";
 
 export interface SessionGateInput {
   data: { user?: unknown } | null | undefined;

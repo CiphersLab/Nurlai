@@ -1,9 +1,9 @@
 import type { OAuthCredential } from "@earendil-works/pi-ai";
-import type { SecretStore } from "@rakazo/adapter-kit";
-import type { PlanLimits, PlanLimitWindow } from "@rakazo/contracts";
-import { readBoundedJsonResponse } from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
-import { bestEffort } from "@rakazo/logging";
+import type { SecretStore } from "@nurlai/adapter-kit";
+import type { PlanLimits, PlanLimitWindow } from "@nurlai/contracts";
+import { readBoundedJsonResponse } from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
+import { bestEffort } from "@nurlai/logging";
 import { parseModelSecret } from "../models/model-secret.js";
 import {
   ANTHROPIC_OAUTH_PROVIDER,

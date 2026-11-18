@@ -3,10 +3,10 @@ import type {
   ModelCredentialFailedState,
   ModelCredentialRetireReason,
   SecretStore,
-} from "@rakazo/adapter-kit";
-import type { Prisma, PrismaClient } from "@rakazo/db";
-import { retireModelCredential } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import type { Prisma, PrismaClient } from "@nurlai/db";
+import { retireModelCredential } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { advisoryLock } from "../locks/advisory-lock.js";
 import { REFRESH_REQUEST_TIMEOUT_MS, withRefreshLock } from "../locks/refresh-lock.js";
 import { toOAuthCredential } from "../runtime/pi/models/pi-credentials.js";

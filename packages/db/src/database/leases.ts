@@ -1,5 +1,5 @@
-import { abortableDelay, anySignal, requestDeadline, retry, withAbort } from "@rakazo/core";
-import { bestEffort, getLogger } from "@rakazo/logging";
+import { abortableDelay, anySignal, requestDeadline, retry, withAbort } from "@nurlai/core";
+import { bestEffort, getLogger } from "@nurlai/logging";
 import type { Prisma, PrismaClient } from "./client.js";
 
 type LeaseQueries = Pick<PrismaClient | Prisma.TransactionClient, "$queryRaw">;

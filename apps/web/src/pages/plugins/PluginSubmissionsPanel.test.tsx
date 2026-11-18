@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
-import type { PluginSubmission } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
+import type { PluginSubmission } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { ComponentProps, ReactNode } from "react";
 import { act } from "react";
@@ -44,7 +44,7 @@ vi.mock("@lingui/react/macro", () => ({
   }),
   Trans: ({ children }: { children: ReactNode }) => children,
 }));
-vi.mock("@rakazo/ui-web", () => {
+vi.mock("@nurlai/ui-web", () => {
   const Pass = ({ children }: { children?: ReactNode }) => <div>{children}</div>;
   return {
     Button: ({
@@ -161,13 +161,13 @@ it("shows the page a claim is for", async () => {
     );
   });
   await vi.waitFor(() => {
-    if (!container.querySelector('a[href="https://rakazo.com/integrations/notes/"]'))
+    if (!container.querySelector('a[href="https://nurlai.cipherslab.com/integrations/notes/"]'))
       throw new Error("Loading");
   });
   const row = container.querySelector('[data-testid="plugin-submission"]');
   const links = [...(row?.querySelectorAll("a") ?? [])].map((link) => link.getAttribute("href"));
   expect(links).toEqual([
-    "https://rakazo.com/integrations/notes/",
+    "https://nurlai.cipherslab.com/integrations/notes/",
     submission.website,
     "mailto:owner@notes.example.test",
   ]);

@@ -3,10 +3,10 @@ import type {
   BackgroundJobPayloads,
   CloudAgentProvider,
   CloudAgentSnapshot,
-} from "@rakazo/adapter-kit";
-import { CloudAgentRequestRejected, CloudAgentRetryLater } from "@rakazo/adapter-kit";
-import { cloudAgentHttpsUrl, deadlineSignal } from "@rakazo/core";
-import type { CloudAgent, HeldLease } from "@rakazo/db";
+} from "@nurlai/adapter-kit";
+import { CloudAgentRequestRejected, CloudAgentRetryLater } from "@nurlai/adapter-kit";
+import { cloudAgentHttpsUrl, deadlineSignal } from "@nurlai/core";
+import type { CloudAgent, HeldLease } from "@nurlai/db";
 import {
   appendEventInTransaction,
   assertLeaseHeld,
@@ -15,8 +15,8 @@ import {
   Prisma,
   THREAD_LOCK_TRANSACTION_OPTIONS,
   withLease,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { wakeRun } from "../runs/wakeups/wake-run.js";
 import { cloudAgentWakePrompt } from "../runs/wakeups/wakes.prompt.js";
 import type { CloudAgentDeps } from "./cloud-agent-service.js";

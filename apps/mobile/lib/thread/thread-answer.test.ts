@@ -1,5 +1,5 @@
-import type { LoginFieldInput } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
+import type { LoginFieldInput } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { hapticSuccess } from "../native/haptics";
 import type { ThreadAnswerContext } from "./thread-answer";

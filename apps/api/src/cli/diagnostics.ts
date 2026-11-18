@@ -2,10 +2,10 @@
 
 import { readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-import { contentKeyProviderFromEnv, unwrapEnvFromKeyManager } from "@rakazo/adapters";
-import type { PrismaClient } from "@rakazo/db";
-import { createDb, runAsSystem } from "@rakazo/db";
-import { bestEffort } from "@rakazo/logging";
+import { contentKeyProviderFromEnv, unwrapEnvFromKeyManager } from "@nurlai/adapters";
+import type { PrismaClient } from "@nurlai/db";
+import { createDb, runAsSystem } from "@nurlai/db";
+import { bestEffort } from "@nurlai/logging";
 import type { AppEnv } from "../env.js";
 import { loadEnv } from "../env.js";
 import type { DiagnosticsInput } from "../telemetry/diagnostics.js";

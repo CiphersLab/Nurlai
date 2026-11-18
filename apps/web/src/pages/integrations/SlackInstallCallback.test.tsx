@@ -12,7 +12,7 @@ vi.mock("../../components/PageLoading", () => ({ PageLoading: () => <div>Loading
 vi.mock("@lingui/react/macro", () => ({
   Trans: ({ children }: { children: ReactNode }) => children,
 }));
-vi.mock("@rakazo/ui-web", () => ({
+vi.mock("@nurlai/ui-web", () => ({
   Button: (props: ComponentProps<"button">) => <button type="button" {...props} />,
 }));
 

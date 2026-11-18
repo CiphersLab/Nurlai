@@ -1,7 +1,7 @@
 import { PrismaPg } from "@prisma/adapter-pg";
-import type { KeyProvider } from "@rakazo/adapter-kit";
-import { resolveContentEncryption } from "@rakazo/core/node/secrets-guard";
-import { bestEffort, getLogger } from "@rakazo/logging";
+import type { KeyProvider } from "@nurlai/adapter-kit";
+import { resolveContentEncryption } from "@nurlai/core/node/secrets-guard";
+import { bestEffort, getLogger } from "@nurlai/logging";
 import type { PoolClient } from "pg";
 import { Pool } from "pg";
 import { withContentEncryption } from "../encryption/content-encryption.js";
@@ -92,7 +92,7 @@ export function createDb(
   // master keys held on this host.
   if (!options.keyProvider && (process.env.MASTER_KEY_PROVIDER?.trim() || "local") !== "local")
     throw new Error(
-      "MASTER_KEY_PROVIDER needs createDb(url, { keyProvider }) from @rakazo/adapters",
+      "MASTER_KEY_PROVIDER needs createDb(url, { keyProvider }) from @nurlai/adapters",
     );
   const pool = createPool(connectionString, options);
   const keyPool = new Pool({

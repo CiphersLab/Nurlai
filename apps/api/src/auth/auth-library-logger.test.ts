@@ -1,5 +1,5 @@
-import type { TestSink } from "@rakazo/logging";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+import type { TestSink } from "@nurlai/logging";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { afterEach, beforeEach, expect, it } from "vitest";
 import { authLibraryLogger, withAuthLibraryFailures } from "../app.js";
 

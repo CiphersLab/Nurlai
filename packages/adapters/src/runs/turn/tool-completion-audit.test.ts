@@ -1,4 +1,4 @@
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { afterEach, describe, expect, it } from "vitest";
 import { logLoopGuardStop, logToolRefusal } from "./tool-completion-audit.js";
 import { refusal } from "./tool-refusal.js";

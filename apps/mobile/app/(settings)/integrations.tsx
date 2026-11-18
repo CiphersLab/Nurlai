@@ -8,9 +8,9 @@ import type {
   McpServerConnection,
   McpSourcePreset,
   PluginMarketplaceEntry,
-} from "@rakazo/contracts";
-import { mcpServerConnection, mcpServerNeedsSignIn, SUBMIT_PLUGIN_URL } from "@rakazo/contracts";
-import type { PluginCategory } from "@rakazo/core";
+} from "@nurlai/contracts";
+import { mcpServerConnection, mcpServerNeedsSignIn, SUBMIT_PLUGIN_URL } from "@nurlai/contracts";
+import type { PluginCategory } from "@nurlai/core";
 import {
   buildFeaturedConnectorTiles,
   CONNECTION_CATALOG_PAGE_SIZE,
@@ -23,7 +23,7 @@ import {
   isCatalogItemConnected,
   matchesWordPrefixes,
   OTHER_PLUGINS,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import type { NativeStackNavigationOptions } from "expo-router";
 import { useFocusEffect, useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";

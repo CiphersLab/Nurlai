@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { Bot, Group, ThreadSnapshot } from "@rakazo/contracts";
-import { Button } from "@rakazo/ui-web";
+import type { Bot, Group, ThreadSnapshot } from "@nurlai/contracts";
+import { Button } from "@nurlai/ui-web";
 import { X } from "lucide-react";
 import type { ComponentProps, Dispatch, ReactNode, SetStateAction } from "react";
 import { PagesList } from "../../components/pages/PagesList";

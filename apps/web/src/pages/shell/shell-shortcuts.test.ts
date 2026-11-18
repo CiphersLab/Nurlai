@@ -2,7 +2,7 @@
 import { act, createElement } from "react";
 import { createRoot } from "react-dom/client";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { RakazoDesktop } from "../../lib/platform/desktop";
+import type { NurlaiDesktop } from "../../lib/platform/desktop";
 import type { ShellShortcut, ShortcutHost } from "./shell-shortcuts";
 import {
   cycleBotId,
@@ -293,7 +293,7 @@ describe("useShellShortcuts", () => {
   });
   afterEach(() => {
     vi.unstubAllGlobals();
-    delete window.rakazoDesktop;
+    delete window.nurlaiDesktop;
   });
 
   async function mount(run: (shortcut: ShellShortcut) => boolean, onTyping = () => {}) {
@@ -338,7 +338,7 @@ describe("useShellShortcuts", () => {
   it("runs known desktop menu commands and ignores the rest", async () => {
     let send: ((command: string) => void) | undefined;
     const stop = vi.fn();
-    window.rakazoDesktop = {
+    window.nurlaiDesktop = {
       platform: "linux",
       menu: {
         onCommand: (listener: (command: string) => void) => {
@@ -346,7 +346,7 @@ describe("useShellShortcuts", () => {
           return stop;
         },
       },
-    } as unknown as RakazoDesktop;
+    } as unknown as NurlaiDesktop;
     const run = vi.fn(() => true);
     const unmount = await mount(run);
     send?.("search");

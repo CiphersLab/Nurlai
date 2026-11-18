@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { ComponentProps, ReactElement, ReactNode } from "react";
 import { act } from "react";
@@ -42,7 +42,7 @@ vi.mock("@lingui/react/macro", () => {
   return { useLingui: () => ({ t }), Trans: ({ children }: { children: ReactNode }) => children };
 });
 // Menus and popovers render open and inline, so a test clicks straight through them.
-vi.mock("@rakazo/ui-web", async () => {
+vi.mock("@nurlai/ui-web", async () => {
   const { createContext, useContext } = await import("react");
   const Group = createContext<{ value: string[]; onValueChange: (value: string[]) => void }>({
     value: [],

@@ -2,9 +2,9 @@ import { execSync } from "node:child_process";
 import { globSync } from "node:fs";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
-import type { createApp } from "@rakazo/api/app";
-import { loadRootEnv } from "@rakazo/core/node/load-root-env";
-import type { runAsSystem as RunAsSystem } from "@rakazo/db";
+import type { createApp } from "@nurlai/api/app";
+import { loadRootEnv } from "@nurlai/core/node/load-root-env";
+import type { runAsSystem as RunAsSystem } from "@nurlai/db";
 import { createModelConnectionFixtureFetch } from "../model-connection-fixture.js";
 import { pinLocalSecretStore } from "../pin-secret-store.js";
 import { PluginMarketplaceFixture } from "../plugin-marketplace-fixture.js";
@@ -72,7 +72,7 @@ async function main() {
     // Test code that seeds or inspects rows directly connects as the owner.
     const migrationUrl = container.getConnectionUri();
     const runtimeUrl = new URL(migrationUrl);
-    runtimeUrl.username = "rakazo_app";
+    runtimeUrl.username = "nurlai_app";
     runtimeUrl.password = "rakazo-test-runtime";
     const databaseUrl = runtimeUrl.toString();
     const apiPort = Number(process.env.API_PORT ?? 3110);
@@ -86,14 +86,14 @@ async function main() {
     process.env.WAKEUP_DRIVER = "memory";
     process.env.SANDBOX_PROVIDER = sandboxProvider;
     process.env.AGENT_RUNTIME = agentRuntime;
-    process.env.RAKAZO_LIVE_MODEL_CATALOG = "off";
+    process.env.NURLAI_LIVE_MODEL_CATALOG = "off";
     if (!integration) {
       process.env.PHONE_CALLS_ENABLED = "true";
       process.env.INBOUND_EMAIL_DOMAIN = "bots.rakazo.test";
       process.env.INBOUND_EMAIL_SECRET = "test-inbound-email-secret-test-32chars";
       // The offline wallet, so Settings shows Wallet and sign-in completes without a provider.
       process.env.PAYMENT_WALLET_PROVIDER = "emulator";
-      process.env.RAKAZO_NAV_LINKS = JSON.stringify([
+      process.env.NURLAI_NAV_LINKS = JSON.stringify([
         { id: "clients", label: "Clients", path: "/ext/clients/" },
       ]);
     }
@@ -124,7 +124,7 @@ async function main() {
     }
     process.env.CI = "1";
 
-    execSync("pnpm --filter @rakazo/db generate", { stdio: "inherit", env: process.env });
+    execSync("pnpm --filter @nurlai/db generate", { stdio: "inherit", env: process.env });
     execSync("pnpm db:migrate", { stdio: "inherit", env: process.env });
 
     if (integration) {
@@ -180,9 +180,9 @@ async function main() {
       { createApp },
       { drainUnscopedDatabaseAccess, runAsSystem },
     ] = await Promise.all([
-      import("@rakazo/adapters"),
-      import("@rakazo/api/app"),
-      import("@rakazo/db"),
+      import("@nurlai/adapters"),
+      import("@nurlai/api/app"),
+      import("@nurlai/db"),
     ]);
     const { serve } = await import("@hono/node-server");
     const thirdParties = new ThirdPartyConnectorEmulator();
@@ -251,7 +251,7 @@ async function main() {
           "pnpm",
           [
             "--filter",
-            "@rakazo/web",
+            "@nurlai/web",
             "exec",
             "playwright",
             "test",

@@ -5,13 +5,13 @@ import type {
   AuditEventMetadata,
   AuditEventPage,
   AuditOutcome,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   AuditActorTypeSchema,
   AuditEventMetadataSchema,
   AuditOutcomeSchema,
-} from "@rakazo/contracts";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/contracts";
+import { getLogger } from "@nurlai/logging";
 import { GUEST_ROLE, ownedOrganizationId } from "../billing/billing.js";
 import type { Prisma, PrismaClient } from "../database/client.js";
 import { parsePositiveInteger } from "../database/client.js";

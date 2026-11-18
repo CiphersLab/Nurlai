@@ -1,6 +1,6 @@
 import type { EventEmitter } from "node:events";
 import { once } from "node:events";
-import { bestEffort } from "@rakazo/logging";
+import { bestEffort } from "@nurlai/logging";
 import type { ScreenPermissionApi } from "./host-screen.js";
 
 type SetupAction = "settings" | "restart" | "later";

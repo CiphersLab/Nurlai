@@ -10,7 +10,7 @@ const APP_FILES = [
   "VoiceMessageRecorder.swift",
   "VoiceMessageActivity.swift",
 ];
-const WIDGET_TARGET = "RakazoWidgets";
+const WIDGET_TARGET = "NurlaiWidgets";
 const NOTIFICATIONS = path.join(__dirname, "..", "modules", "rakazo-notifications", "ios");
 const WIDGET_FILES = [
   "RakazoWidgets.swift",
@@ -31,7 +31,7 @@ const WIDGET_FILES = [
 function withAppIntents(config) {
   config = withInfoPlist(config, (config) => {
     const plist = config.modResults;
-    plist.RakazoDefaultApiBase = process.env.EXPO_PUBLIC_API_URL ?? "http://127.0.0.1:3100";
+    plist.NurlaiDefaultApiBase = process.env.EXPO_PUBLIC_API_URL ?? "http://127.0.0.1:3100";
     plist.NSSupportsLiveActivities = true;
     // Keeps the microphone, and so the app, running while a recorded message sends.
     plist.UIBackgroundModes = [...new Set([...(plist.UIBackgroundModes ?? []), "audio"])];

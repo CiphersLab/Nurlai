@@ -13,7 +13,7 @@ import { anthropicMessagesApi } from "@earendil-works/pi-ai/api/anthropic-messag
 import { openAICompletionsApi } from "@earendil-works/pi-ai/api/openai-completions.lazy";
 import { openAIResponsesApi } from "@earendil-works/pi-ai/api/openai-responses.lazy";
 import { builtinModels } from "@earendil-works/pi-ai/providers/all";
-import type { ModelApiProtocol } from "@rakazo/contracts";
+import type { ModelApiProtocol } from "@nurlai/contracts";
 import {
   ConnectionSetupError,
   DEFAULT_MODEL_CONTEXT_WINDOW,
@@ -24,7 +24,7 @@ import {
   isNonPublicAddress,
   MODEL_KEY_REJECTED_ERROR,
   parseModelHeaders,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import type { Dispatcher } from "undici";
 import { Agent } from "undici";
 import type { OpenAiCompatibleUrlPolicy } from "../../../models/endpoints/openai-compatible-url.js";
@@ -58,7 +58,7 @@ export { OPENAI_COMPATIBLE_PROVIDER_ID };
 export const OPENAI_COMPATIBLE_CATALOG_MODEL_ID = "custom";
 
 /** Model ids this endpoint serves with vision, declared by the operator. */
-export const OPENAI_COMPATIBLE_VISION_MODELS_ENV = "RAKAZO_OPENAI_COMPATIBLE_VISION_MODELS";
+export const OPENAI_COMPATIBLE_VISION_MODELS_ENV = "NURLAI_OPENAI_COMPATIBLE_VISION_MODELS";
 
 export function openAiCompatibleVisionModelIds(): ReadonlySet<string> {
   return declaredVisionModelIds(OPENAI_COMPATIBLE_VISION_MODELS_ENV);

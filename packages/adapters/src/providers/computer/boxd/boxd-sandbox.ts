@@ -18,15 +18,15 @@ import type {
   UnreferencedMachine,
   UnreferencedMachineRecords,
   WorkspaceExportLimits,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import {
   SandboxFileTooLargeError,
   SandboxRateLimitError,
   SandboxUnavailableError,
   WorkspaceTooLargeError,
-} from "@rakazo/adapter-kit";
-import { withAbort } from "@rakazo/core";
-import { boundedSandboxCommandTimeoutMs } from "@rakazo/core/node/sandbox-command";
+} from "@nurlai/adapter-kit";
+import { withAbort } from "@nurlai/core";
+import { boundedSandboxCommandTimeoutMs } from "@nurlai/core/node/sandbox-command";
 import {
   BASE_SNAPSHOT_BUILD_TIMEOUT_MS,
   BaseSnapshotCache,
@@ -203,7 +203,7 @@ export class BoxdSandboxProvider implements SandboxProvider {
       ...(this.org ? { org: this.org } : {}),
       // Bots run untrusted code: no boxd credentials inside, and no route to other machines.
       isolated: true,
-      // Rakazo's idle sleep stops the computer; boxd's own counts only network traffic and would
+      // Nurlai's idle sleep stops the computer; boxd's own counts only network traffic and would
       // freeze a long command that prints nothing.
       config: { autoSuspendTimeout: 0 },
     };

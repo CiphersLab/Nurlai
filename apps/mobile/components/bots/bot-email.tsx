@@ -1,9 +1,9 @@
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import { useTimeout } from "@rakazo/chat-ui/hooks";
-import type { BotEmailAddress } from "@rakazo/contracts";
-import { parseBotEmailName, suggestedEmailName } from "@rakazo/contracts";
-import { writeSaved } from "@rakazo/core/query";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
+import type { BotEmailAddress } from "@nurlai/contracts";
+import { parseBotEmailName, suggestedEmailName } from "@nurlai/contracts";
+import { writeSaved } from "@nurlai/core/query";
 import * as Clipboard from "expo-clipboard";
 import type { ReactElement } from "react";
 import { useEffect, useState } from "react";

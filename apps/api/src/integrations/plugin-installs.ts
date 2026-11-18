@@ -1,17 +1,17 @@
 import { createHash } from "node:crypto";
 import { ORPCError } from "@orpc/server";
-import type { SecretStore } from "@rakazo/adapter-kit";
-import type { PluginMcpServerEntry, PluginRepoFetcher } from "@rakazo/adapters";
+import type { SecretStore } from "@nurlai/adapter-kit";
+import type { PluginMcpServerEntry, PluginRepoFetcher } from "@nurlai/adapters";
 import {
   buildMcpCredentialBlob,
   isPluginLoadFault,
   persistPreparedSecret,
   pluginPreviewDto,
   previewPluginInstall,
-} from "@rakazo/adapters";
-import type { Actor, CapabilityInstall, PluginPart } from "@rakazo/contracts";
-import { ClientError, installedPluginParts } from "@rakazo/core";
-import type { Prisma, PrismaClient } from "@rakazo/db";
+} from "@nurlai/adapters";
+import type { Actor, CapabilityInstall, PluginPart } from "@nurlai/contracts";
+import { ClientError, installedPluginParts } from "@nurlai/core";
+import type { Prisma, PrismaClient } from "@nurlai/db";
 import {
   AVAILABILITY_SELECT,
   availableInSpace,
@@ -20,8 +20,8 @@ import {
   readJsonColumn,
   runAsSystemInTransaction,
   spaceAvailability,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { assertNameFreeWhereAvailable, lockOwner, NameTakenError } from "../spaces/name-claims.js";
 
 export type PluginInstallDeps = {

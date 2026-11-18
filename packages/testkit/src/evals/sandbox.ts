@@ -4,8 +4,8 @@ import type {
   CommandRequest,
   ComputerRef,
   ProcessEvent,
-} from "@rakazo/adapter-kit";
-import { computerObservation, FakeSandboxProvider } from "@rakazo/adapters";
+} from "@nurlai/adapter-kit";
+import { computerObservation, FakeSandboxProvider } from "@nurlai/adapters";
 import type { ComputerScript } from "./scripted-shell.js";
 import { scriptedShell } from "./scripted-shell.js";
 

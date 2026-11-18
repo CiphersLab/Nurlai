@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/react/macro";
-import { Button, Field, FieldLabel, Input } from "@rakazo/ui-web";
+import { Button, Field, FieldLabel, Input } from "@nurlai/ui-web";
 import type { PluginSelection } from "../../components/integrations/plugin-marketplace";
 import { ViewTitle } from "./parts";
 

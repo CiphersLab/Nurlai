@@ -1,4 +1,4 @@
-package com.rakazo.notifications
+package com.nurlai.notifications
 
 import android.app.ActivityManager
 import android.app.Notification
@@ -60,7 +60,7 @@ internal object SenderPush {
       disposition(
         data,
         { NotificationStorage(context).token.isNotBlank() },
-        { RakazoNotificationService.isOpenThread(data.optString("botId"), data.optString("threadId")) },
+        { NurlaiNotificationService.isOpenThread(data.optString("botId"), data.optString("threadId")) },
         { foreground },
       )
     ) {
@@ -70,7 +70,7 @@ internal object SenderPush {
         runCatching {
             post(context, data, data.optString("notificationTitle"), data.optString("botId"), data.optString("threadId"), foreground)
           }
-          .onFailure { Log.w("RakazoSenderPush", "Could not post push", it) }
+          .onFailure { Log.w("NurlaiSenderPush", "Could not post push", it) }
           .isSuccess
     }
   }
@@ -90,7 +90,7 @@ internal object SenderPush {
       data.optString("kind") in setOf("help", "takeover", "failure") -> Channels.ATTENTION
       else -> Channels.MESSAGES
     }
-    createRakazoChannels(context)
+    createNurlaiChannels(context)
     @Suppress("DEPRECATION")
     val builder = (if (Build.VERSION.SDK_INT >= 26) Notification.Builder(context, channel) else Notification.Builder(context))
       .setSmallIcon(R.drawable.ic_rakazo_notification)
@@ -112,11 +112,11 @@ internal object SenderPush {
       .addExtras(Bundle().apply {
         putString("rakazo.botId", botId)
         putString("rakazo.threadId", threadId)
-        data.optString("runId").takeIf(String::isNotBlank)?.let { putString(RakazoNotificationService.EXTRA_RUN_ID, it) }
+        data.optString("runId").takeIf(String::isNotBlank)?.let { putString(NurlaiNotificationService.EXTRA_RUN_ID, it) }
         data.optString("groupId").takeIf(String::isNotBlank)?.let { putString("rakazo.groupId", it) }
       })
     runCatching { addSender(context, builder, data, title, body) }
-      .onFailure { Log.w("RakazoSenderPush", "Posting without the sender", it) }
+      .onFailure { Log.w("NurlaiSenderPush", "Posting without the sender", it) }
     context.getSystemService(NotificationManager::class.java).notify(notificationId(threadId), builder.build())
   }
 

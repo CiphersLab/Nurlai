@@ -10,17 +10,17 @@ import type {
   PaymentWalletProvider,
   SandboxProvider,
   SecretStore,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import {
   memoryRetainTurnJob,
   memoryRetainTurnRecoveryJobKey,
   SandboxRateLimitError,
   SandboxUnavailableError,
   SandboxUnresponsiveError,
-} from "@rakazo/adapter-kit";
-import type { PrismaClient, ThreadEvents } from "@rakazo/db";
-import { runAsSystem, runAsTenant } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import type { PrismaClient, ThreadEvents } from "@nurlai/db";
+import { runAsSystem, runAsTenant } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { expireTaughtSkillTeaching } from "../../bots/teaching-session.js";
 import { settleCallRequest } from "../../calls/call-request.js";
 import type {

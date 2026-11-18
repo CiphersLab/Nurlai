@@ -1,13 +1,13 @@
 import { createHash } from "node:crypto";
 import { ORPCError } from "@orpc/server";
-import type { SecretStore } from "@rakazo/adapter-kit";
-import type { AgentImportSettings, ImportedMcpServer } from "@rakazo/adapters";
+import type { SecretStore } from "@nurlai/adapter-kit";
+import type { AgentImportSettings, ImportedMcpServer } from "@nurlai/adapters";
 import {
   BUILTIN_AGENT_SKILLS,
   isCatalogModelChoice,
   readAgentImportSettings,
   readGrokBotImportSettings,
-} from "@rakazo/adapters";
+} from "@nurlai/adapters";
 import type {
   Actor,
   AgentImportCreateInput,
@@ -24,14 +24,14 @@ import type {
   CreateRoutineInput as CreateRoutineInputType,
   McpServerConfigInput,
   MessageBlock,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   BOT_INSTRUCTIONS_MAX_LENGTH,
   CreateRoutineInput,
   isValidTimeZone,
   MEMORY_INDEX_PATH,
-} from "@rakazo/contracts";
-import type { RoutineTriggersAvailable, SkillFiles } from "@rakazo/core";
+} from "@nurlai/contracts";
+import type { RoutineTriggersAvailable, SkillFiles } from "@nurlai/core";
 import {
   combineImportedInstructions,
   messagingProviderName,
@@ -40,8 +40,8 @@ import {
   readGrokBotExportJson,
   renameRoutineSkillMentions,
   resolveAgentImportNames,
-} from "@rakazo/core";
-import type { McpServer as McpServerRow, Prisma, PrismaClient, Routine } from "@rakazo/db";
+} from "@nurlai/core";
+import type { McpServer as McpServerRow, Prisma, PrismaClient, Routine } from "@nurlai/db";
 import {
   appendEventInTransaction,
   availableInSpace,
@@ -50,8 +50,8 @@ import {
   JsonColumnMismatchError,
   readJsonColumn,
   reportJsonColumnOnce,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { z } from "zod";
 
 type Reader = Pick<Prisma.TransactionClient, "memoryDocument" | "agentSkill" | "mcpServer">;

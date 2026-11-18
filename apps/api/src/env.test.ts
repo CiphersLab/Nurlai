@@ -63,12 +63,12 @@ describe("loadEnv", () => {
     expect(
       loadEnv({
         ...base,
-        RAKAZO_NAV_LINKS: '[{"id":"clients","label":"Clients","path":"/ext/clients/"}]',
+        NURLAI_NAV_LINKS: '[{"id":"clients","label":"Clients","path":"/ext/clients/"}]',
       }).navLinks,
     ).toEqual([{ id: "clients", label: "Clients", path: "/ext/clients/", trusted: false }]);
     expect(() =>
-      loadEnv({ ...base, RAKAZO_NAV_LINKS: '[{"id":"x","label":"X","path":"/api/me"}]' }),
-    ).toThrow("RAKAZO_NAV_LINKS");
+      loadEnv({ ...base, NURLAI_NAV_LINKS: '[{"id":"x","label":"X","path":"/api/me"}]' }),
+    ).toThrow("NURLAI_NAV_LINKS");
   });
   it("keeps Crisp chat off unless a valid website ID is set", () => {
     expect(loadEnv(base).crispWebsiteId).toBeNull();
@@ -251,16 +251,16 @@ describe("loadEnv", () => {
   it("exposes a deployed git revision when GIT_SHA is set", () => {
     expect(loadEnv(base).gitSha).toBeUndefined();
     expect(loadEnv({ ...base, GIT_SHA: "  3c6e209  " }).gitSha).toBe("3c6e209");
-    expect(loadEnv({ ...base, RAKAZO_GIT_SHA: "abc1234" }).gitSha).toBe("abc1234");
+    expect(loadEnv({ ...base, NURLAI_GIT_SHA: "abc1234" }).gitSha).toBe("abc1234");
   });
 
   it("loads per-client minimum builds and refuses a malformed one", () => {
     expect(loadEnv(base).minimumClientBuilds).toEqual({});
     expect(
-      loadEnv({ ...base, RAKAZO_MIN_CLIENT_BUILD: "web=20261022093015" }).minimumClientBuilds,
+      loadEnv({ ...base, NURLAI_MIN_CLIENT_BUILD: "web=20261022093015" }).minimumClientBuilds,
     ).toEqual({ web: "20261022093015" });
-    expect(() => loadEnv({ ...base, RAKAZO_MIN_CLIENT_BUILD: "latest" })).toThrow(
-      /RAKAZO_MIN_CLIENT_BUILD/,
+    expect(() => loadEnv({ ...base, NURLAI_MIN_CLIENT_BUILD: "latest" })).toThrow(
+      /NURLAI_MIN_CLIENT_BUILD/,
     );
   });
 
@@ -276,12 +276,12 @@ describe("loadEnv", () => {
       loadEnv({
         ...base,
         SMTP_URL: " smtps://user:secret@smtp.example.test:465 ",
-        EMAIL_FROM: " Rakazo <no-reply@example.test> ",
+        EMAIL_FROM: " Nurlai <no-reply@example.test> ",
         EMAIL_EMULATOR: "true",
       }),
     ).toMatchObject({
       smtpUrl: "smtps://user:secret@smtp.example.test:465",
-      emailFrom: "Rakazo <no-reply@example.test>",
+      emailFrom: "Nurlai <no-reply@example.test>",
       emailEmulator: true,
     });
     expect(
@@ -520,7 +520,7 @@ describe("directory provisioning environment", () => {
   );
 });
 
-describe("RAKAZO_EXTRA_AUTH_ORIGINS", () => {
+describe("NURLAI_EXTRA_AUTH_ORIGINS", () => {
   it("is empty when unset or blank", () => {
     expect(loadEnv(base).extraAuthOrigins).toEqual([]);
     expect(parseExtraAuthOrigins(" , ")).toEqual([]);

@@ -1,6 +1,6 @@
 import { t } from "@lingui/core/macro";
-import type { AiRecipient, SettingsScope } from "@rakazo/contracts";
-import { ensureAiDataConsent } from "@rakazo/core";
+import type { AiRecipient, SettingsScope } from "@nurlai/contracts";
+import { ensureAiDataConsent } from "@nurlai/core";
 import { createSpaceRpc } from "../query/rpc";
 
 export type VoiceConsentRequest = {

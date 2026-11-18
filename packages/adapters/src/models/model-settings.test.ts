@@ -1,4 +1,4 @@
-import { credentialModelSettings, modelSettingsFields, modelSettingsRequest } from "@rakazo/core";
+import { credentialModelSettings, modelSettingsFields, modelSettingsRequest } from "@nurlai/core";
 import { describe, expect, it, vi } from "vitest";
 import { liveCatalogEntry } from "../runtime/pi/models/pi-live-catalog.js";
 import { resolveRuntimeModel } from "../runtime/pi/pi-runtime-models.js";
@@ -453,7 +453,7 @@ it("keeps legacy image settings aligned between runtime and the credential DTO",
 });
 
 it("preserves operator-enabled image input when saving a model's limits", () => {
-  vi.stubEnv("RAKAZO_OPENAI_COMPATIBLE_VISION_MODELS", "operator-vision-fixture");
+  vi.stubEnv("NURLAI_OPENAI_COMPATIBLE_VISION_MODELS", "operator-vision-fixture");
   try {
     const modelId = "operator-vision-fixture";
     const row = {

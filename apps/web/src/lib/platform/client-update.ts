@@ -3,8 +3,8 @@ import {
   CLIENT_UPDATE_REQUIRED_STATUS,
   compareBuilds,
   SERVER_BUILD_HEADER,
-} from "@rakazo/contracts";
-import { toast } from "@rakazo/ui-web";
+} from "@nurlai/contracts";
+import { toast } from "@nurlai/ui-web";
 import { getSnapshot as activeCall } from "../calls/call-session";
 import {
   composerHoldsUnsavedWork,

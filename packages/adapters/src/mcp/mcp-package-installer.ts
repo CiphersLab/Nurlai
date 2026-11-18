@@ -29,7 +29,7 @@ import {
 import { hostname, tmpdir } from "node:os";
 import { basename, join, resolve, sep } from "node:path";
 import { getDefaultEnvironment } from "@modelcontextprotocol/sdk/client/stdio.js";
-import { bestEffort } from "@rakazo/logging";
+import { bestEffort } from "@nurlai/logging";
 
 export const DEFAULT_MCP_INSTALL_TIMEOUT_MS = 180_000;
 const READY_MARKER = ".ready";
@@ -83,7 +83,7 @@ export function isNpxCommand(command: string): boolean {
   return /^npx(?:\.cmd|\.exe)?$/i.test(basename(command.trim()));
 }
 
-// Package managers and runners that fetch and run packages Rakazo can't vet. Whole commands,
+// Package managers and runners that fetch and run packages Nurlai can't vet. Whole commands,
 // not subcommands: global flags (`pnpm -C dir dlx`) and auto-installs (`bun run`, `uv run
 // --with`) make subcommand checks easy to slip past.
 const PACKAGE_RUNNER =

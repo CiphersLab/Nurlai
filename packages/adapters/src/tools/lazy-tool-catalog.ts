@@ -3,7 +3,7 @@ import type {
   ConnectorEvent,
   ConnectorRoute,
   ConnectorTool,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import { z } from "zod";
 import { catalogIdForRoute } from "../approvals/approval-effect.js";
 import type { CatalogNameGroup } from "./lazy-tool-catalog.tool-definition.js";

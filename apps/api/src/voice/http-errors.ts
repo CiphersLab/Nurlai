@@ -1,12 +1,12 @@
 import { ORPCError } from "@orpc/server";
-import { VoiceAccountError } from "@rakazo/adapter-kit";
-import { NoVoiceConfigured } from "@rakazo/adapters";
-import type { VoiceAccountErrorCode } from "@rakazo/contracts";
-import { ConnectionSetupError } from "@rakazo/contracts";
-import { ClientError } from "@rakazo/core";
-import { IsolationError } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
-import { markExpectedFailure } from "@rakazo/logging/hono";
+import { VoiceAccountError } from "@nurlai/adapter-kit";
+import { NoVoiceConfigured } from "@nurlai/adapters";
+import type { VoiceAccountErrorCode } from "@nurlai/contracts";
+import { ConnectionSetupError } from "@nurlai/contracts";
+import { ClientError } from "@nurlai/core";
+import { IsolationError } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
+import { markExpectedFailure } from "@nurlai/logging/hono";
 import type { Context } from "hono";
 import { clientErrorStatus } from "../client-error-status.js";
 

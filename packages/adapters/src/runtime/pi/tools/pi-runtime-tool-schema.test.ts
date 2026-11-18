@@ -5,7 +5,7 @@ import {
   TICKET_COMMENT_MAX_LENGTH,
   TICKET_DESCRIPTION_MAX_LENGTH,
   TICKET_TITLE_MAX_LENGTH,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import { describe, expect, it } from "vitest";
 import {
   SCRATCHPAD_NOTES_MAX_LENGTH,

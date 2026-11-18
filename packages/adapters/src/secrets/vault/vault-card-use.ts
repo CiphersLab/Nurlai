@@ -1,4 +1,4 @@
-import { BotSecretName, OneTimeCodeTarget } from "@rakazo/contracts";
+import { BotSecretName, OneTimeCodeTarget } from "@nurlai/contracts";
 import type { FleetCardSummary } from "../../approvals/approval-ask.js";
 import type { PurchaseApproval } from "../../payments/purchase-gate.js";
 import { purchaseCardSummary } from "../../payments/purchase-gate.js";

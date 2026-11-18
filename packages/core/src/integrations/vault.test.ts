@@ -1,10 +1,10 @@
-import type { BotSecretMetadata, LoginFieldInput, VaultPolicy } from "@rakazo/contracts";
+import type { BotSecretMetadata, LoginFieldInput, VaultPolicy } from "@nurlai/contracts";
 import {
   BLOCKED_ITEM_ANSWER,
   encodeLoginSecret,
   UNCHOSEN_ITEM_ANSWER,
   VAULT_ALSO_ON_LIMIT,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import { describe, expect, it } from "vitest";
 import type { VaultBots } from "./vault.js";
 import {

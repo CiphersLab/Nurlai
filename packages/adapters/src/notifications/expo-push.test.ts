@@ -1,7 +1,7 @@
-import type { BackgroundJob, JobPublisher } from "@rakazo/adapter-kit";
-import { ResponseTooLargeError } from "@rakazo/core";
-import { deferred } from "@rakazo/core/test-async";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+import type { BackgroundJob, JobPublisher } from "@nurlai/adapter-kit";
+import { ResponseTooLargeError } from "@nurlai/core";
+import { deferred } from "@nurlai/core/test-async";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { credentialDigest } from "../secrets/credential-digest.js";
 import type { ExpoPushTicket } from "./expo-push.js";

@@ -1,6 +1,6 @@
 import { t } from "@lingui/core/macro";
-import { truncateReplyQuote } from "@rakazo/contracts";
-import { typeScale } from "@rakazo/ui-tokens";
+import { truncateReplyQuote } from "@nurlai/contracts";
+import { typeScale } from "@nurlai/ui-tokens";
 import { useMemo, useState } from "react";
 import { Modal, Platform, ScrollView, TextInput, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";

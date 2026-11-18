@@ -1,4 +1,4 @@
-import { ClientError } from "@rakazo/core";
+import { ClientError } from "@nurlai/core";
 
 export class ModelCreditOfferingUnavailableError extends ClientError {
   constructor() {

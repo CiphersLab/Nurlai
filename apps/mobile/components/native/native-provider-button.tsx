@@ -1,4 +1,4 @@
-import type { SignInProvider } from "@rakazo/contracts";
+import type { SignInProvider } from "@nurlai/contracts";
 import type * as AppleAuthentication from "expo-apple-authentication";
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";

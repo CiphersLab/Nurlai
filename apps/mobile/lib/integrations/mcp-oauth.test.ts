@@ -1,4 +1,4 @@
-import { MOBILE_MCP_OAUTH_CALLBACK_URL } from "@rakazo/contracts";
+import { MOBILE_MCP_OAUTH_CALLBACK_URL } from "@nurlai/contracts";
 import { openAuthSessionAsync } from "expo-web-browser";
 import { beforeEach, expect, it, vi } from "vitest";
 import type { SaveSend } from "../query/query";

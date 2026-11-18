@@ -1,6 +1,6 @@
 import { Duplex, PassThrough, Readable, Writable } from "node:stream";
-import { resolveSupervisorToken } from "@rakazo/core/node/secrets-guard";
-import { deferred } from "@rakazo/core/test-async";
+import { resolveSupervisorToken } from "@nurlai/core/node/secrets-guard";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const mock = vi.hoisted(() => ({ exec: vi.fn(), inspect: vi.fn(), stdin: [] as string[] }));
@@ -58,10 +58,10 @@ async function snapshot(id: string, screen: string, lease: string, home = "home"
     headers: {
       authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
       "content-type": "application/json",
-      "x-rakazo-bot-id": home,
-      "x-rakazo-space-id": "space",
-      "x-rakazo-screen-id": screen,
-      "x-rakazo-screen-lease-id": lease,
+      "x-nurlai-bot-id": home,
+      "x-nurlai-space-id": "space",
+      "x-nurlai-screen-id": screen,
+      "x-nurlai-screen-lease-id": lease,
     },
     body: JSON.stringify({ command: "snapshot" }),
   });
@@ -77,11 +77,11 @@ it("resolves the owned display and refuses an older fence before running the hel
   expect(mock.exec.mock.calls.at(-1)?.[0]).toMatchObject({
     Env: [
       "DISPLAY=:2",
-      "RAKAZO_CDP_PORT=9223",
+      "NURLAI_CDP_PORT=9223",
       "HOME=/home/rakazo",
       "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
-      "RAKAZO_BROWSER_WATCH_STDIN=1",
-      "RAKAZO_BROWSER_ARGS_STDIN=1",
+      "NURLAI_BROWSER_WATCH_STDIN=1",
+      "NURLAI_BROWSER_ARGS_STDIN=1",
     ],
   });
   mock.exec.mockClear();
@@ -226,8 +226,8 @@ it("closes helper stdin when the request is cancelled", async () => {
     headers: {
       authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
       "content-type": "application/json",
-      "x-rakazo-bot-id": "home",
-      "x-rakazo-space-id": "space",
+      "x-nurlai-bot-id": "home",
+      "x-nurlai-space-id": "space",
     },
     body: JSON.stringify({ command: "act", actions: [{ kind: "click", ref: "test-ref" }] }),
   });
@@ -271,10 +271,10 @@ it.each([
     headers: {
       authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
       "content-type": "application/json",
-      "x-rakazo-bot-id": "home",
-      "x-rakazo-space-id": "space",
-      "x-rakazo-screen-id": "first",
-      "x-rakazo-screen-lease-id": "run:9",
+      "x-nurlai-bot-id": "home",
+      "x-nurlai-space-id": "space",
+      "x-nurlai-screen-id": "first",
+      "x-nurlai-screen-lease-id": "run:9",
     },
     body: JSON.stringify({ command: "act", actions }),
   });
@@ -283,7 +283,7 @@ it.each([
     options.Cmd.includes("/usr/local/bin/rakazo-page-browser"),
   )!;
   expect(JSON.stringify(helperCall[0].Cmd)).not.toContain(fill.text);
-  expect(helperCall[0].Env).toContain("RAKAZO_BROWSER_ARGS_STDIN=1");
+  expect(helperCall[0].Env).toContain("NURLAI_BROWSER_ARGS_STDIN=1");
   expect(mock.stdin.join("")).toBe(`${JSON.stringify({ command: "act", actions })}\n`);
 });
 
@@ -313,10 +313,10 @@ it.each([
     headers: {
       authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
       "content-type": "application/json",
-      "x-rakazo-bot-id": "home",
-      "x-rakazo-space-id": "space",
-      "x-rakazo-screen-id": "first",
-      "x-rakazo-screen-lease-id": "run:1",
+      "x-nurlai-bot-id": "home",
+      "x-nurlai-space-id": "space",
+      "x-nurlai-screen-id": "first",
+      "x-nurlai-screen-lease-id": "run:1",
     },
     body: JSON.stringify(body),
   });
@@ -361,10 +361,10 @@ it("passes a settled step error through with the page, without a desktop fallbac
     headers: {
       authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
       "content-type": "application/json",
-      "x-rakazo-bot-id": "home",
-      "x-rakazo-space-id": "space",
-      "x-rakazo-screen-id": "first",
-      "x-rakazo-screen-lease-id": "run:1",
+      "x-nurlai-bot-id": "home",
+      "x-nurlai-space-id": "space",
+      "x-nurlai-screen-id": "first",
+      "x-nurlai-screen-lease-id": "run:1",
     },
     body: JSON.stringify({ command: "act", actions: [{ kind: "fill", ref: "e5", text: "2019" }] }),
   });
@@ -379,8 +379,8 @@ async function uploadRequest(roots?: unknown) {
     headers: {
       authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
       "content-type": "application/json",
-      "x-rakazo-bot-id": "home",
-      "x-rakazo-space-id": "space",
+      "x-nurlai-bot-id": "home",
+      "x-nurlai-space-id": "space",
     },
     body: JSON.stringify({
       command: "act",
@@ -414,8 +414,8 @@ async function browserRequest(body: Record<string, unknown>) {
     headers: {
       authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
       "content-type": "application/json",
-      "x-rakazo-bot-id": "home",
-      "x-rakazo-space-id": "space",
+      "x-nurlai-bot-id": "home",
+      "x-nurlai-space-id": "space",
     },
     body: JSON.stringify(body),
   });
@@ -501,23 +501,23 @@ it.each([
 });
 
 it.each([undefined, "5"])("forwards the upload size override only when set: %j", async (limit) => {
-  const original = process.env.RAKAZO_BROWSER_UPLOAD_MAX_BYTES;
+  const original = process.env.NURLAI_BROWSER_UPLOAD_MAX_BYTES;
   try {
-    if (limit === undefined) delete process.env.RAKAZO_BROWSER_UPLOAD_MAX_BYTES;
-    else process.env.RAKAZO_BROWSER_UPLOAD_MAX_BYTES = limit;
+    if (limit === undefined) delete process.env.NURLAI_BROWSER_UPLOAD_MAX_BYTES;
+    else process.env.NURLAI_BROWSER_UPLOAD_MAX_BYTES = limit;
     expect(await (await uploadRequest()).json()).toMatchObject({ ok: true });
     const helper = mock.exec.mock.calls.find(([options]) =>
       options.Cmd.includes("/usr/local/bin/rakazo-page-browser"),
     )!;
     const overrides = helper[0].Env.filter((value: string) =>
-      value.startsWith("RAKAZO_BROWSER_UPLOAD_MAX_BYTES="),
+      value.startsWith("NURLAI_BROWSER_UPLOAD_MAX_BYTES="),
     );
     expect(overrides).toEqual(
-      limit === undefined ? [] : [`RAKAZO_BROWSER_UPLOAD_MAX_BYTES=${limit}`],
+      limit === undefined ? [] : [`NURLAI_BROWSER_UPLOAD_MAX_BYTES=${limit}`],
     );
   } finally {
-    if (original === undefined) delete process.env.RAKAZO_BROWSER_UPLOAD_MAX_BYTES;
-    else process.env.RAKAZO_BROWSER_UPLOAD_MAX_BYTES = original;
+    if (original === undefined) delete process.env.NURLAI_BROWSER_UPLOAD_MAX_BYTES;
+    else process.env.NURLAI_BROWSER_UPLOAD_MAX_BYTES = original;
   }
 });
 
@@ -622,10 +622,10 @@ describe("a helper that refuses the command (exit 2)", () => {
       headers: {
         authorization: `Bearer ${resolveSupervisorToken(process.env)}`,
         "content-type": "application/json",
-        "x-rakazo-bot-id": "home",
-        "x-rakazo-space-id": "space",
-        "x-rakazo-screen-id": "first",
-        "x-rakazo-screen-lease-id": "run:1",
+        "x-nurlai-bot-id": "home",
+        "x-nurlai-space-id": "space",
+        "x-nurlai-screen-id": "first",
+        "x-nurlai-screen-lease-id": "run:1",
       },
       body: JSON.stringify({
         command: "purchase_check",

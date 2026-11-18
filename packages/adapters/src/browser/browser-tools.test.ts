@@ -1,6 +1,6 @@
-import type { AdapterContext, ComputerRef } from "@rakazo/adapter-kit";
-import { SandboxRequestRejectedError } from "@rakazo/adapter-kit";
-import * as Logging from "@rakazo/logging";
+import type { AdapterContext, ComputerRef } from "@nurlai/adapter-kit";
+import { SandboxRequestRejectedError } from "@nurlai/adapter-kit";
+import * as Logging from "@nurlai/logging";
 import type { JSDOM } from "jsdom";
 import { describe, expect, it, vi } from "vitest";
 import { ComputerBrowserProvider } from "../computers/screens/computer-browser.js";

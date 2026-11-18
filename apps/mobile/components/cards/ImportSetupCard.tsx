@@ -1,13 +1,13 @@
 import { useLingui } from "@lingui/react/macro";
-import type { AgentImportSetupItem, AgentImportSetupState } from "@rakazo/contracts";
+import type { AgentImportSetupItem, AgentImportSetupState } from "@nurlai/contracts";
 import {
   importSetupStateInput,
   isImportSetupComplete,
   isImportSetupDone,
   isImportSetupVerifiable,
   isRetiredImportSetup,
-} from "@rakazo/core";
-import { typeScale } from "@rakazo/ui-tokens";
+} from "@nurlai/core";
+import { typeScale } from "@nurlai/ui-tokens";
 import type { Href } from "expo-router";
 import { useRouter } from "expo-router";
 import { useEffect, useRef } from "react";

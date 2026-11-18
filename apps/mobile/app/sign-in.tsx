@@ -1,13 +1,13 @@
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import { signInProviders } from "@rakazo/contracts";
+import { signInProviders } from "@nurlai/contracts";
 import {
   credentialIssue,
   MAX_PASSWORD_LENGTH,
   PASSWORD_RULES,
   suggestEmailCorrection,
-} from "@rakazo/core";
-import { fetchFresh } from "@rakazo/core/query";
+} from "@nurlai/core";
+import { fetchFresh } from "@nurlai/core/query";
 import { Redirect, useFocusEffect, useLocalSearchParams, useRouter } from "expo-router";
 import { useCallback, useContext, useEffect, useState } from "react";
 import {

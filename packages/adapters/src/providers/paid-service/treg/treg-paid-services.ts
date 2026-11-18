@@ -6,8 +6,8 @@ import type {
   PaidServiceInput,
   PaidServiceParam,
   PaidServiceProvider,
-} from "@rakazo/adapter-kit";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { getLogger } from "@nurlai/logging";
 import { z } from "zod";
 import { asRecord, readBoundedText } from "../../../integrations/connector-http.js";
 

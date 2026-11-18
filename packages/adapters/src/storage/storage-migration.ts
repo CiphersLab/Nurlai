@@ -1,9 +1,9 @@
 import { constants } from "node:fs";
 import { open, readdir, rename } from "node:fs/promises";
 import path from "node:path";
-import type { AdapterContext, ArtifactStore } from "@rakazo/adapter-kit";
-import type { PrismaClient } from "@rakazo/db";
-import { runAsSystem } from "@rakazo/db";
+import type { AdapterContext, ArtifactStore } from "@nurlai/adapter-kit";
+import type { PrismaClient } from "@nurlai/db";
+import { runAsSystem } from "@nurlai/db";
 import type { PushTokenStore } from "../notifications/push-token-store.js";
 import { PushSessionEndedError } from "../notifications/push-token-store.js";
 import type { LocalArtifactStore } from "./artifacts.js";

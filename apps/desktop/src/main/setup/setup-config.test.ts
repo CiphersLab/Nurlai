@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import {
   DEFAULT_LOCAL_WEB_URL,
   desktopStackImageTag,
-  isRakazoHealth,
+  isNurlaiHealth,
   managedLocalOpenUrl,
   maySendDesktopStackToken,
   normalizeServerUrl,
@@ -10,7 +10,7 @@ import {
   parseSetupInput,
   parseStoredSetup,
   probeFailureMessage,
-  RAKAZO_CLOUD_URL,
+  NURLAI_CLOUD_URL,
   readProbeJson,
   resolveStartupTarget,
   safeExternalUrl,
@@ -139,13 +139,13 @@ describe("saved setup", () => {
 
   it("saves Nurlai Cloud as an existing server under the exact origin setup matches", () => {
     // The setup window recognizes a saved Cloud choice by comparing against this constant.
-    expect(normalizeServerUrl(RAKAZO_CLOUD_URL)).toBe(RAKAZO_CLOUD_URL);
-    expect(parseSetupInput({ mode: "existing", serverUrl: RAKAZO_CLOUD_URL })).toEqual({
+    expect(normalizeServerUrl(NURLAI_CLOUD_URL)).toBe(NURLAI_CLOUD_URL);
+    expect(parseSetupInput({ mode: "existing", serverUrl: NURLAI_CLOUD_URL })).toEqual({
       mode: "existing",
-      serverUrl: RAKAZO_CLOUD_URL,
+      serverUrl: NURLAI_CLOUD_URL,
     });
-    expect(parseSetupInput({ mode: "new", serverUrl: RAKAZO_CLOUD_URL })).toBeNull();
-    expect(servesBundledRenderer(RAKAZO_CLOUD_URL, false)).toBe(false);
+    expect(parseSetupInput({ mode: "new", serverUrl: NURLAI_CLOUD_URL })).toBeNull();
+    expect(servesBundledRenderer(NURLAI_CLOUD_URL, false)).toBe(false);
   });
 });
 
@@ -189,7 +189,7 @@ describe("startup target", () => {
   it("opens Nurlai Cloud on a first launch", () => {
     expect(resolveStartupTarget({})).toEqual({
       kind: "app",
-      url: RAKAZO_CLOUD_URL,
+      url: NURLAI_CLOUD_URL,
       source: "cloud",
     });
     expect(resolveStartupTarget({ saved: null })).toMatchObject({ source: "cloud" });
@@ -203,7 +203,7 @@ describe("startup target", () => {
     });
   });
 
-  it("lets RAKAZO_WEB_URL point the shell anywhere without touching saved setup", () => {
+  it("lets NURLAI_WEB_URL point the shell anywhere without touching saved setup", () => {
     expect(resolveStartupTarget({ envUrl: "http://127.0.0.1:4321", saved })).toEqual({
       kind: "app",
       url: "http://127.0.0.1:4321",
@@ -211,7 +211,7 @@ describe("startup target", () => {
     });
   });
 
-  it("ignores an empty RAKAZO_WEB_URL", () => {
+  it("ignores an empty NURLAI_WEB_URL", () => {
     expect(resolveStartupTarget({ envUrl: "   ", saved }).kind).toBe("app");
     expect(resolveStartupTarget({ envUrl: "   ", saved })).toMatchObject({ source: "saved" });
   });
@@ -272,9 +272,9 @@ describe("remote-content isolation", () => {
 
 describe("Nurlai health response", () => {
   it("requires the public RPC health contract", () => {
-    expect(isRakazoHealth({ json: { ok: true, version: "0.1.0" } })).toBe(true);
-    expect(isRakazoHealth({ json: { ok: true } })).toBe(false);
-    expect(isRakazoHealth({ ok: true, version: "0.1.0" })).toBe(false);
+    expect(isNurlaiHealth({ json: { ok: true, version: "0.1.0" } })).toBe(true);
+    expect(isNurlaiHealth({ json: { ok: true } })).toBe(false);
+    expect(isNurlaiHealth({ ok: true, version: "0.1.0" })).toBe(false);
   });
 });
 

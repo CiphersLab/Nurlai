@@ -23,7 +23,7 @@ vi.mock("pg", async (importActual) => ({
 }));
 
 const owner = "postgres://rakazo:owner-password@postgres:5432/rakazo";
-const runtime = "postgres://rakazo_app:app-password@postgres:5432/rakazo";
+const runtime = "postgres://nurlai_app:app-password@postgres:5432/rakazo";
 
 describe("databaseUrls", () => {
   it("migrates as the owner and runs the app as the runtime login", () => {
@@ -57,11 +57,11 @@ describe("databaseUrls", () => {
 
 describe("rowSecurityWarning", () => {
   it("is silent when the policies apply", () => {
-    expect(rowSecurityWarning({ enforced: true, role: "rakazo_app" })).toBeUndefined();
+    expect(rowSecurityWarning({ enforced: true, role: "nurlai_app" })).toBeUndefined();
   });
 
   it("says to rerun db:migrate when the bypass key is stale", () => {
-    expect(rowSecurityWarning({ enforced: true, role: "rakazo_app", systemBlocked: true })).toMatch(
+    expect(rowSecurityWarning({ enforced: true, role: "nurlai_app", systemBlocked: true })).toMatch(
       /db:migrate/,
     );
   });
@@ -96,14 +96,14 @@ describe("provisionRuntimeRole", () => {
     sent.length = 0;
     await provisionRuntimeRole(owner, runtime);
     const setPassword = sent.find((sql) => sql.includes("PASSWORD"));
-    expect(setPassword).toMatch(/^CREATE ROLE "rakazo_app" LOGIN PASSWORD 'SCRAM-SHA-256\$4096:/);
+    expect(setPassword).toMatch(/^CREATE ROLE "nurlai_app" LOGIN PASSWORD 'SCRAM-SHA-256\$4096:/);
     expect(sent.join("\n")).not.toContain("app-password");
   });
 });
 
 describe("timeZoneWarning", () => {
   const session = (zone: string) =>
-    ({ $queryRawUnsafe: async () => [{ zone, login: "rakazo_app", database: "rakazo" }] }) as never;
+    ({ $queryRawUnsafe: async () => [{ zone, login: "nurlai_app", database: "rakazo" }] }) as never;
 
   it.each(["UTC", "Etc/UTC", "GMT", "Etc/GMT", "GMT0", "Etc/GMT+0", "Greenwich", "Zulu"])(
     "stays quiet for %s",
@@ -115,7 +115,7 @@ describe("timeZoneWarning", () => {
   it("warns for a zone with an offset, naming the database and the login", async () => {
     const warning = await timeZoneWarning(session("Europe/London"));
     expect(warning).toContain("ALTER DATABASE rakazo SET timezone TO 'UTC'");
-    expect(warning).toContain("ALTER ROLE rakazo_app");
+    expect(warning).toContain("ALTER ROLE nurlai_app");
     expect(warning).not.toContain("db:migrate");
   });
 });

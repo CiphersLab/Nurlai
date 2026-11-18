@@ -1,7 +1,7 @@
-import type { BotAvatarSet } from "@rakazo/contracts";
-import { splitPeerLabel } from "@rakazo/core";
-import type { GroupAvatarMember } from "@rakazo/ui-web";
-import { BotAvatar, GroupAvatar } from "@rakazo/ui-web";
+import type { BotAvatarSet } from "@nurlai/contracts";
+import { splitPeerLabel } from "@nurlai/core";
+import type { GroupAvatarMember } from "@nurlai/ui-web";
+import { BotAvatar, GroupAvatar } from "@nurlai/ui-web";
 
 export function CollaborationMarker({
   color,

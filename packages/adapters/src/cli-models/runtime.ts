@@ -1,5 +1,5 @@
-import type { AgentRuntime } from "@rakazo/adapter-kit";
-import type { PrismaClient } from "@rakazo/db";
+import type { AgentRuntime } from "@nurlai/adapter-kit";
+import type { PrismaClient } from "@nurlai/db";
 import {
   CLAUDE_CODE_PROVIDER_ID,
   registerClaudeCodeProvider,

@@ -4,14 +4,14 @@ import type {
   Connection,
   ConnectionCatalogItem,
   McpSourcePreset,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   catalogItemAccounts,
   catalogItemKey,
   connectCatalogItem,
   isCatalogItemConnected,
-} from "@rakazo/core";
-import { fetchFresh, writeSaved } from "@rakazo/core/query";
+} from "@nurlai/core";
+import { fetchFresh, writeSaved } from "@nurlai/core/query";
 import { queryOptions, skipToken, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { connectedAppMarks } from "../../lib/integrations/connected-apps";

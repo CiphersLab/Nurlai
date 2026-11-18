@@ -1,13 +1,13 @@
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import type { BotAvatarSet } from "@rakazo/contracts";
-import { BOT_COLORS } from "@rakazo/contracts";
+import type { BotAvatarSet } from "@nurlai/contracts";
+import { BOT_COLORS } from "@nurlai/contracts";
 import {
   botLookState,
   botLookWithColor,
   botLookWithShape,
   SHIPPED_BOT_AVATAR_SHAPE_KEYS,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import type { ReactNode } from "react";
 import { Pressable, Text, View } from "react-native";
 import { useMobileTokens } from "../../lib/native/native";

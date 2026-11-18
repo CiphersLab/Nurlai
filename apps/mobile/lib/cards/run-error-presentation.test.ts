@@ -1,6 +1,6 @@
-import type { BillingStatus } from "@rakazo/contracts";
-import { computerHoursOut } from "@rakazo/contracts";
-import { normalizeRunError } from "@rakazo/core";
+import type { BillingStatus } from "@nurlai/contracts";
+import { computerHoursOut } from "@nurlai/contracts";
+import { normalizeRunError } from "@nurlai/core";
 import { describe, expect, it } from "vitest";
 import {
   computerHoursOutCopy,

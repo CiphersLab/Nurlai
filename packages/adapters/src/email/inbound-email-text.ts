@@ -1,4 +1,4 @@
-import { sliceWellFormed } from "@rakazo/core";
+import { sliceWellFormed } from "@nurlai/core";
 import { htmlTextWithOmissions } from "../providers/web/keyless-http/keyless-http-web.js";
 
 export const INBOUND_EMAIL_TEXT_MAX_CHARS = 20_000;

@@ -1,5 +1,5 @@
-import { ModelOutputError } from "@rakazo/adapter-kit";
-import { MISSING_TOOL_FINAL_RESPONSE_ERROR } from "@rakazo/core";
+import { ModelOutputError } from "@nurlai/adapter-kit";
+import { MISSING_TOOL_FINAL_RESPONSE_ERROR } from "@nurlai/core";
 import { describe, expect, it } from "vitest";
 import { runIdentityInstruction } from "../assembly/run-instructions.prompt.js";
 import {

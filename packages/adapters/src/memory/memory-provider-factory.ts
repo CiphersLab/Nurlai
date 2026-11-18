@@ -1,8 +1,8 @@
-import type { DurableMemoryScope, SecretStore, SemanticMemoryProvider } from "@rakazo/adapter-kit";
-import type { MemoryProviderDescriptor } from "@rakazo/contracts";
-import { settingsFieldProblem, visibleSettingsFields } from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+import type { DurableMemoryScope, SecretStore, SemanticMemoryProvider } from "@nurlai/adapter-kit";
+import type { MemoryProviderDescriptor } from "@nurlai/contracts";
+import { settingsFieldProblem, visibleSettingsFields } from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import type { MemoryProviderDefinition } from "./memory-provider-descriptor.js";
 import { knownMemoryProvider, memoryProviders } from "./memory-providers.js";
 

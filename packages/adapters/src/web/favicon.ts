@@ -1,4 +1,4 @@
-import { registrableDomain } from "@rakazo/core/egress";
+import { registrableDomain } from "@nurlai/core/egress";
 import { JSDOM } from "jsdom";
 import { detectImageMimeType } from "../media/image-mime-type.js";
 import type { ResolveHostname } from "../network/network-address.js";

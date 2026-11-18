@@ -1,24 +1,24 @@
-# Rakazo
+# Nurlai
 
 [English](./README.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md)
 
 [![GitHub stars](https://img.shields.io/github/stars/elie222/rakazo?labelColor=black&style=for-the-badge&color=2563EB)](https://github.com/elie222/rakazo/stargazers)
 [![加入 Discord 社区](https://img.shields.io/badge/Discord-Join%20the%20community-5865F2?labelColor=black&style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/RWwKa2Sn7h)
 [![在 App Store 下载 iPhone 版](https://img.shields.io/badge/App%20Store-Download%20for%20iPhone-black?labelColor=black&style=for-the-badge&logo=apple&logoColor=white)](https://apps.apple.com/app/rakazo/id6801531099)
-[![在 Google Play 下载 Android 版](https://img.shields.io/badge/Google%20Play-Get%20the%20app-black?labelColor=black&style=for-the-badge&logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=com.rakazo.app)
+[![在 Google Play 下载 Android 版](https://img.shields.io/badge/Google%20Play-Get%20the%20app-black?labelColor=black&style=for-the-badge&logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=com.nurlai.app)
 
-![Rakazo：由你掌控的 AI 队友](./docs/readme-hero.png)
+![Nurlai：由你掌控的 AI 队友](./docs/readme-hero.png)
 
-Rakazo 是 Grok Bot 的开源、自托管替代方案。
+Nurlai 是 Grok Bot 的开源、自托管替代方案。
 
 长期在线的 AI 队友，各自拥有记忆、例行任务、应用和计算机。在自己的机器上运行，使用自己的模型。
 
-可在[网页](https://app.rakazo.com)、[桌面端](https://rakazo.com/download/)、[iPhone](https://apps.apple.com/app/rakazo/id6801531099) 和
-[Android](https://play.google.com/store/apps/details?id=com.rakazo.app) 上使用。
+可在[网页](https://app.nurlai.cipherslab.com)、[桌面端](https://nurlai.cipherslab.com/download/)、[iPhone](https://apps.apple.com/app/rakazo/id6801531099) 和
+[Android](https://play.google.com/store/apps/details?id=com.nurlai.app) 上使用。
 
 它也是 Meta Muse、OpenAI Dots、Instinct、OpenClaw、Hermes Agent 和 Claude Duet 的替代方案。
 
-详情见 [rakazo.com](https://rakazo.com)。
+详情见 [nurlai.cipherslab.com](https://nurlai.cipherslab.com)。
 
 本文是 [英文 README](./README.md) 的简体中文译文。[自托管指南](./docs/zh-CN/self-host.md)已提供中文。
 
@@ -109,7 +109,7 @@ curl -fsSLO https://raw.githubusercontent.com/elie222/rakazo/main/infra/compose/
 bash install-images.sh
 ```
 
-安装脚本会下载 Compose 文件，生成包含随机密钥的 `.env`，并启动 Rakazo。
+安装脚本会下载 Compose 文件，生成包含随机密钥的 `.env`，并启动 Nurlai。
 再次运行时会保留已有的 `.env`。
 
 打开 [http://127.0.0.1:5173](http://127.0.0.1:5173)，创建账号并连接模型。
@@ -118,8 +118,8 @@ bash install-images.sh
 默认镜像标签为 `edge`，由主分支构建，支持 `linux/amd64` 和 `linux/arm64`。
 镜像详情与标签见[自托管指南](./docs/zh-CN/self-host.md#已发布镜像无需检出源码)。
 
-在受限网络中，可以覆盖安装器的下载地址前缀（`RAKAZO_DOWNLOAD_BASE`），跳过已有的 Compose 文件
-（`--local` / `RAKAZO_DOWNLOAD_SKIP_EXISTING`），或使用引导脚本的镜像地址。
+在受限网络中，可以覆盖安装器的下载地址前缀（`NURLAI_DOWNLOAD_BASE`），跳过已有的 Compose 文件
+（`--local` / `NURLAI_DOWNLOAD_SKIP_EXISTING`），或使用引导脚本的镜像地址。
 参见[受限网络与镜像下载](./docs/zh-CN/self-host-restricted-network.md)。
 
 如需让智能体协助安装，请使用 [SETUP_PROMPT.md](./SETUP_PROMPT.md)。
@@ -131,7 +131,7 @@ bash install-images.sh
 
 ```bash
 bash install-images.sh --prepare-only
-# edit .env: SANDBOX_PROVIDER=boat (or e2b / daytona / createos) with its API key, RAKAZO_HOST=your.domain
+# edit .env: SANDBOX_PROVIDER=boat (or e2b / daytona / createos) with its API key, NURLAI_HOST=your.domain
 bash install-images.sh
 ```
 
@@ -153,7 +153,7 @@ cp .env.example .env
 ```
 
 将 `POSTGRES_PASSWORD` 和 `POSTGRES_APP_PASSWORD` 分别设置为由 `openssl rand -hex 16` 生成的两个值，再把它们填入 `DATABASE_MIGRATION_URL` 和 `DATABASE_URL`。
-应用以自己的 `rakazo_app` 登录身份连接数据库，并受行级安全策略约束；迁移则以所有者身份运行（参见 [数据库角色](docs/zh-CN/self-host-configuration.md#数据库角色)）。
+应用以自己的 `nurlai_app` 登录身份连接数据库，并受行级安全策略约束；迁移则以所有者身份运行（参见 [数据库角色](docs/zh-CN/self-host-configuration.md#数据库角色)）。
 为 `BETTER_AUTH_SECRET`、`ENCRYPTION_KEY` 和 `SCREEN_PROXY_SECRET` 分别设置独立的长随机值。
 Docker 沙箱还需要专用的 `SANDBOX_SUPERVISOR_TOKEN`。
 你也可以设置 `OPENROUTER_API_KEY`，或在首次设置时连接支持的模型提供商。
@@ -179,17 +179,17 @@ pnpm dev
 ```
 
 `pnpm dev` 会使用 `DATABASE_URL` 指向且可连接的 Postgres；否则会通过 Docker 启动本地
-`rakazo-dev-postgres` 容器，所有检出目录共用该容器。启动服务前会应用数据库迁移并生成 Prisma 客户端。
+`nurlai-dev-postgres` 容器，所有检出目录共用该容器。启动服务前会应用数据库迁移并生成 Prisma 客户端。
 如果当前分支新增了 `main` 尚未包含的迁移，会在同一服务器上使用独立数据库，条件允许时从共享数据库复制，
 避免未合入的数据库结构变更影响共享数据库。默认端口被占用时（例如另一个 Git worktree 正在运行），
 会选择下一个空闲端口组并打印访问地址。也可以设置 `WEB_PORT` 和 `API_PORT` 自行指定端口。
 
 要从手机或另一台电脑访问当前检出目录，请在每台设备上安装 [Tailscale](https://tailscale.com)，
-并在 `.env` 中设置 `RAKAZO_DEV_TAILNET=1`。`pnpm dev` 随后会通过 HTTPS 提供网页，地址为
+并在 `.env` 中设置 `NURLAI_DEV_TAILNET=1`。`pnpm dev` 随后会通过 HTTPS 提供网页，地址为
 `https://<machine>.<tailnet>.ts.net:<web port>`，只有 tailnet 中的设备可以访问；退出 `pnpm dev` 后停止提供。
 每台设备都用这个地址登录，包括运行服务的那台。首次运行时，Tailscale 可能要求你为 tailnet 开启 HTTPS 证书。
 
-如果要把密钥放在 secrets manager 而不是 `.env` 中，可将 `RAKAZO_DEV_RUN_WITH` 设为先注入密钥再运行命令的
+如果要把密钥放在 secrets manager 而不是 `.env` 中，可将 `NURLAI_DEV_RUN_WITH` 设为先注入密钥再运行命令的
 命令，例如 `op run --env-file=dev.env --` 或 `infisical run --env=dev --projectId=<project> --`。
 `pnpm dev` 会在其中启动，注入的值优先于 `.env`。
 
@@ -235,15 +235,15 @@ Railway 沙箱按用量计费。
 
 ## 桌面端与移动端
 
-Electron 和 Expo 应用都是 Rakazo API 的客户端，与网页版使用同一套 API。
+Electron 和 Expo 应用都是 Nurlai API 的客户端，与网页版使用同一套 API。
 
 开发服务启动后，使用以下命令启动 Electron：
 
 ```bash
-pnpm --filter @rakazo/desktop dev
+pnpm --filter @nurlai/desktop dev
 ```
 
-首次运行时，桌面应用会询问是在这台电脑上运行 Rakazo，还是连接现有服务器。
+首次运行时，桌面应用会询问是在这台电脑上运行 Nurlai，还是连接现有服务器。
 选择 **This computer**（这台电脑）时，搭载 Apple 芯片、运行 macOS 26 或更高版本且构建包含服务器包的 Mac
 可以不使用 Docker。全新设置默认采用此方式，由应用按需下载服务器和计算机运行时。
 已有 Docker 服务栈且 Docker 正在运行时，应用会询问是否迁移；选择 **Keep Docker** 会继续使用 Docker。
@@ -254,7 +254,7 @@ pnpm --filter @rakazo/desktop dev
 
 运行 `pnpm dev` 的开发者应选择 **Existing instance**（现有实例），地址填写终端打印的地址（默认为 `http://127.0.0.1:5173`）。
 公共服务器必须使用 HTTPS；只有回环地址和局域网私有地址允许 HTTP，不包括链路本地地址。
-应用会在保存地址前检查 Rakazo 的健康检查端点，之后启动时直接连接该实例。
+应用会在保存地址前检查 Nurlai 的健康检查端点，之后启动时直接连接该实例。
 退出应用后，Docker 服务栈仍会继续运行；不使用 Docker 的服务器则随应用停止。
 应用菜单中的 **Quit and Stop Bots**（退出并停止 Bot）会停止受管服务栈并退出应用；切换到其他服务器时也会停止该服务栈。
 
@@ -262,17 +262,17 @@ pnpm --filter @rakazo/desktop dev
 `dlopen(): error loading libfuse.so.2`。请安装 FUSE 2 库（Fedora 上为 `fuse-libs`，Ubuntu 24.04 上为 `libfuse2t64`，较早的 Ubuntu 和 Debian 上为 `libfuse2`），或者不借助 FUSE 运行 AppImage：
 
 ```bash
-chmod +x Rakazo-*.AppImage
-./Rakazo-*.AppImage --appimage-extract-and-run
+chmod +x Nurlai-*.AppImage
+./Nurlai-*.AppImage --appimage-extract-and-run
 ```
 
 **This computer** 的 Docker 路径会查找 `docker` CLI，但不会自动识别 Podman。若要尝试另一个支持 `compose` 命令的
-Docker 兼容 CLI，请在启动应用前把 `RAKAZO_DOCKER_BINARY` 设为该 CLI 的路径。
+Docker 兼容 CLI，请在启动应用前把 `NURLAI_DOCKER_BINARY` 设为该 CLI 的路径。
 
-使用应用菜单中的 **Change Rakazo Server…**（更换 Rakazo 服务器）重新选择服务器。
+使用应用菜单中的 **Change Nurlai Server…**（更换 Nurlai 服务器）重新选择服务器。
 关闭该窗口且不保存时，会返回之前的实例。
-开发自动化中，可以设置 `RAKAZO_WEB_URL`，让桌面应用连接其他地址而不改变已保存的实例；
-也可以设置 `RAKAZO_FORCE_SETUP=1`，再次运行设置流程。
+开发自动化中，可以设置 `NURLAI_WEB_URL`，让桌面应用连接其他地址而不改变已保存的实例；
+也可以设置 `NURLAI_FORCE_SETUP=1`，再次运行设置流程。
 
 移动端构建和发布说明见 [docs/mobile-release.md](./docs/mobile-release.md)。
 
@@ -339,13 +339,13 @@ pnpm test:e2e
 
 ## 与其他产品对比
 
-- [Grok Bot](https://rakazo.com/grok-bot-alternative/)
-- [Muse](https://rakazo.com/muse-alternative/)
-- [Dots](https://rakazo.com/dots-alternative/)
-- [Instinct](https://rakazo.com/instinct-alternative/)
-- [OpenClaw](https://rakazo.com/openclaw-alternative/)
-- [Hermes Agent](https://rakazo.com/hermes-alternative/)
-- [全部比较](https://rakazo.com/alternatives/)
+- [Grok Bot](https://nurlai.cipherslab.com/grok-bot-alternative/)
+- [Muse](https://nurlai.cipherslab.com/muse-alternative/)
+- [Dots](https://nurlai.cipherslab.com/dots-alternative/)
+- [Instinct](https://nurlai.cipherslab.com/instinct-alternative/)
+- [OpenClaw](https://nurlai.cipherslab.com/openclaw-alternative/)
+- [Hermes Agent](https://nurlai.cipherslab.com/hermes-alternative/)
+- [全部比较](https://nurlai.cipherslab.com/alternatives/)
 
 ## 致谢
 
@@ -375,6 +375,6 @@ pnpm test:e2e
 欢迎贡献。提交 PR 前，请阅读 [CONTRIBUTING.md](./CONTRIBUTING.md)。
 发现安全漏洞时，请按照 [SECURITY.md](./SECURITY.md) 的说明报告，勿提交公开 Issue。
 
-Rakazo 采用 [Apache License 2.0](./LICENSE) 许可证。
+Nurlai 采用 [Apache License 2.0](./LICENSE) 许可证。
 
-欢迎在 [Rakazo Discord 社区](https://discord.gg/RWwKa2Sn7h)交流问题与想法。
+欢迎在 [Nurlai Discord 社区](https://discord.gg/RWwKa2Sn7h)交流问题与想法。

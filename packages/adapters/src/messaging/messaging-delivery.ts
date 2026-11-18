@@ -7,14 +7,14 @@ import type {
   MessagingOutboundAttachment,
   MessagingOutboundStatus,
   MessagingSurface,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import {
   messagingReplyJobKey,
   messagingSendJob,
   messagingSendJobKey,
   RetryJobLaterError,
-} from "@rakazo/adapter-kit";
-import type { MessageBlock } from "@rakazo/contracts";
+} from "@nurlai/adapter-kit";
+import type { MessageBlock } from "@nurlai/contracts";
 import {
   botMessageHopExhausted,
   botMessageMaxHops,
@@ -23,8 +23,8 @@ import {
   nextBotMessageHop,
   pageLinksAsTitles,
   teamChatResponseText,
-} from "@rakazo/core";
-import type { DatabaseOutage, Prisma, PrismaClient, ThreadEvents } from "@rakazo/db";
+} from "@nurlai/core";
+import type { DatabaseOutage, Prisma, PrismaClient, ThreadEvents } from "@nurlai/db";
 import {
   accountDeactivated,
   appendEventInTransaction,
@@ -42,8 +42,8 @@ import {
   SpaceDeletionInProgressError,
   storedMessageBlocks,
   THREAD_LOCK_TRANSACTION_OPTIONS,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { z } from "zod";
 import { loadRunOrigin } from "../runs/lifecycle/run-origin.js";
 import { isUserProgressClientNonce } from "../runs/lifecycle/user-progress.js";
@@ -77,7 +77,7 @@ export const MESSAGING_DM_OUTBOUND_CAP = 140;
 
 /**
  * How long one send may take, file upload included. Providers that take the abort signal stop
- * there; the vendor clients Rakazo configures (Slack, Sendblue) already give up well before it.
+ * there; the vendor clients Nurlai configures (Slack, Sendblue) already give up well before it.
  */
 export const MESSAGING_SEND_TIMEOUT_MS = 60_000;
 
@@ -1243,7 +1243,7 @@ export class MessagingDelivery {
         ? teamChatResponseText(reply ? storedMessageBlocks(reply) : [], run.bot.name, ambient)
         : ambient
           ? ""
-          : `${run.bot.name} could not complete that request. Open Rakazo for details.`;
+          : `${run.bot.name} could not complete that request. Open Nurlai for details.`;
     const recorded = await this.deps.prisma.$transaction(async (tx) => {
       const claimed = await tx.externalMessage.updateMany({
         where: { id: message.id, status: "running" },
@@ -1295,7 +1295,7 @@ export class MessagingDelivery {
         : null;
     const body =
       run.status === "failed"
-        ? `${run.bot.name} could not complete the delegated request. Open Rakazo for details.`
+        ? `${run.bot.name} could not complete the delegated request. Open Nurlai for details.`
         : teamChatResponseText(reply ? storedMessageBlocks(reply) : [], run.bot.name, true);
     if (!body) return undefined;
     const lane = {

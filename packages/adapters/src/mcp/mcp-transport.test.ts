@@ -3,8 +3,8 @@ import { createServer } from "node:http";
 import type { AddressInfo } from "node:net";
 import { setFlagsFromString } from "node:v8";
 import { runInNewContext } from "node:vm";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { Agent } from "undici";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { MCP_CLOSE_TIMEOUT_MS } from "./mcp-close.js";
@@ -212,7 +212,7 @@ describe("MCP transport seam", () => {
     await session.close();
   });
 
-  it("launches only package bins that Rakazo installed", async () => {
+  it("launches only package bins that Nurlai installed", async () => {
     const session = new McpSession();
     await expect(
       session.connectStdio({
@@ -220,7 +220,7 @@ describe("MCP transport seam", () => {
         allowedCommands: ["npx"],
         installedBin: { binPath: process.execPath },
       }),
-    ).rejects.toThrow("not installed by Rakazo");
+    ).rejects.toThrow("not installed by Nurlai");
     await expect(
       session.connectStdio({ command: "npx", args: ["-c", "echo hi"], allowedCommands: ["npx"] }),
     ).rejects.toThrow("npx only launches");

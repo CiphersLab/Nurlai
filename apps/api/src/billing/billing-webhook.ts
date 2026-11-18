@@ -1,7 +1,7 @@
-import type { BillingProvider } from "@rakazo/adapter-kit";
-import type { Actor } from "@rakazo/contracts";
-import { MOBILE_BILLING_CALLBACK_URL } from "@rakazo/contracts";
-import { getLogger } from "@rakazo/logging";
+import type { BillingProvider } from "@nurlai/adapter-kit";
+import type { Actor } from "@nurlai/contracts";
+import { MOBILE_BILLING_CALLBACK_URL } from "@nurlai/contracts";
+import { getLogger } from "@nurlai/logging";
 import type { Hono } from "hono";
 import { readBoundedBody } from "../http/http-body.js";
 import type { BillingService } from "./billing.js";

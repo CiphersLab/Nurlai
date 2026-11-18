@@ -1,4 +1,4 @@
-import type { AdapterContext, AutoReviewRequest, DecisionRequest } from "@rakazo/adapter-kit";
+import type { AdapterContext, AutoReviewRequest, DecisionRequest } from "@nurlai/adapter-kit";
 import { expect, it } from "vitest";
 import { DecisionAutoReviewProvider } from "./decision-auto-review.js";
 

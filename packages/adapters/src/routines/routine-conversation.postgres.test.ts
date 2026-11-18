@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
-import type { BackgroundJob } from "@rakazo/adapter-kit";
-import type { Prisma, PrismaClient } from "@rakazo/db";
+import type { BackgroundJob } from "@nurlai/adapter-kit";
+import type { Prisma, PrismaClient } from "@nurlai/db";
 import {
   asSystem,
   claimSteering,
@@ -10,7 +10,7 @@ import {
   finalizeRun,
   provisionMessagingIdentity,
   runAsSystem,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import type { ExecutorDeps } from "../runs/executor/executor-deps.js";
 import { claimRun } from "../runs/lifecycle/run-lifecycle.js";

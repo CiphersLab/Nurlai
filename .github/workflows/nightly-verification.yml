@@ -40,7 +40,7 @@ jobs:
       - run: pnpm db:generate
       - name: Install Chromium
         timeout-minutes: 5
-        run: pnpm --filter @rakazo/web exec playwright install chromium
+        run: pnpm --filter @nurlai/web exec playwright install chromium
       - name: Wait for Postgres
         run: bash .github/actions/start-postgres/wait.sh
       - name: Measure
@@ -50,7 +50,7 @@ jobs:
       - name: Check budgets
         env:
           REPORT: ${{ runner.temp }}/web-performance.json
-          RAKAZO_ENV_FILE: none
+          NURLAI_ENV_FILE: none
         run: |
           set -o pipefail
           pnpm --silent perf:web-chat check "$REPORT" | tee -a "$GITHUB_STEP_SUMMARY"

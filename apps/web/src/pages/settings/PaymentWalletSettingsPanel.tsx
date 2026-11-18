@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { writeSaved } from "@rakazo/core/query";
-import { Button } from "@rakazo/ui-web";
+import { writeSaved } from "@nurlai/core/query";
+import { Button } from "@nurlai/ui-web";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { ExternalLink } from "lucide-react";
 import { useState } from "react";

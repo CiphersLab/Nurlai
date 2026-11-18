@@ -8,11 +8,11 @@ import type {
   AgentRunRequest,
   BackgroundJobHandlers,
   JobPublisher,
-} from "@rakazo/adapter-kit";
-import type { ToolHistory } from "@rakazo/contracts";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
-import type { PrismaClient } from "@rakazo/db";
+} from "@nurlai/adapter-kit";
+import type { ToolHistory } from "@nurlai/contracts";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
+import type { PrismaClient } from "@nurlai/db";
 import {
   asSystem,
   cancelRunsInTransaction,
@@ -21,7 +21,7 @@ import {
   loadRunTurnCheckpoint,
   runAsSystem,
   runAsTenant,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 import { InMemoryRealtimeFanout } from "../../notifications/realtime.js";
 import { FakeSandboxProvider } from "../../providers/computer/fake/fake-sandbox.js";

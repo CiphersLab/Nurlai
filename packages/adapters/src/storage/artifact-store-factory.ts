@@ -6,14 +6,14 @@ import type {
   ArtifactPut,
   ArtifactStore,
   ObjectStorage,
-} from "@rakazo/adapter-kit";
-import type { PrismaClient } from "@rakazo/db";
+} from "@nurlai/adapter-kit";
+import type { PrismaClient } from "@nurlai/db";
 import {
   ContentDecryptionError,
   contentEncryptionOf,
   openArtifact,
   sealArtifact,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import type { ArtifactKeys } from "./artifacts.js";
 import { LocalArtifactStore } from "./artifacts.js";
 import { createObjectStorage } from "./create-object-storage.js";

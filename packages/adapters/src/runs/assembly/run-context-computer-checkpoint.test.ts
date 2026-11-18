@@ -1,5 +1,5 @@
-import type { ConnectorTool } from "@rakazo/adapter-kit";
-import { toolEffectIdempotencyKey } from "@rakazo/core/node/approval-effect-key";
+import type { ConnectorTool } from "@nurlai/adapter-kit";
+import { toolEffectIdempotencyKey } from "@nurlai/core/node/approval-effect-key";
 import { expect, it } from "vitest";
 import { namedAgentTools } from "../../runtime/pi/tools/pi-runtime-tools.js";
 import { PausedTurnToolsUnavailableError } from "../lifecycle/run-lifecycle.js";

@@ -1,13 +1,13 @@
 import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { EncryptedSecretStore, InMemoryRealtimeFanout } from "@rakazo/adapters";
-import type { AgentImportPlan, Bot, MemoryDocument } from "@rakazo/contracts";
-import { resolveEncryptionKey } from "@rakazo/core/node/secrets-guard";
-import type { Prisma, PrismaClient } from "@rakazo/db";
-import { createDb } from "@rakazo/db";
+import { EncryptedSecretStore, InMemoryRealtimeFanout } from "@nurlai/adapters";
+import type { AgentImportPlan, Bot, MemoryDocument } from "@nurlai/contracts";
+import { resolveEncryptionKey } from "@nurlai/core/node/secrets-guard";
+import type { Prisma, PrismaClient } from "@nurlai/db";
+import { createDb } from "@nurlai/db";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-// The app's own logger module (the API resolves `@rakazo/logging` to this file).
+// The app's own logger module (the API resolves `@nurlai/logging` to this file).
 import { createLogger, createTestSink, installLogger } from "../../../logging/src/index.js";
 import { sessionCookieHeader } from "../index.js";
 import { asSystem } from "../system-db.js";
@@ -115,7 +115,7 @@ describeIntegration("agent import", () => {
   const dataDir = mkdtempSync(path.join(tmpdir(), "rakazo-agent-import-"));
 
   beforeAll(async () => {
-    const { createApp } = await import("@rakazo/api/app");
+    const { createApp } = await import("@nurlai/api/app");
     const handles = await createApp({
       databaseUrl: process.env.DATABASE_URL!,
       dataDir,
@@ -1251,7 +1251,7 @@ async function raw(app: App, cookie: string, proc: string, body: unknown, spaceI
       "content-type": "application/json",
       cookie,
       origin: "http://127.0.0.1:5173",
-      ...(spaceId ? { "x-rakazo-space-id": spaceId } : {}),
+      ...(spaceId ? { "x-nurlai-space-id": spaceId } : {}),
     },
     body: JSON.stringify({ json: body }),
   });

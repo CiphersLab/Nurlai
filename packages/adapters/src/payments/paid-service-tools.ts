@@ -5,15 +5,15 @@ import type {
   PaidService,
   PaidServiceCallResult,
   PaidServiceProvider,
-} from "@rakazo/adapter-kit";
-import type { PrismaClient } from "@rakazo/db";
+} from "@nurlai/adapter-kit";
+import type { PrismaClient } from "@nurlai/db";
 import {
   organizationForMember,
   recordModelCreditReceipt,
   recordUsage,
   reserveModelCredits,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { z } from "zod";
 
 /** Hosted calls are billed at the provider's cost plus this share. */

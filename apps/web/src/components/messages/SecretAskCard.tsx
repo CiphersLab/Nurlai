@@ -1,14 +1,14 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { ChatMarkdown } from "@rakazo/chat-ui/web";
-import type { LoginFieldInput } from "@rakazo/contracts";
+import { ChatMarkdown } from "@nurlai/chat-ui/web";
+import type { LoginFieldInput } from "@nurlai/contracts";
 import {
   commandVariableName,
   loginCardFields,
   normalizeOneTimeCode,
   vaultKind,
-} from "@rakazo/contracts";
-import { secretAnswerErrorText } from "@rakazo/i18n/vault";
-import { Button, Input } from "@rakazo/ui-web";
+} from "@nurlai/contracts";
+import { secretAnswerErrorText } from "@nurlai/i18n/vault";
+import { Button, Input } from "@nurlai/ui-web";
 import { Check } from "lucide-react";
 import { useState } from "react";
 import { useEventListener } from "../../lib/use-event-listener";

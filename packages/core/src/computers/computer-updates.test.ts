@@ -1,4 +1,4 @@
-import type { ComputerUpdate } from "@rakazo/contracts";
+import type { ComputerUpdate } from "@nurlai/contracts";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { Deferred } from "../primitives/async.test-support.js";
 import { deferred } from "../primitives/async.test-support.js";

@@ -1,4 +1,4 @@
-import { escapePromptData } from "@rakazo/core";
+import { escapePromptData } from "@nurlai/core";
 /** Opens every background helper's task; the helper reads it as its brief. */
 export const BACKGROUND_HELPER_TASK_CUE = "You are a background helper";
 

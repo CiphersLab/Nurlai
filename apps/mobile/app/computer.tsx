@@ -1,9 +1,9 @@
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import { useTimeout } from "@rakazo/chat-ui/hooks";
-import type { ComputerMode, ComputerReleaseReason } from "@rakazo/contracts";
-import { isComputerAllowanceUsed } from "@rakazo/contracts";
-import type { ScreenPageState } from "@rakazo/core";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
+import type { ComputerMode, ComputerReleaseReason } from "@nurlai/contracts";
+import { isComputerAllowanceUsed } from "@nurlai/contracts";
+import type { ScreenPageState } from "@nurlai/core";
 import {
   COMPUTER_CONTROL_HEARTBEAT_MS,
   COMPUTER_HEARTBEAT_MS,
@@ -12,7 +12,7 @@ import {
   isRetryableError,
   screenProbeUrl,
   waitForScreenPage,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import type { RefObject } from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";

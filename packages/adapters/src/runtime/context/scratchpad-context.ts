@@ -1,5 +1,5 @@
-import { byteLength, escapePromptData, truncateUtf8 } from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
+import { byteLength, escapePromptData, truncateUtf8 } from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
 import type { ScratchpadToolDeps } from "../../tasks/scratchpad-tools.js";
 import { listScratchpadItems } from "../../tasks/scratchpad-tools.js";
 import {

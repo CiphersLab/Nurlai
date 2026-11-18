@@ -3,8 +3,8 @@ import {
   isSignInRetryRequest,
   isTransientModelError,
   SecretStoreUnavailableError,
-} from "@rakazo/adapter-kit";
-import type { CatalogReads, PiOAuthPersist } from "@rakazo/adapters";
+} from "@nurlai/adapter-kit";
+import type { CatalogReads, PiOAuthPersist } from "@nurlai/adapters";
 import {
   compatibleEndpointPreset,
   listPiCatalog,
@@ -21,17 +21,17 @@ import {
   storedOpenAiCompatibleProbeHeaders,
   storedOpenAiCompatibleProbeKey,
   UNAVAILABLE_MODEL_FOR_AUTH_MESSAGE,
-} from "@rakazo/adapters";
-import type { Actor, ModelCredential, ThinkingLevel } from "@rakazo/contracts";
+} from "@nurlai/adapters";
+import type { Actor, ModelCredential, ThinkingLevel } from "@nurlai/contracts";
 import {
   backupChoiceKey,
   ConnectionSetupError,
   canonicalPiProviderId,
   OPENAI_COMPATIBLE_PROVIDER_ID,
   usableModelId,
-} from "@rakazo/contracts";
-import { ClientError, clampCatalogThinkingLevel } from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
+} from "@nurlai/contracts";
+import { ClientError, clampCatalogThinkingLevel } from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
 import {
   appliedModelRole,
   comparePreferenceOrder,
@@ -48,9 +48,9 @@ import {
   updateModelRole,
   withTransactionRetry,
   writeModelRole,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
-import { markExpectedFailure } from "@rakazo/logging/hono";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
+import { markExpectedFailure } from "@nurlai/logging/hono";
 import { assertCompatibleDefaultChange } from "../bots/model-pins.js";
 import { mayUsePrivateEndpoint } from "../integrations/mcp-servers.js";
 import {

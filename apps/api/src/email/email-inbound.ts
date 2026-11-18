@@ -1,20 +1,20 @@
 import { createHash } from "node:crypto";
-import type { MessagingInboundAttachment } from "@rakazo/adapter-kit";
-import type { InboundEmail } from "@rakazo/adapters";
-import { INBOUND_EMAIL_MAX_BYTES, readInboundEmail } from "@rakazo/adapters";
-import type { RoutineEmailSenders } from "@rakazo/contracts";
-import { ATTACHMENT_MAX_COUNT } from "@rakazo/contracts";
-import { AttachmentValidationError, sanitizeMessagingLabel } from "@rakazo/core";
-import { hasValidBearerToken } from "@rakazo/core/node/secrets-guard";
-import type { EmailAttachment, ThreadEvents } from "@rakazo/db";
+import type { MessagingInboundAttachment } from "@nurlai/adapter-kit";
+import type { InboundEmail } from "@nurlai/adapters";
+import { INBOUND_EMAIL_MAX_BYTES, readInboundEmail } from "@nurlai/adapters";
+import type { RoutineEmailSenders } from "@nurlai/contracts";
+import { ATTACHMENT_MAX_COUNT } from "@nurlai/contracts";
+import { AttachmentValidationError, sanitizeMessagingLabel } from "@nurlai/core";
+import { hasValidBearerToken } from "@nurlai/core/node/secrets-guard";
+import type { EmailAttachment, ThreadEvents } from "@nurlai/db";
 import {
   appendEventInTransaction,
   createThreadMessageInTransaction,
   isUniqueViolation,
   SpaceDeletionInProgressError,
   storedEmailAttachments,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import type { Hono } from "hono";
 import { cancelBody, readBoundedBytes } from "../http/http-body.js";
 import {

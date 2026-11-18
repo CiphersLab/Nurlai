@@ -1,13 +1,13 @@
 import { useLingui } from "@lingui/react/macro";
-import type { BotAvatarSet } from "@rakazo/contracts";
-import { BOT_NAME_MAX_LENGTH, resolveBotAvatarSet } from "@rakazo/contracts";
+import type { BotAvatarSet } from "@nurlai/contracts";
+import { BOT_NAME_MAX_LENGTH, resolveBotAvatarSet } from "@nurlai/contracts";
 import {
   botLookState,
   newBotLook,
   newBotLookInput,
   newBotPreviewIdentity,
   ORGANIC_PREVIEW_IDENTITIES,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useRef, useState } from "react";
 import { BackHandler, ScrollView, Text, TextInput, View } from "react-native";

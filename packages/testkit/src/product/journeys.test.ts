@@ -1,7 +1,7 @@
 import { existsSync, mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { runJobKey } from "@rakazo/adapter-kit";
+import { runJobKey } from "@nurlai/adapter-kit";
 import {
   ComposioConnector,
   createJobReconciler,
@@ -18,26 +18,26 @@ import {
   returnHelperOutcome,
   startBackgroundHelper,
   toComputerRef,
-} from "@rakazo/adapters";
-import type { createApp } from "@rakazo/api/app";
-import type { MessageBlock, ThreadSnapshot } from "@rakazo/contracts";
+} from "@nurlai/adapters";
+import type { createApp } from "@nurlai/api/app";
+import type { MessageBlock, ThreadSnapshot } from "@nurlai/contracts";
 import {
   ACTIVE_RUN_STATUSES,
   answerableAskMessageIds,
   ONCE_ROUTINE_CRON,
   settleRunSubagents,
   stuckWorkStatusMessages,
-} from "@rakazo/core";
-import { openScreenCapability } from "@rakazo/core/node/screen-capability";
-import { resolveScreenProxySecret } from "@rakazo/core/node/secrets-guard";
-import { deferred } from "@rakazo/core/test-async";
+} from "@nurlai/core";
+import { openScreenCapability } from "@nurlai/core/node/screen-capability";
+import { resolveScreenProxySecret } from "@nurlai/core/node/secrets-guard";
+import { deferred } from "@nurlai/core/test-async";
 import {
   appendEvent,
   createThreadEvents,
   createThreadMessage,
   RunHistoryWriteError,
   runAsSystem,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import type { BotIntroHarness } from "../discard-bot-intro.js";
 import { discardBotIntroFromCreate } from "../discard-bot-intro.js";
@@ -150,7 +150,7 @@ describeJourneys("required product journeys", () => {
   }
 
   beforeAll(async () => {
-    const { createApp } = await import("@rakazo/api/app");
+    const { createApp } = await import("@nurlai/api/app");
     const handles = await createApp({
       modelConnectionFetch: createModelConnectionFixtureFetch(listPiCatalog()),
       databaseUrl: process.env.DATABASE_URL!,

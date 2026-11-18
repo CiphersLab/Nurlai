@@ -4,7 +4,7 @@ import {
   BACKGROUND_RUN_TRIGGERS,
   isDeliveryMessage,
   plainTextFromMarkdown,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import type { PrismaClient } from "../database/client.js";
 import { Prisma } from "../database/client.js";
 

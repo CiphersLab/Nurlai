@@ -1,11 +1,11 @@
 import { normalizeContext } from "@earendil-works/pi-ai";
-import { WorkspaceTooLargeError } from "@rakazo/adapter-kit";
-import type { MessageBlock } from "@rakazo/contracts";
-import { FLEET_TOOL_NAMES } from "@rakazo/contracts";
-import { BACKGROUND_HELPER_TRIGGER, isOwnerStartedRun, ONCE_ROUTINE_CRON } from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
-import { RunHistoryWriteError } from "@rakazo/db";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+import { WorkspaceTooLargeError } from "@nurlai/adapter-kit";
+import type { MessageBlock } from "@nurlai/contracts";
+import { FLEET_TOOL_NAMES } from "@nurlai/contracts";
+import { BACKGROUND_HELPER_TRIGGER, isOwnerStartedRun, ONCE_ROUTINE_CRON } from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
+import { RunHistoryWriteError } from "@nurlai/db";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { describe, expect, it, vi } from "vitest";
 import { parseUpdateBotPatch } from "../../bots/update-bot-patch.js";
 import {
@@ -32,7 +32,7 @@ import {
   desktopGuardShellInstruction,
   dockerComputerToolInstruction,
   persistentComputerInstruction,
-  RAKAZO_PLATFORM_INSTRUCTION,
+  NURLAI_PLATFORM_INSTRUCTION,
   threadContextForRun,
   userTurnInstructions,
   VOICE_CALL_INSTRUCTION,
@@ -1514,7 +1514,7 @@ describe("userTurnInstructions", () => {
     }).filter(Boolean);
 
     expect(instructions).toEqual([
-      RAKAZO_PLATFORM_INSTRUCTION,
+      NURLAI_PLATFORM_INSTRUCTION,
       "Bot instructions",
       computerLine,
       "This entire computer workspace is your private home.",
@@ -1524,7 +1524,7 @@ describe("userTurnInstructions", () => {
       archiveBot,
       "Connected plugins: none",
       "Agent skills",
-      expect.stringContaining("read the Rakazo skill"),
+      expect.stringContaining("read the Nurlai skill"),
       "Taught skills",
       ...stableTail,
       "Group context",
@@ -1552,7 +1552,7 @@ describe("userTurnInstructions", () => {
     }).filter(Boolean);
 
     expect(instructions).toEqual([
-      RAKAZO_PLATFORM_INSTRUCTION,
+      NURLAI_PLATFORM_INSTRUCTION,
       "Bot instructions",
       computerLine,
       "This entire computer workspace is your private home.",
@@ -1602,7 +1602,7 @@ describe("userTurnInstructions", () => {
     }).filter(Boolean);
 
     expect(instructions).toEqual([
-      RAKAZO_PLATFORM_INSTRUCTION,
+      NURLAI_PLATFORM_INSTRUCTION,
       "Bot instructions",
       computerLine,
       "Catalog guidance",

@@ -1,5 +1,5 @@
 import { randomBytes } from "node:crypto";
-import { deferred, flush } from "@rakazo/core/test-async";
+import { deferred, flush } from "@nurlai/core/test-async";
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 import { createDb } from "./client.js";
 import { assertLeaseHeld, LeaseHeldError, LeaseLostError, withLease } from "./leases.js";

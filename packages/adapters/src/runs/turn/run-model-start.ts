@@ -1,10 +1,10 @@
-import type { AgentRunRequest } from "@rakazo/adapter-kit";
-import { isModelCredentialRejected } from "@rakazo/adapter-kit";
-import type { ModelRoleChoice } from "@rakazo/contracts";
-import { creditOfferingFromConnectionId, modelRoleConnectionId } from "@rakazo/contracts";
-import { MISSING_MODEL_RUN_ERROR, MODEL_ACCESS_REQUIRED_RUN_ERROR } from "@rakazo/core";
-import { memberHasModelAccess } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+import type { AgentRunRequest } from "@nurlai/adapter-kit";
+import { isModelCredentialRejected } from "@nurlai/adapter-kit";
+import type { ModelRoleChoice } from "@nurlai/contracts";
+import { creditOfferingFromConnectionId, modelRoleConnectionId } from "@nurlai/contracts";
+import { MISSING_MODEL_RUN_ERROR, MODEL_ACCESS_REQUIRED_RUN_ERROR } from "@nurlai/core";
+import { memberHasModelAccess } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { HostedModelCreditsRequiredError } from "../../models/credits/model-credit-observer.js";
 import type { DeploymentModelDefaults } from "../../models/model-roles.js";
 import { effectiveModelRole } from "../../models/model-roles.js";

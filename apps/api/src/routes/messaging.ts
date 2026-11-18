@@ -1,7 +1,7 @@
 import { ORPCError } from "@orpc/server";
-import { MessagingInstallRefusedError } from "@rakazo/adapter-kit";
-import { ClientError, displayName } from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
+import { MessagingInstallRefusedError } from "@nurlai/adapter-kit";
+import { ClientError, displayName } from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
 import {
   crossSpaceCommunicationAllowed,
   formatMessagingLinkCode,
@@ -9,7 +9,7 @@ import {
   isUniqueViolation,
   runAsSystem,
   spaceIsShared,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import type { RouterContext } from "./context.js";
 
 export function messagingRoutes(ctx: RouterContext) {

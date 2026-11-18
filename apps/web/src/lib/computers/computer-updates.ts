@@ -1,4 +1,4 @@
-import { createComputerUpdates } from "@rakazo/core";
+import { createComputerUpdates } from "@nurlai/core";
 import { rpc, SPACE_SELECTED_EVENT, selectedSpaceId } from "../query/rpc";
 export const computerUpdates = createComputerUpdates({
   list: () => rpc.computer.updates(),

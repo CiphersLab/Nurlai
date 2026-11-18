@@ -1,9 +1,9 @@
-export const SITE_NAME = "Rakazo";
-export const SITE_URL = "https://rakazo.com";
+export const SITE_NAME = "Nurlai";
+export const SITE_URL = "https://nurlai.cipherslab.com";
 export const SITE_DESCRIPTION =
-  "Rakazo is an open source Grok Bot alternative for persistent AI teammates that do real work. Your keys, your model, your machine.";
+  "Nurlai is an open source Grok Bot alternative for persistent AI teammates that do real work. Your keys, your model, your machine.";
 
-export const APP_URL = "https://app.rakazo.com";
+export const APP_URL = "https://app.nurlai.cipherslab.com";
 export const PLUGIN_SUBMISSIONS_URL = `${APP_URL}/api/v1/plugin-submissions`;
 export const INTEGRATION_CLAIMS_URL = `${APP_URL}/api/v1/integration-claims`;
 export const CATALOG_URL =

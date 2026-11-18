@@ -1,9 +1,9 @@
-import type { SecretStore } from "@rakazo/adapter-kit";
-import { SecretStoreUnavailableError } from "@rakazo/adapter-kit";
-import { ClientError } from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
-import { runAsSystem } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+import type { SecretStore } from "@nurlai/adapter-kit";
+import { SecretStoreUnavailableError } from "@nurlai/adapter-kit";
+import { ClientError } from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
+import { runAsSystem } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { modelProviderDefinition } from "../models/model-provider-registry.js";
 import { parseModelSecret, secretValuesToRedact } from "../models/model-secret.js";
 import { connectionModelSettings } from "../models/model-settings.js";

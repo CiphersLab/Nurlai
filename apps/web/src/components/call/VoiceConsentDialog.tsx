@@ -1,5 +1,5 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { AI_PRIVACY_URL } from "@rakazo/contracts";
+import { AI_PRIVACY_URL } from "@nurlai/contracts";
 import type { VoiceConsentRequest } from "../../lib/calls/voice-consent";
 import { ConfirmDialog } from "../ConfirmDialog";
 

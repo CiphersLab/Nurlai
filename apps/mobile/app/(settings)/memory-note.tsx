@@ -1,8 +1,8 @@
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import type { MemoryDocument } from "@rakazo/contracts";
-import { isDeletableMemoryDocument } from "@rakazo/contracts";
-import { fetchFresh } from "@rakazo/core/query";
+import type { MemoryDocument } from "@nurlai/contracts";
+import { isDeletableMemoryDocument } from "@nurlai/contracts";
+import { fetchFresh } from "@nurlai/core/query";
 import { useLocalSearchParams, usePreventRemove, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { ActivityIndicator, Alert, ScrollView, StyleSheet, Text, TextInput } from "react-native";

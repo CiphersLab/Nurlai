@@ -1,5 +1,5 @@
-import { SecretStoreUnavailableError } from "@rakazo/adapter-kit";
-import * as adapters from "@rakazo/adapters";
+import { SecretStoreUnavailableError } from "@nurlai/adapter-kit";
+import * as adapters from "@nurlai/adapters";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   availableModel,

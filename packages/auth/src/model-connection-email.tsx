@@ -1,6 +1,6 @@
 /** @jsxRuntime automatic */
-import type { TransactionalEmail } from "@rakazo/adapter-kit";
-import { MODEL_SUBSCRIPTION_NAMES } from "@rakazo/core";
+import type { TransactionalEmail } from "@nurlai/adapter-kit";
+import { MODEL_SUBSCRIPTION_NAMES } from "@nurlai/core";
 import { Text } from "react-email";
 import { Button, emailText, greeting, message } from "./email.js";
 
@@ -24,11 +24,11 @@ export function modelConnectionEmail(
   return message(
     user.email,
     LOCALE,
-    "Connect a model to start using Rakazo",
+    "Connect a model to start using Nurlai",
     <>
       <Text>{greeting(emailText(LOCALE), user.name)}</Text>
       <Text>
-        Your Rakazo plan has started, but your bots can't reply until a model is connected.
+        Your Nurlai plan has started, but your bots can't reply until a model is connected.
       </Text>
       <Text>Sign in with your {subscriptions} subscription, or paste an API key.</Text>
       <Button href={modelConnectionUrl(links.webOrigin)}>Connect a model</Button>

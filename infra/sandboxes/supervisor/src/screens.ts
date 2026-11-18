@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { getLogger } from "@rakazo/logging";
+import { getLogger } from "@nurlai/logging";
 import type Docker from "dockerode";
 import { screenPorts } from "./computer-spec.js";
 import { teamScreenLimit } from "./context.js";
@@ -221,5 +221,5 @@ export async function setInteractiveScreen(
     interactiveScreenCommand(interactive, controlToken, layout),
   ]);
   if (result.code !== 0) throw new Error(result.stderr || "control screen failed to start");
-  return interactive || !controlToken || result.stdout.includes("RAKAZO_CONTROL_RELEASED\n");
+  return interactive || !controlToken || result.stdout.includes("NURLAI_CONTROL_RELEASED\n");
 }

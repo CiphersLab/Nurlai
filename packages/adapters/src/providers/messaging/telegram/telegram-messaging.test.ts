@@ -1,6 +1,6 @@
 import { createTelegramAdapter } from "@chat-adapter/telegram";
-import type { AdapterContext, MessagingInboundEvent } from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
+import type { AdapterContext, MessagingInboundEvent } from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { ChatSdkMessagingSurface } from "../../../messaging/chat-sdk-surface.js";
 import type { MessagingEnvironmentValues } from "../../../messaging/messaging-platforms.js";

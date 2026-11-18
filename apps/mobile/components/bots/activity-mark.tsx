@@ -1,7 +1,7 @@
-import { useTimeout } from "@rakazo/chat-ui/hooks";
-import type { BotAvatarSet } from "@rakazo/contracts";
-import { avatarPhotoDot } from "@rakazo/core";
-import { MAX_FONT_SCALE, typeScale } from "@rakazo/ui-tokens";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
+import type { BotAvatarSet } from "@nurlai/contracts";
+import { avatarPhotoDot } from "@nurlai/core";
+import { MAX_FONT_SCALE, typeScale } from "@nurlai/ui-tokens";
 import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import type { SharedValue } from "react-native-reanimated";

@@ -1,6 +1,6 @@
-import type { AdapterContext, ComputerRef, SandboxProvider } from "@rakazo/adapter-kit";
-import { SandboxFileTooLargeError } from "@rakazo/adapter-kit";
-import { redactSecrets } from "@rakazo/core";
+import type { AdapterContext, ComputerRef, SandboxProvider } from "@nurlai/adapter-kit";
+import { SandboxFileTooLargeError } from "@nurlai/adapter-kit";
+import { redactSecrets } from "@nurlai/core";
 import { describe, expect, it } from "vitest";
 import { TOOL_RESULT_TEXT_LIMIT } from "../runtime/pi/pi-runtime-limits.js";
 import type { RunWorkspace } from "./workspace-file-tools.js";

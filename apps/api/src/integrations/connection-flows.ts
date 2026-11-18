@@ -4,8 +4,8 @@ import type {
   AdapterContext,
   BackgroundJobPayloads,
   ManagedConnectorProvider,
-} from "@rakazo/adapter-kit";
-import { ConnectorAuthUnavailableError, connectionCleanupJob } from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
+import { ConnectorAuthUnavailableError, connectionCleanupJob } from "@nurlai/adapter-kit";
 import {
   authorizationInUse,
   CONNECTION_CLEANUP_BACKUP_MS,
@@ -20,12 +20,12 @@ import {
   providerLockTransaction,
   providerScopeKey,
   tryLockProviderConnectionScope,
-} from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
-import { ClientError } from "@rakazo/core";
-import { normalizedHttpUrl } from "@rakazo/core/egress";
-import { IsolationError, ProviderTransactionBusyError, recordSecurityEvent } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
+import { ClientError } from "@nurlai/core";
+import { normalizedHttpUrl } from "@nurlai/core/egress";
+import { IsolationError, ProviderTransactionBusyError, recordSecurityEvent } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { connectionCreatedEvent } from "../auth/security-audit.js";
 import type { RouterDeps } from "../router.js";
 

@@ -1,6 +1,6 @@
 import { t } from "@lingui/core/macro";
-import type { SearchHit, SpaceBot, SpaceGroup } from "@rakazo/contracts";
-import { dedupeSearchHits, searchHitListKey } from "@rakazo/core";
+import type { SearchHit, SpaceBot, SpaceGroup } from "@nurlai/contracts";
+import { dedupeSearchHits, searchHitListKey } from "@nurlai/core";
 import type { MobileBot, MobileGroup } from "../api/mobile-types";
 import { filterBots } from "../inbox/inbox";
 import type { InboxSpace } from "../inbox/inbox-spaces";

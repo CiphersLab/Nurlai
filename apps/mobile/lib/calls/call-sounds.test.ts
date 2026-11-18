@@ -1,4 +1,4 @@
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { createAudioPlayer, setAudioModeAsync } from "expo-audio";
 import { deleteItemAsync, getItemAsync, setItemAsync } from "expo-secure-store";
 import { afterAll, afterEach, beforeEach, expect, it, vi } from "vitest";

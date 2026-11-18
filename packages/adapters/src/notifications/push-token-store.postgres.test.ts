@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
-import { deferred } from "@rakazo/core/test-async";
-import { createDb, runAsSystem, runAsTenant } from "@rakazo/db";
+import { deferred } from "@nurlai/core/test-async";
+import { createDb, runAsSystem, runAsTenant } from "@nurlai/db";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { credentialDigest } from "../secrets/credential-digest.js";
 import { PrismaPushTokenStore, PushSessionEndedError } from "./push-token-store.js";

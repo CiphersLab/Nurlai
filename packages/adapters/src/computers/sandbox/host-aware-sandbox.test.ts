@@ -1,8 +1,8 @@
 import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import type { ComputerRef, SandboxProvider } from "@rakazo/adapter-kit";
-import type { PrismaClient } from "@rakazo/db";
+import type { ComputerRef, SandboxProvider } from "@nurlai/adapter-kit";
+import type { PrismaClient } from "@nurlai/db";
 import { afterAll, afterEach, describe, expect, it, vi } from "vitest";
 import { DesktopSandboxProvider } from "../../providers/computer/desktop/desktop-sandbox.js";
 import { DockerSandboxProvider } from "../../providers/computer/docker/docker-sandbox.js";

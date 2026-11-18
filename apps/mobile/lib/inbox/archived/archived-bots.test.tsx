@@ -3,8 +3,8 @@
 vi.mock("../../api/session", () => ({ currentSessionGeneration: () => 0 }));
 
 import { i18n } from "@lingui/core";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import type { ReactNode } from "react";
 import { act, createElement, useEffect } from "react";
 import type { Root } from "react-dom/client";
@@ -291,7 +291,7 @@ describe("archived chat read failures", () => {
       "bots/restore",
       { botId: bot.id },
       expect.objectContaining({
-        requestContext: expect.objectContaining({ headers: { "x-rakazo-space-id": bot.spaceId } }),
+        requestContext: expect.objectContaining({ headers: { "x-nurlai-space-id": bot.spaceId } }),
       }),
     );
     expect(container.textContent).toBe("No archived chats");
@@ -353,7 +353,7 @@ describe("archived chat read failures", () => {
       { groupId: group.id },
       expect.objectContaining({
         requestContext: expect.objectContaining({
-          headers: { "x-rakazo-space-id": group.spaceId },
+          headers: { "x-nurlai-space-id": group.spaceId },
         }),
       }),
     );

@@ -1,5 +1,5 @@
-import type { Run } from "@rakazo/db";
-import * as Logging from "@rakazo/logging";
+import type { Run } from "@nurlai/db";
+import * as Logging from "@nurlai/logging";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { ExecutorDeps } from "../executor/executor-deps.js";
 import { createReplyState } from "../lifecycle/run-progress.js";

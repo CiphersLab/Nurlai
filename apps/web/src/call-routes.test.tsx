@@ -1,9 +1,9 @@
 // @vitest-environment jsdom
 
-import type { IncomingBotCall } from "@rakazo/contracts";
-import type * as CoreModule from "@rakazo/core";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred, flush } from "@rakazo/core/test-async";
+import type { IncomingBotCall } from "@nurlai/contracts";
+import type * as CoreModule from "@nurlai/core";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred, flush } from "@nurlai/core/test-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 import { act } from "react";
@@ -27,7 +27,7 @@ vi.mock("@lingui/react/macro", () => ({
       "message" in parts ? parts.message : String.raw(parts, ...values),
   }),
 }));
-vi.mock("@rakazo/ui-web", () => ({
+vi.mock("@nurlai/ui-web", () => ({
   BotAvatar: () => null,
   cn: (...classes: unknown[]) => classes.filter(Boolean).join(" "),
   defaultBotAvatarValue: () => "",
@@ -35,7 +35,7 @@ vi.mock("@rakazo/ui-web", () => ({
     <button {...props}>{children}</button>
   ),
 }));
-vi.mock("@rakazo/core", async (importOriginal) => ({
+vi.mock("@nurlai/core", async (importOriginal) => ({
   ...(await importOriginal<typeof CoreModule>()),
   runThreadSubscription: vi.fn(async () => undefined),
 }));

@@ -1,4 +1,4 @@
-import { nextCronDate, ONCE_ROUTINE_CRON } from "@rakazo/core";
+import { nextCronDate, ONCE_ROUTINE_CRON } from "@nurlai/core";
 import type { Criterion, EvalCase, Evidence } from "../cases.js";
 import type { JudgeInput } from "../judge.js";
 import type { RoutineEvidence } from "./silence.js";

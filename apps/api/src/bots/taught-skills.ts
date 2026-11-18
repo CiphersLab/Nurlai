@@ -1,12 +1,12 @@
 import { randomUUID } from "node:crypto";
 import { ORPCError } from "@orpc/server";
-import type { AgentHomeStore, JobPublisher, SandboxProvider } from "@rakazo/adapter-kit";
+import type { AgentHomeStore, JobPublisher, SandboxProvider } from "@nurlai/adapter-kit";
 import {
   createAdapterContext,
   skillTeachingExpireJob,
   skillTeachingExpireJobKey,
-} from "@rakazo/adapter-kit";
-import type { TaughtSkillRow, TeachComputerInput } from "@rakazo/adapters";
+} from "@nurlai/adapter-kit";
+import type { TaughtSkillRow, TeachComputerInput } from "@nurlai/adapters";
 import {
   acquireComputerExecutionLease,
   anotherPersonHoldsControl,
@@ -27,9 +27,9 @@ import {
   sandboxKindCapabilities,
   screenLeaseIdForRun,
   wakeRun,
-} from "@rakazo/adapters";
-import type { Actor, MessageBlock, TaughtSkill } from "@rakazo/contracts";
-import type { SkillPlaybook, TeachRecordingEvent } from "@rakazo/core";
+} from "@nurlai/adapters";
+import type { Actor, MessageBlock, TaughtSkill } from "@nurlai/contracts";
+import type { SkillPlaybook, TeachRecordingEvent } from "@nurlai/core";
 import {
   ACTIVE_RUN_STATUSES,
   buildPlaybookFromRecording,
@@ -37,8 +37,8 @@ import {
   computerUsingRuns,
   formatSkillRunPrompt,
   teachRecordingTtlMs,
-} from "@rakazo/core";
-import type { createRepos, PrismaClient, ThreadEvents } from "@rakazo/db";
+} from "@nurlai/core";
+import type { createRepos, PrismaClient, ThreadEvents } from "@nurlai/db";
 import {
   changeMessageBlocks,
   clearEndedRunState,
@@ -46,8 +46,8 @@ import {
   IsolationError,
   isUniqueViolation,
   storedMessageBlocks,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { takeComputerControl } from "../computers/computer-control.js";
 
 export interface TaughtSkillsDeps {

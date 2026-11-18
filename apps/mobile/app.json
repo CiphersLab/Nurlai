@@ -1,9 +1,9 @@
 {
   "expo": {
     "name": "Nurlai",
-    "slug": "rakazo",
+    "slug": "nurlai",
     "owner": "inbox-zero",
-    "scheme": "rakazo",
+    "scheme": "nurlai",
     "version": "1.0.15",
     "orientation": "default",
     "userInterfaceStyle": "automatic",
@@ -59,7 +59,7 @@
         {
           "ios": {
             "enabled": true,
-            "appGroupId": "group.com.rakazo.app",
+            "appGroupId": "group.com.nurlai.app",
             "activationRule": {
               "supportsText": true,
               "supportsWebUrlWithMaxCount": 1,
@@ -101,7 +101,7 @@
       "pl": "./locales/pl.json"
     },
     "ios": {
-      "bundleIdentifier": "com.rakazo.app",
+      "bundleIdentifier": "com.nurlai.app",
       "buildNumber": "1",
       "supportsTablet": true,
       "icon": "../../packages/ui-tokens/assets/Nurlai.icon",
@@ -124,7 +124,7 @@
       }
     },
     "android": {
-      "package": "com.rakazo.app",
+      "package": "com.nurlai.app",
       "versionCode": 10,
       "softwareKeyboardLayoutMode": "resize",
       "icon": "./assets/icon.png",
@@ -147,19 +147,19 @@
             "ios": {
               "appExtensions": [
                 {
-                  "targetName": "RakazoWidgets",
-                  "bundleIdentifier": "com.rakazo.app.widgets"
+                  "targetName": "NurlaiWidgets",
+                  "bundleIdentifier": "com.nurlai.app.widgets"
                 },
                 {
                   "targetName": "expo-sharing-extension",
-                  "bundleIdentifier": "com.rakazo.app.expo-sharing-extension",
+                  "bundleIdentifier": "com.nurlai.app.expo-sharing-extension",
                   "entitlements": {
-                    "com.apple.security.application-groups": ["group.com.rakazo.app"]
+                    "com.apple.security.application-groups": ["group.com.nurlai.app"]
                   }
                 },
                 {
                   "targetName": "AgentNotifications",
-                  "bundleIdentifier": "com.rakazo.app.notifications",
+                  "bundleIdentifier": "com.nurlai.app.notifications",
                   "entitlements": {
                     "com.apple.developer.usernotifications.communication": true
                   }

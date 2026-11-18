@@ -1,4 +1,4 @@
-import type { SpaceChangeKind } from "@rakazo/contracts";
+import type { SpaceChangeKind } from "@nurlai/contracts";
 
 /**
  * Procedures that change what a Space change kind covers in the actor's Space, signalled once they

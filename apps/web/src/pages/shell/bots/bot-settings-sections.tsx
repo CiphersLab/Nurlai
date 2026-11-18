@@ -1,12 +1,12 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { ComputerMode, ThinkingLevel } from "@rakazo/contracts";
+import type { ComputerMode, ThinkingLevel } from "@nurlai/contracts";
 import {
   BOT_COMPUTER_MODES,
   BOT_DESCRIPTION_MAX_LENGTH,
   BUILTIN_TOOL_NAMES,
-} from "@rakazo/contracts";
-import type { ChatModelChoice } from "@rakazo/core";
-import { Button, OptionSelect, SectionHeading, Switch, Textarea, Toggle } from "@rakazo/ui-web";
+} from "@nurlai/contracts";
+import type { ChatModelChoice } from "@nurlai/core";
+import { Button, OptionSelect, SectionHeading, Switch, Textarea, Toggle } from "@nurlai/ui-web";
 import { X } from "lucide-react";
 import type { ReactNode, RefObject } from "react";
 import { thinkingLevelLabel } from "../../../lib/models/model-catalog";

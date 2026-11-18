@@ -1,7 +1,7 @@
-import type { BackgroundJob } from "@rakazo/adapter-kit";
-import { SecretNotFoundError } from "@rakazo/adapter-kit";
-import type { Prisma } from "@rakazo/db";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+import type { BackgroundJob } from "@nurlai/adapter-kit";
+import { SecretNotFoundError } from "@nurlai/adapter-kit";
+import type { Prisma } from "@nurlai/db";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { describe, expect, it, vi } from "vitest";
 import type { SecretCleanup, SecretCleanupDeps } from "./secret-cleanup.js";
 import {

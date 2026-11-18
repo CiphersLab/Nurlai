@@ -1,6 +1,6 @@
-import type { NotificationMessage } from "@rakazo/adapter-kit";
-import type { MessageBlock } from "@rakazo/contracts";
-import { isToolActivityBlock } from "@rakazo/core";
+import type { NotificationMessage } from "@nurlai/adapter-kit";
+import type { MessageBlock } from "@nurlai/contracts";
+import { isToolActivityBlock } from "@nurlai/core";
 import type { Criterion, EvalCase, Evidence } from "../cases.js";
 import type { ServiceCall } from "../services.js";
 

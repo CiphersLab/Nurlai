@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
-import type { ComputerStatus, ComputerUpdate } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
+import type { ComputerStatus, ComputerUpdate } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
 import type { ComponentProps, ReactNode } from "react";
 import { act } from "react";
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
@@ -12,7 +12,7 @@ vi.mock("@lingui/react/macro", () => ({
   useLingui: () => ({ t: (strings: TemplateStringsArray) => strings.join("") }),
   Trans: ({ children }: { children: ReactNode }) => children,
 }));
-vi.mock("@rakazo/ui-web", () => ({
+vi.mock("@nurlai/ui-web", () => ({
   Button: (props: ComponentProps<"button">) => <button {...props} />,
 }));
 vi.mock("../ConfirmDialog", () => ({

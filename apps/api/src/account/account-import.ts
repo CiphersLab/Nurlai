@@ -6,14 +6,14 @@ import { chmod, mkdir, mkdtemp, open, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { createInterface } from "node:readline";
-import type { AdapterContext } from "@rakazo/adapter-kit";
-import { normalizeWorkspacePath, resolveBotWorkspacePath } from "@rakazo/adapters";
+import type { AdapterContext } from "@nurlai/adapter-kit";
+import { normalizeWorkspacePath, resolveBotWorkspacePath } from "@nurlai/adapters";
 import type {
   AccountExportManifest,
   AccountExportRecord,
   AccountImportResult,
   Actor,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   ACCOUNT_EXPORT_FORMAT,
   ACCOUNT_EXPORT_MANIFEST_PATH,
@@ -24,8 +24,8 @@ import {
   AccountExportRecordSchema,
   attachmentSizeLabel,
   resolveBotAvatarSet,
-} from "@rakazo/contracts";
-import { organicAvatarFamily, STOPPED_HELPER_RESULT } from "@rakazo/core";
+} from "@nurlai/contracts";
+import { organicAvatarFamily, STOPPED_HELPER_RESULT } from "@nurlai/core";
 import {
   createRepos,
   createSpaceForMember,
@@ -35,10 +35,10 @@ import {
   runAsSystem,
   runAsTenant,
   SpaceLimitError,
-} from "@rakazo/db";
-import { bestEffort, getLogger } from "@rakazo/logging";
-import { pageViewerCode } from "@rakazo/page-kit/compile";
-import { checkPageSource } from "@rakazo/page-kit/validate";
+} from "@nurlai/db";
+import { bestEffort, getLogger } from "@nurlai/logging";
+import { pageViewerCode } from "@nurlai/page-kit/compile";
+import { checkPageSource } from "@nurlai/page-kit/validate";
 import type { Hono } from "hono";
 import { cancelBody } from "../http/http-body.js";
 import type { SpaceDeletionDeps } from "../spaces/space-deletion.js";
@@ -77,7 +77,7 @@ export class AccountImportError extends Error {
   }
 }
 
-const unreadable = () => new AccountImportError("The file is not a readable Rakazo export.");
+const unreadable = () => new AccountImportError("The file is not a readable Nurlai export.");
 const invalidEntry = () => new AccountImportError("The export contains an unexpected file.");
 const outOfOrder = () => new AccountImportError("The export's files are out of order.");
 const missingRecord = () => new AccountImportError("The export refers to a missing record.");
@@ -1101,7 +1101,7 @@ function parseManifest(bytes: Uint8Array): AccountExportManifest {
   const manifest = AccountExportManifestSchema.safeParse(parsed);
   if (manifest.success) return manifest.data;
   if (version !== ACCOUNT_EXPORT_VERSION)
-    throw new AccountImportError("This export is from a newer version of Rakazo.");
+    throw new AccountImportError("This export is from a newer version of Nurlai.");
   throw unreadable();
 }
 

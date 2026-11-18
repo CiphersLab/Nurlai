@@ -1,6 +1,6 @@
-import type { RealtimeFanout } from "@rakazo/adapter-kit";
-import { MessageBlock as MessageBlockSchema } from "@rakazo/contracts";
-import { releasedTakeoverComputerBlocks } from "@rakazo/core";
+import type { RealtimeFanout } from "@nurlai/adapter-kit";
+import { MessageBlock as MessageBlockSchema } from "@nurlai/contracts";
+import { releasedTakeoverComputerBlocks } from "@nurlai/core";
 import { draftRecordingsOfLeaseInTransaction } from "../bots/teaching-recordings.js";
 import type { Prisma, PrismaClient } from "../database/client.js";
 import { THREAD_LOCK_TRANSACTION_OPTIONS } from "../database/transaction-retry.js";

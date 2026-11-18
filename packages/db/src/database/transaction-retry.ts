@@ -1,4 +1,4 @@
-import { ClientError } from "@rakazo/core";
+import { ClientError } from "@nurlai/core";
 
 // Transactions that lock the thread row before writing run state share the body budget: the
 // lock is held up to 15s by snapshot reads, Prisma's 5s default counts that wait, and expiring

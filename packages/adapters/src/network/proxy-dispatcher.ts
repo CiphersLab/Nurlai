@@ -1,4 +1,4 @@
-import { ipVersion } from "@rakazo/contracts";
+import { ipVersion } from "@nurlai/contracts";
 import type { Dispatcher } from "undici";
 import { Agent, EnvHttpProxyAgent, Pool } from "undici";
 import type { ResolvedAddress, ResolveHostname } from "./network-address.js";

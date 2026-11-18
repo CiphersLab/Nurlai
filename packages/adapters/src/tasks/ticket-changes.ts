@@ -1,6 +1,6 @@
-import type { JobPublisher } from "@rakazo/adapter-kit";
-import type { LabFeature } from "@rakazo/contracts";
-import type { BoardEvents, PrismaClient } from "@rakazo/db";
+import type { JobPublisher } from "@nurlai/adapter-kit";
+import type { LabFeature } from "@nurlai/contracts";
+import type { BoardEvents, PrismaClient } from "@nurlai/db";
 import { wakeTicketAssignee } from "./ticket-wake.js";
 
 export type TicketChange = {

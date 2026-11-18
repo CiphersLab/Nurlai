@@ -1,4 +1,4 @@
-import { displayName, redactSecrets, TAKEOVER_COMPUTER_PENDING_STATE } from "@rakazo/core";
+import { displayName, redactSecrets, TAKEOVER_COMPUTER_PENDING_STATE } from "@nurlai/core";
 import { MAX_APPROVAL_DETAIL_LENGTH, truncate } from "../../approvals/approval-ask.js";
 import { scheduleComputerSleep } from "../../computers/computer-idle.js";
 import { holdComputerExecutionLeaseForTakeover } from "../../computers/computer-lifecycle.js";

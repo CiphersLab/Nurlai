@@ -1,12 +1,12 @@
-import type { AgentUsage, ModelUsageLookup } from "@rakazo/adapter-kit";
-import type * as Db from "@rakazo/db";
-import type { PrismaClient } from "@rakazo/db";
-import { recordModelCreditReceipt, recordUsage } from "@rakazo/db";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+import type { AgentUsage, ModelUsageLookup } from "@nurlai/adapter-kit";
+import type * as Db from "@nurlai/db";
+import type { PrismaClient } from "@nurlai/db";
+import { recordModelCreditReceipt, recordUsage } from "@nurlai/db";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createModelCreditReconciler } from "./model-credit-reconciler.js";
 
-vi.mock("@rakazo/db", async (importOriginal) => ({
+vi.mock("@nurlai/db", async (importOriginal) => ({
   ...(await importOriginal<typeof Db>()),
   recordUsage: vi.fn(),
   recordModelCreditReceipt: vi.fn(),

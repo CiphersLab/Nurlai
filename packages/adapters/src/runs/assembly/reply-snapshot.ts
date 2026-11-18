@@ -1,5 +1,5 @@
-import { MessageBlock, storedImageMimeType, ToolStepCallSchema } from "@rakazo/contracts";
-import { reportJsonColumnOnce, runTurnCheckpointRow } from "@rakazo/db";
+import { MessageBlock, storedImageMimeType, ToolStepCallSchema } from "@nurlai/contracts";
+import { reportJsonColumnOnce, runTurnCheckpointRow } from "@nurlai/db";
 import { z } from "zod";
 import type { ReplyState } from "./run-context.js";
 

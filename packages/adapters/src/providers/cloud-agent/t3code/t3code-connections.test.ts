@@ -1,6 +1,6 @@
-import type { AdapterContext } from "@rakazo/adapter-kit";
-import { CloudAgentRequestRejected } from "@rakazo/adapter-kit";
-import type { McpServer, PrismaClient } from "@rakazo/db";
+import type { AdapterContext } from "@nurlai/adapter-kit";
+import { CloudAgentRequestRejected } from "@nurlai/adapter-kit";
+import type { McpServer, PrismaClient } from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import type { CloudAgentConnection } from "../../../cloud-agents/cloud-agent-factory.js";
 import {

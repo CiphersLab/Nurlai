@@ -67,7 +67,7 @@ jobs:
           DATABASE_URL: postgres://rakazo:rakazo@127.0.0.1:5433/rakazo
       - name: Build the marketing site
         if: env.WEB != 'true'
-        run: pnpm exec turbo build --filter=@rakazo/www
+        run: pnpm exec turbo build --filter=@nurlai/www
       # The size budgets read the bundles this step just built, in a fraction of a second.
       - run: pnpm build && node scripts/checks/bundle-size.mjs
         if: env.WEB == 'true'
@@ -87,7 +87,7 @@ jobs:
         if: env.WEB == 'true'
         env:
           electron_config_cache: ${{ runner.temp }}/electron-cache
-        run: xvfb-run --auto-servernum pnpm --filter @rakazo/desktop exec playwright test --config e2e/playwright.config.ts
+        run: xvfb-run --auto-servernum pnpm --filter @nurlai/desktop exec playwright test --config e2e/playwright.config.ts
       - name: Upload desktop setup screenshots
         if: always() && env.WEB == 'true'
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4

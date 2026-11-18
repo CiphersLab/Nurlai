@@ -54,8 +54,8 @@ export function execComputerShell() {
       });
       return { stdout: Buffer.concat([...chunks, Buffer.alloc(1024)]) };
     }
-    if (command.some((arg) => arg.includes("RAKAZO_DESKTOP=")))
-      return { stdout: "RAKAZO_DESKTOP=0:offline-view-token\n" };
+    if (command.some((arg) => arg.includes("NURLAI_DESKTOP=")))
+      return { stdout: "NURLAI_DESKTOP=0:offline-view-token\n" };
     if (command.some((arg) => arg.includes("getmouselocation")))
       return { stdout: "cG5n\nCURSOR X=1 Y=2\n" };
     return {};

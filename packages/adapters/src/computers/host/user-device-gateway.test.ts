@@ -3,10 +3,10 @@ import { createServer } from "node:http";
 import type { AddressInfo } from "node:net";
 import { connect } from "node:net";
 import type { Duplex } from "node:stream";
-import { USER_DEVICE_CONNECT_PATH } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
-import type { PrismaClient } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+import { USER_DEVICE_CONNECT_PATH } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
+import type { PrismaClient } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import WebSocket from "ws";
 import type { HostComputerRequest } from "./host-computer-protocol.js";
@@ -317,7 +317,7 @@ describe("user device gateway in the holding process", () => {
     const result = collect(devices.request("user-1", environment, new AbortController().signal));
     await socket.nextRequest();
     await devices.disconnect(device.id);
-    await expect(result).rejects.toThrow("disconnected from Rakazo");
+    await expect(result).rejects.toThrow("disconnected from Nurlai");
     expect(socket.sent).toContainEqual({ type: "revoked" });
     expect(socket.closed?.code).toBe(4001);
   });
@@ -520,7 +520,7 @@ describe("device socket upgrade", () => {
           headers: { authorization: `Bearer ${"a".repeat(64)}` },
         });
         ws.on("unexpected-response", (_request, response) =>
-          resolve(String(response.headers["x-rakazo-device-revoked"] ?? "none")),
+          resolve(String(response.headers["x-nurlai-device-revoked"] ?? "none")),
         );
         ws.on("open", () => {
           ws.close();

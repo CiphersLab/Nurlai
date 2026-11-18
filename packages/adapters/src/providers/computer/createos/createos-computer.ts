@@ -1,4 +1,4 @@
-import { DEFAULT_COMPUTER_SCREEN } from "@rakazo/core";
+import { DEFAULT_COMPUTER_SCREEN } from "@nurlai/core";
 import type { ComputerProviderDefinition } from "../../../computers/computer-provider-descriptor.js";
 import { raw } from "../../../computers/computer-provider-descriptor.js";
 

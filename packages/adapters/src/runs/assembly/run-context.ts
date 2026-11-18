@@ -9,20 +9,20 @@ import type {
   SandboxProvider,
   SemanticMemoryProvider,
   WebProvider,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import type {
   AttachmentImageMimeType,
   ComputerMode,
   MessageBlock,
   ReplyMode,
   ToolStepCall,
-} from "@rakazo/contracts";
-import type { ToolStepOutcome } from "@rakazo/core";
-import { createStreamingRedactor } from "@rakazo/core";
-import { toolEffectIdempotencyKey } from "@rakazo/core/node/approval-effect-key";
-import type { Bot, Computer, effectiveMemoryScope, Run, Task, Thread } from "@rakazo/db";
-import { dropRunTurnCheckpoint, saveRunTurnCheckpoint } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/contracts";
+import type { ToolStepOutcome } from "@nurlai/core";
+import { createStreamingRedactor } from "@nurlai/core";
+import { toolEffectIdempotencyKey } from "@nurlai/core/node/approval-effect-key";
+import type { Bot, Computer, effectiveMemoryScope, Run, Task, Thread } from "@nurlai/db";
+import { dropRunTurnCheckpoint, saveRunTurnCheckpoint } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import type {
   ApprovalPausedToolResult,
   ApprovedEffectReplayQueue,

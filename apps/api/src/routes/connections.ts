@@ -1,10 +1,10 @@
-import type { ConnectorCatalogItem } from "@rakazo/adapter-kit";
-import { planLiveConnectionSync } from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
-import { availableChatApps, isAvailableChatApp } from "@rakazo/core";
-import type { Prisma, PrismaClient } from "@rakazo/db";
-import { IsolationError, recordSecurityEvent } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+import type { ConnectorCatalogItem } from "@nurlai/adapter-kit";
+import { planLiveConnectionSync } from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
+import { availableChatApps, isAvailableChatApp } from "@nurlai/core";
+import type { Prisma, PrismaClient } from "@nurlai/db";
+import { IsolationError, recordSecurityEvent } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { connectionCreatedEvent } from "../auth/security-audit.js";
 import {
   beginConnection,

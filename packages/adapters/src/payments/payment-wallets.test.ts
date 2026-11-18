@@ -3,10 +3,10 @@ import type {
   PaymentWalletCredential,
   PaymentWalletProvider,
   SecretStore,
-} from "@rakazo/adapter-kit";
-import { PaymentWalletDisconnected } from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
-import type { PaymentWallet, PrismaClient } from "@rakazo/db";
+} from "@nurlai/adapter-kit";
+import { PaymentWalletDisconnected } from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
+import type { PaymentWallet, PrismaClient } from "@nurlai/db";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { fakeCleanupJobs } from "../secrets/secret-cleanup.test-support.js";
 import type { PaymentWalletDeps } from "./payment-wallets.js";
@@ -231,7 +231,7 @@ describe("payment wallet connection", () => {
       expiresAt: new Date(NOW.getTime() + 15 * 60_000).toISOString(),
     });
     expect(env.provider?.beginConnect).toHaveBeenCalledWith(
-      { clientName: "Rakazo" },
+      { clientName: "Nurlai" },
       expect.objectContaining({ userId: actor.userId }),
     );
     const [row] = env.rows;

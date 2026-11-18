@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import type { RemoteRelease } from "@rakazo/core";
+import type { RemoteRelease } from "@nurlai/core";
 import {
   commitImageTag,
   IMAGE_TAG_ENV,
@@ -8,8 +8,8 @@ import {
   isValidImageTag,
   PREVIOUS_IMAGE_TAG_ENV,
   selectLatestRelease,
-} from "@rakazo/core";
-import { bestEffort } from "@rakazo/logging";
+} from "@nurlai/core";
+import { bestEffort } from "@nurlai/logging";
 import type { UpdaterCommandRunner } from "./index.js";
 import type { UpdaterConfig } from "./updater-logic.js";
 import {
@@ -19,8 +19,8 @@ import {
   UpdateRefused,
 } from "./updater-logic.js";
 
-export const COMPUTER_TAG_ENV = "RAKAZO_COMPUTER_IMAGE_TAG";
-export const PREVIOUS_COMPUTER_TAG_ENV = "RAKAZO_COMPUTER_IMAGE_TAG_PREVIOUS";
+export const COMPUTER_TAG_ENV = "NURLAI_COMPUTER_IMAGE_TAG";
+export const PREVIOUS_COMPUTER_TAG_ENV = "NURLAI_COMPUTER_IMAGE_TAG_PREVIOUS";
 const READ_TIMEOUT_MS = 120_000;
 function computerCachePrefix(config: UpdaterConfig): string {
   return `cached-${createHash("sha256").update(config.projectName).digest("hex").slice(0, 16)}-`;
@@ -420,7 +420,7 @@ async function readComputerSelection(
 ): Promise<ComputerState> {
   if (!config.updateServices.includes("supervisor"))
     throw new UpdateRefused(
-      "Managing computer updates also requires supervisor in RAKAZO_UPDATE_SERVICES.",
+      "Managing computer updates also requires supervisor in NURLAI_UPDATE_SERVICES.",
     );
   const image = readEnvAssignment(env, COMPUTER_IMAGE_ENV) || OFFICIAL_COMPUTER_IMAGE;
   const envTag = readEnvAssignment(env, COMPUTER_TAG_ENV) || "latest";

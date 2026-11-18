@@ -1,9 +1,9 @@
 import { randomUUID } from "node:crypto";
 import { createRouterClient } from "@orpc/server";
-import type { Actor } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
-import type { PrismaClient } from "@rakazo/db";
-import { allocateTicketNumber, createDb, ensureBoard, runAsSystem, runAsTenant } from "@rakazo/db";
+import type { Actor } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
+import type { PrismaClient } from "@nurlai/db";
+import { allocateTicketNumber, createDb, ensureBoard, runAsSystem, runAsTenant } from "@nurlai/db";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import type { RouterDeps } from "../router.js";
 import { createRouter } from "../router.js";

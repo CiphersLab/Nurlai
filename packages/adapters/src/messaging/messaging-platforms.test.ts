@@ -1,6 +1,6 @@
 import { validateFileSize, WhatsAppApiError } from "@chat-adapter/whatsapp";
-import type { AdapterContext } from "@rakazo/adapter-kit";
-import { getLogger } from "@rakazo/logging";
+import type { AdapterContext } from "@nurlai/adapter-kit";
+import { getLogger } from "@nurlai/logging";
 import { SendblueAdapter } from "chat-adapter-sendblue";
 import { describe, expect, it, vi } from "vitest";
 import { Domain } from "../providers/messaging/lark/thread-id.js";

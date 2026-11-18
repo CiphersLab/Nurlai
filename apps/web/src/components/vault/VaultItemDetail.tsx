@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { useTimeout } from "@rakazo/chat-ui/hooks";
-import type { BotSecretMetadata, SettingsScope, VaultRevealed } from "@rakazo/contracts";
+import { useTimeout } from "@nurlai/chat-ui/hooks";
+import type { BotSecretMetadata, SettingsScope, VaultRevealed } from "@nurlai/contracts";
 import {
   BotSecretName,
   cardExpiry,
@@ -8,9 +8,9 @@ import {
   hasVaultAccess,
   otherSitesText,
   vaultKind,
-} from "@rakazo/contracts";
-import { vaultBotsLine } from "@rakazo/i18n/vault";
-import { Button } from "@rakazo/ui-web";
+} from "@nurlai/contracts";
+import { vaultBotsLine } from "@nurlai/i18n/vault";
+import { Button } from "@nurlai/ui-web";
 import { Check, Copy, Eye, EyeOff } from "lucide-react";
 import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";

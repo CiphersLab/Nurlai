@@ -6,10 +6,10 @@ import type {
   ConnectorEvent,
   ConnectorTool,
   ManagedConnectorProvider,
-} from "@rakazo/adapter-kit";
-import { ResponseTooLargeError } from "@rakazo/core";
-import { isVitestRuntime } from "@rakazo/core/node/test-runtime";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { ResponseTooLargeError } from "@nurlai/core";
+import { isVitestRuntime } from "@nurlai/core/node/test-runtime";
+import { getLogger } from "@nurlai/logging";
 import { catalogToolPrefix } from "../../../approvals/approval-effect.js";
 import {
   resolveAccountToolCall,

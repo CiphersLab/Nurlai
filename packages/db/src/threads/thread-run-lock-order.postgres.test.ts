@@ -1,5 +1,5 @@
-import { TAKEOVER_COMPUTER_PENDING_STATE } from "@rakazo/core";
-import { deferred } from "@rakazo/core/test-async";
+import { TAKEOVER_COMPUTER_PENDING_STATE } from "@nurlai/core";
+import { deferred } from "@nurlai/core/test-async";
 import type { Pool } from "pg";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import type { PrismaClient } from "../database/client.js";

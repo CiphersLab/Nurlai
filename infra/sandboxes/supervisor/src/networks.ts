@@ -1,4 +1,4 @@
-import { getLogger } from "@rakazo/logging";
+import { getLogger } from "@nurlai/logging";
 import type Docker from "dockerode";
 import {
   computerBridgeNameFor,
@@ -155,7 +155,7 @@ export async function reclaimIdleComputerNetworks() {
   const runtime = await inspectSupervisorContainer();
   const owner = computerNetworkOwnerFor(dataDir, runtime);
   const networks = await docker.listNetworks({
-    filters: { label: [`rakazo.computerOwner=${owner}`] },
+    filters: { label: [`nurlai.cipherslab.computerOwner=${owner}`] },
   });
   for (const { Name, Labels } of networks) {
     const botId = Labels?.["rakazo.botId"];

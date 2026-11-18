@@ -1,6 +1,6 @@
 import { i18n } from "@lingui/core";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const { rpc, alert, removeFromSearchInbox, captureApiRequestContext } = vi.hoisted(() => ({
@@ -31,7 +31,7 @@ beforeEach(() => {
   rpc.mockResolvedValue([]);
   captureApiRequestContext.mockResolvedValue({
     apiBase: "https://example.test",
-    headers: { "x-rakazo-space-id": "space-a" },
+    headers: { "x-nurlai-space-id": "space-a" },
   });
 });
 describe("archived bot lifecycle", () => {
@@ -108,7 +108,7 @@ describe("group deletion", () => {
 it("keeps deletion bound to the archived bot's space through confirmation", async () => {
   const requestContext = {
     apiBase: "https://example.test",
-    headers: { "x-rakazo-space-id": "space-b" },
+    headers: { "x-nurlai-space-id": "space-b" },
   };
   const deleted = vi.fn();
   rpc.mockResolvedValueOnce([]).mockResolvedValueOnce({ ok: true });
@@ -243,7 +243,7 @@ it.each(["cancel", "dismiss", "success", "failure", "stale"] as const)(
 );
 
 it("pins default preview and deletion to the initial Space despite selection changes", async () => {
-  const context = { apiBase: "https://example.test", headers: { "x-rakazo-space-id": "space-a" } };
+  const context = { apiBase: "https://example.test", headers: { "x-nurlai-space-id": "space-a" } };
   captureApiRequestContext.mockResolvedValueOnce(context);
   let finish!: Deferred<unknown[]>;
   rpc.mockImplementationOnce(() => {
@@ -254,7 +254,7 @@ it("pins default preview and deletion to the initial Space despite selection cha
   await vi.waitFor(() => expect(rpc).toHaveBeenCalledOnce());
   captureApiRequestContext.mockResolvedValue({
     ...context,
-    headers: { "x-rakazo-space-id": "space-b" },
+    headers: { "x-nurlai-space-id": "space-b" },
   });
   finish.resolve([]);
   await pending;

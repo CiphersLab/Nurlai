@@ -1,5 +1,5 @@
-import { ClientError, retry } from "@rakazo/core";
-import type { HeldLease, Prisma, PrismaClient } from "@rakazo/db";
+import { ClientError, retry } from "@nurlai/core";
+import type { HeldLease, Prisma, PrismaClient } from "@nurlai/db";
 import {
   assertLeaseHeld,
   boundLockWaits,
@@ -7,7 +7,7 @@ import {
   LeaseHeldError,
   LeaseLostError,
   withLease,
-} from "@rakazo/db";
+} from "@nurlai/db";
 
 const CHECKOUT_LEASE_MS = 120_000;
 const CHECKOUT_LEASE_POLL_MS = 250;

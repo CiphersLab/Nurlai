@@ -118,7 +118,7 @@ test("an owner invites someone to the organization, who joins with a private Spa
   await ownerPage.getByRole("menuitem", { name: "Bob Invitee" }).click();
   await expect(spaceSettings.getByText("Bob Invitee")).toBeVisible();
   const teamMembers = await ownerPage.request.post("/rpc/spaces/members/list", {
-    headers: { "x-rakazo-space-id": team.id },
+    headers: { "x-nurlai-space-id": team.id },
     data: { json: { spaceId: team.id } },
   });
   expect(JSON.stringify(await teamMembers.json())).toContain("Bob Invitee");

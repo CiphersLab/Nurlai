@@ -1,9 +1,9 @@
 import { createRouterClient } from "@orpc/server";
 import { RPCHandler } from "@orpc/server/fetch";
-import { SecretStoreUnavailableError } from "@rakazo/adapter-kit";
-import * as adapters from "@rakazo/adapters";
-import { CodexCatalogCache, listPiCatalog } from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
+import { SecretStoreUnavailableError } from "@nurlai/adapter-kit";
+import * as adapters from "@nurlai/adapters";
+import { CodexCatalogCache, listPiCatalog } from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
 import { describe, expect, it, vi } from "vitest";
 import type { RouterDeps } from "../router.js";
 import type { RouterHandler } from "../router-test-support.js";

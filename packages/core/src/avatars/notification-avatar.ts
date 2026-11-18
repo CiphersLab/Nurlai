@@ -1,5 +1,5 @@
-import { BotAvatarValueSchema, parseBotAvatarValue } from "@rakazo/contracts";
-import { lightTokens } from "@rakazo/ui-tokens";
+import { BotAvatarValueSchema, parseBotAvatarValue } from "@nurlai/contracts";
+import { lightTokens } from "@nurlai/ui-tokens";
 import type { AvatarEyes } from "./avatar-shape.js";
 import {
   avatarEyeRects,

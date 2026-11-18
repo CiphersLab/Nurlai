@@ -1,4 +1,4 @@
-import { reportUiLocale } from "@rakazo/core";
+import { reportUiLocale } from "@nurlai/core";
 import { useEffect, useRef } from "react";
 import { i18n } from "../../lib/locale/i18n";
 import { normalizeUiLocale } from "../../lib/locale/ui-locale";

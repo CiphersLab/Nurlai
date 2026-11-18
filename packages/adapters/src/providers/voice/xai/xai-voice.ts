@@ -9,9 +9,9 @@ import type {
   VoiceTranscribeRequest,
   VoiceUsage,
   VoiceVerifyResult,
-} from "@rakazo/adapter-kit";
-import { VoiceAccountError } from "@rakazo/adapter-kit";
-import { deadlineSignal } from "@rakazo/core";
+} from "@nurlai/adapter-kit";
+import { VoiceAccountError } from "@nurlai/adapter-kit";
+import { deadlineSignal } from "@nurlai/core";
 import {
   readVoiceAudio,
   readVoiceJson,

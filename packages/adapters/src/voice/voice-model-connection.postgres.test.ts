@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import type { OAuthCredential } from "@earendil-works/pi-ai";
-import { VoiceAccountError } from "@rakazo/adapter-kit";
-import { asSystem, createDb, runAsTenant } from "@rakazo/db";
+import { VoiceAccountError } from "@nurlai/adapter-kit";
+import { asSystem, createDb, runAsTenant } from "@nurlai/db";
 import { afterAll, afterEach, describe, expect, it, vi } from "vitest";
 import { serializeModelSecret } from "../models/model-secret.js";
 import { EncryptedSecretStore } from "../secrets/secrets.js";

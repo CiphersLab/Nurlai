@@ -1,7 +1,7 @@
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import type { SignInProvider } from "@rakazo/contracts";
-import { signInProviderGroups } from "@rakazo/contracts";
+import type { SignInProvider } from "@nurlai/contracts";
+import { signInProviderGroups } from "@nurlai/contracts";
 import type { ReactNode } from "react";
 import { Pressable, Text, useWindowDimensions, View } from "react-native";
 import Svg, { Path } from "react-native-svg";

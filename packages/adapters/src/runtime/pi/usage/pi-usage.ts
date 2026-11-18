@@ -14,8 +14,8 @@ import type {
   AgentUsage,
   ModelCallObserver,
   UsageOperationKind,
-} from "@rakazo/adapter-kit";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { getLogger } from "@nurlai/logging";
 import { withGoogleToolHistory } from "../../../models/endpoints/google-tool-history.js";
 import { openRouterInferenceFetch } from "../../../models/endpoints/openrouter-usage.js";
 import { estimateModelContextTokens } from "../../../models/model-context.js";

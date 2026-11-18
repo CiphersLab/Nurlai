@@ -1,4 +1,4 @@
-import { BOT_SECTION_NAME_MAX_LENGTH } from "@rakazo/contracts";
+import { BOT_SECTION_NAME_MAX_LENGTH } from "@nurlai/contracts";
 import { Alert } from "react-native";
 
 /**

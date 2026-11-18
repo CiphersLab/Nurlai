@@ -1,7 +1,7 @@
 import { randomBytes } from "node:crypto";
-import { EncryptedSecretStore, InfisicalSecretStore, migrateSecrets } from "@rakazo/adapters";
-import type { PrismaClient, SpaceKeyRecord } from "@rakazo/db";
-import { ContentKeyRing, encryptText, LocalKeyProvider } from "@rakazo/db";
+import { EncryptedSecretStore, InfisicalSecretStore, migrateSecrets } from "@nurlai/adapters";
+import type { PrismaClient, SpaceKeyRecord } from "@nurlai/db";
+import { ContentKeyRing, encryptText, LocalKeyProvider } from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import { infisicalFake } from "../../../../packages/adapters/src/secrets/secret-store-fake.js";
 import { createSecretMigrationRepository } from "./secret-migration.js";

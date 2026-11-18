@@ -1,5 +1,5 @@
-import type { AgentToolCompletion, ConnectorTool } from "@rakazo/adapter-kit";
-import { deferred } from "@rakazo/core/test-async";
+import type { AgentToolCompletion, ConnectorTool } from "@nurlai/adapter-kit";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { builtinAgentTools } from "../../../tools/builtin.tool-definition.js";
 

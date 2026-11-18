@@ -1,9 +1,9 @@
-import type { ArtifactStore } from "@rakazo/adapter-kit";
-import type { Actor } from "@rakazo/contracts";
-import { attachmentComputerPath } from "@rakazo/core";
-import { deferred } from "@rakazo/core/test-async";
-import type { PrismaClient } from "@rakazo/db";
-import { IsolationError } from "@rakazo/db";
+import type { ArtifactStore } from "@nurlai/adapter-kit";
+import type { Actor } from "@nurlai/contracts";
+import { attachmentComputerPath } from "@nurlai/core";
+import { deferred } from "@nurlai/core/test-async";
+import type { PrismaClient } from "@nurlai/db";
+import { IsolationError } from "@nurlai/db";
 import { describe, expect, it, vi } from "vitest";
 import {
   ArtifactListCursorError,

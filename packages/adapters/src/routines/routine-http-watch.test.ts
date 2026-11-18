@@ -1,4 +1,4 @@
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { provisionComputer } from "../computers/computer-lifecycle.js";
 import { egressRefused } from "../network/network-address.js";

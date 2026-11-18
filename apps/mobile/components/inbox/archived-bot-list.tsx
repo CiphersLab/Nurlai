@@ -1,6 +1,6 @@
 import { MenuView } from "@expo/ui/community/menu";
 import { useLingui } from "@lingui/react/macro";
-import { typeScale } from "@rakazo/ui-tokens";
+import { typeScale } from "@nurlai/ui-tokens";
 import { Pressable, ScrollView, Text, View } from "react-native";
 import type { MobileBot, MobileGroup } from "../../lib/api/mobile-types";
 import { useSideInsets } from "../../lib/layout/side-insets";

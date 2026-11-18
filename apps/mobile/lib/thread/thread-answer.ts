@@ -1,4 +1,4 @@
-import type { LoginFieldInput, RpcInput } from "@rakazo/contracts";
+import type { LoginFieldInput, RpcInput } from "@nurlai/contracts";
 import type { MobileMessage } from "../api/mobile-types";
 import { hapticSuccess } from "../native/haptics";
 

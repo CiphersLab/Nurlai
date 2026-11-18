@@ -1,7 +1,7 @@
 import type { Route } from "@playwright/test";
 import { expect, test } from "@playwright/test";
-import type { McpServer } from "@rakazo/contracts";
-import { MCP_OAUTH_CLIENT_REQUIRED } from "@rakazo/contracts";
+import type { McpServer } from "@nurlai/contracts";
+import { MCP_OAUTH_CLIENT_REQUIRED } from "@nurlai/contracts";
 import { MCP_OAUTH_CHANNEL } from "../../src/lib/integrations/mcp-oauth-channel";
 import {
   captureScreenshot,

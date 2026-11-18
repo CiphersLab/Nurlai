@@ -1,7 +1,7 @@
 import type * as NodeFs from "node:fs";
 import { readFileSync } from "node:fs";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { RunExecutionHost } from "./run-execution.js";
 

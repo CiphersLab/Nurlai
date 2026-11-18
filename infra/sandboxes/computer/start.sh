@@ -28,7 +28,7 @@ shutdown() {
 }
 trap shutdown TERM INT
 
-if [[ -n "${RAKAZO_COMPUTER_CONTROL_TOKEN:-}" ]]; then
+if [[ -n "${NURLAI_COMPUTER_CONTROL_TOKEN:-}" ]]; then
   while true; do
     /usr/local/bin/rakazo-computer-control
     sleep 1

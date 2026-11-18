@@ -1,4 +1,4 @@
-import { nextRoutineRunDateAcross } from "@rakazo/core";
+import { nextRoutineRunDateAcross } from "@nurlai/core";
 import { routineTimerScheduledFor } from "./routine-coalescing.js";
 
 /**

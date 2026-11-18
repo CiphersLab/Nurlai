@@ -1,13 +1,13 @@
 import { Trans } from "@lingui/react/macro";
-import { ChatMarkdown } from "@rakazo/chat-ui/web";
-import type { ThreadMessage } from "@rakazo/contracts";
-import { helperCardState } from "@rakazo/core";
-import { Button } from "@rakazo/ui-web/components/ui/button";
+import { ChatMarkdown } from "@nurlai/chat-ui/web";
+import type { ThreadMessage } from "@nurlai/contracts";
+import { helperCardState } from "@nurlai/core";
+import { Button } from "@nurlai/ui-web/components/ui/button";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@rakazo/ui-web/components/ui/collapsible";
+} from "@nurlai/ui-web/components/ui/collapsible";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 

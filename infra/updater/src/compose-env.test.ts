@@ -50,7 +50,7 @@ const NOT_PASSED: Record<string, string> = {
   DEMO_ACCOUNT_PASSWORD: "publishes a shared login; only throwaway pull request previews set it",
   PM2_HOME: "restart-supervisor detection for PM2 hosts; Compose restarts containers",
   INVOCATION_ID: "restart-supervisor detection for systemd hosts; Compose restarts containers",
-  RAKAZO_ALLOW_DEV_SECRETS: "development-only escape hatch for placeholder secrets",
+  NURLAI_ALLOW_DEV_SECRETS: "development-only escape hatch for placeholder secrets",
   EMAIL_EMULATOR: "ignored when NODE_ENV=production",
   BILLING_EMULATOR: "ignored when NODE_ENV=production",
   NODE_USE_ENV_PROXY:
@@ -62,13 +62,13 @@ const NOT_PASSED: Record<string, string> = {
   CLOUDFLARE_ACCOUNT_ID: "written into Pi's environment from stored gateway settings",
   CLOUDFLARE_GATEWAY_ID: "written into Pi's environment from stored gateway settings",
   COMPOSE_PROJECT_NAME: "read by the updater sidecar, which has its own environment",
-  RAKAZO_COMPOSE_PROJECT_NAME: "read by the updater sidecar, which has its own environment",
-  RAKAZO_COMPUTER_PROXY_CONFIG: "built by the API and passed only to the computer prepare command",
-  RAKAZO_IMAGE_TAG: "read by deployment tooling and the updater sidecar, not app processes",
-  RAKAZO_DEPLOYED_MIGRATIONS: "passed only to the migration CLI by the production deploy script",
-  RAKAZO_IMAGE_TAG_PREVIOUS: "read by the updater sidecar, which has its own environment",
-  RAKAZO_DB_PACKAGE_DIR: "passed only to the migration CLI by the desktop app's native stack",
-  RAKAZO_ENV_FILE: "set by the desktop app's native stack so no stray .env is read",
+  NURLAI_COMPOSE_PROJECT_NAME: "read by the updater sidecar, which has its own environment",
+  NURLAI_COMPUTER_PROXY_CONFIG: "built by the API and passed only to the computer prepare command",
+  NURLAI_IMAGE_TAG: "read by deployment tooling and the updater sidecar, not app processes",
+  NURLAI_DEPLOYED_MIGRATIONS: "passed only to the migration CLI by the production deploy script",
+  NURLAI_IMAGE_TAG_PREVIOUS: "read by the updater sidecar, which has its own environment",
+  NURLAI_DB_PACKAGE_DIR: "passed only to the migration CLI by the desktop app's native stack",
+  NURLAI_ENV_FILE: "set by the desktop app's native stack so no stray .env is read",
   LOCAL_VM_CLI: LOCAL_VM,
   LOCAL_VM_COMPUTER_IMAGE: LOCAL_VM,
   LOCAL_VM_CPUS: LOCAL_VM,
@@ -102,8 +102,8 @@ const INDIRECT = {
     // core/secrets-guard.ts resolves these by name.
     "SANDBOX_SUPERVISOR_TOKEN",
     // pi-local-provider.ts reads these through a small helper.
-    "RAKAZO_LOCAL_CONTEXT_WINDOW",
-    "RAKAZO_LOCAL_MAX_TOKENS",
+    "NURLAI_LOCAL_CONTEXT_WINDOW",
+    "NURLAI_LOCAL_MAX_TOKENS",
     // The OTLP exporter reads its standard settings itself.
     "OTEL_EXPORTER_OTLP_HEADERS",
     "OTEL_EXPORTER_OTLP_TRACES_ENDPOINT",
@@ -279,13 +279,13 @@ describe("api and worker environment allowlists", () => {
         "BETTER_AUTH_SECRET",
         "OIDC_CLIENT_SECRET",
         "SCREEN_PROXY_SECRET",
-        "RAKAZO_UPDATER_TOKEN",
+        "NURLAI_UPDATER_TOKEN",
         "STRIPE_SECRET_KEY",
         "POSTGRES_PASSWORD",
       ]) {
         expect(worker).not.toHaveProperty(key);
       }
-      expect(stackEnvironment(files, "api")).not.toHaveProperty("RAKAZO_UPDATER_TOKEN");
+      expect(stackEnvironment(files, "api")).not.toHaveProperty("NURLAI_UPDATER_TOKEN");
       // The database password reaches both processes only inside DATABASE_URL.
       expect(stackEnvironment(files, "api")).not.toHaveProperty("POSTGRES_PASSWORD");
       // The owner login goes only to the migrate container, which gets nothing else.

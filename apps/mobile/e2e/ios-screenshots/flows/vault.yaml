@@ -1,10 +1,10 @@
-appId: com.rakazo.app
+appId: com.nurlai.app
 name: Vault logins
 ---
 - runFlow:
     file: ../subflows/sign-in.yaml
     env:
-      RAKAZO_ACTIVE_EMAIL: ${RAKAZO_SCREENSHOT_EMAIL}
+      NURLAI_ACTIVE_EMAIL: ${NURLAI_SCREENSHOT_EMAIL}
 - openLink: "rakazo:///vault"
 - extendedWaitUntil:
     visible: ".*Help desk.*"
@@ -22,7 +22,7 @@ name: Vault logins
 - extendedWaitUntil:
     visible: "Confirm it's you"
     timeout: 10000
-- inputText: ${RAKAZO_SCREENSHOT_PASSWORD}
+- inputText: ${NURLAI_SCREENSHOT_PASSWORD}
 - tapOn: "Continue"
 - extendedWaitUntil:
     visible: "Save"

@@ -4,14 +4,14 @@ import { mkdir, mkdtemp, readdir, readFile, rename, rm, writeFile } from "node:f
 import path from "node:path";
 import { setTimeout as sleep } from "node:timers/promises";
 import { promisify } from "node:util";
-import type { AgentDesktopHostScreenOptions } from "@rakazo/adapters/agent-desktop-host-screen";
+import type { AgentDesktopHostScreenOptions } from "@nurlai/adapters/agent-desktop-host-screen";
 import {
   agentDesktopCli,
   createAgentDesktopHostScreen,
-} from "@rakazo/adapters/agent-desktop-host-screen";
-import { createCuaHostScreen, cuaDriverConnector } from "@rakazo/adapters/cua-host-screen";
-import type { HostScreen } from "@rakazo/adapters/host-screen";
-import { HostScreenError } from "@rakazo/adapters/host-screen";
+} from "@nurlai/adapters/agent-desktop-host-screen";
+import { createCuaHostScreen, cuaDriverConnector } from "@nurlai/adapters/cua-host-screen";
+import type { HostScreen } from "@nurlai/adapters/host-screen";
+import { HostScreenError } from "@nurlai/adapters/host-screen";
 
 export const SCREEN_LOCKED_MESSAGE =
   "The user's screen is locked, so their apps can't be seen or used. Ask them to unlock it, then try again.";

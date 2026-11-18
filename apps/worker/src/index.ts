@@ -1,8 +1,8 @@
 import { setTimeout as sleep } from "node:timers/promises";
-import type { JobPublisher, JobWorkerHost } from "@rakazo/adapter-kit";
-import { unwrapEnvFromKeyManager } from "@rakazo/adapters";
-import { loadRootEnv } from "@rakazo/core/node/load-root-env";
-import { stopOnShutdownSignals } from "@rakazo/core/node/shutdown-signals";
+import type { JobPublisher, JobWorkerHost } from "@nurlai/adapter-kit";
+import { unwrapEnvFromKeyManager } from "@nurlai/adapters";
+import { loadRootEnv } from "@nurlai/core/node/load-root-env";
+import { stopOnShutdownSignals } from "@nurlai/core/node/shutdown-signals";
 import { startWorkerHealth } from "./health.js";
 import { createWorkerSecretStore } from "./secret-store.js";
 
@@ -66,9 +66,9 @@ import {
   withRunWorker,
   withSecretPersistence,
   withSecretWriteAhead,
-} from "@rakazo/adapters";
-import { abortableDelay } from "@rakazo/core";
-import { resolveSupervisorToken } from "@rakazo/core/node/secrets-guard";
+} from "@nurlai/adapters";
+import { abortableDelay } from "@nurlai/core";
+import { resolveSupervisorToken } from "@nurlai/core/node/secrets-guard";
 import {
   createBoardEvents,
   createDb,
@@ -85,11 +85,11 @@ import {
   runAsSystem,
   timeZoneWarning,
   verifyContentKeys,
-} from "@rakazo/db";
-import { bestEffort, SERVICE_NAMES } from "@rakazo/logging";
-import { createRootLogger } from "@rakazo/logging/axiom";
-import { watchEventLoopStalls } from "@rakazo/logging/event-loop";
-import { MarkdownMemoryStore } from "@rakazo/memory";
+} from "@nurlai/db";
+import { bestEffort, SERVICE_NAMES } from "@nurlai/logging";
+import { createRootLogger } from "@nurlai/logging/axiom";
+import { watchEventLoopStalls } from "@nurlai/logging/event-loop";
+import { MarkdownMemoryStore } from "@nurlai/memory";
 
 const logger = await createRootLogger(SERVICE_NAMES.worker);
 

@@ -1,12 +1,12 @@
-import type { VoiceVerifyResult } from "@rakazo/adapter-kit";
-import { VoiceAccountError } from "@rakazo/adapter-kit";
-import type { VoiceAccountErrorCode } from "@rakazo/contracts";
+import type { VoiceVerifyResult } from "@nurlai/adapter-kit";
+import { VoiceAccountError } from "@nurlai/adapter-kit";
+import type { VoiceAccountErrorCode } from "@nurlai/contracts";
 import {
   cancelResponseBody,
   deadlineSignal,
   MAX_VOICE_AUDIO_BYTES,
   ResponseTooLargeError,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { readBodyCapped } from "../web/web-ssrf.js";
 
 export const MAX_SPEAK_CHARS = 2000;

@@ -1,8 +1,8 @@
 import { chmod, mkdir, mkdtemp, readdir, rm, writeFile } from "node:fs/promises";
 import { hostname, tmpdir } from "node:os";
 import { join } from "node:path";
-import { deferred } from "@rakazo/core/test-async";
-import { getLogger } from "@rakazo/logging";
+import { deferred } from "@nurlai/core/test-async";
+import { getLogger } from "@nurlai/logging";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   DEFAULT_MCP_STDIO_STARTUP_TIMEOUT_MS,

@@ -5,15 +5,15 @@ import type {
   IntegrationCatalogResult,
   IntegrationCatalogSurface,
   McpSourcePreset,
-} from "@rakazo/contracts";
-import { MCP_OAUTH_CLIENT_REQUIRED, mcpServerConnection } from "@rakazo/contracts";
+} from "@nurlai/contracts";
+import { MCP_OAUTH_CLIENT_REQUIRED, mcpServerConnection } from "@nurlai/contracts";
 import {
   CONNECTION_CATALOG_PAGE_SIZE,
   catalogItemKey,
   customMcpServerInput,
   installedPluginParts,
   managedAppFor,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import {
   Button,
   Dialog,
@@ -27,7 +27,7 @@ import {
   DropdownMenuTrigger,
   Input,
   Spinner,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { ChevronDown, ChevronRight, LayoutTemplate, X } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
 import { IntegrationSetup } from "../../components/integrations/IntegrationSetup";

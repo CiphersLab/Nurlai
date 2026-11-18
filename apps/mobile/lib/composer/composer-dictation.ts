@@ -4,7 +4,7 @@ import {
   recognitionLocaleTag,
   requestDeadline,
   VOICE_RESPONSE_TIMEOUT_MS,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import { useNavigation, useRouter } from "expo-router";
 import { useEffect, useRef, useState } from "react";
 import { Alert, AppState } from "react-native";

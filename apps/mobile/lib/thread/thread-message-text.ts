@@ -1,5 +1,5 @@
 import { t } from "@lingui/core/macro";
-import { previewMessageText as previewText, resolvePersonaColorDef } from "@rakazo/core";
+import { previewMessageText as previewText, resolvePersonaColorDef } from "@nurlai/core";
 import type { MobileBot, MobileMessage, MobileSnapshot } from "../api/mobile-types";
 
 export function previewMessageText(message: MobileMessage): string {
@@ -23,4 +23,4 @@ export function speakerColorFor(
   return resolvePersonaColorDef(botId, raw).hex;
 }
 
-export { botDisplayName } from "@rakazo/core";
+export { botDisplayName } from "@nurlai/core";

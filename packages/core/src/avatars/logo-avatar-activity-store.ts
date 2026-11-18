@@ -1,4 +1,4 @@
-import type { Run } from "@rakazo/contracts";
+import type { Run } from "@nurlai/contracts";
 import { isBackgroundRunTrigger, isRunWaitingOnUser, isRunWorking } from "../runs/run-state.js";
 import type {
   LogoAvatarActivity,

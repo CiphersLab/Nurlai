@@ -1,6 +1,6 @@
-import type { MemoryPromptBudget, MemoryPromptDocumentUse } from "@rakazo/contracts";
-import { BOT_MEMORY_MAX_BYTES, MEMORY_INDEX_PATH } from "@rakazo/contracts";
-import { byteLength, truncateUtf8 } from "@rakazo/core";
+import type { MemoryPromptBudget, MemoryPromptDocumentUse } from "@nurlai/contracts";
+import { BOT_MEMORY_MAX_BYTES, MEMORY_INDEX_PATH } from "@nurlai/contracts";
+import { byteLength, truncateUtf8 } from "@nurlai/core";
 
 /** How much durable memory a prompt carries before the rest is left out. */
 export const AGENT_MEMORY_MAX_BYTES = 32 * 1024;

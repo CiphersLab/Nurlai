@@ -1,13 +1,13 @@
-import type { BackgroundJob, BackgroundJobPayloads } from "@rakazo/adapter-kit";
+import type { BackgroundJob, BackgroundJobPayloads } from "@nurlai/adapter-kit";
 import {
   BillingEmulator,
   createLifecycleEmailSender,
   EmailEmulator,
   LIFECYCLE_EMAIL_GAP_MS,
-} from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
-import { asSystem, billingAccountForOrganization, claimProductEmail, createDb } from "@rakazo/db";
+} from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
+import { asSystem, billingAccountForOrganization, claimProductEmail, createDb } from "@nurlai/db";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { createBillingService } from "../billing/billing.js";
 import { lifecycleEmailScheduler, MODEL_CONNECTION_EMAIL_DELAY_MS } from "./lifecycle-email.js";
@@ -120,7 +120,7 @@ dbTests("model connection email", () => {
 
     const [message, ...extra] = sentTo(id);
     expect(extra).toHaveLength(0);
-    expect(message!.subject).toBe("Connect a model to start using Rakazo");
+    expect(message!.subject).toBe("Connect a model to start using Nurlai");
     expect(message!.text).toContain(`${WEB_ORIGIN}/sign-in?next=%2Fonboarding%2Fmodel`);
     expect(message!.text).toContain("ChatGPT or Claude subscription, or paste an API key");
     expect(message!.headers).toEqual({

@@ -2,7 +2,7 @@ import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import type { ModelConnectInput } from "@rakazo/contracts";
+import type { ModelConnectInput } from "@nurlai/contracts";
 import type { EvalCase } from "./cases.js";
 
 /**

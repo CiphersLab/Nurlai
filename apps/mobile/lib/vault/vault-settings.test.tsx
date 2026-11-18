@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 
 import { i18n } from "@lingui/core";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred, flush } from "@rakazo/core/test-async";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred, flush } from "@nurlai/core/test-async";
 import type { ReactNode } from "react";
 import { act, createElement, useEffect, useState } from "react";
 import type { Root } from "react-dom/client";
@@ -101,7 +101,7 @@ vi.mock("../messages/message-action-sheet", () => ({
 }));
 // The real retry rule from contracts, with the device prompt replaced by `confirmIdentity`.
 vi.mock("../../components/vault/confirm-identity", async () => {
-  const { runWithIdentityConfirmation } = await import("@rakazo/contracts");
+  const { runWithIdentityConfirmation } = await import("@nurlai/contracts");
   return {
     useIdentityConfirmation: () => ({
       withIdentityConfirmation: <T,>(action: () => Promise<T>) =>

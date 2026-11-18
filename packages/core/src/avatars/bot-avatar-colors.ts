@@ -1,5 +1,5 @@
-import type { BotColorDef } from "@rakazo/contracts";
-import { BOT_COLOR_LIST, parseBotAvatarValue } from "@rakazo/contracts";
+import type { BotColorDef } from "@nurlai/contracts";
+import { BOT_COLOR_LIST, parseBotAvatarValue } from "@nurlai/contracts";
 
 /** Shared identity color for Avatar Studio reset/fallback (Executive Violet). */
 export const DEFAULT_BOT_AVATAR_COLOR = BOT_COLOR_LIST.find((color) => color.id === "violet")!.hex;

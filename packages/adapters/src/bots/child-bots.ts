@@ -6,16 +6,16 @@ import type {
   JobPublisher,
   SandboxProvider,
   SecretStore,
-} from "@rakazo/adapter-kit";
-import { isSandboxProviderOutage, routineJobKey, runJobKey } from "@rakazo/adapter-kit";
-import type { Actor, Bot, ComputerMode } from "@rakazo/contracts";
+} from "@nurlai/adapter-kit";
+import { isSandboxProviderOutage, routineJobKey, runJobKey } from "@nurlai/adapter-kit";
+import type { Actor, Bot, ComputerMode } from "@nurlai/contracts";
 import {
   BOT_DESCRIPTION_MAX_LENGTH,
   BOT_INSTRUCTIONS_MAX_LENGTH,
   GROUP_MEMBER_MIN,
-} from "@rakazo/contracts";
-import { ACTIVE_RUN_STATUSES, retry } from "@rakazo/core";
-import type { Prisma, PrismaClient, ThreadEvents } from "@rakazo/db";
+} from "@nurlai/contracts";
+import { ACTIVE_RUN_STATUSES, retry } from "@nurlai/core";
+import type { Prisma, PrismaClient, ThreadEvents } from "@nurlai/db";
 import {
   cancelRunsInTransaction,
   clearEndedRunState,
@@ -30,8 +30,8 @@ import {
   THREAD_LOCK_TRANSACTION_OPTIONS,
   teamComputerUserId,
   withTransactionRetry,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import {
   checkpointAndStopComputer,
   isTeamBotFolderName,

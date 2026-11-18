@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { flush } from "@rakazo/core/test-async";
+import { flush } from "@nurlai/core/test-async";
 import type { ComponentProps, ReactNode } from "react";
 import { act } from "react";
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
@@ -17,7 +17,7 @@ vi.mock("@lingui/react/macro", () => {
     ),
   };
 });
-vi.mock("@rakazo/ui-web", () => {
+vi.mock("@nurlai/ui-web", () => {
   const Button = ({
     variant: _variant,
     size: _size,
@@ -86,7 +86,7 @@ beforeEach(() => {
     vi.fn(async (request: Request, init?: RequestInit) => {
       requests.push({
         url: request.url,
-        spaceId: new Headers(init?.headers ?? request.headers).get("x-rakazo-space-id"),
+        spaceId: new Headers(init?.headers ?? request.headers).get("x-nurlai-space-id"),
       });
       return Response.json({
         json: request.url.endsWith("/billing/endTrial") ? {} : status,
@@ -196,7 +196,7 @@ it("opens the billing portal of the window's space, and says so when it cannot",
     vi.fn(async (request: Request, init?: RequestInit) => {
       requests.push({
         url: request.url,
-        spaceId: new Headers(init?.headers ?? request.headers).get("x-rakazo-space-id"),
+        spaceId: new Headers(init?.headers ?? request.headers).get("x-nurlai-space-id"),
       });
       if (request.url.endsWith("/billing/portal") && portalFails)
         return Response.json({ json: { message: "down" } }, { status: 500 });

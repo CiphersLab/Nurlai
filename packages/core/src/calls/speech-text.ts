@@ -1,4 +1,4 @@
-import type { MessageBlock } from "@rakazo/contracts";
+import type { MessageBlock } from "@nurlai/contracts";
 import { isToolActivityBlock } from "../runs/tool-activity.js";
 
 /** A fenced block becomes a mention of itself, with its language if known. */

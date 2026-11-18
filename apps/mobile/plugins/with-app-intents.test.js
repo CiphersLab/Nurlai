@@ -8,7 +8,7 @@ const mobile = join(import.meta.dirname, "..");
 const read = (file) => readFileSync(join(mobile, file), "utf8");
 const constant = (file, name) => read(file).match(new RegExp(`${name} = "([^"]+)"`))?.[1];
 
-describe("RakazoIntents", () => {
+describe("NurlaiIntents", () => {
   // The intents read what the app saved; renaming a key on one side would break them silently.
   it("reads the secure-store keys the app writes", () => {
     const swift = read("ios-intents/RakazoIntents.swift");
@@ -31,7 +31,7 @@ describe("RakazoIntents", () => {
     expect(swift).toContain('"rakazo.pending_voice_chat"');
     expect(module).toContain('"rakazo.pending_voice_chat"');
     for (const source of [swift, module]) {
-      expect(source).toContain('Notification.Name("RakazoPendingVoiceChat")');
+      expect(source).toContain('Notification.Name("NurlaiPendingVoiceChat")');
     }
   });
 
@@ -46,18 +46,18 @@ describe("withAppIntents prebuild", () => {
     const files = new Set();
     const copied = [];
     const added = [];
-    const widgetSettings = { PRODUCT_NAME: '"RakazoWidgets"' };
+    const widgetSettings = { PRODUCT_NAME: '"NurlaiWidgets"' };
     const config = {
       version: "2.0.0",
       ios: { bundleIdentifier: "com.example.app", buildNumber: "7" },
       modRequest: { projectRoot: "/project", platformProjectRoot: "/project/ios" },
       modResults: {
         hasFile: (file) => files.has(file),
-        pbxTargetByName: (name) => (name === "RakazoWidgets" ? {} : undefined),
+        pbxTargetByName: (name) => (name === "NurlaiWidgets" ? {} : undefined),
         pbxNativeTargetSection: () => ({
           "app-target": { name: "Nurlai" },
           "app-target_comment": "Nurlai",
-          "widget-target": { name: '"RakazoWidgets"' },
+          "widget-target": { name: '"NurlaiWidgets"' },
         }),
         pbxXCBuildConfigurationSection: () => ({ widget: { buildSettings: widgetSettings } }),
       },
@@ -101,7 +101,7 @@ describe("withAppIntents prebuild", () => {
     });
     module.exports(config);
     module.exports(config);
-    expect(plist.modResults.RakazoDefaultApiBase).toBe("https://api.example.test");
+    expect(plist.modResults.NurlaiDefaultApiBase).toBe("https://api.example.test");
     expect(plist.modResults.UIBackgroundModes).toEqual(["audio"]);
     expect(copied).toContainEqual([
       join(mobile, "ios-intents/RakazoIntents.swift"),
@@ -118,7 +118,7 @@ describe("withAppIntents prebuild", () => {
     ]);
     // An existing widget target still gets every source, in its own group and build phase.
     expect(added.slice(3).every((input) => input.targetUuid === "widget-target")).toBe(true);
-    expect(added.slice(3).every((input) => input.groupName === "RakazoWidgets")).toBe(true);
+    expect(added.slice(3).every((input) => input.groupName === "NurlaiWidgets")).toBe(true);
     expect(widgetSettings).toMatchObject({
       CURRENT_PROJECT_VERSION: "7",
       MARKETING_VERSION: "2.0.0",

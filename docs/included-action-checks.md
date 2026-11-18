@@ -29,10 +29,10 @@ still wins. A matching backup does not change the primary checker’s funding so
    Alternatively pin the same choice with the existing generic settings:
 
    ```dotenv
-   RAKAZO_AUTO_REVIEW_PROVIDER=openrouter
-   RAKAZO_AUTO_REVIEW_MODEL=typesafe/jev-1.14
-   RAKAZO_AUTO_REVIEW_TIMEOUT_MS=10000
-   RAKAZO_AUTO_REVIEW_MIN_CONFIDENCE=0.5
+   NURLAI_AUTO_REVIEW_PROVIDER=openrouter
+   NURLAI_AUTO_REVIEW_MODEL=typesafe/jev-1.14
+   NURLAI_AUTO_REVIEW_TIMEOUT_MS=10000
+   NURLAI_AUTO_REVIEW_MIN_CONFIDENCE=0.5
    ```
 
    Legacy direct decision-provider configuration still works and now records expenses too.

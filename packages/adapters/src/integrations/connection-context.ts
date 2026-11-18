@@ -1,5 +1,5 @@
-import type { AdapterContext } from "@rakazo/adapter-kit";
-import type { PrismaClient } from "@rakazo/db";
+import type { AdapterContext } from "@nurlai/adapter-kit";
+import type { PrismaClient } from "@nurlai/db";
 import type { PluginConnectionRow } from "../providers/integration/composio/composio-connector.js";
 import { planLiveConnectionSync } from "../providers/integration/composio/composio-connector.js";
 import type { ExecutorDeps } from "../runs/executor/executor-deps.js";

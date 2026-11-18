@@ -1,5 +1,5 @@
-import type { AgentRunRequest, AgentRuntime } from "@rakazo/adapter-kit";
-import { createRunExecutor, createWebProvider, PiAgentRuntime } from "@rakazo/adapters";
+import type { AgentRunRequest, AgentRuntime } from "@nurlai/adapter-kit";
+import { createRunExecutor, createWebProvider, PiAgentRuntime } from "@nurlai/adapters";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type * as ComputerLifecycle from "../../../adapters/src/computers/computer-lifecycle.js";
 import { parallelMcpFixture } from "../../../adapters/src/providers/web/parallel/parallel-web.test-support.js";
@@ -255,7 +255,7 @@ describe("Parallel through the ordinary bot caller", () => {
           fixture.peer.requests.every(
             (request) =>
               request.url === "https://search.parallel.ai/mcp" &&
-              request.headers.get("user-agent")?.startsWith("Rakazo/") &&
+              request.headers.get("user-agent")?.startsWith("Nurlai/") &&
               !request.headers.has("authorization"),
           ),
         ).toBe(true);

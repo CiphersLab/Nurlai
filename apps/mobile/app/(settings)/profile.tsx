@@ -1,7 +1,7 @@
 import { MenuView } from "@expo/ui/community/menu";
 import { useLingui } from "@lingui/react/macro";
-import type { AccountSecurity, SignInProvider } from "@rakazo/contracts";
-import { accountDisplay, displayName } from "@rakazo/core";
+import type { AccountSecurity, SignInProvider } from "@nurlai/contracts";
+import { accountDisplay, displayName } from "@nurlai/core";
 import { useFocusEffect, useRouter } from "expo-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ActivityIndicator, Alert, Platform, ScrollView, Text } from "react-native";

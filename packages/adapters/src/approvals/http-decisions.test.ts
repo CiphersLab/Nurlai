@@ -1,4 +1,4 @@
-import type { AdapterContext, DecisionRequest } from "@rakazo/adapter-kit";
+import type { AdapterContext, DecisionRequest } from "@nurlai/adapter-kit";
 import { describe, expect, it, vi } from "vitest";
 import { estimateTextTokens } from "../runtime/context/context-selection.js";
 import { HttpDecisionProvider } from "./http-decisions.js";

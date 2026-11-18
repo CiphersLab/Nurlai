@@ -1,6 +1,6 @@
 import { createRouterClient } from "@orpc/server";
-import type { Actor, ChatAlert } from "@rakazo/contracts";
-import { deferred, flush } from "@rakazo/core/test-async";
+import type { Actor, ChatAlert } from "@nurlai/contracts";
+import { deferred, flush } from "@nurlai/core/test-async";
 import { describe, expect, it, vi } from "vitest";
 import type { RouterDeps } from "../router.js";
 import { createRouter } from "../router.js";

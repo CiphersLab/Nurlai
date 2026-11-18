@@ -5,7 +5,7 @@ import type {
   TelemetrySpan,
 } from "@earendil-works/pi-telemetry";
 import type { Attributes, Context, Link, Span, SpanContext, Tracer } from "@opentelemetry/api";
-import { getLogContext } from "@rakazo/logging";
+import { getLogContext } from "@nurlai/logging";
 
 // The OTel packages load on demand: this module is only reached through a dynamic import, and
 // bundling inlines it, so static imports here would still load with every server bundle.

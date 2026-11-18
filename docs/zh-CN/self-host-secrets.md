@@ -13,12 +13,12 @@
 | 变量                       | 安装器生成值           | 作用                                                 |
 | -------------------------- | ---------------------- | ---------------------------------------------------- |
 | `POSTGRES_PASSWORD`        | `openssl rand -hex 16` | Compose 内 Postgres 所有者密码（迁移使用）           |
-| `POSTGRES_APP_PASSWORD`    | `openssl rand -hex 16` | 应用 `rakazo_app` 登录的密码，行级安全应用在该登录上 |
+| `POSTGRES_APP_PASSWORD`    | `openssl rand -hex 16` | 应用 `nurlai_app` 登录的密码，行级安全应用在该登录上 |
 | `BETTER_AUTH_SECRET`       | `openssl rand -hex 32` | 登录和会话签名                                       |
 | `ENCRYPTION_KEY`           | `openssl rand -hex 32` | 加密静态存储的凭据                                   |
 | `SCREEN_PROXY_SECRET`      | `openssl rand -hex 32` | 签名短期的 `/novnc/*` 屏幕能力                       |
 | `SANDBOX_SUPERVISOR_TOKEN` | `openssl rand -hex 32` | API 与沙箱监督服务之间的认证                         |
-| `RAKAZO_UPDATER_TOKEN`     | `openssl rand -hex 32` | 专用更新器凭据；启用更新器 profile 前不会使用        |
+| `NURLAI_UPDATER_TOKEN`     | `openssl rand -hex 32` | 专用更新器凭据；启用更新器 profile 前不会使用        |
 
 再次运行会**保留**现有 `.env`（不会轮换密钥）；只在旧 `.env` 缺少 `POSTGRES_APP_PASSWORD` 时追加。空的必需变量仍会在 Compose 校验时立即失败（`${VAR:?Set … in .env}`）。
 
@@ -43,7 +43,7 @@ openssl rand -hex 32   # BETTER_AUTH_SECRET、ENCRYPTION_KEY、SCREEN_PROXY_SECR
 - `ENCRYPTION_KEY`
 - `SCREEN_PROXY_SECRET`
 - `SANDBOX_SUPERVISOR_TOKEN`
-- `RAKAZO_UPDATER_TOKEN`（仅在启用更新器时；至少 32 字符，且不同于上面四个）
+- `NURLAI_UPDATER_TOKEN`（仅在启用更新器时；至少 32 字符，且不同于上面四个）
 
 凭据已经存储后再轮换 `ENCRYPTION_KEY`，旧密文会变得不可读。除非有意清除加密数据，请为现有部署保留原始密钥。
 
@@ -58,7 +58,7 @@ openssl rand -hex 32   # BETTER_AUTH_SECRET、ENCRYPTION_KEY、SCREEN_PROXY_SECR
 | 变量                                                           | 需要的场景                                                                |
 | -------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | `OPENROUTER_API_KEY`                                           | 部署级 OpenRouter 模型                                                    |
-| `TYPESAFE_API_KEY`                                             | 可选 TypeSafe Jev Auto Review 校验器（`RAKAZO_AUTO_REVIEW_PROVIDER=jev`） |
+| `TYPESAFE_API_KEY`                                             | 可选 TypeSafe Jev Auto Review 校验器（`NURLAI_AUTO_REVIEW_PROVIDER=jev`） |
 | `COMPOSIO_API_KEY`                                             | Composio 托管目录                                                         |
 | `E2B_API_KEY` / `DAYTONA_API_KEY` / `BOAT_API_KEY`             | `SANDBOX_PROVIDER` 不是 `docker` 时的远程计算机                           |
 | `EMAIL_PROVIDER` / `EMAIL_API_KEY` / `SMTP_URL` / `EMAIL_FROM` | 可选账号邮件，通过 Resend API 或 SMTP                                     |

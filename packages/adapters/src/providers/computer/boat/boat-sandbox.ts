@@ -32,7 +32,7 @@ import type {
   UnreferencedMachine,
   UnreferencedMachineRecords,
   WorkspaceExportLimits,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import {
   SandboxDamagedError,
   SandboxFileTooLargeError,
@@ -41,11 +41,11 @@ import {
   SandboxUnavailableError,
   SandboxUnresponsiveError,
   WorkspaceTooLargeError,
-} from "@rakazo/adapter-kit";
-import type { ComputerSize } from "@rakazo/contracts";
-import { deadlineSignal } from "@rakazo/core";
-import { boundedSandboxCommandTimeoutMs } from "@rakazo/core/node/sandbox-command";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import type { ComputerSize } from "@nurlai/contracts";
+import { deadlineSignal } from "@nurlai/core";
+import { boundedSandboxCommandTimeoutMs } from "@nurlai/core/node/sandbox-command";
+import { getLogger } from "@nurlai/logging";
 import {
   installAgentBrowserCommand,
   installPageBrowserCommand,
@@ -353,8 +353,8 @@ export class BoatSandboxProvider implements SandboxProvider {
             ttlSeconds: BOAT_TTL_SECONDS,
             noEnv: true,
             env: {
-              RAKAZO_BOT_ID: request.botId,
-              RAKAZO_SANDBOX: "computer",
+              NURLAI_BOT_ID: request.botId,
+              NURLAI_SANDBOX: "computer",
             },
             ...(from ? { from } : {}),
             ...(type ? { type } : {}),

@@ -12,7 +12,7 @@ import type { Duplex } from "node:stream";
 import { pipeline } from "node:stream/promises";
 import tls from "node:tls";
 import { pathToFileURL } from "node:url";
-import { createServiceLogger } from "@rakazo/logging";
+import { createServiceLogger } from "@nurlai/logging";
 import { forwardsToApi, hostAllowed } from "./api-proxy.js";
 import { appendForwardedFor } from "./forwarded-for.js";
 import { CONTENT_TYPES } from "./missing-asset.js";

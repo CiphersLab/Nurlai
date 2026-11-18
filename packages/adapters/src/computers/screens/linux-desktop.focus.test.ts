@@ -3,8 +3,8 @@ import { chmodSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync 
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import type { AdapterContext, ComputerAction, ComputerRef } from "@rakazo/adapter-kit";
-import { browserProfilePathForScreen } from "@rakazo/core/node/desktop-runtime";
+import type { AdapterContext, ComputerAction, ComputerRef } from "@nurlai/adapter-kit";
+import { browserProfilePathForScreen } from "@nurlai/core/node/desktop-runtime";
 import { afterAll, afterEach, describe, expect, it, vi } from "vitest";
 import { LinuxDesktop } from "./linux-desktop.js";
 
@@ -87,7 +87,7 @@ async function focusCommand(action: ComputerAction) {
     }),
     run: async (_computer, command) => {
       runs.push(command);
-      if (runs.length === 1) return { code: 0, stdout: "RAKAZO_DESKTOP=0:token\n" };
+      if (runs.length === 1) return { code: 0, stdout: "NURLAI_DESKTOP=0:token\n" };
       return { code: 0, stdout: "" };
     },
     screenUrl: async () => "http://screen.example",

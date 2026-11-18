@@ -1,5 +1,5 @@
 import { createHash, randomBytes, randomUUID } from "node:crypto";
-import { ClientError, displayName } from "@rakazo/core";
+import { ClientError, displayName } from "@nurlai/core";
 import { GUEST_ROLE, isOwnerRole } from "../billing/billing.js";
 import { computerScopeKey, userControlHeldBy } from "../computers/computers.js";
 import type { PrismaClient } from "../database/client.js";

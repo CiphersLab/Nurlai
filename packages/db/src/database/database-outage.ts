@@ -1,4 +1,4 @@
-import { getLogger } from "@rakazo/logging";
+import { getLogger } from "@nurlai/logging";
 import { isDatabaseUnavailable } from "./client.js";
 
 /** Bounded backoff for reconnecting to a database that is out of connections or unavailable. */

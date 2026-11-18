@@ -1,4 +1,4 @@
-import { deferred } from "@rakazo/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { createRepos } from "../bots/bot-repository.js";
 import type { PrismaClient } from "../database/client.js";

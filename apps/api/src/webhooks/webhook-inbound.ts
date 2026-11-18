@@ -1,16 +1,16 @@
-import type { JobPublisher, SecretStore } from "@rakazo/adapter-kit";
-import { SecretStoreUnavailableError } from "@rakazo/adapter-kit";
-import type { InboundSource } from "@rakazo/adapters";
+import type { JobPublisher, SecretStore } from "@nurlai/adapter-kit";
+import { SecretStoreUnavailableError } from "@nurlai/adapter-kit";
+import type { InboundSource } from "@nurlai/adapters";
 import {
   inboundDeliveryClientNonce,
   inboundRoutineModelPin,
   isPermanentDecryptFailure,
   wakeRun,
-} from "@rakazo/adapters";
-import type { MessageBlock } from "@rakazo/contracts";
-import { inboundRoutineBlock } from "@rakazo/core";
-import type { PrismaClient, SendUserMessageInput } from "@rakazo/db";
-import { accountDeactivated, SpaceDeletionInProgressError } from "@rakazo/db";
+} from "@nurlai/adapters";
+import type { MessageBlock } from "@nurlai/contracts";
+import { inboundRoutineBlock } from "@nurlai/core";
+import type { PrismaClient, SendUserMessageInput } from "@nurlai/db";
+import { accountDeactivated, SpaceDeletionInProgressError } from "@nurlai/db";
 import type { Context } from "hono";
 
 export const WEBHOOK_MAX_BODY_BYTES = 64 * 1024;

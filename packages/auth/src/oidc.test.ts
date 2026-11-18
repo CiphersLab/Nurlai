@@ -1,6 +1,6 @@
 import { createHash, createHmac, generateKeyPairSync, sign } from "node:crypto";
-import type * as Db from "@rakazo/db";
-import { recordSecurityEvent } from "@rakazo/db";
+import type * as Db from "@nurlai/db";
+import { recordSecurityEvent } from "@nurlai/db";
 import { memoryAdapter } from "better-auth/adapters/memory";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { Auth, AuthEnv } from "./index.js";
@@ -10,7 +10,7 @@ import { encryptStoredOAuthTokens, openIdToken, sealIdToken } from "./token-stor
 
 const state = vi.hoisted(() => ({ db: {} as Record<string, Record<string, unknown>[]> }));
 vi.mock("better-auth/adapters/prisma", () => ({ prismaAdapter: () => memoryAdapter(state.db) }));
-vi.mock("@rakazo/db", async (original) => ({
+vi.mock("@nurlai/db", async (original) => ({
   ...(await original<typeof Db>()),
   bootstrapUserSpace: vi.fn(),
   recordSecurityEvent: vi.fn(),
@@ -374,7 +374,7 @@ describe("OIDC callbacks", () => {
         {
           serverContext: { signupAttribution: { surface: "desktop" } },
         },
-        { "x-rakazo-signup-surface": surface },
+        { "x-nurlai-signup-surface": surface },
       );
       // The callback's browser has an unrelated web attribution cookie and no native header.
       cookies += `; rakazo_signup_attribution=${encodeURIComponent(JSON.stringify({ surface: "web", utmSource: "unrelated" }))}`;
@@ -2220,7 +2220,7 @@ it.each([
       },
       undefined,
       {
-        "x-rakazo-signup-surface": surface,
+        "x-nurlai-signup-surface": surface,
         cookie: `rakazo_signup_attribution=${originalAttribution}`,
       },
     );

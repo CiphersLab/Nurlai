@@ -1,4 +1,4 @@
-import { flush } from "@rakazo/core/test-async";
+import { flush } from "@nurlai/core/test-async";
 import { describe, expect, it, vi } from "vitest";
 import type { RosterScope } from "./roster-changes.js";
 import { followRosterChanges, publishRosterChange } from "./roster-changes.js";

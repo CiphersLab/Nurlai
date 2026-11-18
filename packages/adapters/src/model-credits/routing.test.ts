@@ -1,5 +1,5 @@
-import { SecretStoreUnavailableError } from "@rakazo/adapter-kit";
-import { createLogger, createTestSink, getLogger, installLogger } from "@rakazo/logging";
+import { SecretStoreUnavailableError } from "@nurlai/adapter-kit";
+import { createLogger, createTestSink, getLogger, installLogger } from "@nurlai/logging";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   approvedModelCreditCatalogEntry,
@@ -9,7 +9,7 @@ import {
   modelCreditUsageLookup,
 } from "./routing.js";
 
-vi.mock("@rakazo/db", () => ({ runAsSystem: (_label: string, work: () => unknown) => work() }));
+vi.mock("@nurlai/db", () => ({ runAsSystem: (_label: string, work: () => unknown) => work() }));
 const offering = {
   id: "approved",
   connectionId: "operator-connection",

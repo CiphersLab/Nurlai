@@ -1,5 +1,5 @@
-import type { SandboxKindCapabilities } from "@rakazo/adapter-kit";
-import { DEFAULT_COMPUTER_SCREEN } from "@rakazo/core";
+import type { SandboxKindCapabilities } from "@nurlai/adapter-kit";
+import { DEFAULT_COMPUTER_SCREEN } from "@nurlai/core";
 import { computerProviders, isKnownSandboxKind, knownSandboxKinds } from "../computer-providers.js";
 
 export type { KnownSandboxKind } from "../computer-providers.js";

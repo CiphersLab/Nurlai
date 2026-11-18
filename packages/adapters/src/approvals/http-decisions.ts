@@ -6,9 +6,9 @@ import type {
   DecisionProviderOptions,
   DecisionRequest,
   DecisionResult,
-} from "@rakazo/adapter-kit";
-import { DecisionProviderError } from "@rakazo/adapter-kit";
-import { bestEffort } from "@rakazo/logging";
+} from "@nurlai/adapter-kit";
+import { DecisionProviderError } from "@nurlai/adapter-kit";
+import { bestEffort } from "@nurlai/logging";
 import { z } from "zod";
 import { estimateTextTokens, lowTextTokens } from "../runtime/context/context-selection.js";
 import { readBodyCapped } from "../web/web-ssrf.js";

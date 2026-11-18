@@ -1,4 +1,4 @@
-import type { Bot } from "@rakazo/contracts";
+import type { Bot } from "@nurlai/contracts";
 import { describe, expect, it } from "vitest";
 import type { MobileBot } from "../api/mobile-types";
 import { retainUnchangedBotRoster } from "./bot-roster";

@@ -3,7 +3,7 @@ import {
   voiceDeploymentConnectionSupported,
   voiceDeploymentModelSupported,
   voiceDeploymentUsageUnit,
-} from "@rakazo/adapters";
+} from "@nurlai/adapters";
 import { z } from "zod";
 
 const price = z

@@ -1,7 +1,7 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { BillingStatus } from "@rakazo/contracts";
-import { paymentOverdue } from "@rakazo/contracts";
-import { Button } from "@rakazo/ui-web";
+import type { BillingStatus } from "@nurlai/contracts";
+import { paymentOverdue } from "@nurlai/contracts";
+import { Button } from "@nurlai/ui-web";
 import { Check } from "lucide-react";
 import { useState } from "react";
 import { AccountMenu } from "../../components/account/AccountMenu";

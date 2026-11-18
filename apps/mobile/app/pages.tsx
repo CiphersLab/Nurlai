@@ -1,8 +1,8 @@
 import { ph } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import { PageIcon } from "@rakazo/chat-ui/native";
-import type { PageSummary } from "@rakazo/contracts";
-import { PAGE_TITLE_MAX_LENGTH } from "@rakazo/contracts";
+import { PageIcon } from "@nurlai/chat-ui/native";
+import type { PageSummary } from "@nurlai/contracts";
+import { PAGE_TITLE_MAX_LENGTH } from "@nurlai/contracts";
 import * as Clipboard from "expo-clipboard";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useState } from "react";

@@ -1,12 +1,12 @@
 import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
-import { FLEET_WRITE_TOOL_NAMES, RUN_TRIGGERS } from "@rakazo/contracts";
+import { FLEET_WRITE_TOOL_NAMES, RUN_TRIGGERS } from "@nurlai/contracts";
 import {
   messagingChannelPrivacyBlock,
   messagingDmSurfaceNote,
   nonOwnerChatPrivacyBlock,
-} from "@rakazo/core";
-import { promptSourceVersion } from "@rakazo/core/node/prompt-source-version";
+} from "@nurlai/core";
+import { promptSourceVersion } from "@nurlai/core/node/prompt-source-version";
 import { teamWorkspaceInstruction } from "../../computers/screens/computer-support.prompt.js";
 import { CONTEXT_POLICY_SETTINGS } from "../../runtime/context/runtime-context.js";
 import { HISTORY_FORMAT_VERSION } from "../../runtime/pi/pi-runtime-history.js";
@@ -28,7 +28,7 @@ import {
 import { GROUP_UNADDRESSED_REPLY_GUIDANCE, runReplyGuidance } from "./run-replies.prompt.js";
 
 // Replaced by the server bundler; development reads the same authored files once.
-declare const __RAKAZO_PROMPT_SOURCE_VERSION__: string;
+declare const __NURLAI_PROMPT_SOURCE_VERSION__: string;
 
 /**
  * Everything we change when tuning a bot's behavior, rendered from fixed placeholders: the system
@@ -43,8 +43,8 @@ export function promptVersionParts() {
   const host = { home: "/home", shell: "sh", platform: "linux" };
   return {
     sources:
-      typeof __RAKAZO_PROMPT_SOURCE_VERSION__ === "string"
-        ? __RAKAZO_PROMPT_SOURCE_VERSION__
+      typeof __NURLAI_PROMPT_SOURCE_VERSION__ === "string"
+        ? __NURLAI_PROMPT_SOURCE_VERSION__
         : promptSourceVersion(fileURLToPath(new URL("../../../../../", import.meta.url))),
     historyFormat: HISTORY_FORMAT_VERSION,
     context: CONTEXT_POLICY_SETTINGS,

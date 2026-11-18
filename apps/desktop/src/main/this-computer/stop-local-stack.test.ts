@@ -1,5 +1,5 @@
-import type { DesktopLocalStackPhase, DesktopLocalStackState } from "@rakazo/contracts";
-import { deferred, flush } from "@rakazo/core/test-async";
+import type { DesktopLocalStackPhase, DesktopLocalStackState } from "@nurlai/contracts";
+import { deferred, flush } from "@nurlai/core/test-async";
 import { describe, expect, it, vi } from "vitest";
 import { reportDesktopError } from "../system/monitoring.js";
 import {

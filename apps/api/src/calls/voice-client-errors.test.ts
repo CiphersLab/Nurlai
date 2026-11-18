@@ -1,8 +1,8 @@
-import { SecretStoreUnavailableError } from "@rakazo/adapter-kit";
-import * as adapters from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
-import { ClientError } from "@rakazo/core";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+import { SecretStoreUnavailableError } from "@nurlai/adapter-kit";
+import * as adapters from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
+import { ClientError } from "@nurlai/core";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { Hono } from "hono";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { VoiceDeps } from "./voice.js";

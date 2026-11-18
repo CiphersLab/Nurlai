@@ -1,6 +1,6 @@
-import { VoiceAccountError } from "@rakazo/adapter-kit";
-import { MAX_VOICE_AUDIO_BYTES } from "@rakazo/core";
-import { createLogger, createTestSink, installLogger } from "@rakazo/logging";
+import { VoiceAccountError } from "@nurlai/adapter-kit";
+import { MAX_VOICE_AUDIO_BYTES } from "@nurlai/core";
+import { createLogger, createTestSink, installLogger } from "@nurlai/logging";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { CartesiaVoiceProvider } from "../providers/voice/cartesia/cartesia-voice.js";
 import { ElevenLabsVoiceProvider } from "../providers/voice/elevenlabs/elevenlabs-voice.js";
@@ -45,7 +45,7 @@ afterEach(() => {
 describe("createVoiceProvider", () => {
   it("exposes the hosted catalog behind one factory", () => {
     process.env.AGENT_RUNTIME = "pi";
-    vi.stubEnv("RAKAZO_OPENAI_COMPAT_ALLOW_PUBLIC", "0");
+    vi.stubEnv("NURLAI_OPENAI_COMPAT_ALLOW_PUBLIC", "0");
     expect(listVoiceCatalog({ allowPrivateEndpoint: true }).map((entry) => entry.id)).toEqual([
       "elevenlabs",
       "openai",
@@ -74,14 +74,14 @@ describe("createVoiceProvider", () => {
   });
 
   it("shows self-hosted speech only when the operator allows custom endpoints", () => {
-    vi.stubEnv("RAKAZO_OPENAI_COMPAT_ALLOW_PUBLIC", "0");
+    vi.stubEnv("NURLAI_OPENAI_COMPAT_ALLOW_PUBLIC", "0");
     expect(listVoiceCatalog().some((entry) => entry.id === "openai-compatible")).toBe(false);
     expect(
       listVoiceCatalog({ allowPrivateEndpoint: true }).some(
         (entry) => entry.id === "openai-compatible",
       ),
     ).toBe(true);
-    vi.stubEnv("RAKAZO_OPENAI_COMPAT_ALLOW_PUBLIC", "");
+    vi.stubEnv("NURLAI_OPENAI_COMPAT_ALLOW_PUBLIC", "");
     expect(listVoiceCatalog().some((entry) => entry.id === "openai-compatible")).toBe(true);
   });
 

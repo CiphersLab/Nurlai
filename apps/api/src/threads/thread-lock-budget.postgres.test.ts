@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
-import type { Actor } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
-import type { PrismaClient } from "@rakazo/db";
+import type { Actor } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
+import type { PrismaClient } from "@nurlai/db";
 import {
   appendEvent,
   asSystem,
@@ -12,7 +12,7 @@ import {
   runAsSystem,
   runAsTenant,
   sendUserMessage,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { destroyBot } from "../../../../packages/adapters/src/bots/child-bots.js";
 import { publishMessage } from "../../../../packages/adapters/src/runs/assembly/run-messages.js";

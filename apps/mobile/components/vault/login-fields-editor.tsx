@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
-import type { LoginFieldInput } from "@rakazo/contracts";
-import { LOGIN_FIELD_LIMIT } from "@rakazo/contracts";
+import type { LoginFieldInput } from "@nurlai/contracts";
+import { LOGIN_FIELD_LIMIT } from "@nurlai/contracts";
 import type { RefObject } from "react";
 import type { TextInputInstance } from "react-native";
 import { StyleSheet, Text, TextInput, View } from "react-native";

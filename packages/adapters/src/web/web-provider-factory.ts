@@ -1,4 +1,4 @@
-import type { WebProvider } from "@rakazo/adapter-kit";
+import type { WebProvider } from "@nurlai/adapter-kit";
 import { FakeWebProvider } from "../providers/web/fake/fake-web.js";
 import { KeenableWebProvider } from "../providers/web/keenable/keenable-web.js";
 import { KeylessHttpWebProvider } from "../providers/web/keyless-http/keyless-http-web.js";

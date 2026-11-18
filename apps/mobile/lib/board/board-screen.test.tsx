@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
-import type { Ticket } from "@rakazo/contracts";
-import { deferred } from "@rakazo/core/test-async";
+import type { Ticket } from "@nurlai/contracts";
+import { deferred } from "@nurlai/core/test-async";
 import type { EffectCallback, ReactNode } from "react";
 import { act, createElement, useEffect } from "react";
 import type { Root } from "react-dom/client";

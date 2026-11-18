@@ -1,5 +1,5 @@
-import type { LogEvent } from "@rakazo/logging";
-import { createLogger, createTestSink, getLogger, installLogger } from "@rakazo/logging";
+import type { LogEvent } from "@nurlai/logging";
+import { createLogger, createTestSink, getLogger, installLogger } from "@nurlai/logging";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { isDatabaseUnavailable } from "./client.js";
 import { DatabaseOutage, retryWhileDatabaseUnavailable } from "./database-outage.js";

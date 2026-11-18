@@ -1,6 +1,6 @@
 import type { Route } from "@playwright/test";
 import { expect, test } from "@playwright/test";
-import type { BillingStatus } from "@rakazo/contracts";
+import type { BillingStatus } from "@nurlai/contracts";
 import { captureScreenshot, completeOnboarding, signup } from "../helpers/helpers";
 
 function billingStatus(overrides: Partial<BillingStatus>): BillingStatus {

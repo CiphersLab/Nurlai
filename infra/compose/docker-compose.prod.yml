@@ -15,7 +15,7 @@ x-logging: &logging
 x-app-environment: &app-environment # Runtime
   NODE_ENV: production
   # The app's own login, subject to row-level security (docs/self-host-configuration.md#database-roles).
-  DATABASE_URL: postgres://rakazo_app:${POSTGRES_APP_PASSWORD:?Set POSTGRES_APP_PASSWORD in .env}@postgres:5432/${POSTGRES_DB:-rakazo}
+  DATABASE_URL: postgres://nurlai_app:${POSTGRES_APP_PASSWORD:?Set POSTGRES_APP_PASSWORD in .env}@postgres:5432/${POSTGRES_DB:-rakazo}
   REALTIME_DATABASE_URL:
   DB_POOL_MAX:
   DATA_DIR: /data
@@ -41,11 +41,11 @@ x-app-environment: &app-environment # Runtime
   API_URL:
   MAX_UPLOAD_SIZE_MB:
   MAX_ATTACHMENTS_PER_MESSAGE:
-  RAKAZO_UPDATE_RESTART_SUPERVISOR:
+  NURLAI_UPDATE_RESTART_SUPERVISOR:
   TICKET_BOARD_ENABLED:
   USER_DEVICES_ENABLED:
   BOT_MESSAGE_MAX_HOPS:
-  RAKAZO_MESSAGE_USER_MAX_CHARS:
+  NURLAI_MESSAGE_USER_MAX_CHARS:
   TEACH_RECORDING_TTL_MS:
   STUCK_WORK_NOTIFY_AFTER_MS:
   STUCK_WORK_EXPIRE_AFTER_MS:
@@ -62,7 +62,7 @@ x-app-environment: &app-environment # Runtime
   EMAIL_FROM:
   EMAIL_REPLY_TO:
   WELCOME_EMAIL_ENABLED:
-  RAKAZO_SECRETS_ALLOW_PRIVATE_HTTP:
+  NURLAI_SECRETS_ALLOW_PRIVATE_HTTP:
   EXPO_ACCESS_TOKEN:
   APNS_VOIP_KEY_ID:
   APNS_VOIP_TEAM_ID:
@@ -108,7 +108,7 @@ x-app-environment: &app-environment # Runtime
   PI_DEFAULT_MODEL:
   PI_DEFAULT_CREDENTIALS:
   PI_SESSION_RECORDING:
-  RAKAZO_LIVE_MODEL_CATALOG:
+  NURLAI_LIVE_MODEL_CATALOG:
   OPENROUTER_API_KEY:
   ANTHROPIC_API_KEY:
   TYPESAFE_API_KEY:
@@ -118,23 +118,23 @@ x-app-environment: &app-environment # Runtime
   MODEL_CONNECT_TIMEOUT_MS:
   MODEL_CREDIT_OFFERINGS:
   MODEL_STREAM_IDLE_TIMEOUT_MS:
-  RAKAZO_LOCAL_MODELS:
-  RAKAZO_LOCAL_MODELS_URL:
-  RAKAZO_LOCAL_MODELS_API_KEY:
-  RAKAZO_LOOPBACK_HOST:
-  RAKAZO_LOCAL_VISION_MODELS:
-  RAKAZO_LOCAL_REASONING_MODELS:
-  RAKAZO_LOCAL_CONTEXT_WINDOW:
-  RAKAZO_LOCAL_MAX_TOKENS:
-  RAKAZO_LOCAL_TOKENS_PER_MINUTE:
-  RAKAZO_LOCAL_PROMPT_CACHE:
-  RAKAZO_OPENAI_COMPATIBLE_VISION_MODELS:
-  RAKAZO_OPENAI_COMPAT_ALLOW_PUBLIC:
-  RAKAZO_OPENAI_COMPAT_PRIVATE_HOSTS:
-  RAKAZO_AUTO_REVIEW_PROVIDER:
-  RAKAZO_AUTO_REVIEW_MODEL:
-  RAKAZO_AUTO_REVIEW_MIN_CONFIDENCE:
-  RAKAZO_AUTO_REVIEW_TIMEOUT_MS:
+  NURLAI_LOCAL_MODELS:
+  NURLAI_LOCAL_MODELS_URL:
+  NURLAI_LOCAL_MODELS_API_KEY:
+  NURLAI_LOOPBACK_HOST:
+  NURLAI_LOCAL_VISION_MODELS:
+  NURLAI_LOCAL_REASONING_MODELS:
+  NURLAI_LOCAL_CONTEXT_WINDOW:
+  NURLAI_LOCAL_MAX_TOKENS:
+  NURLAI_LOCAL_TOKENS_PER_MINUTE:
+  NURLAI_LOCAL_PROMPT_CACHE:
+  NURLAI_OPENAI_COMPATIBLE_VISION_MODELS:
+  NURLAI_OPENAI_COMPAT_ALLOW_PUBLIC:
+  NURLAI_OPENAI_COMPAT_PRIVATE_HOSTS:
+  NURLAI_AUTO_REVIEW_PROVIDER:
+  NURLAI_AUTO_REVIEW_MODEL:
+  NURLAI_AUTO_REVIEW_MIN_CONFIDENCE:
+  NURLAI_AUTO_REVIEW_TIMEOUT_MS:
   RELEASE_WATCH_EVAL_MODEL:
   FISH_TTS_MODEL:
   FISH_ASR_MODEL:
@@ -232,7 +232,7 @@ x-app-environment: &app-environment # Runtime
   RAILWAY_ENVIRONMENT_ID:
   RAILWAY_SANDBOX_REGION:
   RAILWAY_MAX_WORKSPACE_FILE_BYTES:
-  RAKAZO_COMPUTER_PROXY:
+  NURLAI_COMPUTER_PROXY:
   WUYING_ACCESS_KEY_ID:
   WUYING_ACCESS_KEY_SECRET:
   WUYING_DESKTOP_ID:
@@ -429,10 +429,10 @@ services:
       start_period: 2m
 
   # Applies migrations as the database owner, creates the runtime login, and exits. Only this
-  # container gets the owner login: the API and worker connect as rakazo_app, which row-level
+  # container gets the owner login: the API and worker connect as nurlai_app, which row-level
   # security binds, so code running in either cannot find a login that bypasses it.
   migrate:
-    image: ${RAKAZO_IMAGE:-ghcr.io/elie222/rakazo/app}:${RAKAZO_IMAGE_TAG:-local}
+    image: ${NURLAI_IMAGE:-ghcr.io/elie222/rakazo/app}:${NURLAI_IMAGE_TAG:-local}
     build:
       context: ../..
       dockerfile: infra/compose/Dockerfile
@@ -449,7 +449,7 @@ services:
     pids_limit: 256
     mem_limit: 1536m
     environment:
-      DATABASE_URL: postgres://rakazo_app:${POSTGRES_APP_PASSWORD:?Set POSTGRES_APP_PASSWORD in .env}@postgres:5432/${POSTGRES_DB:-rakazo}
+      DATABASE_URL: postgres://nurlai_app:${POSTGRES_APP_PASSWORD:?Set POSTGRES_APP_PASSWORD in .env}@postgres:5432/${POSTGRES_DB:-rakazo}
       DATABASE_MIGRATION_URL: postgres://${POSTGRES_USER:-rakazo}:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@postgres:5432/${POSTGRES_DB:-rakazo}
     networks:
       - data
@@ -463,8 +463,8 @@ services:
     #
     # The default tag is `local`, which no registry serves, so a fresh install builds from the
     # checkout via `up -d --build` instead of failing on a `pull` of an image that does not exist
-    # yet. Once a release is published, pin RAKAZO_IMAGE_TAG to it and the pull path takes over.
-    image: ${RAKAZO_IMAGE:-ghcr.io/elie222/rakazo/app}:${RAKAZO_IMAGE_TAG:-local}
+    # yet. Once a release is published, pin NURLAI_IMAGE_TAG to it and the pull path takes over.
+    image: ${NURLAI_IMAGE:-ghcr.io/elie222/rakazo/app}:${NURLAI_IMAGE_TAG:-local}
     build:
       context: ../..
       dockerfile: infra/compose/Dockerfile
@@ -483,9 +483,9 @@ services:
       - ALL
     # Chat runs execute in the API that receives them, so it gets the worker's headroom.
     pids_limit: 512
-    mem_limit: ${RAKAZO_API_MEMORY_LIMIT:-2g}
+    mem_limit: ${NURLAI_API_MEMORY_LIMIT:-2g}
     deploy:
-      replicas: ${RAKAZO_API_REPLICAS:-1}
+      replicas: ${NURLAI_API_REPLICAS:-1}
     environment:
       <<: *app-environment
       # Sign-in, sessions, billing and inbound webhooks: API only.
@@ -494,7 +494,7 @@ services:
       BETTER_AUTH_SECRET:
       BETTER_AUTH_URL:
       WEB_ORIGIN:
-      RAKAZO_EXTRA_AUTH_ORIGINS:
+      NURLAI_EXTRA_AUTH_ORIGINS:
       AUTH_PASSWORD_ENABLED: ${AUTH_PASSWORD_ENABLED:-true}
       AUTH_BREACHED_PASSWORD_CHECK_ENABLED: ${AUTH_BREACHED_PASSWORD_CHECK_ENABLED:-false}
       PASSKEY_APPLE_APP_IDS:
@@ -520,8 +520,8 @@ services:
       SIGNUPS_ENABLED:
       SIGNUP_ALLOWLIST:
       SCREEN_PROXY_SECRET: ${SCREEN_PROXY_SECRET:?Set SCREEN_PROXY_SECRET in .env}
-      RAKAZO_DESKTOP_STACK_TOKEN:
-      RAKAZO_GIT_SHA:
+      NURLAI_DESKTOP_STACK_TOKEN:
+      NURLAI_GIT_SHA:
       SENTRY_BROWSER_DSN: ${SENTRY_BROWSER_DSN:-}
       PRIVACY_POLICY_URL:
       INBOUND_EMAIL_SECRET:
@@ -533,11 +533,11 @@ services:
       CRISP_WEBSITE_ID:
       INTEGRATIONS_CATALOG_URL:
       TEAM_CHAT_BOT_ID:
-      SLACK_RAKAZO_BOT_ID:
+      SLACK_NURLAI_BOT_ID:
       SPACE_TEARDOWN_TIMEOUT_MS:
-      RAKAZO_MIN_CLIENT_BUILD:
-      RAKAZO_NAV_LINKS:
-      RAKAZO_ADMIN_EMAILS:
+      NURLAI_MIN_CLIENT_BUILD:
+      NURLAI_NAV_LINKS:
+      NURLAI_ADMIN_EMAILS:
       DEPLOYMENT_VOICE:
       VOICE_SUMMARY_MIN_CHARS:
     expose:
@@ -567,7 +567,7 @@ services:
       start_interval: 1s
 
   worker:
-    image: ${RAKAZO_IMAGE:-ghcr.io/elie222/rakazo/app}:${RAKAZO_IMAGE_TAG:-local}
+    image: ${NURLAI_IMAGE:-ghcr.io/elie222/rakazo/app}:${NURLAI_IMAGE_TAG:-local}
     build:
       context: ../..
       dockerfile: infra/compose/Dockerfile
@@ -597,9 +597,9 @@ services:
     cap_drop:
       - ALL
     pids_limit: 512
-    mem_limit: ${RAKAZO_WORKER_MEMORY_LIMIT:-2g}
+    mem_limit: ${NURLAI_WORKER_MEMORY_LIMIT:-2g}
     deploy:
-      replicas: ${RAKAZO_WORKER_REPLICAS:-1}
+      replicas: ${NURLAI_WORKER_REPLICAS:-1}
     environment:
       <<: *app-environment
       GRAPHILE_WORKER_CONCURRENCY:
@@ -618,7 +618,7 @@ services:
         condition: service_healthy
 
   web:
-    image: ${RAKAZO_IMAGE:-ghcr.io/elie222/rakazo/app}:${RAKAZO_IMAGE_TAG:-local}
+    image: ${NURLAI_IMAGE:-ghcr.io/elie222/rakazo/app}:${NURLAI_IMAGE_TAG:-local}
     build:
       context: ../..
       dockerfile: infra/compose/Dockerfile
@@ -645,12 +645,12 @@ services:
       # Keep that fixed so pids_limit holds on many-core hosts (#2430).
       RAYON_NUM_THREADS: "4"
       API_PROXY_TARGET: http://api:3100
-      RAKAZO_HOST: ${RAKAZO_HOST:-app.example.com}
-      RAKAZO_ALLOWED_HOSTS: ${RAKAZO_ALLOWED_HOSTS:-}
+      NURLAI_HOST: ${NURLAI_HOST:-app.example.com}
+      NURLAI_ALLOWED_HOSTS: ${NURLAI_ALLOWED_HOSTS:-}
       SCREEN_PROXY_SECRET: ${SCREEN_PROXY_SECRET:?Set SCREEN_PROXY_SECRET in .env}
-      RAKAZO_CSP_SCRIPT_SRC: ${RAKAZO_CSP_SCRIPT_SRC:-}
-      RAKAZO_CSP_CONNECT_SRC: ${RAKAZO_CSP_CONNECT_SRC:-}
-      RAKAZO_THEME: ${RAKAZO_THEME:-}
+      NURLAI_CSP_SCRIPT_SRC: ${NURLAI_CSP_SCRIPT_SRC:-}
+      NURLAI_CSP_CONNECT_SRC: ${NURLAI_CSP_CONNECT_SRC:-}
+      NURLAI_THEME: ${NURLAI_THEME:-}
       CRISP_WEBSITE_ID:
     expose:
       - "5173"
@@ -682,7 +682,7 @@ services:
     profiles: [updater]
     # Pinned separately from the application image: the updater does not recreate itself, so moving
     # its own version is an operator action, not something an update can do underneath itself.
-    image: ${RAKAZO_UPDATER_IMAGE:-ghcr.io/elie222/rakazo/updater}:${RAKAZO_UPDATER_IMAGE_TAG:-local}
+    image: ${NURLAI_UPDATER_IMAGE:-ghcr.io/elie222/rakazo/updater}:${NURLAI_UPDATER_IMAGE_TAG:-local}
     build:
       context: ../..
       dockerfile: infra/updater/Dockerfile
@@ -702,23 +702,23 @@ services:
       NODE_ENV: production
       # Keep interpolation optional so deployments that do not enable this profile need no token.
       # resolveUpdaterConfig still refuses to start the sidecar without a dedicated secure value.
-      RAKAZO_UPDATER_TOKEN: ${RAKAZO_UPDATER_TOKEN:-}
-      RAKAZO_AUTO_UPDATE_INTERVAL_HOURS: ${RAKAZO_AUTO_UPDATE_INTERVAL_HOURS:-0}
-      RAKAZO_UPDATER_HOST: "0.0.0.0"
-      RAKAZO_UPDATER_PORT: "7092"
-      RAKAZO_IMAGE: ${RAKAZO_IMAGE:-ghcr.io/elie222/rakazo/app}
-      RAKAZO_COMPUTER_IMAGE: ${RAKAZO_COMPUTER_IMAGE:-ghcr.io/elie222/rakazo/computer}
+      NURLAI_UPDATER_TOKEN: ${NURLAI_UPDATER_TOKEN:-}
+      NURLAI_AUTO_UPDATE_INTERVAL_HOURS: ${NURLAI_AUTO_UPDATE_INTERVAL_HOURS:-0}
+      NURLAI_UPDATER_HOST: "0.0.0.0"
+      NURLAI_UPDATER_PORT: "7092"
+      NURLAI_IMAGE: ${NURLAI_IMAGE:-ghcr.io/elie222/rakazo/app}
+      NURLAI_COMPUTER_IMAGE: ${NURLAI_COMPUTER_IMAGE:-ghcr.io/elie222/nurlai/computer}
       # `-p` is available to Compose interpolation but is not injected into containers unless it is
       # declared here. The sidecar must target the project the operator actually started.
       COMPOSE_PROJECT_NAME: ${COMPOSE_PROJECT_NAME:-rakazo-prod}
       # Must equal the host path it is mounted from, or every relative bind mount in this file would
       # resolve somewhere else. /srv/rakazo is the supported Linux production layout.
-      RAKAZO_DEPLOY_DIR: ${RAKAZO_DEPLOY_DIR:-/srv/rakazo}
+      NURLAI_DEPLOY_DIR: ${NURLAI_DEPLOY_DIR:-/srv/rakazo}
       # A deployment that layers an overlay has to be reconciled with the same file list and the
       # same services the operator runs by hand, so these are read from the environment rather
       # than pinned to the base stack. Defaults reproduce the previous behaviour exactly.
-      RAKAZO_COMPOSE_FILE: ${RAKAZO_COMPOSE_FILE:-infra/compose/docker-compose.prod.yml}
-      RAKAZO_UPDATE_SERVICES: ${RAKAZO_UPDATE_SERVICES:-}
+      NURLAI_COMPOSE_FILE: ${NURLAI_COMPOSE_FILE:-infra/compose/docker-compose.prod.yml}
+      NURLAI_UPDATE_SERVICES: ${NURLAI_UPDATE_SERVICES:-}
       COMPOSE_PATH_SEPARATOR: ${COMPOSE_PATH_SEPARATOR:-}
       LOG_LEVEL: ${LOG_LEVEL:-info}
       LOG_FORMAT: ${LOG_FORMAT:-}
@@ -731,7 +731,7 @@ services:
       SENTRY_RELEASE: ${SENTRY_RELEASE:-}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ${RAKAZO_DEPLOY_DIR:-/srv/rakazo}:${RAKAZO_DEPLOY_DIR:-/srv/rakazo}
+      - ${NURLAI_DEPLOY_DIR:-/srv/rakazo}:${NURLAI_DEPLOY_DIR:-/srv/rakazo}
     networks:
       - control
     healthcheck:
@@ -758,7 +758,7 @@ services:
     pids_limit: 128
     mem_limit: 256m
     environment:
-      RAKAZO_HOST: ${RAKAZO_HOST:-app.example.com}
+      NURLAI_HOST: ${NURLAI_HOST:-app.example.com}
       # Go listens with multipath TCP by default, which widens the kernel attack surface.
       GODEBUG: multipathtcp=0
     ports:

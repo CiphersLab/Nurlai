@@ -1,6 +1,6 @@
-import type { ModelUsageLookup } from "@rakazo/adapter-kit";
-import type { ModelOAuthSignInMode, ModelRoutingField } from "@rakazo/contracts";
-import { bestEffort } from "@rakazo/logging";
+import type { ModelUsageLookup } from "@nurlai/adapter-kit";
+import type { ModelOAuthSignInMode, ModelRoutingField } from "@nurlai/contracts";
+import { bestEffort } from "@nurlai/logging";
 import {
   CLAUDE_CODE_CREDENTIAL_SOURCE,
   CLAUDE_CODE_PROVIDER_ID,
@@ -8,7 +8,7 @@ import {
 import { OpenRouterUsageLookup } from "./endpoints/openrouter-usage.js";
 
 /**
- * What Rakazo knows about a model provider beyond the model registry it runs on. A provider
+ * What Nurlai knows about a model provider beyond the model registry it runs on. A provider
  * without an entry is used exactly as the registry describes it.
  */
 export interface ModelProviderDefinition {
@@ -34,7 +34,7 @@ export interface ModelProviderDefinition {
     /** Resolved when a request is made, so the environment cannot report them up front. */
     resolvedAtRequest?: boolean;
   };
-  /** Subscription sign-in Rakazo offers. */
+  /** Subscription sign-in Nurlai offers. */
   signIn?: { mode: ModelOAuthSignInMode; loginLabel: string; hint: string; billing: string };
   /** Ids each connection supplies to route its requests. */
   routingFields?: ModelRoutingField[];
@@ -53,7 +53,7 @@ export const modelProviders = {
       loginLabel: "Sign in with ChatGPT",
       hint: "ChatGPT Plus/Pro",
       billing:
-        "Sign in with ChatGPT Plus or Pro. Uses your OpenAI subscription. Rakazo does not pay.",
+        "Sign in with ChatGPT Plus or Pro. Uses your OpenAI subscription. Nurlai does not pay.",
     },
   },
   openai: { recommendedModel: "gpt-6-luna" },
@@ -108,7 +108,7 @@ export const modelProviders = {
       mode: "device-code",
       loginLabel: "Sign in with GitHub Copilot",
       hint: "Copilot",
-      billing: "Sign in with GitHub Copilot. Uses your Copilot subscription. Rakazo does not pay.",
+      billing: "Sign in with GitHub Copilot. Uses your Copilot subscription. Nurlai does not pay.",
     },
   },
   xai: {
@@ -116,7 +116,7 @@ export const modelProviders = {
       mode: "device-code",
       loginLabel: "Sign in with SuperGrok or X Premium",
       hint: "SuperGrok / key",
-      billing: "Sign in with SuperGrok or X Premium, or paste an xAI API key. Rakazo does not pay.",
+      billing: "Sign in with SuperGrok or X Premium, or paste an xAI API key. Nurlai does not pay.",
     },
   },
   deepseek: {

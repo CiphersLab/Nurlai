@@ -1,4 +1,4 @@
-import { BillingNoMonthlyCreditsError, BillingPaymentNotCompletedError } from "@rakazo/adapter-kit";
+import { BillingNoMonthlyCreditsError, BillingPaymentNotCompletedError } from "@nurlai/adapter-kit";
 import { describe, expect, it, vi } from "vitest";
 import { byokTierOf, StripeBillingProvider } from "./stripe-billing.js";
 

@@ -7,22 +7,22 @@ import type {
   MessagingSendRequest,
   MessagingSendResult,
   MessagingSurface,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import {
   MESSAGING_SEND_MAX_ATTEMPTS,
   messagingReplyJob,
   messagingReplyJobKey,
   messagingSendJobKey,
   RetryJobLaterError,
-} from "@rakazo/adapter-kit";
+} from "@nurlai/adapter-kit";
 import {
   CHAT_APP_ASK_NOTE,
   CHAT_APP_TAKEOVER_NOTE,
   TAKEOVER_COMPUTER_PENDING_STATE,
-} from "@rakazo/core";
-import { deferred } from "@rakazo/core/test-async";
-import type { Prisma, PrismaClient } from "@rakazo/db";
-import { SpaceDeletionInProgressError } from "@rakazo/db";
+} from "@nurlai/core";
+import { deferred } from "@nurlai/core/test-async";
+import type { Prisma, PrismaClient } from "@nurlai/db";
+import { SpaceDeletionInProgressError } from "@nurlai/db";
 import type { Adapter } from "chat";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { userProgressClientNonce } from "../runs/lifecycle/user-progress.js";
@@ -1922,7 +1922,7 @@ describe("deliverRun for team chat", () => {
     expect(t.world.externalMessages[0]!.status).toBe("running");
   });
 
-  const failure = "Assistant could not complete that request. Open Rakazo for details.";
+  const failure = "Assistant could not complete that request. Open Nurlai for details.";
   it.each([
     ["a run that failed", "direct", "failed", [["external-message:em-1:failure", failure]]],
     [
@@ -2063,7 +2063,7 @@ describe("delegated team-chat replies", () => {
       [
         "team-chat-run:run-c",
         "slack:C1:1700.1",
-        "Assistant could not complete the delegated request. Open Rakazo for details.",
+        "Assistant could not complete the delegated request. Open Nurlai for details.",
         "sent",
       ],
     ]);

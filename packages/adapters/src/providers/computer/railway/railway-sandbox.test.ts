@@ -4,9 +4,9 @@ import { createServer } from "node:http";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { promisify } from "node:util";
-import type { AdapterContext, ComputerRef, ProcessEvent } from "@rakazo/adapter-kit";
-import { screenDisplayArgv, shellQuote } from "@rakazo/core/node/desktop-runtime";
-import { deferred, flush } from "@rakazo/core/test-async";
+import type { AdapterContext, ComputerRef, ProcessEvent } from "@nurlai/adapter-kit";
+import { screenDisplayArgv, shellQuote } from "@nurlai/core/node/desktop-runtime";
+import { deferred, flush } from "@nurlai/core/test-async";
 import type { RailwayGraphQLErrorItem, SandboxInfo } from "railway";
 import {
   RailwayGraphQLError,
@@ -784,8 +784,8 @@ describe("Railway computers", () => {
       }
       return {
         exitCode: 0,
-        stdout: command.includes("RAKAZO_DESKTOP=")
-          ? "RAKAZO_DESKTOP=0:test-token"
+        stdout: command.includes("NURLAI_DESKTOP=")
+          ? "NURLAI_DESKTOP=0:test-token"
           : command.includes("CURSOR")
             ? "aW1hZ2U=\nCURSOR X=1 Y=2"
             : "",
@@ -1023,7 +1023,7 @@ describe("Railway computers", () => {
 
   it("protects screen sockets with a per-screen token", async () => {
     sandbox.exec.mockResolvedValue({
-      stdout: "RAKAZO_DESKTOP=0:screen-token",
+      stdout: "NURLAI_DESKTOP=0:screen-token",
       stderr: "",
       exitCode: 0,
       timedOut: false,
@@ -1046,7 +1046,7 @@ describe("Railway computers", () => {
 
   it("opens a terminal on the screen domain, behind its own token", async () => {
     sandbox.exec.mockResolvedValue({
-      stdout: "RAKAZO_DESKTOP=0:screen-token",
+      stdout: "NURLAI_DESKTOP=0:screen-token",
       stderr: "",
       exitCode: 0,
       timedOut: false,
@@ -1084,7 +1084,7 @@ describe("Railway computers", () => {
       ...sandbox,
       domains: [{ port: 6080, domain }],
     } as unknown as Sandbox);
-    sandbox.exec.mockResolvedValue({ stdout: "RAKAZO_DESKTOP=0:screen-token", exitCode: 0 });
+    sandbox.exec.mockResolvedValue({ stdout: "NURLAI_DESKTOP=0:screen-token", exitCode: 0 });
     await expect(
       provider.connectScreen(computer, { view: "stream", interactive: false }, ctx),
     ).rejects.toThrow("Invalid Railway screen domain");

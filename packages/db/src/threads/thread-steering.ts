@@ -1,4 +1,4 @@
-import type { MessageBlock } from "@rakazo/contracts";
+import type { MessageBlock } from "@nurlai/contracts";
 import {
   BACKGROUND_HELPER_TRIGGER,
   BACKGROUND_RUN_TRIGGERS,
@@ -8,7 +8,7 @@ import {
   messagingChannelId,
   QUEUE_HOLDING_RUN_STATUSES,
   STEERING_CONTINUATION_PROMPT,
-} from "@rakazo/core";
+} from "@nurlai/core";
 import type { Prisma, PrismaClient } from "../database/client.js";
 import {
   THREAD_LOCK_TRANSACTION_OPTIONS,

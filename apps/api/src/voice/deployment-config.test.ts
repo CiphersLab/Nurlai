@@ -1,9 +1,9 @@
-import * as adapters from "@rakazo/adapters";
-import type { Actor } from "@rakazo/contracts";
-import { AI_DISCLOSURE_VERSION } from "@rakazo/contracts";
-import type * as Database from "@rakazo/db";
-import { admitSpeech, settleSpeech } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+import * as adapters from "@nurlai/adapters";
+import type { Actor } from "@nurlai/contracts";
+import { AI_DISCLOSURE_VERSION } from "@nurlai/contracts";
+import type * as Database from "@nurlai/db";
+import { admitSpeech, settleSpeech } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { VoiceDeps } from "../calls/voice.js";
 import {
@@ -16,7 +16,7 @@ import {
 } from "../calls/voice.js";
 import { deploymentVoiceFromEnv } from "./deployment-config.js";
 
-vi.mock("@rakazo/db", async (original) => ({
+vi.mock("@nurlai/db", async (original) => ({
   ...(await original<typeof Database>()),
   admitSpeech: vi.fn(async () => "speech-call"),
   settleSpeech: vi.fn(async () => {}),

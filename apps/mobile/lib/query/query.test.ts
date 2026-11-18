@@ -1,4 +1,4 @@
-import { deferred, flush } from "@rakazo/core/test-async";
+import { deferred, flush } from "@nurlai/core/test-async";
 import { QueryObserver } from "@tanstack/react-query";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { accountRpcQuery, formRead, queryClient, resetRpcQueries, rpcQuery } from "./query";

@@ -1,8 +1,8 @@
 import { createRouterClient, onError } from "@orpc/server";
 import { RPCHandler } from "@orpc/server/fetch";
-import { screenLeaseIdForRun } from "@rakazo/adapters";
-import type { Actor, Bot } from "@rakazo/contracts";
-import type { PrismaClient } from "@rakazo/db";
+import { screenLeaseIdForRun } from "@nurlai/adapters";
+import type { Actor, Bot } from "@nurlai/contracts";
+import type { PrismaClient } from "@nurlai/db";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { RouterDeps } from "../router.js";
 import { botIntroPrompt } from "../router.js";

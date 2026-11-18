@@ -1,4 +1,4 @@
-import { darkTokens, lightTokens } from "@rakazo/ui-tokens";
+import { darkTokens, lightTokens } from "@nurlai/ui-tokens";
 import { describe, expect, it } from "vitest";
 import { translucentColor } from "./color.js";
 

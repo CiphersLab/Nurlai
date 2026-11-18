@@ -1,4 +1,4 @@
-import type { MessageBlock } from "@rakazo/contracts";
+import type { MessageBlock } from "@nurlai/contracts";
 import { isQuestionAskBlock } from "./ask-kind.js";
 
 export { isQuestionAskBlock } from "./ask-kind.js";

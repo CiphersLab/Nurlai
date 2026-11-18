@@ -1,4 +1,4 @@
-import type { SettingsScope } from "@rakazo/contracts";
+import type { SettingsScope } from "@nurlai/contracts";
 import type { PrismaClient } from "../database/client.js";
 import { settingsTarget } from "../spaces/space-settings.js";
 import { newestCredentialOrder } from "./model-credentials.js";

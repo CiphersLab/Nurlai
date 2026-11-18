@@ -1,6 +1,6 @@
 import { t } from "@lingui/core/macro";
-import type { ReplyPreview } from "@rakazo/contracts";
-import { replyLabel } from "@rakazo/core";
+import type { ReplyPreview } from "@nurlai/contracts";
+import { replyLabel } from "@nurlai/core";
 import { Text, View } from "react-native";
 import { mobileTokens } from "../../lib/appearance/appearance";
 import type { MobileArtifactTarget } from "../../lib/artifacts/artifact-open";

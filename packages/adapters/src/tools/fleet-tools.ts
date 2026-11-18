@@ -1,5 +1,5 @@
-import type { AdapterContext, JobPublisher } from "@rakazo/adapter-kit";
-import type { Actor, Group } from "@rakazo/contracts";
+import type { AdapterContext, JobPublisher } from "@nurlai/adapter-kit";
+import type { Actor, Group } from "@nurlai/contracts";
 import {
   BOT_INSTRUCTIONS_MAX_LENGTH,
   BotSectionName,
@@ -13,14 +13,14 @@ import {
   ThinkingLevelSchema,
   TimeZoneSchema,
   UpdateGroupInput,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import {
   CARD_TITLE_ESCAPED_CHARACTERS,
   messagingProviderNamed,
   ONCE_ROUTINE_CRON,
   redactSecrets,
-} from "@rakazo/core";
-import type { Prisma, PrismaClient, ThreadEvents } from "@rakazo/db";
+} from "@nurlai/core";
+import type { Prisma, PrismaClient, ThreadEvents } from "@nurlai/db";
 import {
   commitBotUpdate,
   createGroupRepos,
@@ -30,8 +30,8 @@ import {
   isRecordNotFound,
   SpaceDeletionInProgressError,
   storedMessageBlocks,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import type { FleetCardSummary } from "../approvals/approval-ask.js";
 import { approvalDetailLength, MAX_APPROVAL_SUMMARY_LENGTH } from "../approvals/approval-ask.js";
 import { attachedImageArtifactIds, resolveUpdateBotAvatar } from "../bots/bot-avatar.js";

@@ -1,17 +1,17 @@
-import type { SandboxProvider } from "@rakazo/adapter-kit";
+import type { SandboxProvider } from "@nurlai/adapter-kit";
 import {
   cancelComputerRunWork,
   returnHelperOutcome,
   screenLeaseIdForRun,
   toComputerRef,
-} from "@rakazo/adapters";
-import type { Actor, MessageBlock } from "@rakazo/contracts";
+} from "@nurlai/adapters";
+import type { Actor, MessageBlock } from "@nurlai/contracts";
 import {
   ACTIVE_RUN_STATUSES,
   BACKGROUND_HELPER_TRIGGER,
   parseMessagingCommand,
-} from "@rakazo/core";
-import type { Prisma, PrismaClient, ThreadEvents } from "@rakazo/db";
+} from "@nurlai/core";
+import type { Prisma, PrismaClient, ThreadEvents } from "@nurlai/db";
 import {
   appendEventInTransaction,
   clearEndedRunState,
@@ -20,8 +20,8 @@ import {
   expireComputerExecutionLeases,
   THREAD_LOCK_TRANSACTION_OPTIONS,
   transientRunEventsWhere,
-} from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+} from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import type { ThreadTarget } from "./thread-target.js";
 
 /** A bare "stop" or "stop now" with nothing attached: the owner's Stop, sent as text. */

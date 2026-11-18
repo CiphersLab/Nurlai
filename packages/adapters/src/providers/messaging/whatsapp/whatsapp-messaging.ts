@@ -1,5 +1,5 @@
 import { createWhatsAppAdapter, WhatsAppAdapter, WhatsAppApiError } from "@chat-adapter/whatsapp";
-import type { MessagingOutboundStatus } from "@rakazo/adapter-kit";
+import type { MessagingOutboundStatus } from "@nurlai/adapter-kit";
 import { ConsoleLogger, convertEmojiPlaceholders } from "chat";
 import {
   arrayField,

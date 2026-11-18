@@ -1,6 +1,6 @@
 import { ORPCError } from "@orpc/server";
-import type { SecretStore } from "@rakazo/adapter-kit";
-import type { CodexLiveCatalog } from "@rakazo/adapters";
+import type { SecretStore } from "@nurlai/adapter-kit";
+import type { CodexLiveCatalog } from "@nurlai/adapters";
 import {
   CHATGPT_OAUTH_PROVIDER,
   codexLiveModel,
@@ -13,12 +13,12 @@ import {
   runModelChoice,
   runtimeModelAcceptsImages,
   selectConfiguredModel,
-} from "@rakazo/adapters";
-import type { Actor, MessageBlock } from "@rakazo/contracts";
-import { OPENAI_COMPATIBLE_PROVIDER_ID } from "@rakazo/contracts";
-import { MODEL_IMAGE_INPUT_ERROR, MODEL_IMAGE_INPUT_UNKNOWN } from "@rakazo/core";
-import type { PrismaClient } from "@rakazo/db";
-import { appliedModelRole, findModelCredential, findModelCredentialById } from "@rakazo/db";
+} from "@nurlai/adapters";
+import type { Actor, MessageBlock } from "@nurlai/contracts";
+import { OPENAI_COMPATIBLE_PROVIDER_ID } from "@nurlai/contracts";
+import { MODEL_IMAGE_INPUT_ERROR, MODEL_IMAGE_INPUT_UNKNOWN } from "@nurlai/core";
+import type { PrismaClient } from "@nurlai/db";
+import { appliedModelRole, findModelCredential, findModelCredentialById } from "@nurlai/db";
 
 type ModelChoice = {
   modelProvider: string | null;

@@ -1,5 +1,5 @@
 import { createHmac } from "node:crypto";
-import type { MessagingInboundEvent } from "@rakazo/adapter-kit";
+import type { MessagingInboundEvent } from "@nurlai/adapter-kit";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ChatSdkMessagingSurface } from "../../../messaging/chat-sdk-surface.js";
 import { messagingPlatformsFromEnv } from "../../../messaging/messaging-platforms.js";

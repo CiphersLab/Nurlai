@@ -1,6 +1,6 @@
-import type { BillingSubscriptionSnapshot } from "@rakazo/adapter-kit";
-import type { Deferred } from "@rakazo/core/test-async";
-import { deferred } from "@rakazo/core/test-async";
+import type { BillingSubscriptionSnapshot } from "@nurlai/adapter-kit";
+import type { Deferred } from "@nurlai/core/test-async";
+import { deferred } from "@nurlai/core/test-async";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import type { PrismaClient } from "../database/client.js";
 import { createDb } from "../database/client.js";

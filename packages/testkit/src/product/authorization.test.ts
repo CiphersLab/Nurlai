@@ -6,9 +6,9 @@ import {
   ExpoPushProvider,
   FakeComposioClient,
   PrismaPushTokenStore,
-} from "@rakazo/adapters";
-import type { createApp } from "@rakazo/api/app";
-import type { appContract, Space, SpaceNavigation } from "@rakazo/contracts";
+} from "@nurlai/adapters";
+import type { createApp } from "@nurlai/api/app";
+import type { appContract, Space, SpaceNavigation } from "@nurlai/contracts";
 import {
   claimSpaceDeletionForMember,
   deleteClaimedSpaceForMember,
@@ -20,7 +20,7 @@ import {
   runAsTenant,
   setSpaceSettingOverride,
   withLease,
-} from "@rakazo/db";
+} from "@nurlai/db";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import type { BotIntroHarness } from "../discard-bot-intro.js";
 import { discardBotIntroFromCreate } from "../discard-bot-intro.js";
@@ -57,7 +57,7 @@ describeWithDatabase("API authorization and resource isolation", () => {
   const dataDir = mkdtempSync(path.join(tmpdir(), "rakazo-authz-"));
 
   beforeAll(async () => {
-    const { createApp } = await import("@rakazo/api/app");
+    const { createApp } = await import("@nurlai/api/app");
     handles = await createApp({
       databaseUrl: process.env.DATABASE_URL!,
       encryptionKey,
@@ -2556,7 +2556,7 @@ async function raw(
     headers: {
       "content-type": "application/json",
       ...(cookie ? { cookie } : {}),
-      ...(spaceId ? { "x-rakazo-space-id": spaceId } : {}),
+      ...(spaceId ? { "x-nurlai-space-id": spaceId } : {}),
       origin: "http://127.0.0.1:5173",
     },
     body: JSON.stringify({ json: body ?? {} }),

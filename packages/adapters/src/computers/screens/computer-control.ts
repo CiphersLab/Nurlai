@@ -1,9 +1,9 @@
-import type { AdapterContext, JobPublisher, SandboxProvider } from "@rakazo/adapter-kit";
-import { computerControlExpireJob, computerControlExpireJobKey } from "@rakazo/adapter-kit";
-import { COMPUTER_CONTROL_LEASE_MS } from "@rakazo/core";
-import type { PrismaClient, ThreadEvents } from "@rakazo/db";
-import { recordComputerRunEnd } from "@rakazo/db";
-import { getLogger } from "@rakazo/logging";
+import type { AdapterContext, JobPublisher, SandboxProvider } from "@nurlai/adapter-kit";
+import { computerControlExpireJob, computerControlExpireJobKey } from "@nurlai/adapter-kit";
+import { COMPUTER_CONTROL_LEASE_MS } from "@nurlai/core";
+import type { PrismaClient, ThreadEvents } from "@nurlai/db";
+import { recordComputerRunEnd } from "@nurlai/db";
+import { getLogger } from "@nurlai/logging";
 import { wakeRun } from "../../runs/wakeups/wake-run.js";
 import { isSandboxGoneError } from "../sandbox/sandbox-errors.js";
 import { toComputerRef } from "./computer-support.js";
@@ -14,7 +14,7 @@ export {
   hasActiveComputerControl,
   holdsUserControl,
   userControlHeldBy,
-} from "@rakazo/db";
+} from "@nurlai/db";
 
 export const CONTROL_LEASE_MS = COMPUTER_CONTROL_LEASE_MS;
 

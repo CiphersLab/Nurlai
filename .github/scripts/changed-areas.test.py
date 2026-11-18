@@ -196,7 +196,7 @@ class ChangedAreasTests(unittest.TestCase):
             data = json.loads(manifest.read_text())
             deps = {**data.get("dependencies", {}), **data.get("devDependencies", {}), **data.get("peerDependencies", {})}
             manifests[data["name"]] = (manifest.parent, [name for name, spec in deps.items() if str(spec).startswith("workspace:")])
-        closure, pending = set(), list(manifests["@rakazo/www"][1])
+        closure, pending = set(), list(manifests["@nurlai/www"][1])
         while pending:
             name = pending.pop()
             if name not in closure:

@@ -5,8 +5,8 @@ import {
   SandboxRateLimitError,
   SandboxUnavailableError,
   SandboxUnresponsiveError,
-} from "@rakazo/adapter-kit";
-import { parseRetryAfter, redactSecrets } from "@rakazo/core";
+} from "@nurlai/adapter-kit";
+import { parseRetryAfter, redactSecrets } from "@nurlai/core";
 import { readBodyCapped } from "../../../web/web-ssrf.js";
 
 const MAX_BOAT_ERROR_RESPONSE_BYTES = 16 * 1024;

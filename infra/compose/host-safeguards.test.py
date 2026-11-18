@@ -403,7 +403,7 @@ class AlertTests(unittest.TestCase):
             ):
                 alerts.notify("disk", "Low space", root / "absent.json", root / "state")
                 alerts.notify("disk", "Low space", root / "absent.json", root / "state")
-                self.assertEqual(output.getvalue().count("Rakazo alert: Low space"), 1)
+                self.assertEqual(output.getvalue().count("Nurlai alert: Low space"), 1)
                 send.assert_not_called()
 
     def test_concurrent_calls_deliver_once(self):
@@ -716,7 +716,7 @@ class HostCheckTests(unittest.TestCase):
             self.assertIn("latest backup is not encrypted", alert_log.read_text())
             result = subprocess.run(
                 ["bash", str(script)],
-                env={**env, "RAKAZO_BACKUP_ALLOW_PLAINTEXT": "1"},
+                env={**env, "NURLAI_BACKUP_ALLOW_PLAINTEXT": "1"},
                 capture_output=True,
                 text=True,
             )
@@ -809,7 +809,7 @@ class HostCheckTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stderr)
             result = subprocess.run(
                 ["bash", str(script)],
-                env={**env, "RAKAZO_BACKUP_REQUIRE_VOLUME": "1"},
+                env={**env, "NURLAI_BACKUP_REQUIRE_VOLUME": "1"},
                 capture_output=True,
                 text=True,
             )
@@ -818,7 +818,7 @@ class HostCheckTests(unittest.TestCase):
                 "Backup volume is not mounted separately", alert_log.read_text()
             )
             # A configured audit sink alerts while its shipper is not running.
-            audit_env.write_text("RAKAZO_AUDIT_SINK_URL=https://ingest.example.com/v1\n")
+            audit_env.write_text("NURLAI_AUDIT_SINK_URL=https://ingest.example.com/v1\n")
             result = subprocess.run(
                 ["bash", str(script)], env=env, capture_output=True, text=True
             )

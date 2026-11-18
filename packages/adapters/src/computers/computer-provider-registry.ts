@@ -1,10 +1,10 @@
-import type { ComputerProviderDescriptor, ComputerProviderField } from "@rakazo/contracts";
+import type { ComputerProviderDescriptor, ComputerProviderField } from "@nurlai/contracts";
 import {
   ipVersion,
   isCloudMetadataHost,
   isInternalHostname,
   isNonPublicAddress,
-} from "@rakazo/contracts";
+} from "@nurlai/contracts";
 import type {
   ComputerProviderDefinition,
   SandboxProviderOptions,

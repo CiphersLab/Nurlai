@@ -1,8 +1,8 @@
 import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { connectionCleanupJob, connectionCleanupJobKey } from "@rakazo/adapter-kit";
-import type { InMemoryJobQueue } from "@rakazo/adapters";
+import { connectionCleanupJob, connectionCleanupJobKey } from "@nurlai/adapter-kit";
+import type { InMemoryJobQueue } from "@nurlai/adapters";
 import {
   ComposioConnector,
   EncryptedSecretStore,
@@ -11,10 +11,10 @@ import {
   lockProviderConnectionScope,
   PipedreamConnector,
   ThirdPartyConnectorEmulator,
-} from "@rakazo/adapters";
-import type { createApp } from "@rakazo/api/app";
-import { deferred } from "@rakazo/core/test-async";
-import { appliedModelRole, runAsSystem, runAsTenant, updateModelRole } from "@rakazo/db";
+} from "@nurlai/adapters";
+import type { createApp } from "@nurlai/api/app";
+import { deferred } from "@nurlai/core/test-async";
+import { appliedModelRole, runAsSystem, runAsTenant, updateModelRole } from "@nurlai/db";
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 import { sessionCookieHeader } from "../index.js";
 import { asSystem } from "../system-db.js";
@@ -43,7 +43,7 @@ describeWithDatabase("Composio catalog reconciliation", () => {
   const dataDir = mkdtempSync(path.join(tmpdir(), "rakazo-connections-"));
 
   beforeAll(async () => {
-    const { createApp } = await import("@rakazo/api/app");
+    const { createApp } = await import("@nurlai/api/app");
     fake = new FakeComposioClient();
     composio = new ComposioConnector({ client: fake });
     thirdParties = new ThirdPartyConnectorEmulator();

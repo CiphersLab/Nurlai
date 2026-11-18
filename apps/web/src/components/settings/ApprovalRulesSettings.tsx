@@ -4,16 +4,16 @@ import type {
   ActionAutoReviewSettings,
   ApprovalMode,
   SettingsScope,
-} from "@rakazo/contracts";
-import type { ApprovalRuleChoice } from "@rakazo/core";
+} from "@nurlai/contracts";
+import type { ApprovalRuleChoice } from "@nurlai/core";
 import {
   APPROVAL_RULE_EFFECTS,
   approvalRuleApplies,
   approvalRuleChoices,
   approvalRuleEffectChoices,
   approvalRuleLabel,
-} from "@rakazo/core";
-import { writeSaved } from "@rakazo/core/query";
+} from "@nurlai/core";
+import { writeSaved } from "@nurlai/core/query";
 import {
   Button,
   Command,
@@ -26,7 +26,7 @@ import {
   PopoverTrigger,
   ToggleGroup,
   ToggleGroupItem,
-} from "@rakazo/ui-web";
+} from "@nurlai/ui-web";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Trash2 } from "lucide-react";
 import { useRef, useState } from "react";

@@ -1,4 +1,4 @@
-import { boundedSandboxCommandTimeoutMs } from "@rakazo/core/node/sandbox-command";
+import { boundedSandboxCommandTimeoutMs } from "@nurlai/core/node/sandbox-command";
 import { z } from "zod";
 import { hostScreenMethods } from "../screens/host-screen.js";
 

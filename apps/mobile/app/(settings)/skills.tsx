@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
-import type { CapabilityInstall } from "@rakazo/contracts";
-import { pluginSite } from "@rakazo/core";
+import type { CapabilityInstall } from "@nurlai/contracts";
+import { pluginSite } from "@nurlai/core";
 import { useQuery } from "@tanstack/react-query";
 import { useFocusEffect, useRouter } from "expo-router";
 import { useCallback, useState } from "react";
