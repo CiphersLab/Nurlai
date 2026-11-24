@@ -19,6 +19,13 @@ export const PUBLISHED_IMAGE_REPO = "elie222/rakazo";
 export const OFFICIAL_SERVER_IMAGE = `ghcr.io/${PUBLISHED_IMAGE_REPO}/app`;
 
 /**
+ * The computer image publishes under its own `nurlai` repository name, so a deployment follows
+ * `ghcr.io/elie222/nurlai/computer` rather than the server image's namespace.
+ */
+export const PUBLISHED_COMPUTER_IMAGE_REPO = "elie222/nurlai";
+export const OFFICIAL_COMPUTER_IMAGE = `ghcr.io/${PUBLISHED_COMPUTER_IMAGE_REPO}/computer`;
+
+/**
  * The tag a deployment that has never run an update is on. It is deliberately *not* `latest`: no
  * registry serves this tag, so `docker compose up --build` builds it from the checkout and a fresh
  * install works with an empty registry. `latest` only exists once a release has been published.

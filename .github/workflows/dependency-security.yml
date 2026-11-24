@@ -99,6 +99,8 @@ jobs:
           IMAGE_REF: ghcr.io/${{ github.repository }}/${{ matrix.image }}:${{ matrix.tag }}
           IMAGE_PLATFORM: linux/${{ matrix.arch }}
         run: |
+          # A GHCR image reference must be lowercase; a repository's own name need not be.
+          IMAGE_REF="$(printf '%s' "$IMAGE_REF" | tr '[:upper:]' '[:lower:]')"
           trivy image --image-src remote --platform "$IMAGE_PLATFORM" --scanners vuln --format json --output image-vulnerabilities.json "$IMAGE_REF"
           trivy version --format json > scanner-version.json
           trivy convert --format cyclonedx --output image-sbom.json image-vulnerabilities.json

@@ -49,7 +49,7 @@ async function provideComputerImage(docker: Docker, image: string, context: stri
   // Every Nurlai build path tags the stock image nurlai/computer. Any other name may be a custom
   // build, such as a Brave image, which a stock build must not replace. dockerode's tar packer
   // crashes the process on a context file it cannot read.
-  if (!/^rakazo\/computer(:[\w][\w.-]*)?$/.test(image) || !(await contextReadable(context))) {
+  if (!/^nurlai\/computer(:[\w][\w.-]*)?$/.test(image) || !(await contextReadable(context))) {
     throw new Error(
       `Missing ${image}. Build it with: docker build -t ${image} infra/sandboxes/computer`,
     );

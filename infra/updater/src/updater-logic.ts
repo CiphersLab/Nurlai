@@ -6,9 +6,9 @@ import {
   IMAGE_TAG_ENV,
   isValidImageName,
   isValidImageTag,
+  OFFICIAL_COMPUTER_IMAGE,
   OFFICIAL_SERVER_IMAGE,
   PREVIOUS_IMAGE_TAG_ENV,
-  PUBLISHED_IMAGE_REPO,
   RECREATED_SERVICES,
   resolveComposeProjectName,
 } from "@nurlai/core";
@@ -16,7 +16,7 @@ import { resolveUpdaterToken } from "@nurlai/core/node/secrets-guard";
 
 export const APPLICATION_IMAGE_ENV = "NURLAI_IMAGE";
 export const COMPUTER_IMAGE_ENV = "NURLAI_COMPUTER_IMAGE";
-export const OFFICIAL_COMPUTER_IMAGE = `ghcr.io/${PUBLISHED_IMAGE_REPO}/computer`;
+export { OFFICIAL_COMPUTER_IMAGE };
 export const DEFAULT_UPDATER_PORT = 7092;
 export const DEFAULT_COMPOSE_FILE = "infra/compose/docker-compose.prod.yml";
 /** Compose's own convention for a multi-file list, matching COMPOSE_FILE. */

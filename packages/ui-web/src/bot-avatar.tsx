@@ -282,7 +282,7 @@ function OrganicAvatar({
       ref={ref}
       viewBox={ORGANIC_AVATAR_VIEWBOX}
       aria-hidden="true"
-      className={cn("rakazo-organic-avatar overflow-visible select-none", className)}
+      className={cn("nurlai-organic-avatar overflow-visible select-none", className)}
       data-working={isWorking}
       data-paused={!visible}
       data-shape-family={seed % 10}
@@ -296,7 +296,7 @@ function OrganicAvatar({
       {(["idle", "working"] as const).map((mode) => (
         <path
           key={mode}
-          className={`rakazo-organic-avatar-body rakazo-organic-avatar-body-${mode}`}
+          className={`nurlai-organic-avatar-body nurlai-organic-avatar-body-${mode}`}
           d={shapeA}
           fill={color}
           style={
@@ -324,7 +324,7 @@ function OrganicAvatar({
         {(["idle", "working"] as const).map((mode) => (
           <g
             key={mode}
-            className={`rakazo-organic-avatar-eyes rakazo-organic-avatar-eyes-${mode} ${eyeFill(color)}`}
+            className={`nurlai-organic-avatar-eyes nurlai-organic-avatar-eyes-${mode} ${eyeFill(color)}`}
           >
             <BarEyes eyes={ORGANIC_AVATAR_EYES} />
           </g>

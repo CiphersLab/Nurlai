@@ -507,7 +507,7 @@ describe("command variables", () => {
     ["ld_preload", "$LD_PRELOAD"],
     ["dyld-insert-libraries", "$DYLD_INSERT_LIBRARIES"],
     ["path", "$PATH"],
-    ["rakazo-token", "$NURLAI_TOKEN"],
+    ["nurlai-token", "$NURLAI_TOKEN"],
   ])("rejects %s because %s is reserved", (name, variable) => {
     const result = BotSecretDestination.safeParse({ name, auth: command });
     expect(result.success).toBe(false);
