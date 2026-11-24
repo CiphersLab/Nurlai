@@ -115,12 +115,28 @@ describe("current model compatibility", () => {
     expect(models.getModel("amazon-bedrock", id)?.cost).toEqual(cost);
   });
   it.each([
-    ["opencode", "claude-haiku-5-5", "claude-haiku-4-5"],
-    ["opencode", "claude-sonnet-5-5", "claude-sonnet-5"],
-    ["opencode-go", "claude-haiku-5-5", "minimax-m3"],
-  ])(
+    [
+      "opencode",
+      "claude-haiku-5-5",
+      "claude-haiku-4-5",
+      ["off", "minimal", "low", "medium", "high", "xhigh", "max"],
+    ],
+    // pi-ai 1.6.0 no longer offers the off level for this model.
+    [
+      "opencode",
+      "claude-sonnet-5-5",
+      "claude-sonnet-5",
+      ["minimal", "low", "medium", "high", "xhigh", "max"],
+    ],
+    [
+      "opencode-go",
+      "claude-haiku-5-5",
+      "minimax-m3",
+      ["off", "minimal", "low", "medium", "high", "xhigh", "max"],
+    ],
+  ] as const)(
     "exposes %s/%s in the picker and runtime on the same endpoint as %s",
-    (provider, id, baseId) => {
+    (provider, id, baseId, levels) => {
       const models = modelsForRequest(
         { model: { provider, id } } as Parameters<typeof modelsForRequest>[0],
         provider,
@@ -132,7 +148,6 @@ describe("current model compatibility", () => {
       expect(model?.api).toBe(base?.api);
       expect(model?.input).toContain("image");
       expect(model?.contextWindow).toBe(1000000);
-      const levels = ["off", "minimal", "low", "medium", "high", "xhigh", "max"];
       expect(getSupportedThinkingLevels(model!)).toEqual(levels);
       expect(
         listPiCatalog().find((entry) => entry.provider === provider && entry.id === id)
