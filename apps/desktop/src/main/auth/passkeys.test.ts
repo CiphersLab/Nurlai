@@ -11,8 +11,8 @@ const pkg = JSON.parse(readFileSync(path.join(root, "package.json"), "utf8")) as
 const base = readFileSync(path.join(root, pkg.build.mac.entitlements), "utf8");
 
 describe("associatedPasskeyRpIds", () => {
-  const resourcesPath = "/Applications/Nurlai.app/Contents/Resources";
-  const profile = "/Applications/Nurlai.app/Contents/embedded.provisionprofile";
+  const resourcesPath = path.join("/Applications/Nurlai.app/Contents/Resources");
+  const profile = path.join(resourcesPath, "..", "embedded.provisionprofile");
 
   it("lists the hosted domain only for a packaged macOS app with an embedded profile", () => {
     const exists = (file: string) => file === profile;
@@ -92,13 +92,13 @@ describe("self-hosted passkey domain", () => {
 
   it("associates the build with NURLAI_PASSKEY_RP_ID", async () => {
     const passkeys = await load(" Nurlai.Example.org ");
-    expect(passkeys.PASSKEY_RP_ID).toBe("rakazo.example.org");
+    expect(passkeys.PASSKEY_RP_ID).toBe("nurlai.example.org");
     expect(passkeys.passkeyEntitlements(base, "ABCDE12345", pkg.build.appId)).toContain(
-      "<string>webcredentials:rakazo.example.org</string>",
+      "<string>webcredentials:nurlai.example.org</string>",
     );
   });
 
-  it.each(["https://rakazo.example.org", "localhost", "192.168.1.20", "rakazo.example.org:8443"])(
+  it.each(["https://nurlai.example.org", "localhost", "192.168.1.20", "nurlai.example.org:8443"])(
     "refuses to sign entitlements for %s",
     async (rpId) => {
       const passkeys = await load(rpId);
