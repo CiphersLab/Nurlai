@@ -125,6 +125,7 @@ describe("model catalog bump PR lookup", () => {
         PATH: `${path.join(root, "bin")}:${process.env.PATH}`,
         GH_LOG: path.join(root, "gh.log"),
         GH_PRS: path.join(root, "prs.json"),
+        GH_TOKEN: "fixture-token",
         OLD_AI: "1.3.0",
         NEW_AI: "1.4.0",
         OLD_CORE: "1.3.0",
@@ -185,5 +186,27 @@ jq --arg head "$head" --arg fields "$fields" '[.[] | select($head == "" or .head
     expect(result.status).toBe(0);
     expect(remoteBranches()).toBe("");
     expect(result.calls).toEqual([]);
+  });
+
+  it("leaves the branch alone when the environment carries no token", () => {
+    writeFileSync(path.join(root, "prs.json"), "[]");
+    const result = spawnSync("bash", ["-c", publishScript("Push branch and open PR")], {
+      cwd: path.join(root, "checkout"),
+      env: {
+        ...process.env,
+        PATH: `${path.join(root, "bin")}:${process.env.PATH}`,
+        GH_LOG: path.join(root, "gh.log"),
+        GH_PRS: path.join(root, "prs.json"),
+        GH_TOKEN: "",
+        OLD_AI: "1.3.0",
+        NEW_AI: "1.4.0",
+        OLD_CORE: "1.3.0",
+        NEW_CORE: "1.4.0",
+      },
+      encoding: "utf8",
+    });
+    expect(result.status).toBe(0);
+    expect(remoteBranches()).toBe("");
+    expect(readFileSync(path.join(root, "gh.log"), "utf8")).toBe("");
   });
 });
