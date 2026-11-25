@@ -59,7 +59,7 @@ export function restoreTurnCheckpoint(
   ) {
     throw new Error("Unsupported turn checkpoint");
   }
-  const messages = [...checkpoint.messages];
+  const messages = checkpoint.messages.filter((message) => !skippedByAbort(message));
   while (messages.at(-1)?.role === "assistant") {
     const tail = messages.at(-1)!;
     if (tail.role !== "assistant" || (tail.stopReason !== "aborted" && tail.stopReason !== "error"))
@@ -75,13 +75,29 @@ export function restoreTurnCheckpoint(
   };
 }
 
+/**
+ * pi-agent-core 1.6.0 answers every tool call it skips because the run was already aborted with
+ * an "Operation aborted" error result. A paused turn stops its run that way, so those results
+ * describe calls that never ran: a resume has to run them, and the transcript may carry only the
+ * result the resumed run records.
+ */
+function skippedByAbort(message: Message): boolean {
+  return (
+    message.role === "toolResult" &&
+    message.isError === true &&
+    message.content.length === 1 &&
+    message.content[0]?.type === "text" &&
+    message.content[0].text.trim() === "Operation aborted"
+  );
+}
+
 /** Match results in transcript order: wire IDs may repeat in later responses. */
 export function unresolvedTurnCheckpointCalls(messages: Message[]): ToolCall[] {
   const pending = new Map<string, ToolCall>();
   for (const message of messages) {
     if (message.role === "assistant") {
       for (const call of message.content) if (call.type === "toolCall") pending.set(call.id, call);
-    } else if (message.role === "toolResult") {
+    } else if (message.role === "toolResult" && !skippedByAbort(message)) {
       pending.delete(message.toolCallId);
     }
   }
