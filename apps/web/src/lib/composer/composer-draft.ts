@@ -6,12 +6,25 @@ const COMPOSER_BINDINGS_STORAGE_PREFIX = "nurlai.cipherslab.composerBindings.";
 const COMPOSER_NONCE_STORAGE_PREFIX = "nurlai.cipherslab.composerNonce.";
 const LEGACY_COMPOSER_SEND_STORAGE_PREFIX = "nurlai.cipherslab.composerSend.";
 
+/** Keys saved before the product was renamed; the upgrade and sign-out paths clear them. */
+const PRE_RENAME_COMPOSER_SEND_STORAGE_PREFIX = "rakazo.composerSend.";
+const PRE_RENAME_STORAGE_PREFIXES = [
+  PRE_RENAME_COMPOSER_SEND_STORAGE_PREFIX,
+  "rakazo.composerDraft.",
+  "rakazo.composerNonce.",
+  "rakazo.composerBindings.",
+];
+
 // Older releases saved full send payloads. Remove them on upgrade, including chats
 // that are never opened again; only retry nonces are stored by this release.
 try {
   const keys = Array.from({ length: localStorage.length }, (_, index) => localStorage.key(index));
   for (const key of keys) {
-    if (key?.startsWith(LEGACY_COMPOSER_SEND_STORAGE_PREFIX)) localStorage.removeItem(key);
+    if (
+      key?.startsWith(LEGACY_COMPOSER_SEND_STORAGE_PREFIX) ||
+      key?.startsWith(PRE_RENAME_COMPOSER_SEND_STORAGE_PREFIX)
+    )
+      localStorage.removeItem(key);
   }
 } catch {
   // Storage may be unavailable during server rendering or in private mode.
@@ -155,18 +168,22 @@ export function hasUnsentComposerDraft(storage: Storage | null = null): boolean 
   return false;
 }
 
+function isComposerStorageKey(key: string): boolean {
+  return (
+    key.startsWith(COMPOSER_DRAFT_STORAGE_PREFIX) ||
+    key.startsWith(COMPOSER_BINDINGS_STORAGE_PREFIX) ||
+    key.startsWith(COMPOSER_NONCE_STORAGE_PREFIX) ||
+    key.startsWith(LEGACY_COMPOSER_SEND_STORAGE_PREFIX) ||
+    PRE_RENAME_STORAGE_PREFIXES.some((prefix) => key.startsWith(prefix))
+  );
+}
+
 /** Signing out leaves no saved draft, its mentions or its retry nonce for whoever uses this browser next. */
 export function clearComposerDrafts(): void {
   try {
     const keys = Array.from({ length: localStorage.length }, (_, index) => localStorage.key(index));
     for (const key of keys) {
-      if (
-        key?.startsWith(COMPOSER_DRAFT_STORAGE_PREFIX) ||
-        key?.startsWith(COMPOSER_BINDINGS_STORAGE_PREFIX) ||
-        key?.startsWith(COMPOSER_NONCE_STORAGE_PREFIX) ||
-        key?.startsWith(LEGACY_COMPOSER_SEND_STORAGE_PREFIX)
-      )
-        localStorage.removeItem(key);
+      if (key !== null && isComposerStorageKey(key)) localStorage.removeItem(key);
     }
   } catch {
     // Without storage no draft was saved.

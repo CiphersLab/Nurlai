@@ -174,8 +174,10 @@ describe("legacy send envelope cleanup", () => {
       "composerNonce",
       "composerBindings",
     ]) {
-      storage.setItem(`rakazo.${namespace}.bot:old`, "private");
-      storage.setItem(`rakazo.${namespace}.group:old`, "private");
+      for (const prefix of ["rakazo.", "nurlai.cipherslab."]) {
+        storage.setItem(`${prefix}${namespace}.bot:old`, "private");
+        storage.setItem(`${prefix}${namespace}.group:old`, "private");
+      }
     }
     storage.setItem("unrelated", "keep");
     vi.stubGlobal("localStorage", storage);
