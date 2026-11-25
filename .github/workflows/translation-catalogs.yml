@@ -85,6 +85,11 @@ jobs:
           PATCH_DIR: ${{ runner.temp }}/translation-catalogs
         run: |
           set -euo pipefail
+          # A fork without the PAT cannot open pull requests, and must not fail on every push.
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "::notice::GH_DEPENDENCY_UPDATES_PAT is not set; leaving the catalogs alone."
+            exit 0
+          fi
           pr="$(gh pr list --state open --head "$BRANCH" --json number,isCrossRepository \
             --jq '.[] | select(.isCrossRepository == false) | .number')"
           remote="$(git ls-remote origin "refs/heads/$BRANCH" | cut -f1)"

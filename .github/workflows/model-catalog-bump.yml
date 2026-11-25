@@ -121,6 +121,11 @@ jobs:
           NEW_CORE: ${{ needs.update.outputs.core_version }}
         run: |
           set -euo pipefail
+          # A fork without the PAT cannot open pull requests, and must not fail the weekly run.
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "::notice::GH_DEPENDENCY_UPDATES_PAT is not set; skipping the catalog PR."
+            exit 0
+          fi
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           branch="deps/pi-catalog-ai-${NEW_AI}-core-${NEW_CORE}"
