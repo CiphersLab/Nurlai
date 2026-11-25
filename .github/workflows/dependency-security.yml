@@ -12,10 +12,11 @@ on:
       - "pnpm-workspace.yaml"
       # Its packageManager field picks the pnpm that runs the audit.
       - "package.json"
-  push:
-    branches: [main]
-  schedule:
-    - cron: "19 5 * * *"
+  # Paused while this fork's automation is off; see docs/ci-automation-paused.md.
+  # push:
+  #   branches: [main]
+  # schedule:
+  #   - cron: "19 5 * * *"
   workflow_dispatch:
 
 permissions:

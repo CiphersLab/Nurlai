@@ -44,6 +44,10 @@ their dependents unless a change requires checking all packages. Production buil
 [changed-area classification](.github/scripts/changed-areas.sh) in the
 [CI workflow](.github/workflows/ci.yml).
 
+Scheduled and main-branch automation (nightly verification, the dependency audit, the weekly
+catalog and dependency bots) is paused in this fork; see
+[CI automation paused](docs/ci-automation-paused.md) for what is off and how to turn it back on.
+
 Ordinary test processes (`NODE_ENV=test`) do not load the checkout's `.env`.
 Verification CLIs load configuration before starting isolated test processes;
 live canaries explicitly enabled with `VERIFY_PROVIDERS` also opt into loading it.

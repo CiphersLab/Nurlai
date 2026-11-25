@@ -15,8 +15,9 @@ name: exploratory QA
 # Each run is capped at 6 features, 30 minutes per feature and the budget, and files at most 10
 # issues, labeled exploratory-qa.
 on:
-  schedule:
-    - cron: "17 5 * * 1"
+  # Paused while this fork's automation is off; see docs/ci-automation-paused.md.
+  # schedule:
+  #   - cron: "17 5 * * 1"
   workflow_dispatch:
     inputs:
       budget_usd:

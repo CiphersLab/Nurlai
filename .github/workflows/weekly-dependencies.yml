@@ -1,8 +1,9 @@
 name: Weekly dependency updates
 
 on:
-  schedule:
-    - cron: "43 6 * * 2"
+  # Paused while this fork's automation is off; see docs/ci-automation-paused.md.
+  # schedule:
+  #   - cron: "43 6 * * 2"
   workflow_dispatch:
 
 permissions: {}

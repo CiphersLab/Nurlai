@@ -6,8 +6,9 @@ name: preview-cleanup
 on:
   pull_request_target:
     types: [closed]
-  schedule:
-    - cron: "17 4 * * *"
+  # Paused while this fork's automation is off; see docs/ci-automation-paused.md.
+  # schedule:
+  #   - cron: "17 4 * * *"
   workflow_dispatch:
 
 permissions: {}
